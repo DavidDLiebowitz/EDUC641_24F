@@ -1,0 +1,33 @@
+{
+  "articles": [
+    {
+      "path": "about.html",
+      "title": "About this site",
+      "description": "Some additional details about the website",
+      "author": [],
+      "contents": "",
+      "last_modified": "2021-07-08T10:36:48-07:00"
+    },
+    {
+      "path": "index.html",
+      "title": "My Website",
+      "description": "Welcome to the website. I hope you enjoy it!\n",
+      "author": [],
+      "contents": "",
+      "last_modified": "2021-07-08T10:36:49-07:00"
+    },
+    {
+      "path": "LICENSE.html",
+      "author": [],
+      "contents": "",
+      "last_modified": "2021-07-08T10:36:49-07:00"
+    },
+    {
+      "path": "README.html",
+      "author": [],
+      "contents": "\r\nThis is the official site for EDUC 641.\r\n\r\n\r\n",
+      "last_modified": "2021-07-08T10:35:08-07:00"
+    }
+  ],
+  "collections": []
+}

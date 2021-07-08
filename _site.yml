@@ -1,12 +1,17 @@
-name: "641"
-title: "My Website"
-description: |
-  My Website
-output_dir: "docs"
+name: EDUC 641
+output_dir: "."
 navbar:
+  title: EDUC 641
+  left:
+  - text: Syllabus
+    href: syllabus.html
+  - text: Schedule
+    href: schedule.html
   right:
-    - text: "Home"
-      href: index.html
-    - text: "About"
-      href: about.html
-output: distill::distill_article
+  - text: Assignments
+    href: assignments.html
+  - text: Exams
+    href: exams.html
+  - icon: fa-github
+    href: https://github.com/
+theme: educquant.css
