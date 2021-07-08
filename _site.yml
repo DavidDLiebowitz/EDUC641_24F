@@ -13,5 +13,5 @@ navbar:
   - text: Exams
     href: exams.html
   - icon: fa-github
-    href: https://github.com/
+    href: https://uo-educ-quant.github.io/641/
 theme: educquant.css

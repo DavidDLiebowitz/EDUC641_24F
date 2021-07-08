@@ -1,18 +1,24 @@
 ---
-title: "My Website"
-description: |
-  Welcome to the website. I hope you enjoy it!
+title: "EDUC 641: Inferences and Statistics in Education"
 site: distill::distill_website
+output:
+  html_document:
+    css: educquant.css
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
-
-# Learn more about creating websites with Distill at:
-# https://rstudio.github.io/distill/website.html
-
-# Learn more about publishing to GitHub Pages at:
-# https://rstudio.github.io/distill/publish_website.html#github-pages
-
 ```
 
+Welcome to Fall 2021 EDUC 641.
+
+This is the first course of the EDUC quantitative methods sequence. In this course, you will learn:
+
+Types of variables (manipulation of variable types; transformations)  
+Visualization of central tendency and variability  
+Central limit theorem  
+Inferential stats for different type of variables (t distributions, F distributions, Chi-squared distributions)  
+Bayesian perspectives  
+Related principles of programming  
+Power analyses and effect sizes  
+[Statistics they will be able to calculate: e.g., t-tests for two-group comparisons and correlations, F-tests for two-group comparisons, chi-squared contingency analyses]  
