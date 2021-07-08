@@ -27,8 +27,8 @@ knitr::opts_chunk$set(echo = TRUE)
 +-----------+----------------+--------------------+------------------+
 | Week      | Topics         | Readings           | Assignments Due  |
 +-----------+----------------+--------------------+------------------+
-| Week 1    | Introduction   | Text1 p.1-15       | Assignment 1     |
-|           |                | Text2 p.1-9        |                  |
+| Week 1    | Introduction   | * Text1 p.1-15       | Assignment 1     |
+|           |                | * Text2 p.1-9        |                  |
 +-----------+----------------+--------------------+------------------+
 
 ### Weekly Schedule of Topics, Assignments, and Readings (option 2)
