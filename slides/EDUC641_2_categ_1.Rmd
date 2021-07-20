@@ -1,0 +1,202 @@
+---
+title: "Summarizing and displaying categorical data"
+subtitle: "EDUC 641: Week 02"
+author: "TBD"
+#date: "`r format(Sys.time(), '%d %B %Y')`"
+output:
+  xaringan::moon_reader:
+    css: ['default','new.css']
+    # self_contained: true
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+---
+
+```{R, setup, include = F}
+if (!require(pacman)) install.packages('pacman', repos = 'https://cran.rstudio.com')
+pacman::p_load(here, tidyverse, ggplot2, xaringan, knitr, kableExtra)
+
+# Define color
+red_pink <- "#e64173"
+turquoise <- "#20B2AA"
+orange <- "#FFA500"
+red <- "#fb6107"
+blue <- "#3b3b9a"
+green <- "#8bb174"
+grey_light <- "grey70"
+grey_mid <- "grey50"
+grey_dark <- "grey20"
+purple <- "#6A5ACD"
+slate <- "#314f4f"
+# Dark slate grey: #314f4f
+
+# Knitr options
+opts_chunk$set(
+  comment = "#>",
+  fig.align = "center",
+  fig.height = 6.75,
+  fig.width = 10.5,
+  warning = F,
+  message = F
+)
+opts_chunk$set(dev = "svg")
+options(device = function(file, width, height) {
+  svg(tempfile(), width = width, height = height)
+})
+options(knitr.table.format = "html")
+
+```
+
+# Roadmap
+
+![](roadmap.png)
+
+---
+# Types of data
+
+## 1. Categorical: labels
+## 2. Continuous: data with arithmetic properties
+## 3. Ordinal: part label, part number
+
+---
+# The story behind the data
+
+.pull-left[
+- Warren McCleskey sentenced to death for murdering police officer during armed robbery in Georgia (1978)
+- McCleskey appeals to the Supreme Court, arguing his death sentence is due to racial bias in sentencing...his appeal is rejected
+- Senator Edward Kennedy sponsors the Racial Justice Act to enforce the Constitution's promise of equality under the law
+- McCleskey executed in Georgia (1991)
+]
+
+.pull-right[
+
+![](mccleskey.png)
+
+- Baldus, Pulaski & Woodworth (1983). A comparative review of death sentences: An empirical study of the Georgia experience. *J. Crim Law.*
+
+]
+
+---
+# Goals of the unit
+
+### We'll use part of the quantitative data accumulated by Baldus et al. (1983) to:
+- Understand and implement principles of tabular data in R
+- Describe and summarize quantitative data that are categorical
+- Create visualizations of quantitative data that are categorical
+- Write R scripts to conduct these analyses
+
+---
+# Materials
+
+### 1. Death penalty data (in file called deathpen.csv)
+### 2. Codebook describing the contents of said data
+### 3. R script available ...
+
+---
+# Let's first access the data
+
+```{r, echo= T}
+df <- read.csv(here::here("data", "deathpen.csv"))
+# it is common in R to name our datasets short names 
+# so as to reduce typing (df for dataframe)
+
+# Also, note how I can write anything I want after a # sign and it 
+# doesn't cause any problems for your program. These are called  
+# comments and are critical to remind youf (and tell others) what 
+# you are doing!
+```
+
+--
+
+#### but where did our data go?
+---
+# Understanding data structure
+
+```{r, echo=T}
+head(df)
+str(df)
+```
+> I'd like to be able to mark up this output to show Ss what each item represents
+
+---
+# Putting words to numbers
+We know from our codebook what this long list of numbers means, so let's make our dataset a little more readable...
+```{r, echo=F}
+df$rvictim <- factor(df$rvictim,
+                      levels = c(1,2), labels=c("Black", "White"))
+df$rdefend <- factor(df$rdefend,
+                      levels = c(1,2), labels=c("Black", "White"))
+```
+```{r, echo=T}
+df$deathpen <- factor(df$deathpen, 
+                      levels = c(0,1), labels = c("No", "Yes"))
+head(df)
+```
+
+---
+# Questions go with data
+
+### What sorts of questions could you ask already of this data?
+
+> Based on the contents of this data, what questions can you think of that ask you to describe single variables?
+
+--
+
+> Based on the contents of this data, what questions can you think of that ask you to inquire about relationships between two or more variables?
+
+---
+# Summarizing data: Tables
+One powerful thing to do with data is to just count it up. How many defendants were sentenced to death?
+
+```{r, echo=T}
+table(df$deathpen)
+```
+
+--
+
+> From the *table* of the values of the variable *DEATHPEN*, we conclude ...
+
+---
+# Summarizing data: Charts
+Even more powerful is to visualize these counts!
+
+```{r, echo=T, fig.height=4}
+counts <- table(df$deathpen)
+barplot(counts, xlab = "Sentenced to Death?")
+```
+
+--
+
+> Sometimes, *proportions* are better ... can you calculate by hand the proportion of defendants who are sentenced to death? 
+
+---
+# Summarizing data: Proportions
+We can also ask R to do this for us
+
+```{r, echo=T, fig.height=4}
+prop <- prop.table(table(df$rvictim))
+barplot(prop, xlab = "Race of Victim")
+```
+
+> After inspecting this *chart of the proportions* of the variable *RVICTIM* in our data, we conclude ...
+
+---
+# Another way to visualize
+Let's start to get familiar with the beauty of `ggplot`
+
+```{r, echo=T, fig.height=4}
+ggplot(df, aes(rdefend)) + geom_bar() +
+         xlab("Race of Defendant")
+
+```
+
+> After inspecting this *chart* of the values of the variable *RDEFEND* in our data, we conclude ...
+
+---
+class: middle, inverse
+# Synthesis and wrap-up
+
+
+
+

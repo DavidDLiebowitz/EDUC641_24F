@@ -10,6 +10,54 @@ output:
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+### 1. Introduction
+
+(from syllabus)
+
+(My suggestion is that responses identical to other people's words will result a warning for the first time, then zero point if this happens again; another suggestion is that we want to make sure that students render their html/pdf from Rmd/R file, so if not, cut some points. These may seem harsh in the beginning but will make sure student writing "runnable" codes as well as their own answers - two things that are fundamental to their success in later weeks)
+
+### 2. Submission Requirments
+
+For each assignment, please upload below two files on Canvas before deadline:  
+
+ * An .html or .pdf file that includes both - 
+   + your typed responses (in your own words and not identical to anybody else's), tables, and/or figures to the problems  
+   + and the R code chunks that generated your answers (hint: in your Rmd file, set up echo = TRUE, include = TRUE)  
+   
+ * The .Rmd or .R file that you used to render the tables and figures in the above html/pdf. You'll be cut TBD points if the Rmd doesn't run or render properly.
+
+### 3. Details about Assignments
+
+#### 3.1. Assignment 1 
+
+Categorical data 1: data structure and descriptives 
+
+Deadline: TBD
+
+Download: [html file](./assignments/assignment01.html); [key html file](), [key Rmd file]()
+
+#### 3.2. Assignment 2 
+
+Categorical data 2: chi-square analysis
+
+Deadline: TBD
+
+Download: [html file](./assignments/assignment02.html); [key html file](), [key Rmd file]()
+
+#### 3.3. Assignment 3 
+
+Continuous data 1: correlation and t-tests
+
+#### 3.4. Assignment 4 
+
+Continuous data 2: intro to bivariate regression
+
+#### 3.5. Assignment 5 
+
+Final assignment
+
+
+
 
 
 

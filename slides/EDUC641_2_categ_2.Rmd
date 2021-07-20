@@ -1,0 +1,261 @@
+---
+title: "Examining the relationship between categorical variables"
+subtitle: "EDUC 641: Week XX"
+author: "TBD"
+#date: "`r format(Sys.time(), '%d %B %Y')`"
+output:
+  xaringan::moon_reader:
+    css: ['default','new.css']
+    # self_contained: true
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+---
+
+```{R, setup, include = F}
+if (!require(pacman)) install.packages('pacman', repos = 'https://cran.rstudio.com')
+pacman::p_load(here, tidyverse, ggplot2, xaringan, knitr, kableExtra)
+
+# Define color
+red_pink <- "#e64173"
+turquoise <- "#20B2AA"
+orange <- "#FFA500"
+red <- "#fb6107"
+blue <- "#3b3b9a"
+green <- "#8bb174"
+grey_light <- "grey70"
+grey_mid <- "grey50"
+grey_dark <- "grey20"
+purple <- "#6A5ACD"
+slate <- "#314f4f"
+# Dark slate grey: #314f4f
+
+# Knitr options
+opts_chunk$set(
+  comment = "#>",
+  fig.align = "center",
+  fig.height = 6.75,
+  fig.width = 10.5,
+  warning = F,
+  message = F
+)
+opts_chunk$set(dev = "svg")
+options(device = function(file, width, height) {
+  svg(tempfile(), width = width, height = height)
+})
+options(knitr.table.format = "html")
+
+```
+
+# Roadmap
+
+![](roadmap.png)
+                                                          
+---
+# A reminder of our motivating question
+
+
+---
+# Goals of the unit
+
+- Describe relationships between quantitative data that are categorical
+- Calculate an index of the strength of the relationship between two categorical variables, the chi-squared ($\chi^2$) statistic
+- Write R scripts to conduct these analyses
+- Formulate and describe the purpose of a null hypothesis
+- Conceptually describe the criteria to make a statistical inference from a sample to a population
+- Interpret and report the results of a contingency-table analysis and a statistical inference from a chi-squared statistic
+
+---
+# Materials
+
+### 1. Death penalty data (in file called deathpenalty.csv)
+### 2. Codebook describing the contents of said data
+### 3. R script available ...
+
+---
+# What we've done
+
+```{r, echo= F}
+df <- read.csv(here::here("data", "deathpen.csv"))
+df$rvictim <- factor(df$rvictim,
+                      levels = c(1,2), labels=c("Black", "White"))
+df$rdefend <- factor(df$rdefend,
+                      levels = c(1,2), labels=c("Black", "White"))
+df$deathpen <- factor(df$deathpen, 
+                      levels = c(0,1), labels = c("No", "Yes"))
+
+```
+Up until now, we've been examining each variable by itself, 
+
+---
+class: middle, inverse
+# Relationships between variables
+
+---
+# Two-way tables
+
+```{r, echo=T}
+table(df$deathpen, df$rvictim)
+```
+
+--
+
+It would be helpful to have these in percentage terms. Black victim: 
+$$\frac{20}{1483 + 20}*100= 1.33\%$$
+
+Can ask R for this too:
+```{r, echo=T}
+prop.table(table(df$deathpen, df$rvictim), margin=2)*100
+```
+
+---
+# Putting it into words
+
+> In our sample of convicted murderers in Georgia, when a **Black person** was a victim...
+
+--
+
+> In our sample of convicted murderers in Georgia, when a **White person** was a victim...
+
+---
+# Grouped charts
+Can visualize these counts
+
+```{r, echo=T, fig.height=4}
+ggplot(df, aes(x = rvictim,
+               fill = deathpen)) +
+        geom_bar(position = "dodge") + 
+        xlab("Race of victim") 
+```
+
+---
+# What is "related"?
+
+To answer whether *DEATHPEN* and *RVICTIM* are related in our observed sample...
+
+--
+
+it might be helpful to imagine what the proportion of defendants sentenced to death would look like **if there were NO relationship**
+
+--
+
+.pull-left[
+####Frequencies that we OBSERVE
+```{r, echo=F}
+table(df$deathpen, df$rvictim)
+```
+]
+
+.pull-right[
+####Frequencies that we would EXPECT if there were NO relationship 
+```{r, echo=F}
+df <- df %>% group_by(rvictim) %>% mutate(sum_rvictim = n())
+df <- df %>% group_by(deathpen) %>% mutate(sum_deathpen = n())
+
+df <- ungroup(df) %>% mutate(prop_rvictim = sum_rvictim / n())
+df <- ungroup(df) %>% mutate(prop_deathpen = sum_deathpen / n())
+
+df <- df %>% group_by(rvictim) %>% mutate(expec_death = sum_rvictim * prop_deathpen)
+
+df2 <- df %>% group_by(deathpen, rvictim) %>% summarise(expec_death = round(mean(expec_death), 0))
+
+df3 <- df2 %>% spread(rvictim, expec_death)
+
+kable(df3, format='html')
+  
+```
+]
+
+--
+
+<br>
+> What do you think? Is there a relationship between *DEATHPEN* and *RVICTIM*?
+
+---
+# A desired index...?
+
+.pull-left[
+####Frequencies that we OBSERVE
+```{r, echo=F}
+table(df$deathpen, df$rvictim)
+```
+]
+.pull-right[
+####Frequencies that we would EXPECT if there were NO relationship 
+```{r, echo=F}
+kable(df3, format='html')
+```
+]
+
+<br>
+#### It would be nice to have an index of the **NET DISCREPANCY** between the **OBSERVED** and **EXPECTED** frequencies in the sample
+
+---
+# The Chi-Squared Statistic
+
+We can summarize the **NET DISCREPANCY** between the tables of **OBSERVED** and **EXPECTED** frequencies, using a statistic called the Pearson Chi-Squared ( $\chi^2$) statistic
+
+####Frequencies that we OBSERVE
+.pull-left[
+```{r, echo=F}
+table(df$deathpen, df$rvictim)
+```
+]
+.pull-right[
+####Frequencies that we would EXPECT if NO relationship 
+```{r, echo=F}
+kable(df3, format='html')
+```
+]
+
+--
+
+<br>
+$$ \chi^2 = \frac{(1483-1425)^2}{1425} + \frac{(863-921)^2}{921} + \frac{(20-78)^2}{78} + \frac{(109-51)^2}{51} $$
+$$ \chi^2 = 114.7 $$
+--
+
+Yay! We got an answer, but what does it mean...?
+
+---
+class: middle, inverse
+# Hypothesis testing and statistical inference
+
+---
+# Hypothesis testing
+
+---
+# The Null ( $H_0$) Hypothesis
+
+---
+# Statistical inference
+
+---
+# The Chi-Squared ( $\chi^2$) statistic
+
+```{r, echo=T}
+chi_df <- chisq.test(df$deathpen, df$rvictim)
+chi_df
+chi_df$expected
+round(chi_df$p.value, 5)
+```
+
+---
+class: middle, inverse
+# Incorporating a third variable
+
+---
+# Sub-sample comparisons
+
+---
+class: middle, inverse
+# Reporting and interpreting
+
+---
+class: middle, inverse
+# Synthesis and wrap-up
+
+
+
+

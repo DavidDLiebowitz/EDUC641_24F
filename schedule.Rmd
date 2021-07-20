@@ -10,22 +10,45 @@ output:
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-### Week 1
+### Week 2 
 
-Date: 
+Date: TBD
 
-Topics: 
+Topic: Summarizing and displaying categorical data
 
 Objectives:
 
-1.   
-2.  
-3.  
+- Understand and implement principles of tabular data in R
+- Describe and summarize quantitative data that are categorical
+- Create visualizations of quantitative data that are categorical
+- Write R scripts to conduct these analyses
 
-Readings:  
+Readings: TBD
 
-Assignments Due:  
+Assignment: Due TBD; [html file](./assignments/assignment01.html); [key html file](), [key Rmd file]()
 
-Slides: [download .html](./slides/w01.html)
+Lecture slides: [html file](./slides/EDUC641_2_categ_1.html), [Rmd file](./slides/EDUC641_2_categ_1.Rmd)
 
-### Week 2
+### Week 3 
+
+Date: TBD
+
+Topic: Examining the relationship between categorical variables
+
+Objectives:
+
+- Describe relationships between quantitative data that are categorical
+- Calculate an index of the strength of the relationship between two categorical variables, the chi-squared ( $\chi^2$) statistic
+- Write R scripts to conduct these analyses
+- Formulate and describe the purpose of a null hypothesis
+- Conceptually describe the criteria to make a statistical inference from a sample to a population
+- Interpret and report the results of a contingency-table analysis and a statistical inference from a chi-squared statistic
+
+Readings: TBD
+
+Assignment: Due TBD; [html file](./assignments/assignment02.html); [key html file](), [key Rmd file]()
+
+Lecture slides: [html file](./slides/EDUC641_2_categ_2.html), [Rmd file](./slides/EDUC641_2_categ_2.Rmd)
+
+
+
