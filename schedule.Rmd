@@ -25,7 +25,7 @@ Objectives:
 
 Readings: TBD
 
-Assignment: Due TBD; [html file](./assignments/assignment01.html); [key html file](), [key Rmd file]()
+Assignment: Due TBD; [html file](./assignments/assignment01.html)
 
 Lecture slides: [html file](./slides/EDUC641_2_categ_1.html), [Rmd file](./slides/EDUC641_2_categ_1.Rmd)
 
@@ -46,7 +46,7 @@ Objectives:
 
 Readings: TBD
 
-Assignment: Due TBD; [html file](./assignments/assignment02.html); [key html file](), [key Rmd file]()
+Assignment: Due TBD; [html file](./assignments/assignment02.html)
 
 Lecture slides: [html file](./slides/EDUC641_2_categ_2.html), [Rmd file](./slides/EDUC641_2_categ_2.Rmd)
 

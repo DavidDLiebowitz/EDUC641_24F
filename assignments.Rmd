@@ -34,7 +34,7 @@ Categorical data 1: data structure and descriptives
 
 Deadline: TBD
 
-Download: [html file](./assignments/assignment01.html); [key html file](), [key Rmd file]()
+Download: [html file](./assignments/assignment01.html)
 
 #### 3.2. Assignment 2 
 
@@ -42,7 +42,7 @@ Categorical data 2: chi-square analysis
 
 Deadline: TBD
 
-Download: [html file](./assignments/assignment02.html); [key html file](), [key Rmd file]()
+Download: [html file](./assignments/assignment02.html)
 
 #### 3.3. Assignment 3 
 
