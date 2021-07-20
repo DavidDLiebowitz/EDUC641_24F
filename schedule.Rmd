@@ -74,14 +74,14 @@ Objectives:
 
 - Describe the purpose and compute the following measures of central tendency: mean, median and mode
 - Describe and summarize quantitative data that are continuous
-- Includes computing the following measures of variability: quartiles, percentiles, inter-quartile range, range, variance and standard deviation
-- Additionally describe conceptually principles of skewness and kurtosis
+  + Includes computing the following measures of variability: quartiles, percentiles, inter-quartile range, range, variance and standard deviation
+  + Additionally describe conceptually principles of skewness and kurtosis
 - Create visualizations of quantitative data that are continuous
-- Includes constructing stem-and-leaf, box- and violin-plots
+  + Includes constructing stem-and-leaf, box- and violin-plots
 - Describe special features of a normal distribution
 - Describe distribution of repeated sample statistics drawn from a population and how this is informative to hypothesis testing
 - Apply CLT to understand whether mean value of a variable is different than a defined population value (when provided the SD of the variable)
-- Includes conducting single-sample t-test
+  + Includes conducting single-sample t-test
 
 ### Weeks 7 - 9
 
