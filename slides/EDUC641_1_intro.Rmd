@@ -53,7 +53,7 @@ options(knitr.table.format = "html")
 # Roadmap
 
 ```{r, out.width = "90%", echo=F}
-  include_graphics(here("slides/roadmap.png"))
+  include_graphics("roadmap.png")
 ```
                                                           
 
