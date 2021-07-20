@@ -4,7 +4,7 @@
     <title>Summarizing and displaying categorical data</title>
     <meta charset="utf-8" />
     <meta name="author" content="TBD" />
-    <script src="EDUC641_2_categ_1_files/header-attrs-2.8/header-attrs.js"></script>
+    <script src="EDUC641_2_categ_1_files/header-attrs-2.9/header-attrs.js"></script>
     <link href="EDUC641_2_categ_1_files/remark-css-0.0.1/default.css" rel="stylesheet" />
     <link rel="stylesheet" href="new.css" type="text/css" />
   </head>
@@ -13,17 +13,18 @@
 class: center, middle, inverse, title-slide
 
 # Summarizing and displaying categorical data
-## EDUC 641: Week 02
+## EDUC 641: Week XX
 ### TBD
 
 ---
 
 
 
-
 # Roadmap
 
-![](roadmap.png)
+&lt;img src="roadmap_1.png" width="80%" style="display: block; margin: auto;" /&gt;
+
+&lt;span style="color:blue"&gt; *This unit borrows heavily (with permission) from John B. Willett's course S-010Y* &lt;/span&gt;
 
 ---
 # Types of data
@@ -41,11 +42,8 @@ class: center, middle, inverse, title-slide
 - Senator Edward Kennedy sponsors the Racial Justice Act to enforce the Constitution's promise of equality under the law
 - McCleskey executed in Georgia (1991)
 ]
-
 .pull-right[
-
-![](mccleskey.png)
-
+&lt;img src="mccleskey.png" style="display: block; margin: auto;" /&gt;
 - Baldus, Pulaski &amp; Woodworth (1983). A comparative review of death sentences: An empirical study of the Georgia experience. *J. Crim Law.*
 
 ]
@@ -62,16 +60,17 @@ class: center, middle, inverse, title-slide
 ---
 # Materials
 
-### 1. Death penalty data (in file called deathpen.csv)
+### 1. Death penalty data (in file called deathpenalty.csv)
 ### 2. Codebook describing the contents of said data
 ### 3. R script available ...
+
 
 ---
 # Let's first access the data
 
 
 ```r
-df &lt;- read.csv(here::here("data", "deathpen.csv"))
+df &lt;- read.csv("Datasets/deathpenalty.csv")
 # it is common in R to name our datasets short names 
 # so as to reduce typing (df for dataframe)
 
@@ -176,7 +175,7 @@ counts &lt;- table(df$deathpen)
 barplot(counts, xlab = "Sentenced to Death?")
 ```
 
-&lt;img src="EDUC641_2_categ_1_files/figure-html/unnamed-chunk-6-1.svg" style="display: block; margin: auto;" /&gt;
+&lt;img src="EDUC641_2_categ_1_files/figure-html/unnamed-chunk-8-1.svg" style="display: block; margin: auto;" /&gt;
 
 --
 
@@ -192,7 +191,7 @@ prop &lt;- prop.table(table(df$rvictim))
 barplot(prop, xlab = "Race of Victim")
 ```
 
-&lt;img src="EDUC641_2_categ_1_files/figure-html/unnamed-chunk-7-1.svg" style="display: block; margin: auto;" /&gt;
+&lt;img src="EDUC641_2_categ_1_files/figure-html/unnamed-chunk-9-1.svg" style="display: block; margin: auto;" /&gt;
 
 &gt; After inspecting this *chart of the proportions* of the variable *RVICTIM* in our data, we conclude ...
 
@@ -206,7 +205,7 @@ ggplot(df, aes(rdefend)) + geom_bar() +
          xlab("Race of Defendant")
 ```
 
-&lt;img src="EDUC641_2_categ_1_files/figure-html/unnamed-chunk-8-1.svg" style="display: block; margin: auto;" /&gt;
+&lt;img src="EDUC641_2_categ_1_files/figure-html/unnamed-chunk-10-1.svg" style="display: block; margin: auto;" /&gt;
 
 &gt; After inspecting this *chart* of the values of the variable *RDEFEND* in our data, we conclude ...
 

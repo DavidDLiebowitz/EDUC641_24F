@@ -11,11 +11,14 @@ output:
       highlightStyle: github
       highlightLines: true
       countIncrementalSlides: false
+
 ---
 
 ```{R, setup, include = F}
-if (!require(pacman)) install.packages('pacman', repos = 'https://cran.rstudio.com')
-pacman::p_load(here, tidyverse, ggplot2, xaringan, knitr, kableExtra)
+library(pacman)
+p_load(here, tidyverse, ggplot2, xaringan, knitr, kableExtra)
+
+i_am("Slides/EDUC 641/EDUC641_2_categ_2.rmd")
 
 # Define color
 red_pink <- "#e64173"
@@ -47,10 +50,11 @@ options(device = function(file, width, height) {
 options(knitr.table.format = "html")
 
 ```
-
 # Roadmap
 
-![](roadmap.png)
+```{r, out.width = "90%", echo=F}
+  include_graphics("roadmap_2.png")
+```
                                                           
 ---
 # A reminder of our motivating question
@@ -60,7 +64,7 @@ options(knitr.table.format = "html")
 # Goals of the unit
 
 - Describe relationships between quantitative data that are categorical
-- Calculate an index of the strength of the relationship between two categorical variables, the chi-squared ($\chi^2$) statistic
+- Calculate an index of the strength of the relationship between two categorical variables, the chi-squared ( $\chi^2$) statistic
 - Write R scripts to conduct these analyses
 - Formulate and describe the purpose of a null hypothesis
 - Conceptually describe the criteria to make a statistical inference from a sample to a population
@@ -77,7 +81,7 @@ options(knitr.table.format = "html")
 # What we've done
 
 ```{r, echo= F}
-df <- read.csv(here::here("data", "deathpen.csv"))
+df <- read.csv("Datasets/deathpenalty.csv")
 df$rvictim <- factor(df$rvictim,
                       levels = c(1,2), labels=c("Black", "White"))
 df$rdefend <- factor(df$rdefend,

@@ -1,6 +1,6 @@
 ---
 title: "Summarizing and displaying categorical data"
-subtitle: "EDUC 641: Week 02"
+subtitle: "EDUC 641: Week XX"
 author: "TBD"
 #date: "`r format(Sys.time(), '%d %B %Y')`"
 output:
@@ -11,11 +11,14 @@ output:
       highlightStyle: github
       highlightLines: true
       countIncrementalSlides: false
+
 ---
 
 ```{R, setup, include = F}
-if (!require(pacman)) install.packages('pacman', repos = 'https://cran.rstudio.com')
-pacman::p_load(here, tidyverse, ggplot2, xaringan, knitr, kableExtra)
+library(pacman)
+p_load(here, tidyverse, ggplot2, xaringan, knitr, kableExtra)
+
+i_am("Slides/EDUC 641/EDUC641_2_categ_1.rmd")
 
 # Define color
 red_pink <- "#e64173"
@@ -47,10 +50,13 @@ options(device = function(file, width, height) {
 options(knitr.table.format = "html")
 
 ```
-
 # Roadmap
 
-![](roadmap.png)
+```{r, out.width = "80%", echo=F}
+  include_graphics("roadmap_1.png")
+```
+
+<span style="color:blue"> *This unit borrows heavily (with permission) from John B. Willett's course S-010Y* </span>
 
 ---
 # Types of data
@@ -68,11 +74,10 @@ options(knitr.table.format = "html")
 - Senator Edward Kennedy sponsors the Racial Justice Act to enforce the Constitution's promise of equality under the law
 - McCleskey executed in Georgia (1991)
 ]
-
 .pull-right[
-
-![](mccleskey.png)
-
+```{r, echo=F}
+include_graphics("mccleskey.png")
+```
 - Baldus, Pulaski & Woodworth (1983). A comparative review of death sentences: An empirical study of the Georgia experience. *J. Crim Law.*
 
 ]
@@ -89,15 +94,16 @@ options(knitr.table.format = "html")
 ---
 # Materials
 
-### 1. Death penalty data (in file called deathpen.csv)
+### 1. Death penalty data (in file called deathpenalty.csv)
 ### 2. Codebook describing the contents of said data
 ### 3. R script available ...
+
 
 ---
 # Let's first access the data
 
 ```{r, echo= T}
-df <- read.csv(here::here("data", "deathpen.csv"))
+df <- read.csv("Datasets/deathpenalty.csv")
 # it is common in R to name our datasets short names 
 # so as to reduce typing (df for dataframe)
 
