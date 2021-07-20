@@ -9,6 +9,16 @@ output:
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
+### Week 1
+
+Topic: Introduction to scientific principles and data analysis
+
+- Describe goals of course and principles of scientific research
+- Install statistical software
+
+Readings: TBD
+
+Lecture slides: [html file](.slides/EDUC641_1_intro.html)
 
 ### Week 2 
 
@@ -27,9 +37,13 @@ Readings: TBD
 
 Assignment: Due TBD; [html file](./assignments/assignment01.html)
 
-Lecture slides: [html file](./slides/EDUC641_2_categ_1.html), [Rmd file](./slides/EDUC641_2_categ_1.Rmd)
+Lecture slides: [html file](./slides/EDUC641_2_categ_1.html)
 
-### Week 3 
+Data: [deathpenalty.csv](./data/deathpenalty.csv), [codebook](./data/deathpenalty.csv)
+
+R script: [R script](./slides/EDUC641_2_code.R)
+
+### Week 3 - 4
 
 Date: TBD
 
@@ -50,5 +64,27 @@ Assignment: Due TBD; [html file](./assignments/assignment02.html)
 
 Lecture slides: [html file](./slides/EDUC641_2_categ_2.html), [Rmd file](./slides/EDUC641_2_categ_2.Rmd)
 
+### Weeks 5 - 7
+
+Date: TBD
+
+Topic: Summarizing and displaying continuous data
+
+Objectives:
+
+- Describe the purpose and compute the following measures of central tendency: mean, median and mode
+- Describe and summarize quantitative data that are continuous
+- Includes computing the following measures of variability: quartiles, percentiles, inter-quartile range, range, variance and standard deviation
+- Additionally describe conceptually principles of skewness and kurtosis
+- Create visualizations of quantitative data that are continuous
+- Includes constructing stem-and-leaf, box- and violin-plots
+- Describe special features of a normal distribution
+- Describe distribution of repeated sample statistics drawn from a population and how this is informative to hypothesis testing
+- Apply CLT to understand whether mean value of a variable is different than a defined population value (when provided the SD of the variable)
+- Includes conducting single-sample t-test
+
+### Weeks 7 - 9
+
+Topic: Describing relationships between continuous data
 
 
