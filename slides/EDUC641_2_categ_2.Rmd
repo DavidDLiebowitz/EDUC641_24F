@@ -18,7 +18,7 @@ output:
 library(pacman)
 p_load(here, tidyverse, ggplot2, xaringan, knitr, kableExtra)
 
-i_am("Slides/EDUC 641/EDUC641_2_categ_2.rmd")
+i_am("slides/EDUC641_2_categ_2.rmd")
 
 # Define color
 red_pink <- "#e64173"
@@ -81,7 +81,7 @@ options(knitr.table.format = "html")
 # What we've done
 
 ```{r, echo= F}
-df <- read.csv("Datasets/deathpenalty.csv")
+df <- read.csv(here("data/deathpenalty.csv"))
 df$rvictim <- factor(df$rvictim,
                       levels = c(1,2), labels=c("Black", "White"))
 df$rdefend <- factor(df$rdefend,

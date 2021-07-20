@@ -18,7 +18,7 @@ output:
 library(pacman)
 p_load(here, tidyverse, ggplot2, xaringan, knitr, kableExtra)
 
-i_am("Slides/EDUC 641/EDUC641_2_categ_1.rmd")
+i_am("slides/EDUC641_2_categ_1.rmd")
 
 # Define color
 red_pink <- "#e64173"
@@ -103,7 +103,7 @@ include_graphics("mccleskey.png")
 # Let's first access the data
 
 ```{r, echo= T}
-df <- read.csv("Datasets/deathpenalty.csv")
+df <- read.csv(here("data/deathpenalty.csv"))
 # it is common in R to name our datasets short names 
 # so as to reduce typing (df for dataframe)
 

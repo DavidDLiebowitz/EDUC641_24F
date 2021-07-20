@@ -18,7 +18,7 @@ output:
 library(pacman)
 p_load(here, tidyverse, ggplot2, xaringan, knitr, kableExtra)
 
-i_am("Slides/EDUC 641/EDUC641_1_intro.rmd")
+i_am("slides/EDUC641_1_intro.rmd")
 
 # Define color
 red_pink <- "#e64173"
