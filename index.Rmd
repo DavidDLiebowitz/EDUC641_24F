@@ -10,7 +10,7 @@ output:
 knitr::opts_chunk$set(echo = FALSE)
 ```
 
-Welcome to Fall 2021 EDUC 641.
+Welcome to EDUC 641 Inferences and Statistics in Education!
 
 This is the first course of the EDUC quantitative methods sequence. In this course, you will learn:
 

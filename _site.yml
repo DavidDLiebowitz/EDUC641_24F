@@ -10,8 +10,6 @@ navbar:
   right:
   - text: Assignments
     href: assignments.html
-  - text: Exams
-    href: exams.html
-  - text: Repo
+  - text: Course repo
     href: https://github.com/uo-educ-quant/641
 theme: educquant.css
