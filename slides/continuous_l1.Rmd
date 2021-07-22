@@ -39,7 +39,6 @@ world <- map_data("world")
 who1<- unique(who$region)
 world1 <- unique(world$region)
 
-
 ```
 
 # Agenda
@@ -85,47 +84,50 @@ Spread or Variability
 Summation (or sigma) notation is used to provide a concise expression for the sum of observations.
 
 $$\sum_{i=i}^{n} x_{i}$$
-
 ---
 # Central Tendency
 ## Mean
-* Represents the average, or the sum of all observations divided by the number of observations.
+* Represents the **average**, or the sum of all observations divided by the number of observations.
 * One of the most common forms of central tendency.
 
- $$\mu = \frac{1}{n}{\sum_{i=i}^{n} x_{i}}$$
+> $$\bar{X} = \frac{1}{n}{\sum_{i=i}^{n} X_{i}}$$
  
-$$mean(1, 3, 6, 8, 9) = \frac{1 + 3 + 6 + 8 + 9}{5} = 5.4$$
+> $$mean(71, 73, 76, 78, 79) = \frac{71 + 73 + 76 + 78 + 79}{5} = 75.4$$
+```{r}
+mean(who$life_expectancy)
+```
 
+The mean national life expectancy in 2015 is **71.64** years
 ---
 # Central Tendency
 ## Median
-* The median represents the midpoint of the distribution.
-* Also called the 50th percentile of a distribution or 2nd quartile, meaning half of the observations are above the median and half are below.
+* Represents the **midpoint** of the distribution.
+* Also called the *50th percentile* of a distribution or *2nd quartile*, meaning half of the observations are above the median and half are below.
 * Particularly useful for describing the central tendency of skewed distributions (more on this later).
-* To find the median, arrange the scores in ascending order and identify the middle value. If there are two middle values (there is an even number of observations), use the average of the two.
+* To find the median, arrange the scores in ascending order and identify the middle value. If there are two middle values (even number of observations), use the average of the two.
 
-$$median(1, 3, 6, 8, 9) = 6$$
-
+> $$median(71, 73, 76, 78, 79) = 76$$
+> $$median(71, 73, 76, 77, 78, 79) = 76.5$$
 ```{r}
 median(who$life_expectancy)
 ```
 
-The median national life expectancy in 2015 was **73.9** years.
+The median national life expectancy in 2015 was **74** years.
 
 ---
 # Central Tendency
 ## Mode
-The mode simply refers to the most frequent value in the data.
+The mode simply refers to the **most frequent value** in the data.
 
 What is the mode of the following data?
 
-> 8, 9, 8, 7, 10, 9, 6, 4, 9, 8, 7, 8, 10, 9, 8, 6, 9, 7, 8, 8
+> 78, 79, 78, 77, 80, 79, 76, 74, 79, 78, 77, 78, 80, 79, 78, 76, 79, 77, 78, 78
 
-Maybe we should sort the data first.
+It's easier if we sort the data first.
 
-> 4, 6, 6, 7, 7, 7, **8, 8, 8, 8, 8, 8, 8,** 9, 9, 9, 9, 9, 10, 10
+> 74, 76, 76, 77, 77, 77, **78, 78, 78, 78, 78, 78, 78,** 79, 79, 79, 79, 79, 80, 80
 
-8 is the most frequent value in the data. Therefore, the mode is 8.
+78 is the most frequent value in the data. Therefore, the mode is 78.
 
 ---
 # Central Tendency
@@ -191,7 +193,8 @@ gridExtra::grid.arrange(pos_skew, normal, neg_skew, nrow = 1)
 ```
 
 ---
-# Kurtosis
+# Distributional Shape
+## Kurtosis
 ```{r, echo = F}
 # Fleischmann coeffiecients to generate a distribution with kurtosis = 4
 a <- 0
@@ -241,7 +244,7 @@ gridExtra::grid.arrange(platy, central, lepto, nrow = 1)
 
 
 ---
-Comparing Measures of Central Tendency
+# Central Tendency and Asymmetry 
 
 * <span style="color: red;">Mean</span>
 * <span style="color: blue;">Median</span>
