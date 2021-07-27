@@ -1,0 +1,111 @@
+---
+title: "EDUC 641 Continuous Data"
+author: "Professor Name"
+date: "`r format(Sys.time(), '%d %B, %Y')`"
+output:
+  xaringan::moon_reader:
+    css: ['default', 'metropolis', 'metropolis-fonts', 'my-css.css']
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+  html_document:
+    keep_md: true
+---
+class: inverse, center, middle
+
+```{r setup, include = FALSE}
+options(htmltools.dir.version = FALSE)
+
+knitr::opts_chunk$set(warning = FALSE,
+                      message = FALSE,
+                      fig.align = "center",
+                      fig.height = 3)
+
+if (!require(pacman)) install.packages('pacman', repos = 'https://cran.rstudio.com')
+pacman::p_load(tidyverse, here, knitr, dplyr, ggplot2, blogdown, rio)
+```
+
+```{r, echo = F}
+who <- import(here::here("data", "life_expectancy.csv")) %>% 
+  janitor::clean_names() %>% 
+  # filter(year == 2015) %>% 
+  select(country, status, year, life_expectancy) %>% 
+  rename(region = country) %>% 
+  mutate(life_expectancy = round(life_expectancy, digits = 0))
+
+world <- map_data("world")
+
+who1<- unique(who$region)
+world1 <- unique(world$region)
+
+
+ggplot(subset(who, year == 2013), aes(x = life_expectancy)) +
+  geom_density()
+```
+
+# Agenda
+* Sampling Distributions
+* Central Limit Theorem
+
+---
+# Review
+## Distributions
+
+Characterized by:
+
+* Central Tendency
++ Mean
++ Median
++ Mode
+
+* Variability
++ Range
++ Interquartile Range
++ Variance
++ Standard Deviation
+
+* Shape
++ Skew
++ Kurtosis
+
+---
+# Review
+## Normal Distributions
+
+A normal distribution is a **theoretical** distribution with the following characteristics:
+
+Central Tendency:
++ The mean, median, and mode are equivalent values.
+
+Variability:
++ 68% of observations are within 1 SD
++ 95% of  observations are within 2 SDs
++ 99% of observations are within 3 SDs
+
+Shape: 
++ Symmetrical
+
+---
+# Population vs. Sample Distributions
+
+Many phenomena in the natural and social sciences resemble a normal distribution. 
+
+Particularly as distributions get smaller, they can be idiosyncratic or have
+
+```{r}
+
+
+
+
+```
+
+# Life Expectancy Data
+Suppose you are working for the World Health Organization and are investigating life expectancy across different regions. 
+
+> Using this dataset, we can ask questions like:
+> * How does life expectancy compare in developing vs. developed regions?
+> * What is the relationship between average years of schooling and life expectancy?
+
+---
+#
