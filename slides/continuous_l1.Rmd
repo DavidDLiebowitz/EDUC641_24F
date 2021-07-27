@@ -1,0 +1,345 @@
+---
+title: "EDUC 641 Continuous Data"
+author: "Professor Name"
+date: "`r format(Sys.time(), '%d %B, %Y')`"
+output:
+  xaringan::moon_reader:
+    css: ['default', 'metropolis', 'metropolis-fonts', 'my-css.css']
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+  html_document:
+    keep_md: true
+---
+class: inverse, center, middle
+
+```{r setup, include = FALSE}
+options(htmltools.dir.version = FALSE)
+
+knitr::opts_chunk$set(warning = FALSE,
+                      message = FALSE,
+                      fig.align = "center",
+                      fig.height = 3)
+
+if (!require(pacman)) install.packages('pacman', repos = 'https://cran.rstudio.com')
+pacman::p_load(tidyverse, here, knitr, dplyr, ggplot2, blogdown, rio)
+```
+
+```{r, echo = F}
+who <- import(here::here("data", "life_expectancy.csv")) %>% 
+  janitor::clean_names() %>% 
+  filter(year == 2015) %>% 
+  select(country, status, life_expectancy) %>% 
+  rename(region = country) %>% 
+  mutate(life_expectancy = round(life_expectancy, digits = 0))
+
+world <- map_data("world")
+
+who1<- unique(who$region)
+world1 <- unique(world$region)
+
+```
+
+# Agenda
+* Objectives
+* Life Expectancy Data
+* Measures of Central Tendency
+* Measures of Variability
+
+---
+# Life Expectancy Data
+Suppose you are working for the World Health Organization and are investigating life expectancy across different regions. 
+
+> Using this dataset, we can ask questions like:
+> * How does life expectancy compare in developing vs. developed regions?
+> * What is the relationship between average years of schooling and life expectancy?
+
+
+**But**, before making comparisons between social/economic conditions, we want to start with describing the full dataset, looking at all 183 nations in the dataset.
+
+**Our Task:** Describe the distribution of regional life expectancy in 2015.
+
+---
+# Describing a Distribution
+
+There are many ways to describe the characteristics of a distribution. 
+
+Today we are reviewing:
+
+Measures of Central Tendency
+  * Mean
+  * Median
+  * Mode
+  
+Spread or Variability
+  * Variance
+  * Standard Deviation
+  * Interquartile Range
+  * Range
+  
+---
+# But first, summation notation
+
+Summation (or sigma) notation is used to provide a concise expression for the sum of observations.
+
+$$\sum_{i=i}^{n} x_{i}$$
+---
+# Central Tendency
+## Mean
+* Represents the **average**, or the sum of all observations divided by the number of observations.
+* One of the most common forms of central tendency.
+
+> $$\bar{X} = \frac{1}{n}{\sum_{i=i}^{n} X_{i}}$$
+ 
+> $$mean(71, 73, 76, 78, 79) = \frac{71 + 73 + 76 + 78 + 79}{5} = 75.4$$
+```{r}
+mean(who$life_expectancy)
+```
+
+The mean national life expectancy in 2015 is **71.64** years
+---
+# Central Tendency
+## Median
+* Represents the **midpoint** of the distribution.
+* Also called the *50th percentile* of a distribution or *2nd quartile*, meaning half of the observations are above the median and half are below.
+* Particularly useful for describing the central tendency of skewed distributions (more on this later).
+* To find the median, arrange the scores in ascending order and identify the middle value. If there are two middle values (even number of observations), use the average of the two.
+
+> $$median(71, 73, 76, 78, 79) = 76$$
+> $$median(71, 73, 76, 77, 78, 79) = 76.5$$
+```{r}
+median(who$life_expectancy)
+```
+
+The median national life expectancy in 2015 was **74** years.
+
+---
+# Central Tendency
+## Mode
+The mode simply refers to the **most frequent value** in the data.
+
+What is the mode of the following data?
+
+> 78, 79, 78, 77, 80, 79, 76, 74, 79, 78, 77, 78, 80, 79, 78, 76, 79, 77, 78, 78
+
+It's easier if we sort the data first.
+
+> 74, 76, 76, 77, 77, 77, **78, 78, 78, 78, 78, 78, 78,** 79, 79, 79, 79, 79, 80, 80
+
+78 is the most frequent value in the data. Therefore, the mode is 78.
+
+---
+# Central Tendency
+## Mode
+
+Sometimes there may be more than one mode. Consider the following example:
+
+> 4, 6, 6, 7, 7, 7, **8, 8, 8, 8, 8, 8, 8, 9, 9, 9, 9, 9, 9, 9,** 10, 10
+
+Both 8 and 9 are observed seven times. In this case, the data can be considered **bimodal** and both modes would be reported.
+
+In general, the mode is rarely used and is particularly vulnerable to idiosyncratic patterns in the data.
+
+---
+# Distributional Shape
+## Skew
+* In a normal distribution, the <span style="color: red;">mean</span>, <span style="color: blue;">median</span>, and <span style="color: purple;">mode</span>, will provide similar estimates of central tendency.
+
+```{r, echo = F}
+set.seed(1000)
+ N <- 10000
+ x <- data_frame(pos_skew = rbeta(10000, 1.5 ,5),
+                 neg_skew = rbeta(10000, 5, 1.5),
+                 central = rbeta(10000, 5 ,5)) %>% 
+     mutate(across(everything()), round(., digits = 2))
+ 
+ getmode <- function(v) {
+   uniqv <- unique(v)
+   uniqv[which.max(tabulate(match(v, uniqv)))]
+}
+
+```
+
+* *But*, no distribution in the real world is perfectly normal and data can often have asymmetry or **skewness**.
+
+```{r, echo = F}
+pos_skew <- ggplot(x, aes(pos_skew)) +
+  geom_density(adjust = 4) +
+  xlim(0, 1) + 
+  ylim(0, 2.5) +
+  ggtitle("Positive Skew") +
+  theme_classic() +
+  theme(axis.title = element_blank())
+
+neg_skew <- ggplot(x, aes(neg_skew)) +
+  geom_density(adjust = 4) +
+  xlim(0, 1) + 
+  ylim(0, 2.5) +
+  ggtitle("Negative Skew") +
+  theme_classic() +
+  theme(axis.title = element_blank())
+
+normal <- ggplot(x, aes(central)) +
+  geom_density(adjust = 2) +
+  xlim(0, 1) + 
+  ylim(0, 2.5) +
+  ggtitle("Normal Distribution") +
+  theme_classic() +
+  theme(axis.title = element_blank())
+
+gridExtra::grid.arrange(pos_skew, normal, neg_skew, nrow = 1)
+
+```
+
+---
+# Distributional Shape
+## Kurtosis
+```{r, echo = F}
+# Fleischmann coeffiecients to generate a distribution with kurtosis = 4
+a <- 0
+b <- 0.7373813
+c <- 0
+d <- 0.08092509
+
+# Fleischmann coeffiecients to generate a distribution with kurtosis = -1
+e <- 0
+f <- 1.221009
+g <- 0
+h <- -0.08015816
+
+k <- data_frame(central = rnorm(10000, 0, 1)) %>% 
+  mutate(lepto = a + b*central + c*(central^2) + d*(central^3),
+         platy = e + f*central + g*(central^2) + h*(central^3))
+         
+
+platy <- ggplot(k, aes(platy)) +
+  geom_density(adjust = 4) +
+  xlim(-3, 3) +
+  ylim(0, .5) +
+  theme_classic() +
+  theme(axis.title = element_blank()) +
+  ggtitle("Platykurtic")
+
+lepto <- ggplot(k, aes(lepto)) +
+  geom_density(adjust = 4) +
+  xlim(-3, 3) +
+  ylim(0, .5) +
+  theme_classic() +
+  theme(axis.title = element_blank()) +
+  ggtitle("Leptokurtic")
+
+central <- ggplot(k, aes(central)) +
+  geom_density(adjust = 4) +
+  xlim(-3, 3) +
+  ylim(0, .5) +
+  theme_classic() +
+  theme(axis.title = element_blank()) +
+  ggtitle("Normal")
+
+
+gridExtra::grid.arrange(platy, central, lepto, nrow = 1)
+
+```
+
+
+---
+# Central Tendency and Asymmetry 
+
+* <span style="color: red;">Mean</span>
+* <span style="color: blue;">Median</span>
+* <span style="color: purple;">Mode</span>
+
+```{r, echo = F}
+
+pos_vlines <- pos_skew + 
+  geom_vline(xintercept = mean(x$pos_skew), color = "red") +
+  geom_vline(xintercept = median(x$pos_skew), color = "blue") +
+  geom_vline(xintercept = getmode(x$pos_skew), color = "purple")
+
+neg_vlines <- neg_skew + 
+  geom_vline(xintercept = mean(x$neg_skew), color = "red") +
+  geom_vline(xintercept = median(x$neg_skew), color = "blue") +
+  geom_vline(xintercept = getmode(x$neg_skew), color = "purple")
+
+normal_vlines <- normal +
+  geom_vline(xintercept = mean(x$central), color = "red") +
+  geom_vline(xintercept = median(x$central), color = "blue") +
+  geom_vline(xintercept = getmode(x$central), color = "purple")
+
+gridExtra::grid.arrange(pos_vlines, normal_vlines, neg_vlines, nrow = 1)
+
+```
+
+---
+# Summarizing Data
+## Applied Example
+
+* Here is a density plot of the WHO life expectancy data for 2015. 
+* How would you characterize the distribution?
+
+```{r, echo = F}
+ggplot(who, aes(life_expectancy)) +
+  geom_density() +
+  theme_minimal()
+```
+
+> * Is it approximately normal?
+> * Is there severe skew?
+> * Is there severe kurtosis?
+
+Which measure of central tendency would you be inclined to use?
+---
+# Summarizing Data
+## Applied Example
+
+The distribution of life expectancy is approximately normal, though with a slightly negative skew.
+```{r, echo = F}
+ggplot(who, aes(life_expectancy)) +
+  geom_density() +
+  geom_vline(xintercept = mean(who$life_expectancy), color = "red") +
+  geom_vline(xintercept = median(who$life_expectancy), color = "blue") +
+  theme_minimal()
+```
+
+The <span style="color: red;">mean</span> national life expectancy in 2015 was **71.62** years.
+
+The <span style="color: blue;">median</span> national life expectancy in 2015 was **74** years.
+
+* The median appears to better capture the "center" of our distribution.
+---
+# Variability
+* Variance
+* Standard Deviation
+* Interquartile Range
+* Range
+
+---
+# Variance
+
+ *$$\(s^{2} = \frac{\sum_{i=i}^{n} x_{i}}{n} \)$$
+
+```{r}
+world <- world %>% 
+  distinct(region)
+
+
+```
+
+---
+```{r}
+map(x, ~ ggplot(x, aes(.x)) +
+  geom_density() +
+  theme_minimal() +
+  geom_vline(xintercept = mean(.x), color = "red") +
+  geom_vline(xintercept = median(.x), color = "green", type = "dash") +
+  geom_vline(xintercept = getmode(.x), color = "blue"))
+
+ggplot(x, aes(pos_skew)) +
+  geom_density() +
+  geom_vline(xintercept = mean(pos_skew))
+
+ggplot(x, aes(neg_skew)) +
+  geom_density()
+
+```
