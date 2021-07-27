@@ -37,14 +37,13 @@ The dataset we'll be using in this assignment is drawn from the NCRECE [Teacher 
 
 While the primary goals of the intervention were to improve language and literacy skills, researchers theorized that if teachers became more effective at teaching literacy, they might also improve the quality of their relationships with their students and families. In turn, these improved relationships might lead to other positive effects of the PD intervention. One pair of researchers ([Hanno and Gonzalez, 2020](https://doi.org/10.1080/19345747.2019.1634170)) wanted to learn whether this professional development intervention improved children's attendance. The next two assignments will ask you to answer just this question: did a professional development coursework and consultancy intervention improve students attendance? 
 
-**Sample**. Our dataset is student-level data for 942 preschool children. For a variety of simplifying reasons, this is a smaller sample than in the original Hanno and Gonzalez (2020) paper.
+**Sample**. Our dataset is student-level data for 942 preschool children, which is the same sample used in the original Hanno and Gonzalez (2020) paper. However, since some of the information for computing absenteeism is unknown, the paper tested several approaches to compute the variable. For simplifying reason, the approach we use is one of the alternatives instead of the one used in the main paper.
 
 **Key variables**. The outcome measure in our data is whether a student is "chronically absent" from school. In many jurisdictions, students are labelled "chronically absent" if they miss 10 percent or more of the school year. Given the typical 180-day school, students are, therefore, defined as chronically absent if they miss 18 or more days in a year. The remainder of the variables are as follows:
 
  * *childid*, the child's unique identification number.
- * *treat*, treatment condition measure, which is coded 1 if the child's teacher was in the consultancy treatment group, coded 0 if the child's teacher was in the control group.
- * *absent*, the number of days the child was absent from the beginning of school year (08 fall for cohort 1 and 09 fall for cohort 2) to the date the child's teacher rating result posted. 
- * *absenteeism*, measure of chronic absenteeism, coded 1 if the child missed 10 percent or more school days and 0 if not. (*ISSUE: I need to see the Hanno and Gonzalez paper and check how they computed this variable because the date the child's teacher rating result posted has 215 more obs missing, which leads to a severe reduction of sample size. I required inter-library loan for the paper but yet to receive it*).
+ * *treat*, treatment condition measure, which is coded 1 if the child's teacher was in the consultancy treatment group, coded 0 if the child's teacher was in the control group.  
+ * *absenteeism*, measure of chronic absenteeism, coded 1 if the child missed 10 percent or more school days and 0 if not. 
  * *cgender*, the child's gender, coded 1 for girls and 0 for boys.
 
 ### 5. Assignment Details
