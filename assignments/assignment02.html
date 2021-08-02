@@ -166,7 +166,7 @@ pre code {
 
 
 <h1 class="title toc-ignore">EDUC 641 Assignment 2</h1>
-<h3 class="subtitle">Chi-Square Analysis</h3>
+<h3 class="subtitle">(Chi-Square Analysis)</h3>
 
 </div>
 
@@ -219,8 +219,7 @@ pre code {
 <h3>Assignment Details</h3>
 <div id="read-in-the-dataset" class="section level4">
 <h4>1. Read in the dataset</h4>
-<p>Open your RStudio, create a project and save it to your local. Go to the root directory of the project and create a folder named “data”. Download the <a href="./data/cat.csv">cat.csv dataset</a> and store it in the folder “data”. Create an Rmd/R file in the project root directory. To read the dataset into your Rmd/R file, use the code chunk below (it’s important that you copy-paste the entire code):</p>
-<pre class="r"><code>pd &lt;- read_csv(here::here(&quot;data&quot;, &quot;cat.csv&quot;), col_types = &quot;fffnffn&quot;)</code></pre>
+<p>Open your RStudio, create a project and save it to your local. Go to the root directory of the project and create a folder named “data”. Download the <a href="./data/cat.csv">cat.csv dataset</a> and store it in the folder “data”. Create an Rmd/R file in the project root directory. Check for the types of all the variables and convert them to factor if needed. You don’t need to include this answer to your html/pdf writeup; just in the R/RMD file.</p>
 </div>
 <div id="observed-relationship-between-the-two-key-variables---treat-and-absenteeism" class="section level4">
 <h4>2. Observed relationship between the two key variables - <em>treat</em> and <em>absenteeism</em></h4>
@@ -248,38 +247,38 @@ kable(pd3, format=&#39;html&#39;) %&gt;%
 <table class=" lightable-classic" style="font-family: Cambria; width: auto !important; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
-<th style="text-align:left;">
+<th style="text-align:right;">
 absenteeism
 </th>
 <th style="text-align:right;">
-1
+0
 </th>
 <th style="text-align:right;">
-0
+1
 </th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align:left;">
-0
-</td>
 <td style="text-align:right;">
-430
+0
 </td>
 <td style="text-align:right;">
 340
 </td>
+<td style="text-align:right;">
+430
+</td>
 </tr>
 <tr>
-<td style="text-align:left;">
+<td style="text-align:right;">
 1
 </td>
 <td style="text-align:right;">
-96
+76
 </td>
 <td style="text-align:right;">
-76
+96
 </td>
 </tr>
 </tbody>

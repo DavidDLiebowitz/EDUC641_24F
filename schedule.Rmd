@@ -100,13 +100,19 @@ Objectives:
    
 Readings: TBD
 
+Lecture slides: 
+
+ * Slides:
+ * Data:
+ * R script:
+
 Assignment 3: 
 
  * Due TBD
  * [html file](./assignments/assignment03.html)
- * [cont.csv](./data/cont.csv)
+ * [cont.csv dataset](./data/cont.csv)
 
-Lecture slides: 
+
 
 ### Weeks 7 - 9
 

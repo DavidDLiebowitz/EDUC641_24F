@@ -1,14 +1,8 @@
 ---
 title: "EDUC 641 Assignment 1"
-subtitle: "Categorical Data Structure and Descriptives"
+subtitle: "(Categorical Data Structure and Descriptives)"
 output: html_document
 ---
-```{R, setup, include = FALSE}
-if (!require(pacman)) install.packages('pacman', repos = 'https://cran.rstudio.com')
-pacman::p_load(here, tidyverse, ggplot2, xaringan, knitr, kableExtra)
-
-opts_chunk$set(include = FALSE)
-```
 
 ### General Guidelines
 
@@ -59,7 +53,7 @@ Read the data into your R environment. You do not need to include this response 
 
 #### 2. Understand the structure of the data
 
-2.1. Write your own code to view the dataset and write 3-4 sentences about the structure of the data (how many variables are there, what type is each variable, how many rows/observations, etc.) with a focus on the two key variables, *treat* and *absenteeism* (type, observations, etc.).
+2.1. Write your own code to view the dataset and write 3-4 sentences about the structure of the data (how many variables are there, what is the current type of each variable and what the type should be, how many rows/observations, etc.).
 
 
 2.2. Write your own code to transform the variables, *treat*, *absenteeism*, and *cgender* into factor and label them consistently with the data background information above. 
@@ -68,7 +62,7 @@ Read the data into your R environment. You do not need to include this response 
 
 3.1. How many students were in the treatment group? Control group? Provide your response and create a table AND a figure to demonstrate your answer. *Make sure to label all parts of your figure*
 
-3.2. How many **and what proportion** of students were chronically absent? Provide your response and create a table AND a figure to demonstrate your answer. Does this seem like a large or small proportion? *Make sure to label all parts of your figure*
+3.2. What proportion of students were chronically absent? Provide your response and create a table AND a figure to demonstrate your answer. Does this seem like a large or small proportion? *Make sure to label all parts of your figure*
 
 
 

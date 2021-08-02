@@ -1,6 +1,6 @@
 ---
-title: "EDUC 641 Assignment 3"
-subtitle: "(Summarizing and Displaying Continuous Data)"
+title: "EDUC 641 Assignment 4"
+subtitle: "(Correlation and t-test)"
 output: html_document
 ---
 ```{R, setup, include = FALSE}

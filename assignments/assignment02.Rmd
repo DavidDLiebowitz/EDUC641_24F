@@ -1,11 +1,11 @@
 ---
 title: "EDUC 641 Assignment 2"
-subtitle: "Chi-Square Analysis"
+subtitle: "(Chi-Square Analysis)"
 output: html_document
 ---
 ```{R, setup, include = FALSE}
 if (!require(pacman)) install.packages('pacman', repos = 'https://cran.rstudio.com')
-pacman::p_load(here, tidyverse, ggplot2, xaringan, knitr, kableExtra)
+pacman::p_load(tidyverse, knitr, kableExtra)
 
 opts_chunk$set(include = FALSE)
 ```
@@ -58,11 +58,12 @@ Details on all variables are as follows:
 
 #### 1. Read in the dataset
 
-Open your RStudio, create a project and save it to your local. Go to the root directory of the project and create a folder named "data". Download the [cat.csv dataset](./data/cat.csv) and store it in the folder "data". Create an Rmd/R file in the project root directory. To read the dataset into your Rmd/R file, use the code chunk below (it's important that you copy-paste the entire code):
+Open your RStudio, create a project and save it to your local. Go to the root directory of the project and create a folder named "data". Download the [cat.csv dataset](./data/cat.csv) and store it in the folder "data". Create an Rmd/R file in the project root directory. Check for the types of all the variables and convert them to factor if needed. You don't need to include this answer to your html/pdf writeup; just in the R/RMD file.
 
-```{r, include = TRUE, warning = FALSE}
-pd <- read_csv(here::here("data", "cat.csv"), col_types = "fffnffn")
+```{r}
+pd <- read_csv(here::here("data", "cat.csv"))
 ```
+
 
 #### 2. Observed relationship between the two key variables - *treat* and *absenteeism*
 
