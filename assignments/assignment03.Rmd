@@ -62,13 +62,13 @@ Note that you do not need to include these responses in your html/pdf file; only
 
 #### 3. Descriptive statistics of the outcome variable
 
-3.1. Central tendency. 
+3.1. Central tendency
 
 3.1.1 What are the mean, median, and mode of the outcome variable, *vocabulary*? Interpret the statistical meanings of these measures.
 
 3.1.2. Create a binned frequency table (suggested bin width = 5) for *vocabulary*. The create a plot to show the distribution of *vocabulary* and make sure to label the x and y axis. Is it normally distributed? If not, describe how and how much the distribution is skewed. Did you notice any outliers?
 
-3.2. Variability. 
+3.2. Variability 
 
 3.2.1. What are the variance and standard deviation of *vocabulary*? Interpret the statistical meanings of these measures.
 
@@ -84,7 +84,7 @@ Note that you do not need to include these responses in your html/pdf file; only
 
 4.1.3. Compare these two distributions and interpret what you have observed.
 
-4.1.4. If you assume *vocabulary* is normally distributed, specify your null hypothesis and (2-tailed) alternative hypothesis for the single-samle t-test.
+4.1.4. Despite whether *vocabulary* is normally distributed, you wand to assume normal distribution in your future analysis. At this point, please specify your null hypothesis and (2-tailed) alternative hypothesis for the single-samle t-test.
 
 
 
