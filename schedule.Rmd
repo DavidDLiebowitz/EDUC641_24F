@@ -19,8 +19,9 @@ Topic: Introduction to scientific principles and data analysis
 
 Readings: TBD
 
-Lecture slides: [html file](./slides/EDUC641_1_intro.html); 
-R Tutorial slides: [html file](./slides/claire.html)
+Lecture slides: [html file](./slides/EDUC641_1_intro.html)
+
+R Tutorial slides: [html file](./slides/tutorial.html)
 
 ### Week 2 
 
@@ -37,13 +38,17 @@ Objectives:
 
 Readings: TBD
 
-Assignment: Due TBD; [html file](./assignments/assignment01.html), [dataset](./data/cat.csv)
+Lecture: 
 
-Lecture slides: [html file](./slides/EDUC641_2_categ_1.html)
+ * Slides: [html file](./slides/EDUC641_2_categ_1.html)
+ * Data: [deathpenalty.csv](./data/deathpenalty.csv), [codebook](./data/deathpenalty.csv)
+ * R script: [R script](./slides/EDUC641_2_code.R)
 
-Data: [deathpenalty.csv](./data/deathpenalty.csv), [codebook](./data/deathpenalty.csv)
+Assignment 1: 
 
-R script: [R script](./slides/EDUC641_2_code.R)
+ * Due TBD; 
+ * [html file](./assignments/assignment01.html)
+ * [cat.csv dataset](./data/cat.csv)
 
 ### Week 3 - 4
 
@@ -62,9 +67,17 @@ Objectives:
 
 Readings: TBD
 
-Assignment: Due TBD; [html file](./assignments/assignment02.html), [dataset](./data/cat.csv)
+Lecture:
 
-Lecture slides: [html file](./slides/EDUC641_2_categ_2.html), [Rmd file](./slides/EDUC641_2_categ_2.Rmd)
+ * Slides: [html file](./slides/EDUC641_2_categ_2.html)
+ * Data: 
+ * R Script: 
+ 
+Assignment 2: 
+
+ * Due TBD; 
+ * [html file](./assignments/assignment02.html)
+ * [cat.csv dataset](./data/cat.csv)
 
 ### Weeks 5 - 7
 
@@ -84,9 +97,23 @@ Objectives:
  * Describe distribution of repeated sample statistics drawn from a population and how this is informative to hypothesis testing
  * Apply CLT to understand whether mean value of a variable is different than a defined population value (when provided the SD of the variable)
    + Includes conducting single-sample t-test
+   
+Readings: TBD
+
+Assignment 3: 
+
+ * Due TBD
+ * [html file](./assignments/assignment03.html)
+ * [cont.csv](./data/cont.csv)
+
+Lecture slides: 
 
 ### Weeks 7 - 9
 
 Topic: Describing relationships between continuous data
 
+Readings: TBD
 
+Assignment 4: Due TBD; [html file](./assignments/assignment04.html), [cont.csv](./data/cont.csv)
+
+Lecture slides: 

@@ -40,7 +40,7 @@ Objectives of this assignment
 
 Deadline: TBD
 
-Download: [html file](./assignments/assignment01.html)
+Download: [html file](./assignments/assignment01.html); [cat.csv dataset](./data/cat.csv)
 
 #### 3.2. Assignment 2 
 
@@ -60,11 +60,21 @@ Objectives of this assignment
 
 Deadline: TBD
 
-Download: [html file](./assignments/assignment02.html)
+Download: [html file](./assignments/assignment02.html); [cat.csv dataset](./data/cat.csv)
 
 #### 3.3. Assignment 3 
 
-Continuous data 1: correlation and t-tests
+Continuous data 1: summarizing and displaying continuous data
+
+Objectives of this assignment
+
+ * Describe and summarize continuous data
+
+ * Create visualizations of continuous data
+
+Deadline: TBD
+
+Download: [html file](./assignments/assignment03.html); [cont.csv dataset](./data/cont.csv)
 
 #### 3.4. Assignment 4 
 

@@ -1,158 +1,91 @@
 <!DOCTYPE html>
 <html lang="" xml:lang="">
   <head>
-    <title>EDUC 641 R Basics</title>
+    <title>EDUC 641 Continuous Data</title>
     <meta charset="utf-8" />
-    <meta name="author" content="Instruction Team" />
-    <script src="libs/header-attrs-2.8/header-attrs.js"></script>
-    <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
-    <link href="libs/remark-css-0.0.1/uo.css" rel="stylesheet" />
-    <link href="libs/remark-css-0.0.1/nhsr-fonts.css" rel="stylesheet" />
+    <meta name="author" content="Professor Name" />
+    <script src="continuous_l2_files/header-attrs/header-attrs.js"></script>
+    <link href="continuous_l2_files/remark-css/default.css" rel="stylesheet" />
+    <link href="continuous_l2_files/remark-css/metropolis.css" rel="stylesheet" />
+    <link href="continuous_l2_files/remark-css/metropolis-fonts.css" rel="stylesheet" />
+    <link rel="stylesheet" href="my-css.css" type="text/css" />
   </head>
   <body>
     <textarea id="source">
 class: center, middle, inverse, title-slide
 
-# EDUC 641 R Basics
-### Instruction Team
-### Last update: 2021 Summer
+# EDUC 641 Continuous Data
+### Professor Name
+### 31 July, 2021
 
 ---
 
-name: toc
-&lt;style type="text/css"&gt;
-.remark-slide-content {
-    font-family: font-family: 'Alegreya Sans', sans-serif;
-    font-size: 24px;
-    padding: 1em 2em 1em 2em;
-}
-&lt;/style&gt;
-
-
-
-# Table of Contents
-
-1. [R and RStudio](#ide) 
-
-2. [Git and Github](#git)
-
-3. [R Script and RMD](#script)
-
-4. [R project Workflow](#workflow)
-
-5. [Resources](#resources)
-
----
-# Notes
-
- * Each of the first four units ([R](#ide), [Git](#git), [R script](#script), and [workflow](#workflow)) has three ordered components, terminologies, instructions, and a GIF demonstration of the instructions
- 
- * A disclaimer. There're unlimited online resources for you to learn R. Many things you learn from this slides deck can probably be done in different way(s). 
- 
- * Our goal is, for those of you who had no previous experience with R, to provide you some simple and clear guidance so you'll be able to start using R and avoid taking on unnecessary long road to get ready for the [EDUC 641](https://uo-educ-quant.github.io/641/) classes.
- 
- * To learn more about R, check out the [Resources](#resources) section (and consider enrolling in some R programming courses)
- 
- * This slide deck is built using the xaringan package with the UO theme (with slightly customized css)
- 
----
 class: inverse, center, middle
-name: ide
-# 1. R and RStudio
-(Back to [the Table of Content](#toc))
----
-# Terminologies
 
- * [R](https://www.r-project.org/) ([wiki](https://en.wikipedia.org/wiki/R_(programming_language)) is a free and open-source programming language, created by Ross Ihaka and Robert Gentleman at the University of Auckland, New Zealand.
- 
- * [RStudio](https://www.rstudio.com/products/rstudio/#rstudio-desktop) is an integrated development environment (IDE) for R and provides a graphical interface to R 
-  + It includes a console, a syntax-highlighting editor that supports direct code execution and tools for plotting, history, debugging and workspace management.
-  + It has two versions: RStudio desktop (the software we'll be using) that allows you to run RStudio on your desktop and RStudio server that allows you to access RStudio via a web browser
+
+
+&lt;img src="continuous_l2_files/figure-html/unnamed-chunk-1-1.png" style="display: block; margin: auto;" /&gt;
+
+# Agenda
+* Sampling Distributions
+* Central Limit Theorem
 
 ---
-# Instructions
+# Review
+## Distributions
 
-1. Download [R](https://www.r-project.org/)
+Characterized by:
 
-2. Download [RStudio](https://www.rstudio.com/products/rstudio/download/preview/)
+* Central Tendency
++ Mean
++ Median
++ Mode
 
-3. 
----
-# Demonstration
+* Variability
++ Range
++ Interquartile Range
++ Variance
++ Standard Deviation
 
-
----
-class: inverse, center, middle
-name: git
-# 2. Git and GitHub
-(Back to [the Table of Content](#toc))
----
-# Terminologies
-
----
-# Instructions
+* Shape
++ Skew
++ Kurtosis
 
 ---
-# Demonstration
+# Review
+## Normal Distributions
+
+A normal distribution is a **theoretical** distribution with the following characteristics:
+
+Central Tendency:
++ The mean, median, and mode are equivalent values.
+
+Variability:
++ 68% of observations are within 1 SD
++ 95% of  observations are within 2 SDs
++ 99% of observations are within 3 SDs
+
+Shape: 
++ Symmetrical
 
 ---
-class: inverse, center, middle
-name: script
-# 3. R Script and RMD
-(Back to [the Table of Content](#toc))
----
-# Terminologies
+# Population vs. Sample Distributions
+
+Many phenomena in the natural and social sciences resemble a normal distribution. 
+
+Particularly as distributions get smaller, they can be idiosyncratic or have
+
+
+
+# Life Expectancy Data
+Suppose you are working for the World Health Organization and are investigating life expectancy across different regions. 
+
+&gt; Using this dataset, we can ask questions like:
+&gt; * How does life expectancy compare in developing vs. developed regions?
+&gt; * What is the relationship between average years of schooling and life expectancy?
 
 ---
-# Instructions
-
----
-# Demonstration
-
-
----
-class: inverse, center, middle
-name: workflow
-# 4. R Project Workflow
-(Back to [the Table of Content](#toc))
----
-# Terminologies
-
----
-# Instructions
-
----
-# Demonstration
-
-
----
-class: inverse, center, middle
-name: resources
-# 5. Resources
-(Back to [the Table of Content](#toc))
----
-# Resources for this slides deck
-
----
-# Important Resources
-
-
----
-# Runners up
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+#
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>

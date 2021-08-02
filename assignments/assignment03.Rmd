@@ -1,0 +1,100 @@
+---
+title: "EDUC 641 Assignment 3"
+subtitle: "Summarizing and Displaying Continuous Data"
+output: html_document
+---
+```{R, setup, include = FALSE}
+if (!require(pacman)) install.packages('pacman', repos = 'https://cran.rstudio.com')
+pacman::p_load(here, tidyverse, ggplot2, xaringan, knitr, kableExtra)
+
+opts_chunk$set(include = FALSE)
+```
+
+### General Guidelines
+
+* The purpose of this assignment is to practice the concepts and vocabulary we have been modeling in class and implement some of the techniques we have learned. You may work on your own or collaborate with one (1) partner. Please make sure that you engage in a a full, fair and mutually-agreeable collaboration if you do choose to collaborate. If you do collaborate, you should plan, execute and write-up your analyses together, not simply divide the work. Please make sure to indicate clearly when your work is joint and any other individual or resource (outside of class material) you consulted in your responses.
+
+### Submission Requirements
+
+Please upload below two files on Canvas before TBD time:  
+
+ * An .html or .pdf file that includes both - 
+   + your typed responses (in your own words and not identical to anybody else's), tables, and/or figures to the problems  
+   + and the R code chunks that generated your answers (hint: if you choose to compose your answers in markdown, simply set up echo = TRUE, include = TRUE in you .Rmd file)  
+   
+ * The .Rmd or .R file that you used to render the tables and figures in the above html/pdf. 
+
+### Objectives of this assignment
+
+ * Describe and summarize continuous data
+
+ * Create visualizations of continuous data
+
+### Data Background
+
+The dataset we'll be using in this assignment is drawn from the NCRECE [Teacher Professional Development Study (PDS)](https://www.icpsr.umich.edu/web/ICPSR/studies/34848) data. This professional development study was a randomized controlled evaluation of two forms of professional development (PD) - coursework (phase 1) and consultancy (phase 2) - delivered to about 490 early childhood education teachers across the nation. These PD supports aimed to improve teachers' implementation of language/literacy activities and interactions with children, as well as promote gains in children's social and academic development. 
+
+The primary goals of the intervention were to improve language and literacy skills, however, prior studies have shown that there were no observed average impacts of either the coursework or the consultancy PD intervention on child outcomes at the end of phase 2 ([Pianta et al., 2017](https://www.tandfonline.com/doi/abs/10.1080/10409289.2017.1319783?journalCode=heed20)). We draw a sample similar to the one used in Pianta et al (2017) but limit to only teachers who were treated in phase 1 then assigned to either treatment or control group in phase 2. This sample allows you to answer two questions: (a) did the consultancy PD intervention (phase 2) improve children vocabulary? and (b) did the dosage of the coursework PD intervention (phase 1) impact children vocabulary?
+
+**Sample**. Our dataset is teacher-level data for 126 preschool teachers. They were in the treatment group for the 14-session coursework PD intervention, had no missing data on coursework attendance, and were in either the treatment or control group for the consultancy PD intervention.
+
+**Key variables**. We have two treatment measures, a binary variable indicating whether the teacher was treated in the consultancy PD intervention and an integer variable capturing the total number of sessions the teacher participated in the coursework PD intervention. We also have an outcome measure, the teacher's average student standard score on a receptive vocabulary test (Peabody Picture Vocabulary Test-3rd edition). 
+
+Details on all variables are as follows:
+
+ * *tchid*, the teacher's unique identification number.
+ * *treat*, consultancy treatment measure, which is coded 1 if the teacher was in the treatment group, coded 0 if the teacher was in the control group.  
+ * *coursework*, measure of how many sessions the teacher had participated in the coursework PD intervention. 
+ * *vocabulary*, the teacher's average student score on receptive vocabulary test. 
+
+### Assignment Details
+
+#### 1. Read in the dataset
+
+Open your RStudio, create a project and save it. Go to the root directory of the project and create a folder named "data". Download the [cont.csv dataset](./data/cont.csv) and store it in the folder "data". Create an Rmd/R file in the project root directory. Then read the data into your R environment. 
+Make sure to check whether the variable *treat* is factor and *coursework* and *vocabulary* are numeric. Transform them into correct types if needed. 
+
+Note that you do not need to include these responses in your html/pdf file; only in your RMD/R file.
+
+#### 2. Understand the structure of the data
+
+2.1. Write your own code to view the dataset and write 3-4 sentences about the structure of the data (how many variables are there, what type is each variable, how many rows/observations, etc.) with a focus on the three key variables, *treat*, *coursework*, and *vocabulary* (type, observations, etc.). 
+
+#### 3. Descriptive statistics of the outcome variable
+
+3.1. Central tendency. 
+
+3.1.1 What are the mean, median, and mode of the outcome variable, *vocabulary*? Interpret the statistical meanings of these measures.
+
+3.1.2. Create a binned frequency table (suggested bin width = 5) for *vocabulary*. The create a plot to show the distribution of *vocabulary* and make sure to label the x and y axis. Is it normally distributed? If not, describe how and how much the distribution is skewed. Did you notice any outliers?
+
+3.2. Variability. 
+
+3.2.1. What are the variance and standard deviation of *vocabulary*? Interpret the statistical meanings of these measures.
+
+3.2.2. Moreover, list the quartiles, percentiles, interquartile range, and range of *vocabulary*.
+
+#### 4. Inferential statistics of the outcome variable 
+
+4.1 Random sample from the population 
+
+4.1.1. Using the mean and standard deviation of *vocabulary*, create a normal distribution plot (same type with the previous one) and add to your previous plot. 
+
+4.1.2. What are the statistical meanings of this new plot?
+
+4.1.3. Compare these two distributions and interpret what you have observed.
+
+4.1.4. If you assume *vocabulary* is normally distributed, specify your null hypothesis and (2-tailed) alternative hypothesis for the single-samle t-test.
+
+
+
+
+
+
+
+
+
+
+
+
+
