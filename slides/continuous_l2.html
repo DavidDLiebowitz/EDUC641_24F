@@ -16,7 +16,7 @@ class: center, middle, inverse, title-slide
 
 # EDUC 641 Continuous Data
 ### Professor Name
-### 02 August, 2021
+### 03 August, 2021
 
 ---
 
@@ -24,7 +24,7 @@ class: inverse, center, middle
 
 
 
-&lt;img src="continuous_l2_files/figure-html/unnamed-chunk-1-1.png" style="display: block; margin: auto;" /&gt;
+
 
 # Agenda
 * Sampling Distributions
@@ -69,23 +69,140 @@ Shape:
 + Symmetrical
 
 ---
-# Population vs. Sample Distributions
+# Review
+## Z-unit Distribution
 
-Many phenomena in the natural and social sciences resemble a normal distribution. 
+* A normal distribution can have any mean and any (positive) standard deviation.
+* A z normal distribution is a useful distribution with a mean of 0 ($\mu$) and a standard deviation ($\rho$) of 1.
 
-Particularly as distributions get smaller, they can be idiosyncratic or have
+&lt;img src="continuous_l2_files/figure-html/unnamed-chunk-2-1.png" style="display: block; margin: auto;" /&gt;
+---
+# Transforming Distributions
+* Any normal distribution can be transformed into a z distribution using a linear function.
 
+Each observation is transformed into a **z-score** using the following formula:
+`$$z = \frac{X - \mu}{\rho}$$`
 
+* A z-score is calculated by **subtracting the mean** from each value and **dividing by the standard deviation**.
 
-# Life Expectancy Data
-Suppose you are working for the World Health Organization and are investigating life expectancy across different regions. 
-
-&gt; Using this dataset, we can ask questions like:
-&gt; * How does life expectancy compare in developing vs. developed regions?
-&gt; * What is the relationship between average years of schooling and life expectancy?
+* An observations z-score value is equal to its deviation from the mean, as measured in standard deviation units.
 
 ---
-#
+
+# Applying Concepts
+## Transforming Distribution
+
+Here is a histogram of our life expectancy data.
+&lt;img src="continuous_l2_files/figure-html/unnamed-chunk-3-1.png" style="display: block; margin: auto;" /&gt;
+
+We are going to create a new variable called `life_expectancy_zscore` using the linear function described on the previous slide.
+
+```r
+who$life_expectancy_zscore &lt;- (who$life_expectancy - mean(who$life_expectancy))/sd(who$life_expectancy)
+
+## Let's look at the first few transformed values 
+head(who$life_expectancy_zscore)
+```
+
+```
+## [1] -0.8145996  0.7804065  0.5350210 -2.4096058  0.5350210  0.5350210
+```
+
+```r
+## Histogram of the new z-scores
+hist(who$life_expectancy_zscore)
+```
+
+&lt;img src="continuous_l2_files/figure-html/unnamed-chunk-4-1.png" style="display: block; margin: auto;" /&gt;
+
+---
+# Review
+## Normal Distribution
+
+* The area under a normal distribution is always equal to 1.
+* The area under the curve corresponds to the proportion of observations.
+* You always know the percentage of observations in any part of a normal distribution.
+
+&lt;img src="continuous_l2_files/figure-html/unnamed-chunk-5-1.png" style="display: block; margin: auto;" /&gt;
+
+What percentage of observations fall at least 1 standard deviation below the mean?
+
+---
+# Population vs. Sample Distributions
+ 
+Using the WHO dataset, let's say we want to identify the mean life expectancy across all countries. However, let's also assume we only have the resources to sample from 20 countries.
+
+.pull-left[
+
+Our **population statistic** represents the true value across all countries.
+
+
+
+&lt;img src="continuous_l2_files/figure-html/unnamed-chunk-7-1.png" style="display: block; margin: auto;" /&gt;
+]
+
+.pull-right[
+Our **sample statistic** will be our estimate of the population statistic using the countries we examine.
+
+&lt;img src="continuous_l2_files/figure-html/unnamed-chunk-8-1.png" style="display: block; margin: auto;" /&gt;
+]
+
+---
+# Sample Estimates
+
+* Assume that our &lt;span style="color: blue;"&gt;true population statistic &lt;/span&gt; is 71.64. 
+
+* Each possible random sample of 10 countries will produce its own &lt;span style="color: red;"&gt; sample mean or population estimate &lt;/span&gt;.
+
+
+&lt;img src="continuous_l2_files/figure-html/unnamed-chunk-10-1.png" style="display: block; margin: auto;" /&gt;
+
+These estimated means have their own variability around the true population mean.
+---
+
+
+---
+# Population vs. Sample Distribution
+
+If we sample our population **100 times** and plot the estimated mean of each sample, the estimated means begin to form their own normal distribution.
+
+
+```r
+samp_means &lt;- tibble(samp = 1:100, means = map_dbl(region_samp, ~mean(.$life_expectancy)))
+```
+
+
+
+
+The mean of our sampling distribution (mean of means) approximates the &lt;span style="color: blue;"&gt; population mean &lt;/span&gt;. This is an example of the **central limit theorem**.
+
+---
+# Central Limit Theorem
+
+Given a population mean `\(\mu\)` and standard deviation of `\(\rho\)`, the sampling distribution of the mean is a normal distribution with a mean equal to `\(\mu\)` and standard deviation equal to `\(\frac{\rho}{\sqrt{n}}\)`, where *n* is the sample size.
+
+The distribution of sample means will approach the normal distribution as the sample size increases regardless of the shape of the population distribution.
+
+The sampling distribution of means approximates a normal distribution because it is estimating a statistic of the population distribution. It is not "recreating" the shape of the population distribution.
+
+NEED VISUAL?
+---
+# One Sample T-Test
+* One of the most foundational statistical tests in classical statistics.
+
+* The purpose of a t-test is to assess whether a sample mean's deviation from the true population mean could be due to random sampling variability.
+  + Tells us the probability that we would obtain our observed mean simply through random sampling *n* countries in our WHO dataset?
+  
+* Generally, if the probability of obtaining the observed mean through random sampling is &lt;5%, the result is considered statistically significant.
+
+
+```r
+ggplot(who, aes(x = life_expectancy, color = status)) +
+  geom_density(adjust = 3)
+```
+
+&lt;img src="continuous_l2_files/figure-html/unnamed-chunk-13-1.png" style="display: block; margin: auto;" /&gt;
+
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>

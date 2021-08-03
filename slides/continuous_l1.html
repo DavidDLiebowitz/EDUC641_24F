@@ -23,8 +23,17 @@ class: center, middle, inverse, title-slide
 class: inverse, center, middle
 
 
+## ADD NOTES ABOUT STATISTICAL TESTS FOR NORMALITY. There are uses for them but not necessarily better than visual inspection. WE RECOMMEND VISUAL INSPECTION. 
+
+## Demonstrate examples of acceptable/non-acceptable non-normality?
 
 
+
+
+```
+##    vars   n  mean   sd median trimmed  mad min max range skew kurtosis  se
+## X1    1 183 71.64 8.15     74   72.13 7.41  51  88    37 -0.5    -0.47 0.6
+```
 
 # Agenda
 * Objectives
@@ -100,6 +109,7 @@ The mean national life expectancy in 2015 is **71.64** years
 &gt; `$$median(71, 73, 76, 78, 79) = 76$$`
 &gt; `$$median(71, 73, 76, 77, 78, 79) = 76.5$$`
 
+
 ```r
 median(who$life_expectancy)
 ```
@@ -153,6 +163,11 @@ In general, the mode is rarely used and is particularly vulnerable to idiosyncra
 ## Kurtosis
 &lt;img src="continuous_l1_files/figure-html/unnamed-chunk-6-1.png" style="display: block; margin: auto;" /&gt;
 
+---
+
+## How do we assess kurtosis &amp; skew?
+
+ADD CONTENT
 
 ---
 # Central Tendency and Asymmetry 
@@ -205,7 +220,7 @@ How are they different?
 
 # Variability
 
-Knowing the central tendency of a distribution doesn't give us enough information.
+Just knowing the central tendency of a distribution doesn't give us enough information.
 
 What if we want to know how much variation there is in life expectancy across nations?
 
@@ -228,7 +243,6 @@ What if we want to know how much variation there is in life expectancy across na
 
 &gt; `$$range(55, 73, 76, 78, 79) = 79 - 55 = 24$$`
 
-### Applied Coding
 
 ```r
 # Outputs the min and max

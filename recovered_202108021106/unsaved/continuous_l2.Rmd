@@ -1,0 +1,195 @@
+---
+title: "EDUC 641 Continuous Data"
+author: "Professor Name"
+date: "`r format(Sys.time(), '%d %B, %Y')`"
+output:
+  xaringan::moon_reader:
+    css: ['default', 'metropolis', 'metropolis-fonts', 'my-css.css']
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+  html_document:
+    keep_md: true
+---
+class: inverse, center, middle
+
+```{r setup, include = FALSE}
+options(htmltools.dir.version = FALSE)
+
+knitr::opts_chunk$set(warning = FALSE,
+                      message = FALSE,
+                      fig.align = "center",
+                      fig.height = 3)
+
+if (!require(pacman)) install.packages('pacman', repos = 'https://cran.rstudio.com')
+pacman::p_load(tidyverse, here, knitr, dplyr, ggplot2, blogdown, rio)
+needs(gifski)
+```
+
+```{r, echo = F}
+who <- import(here::here("data", "life_expectancy.csv")) %>% 
+  janitor::clean_names() %>% 
+  filter(year == 2015) %>%
+  select(country, status, year, life_expectancy) %>% 
+  rename(region = country) %>% 
+  mutate(life_expectancy = round(life_expectancy, digits = 0))
+
+```
+
+# Agenda
+* Sampling Distributions
+* Central Limit Theorem
+
+---
+# Review
+## Distributions
+
+Characterized by:
+
+* Central Tendency
++ Mean
++ Median
++ Mode
+
+* Variability
++ Range
++ Interquartile Range
++ Variance
++ Standard Deviation
+
+* Shape
++ Skew
++ Kurtosis
+
+---
+# Review
+## Normal Distributions
+
+A normal distribution is a **theoretical** distribution with the following characteristics:
+
+Central Tendency:
++ The mean, median, and mode are equivalent values.
+
+Variability:
++ 68% of observations are within 1 SD
++ 95% of  observations are within 2 SDs
++ 99% of observations are within 3 SDs
+
+Shape: 
++ Symmetrical
+
+---
+# Review
+## Normal Distribution
+
+* The area under a normal distribution is always equal to 1.
+* The area under the curve corresponds to the proportion of observations.
+
+```{r}
+
+ggplot(aes, )
+```
+
+# Population vs. Sample Distributions
+ 
+Using the WHO dataset, let's say we want to identify the mean life expectancy across all countries. However, let's also assume we only have the resources to sample from 20 countries.
+
+.pull-left[
+
+Our **population statistic** represents the true value across all countries.
+
+```{r, echo = F}
+world <- map_data("world")
+
+regions <- world %>% 
+  distinct(region) %>% 
+  sample_n(10) %>% 
+  mutate(sample = 1)
+
+world <- left_join(world, regions) %>% 
+  mutate(population = 1)
+```
+
+```{r, echo = F, fig.height=3, fig.width= 4}
+ggplot() +
+  geom_map(
+    data = world, map = world,
+    aes(long, lat, map_id = region, fill = as.factor(population)),
+    color = "black", size = 0.1
+  ) +
+  theme(legend.position = "none")
+```
+]
+
+.pull-right[
+Our **sample statistic** will be our estimate of the population statistic using the countries we examine.
+
+```{r, echo = F, fig.height = 3, fig.width = 4}
+ggplot() +
+  geom_map(
+    data = world, map = world,
+    aes(long, lat, map_id = region, fill = as.factor(sample)),
+    color = "black", size = 0.1
+  ) +
+  theme(legend.position = "none")
+```
+]
+
+---
+# Sample Estimates
+
+Assume that our true population statistic is 71.64. 
+
+```{r}
+mean(who$life_expectancy)
+```
+
+```{r, echo = F}
+sim_num <- seq(1:100)
+region_samp <- vector("list", 100)
+for (i in seq_along(region_samp)){
+    region_samp[[i]] <- who %>% 
+      filter(str_length(region) <= 12) %>% 
+      sample_n(10)
+}
+
+names(region_samp) <- paste0("sim_", sim_num)
+```
+
+```{r, echo = F, fig.width = 8, fig.height = 5}
+plots <- lapply(region_samp[1:4], function(x) {
+    ggplot(x, aes(x = region, y = life_expectancy)) +
+    geom_point() +
+    geom_hline(yintercept = mean(x$life_expectancy), color = "red", linetype = "dotted") +
+    geom_hline(yintercept = mean(who$life_expectancy), color = "blue") +
+    geom_label(aes(x = +Inf, y = mean(x$life_expectancy), vjust = 2, label =  paste(mean(x$life_expectancy))), colour="red", size = 4) +
+        coord_flip() +
+    theme_minimal()
+})
+library(gridExtra)
+marrangeGrob(plots, nrow=2, ncol=2)
+```
+
+---
+
+
+---
+# Population vs. Sample Distribution
+
+```{r}
+samp_means <- tibble(samp = 1:100, means = map_dbl(region_samp, ~mean(.$life_expectancy)))
+```
+
+
+```{r, animation.hook="gifski", interval = 0.4, echo = F}
+for (i in 1:100) {
+  x <- ggplot(subset(samp_means, samp <= i), aes(means)) +
+           geom_histogram(fill = "red") +
+           geom_vline(xintercept = 71.64, color = "blue") +
+  xlim(65, 85) +
+  xlab("Mean Life Expectancy") +
+  theme_minimal()
+  print(x)
+}
+```
