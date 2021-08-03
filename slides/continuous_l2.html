@@ -99,8 +99,14 @@ We are going to create a new variable called `life_expectancy_zscore` using the 
 
 ```r
 who$life_expectancy_zscore &lt;- (who$life_expectancy - mean(who$life_expectancy))/sd(who$life_expectancy)
+```
 
-## Let's look at the first few transformed values 
+---
+# Applying Concepts
+## Transforming Distribution
+Let's look at the first few transformed values.
+
+```r
 head(who$life_expectancy_zscore)
 ```
 
@@ -108,12 +114,33 @@ head(who$life_expectancy_zscore)
 ## [1] -0.8145996  0.7804065  0.5350210 -2.4096058  0.5350210  0.5350210
 ```
 
+
 ```r
 ## Histogram of the new z-scores
 hist(who$life_expectancy_zscore)
 ```
 
-&lt;img src="continuous_l2_files/figure-html/unnamed-chunk-4-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="continuous_l2_files/figure-html/unnamed-chunk-6-1.png" style="display: block; margin: auto;" /&gt;
+
+Our new mean is approximately 0.
+
+```r
+mean(who$life_expectancy_zscore)
+```
+
+```
+## [1] -1.030433e-16
+```
+
+Our new standard deviation is 1.
+
+```r
+sd(who$life_expectancy_zscore)
+```
+
+```
+## [1] 1
+```
 
 ---
 # Review
@@ -121,9 +148,9 @@ hist(who$life_expectancy_zscore)
 
 * The area under a normal distribution is always equal to 1.
 * The area under the curve corresponds to the proportion of observations.
-* You always know the percentage of observations in any part of a normal distribution.
+* The percentage of observations in any part of a normal distribution is always known. 
 
-&lt;img src="continuous_l2_files/figure-html/unnamed-chunk-5-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="continuous_l2_files/figure-html/unnamed-chunk-9-1.png" style="display: block; margin: auto;" /&gt;
 
 What percentage of observations fall at least 1 standard deviation below the mean?
 
@@ -138,13 +165,13 @@ Our **population statistic** represents the true value across all countries.
 
 
 
-&lt;img src="continuous_l2_files/figure-html/unnamed-chunk-7-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="continuous_l2_files/figure-html/unnamed-chunk-11-1.png" style="display: block; margin: auto;" /&gt;
 ]
 
 .pull-right[
 Our **sample statistic** will be our estimate of the population statistic using the countries we examine.
 
-&lt;img src="continuous_l2_files/figure-html/unnamed-chunk-8-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="continuous_l2_files/figure-html/unnamed-chunk-12-1.png" style="display: block; margin: auto;" /&gt;
 ]
 
 ---
@@ -155,7 +182,7 @@ Our **sample statistic** will be our estimate of the population statistic using 
 * Each possible random sample of 10 countries will produce its own &lt;span style="color: red;"&gt; sample mean or population estimate &lt;/span&gt;.
 
 
-&lt;img src="continuous_l2_files/figure-html/unnamed-chunk-10-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="continuous_l2_files/figure-html/unnamed-chunk-14-1.png" style="display: block; margin: auto;" /&gt;
 
 These estimated means have their own variability around the true population mean.
 ---
@@ -167,31 +194,29 @@ These estimated means have their own variability around the true population mean
 If we sample our population **100 times** and plot the estimated mean of each sample, the estimated means begin to form their own normal distribution.
 
 
-```r
-samp_means &lt;- tibble(samp = 1:100, means = map_dbl(region_samp, ~mean(.$life_expectancy)))
-```
 
 
-
+&lt;img src="continuous_l2_files/figure-html/unnamed-chunk-16-.gif" style="display: block; margin: auto;" /&gt;
 
 The mean of our sampling distribution (mean of means) approximates the &lt;span style="color: blue;"&gt; population mean &lt;/span&gt;. This is an example of the **central limit theorem**.
 
 ---
 # Central Limit Theorem
 
-Given a population mean `\(\mu\)` and standard deviation of `\(\rho\)`, the sampling distribution of the mean is a normal distribution with a mean equal to `\(\mu\)` and standard deviation equal to `\(\frac{\rho}{\sqrt{n}}\)`, where *n* is the sample size.
+&gt; Given a population mean `\(\mu\)` and standard deviation of `\(\rho\)`, the sampling distribution of the mean is a normal distribution with a mean equal to `\(\mu\)` and standard deviation equal to `\(\frac{\rho}{\sqrt{n}}\)`, where *n* is the sample size.
 
-The distribution of sample means will approach the normal distribution as the sample size increases regardless of the shape of the population distribution.
+&gt; The distribution of sample means will approach the normal distribution as the sample size increases regardless of the shape of the population distribution.
 
 The sampling distribution of means approximates a normal distribution because it is estimating a statistic of the population distribution. It is not "recreating" the shape of the population distribution.
 
 NEED VISUAL?
+
 ---
 # One Sample T-Test
 * One of the most foundational statistical tests in classical statistics.
 
 * The purpose of a t-test is to assess whether a sample mean's deviation from the true population mean could be due to random sampling variability.
-  + Tells us the probability that we would obtain our observed mean simply through random sampling *n* countries in our WHO dataset?
+  + Tells us the probability that we would obtain our observed mean simply through random sampling *n* countries in our WHO dataset.
   
 * Generally, if the probability of obtaining the observed mean through random sampling is &lt;5%, the result is considered statistically significant.
 
@@ -201,7 +226,28 @@ ggplot(who, aes(x = life_expectancy, color = status)) +
   geom_density(adjust = 3)
 ```
 
-&lt;img src="continuous_l2_files/figure-html/unnamed-chunk-13-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="continuous_l2_files/figure-html/unnamed-chunk-17-1.png" style="display: block; margin: auto;" /&gt;
+
+
+MAKE CLEAR THAT THE POPULATION STATISTICS ARE ALWAYS UNOBSERVED. MEASUREMENT ERROR AND ONLY POINT IN TIME. BIAS AND MEASUREMENT ERROR. 
+
+MU IS INHERENTLY UNOBSERVED
+
+
+SLIDE ABOUT MISINTERPRETATIONS
+1. P-VALUE IS MEASURE OF PROBABILITY THAT THE OBSERVED VALUE OF THE STATISTIC IS THE OBSERVED VALUE UNDER THE NULL HYPOTHESIS.
+
+2. P-VALUE DISTRIBUTIONS ARE ASSUMED TO HAVE A UNIFORM DISTRIBUTION.
+
+SET ALPHA THRESHOLD, DISTINCT FROM P-VALUES, SIGNIFICANT OR NOT, NOT A GRADIENT, 
+
+P-VALUES CAN INFORM CONFIDENCE IN REJECTING THE NULL HYPOTHESIS, BUT THEY ARE 
+HAVE EXAMPLES AND NON-EXAMPLES
+
+
+SHINY APP THAT GENERATES POINT CLOUD, GUESS SLOPE AND INTERCEPT AND IT WOULD GENERATE 
+
+  
 
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>

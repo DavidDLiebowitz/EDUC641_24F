@@ -123,13 +123,29 @@ hist(who$life_expectancy)
 We are going to create a new variable called `life_expectancy_zscore` using the linear function described on the previous slide.
 ```{r}
 who$life_expectancy_zscore <- (who$life_expectancy - mean(who$life_expectancy))/sd(who$life_expectancy)
+```
 
-## Let's look at the first few transformed values 
+---
+# Applying Concepts
+## Transforming Distribution
+Let's look at the first few transformed values.
+```{r}
 head(who$life_expectancy_zscore)
+```
 
+```{r}
 ## Histogram of the new z-scores
 hist(who$life_expectancy_zscore)
+```
 
+Our new mean is approximately 0.
+```{r}
+mean(who$life_expectancy_zscore)
+```
+
+Our new standard deviation is 1.
+```{r}
+sd(who$life_expectancy_zscore)
 ```
 
 ---
@@ -138,7 +154,7 @@ hist(who$life_expectancy_zscore)
 
 * The area under a normal distribution is always equal to 1.
 * The area under the curve corresponds to the proportion of observations.
-* You always know the percentage of observations in any part of a normal distribution.
+* The percentage of observations in any part of a normal distribution is always known. 
 
 ```{r, echo = F}
 sim_data <- data_frame(value = rnorm(n = 1000000, mean = 0, sd = 1))
@@ -257,41 +273,50 @@ These estimated means have their own variability around the true population mean
 
 If we sample our population **100 times** and plot the estimated mean of each sample, the estimated means begin to form their own normal distribution.
 
-```{r}
+```{r, echo = F}
 samp_means <- tibble(samp = 1:100, means = map_dbl(region_samp, ~mean(.$life_expectancy)))
 ```
 
 
-```{r, animation.hook="gifski", interval = 0.4, echo = F, eval = F}
-for (i in 1:100) {
-   x <- ggplot(subset(samp_means, samp <= i), aes(means)) +
-            geom_histogram(fill = "red") +
-            geom_vline(xintercept = 71.64, color = "blue") +
-   xlim(65, 85) +
-   xlab("Mean Life Expectancy") +
-   theme_minimal()
-   print(x)
- }
+```{r, animation.hook="gifski", interval = 0.4, echo = F, eval = T}
+for (i in 1:10) {
+  x <- ggplot(subset(samp_means, samp <= i), aes(means)) +
+    geom_histogram(fill = "darkred", color = "grey") +
+    geom_vline(xintercept = 71.64, color = "blue") +
+    geom_label(aes(
+      x = 71.64,
+      y = +Inf,
+      vjust = 2,
+      label = 71.64),
+      colour = "blue",
+      size = 4
+    ) +
+    xlim(65, 85) +
+    xlab("Mean Life Expectancy") +
+    theme_minimal()
+  print(x)
+}
 ```
 
-The mean of our sampling distribution (mean of means) approximates the <span style="color: blue;"> population mean </span>. This is an example of the **central limit theorem**.
+The mean of our sampling distribution (mean of means) approximates the <span style="color: blue;"> population mean</span>. This is an example of the **central limit theorem**.
 
 ---
 # Central Limit Theorem
 
-Given a population mean $\mu$ and standard deviation of $\rho$, the sampling distribution of the mean is a normal distribution with a mean equal to $\mu$ and standard deviation equal to $\frac{\rho}{\sqrt{n}}$, where *n* is the sample size.
+> Given a population mean $\mu$ and standard deviation of $\rho$, the sampling distribution of the mean is a normal distribution with a mean equal to $\mu$ and standard deviation equal to $\frac{\rho}{\sqrt{n}}$, where *n* is the sample size.
 
-The distribution of sample means will approach the normal distribution as the sample size increases regardless of the shape of the population distribution.
+> The distribution of sample means will approach the normal distribution as the sample size increases regardless of the shape of the population distribution.
 
 The sampling distribution of means approximates a normal distribution because it is estimating a statistic of the population distribution. It is not "recreating" the shape of the population distribution.
 
 NEED VISUAL?
+
 ---
 # One Sample T-Test
 * One of the most foundational statistical tests in classical statistics.
 
 * The purpose of a t-test is to assess whether a sample mean's deviation from the true population mean could be due to random sampling variability.
-  + Tells us the probability that we would obtain our observed mean simply through random sampling *n* countries in our WHO dataset?
+  + Tells us the probability that we would obtain our observed mean simply through random sampling *n* countries in our WHO dataset.
   
 * Generally, if the probability of obtaining the observed mean through random sampling is <5%, the result is considered statistically significant.
 
@@ -299,6 +324,26 @@ NEED VISUAL?
 ggplot(who, aes(x = life_expectancy, color = status)) +
   geom_density(adjust = 3)
 
-
 ```
+
+
+MAKE CLEAR THAT THE POPULATION STATISTICS ARE ALWAYS UNOBSERVED. MEASUREMENT ERROR AND ONLY POINT IN TIME. BIAS AND MEASUREMENT ERROR. 
+
+MU IS INHERENTLY UNOBSERVED
+
+
+SLIDE ABOUT MISINTERPRETATIONS
+1. P-VALUE IS MEASURE OF PROBABILITY THAT THE OBSERVED VALUE OF THE STATISTIC IS THE OBSERVED VALUE UNDER THE NULL HYPOTHESIS.
+
+2. P-VALUE DISTRIBUTIONS ARE ASSUMED TO HAVE A UNIFORM DISTRIBUTION.
+
+SET ALPHA THRESHOLD, DISTINCT FROM P-VALUES, SIGNIFICANT OR NOT, NOT A GRADIENT, 
+
+P-VALUES CAN INFORM CONFIDENCE IN REJECTING THE NULL HYPOTHESIS, BUT THEY ARE 
+HAVE EXAMPLES AND NON-EXAMPLES
+
+
+SHINY APP THAT GENERATES POINT CLOUD, GUESS SLOPE AND INTERCEPT AND IT WOULD GENERATE 
+
+  
 
