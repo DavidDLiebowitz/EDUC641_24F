@@ -84,9 +84,9 @@ Note that you do not need to include these responses in your html/pdf file; only
 
 3.1.4. Despite whether *vocabulary* is normally distributed, you wand to assume normal distribution in your future analysis. At this point, please specify your null hypothesis and (2-tailed) alternative hypothesis for the single-samle t-test.
 
+3.2 One-sample t-test
 
-
-
+3.2.1 To test whether your null hypothesis is true, run a 
 
 
 
