@@ -3,7 +3,7 @@
 # 1. Read in the dataset
 
 if (!require(pacman)) install.packages('pacman', repos = 'https://cran.rstudio.com')
-pacman::p_load(tidyverse, knitr, kableExtra)
+pacman::p_load(tidyverse, knitr)
 
 pd <- read_csv(here::here("data", "cat.csv"))
 
@@ -11,7 +11,7 @@ pd <- read_csv(here::here("data", "cat.csv"))
 
 head(pd)
 # head(pd, 10) to show the first 10 observations
-# head(pd %>% arrange(desc(absenteeism)), 10) to show 10 observations with highest value on absenteeism
+# head(pd %>% arrange(desc(vocabulary)), 10) to show 10 observations with highest vocabulary scores
 
 str(pd)
 
@@ -32,11 +32,13 @@ pd$cgender <- factor(pd$cgender,
 table(pd$treat)
 
 barplot(table(pd$treat),
+        space = 1.5,
         xlab = "Experimental Group",
         ylab = "Number of Children")
 
 prop.table(table(pd$absenteeism))
 
 barplot(prop.table(table(pd$absenteeism)),
+        space = 1.5,
         xlab = "Chronically Absent",
         ylab = "Proportion of Children")

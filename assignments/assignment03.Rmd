@@ -43,48 +43,46 @@ The primary goals of the intervention were to improve language and literacy skil
 Details on all variables are as follows:
 
  * *tchid*, the teacher's unique identification number.
- * *treat*, consultancy treatment measure, which is coded 1 if the teacher was in the treatment group, coded 0 if the teacher was in the control group.  
- * *coursework*, measure of how many sessions the teacher had participated in the coursework PD intervention. 
+ * *treat*, consultancy treatment indicator, coded 1 if the teacher was in the treatment group, coded 0 if the teacher was in the control group.  
+ * *coursework*, measure of how many sessions the teacher had participated in the coursework. 
  * *vocabulary*, the teacher's average student score on receptive vocabulary test. 
 
 ### Assignment Details
 
-#### 1. Read in the dataset
+#### 1. Dataset
 
-Open your RStudio, create a project and save it. Go to the root directory of the project and create a folder named "data". Download the [cont.csv dataset](./data/cont.csv) and store it in the folder "data". Create an Rmd/R file in the project root directory. Then read the data into your R environment. 
-Make sure to check whether the variable *treat* is factor and *coursework* and *vocabulary* are numeric. Transform them into correct types if needed. 
+1.1. Open your RStudio, create a project and save it. Go to the root directory of the project and create a folder named "data". Download the [cont.csv dataset](./data/cont.csv) and store it in the folder "data". Create an Rmd/R file in the project root directory. Then read the data into your R environment. 
+Make sure to check whether the variable *treat* is factor as well as whether *coursework* and *vocabulary* are double. Transform them into correct types if needed. 
 
 Note that you do not need to include these responses in your html/pdf file; only in your RMD/R file.
 
-#### 2. Understand the structure of the data
+1.2. Write your own code to view the dataset and write 3-4 sentences about the structure of the data (how many variables are there, what type is each variable, how many rows/observations, etc.).  
 
-2.1. Write your own code to view the dataset and write 3-4 sentences about the structure of the data (how many variables are there, what type is each variable, how many rows/observations, etc.) with a focus on the three key variables, *treat*, *coursework*, and *vocabulary* (type, observations, etc.). 
+#### 2. Descriptive statistics of the outcome variable
 
-#### 3. Descriptive statistics of the outcome variable
+2.1. Central tendency
 
-3.1. Central tendency
+2.1.1 What are the mean and median of the outcome variable, *vocabulary*? Interpret the statistical meanings of these measures.
 
-3.1.1 What are the mean, median, and mode of the outcome variable, *vocabulary*? Interpret the statistical meanings of these measures.
+2.1.2. Create a binned frequency table (suggested bin width = 5) for *vocabulary*. Then create a plot to show the distribution of *vocabulary* and make sure to label the x and y axis. Is it normally distributed? If not, describe how and how much the distribution is skewed. Did you notice any outliers?
 
-3.1.2. Create a binned frequency table (suggested bin width = 5) for *vocabulary*. The create a plot to show the distribution of *vocabulary* and make sure to label the x and y axis. Is it normally distributed? If not, describe how and how much the distribution is skewed. Did you notice any outliers?
-
-3.2. Variability 
+2.2. Variability 
 
 3.2.1. What are the variance and standard deviation of *vocabulary*? Interpret the statistical meanings of these measures.
 
-3.2.2. Moreover, list the quartiles, percentiles, interquartile range, and range of *vocabulary*.
+2.2.2. List the quartiles, percentiles, interquartile range, and range of *vocabulary*.
 
-#### 4. Inferential statistics of the outcome variable 
+#### 3. Inferential statistics of the outcome variable 
 
-4.1 Random sample from the population 
+3.1 Random sample from the population 
 
-4.1.1. Using the mean and standard deviation of *vocabulary*, create a normal distribution plot (same type with the previous one) and add to your previous plot. 
+3.1.1. Using the mean and standard deviation of *vocabulary*, create a normal distribution plot (same type with the previous one) and add to your previous plot (note: set.seed(123) so we can get the same sample from the randomization). You may choose one of the two ways to do this: (a) use base R code to put the two plots side-by-side, or (b) use {ggplot2} package to put the two into one plot. 
 
-4.1.2. What are the statistical meanings of this new plot?
+3.1.2. What are the statistical meanings of this new plot?
 
-4.1.3. Compare these two distributions and interpret what you have observed.
+3.1.3. Compare these two distributions and interpret what you have observed.
 
-4.1.4. Despite whether *vocabulary* is normally distributed, you wand to assume normal distribution in your future analysis. At this point, please specify your null hypothesis and (2-tailed) alternative hypothesis for the single-samle t-test.
+3.1.4. Despite whether *vocabulary* is normally distributed, you wand to assume normal distribution in your future analysis. At this point, please specify your null hypothesis and (2-tailed) alternative hypothesis for the single-samle t-test.
 
 
 

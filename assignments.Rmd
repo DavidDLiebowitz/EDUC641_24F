@@ -78,6 +78,8 @@ Deadline: TBD
 
 Download: [html file](./assignments/assignment03.html); [cont.csv dataset](./data/cont.csv)
 
+Key: [doc file](./assignments/keys/assignment03_key.docx); [R script](./assignments/keys/assignment03_key.R)
+
 #### 3.4. Assignment 4 
 
 Continuous data 2: intro to bivariate regression
