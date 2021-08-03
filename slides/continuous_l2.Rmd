@@ -188,7 +188,7 @@ What percentage of observations fall at least 1 standard deviation below the mea
 ---
 # Population vs. Sample Distributions
  
-Using the WHO dataset, let's say we want to identify the mean life expectancy across all countries. However, let's also assume we only have the resources to sample from 20 countries.
+Using the WHO dataset, let's say we want to identify the mean life expectancy across all countries. However, let's also assume we only have the resources to sample from 10 countries.
 
 .pull-left[
 
