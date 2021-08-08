@@ -120,6 +120,34 @@ Topic: Describing relationships between continuous data
 
 Readings: TBD
 
-Assignment 4: Due TBD; [html file](./assignments/assignment04.html), [cont.csv](./data/cont.csv)
+Lecture slides: 
+
+ * Slides:
+ * Data:
+ * R script:
+
+Assignment 4: 
+
+ * Due TBD
+ * [html file](./assignments/assignment04.html)
+ * [cont.csv dataset (./data/cont.csv)
+
+
+### Weeks 9-10
+
+Topic: 
+
+Readings: TBD
 
 Lecture slides: 
+
+ * Slides:
+ * Data:
+ * R script:
+
+Assignment 5: 
+
+ * Due TBD
+ * [html file](./assignments/assignment05.html)
+ * [cont.csv dataset ()
+
