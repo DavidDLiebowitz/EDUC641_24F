@@ -34,7 +34,7 @@ Please upload below two files on Canvas before TBD time:
 
 The dataset we'll be using in this assignment is drawn from the NCRECE [Teacher Professional Development Study (PDS)](https://www.icpsr.umich.edu/web/ICPSR/studies/34848) data. This professional development study was a randomized controlled evaluation of two forms of professional development (PD) - coursework (phase 1) and consultancy (phase 2) - delivered to about 490 early childhood education teachers across the nation. These PD supports aimed to improve teachers' implementation of language/literacy activities and interactions with children, as well as promote gains in children's social and academic development. 
 
-The primary goals of the intervention were to improve language and literacy skills, however, prior studies have shown that there were no observed average impacts of either the coursework or the consultancy PD intervention on child outcomes at the end of phase 2 ([Pianta et al., 2017](https://www.tandfonline.com/doi/abs/10.1080/10409289.2017.1319783?journalCode=heed20)). We draw a sample similar to the one used in Pianta et al (2017) but limit to only teachers who were treated in phase 1 then assigned to either treatment or control group in phase 2. This sample allows you to answer two questions: (a) did the consultancy PD intervention (phase 2) improve children vocabulary? and (b) did the dosage of the coursework PD intervention (phase 1) impact children vocabulary?
+The primary goals of the intervention were to improve language and literacy skills, however, prior studies have shown that there were no observed average impacts of either the coursework or the consultancy PD intervention on child outcomes at the end of phase 2 ([Pianta et al., 2017](https://www.tandfonline.com/doi/abs/10.1080/10409289.2017.1319783?journalCode=heed20)). We draw a sample similar to the one used in Pianta et al (2017) but limit to only teachers who were treated in phase 1 then assigned to either treatment or control group in phase 2. This sample allows you to answer two questions: (a) did the consultancy PD intervention improve children vocabulary? and (b) did the dosage of the coursework PD intervention impact children vocabulary? You will answer these two questions in the assignments 3 and 4.
 
 **Sample**. Our dataset is teacher-level data for 126 preschool teachers. They were in the treatment group for the 14-session coursework PD intervention, had no missing data on coursework attendance, and were in either the treatment or control group for the consultancy PD intervention.
 
@@ -62,31 +62,35 @@ Note that you do not need to include these responses in your html/pdf file; only
 
 2.1. Central tendency
 
-2.1.1 What are the mean and median of the outcome variable, *vocabulary*? Interpret the statistical meanings of these measures.
+ * 2.1.1 What are the mean and median of the outcome variable, *vocabulary*? Interpret the statistical meanings of these measures.
 
-2.1.2. Create a binned frequency table (suggested bin width = 5) for *vocabulary*. Then create a plot to show the distribution of *vocabulary* and make sure to label the x and y axis. Is it normally distributed? If not, describe how and how much the distribution is skewed. Did you notice any outliers?
+ * 2.1.2. Create a binned frequency table (suggested bin width = 5) for *vocabulary*. Then create a plot to show the distribution of *vocabulary* and make sure to label the x and y axis. Is it normally distributed? If not, describe how and how much the distribution is skewed. Did you notice any outliers?
 
 2.2. Variability 
 
-3.2.1. What are the variance and standard deviation of *vocabulary*? Interpret the statistical meanings of these measures.
+ * 2.2.1. What are the variance and standard deviation of *vocabulary*? Interpret the statistical meanings of these measures.
 
-2.2.2. List the quartiles, percentiles, interquartile range, and range of *vocabulary*.
+ * 2.2.2. List the quartiles, percentiles, interquartile range, and range of *vocabulary*.
 
 #### 3. Inferential statistics of the outcome variable 
 
 3.1 Random sample from the population 
 
-3.1.1. Using the mean and standard deviation of *vocabulary*, create a normal distribution plot (same type with the previous one) and add to your previous plot (note: set.seed(123) so we can get the same sample from the randomization). You may choose one of the two ways to do this: (a) use base R code to put the two plots side-by-side, or (b) use {ggplot2} package to put the two into one plot. 
+ * 3.1.1. Using the mean and standard deviation of *vocabulary* to generate a normally distributed variable and name it *vocabulary_random* (hint: use the rnorm function that randomly select a vector of numbers based on the number of observations, mean, and standard deviation you define). 
 
-3.1.2. What are the statistical meanings of this new plot?
+IMPORTANT NOTE: before simulation, make sure to put set.seed(123) in your code so you can get the same sample and same results with those in the key.
 
-3.1.3. Compare these two distributions and interpret what you have observed.
+ * 3.1.2. Using the same type of plot you used for *vocabulary*, plot the distribution of *vocabulary_random*  and compare the two plots. You may choose one of the two ways to do this: (a) use base R code to put the two plots side-by-side, or (b) use {ggplot2} package to put the two into one plot. 
 
-3.1.4. Despite whether *vocabulary* is normally distributed, you wand to assume normal distribution in your future analysis. At this point, please specify your null hypothesis and (2-tailed) alternative hypothesis for the single-samle t-test.
+ * 3.1.3. What are the statistical meanings of this new plot? Compare these two distributions and write one sentence to describe what you have observed. Circle back to question 2.1.2, do you think now whether vocabulary is normally distributed? 
 
 3.2 One-sample t-test
 
-3.2.1 To test whether your null hypothesis is true, run a 
+ * 3.2.1 Despite whether *vocabulary* is normally distributed, you want to assume normal distribution in your future analysis. At this point, please specify your null hypothesis for the one-sample t-test (which you'll conduct in the following questions to see if your assumption holds).
+
+ * 3.2.2. What is the mean of *vocabulary_random*? Is it equal to  the mean of *vocabulary*? 
+
+ * 3.2.3. We consider the population mean is equal to the mean of *vocabulary_random*. To test whether your null hypothesis in 3.2.1 is true, run a one-sample t-test and write 2-3 sentences to interpret your result.
 
 
 

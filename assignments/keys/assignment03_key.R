@@ -1,4 +1,4 @@
-# Assignment 3 key
+# EDUC 641 Assignment 3 key
 
 # 1. Dataset
 
@@ -64,21 +64,29 @@ IQR(pd$vocabulary)
 range(pd$vocabulary)
 
 # 3. Inferential statistics of the outcome variable
-set.seed(123)
-pd$random <- rnorm(length(pd$vocabulary), mean(pd$vocabulary), sd(pd$vocabulary))
 
-plot(density(pd$random),
+# 3.1
+set.seed(123)
+pd$vocabulary_random <- rnorm(length(pd$vocabulary), mean(pd$vocabulary), sd(pd$vocabulary))
+
+plot(density(pd$vocabulary_random),
      xlab = "Student Vocabulary Score",
      ylab = "Proportion",
-     main = "Distribution of Random Sampled Score",
+     main = "Distribution of Random Sample Score",
      cex.main = 1.2)
 
 ggplot(pd, aes(vocabulary)) +
   geom_density(color = "cornflowerblue") + 
-  geom_density(aes(random), color = "coral2") +
+  geom_density(aes(vocabulary_random), color = "coral2") +
   labs(x = "Student Vocabulary Score",
        y = "Proportion",
-       title = "Compare Distributions (Blue: Observed, Red: Random Sampled from Population)") +
+       title = "Compare Distributions (Blue: Observed, Red: Random Sample from Population)") +
   theme_classic()
   
-  
+# 3.2.
+
+mean(pd$vocabulary_random)
+mean(pd$vocabulary)
+
+t.test(pd$vocabulary, mu = mean(pd$vocabulary_random), alternative = "two.sided")
+

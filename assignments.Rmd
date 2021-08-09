@@ -64,6 +64,8 @@ Deadline: TBD
 
 Download: [html file](./assignments/assignment02.html); [cat.csv dataset](./data/cat.csv)
 
+Key: [doc file](./assignments/keys/assignment02_key.docx); [R script](./assignments/keys/assignment02_key.R)
+
 #### 3.3. Assignment 3 
 
 Continuous data 1: summarizing and displaying continuous data
@@ -84,9 +86,22 @@ Key: [doc file](./assignments/keys/assignment03_key.docx); [R script](./assignme
 
 Continuous data 2: intro to bivariate regression
 
+Deadline: TBD
+
+Download: [html file](./assignments/assignment04.html); [cont.csv dataset](./data/cont.csv)
+
+Key: [doc file](./assignments/keys/assignment04_key.docx); [R script](./assignments/keys/assignment04_key.R)
+
+
 #### 3.5. Assignment 5 
 
-Final assignment
+Final assignment 
+
+Deadline: TBD
+
+Download: [html file](./assignments/assignment05.html); [cont.csv dataset](./data/cont.csv)
+
+Key: [doc file](./assignments/keys/assignment05_key.docx); [R script](./assignments/keys/assignment05_key.R)
 
 
 

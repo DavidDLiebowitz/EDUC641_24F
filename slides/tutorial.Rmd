@@ -1,5 +1,6 @@
 ---
-title: "EDUC 641 R Basics"
+title: "RStudio Basics"
+subtitle: "(Required Before EDUC 641 First Class)"
 author: "Instruction Team"
 date: "Last update: 2021 Summer"
 output:
@@ -26,124 +27,62 @@ knitr::opts_chunk$set(echo = TRUE)
 
 # Table of Contents
 
-1. [R and RStudio](#ide) 
+1. [Terminologies](#term) 
 
-2. [Git and Github](#git)
+2. [Instructions](#instr)
 
-3. [R Script and RMD](#script)
+3. [Software Installation Demo](#demo)
 
-4. [R project Workflow](#workflow)
-
-5. [Resources](#resources)
+4. [Hands-on Activity (Week 1 Participation Point)](#activity)
 
 ---
-# Notes
-
- * Each of the first four units ([R](#ide), [Git](#git), [R script](#script), and [workflow](#workflow)) has three ordered components, terminologies, instructions, and a GIF demonstration of the instructions
- 
- * A disclaimer. There're unlimited online resources for you to learn R. Many things you learn from this slides deck can probably be done in different way(s). 
- 
- * Our goal is, for those of you who had no previous experience with R, to provide you some simple and clear guidance so you'll be able to start using R and avoid taking on unnecessary long road to get ready for the [EDUC 641](https://uo-educ-quant.github.io/641/) classes.
- 
- * To learn more about R, check out the [Resources](#resources) section (and consider enrolling in some R programming courses)
- 
- * This slide deck is built using the xaringan package with the UO theme (with slightly customized css)
- 
----
-class: inverse, center, middle
-name: ide
-# 1. R and RStudio
-(Back to [the Table of Content](#toc))
----
+name: term
 # Terminologies
 
- * [R](https://www.r-project.org/) ([wiki](https://en.wikipedia.org/wiki/R_(programming_language)) is a free and open-source programming language, created by Ross Ihaka and Robert Gentleman at the University of Auckland, New Zealand.
+ * [R](https://www.r-project.org/) is a free and open-source programming language, created by Ross Ihaka and Robert Gentleman at the University of Auckland, New Zealand.
  
- * [RStudio](https://www.rstudio.com/products/rstudio/#rstudio-desktop) is an integrated development environment (IDE) for R and provides a graphical interface to R 
-  + It includes a console, a syntax-highlighting editor that supports direct code execution and tools for plotting, history, debugging and workspace management.
-  + It has two versions: RStudio desktop (the software we'll be using) that allows you to run RStudio on your desktop and RStudio server that allows you to access RStudio via a web browser
+ * [RStudio](https://www.rstudio.com/products/rstudio/#rstudio-desktop) is an integrated development environment (IDE) for R, serving as an interface to R.
+ 
+  + It includes a console (a code editor that supports direct code execution) and numerous tools for plotting, history, debugging, and workspace management.
+  
+  + It has two versions: RStudio desktop (the software we'll be using in our computer) and RStudio server (RStudio access using a web browser)
 
 ---
+name: instr
 # Instructions
 
-1. Download [R](https://www.r-project.org/)
+1. Download [R](https://www.r-project.org/) and install it in your computer
 
-2. Download [RStudio](https://www.rstudio.com/products/rstudio/download/preview/)
+2. Download [RStudio Desktop](https://www.rstudio.com/products/rstudio/download/preview/) and install it in your computer
 
-3. 
----
-# Demonstration
-
+3. Get to know your RStudio; open RStudion desktop and finish the hands-on activity (week 1 participation point attached)
 
 ---
-class: inverse, center, middle
-name: git
-# 2. Git and GitHub
-(Back to [the Table of Content](#toc))
----
-# Terminologies
+name: demo
+# Installation Demo - R
+
+Download R (then install it in your computer):
+
+```{r, out.width = "85%", fig.align = "center", echo = FALSE}
+knitr::include_graphics("./pics/download_r.gif")
+```
 
 ---
-# Instructions
+# Installation Demo - RStudio
+
+Download RStudio Desktop (then install it in your computer):
+
+```{r, out.width = "85%", fig.align = "center", echo = FALSE}
+knitr::include_graphics("./pics/download_rstudio.gif")
+```
 
 ---
-# Demonstration
+name: activity
+# RStudio Hands-on Activity
 
----
-class: inverse, center, middle
-name: script
-# 3. R Script and RMD
-(Back to [the Table of Content](#toc))
----
-# Terminologies
+Open your RStudio, run these below code in your console line-by-line, copy and paste the results in a word document, and submit the doc to Canvas to get the first week's participation point (deadline is before our first class meeting).
 
----
-# Instructions
-
----
-# Demonstration
-
-
----
-class: inverse, center, middle
-name: workflow
-# 4. R Project Workflow
-(Back to [the Table of Content](#toc))
----
-# Terminologies
-
----
-# Instructions
-
----
-# Demonstration
-
-
----
-class: inverse, center, middle
-name: resources
-# 5. Resources
-(Back to [the Table of Content](#toc))
----
-# Resources for this slides deck
-
----
-# Important Resources
-
-
----
-# Runners up
-
-
-
-
-
-
-
-
-
-
-
-
-
+```{r, out.width = "50%", fig.align = "center", echo = FALSE}
+knitr::include_graphics("./pics/console.png")
+```
 
