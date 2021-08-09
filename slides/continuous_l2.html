@@ -6,9 +6,7 @@
     <meta name="author" content="Professor Name" />
     <script src="continuous_l2_files/header-attrs/header-attrs.js"></script>
     <link href="continuous_l2_files/remark-css/default.css" rel="stylesheet" />
-    <link href="continuous_l2_files/remark-css/metropolis.css" rel="stylesheet" />
-    <link href="continuous_l2_files/remark-css/metropolis-fonts.css" rel="stylesheet" />
-    <link rel="stylesheet" href="my-css.css" type="text/css" />
+    <link rel="stylesheet" href="new.css" type="text/css" />
   </head>
   <body>
     <textarea id="source">
@@ -16,7 +14,7 @@ class: center, middle, inverse, title-slide
 
 # EDUC 641 Continuous Data
 ### Professor Name
-### 03 August, 2021
+### 09 August, 2021
 
 ---
 
@@ -73,7 +71,7 @@ Shape:
 ## Z-unit Distribution
 
 * A normal distribution can have any mean and any (positive) standard deviation.
-* A z normal distribution is a useful distribution with a mean of 0 ($\mu$) and a standard deviation ($\rho$) of 1.
+* A z normal distribution is a useful distribution with a mean of 0 ($\mu$) and a standard deviation ($\sigma$) of 1.
 
 &lt;img src="continuous_l2_files/figure-html/unnamed-chunk-2-1.png" style="display: block; margin: auto;" /&gt;
 ---
@@ -81,7 +79,7 @@ Shape:
 * Any normal distribution can be transformed into a z distribution using a linear function.
 
 Each observation is transformed into a **z-score** using the following formula:
-`$$z = \frac{X - \mu}{\rho}$$`
+`$$z = \frac{X - \mu}{\sigma}$$`
 
 * A z-score is calculated by **subtracting the mean** from each value and **dividing by the standard deviation**.
 
@@ -157,7 +155,7 @@ What percentage of observations fall at least 1 standard deviation below the mea
 ---
 # Population vs. Sample Distributions
  
-Using the WHO dataset, let's say we want to identify the mean life expectancy across all countries. However, let's also assume we only have the resources to sample from 20 countries.
+Using the WHO dataset, let's say we want to identify the mean life expectancy across all countries. However, let's also assume we only have the resources to sample from 10 countries.
 
 .pull-left[
 
@@ -191,7 +189,7 @@ These estimated means have their own variability around the true population mean
 ---
 # Population vs. Sample Distribution
 
-If we sample our population **100 times** and plot the estimated mean of each sample, the estimated means begin to form their own normal distribution.
+If we sample our population **100 times** and plot the estimated mean of each sample, the estimated means begin to form their own normal distribution. The mean of sample means is our &lt;span style="color: orange;"&gt; **estimated population mean**. &lt;/span&gt;.
 
 
 
@@ -200,52 +198,202 @@ If we sample our population **100 times** and plot the estimated mean of each sa
 
 The mean of our sampling distribution (mean of means) approximates the &lt;span style="color: blue;"&gt; population mean&lt;/span&gt;. This is an example of the **central limit theorem**.
 
+If we sampled all possible samples of size *n* from our population, our mean of sample means would be equal to the population mean.
+
 ---
 # Central Limit Theorem
 
-&gt; Given a population mean `\(\mu\)` and standard deviation of `\(\rho\)`, the sampling distribution of the mean is a normal distribution with a mean equal to `\(\mu\)` and standard deviation equal to `\(\frac{\rho}{\sqrt{n}}\)`, where *n* is the sample size.
+&gt; Given a population mean `\(\mu\)` and standard deviation of `\(\sigma\)`, the sampling distribution of the mean is a normal distribution with a mean equal to `\(\mu\)` and standard deviation equal to `\(\frac{\sigma}{\sqrt{n}}\)`, where *n* is the sample size.
 
 &gt; The distribution of sample means will approach the normal distribution as the sample size increases regardless of the shape of the population distribution.
 
 The sampling distribution of means approximates a normal distribution because it is estimating a statistic of the population distribution. It is not "recreating" the shape of the population distribution.
 
-NEED VISUAL?
+Center: Mean of sample means is the population mean.
+$$ \mu_\bar{X} = \mu$$
+
+Spread: Standard deviation of sample means is the standard error of the mean
+
+$$ \sigma_\bar{X} = \frac{\sigma}{\sqrt{n}}$$
+
+
+
+---
+# Central Limit Theorem
+
+* Here is a histogram of the means of 1000 random samples from our WHO data.
+* The center of the distribution is our population mean.
+* The standard deviation is the standard error of the mean.
+
+&lt;img src="continuous_l2_files/figure-html/unnamed-chunk-18-1.png" style="display: block; margin: auto;" /&gt;
+
+---
+# T-Tests
+* One-Sample T-Test
+* T-Distributions
+* Applied Example
+* Hypothesis Testing
+
 
 ---
 # One Sample T-Test
-* One of the most foundational statistical tests in classical statistics.
+* T-tests are one of the most foundational statistical tests in classical statistics.
 
-* The purpose of a t-test is to assess whether a sample mean's deviation from the true population mean could be due to random sampling variability.
-  + Tells us the probability that we would obtain our observed mean simply through random sampling *n* countries in our WHO dataset.
+* The purpose of a one-sample t-test is to describe the probability of obtaining a particular sample mean through random sampling variability, assuming the population mean = K.
+  + e.g. Is our observed sample mean to be expected, assuming it reflects a random sample of the population?
   
-* Generally, if the probability of obtaining the observed mean through random sampling is &lt;5%, the result is considered statistically significant.
+Null Hypothesis `\((H_0)\)`: `\(\mu = K\)`, where `\(K\)` is any constant.
 
+* Does **not** tests probability of obtaining the sample distribution or data itself, only the sample mean.
+
+* Why is it called a t-test? 
+  + We calculate probabilities from a t-distribution.
+  
+---
+# T-Distributions
+* In a z-test, the population standard deviation is assumed to be known.
+
+* In practice, we **rarely** know the true population standard deviation due to:
+  + Measurement Error
+  + Population statistics can be in constant flux
+  + Can be unfeasible to measure entire population
+
+* T-Distributions:
+  + Assume that the population standard deviation `\((\sigma)\)` is unknown. 
+  + Resemble Z-distributions as degrees of freedom increase.
+  + The degree of freedom for a t-test is always *n*-1, where *n* is your sample size.
+  
+&lt;img src="continuous_l2_files/figure-html/unnamed-chunk-19-1.png" style="display: block; margin: auto;" /&gt;
+
+---
+# One-Sample T-Test
+
+* The t-statistic is calculated like a z-score, but we replace the population standard deviation with the sample standard deviation.
+.pull-right[
+$$ t = \frac{\bar{X} - \mu}{\hat{\sigma}/\sqrt{n}} $$
+]
+.pull-left[
+`$$z = \frac{X - \mu}{\sigma}$$`
+]
+
+* Distributional spread and proportion of the area under the curve beyond our t-value depends on our degrees of freedom.
+
+
+&lt;img src="continuous_l2_files/figure-html/unnamed-chunk-20-.gif" style="display: block; margin: auto;" /&gt;
+
+---
+# Applying a T-Test
+Suppose we have data from a sample of 10 countries with a mean life expectancy of 66.87 and standard deviation of 5.82.
+
+If our population mean is thought to be 78.16 `\((\sigma)\)`, what is the probability of obtaining a sample mean of 66.87, **or a more extreme mean value**, due to random sampling variability?
+
+`$$H_0: \sigma = 78.16$$`
+
+
+`$$t(10) = \frac{66.87 - 75.16}{5.82/\sqrt{10}} = -1.24$$`
+.pull-left[
+&lt;img src="continuous_l2_files/figure-html/unnamed-chunk-21-1.png" style="display: block; margin: auto;" /&gt;
+Assuming a population mean of 78.16 and sample size of 10, the proportion of random samples that would demonstrate a sample mean **equal to or lower than 66.87** is 0.12 (i.e., *p* = 0.12).
+]
+
+.pull-right[
+&lt;img src="continuous_l2_files/figure-html/unnamed-chunk-22-1.png" style="display: block; margin: auto;" /&gt;
+Assuming a population mean of 78.16 and sample size of 10, the proportion of random samples that would demonstrate a sample mean **equal to or more extreme than 66.87** is 0.24 (i.e., *p* = 0.24).
+]
+
+**Note:** One-tailed tests are rarely warranted and we will always be conducting two-tailed tests.
+
+---
+# *p*-Values and Alpha Thresholds
+* Alpha `\((\alpha)\)` represents our Type 1 error rate:
+  + Type 1 Error - Rejecting the null hypothesis when it is actually true
+  + $/alpha = .05 $ means we will mistakenly reject the null hypothesis 5% of the time.
+  
+* Alpha is also equal to the maximum p-value necessary to reject the null hypothesis.
+  + If `\(\alpha = .05\)` and `\(p &lt; .05\)`, we can reject the null hypothesis.
+  
+* Alpha should be identified **prior to conducting a statistical test**.
+
+* Critical t-values `\(t_{\alpha/2}(df)\)` are the thresholds at which our alpha threshold is met.
+  + Vary depending on `\(df\)` and `\(\alpha\)`
+  
 
 ```r
-ggplot(who, aes(x = life_expectancy, color = status)) +
-  geom_density(adjust = 3)
+ggplot(data.frame(x = c(-4, 4)), aes(x = x)) +
+  stat_function(fun = dt, 
+                args = list(df = 10), 
+                color = "black") +
+  stat_function(fun = dt, 
+                args = list(df = 10), 
+                xlim = c(-4, -2.228),
+                fill = "red",
+                geom = "area") +
+    stat_function(fun = dt, 
+                args = list(df = 10), 
+                xlim = c(2.228, 4),
+                fill = "red",
+                geom = "area") +
+  geom_vline(xintercept = -2.228) +
+  geom_vline(xintercept = 2.228) +
+     geom_label(aes(
+      x = -2.228,
+      y = 0.2,
+      label = paste("Critical T = -2.228"))) +
+   geom_label(aes(
+      x = 2.5,
+      y = 0.2,
+      label = paste("Critical T = 2.228"))) +
+    xlab("T-Statistic") +
+   geom_label(aes(
+      x = -2.5,
+      y = 0.04,
+      label = paste(round(pt(q= -2.228, df = 10, lower.tail = T), 4)))) +
+   geom_label(aes(
+      x = 2.5,
+      y = 0.04,
+      label = paste(round(pt(q= 2.228, df = 10, lower.tail = F), 4)))) +
+    xlab("T-Statistic") +
+  ggtitle("Two-tailed t-test",
+          subtitle = paste("p =", 2*round(pt(q= -2.228, df = 10, lower.tail = T), 4)))
 ```
 
-&lt;img src="continuous_l2_files/figure-html/unnamed-chunk-17-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="continuous_l2_files/figure-html/unnamed-chunk-23-1.png" style="display: block; margin: auto;" /&gt;
+With two-tailed tests, the total alpha is "split" across both tails of the distribution ($\alpha(.05)/2 = .025)$.
+---
+# Thinking about *p*-values
 
+Assume that we find that average national life expectancy is significantly greater in high-income countries compared to low-income countries. With an `\(\alpha\)` of .05, the (hypothetical) statistical test returns *p* = .03, meaning we can reject the null hypothesis.
 
-MAKE CLEAR THAT THE POPULATION STATISTICS ARE ALWAYS UNOBSERVED. MEASUREMENT ERROR AND ONLY POINT IN TIME. BIAS AND MEASUREMENT ERROR. 
+Which of the following statements is correct, given *p* = .03:
+* **A.** There is a 3% probability that high-income countries do not have a higher average life expectancy (the null hypothesis).
+* **B.** There is a 3% probability that the results are due to random chance, rather than the effect of income level.
+* **C.** A statistically significant difference means higher income-levels yield higher life expectancies.
+* **D.** The observed data would only occur 3% of the time if the null hypothesis was true.
+* **E.** Previous research found that in 2005, income-level failed to produce a significant difference in average life expectancy (*p* = .17). Therefore, income-level is more influential on life expectancy in 2015 than in 2005.
+* **F.** Another research group finds a statistically significant difference between countries with socialized medicine compared to those without (*p* = .001). Their smaller *p* value means that socialized medicine is more effective at increasing life expectancy than income level.
 
-MU IS INHERENTLY UNOBSERVED
+---
+# Thinking about *p*-values
 
+* None of the previous interpretations were correct, yet these are commonly expressed in scientific literature!
 
-SLIDE ABOUT MISINTERPRETATIONS
-1. P-VALUE IS MEASURE OF PROBABILITY THAT THE OBSERVED VALUE OF THE STATISTIC IS THE OBSERVED VALUE UNDER THE NULL HYPOTHESIS.
+* In frequentist statistics, we are accepting or rejecting the null hypothesis, set by a particular alpha value. 
 
-2. P-VALUE DISTRIBUTIONS ARE ASSUMED TO HAVE A UNIFORM DISTRIBUTION.
+* P-values are not a gradient and should only reference the alpha threshold and the null hypothesis.
 
-SET ALPHA THRESHOLD, DISTINCT FROM P-VALUES, SIGNIFICANT OR NOT, NOT A GRADIENT, 
+---
+# Analogy
+### (Feel free to drop or edit this analogy)
 
-P-VALUES CAN INFORM CONFIDENCE IN REJECTING THE NULL HYPOTHESIS, BUT THEY ARE 
-HAVE EXAMPLES AND NON-EXAMPLES
+You are given a six-sided die and told it is normally weighted. 
 
+`\(H_0: The die is normally weighted\)`.
 
-SHINY APP THAT GENERATES POINT CLOUD, GUESS SLOPE AND INTERCEPT AND IT WOULD GENERATE 
+If the die is normally weighted, each number should come up with approximately equal frequency across 1000 rolls. Depending on the outcome and its probability under the null hypothesis, you can accept or reject the null hypothesis.
+
+An outcome can be more or less unlikely with a equally weighted die, but the die does not "approach unequal weighting" or is not a "marginally loaded die."
+
+---
 
   
 
