@@ -43,8 +43,7 @@ who <- import(here::here("data", "life_expectancy.csv")) %>%
 * Central Limit Theorem
 
 ---
-# Review
-## Distributions
+# Normal Distributions
 
 Characterized by:
 
@@ -64,8 +63,7 @@ Characterized by:
   + Kurtosis
 
 ---
-# Review
-## Normal Distributions
+# Normal Distributions
 
 A normal distribution is a **theoretical** distribution with the following characteristics:
 
@@ -81,8 +79,7 @@ Shape:
 + Symmetrical
 
 ---
-# Review
-## Z-unit Distribution
+# Z-unit Distribution
 
 * A normal distribution can have any mean and any (positive) standard deviation.
 * A z normal distribution is a useful distribution with a mean of 0 $(\mu)$ and a standard deviation $(\sigma)$ of 1.
@@ -114,9 +111,7 @@ $$z = \frac{X - \mu}{\sigma}$$
 * An observations z-score value is equal to its deviation from the mean, as measured in standard deviation units.
 
 ---
-
-# Applying Concepts
-## Transforming Distribution
+# Transforming Distributions
 
 Here is a histogram of our life expectancy data.
 ```{r, echo = F}
@@ -129,8 +124,8 @@ who$life_expectancy_zscore <- (who$life_expectancy - mean(who$life_expectancy))/
 ```
 
 ---
-# Applying Concepts
-## Transforming Distribution
+# Transforming Distributions
+
 Let's look at the first few transformed values.
 ```{r}
 head(who$life_expectancy_zscore)
@@ -152,8 +147,7 @@ sd(who$life_expectancy_zscore)
 ```
 
 ---
-# Review
-## Normal Distribution
+# Normal Distribution
 
 * The area under a normal distribution is always equal to 1.
 * The area under the curve corresponds to the proportion of observations.
@@ -292,7 +286,7 @@ samp_means <- tibble(samp = 1:1000, means = map_dbl(region_samp, ~mean(.$life_ex
 
 
 ```{r, animation.hook="gifski", interval = 0.4, echo = F, eval = T}
-for (i in 1:10) {
+for (i in 1:100) {
   x <- ggplot(subset(samp_means, samp <= i), aes(means)) +
     geom_histogram(fill = "darkred", color = "grey") +
     geom_vline(xintercept = 71.64, color = "blue") +
@@ -332,12 +326,12 @@ If we sampled all possible samples of size *n* from our population, our mean of 
 
 > The distribution of sample means will approach the normal distribution as the sample size increases regardless of the shape of the population distribution.
 
-The sampling distribution of means approximates a normal distribution because it is estimating a statistic of the population distribution. It is not "recreating" the shape of the population distribution.
+* The sampling distribution of means approximates a normal distribution because it is estimating a statistic of the population distribution. It is not "recreating" the shape of the population distribution.
 
-Center: Mean of sample means is the population mean.
+* Center: Mean of sample means is the population mean.
 $$ \mu_\bar{X} = \mu$$
 
-Spread: Standard deviation of sample means is the standard error of the mean
+* Spread: Standard deviation of sample means is the standard error of the mean
 
 $$ \sigma_\bar{X} = \frac{\sigma}{\sqrt{n}}$$
 
@@ -414,7 +408,7 @@ ggplot(samp_means, aes(means)) +
 * The purpose of a one-sample t-test is to describe the probability of obtaining a particular sample mean through random sampling variability, assuming the population mean = K.
   + e.g. Is our observed sample mean to be expected, assuming it reflects a random sample of the population?
   
-Null Hypothesis $(H_0)$: $\mu = K$, where $K$ is any constant.
+\center **Null Hypothesis** $(H_0)$: $\mu = K$, where $K$ is any constant. \center
 
 * Does **not** tests probability of obtaining the sample distribution or data itself, only the sample mean.
 
@@ -471,6 +465,8 @@ $$z = \frac{X - \mu}{\sigma}$$
 
 * Distributional spread and proportion of the area under the curve beyond our t-value depends on our degrees of freedom.
 
+* Using a t-test, we can calculate the probability of obtaining a particular sample mean through random sampling.
+
 
 ```{r , echo=F, animation.hook="gifski", interval=0.4}
 samp_means <- tibble(df = seq(2, 20, 2), 
@@ -506,11 +502,11 @@ for (i in 1:10) {
 ```
 
 ---
-# Applying a T-Test
+## Applying a T-Test
 Suppose we have data from a sample of 10 countries with a mean life expectancy of 66.87 and standard deviation of 5.82.
 
 If our population mean is thought to be 78.16 $(H_0: \sigma = 78.16)$, what is the probability of obtaining a sample mean of 66.87, **or a more extreme mean value**, due to random sampling variability?
-$$t(10) = \frac{66.87 - 75.16}{5.82/\sqrt{10}} = -1.24$$
+$$t(9) = \frac{66.87 - 75.16}{5.82/\sqrt{10}} = -1.24$$
 .pull-left[
 ```{r, echo = F}
 ggplot(data.frame(x = c(-4, 4)), aes(x = x)) +
@@ -540,15 +536,15 @@ Assuming a population mean of 78.16 and sample size of 10, the proportion of ran
 
 ggplot(data.frame(x = c(-4, 4)), aes(x = x)) +
   stat_function(fun = dt, 
-                args = list(df = 10), 
+                args = list(df = 9), 
                 color = "black") +
   stat_function(fun = dt, 
-                args = list(df = 10), 
+                args = list(df = 9), 
                 xlim = c(-4, -1.24),
                 fill = "red",
                 geom = "area") +
     stat_function(fun = dt, 
-                args = list(df = 10), 
+                args = list(df = 9), 
                 xlim = c(1.24, 4),
                 fill = "red",
                 geom = "area") +
@@ -556,14 +552,14 @@ ggplot(data.frame(x = c(-4, 4)), aes(x = x)) +
    geom_label(aes(
       x = -1.5,
       y = 0.04,
-      label = paste(round(pt(q= -1.24, df = 10, lower.tail = T), 2)))) +
+      label = paste(round(pt(q= -1.24, df = 9, lower.tail = T), 2)))) +
    geom_label(aes(
       x = 1.5,
       y = 0.04,
-      label = paste(round(pt(q= 1.24, df = 10, lower.tail = F), 2)))) +
+      label = paste(round(pt(q= 1.24, df = 9, lower.tail = F), 2)))) +
     xlab("T-Statistic") +
   ggtitle("Two-tailed t-test",
-          subtitle = paste("p =", 2*round(pt(q= -1.24, df = 10, lower.tail = T), 2)))
+          subtitle = paste("p =", 2*round(pt(q= -1.24, df = 9, lower.tail = T), 2)))
 
 ```
 Assuming a population mean of 78.16 and sample size of 10, the proportion of random samples that would demonstrate a sample mean **equal to or more extreme than 66.87** is 0.24 (i.e., *p* = 0.24).
@@ -585,7 +581,7 @@ Assuming a population mean of 78.16 and sample size of 10, the proportion of ran
 * Critical t-values $t_{\alpha/2}(df)$ are the thresholds at which our alpha threshold is met.
   + Vary depending on $df$ and $\alpha$
   
-```{r, echo = F}
+```{r, echo = F, fig.width=5, fig.height=2}
 ggplot(data.frame(x = c(-4, 4)), aes(x = x)) +
   stat_function(fun = dt, 
                 args = list(df = 10), 
@@ -624,7 +620,7 @@ ggplot(data.frame(x = c(-4, 4)), aes(x = x)) +
           subtitle = paste("p =", 2*round(pt(q= -2.228, df = 10, lower.tail = T), 4)))
 
 ```
-With two-tailed tests, the total alpha is "split" across both tails of the distribution ($\alpha(.05)/2 = .025)$.
+With two-tailed tests, the total alpha is "split" across both tails of the distribution $(\alpha(.05)/2 = .025)$.
 ---
 # Thinking about *p*-values
 

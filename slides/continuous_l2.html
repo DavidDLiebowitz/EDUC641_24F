@@ -29,29 +29,27 @@ class: inverse, center, middle
 * Central Limit Theorem
 
 ---
-# Review
-## Distributions
+# Normal Distributions
 
 Characterized by:
 
 * Central Tendency
-+ Mean
-+ Median
-+ Mode
+  + Mean
+  + Median
+  + Mode
 
 * Variability
-+ Range
-+ Interquartile Range
-+ Variance
-+ Standard Deviation
+  + Range
+  + Interquartile Range
+  + Variance
+  + Standard Deviation
 
 * Shape
-+ Skew
-+ Kurtosis
+  + Skew
+  + Kurtosis
 
 ---
-# Review
-## Normal Distributions
+# Normal Distributions
 
 A normal distribution is a **theoretical** distribution with the following characteristics:
 
@@ -67,13 +65,14 @@ Shape:
 + Symmetrical
 
 ---
-# Review
-## Z-unit Distribution
+# Z-unit Distribution
 
 * A normal distribution can have any mean and any (positive) standard deviation.
-* A z normal distribution is a useful distribution with a mean of 0 ($\mu$) and a standard deviation ($\sigma$) of 1.
+* A z normal distribution is a useful distribution with a mean of 0 `\((\mu)\)` and a standard deviation `\((\sigma)\)` of 1.
 
 &lt;img src="continuous_l2_files/figure-html/unnamed-chunk-2-1.png" style="display: block; margin: auto;" /&gt;
+
+
 ---
 # Transforming Distributions
 * Any normal distribution can be transformed into a z distribution using a linear function.
@@ -86,9 +85,7 @@ Each observation is transformed into a **z-score** using the following formula:
 * An observations z-score value is equal to its deviation from the mean, as measured in standard deviation units.
 
 ---
-
-# Applying Concepts
-## Transforming Distribution
+# Transforming Distributions
 
 Here is a histogram of our life expectancy data.
 &lt;img src="continuous_l2_files/figure-html/unnamed-chunk-3-1.png" style="display: block; margin: auto;" /&gt;
@@ -100,8 +97,8 @@ who$life_expectancy_zscore &lt;- (who$life_expectancy - mean(who$life_expectancy
 ```
 
 ---
-# Applying Concepts
-## Transforming Distribution
+# Transforming Distributions
+
 Let's look at the first few transformed values.
 
 ```r
@@ -141,8 +138,7 @@ sd(who$life_expectancy_zscore)
 ```
 
 ---
-# Review
-## Normal Distribution
+# Normal Distribution
 
 * The area under a normal distribution is always equal to 1.
 * The area under the curve corresponds to the proportion of observations.
@@ -183,8 +179,6 @@ Our **sample statistic** will be our estimate of the population statistic using 
 &lt;img src="continuous_l2_files/figure-html/unnamed-chunk-14-1.png" style="display: block; margin: auto;" /&gt;
 
 These estimated means have their own variability around the true population mean.
----
-
 
 ---
 # Population vs. Sample Distribution
@@ -207,12 +201,12 @@ If we sampled all possible samples of size *n* from our population, our mean of 
 
 &gt; The distribution of sample means will approach the normal distribution as the sample size increases regardless of the shape of the population distribution.
 
-The sampling distribution of means approximates a normal distribution because it is estimating a statistic of the population distribution. It is not "recreating" the shape of the population distribution.
+* The sampling distribution of means approximates a normal distribution because it is estimating a statistic of the population distribution. It is not "recreating" the shape of the population distribution.
 
-Center: Mean of sample means is the population mean.
+* Center: Mean of sample means is the population mean.
 $$ \mu_\bar{X} = \mu$$
 
-Spread: Standard deviation of sample means is the standard error of the mean
+* Spread: Standard deviation of sample means is the standard error of the mean
 
 $$ \sigma_\bar{X} = \frac{\sigma}{\sqrt{n}}$$
 
@@ -242,7 +236,7 @@ $$ \sigma_\bar{X} = \frac{\sigma}{\sqrt{n}}$$
 * The purpose of a one-sample t-test is to describe the probability of obtaining a particular sample mean through random sampling variability, assuming the population mean = K.
   + e.g. Is our observed sample mean to be expected, assuming it reflects a random sample of the population?
   
-Null Hypothesis `\((H_0)\)`: `\(\mu = K\)`, where `\(K\)` is any constant.
+\center **Null Hypothesis** `\((H_0)\)`: `\(\mu = K\)`, where `\(K\)` is any constant. \center
 
 * Does **not** tests probability of obtaining the sample distribution or data itself, only the sample mean.
 
@@ -269,6 +263,7 @@ Null Hypothesis `\((H_0)\)`: `\(\mu = K\)`, where `\(K\)` is any constant.
 # One-Sample T-Test
 
 * The t-statistic is calculated like a z-score, but we replace the population standard deviation with the sample standard deviation.
+
 .pull-right[
 $$ t = \frac{\bar{X} - \mu}{\hat{\sigma}/\sqrt{n}} $$
 ]
@@ -278,19 +273,17 @@ $$ t = \frac{\bar{X} - \mu}{\hat{\sigma}/\sqrt{n}} $$
 
 * Distributional spread and proportion of the area under the curve beyond our t-value depends on our degrees of freedom.
 
+* Using a t-test, we can calculate the probability of obtaining a particular sample mean through random sampling.
+
 
 &lt;img src="continuous_l2_files/figure-html/unnamed-chunk-20-.gif" style="display: block; margin: auto;" /&gt;
 
 ---
-# Applying a T-Test
+## Applying a T-Test
 Suppose we have data from a sample of 10 countries with a mean life expectancy of 66.87 and standard deviation of 5.82.
 
-If our population mean is thought to be 78.16 `\((\sigma)\)`, what is the probability of obtaining a sample mean of 66.87, **or a more extreme mean value**, due to random sampling variability?
-
-`$$H_0: \sigma = 78.16$$`
-
-
-`$$t(10) = \frac{66.87 - 75.16}{5.82/\sqrt{10}} = -1.24$$`
+If our population mean is thought to be 78.16 `\((H_0: \sigma = 78.16)\)`, what is the probability of obtaining a sample mean of 66.87, **or a more extreme mean value**, due to random sampling variability?
+`$$t(9) = \frac{66.87 - 75.16}{5.82/\sqrt{10}} = -1.24$$`
 .pull-left[
 &lt;img src="continuous_l2_files/figure-html/unnamed-chunk-21-1.png" style="display: block; margin: auto;" /&gt;
 Assuming a population mean of 78.16 and sample size of 10, the proportion of random samples that would demonstrate a sample mean **equal to or lower than 66.87** is 0.12 (i.e., *p* = 0.12).
@@ -307,7 +300,7 @@ Assuming a population mean of 78.16 and sample size of 10, the proportion of ran
 # *p*-Values and Alpha Thresholds
 * Alpha `\((\alpha)\)` represents our Type 1 error rate:
   + Type 1 Error - Rejecting the null hypothesis when it is actually true
-  + $/alpha = .05 $ means we will mistakenly reject the null hypothesis 5% of the time.
+  + `\(\alpha = .05\)` means we will mistakenly reject the null hypothesis 5% of the time.
   
 * Alpha is also equal to the maximum p-value necessary to reject the null hypothesis.
   + If `\(\alpha = .05\)` and `\(p &lt; .05\)`, we can reject the null hypothesis.
@@ -317,48 +310,8 @@ Assuming a population mean of 78.16 and sample size of 10, the proportion of ran
 * Critical t-values `\(t_{\alpha/2}(df)\)` are the thresholds at which our alpha threshold is met.
   + Vary depending on `\(df\)` and `\(\alpha\)`
   
-
-```r
-ggplot(data.frame(x = c(-4, 4)), aes(x = x)) +
-  stat_function(fun = dt, 
-                args = list(df = 10), 
-                color = "black") +
-  stat_function(fun = dt, 
-                args = list(df = 10), 
-                xlim = c(-4, -2.228),
-                fill = "red",
-                geom = "area") +
-    stat_function(fun = dt, 
-                args = list(df = 10), 
-                xlim = c(2.228, 4),
-                fill = "red",
-                geom = "area") +
-  geom_vline(xintercept = -2.228) +
-  geom_vline(xintercept = 2.228) +
-     geom_label(aes(
-      x = -2.228,
-      y = 0.2,
-      label = paste("Critical T = -2.228"))) +
-   geom_label(aes(
-      x = 2.5,
-      y = 0.2,
-      label = paste("Critical T = 2.228"))) +
-    xlab("T-Statistic") +
-   geom_label(aes(
-      x = -2.5,
-      y = 0.04,
-      label = paste(round(pt(q= -2.228, df = 10, lower.tail = T), 4)))) +
-   geom_label(aes(
-      x = 2.5,
-      y = 0.04,
-      label = paste(round(pt(q= 2.228, df = 10, lower.tail = F), 4)))) +
-    xlab("T-Statistic") +
-  ggtitle("Two-tailed t-test",
-          subtitle = paste("p =", 2*round(pt(q= -2.228, df = 10, lower.tail = T), 4)))
-```
-
 &lt;img src="continuous_l2_files/figure-html/unnamed-chunk-23-1.png" style="display: block; margin: auto;" /&gt;
-With two-tailed tests, the total alpha is "split" across both tails of the distribution ($\alpha(.05)/2 = .025)$.
+With two-tailed tests, the total alpha is "split" across both tails of the distribution `\((\alpha(.05)/2 = .025)\)`.
 ---
 # Thinking about *p*-values
 
@@ -387,11 +340,11 @@ Which of the following statements is correct, given *p* = .03:
 
 You are given a six-sided die and told it is normally weighted. 
 
-`\(H_0: The die is normally weighted\)`.
+`\(H_0:\)` The die is normally weighted.
 
 If the die is normally weighted, each number should come up with approximately equal frequency across 1000 rolls. Depending on the outcome and its probability under the null hypothesis, you can accept or reject the null hypothesis.
 
-An outcome can be more or less unlikely with a equally weighted die, but the die does not "approach unequal weighting" or is not a "marginally loaded die."
+An outcome can be more or less unlikely with a equally weighted die, but the die does not"approach unequal weighting" or is not a "marginally loaded die."
 
 ---
 
