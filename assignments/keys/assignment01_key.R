@@ -17,7 +17,7 @@ str(pd)
 
 pd$treat <- factor(pd$treat,
                    levels = c(0, 1),
-                   labels = c("Control", "Treat"))
+                   labels = c("Control Group", "Treatment Group"))
 
 pd$absenteeism <- factor(pd$absenteeism,
                          levels = c(0, 1),
@@ -25,20 +25,30 @@ pd$absenteeism <- factor(pd$absenteeism,
 
 pd$cgender <- factor(pd$cgender,
                      levels = c(0, 1),
-                     labels = c("Boy", "Girl"))
+                     labels = c("Male", "Female"))
 
 # 3. Describe and summarize the two key variables
 
-table(pd$treat)
+tbl <- table(pd$treat)
+tbl
 
-barplot(table(pd$treat),
-        space = 1.5,
-        xlab = "Experimental Group",
-        ylab = "Number of Children")
+text(barplot(tbl,
+             space = 1.2,
+             xlab = "Participants",
+             ylab = "Number of Participants",
+             ylim = c(0, 600)),
+     tbl + 16,
+     tbl)
 
-prop.table(table(pd$absenteeism))
+tbl2 <- round(prop.table(table(pd$absenteeism)), 2)
+tbl2
 
-barplot(prop.table(table(pd$absenteeism)),
-        space = 1.5,
-        xlab = "Chronically Absent",
-        ylab = "Proportion of Children")
+text(barplot(tbl2,
+             space = 1.2,
+             xlab = "Chronically Absent",
+             ylab = "Proportion of Participants",
+             ylim = c(0, 1)),
+     tbl2 + 0.05,
+     tbl2)
+
+
