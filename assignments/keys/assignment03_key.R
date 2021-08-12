@@ -7,12 +7,7 @@ pacman::p_load(tidyverse, knitr)
 
 pd <- read_csv(here::here("data", "cont.csv"))
 
-# 2. Understand the structure of the data
-
 head(pd)
-# head(pd, 10) to show the first 10 observations
-# head(pd %>% arrange(desc(vocabulary)), 10) to show 10 observations with highest vocabulary scores
-
 str(pd)
 
 pd$treat <- factor(pd$treat)

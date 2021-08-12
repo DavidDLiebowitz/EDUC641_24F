@@ -12,7 +12,7 @@ opts_chunk$set(include = FALSE)
 
 ### General Guidelines
 
-* The purpose of this assignment is to practice the concepts and vocabulary we have been modeling and implement some of the techniques we have learned for the entire term. You may work on your own or collaborate with one (1) partner. Please make sure that you engage in a a full, fair and mutually-agreeable collaboration if you do choose to collaborate. If you do collaborate, you should plan, execute and write-up your analyses together, not simply divide the work. Please make sure to indicate clearly when your work is joint and any other individual or resource (outside of class material) you consulted in your responses.
+* The purpose of this assignment is to practice the statistical concepts and data analysis techniques we've learned during this entire term. You may work on your own or collaborate with one partner. Please make sure that you engage in a a full, fair and mutually-agreeable collaboration if you do choose to collaborate. If you do collaborate, you should plan, execute and write-up your analyses together, not simply divide the work. Please make sure to indicate clearly when your work is joint and any other individual or resource (outside of class material) you consulted in your responses.
 
 ### Submission Requirements
 
@@ -29,40 +29,56 @@ Please upload below two files on Canvas before TBD time:
  * 
 
  * 
+
+### Data Backgroud
+
+The dataset we'll be using in this assignment is drawn from the third and fourth waves of National Longitudinal Study of Adolescent to Adult Health ([Add Health](https://addhealth.cpc.unc.edu/data/#public-use)) public-use data. Add Health is a longitudinal study of a nationally representative sample of over 20,000 adolescents (the public-use data sample is much smaller in size) who were in grades 7-12 during the 1994-95 school year, containing rich demographic, social, familial, socioeconomic, behavioral, psychosocial, cognitive, and health information. When the third (2001) and fourth (2008) waves took place, the participants were aged from 18-26 and from 24-32.
+
+In their working paper, [Kraft et al (2021)](https://www.edworkingpapers.com/ai21-441) examined an understudied area - the pathway through which mentoring relationship between students and school personnel influences human capital development. Particularly, they found that having a school-based mentor is associated with an increase of 0.24 GPA points at high-school, a full year of additional education, and an increase of $60,600-$92,400 in lifetime earnings. Inspired by their study, we step further and take interested in whether and to what extent having a school-based mentor earlier in their life is also related to these short- and long-term school outcomes. In this final project, we invite you to investigate two research questions, one from the questions 1-3 in Kraft et al paper and one from our further inquiries 4-6, listed below:
+
+1. Whether and to what extent having a school-based mentor impacts participant high school overall GPA?
+
+2. Whether and to what extent having a school-based mentor impacts participant total years of education?
+
+3. Whether and to what extent having a school-based mentor impacts participant annual earnings?
+
+4. Whether and to what extent having a school-based mentor earlier in life participant high school overall GPA?
+
+5. Whether and to what extent having a school-based mentor earlier in life impacts participant total years of education?
+
+6. Whether and to what extent having a school-based mentor earlier in life impacts participant annual earnings?
+
+**Sample**. The dataset you'll be using is individual-level data for 659 Add Health participants who have no missing data on our variables of interested in both waves 3 and 4. Note that for simplifying reasons, we use a smaller dataset than Kraft et al does and the measures of predictor and outcome variables are slightly different. Also we do not ask you to fit the fixed-effects models in Kraft et al, therefore all the results you get from this exercise cannot be interpreted as causal effects. 
+
+**Key variables**:
+
+ * *id*, the individual's unique identification number.
  
-### Simpson's paradox
+ * *mentor*, binary variable, coded 1 for individuals who reported to have a school-based mentor (teachers/guidance counselors and coaches/athletic directors) after 14 years old. 
+ 
+ * *mentee_age*, the individual's age when the mentor started to have an impact in their life. 
+ 
+ * *education*, the individual's total years of education (recoded from Add Health data using the same approach in Kraft et al p.14).
 
-```{r}
-UCBAdmissions
-```
-
-
-### Data Background
-
-The dataset we'll be using in this assignment is drawn from the NCRECE [Teacher Professional Development Study (PDS)](https://www.icpsr.umich.edu/web/ICPSR/studies/34848) data. This professional development study was a randomized controlled evaluation of two forms of professional development (PD) - coursework (phase 1) and consultancy (phase 2) - delivered to about 490 early childhood education teachers across the nation. These PD supports aimed to improve teachers' implementation of language/literacy activities and interactions with children, as well as promote gains in children's social and academic development. 
-
-The primary goals of the intervention were to improve language and literacy skills, however, prior studies have shown that there were no observed average impacts of either the coursework or the consultancy PD intervention on child outcomes at the end of phase 2 ([Pianta et al., 2017](https://www.tandfonline.com/doi/abs/10.1080/10409289.2017.1319783?journalCode=heed20)). We draw a sample similar to the one used in Pianta et al (2017) but limit to only teachers who were treated in phase 1 then assigned to either treatment or control group in phase 2. This sample allows you to answer two questions: (a) did the consultancy PD intervention (phase 2) improve children vocabulary? and (b) did the dosage of the coursework PD intervention (phase 1) impact children vocabulary?
-
-**Sample**. Our dataset is teacher-level data for 126 preschool teachers. They were in the treatment group for the 14-session coursework PD intervention, had no missing data on coursework attendance, and were in either the treatment or control group for the consultancy PD intervention.
-
-**Key variables**. We have two treatment measures, a binary variable indicating whether the teacher was treated in the consultancy PD intervention and an integer variable capturing the total number of sessions the teacher participated in the coursework PD intervention. We also have an outcome measure, the teacher's average student standard score on a receptive vocabulary test (Peabody Picture Vocabulary Test-3rd edition). 
-
-Details on all variables are as follows:
-
- * *tchid*, the teacher's unique identification number.
- * *treat*, consultancy treatment indicator, coded 1 if the teacher was in the treatment group, coded 0 if the teacher was in the control group.  
- * *coursework*, measure of how many sessions the teacher had participated in the coursework. 
- * *vocabulary*, the teacher's average student score on receptive vocabulary test. 
-
+ * *income_log*, the individual's log-transformed annual earnings (including salary and all types of other incomes). 
+ 
+ * *gpa*, the individual's high school final GPA points.
 
 ### Assignment Details
 
-#### 1. Dataset
+Your final project should be delivered in two forms: (a) an R script that we can run without errors, and (b) a 2-3 page writeup of the analysis, results, and discussions of your research questions, which should largely match APA 7th edition style. This writeup should contain the following elements:
 
-1.1. Open your RStudio, create a project and save it. Go to the root directory of the project and create a folder named "data". Download the [cont.csv dataset](./data/cont.csv) and store it in the folder "data". Create an Rmd/R file in the project root directory. Then read the data into your R environment. 
-Make sure to check whether the variable *treat* is factor as well as whether *coursework* and *vocabulary* are double. Transform them into correct types if needed. 
+What are the two research questions you choose to investigate (they has to be one from questions 1-3 and one from 4-6)? What are the predictor variable(s) and outcome variable(s) for each question? 
 
-Note that you do not need to include these responses in your html/pdf file; only in your RMD/R file.
+Present the summary statistics of your data in table(s) and describe what you observe.
 
-1.2. Write your own code to view the dataset and write 3-4 sentences about the structure of the data (how many variables are there, what type is each variable, how many rows/observations, etc.).  
+For each research question, visualize the relationship(s) between the predictor and outcome variables in a plot and describe what you observe.
+
+For each research question, state your null hypothesis followed by the appropriate testing, present your results in a table.
+
+For each research question, interpret your results and briefly discuss the substances of your findings.
+
+
+
+
 
