@@ -67,16 +67,19 @@ There are many ways to describe the characteristics of a distribution.
 
 Today we are reviewing:
 
-Measures of Central Tendency
-  * Mean
-  * Median
-  * Mode
+* Measures of Central Tendency
+  + Mean
+  + Median
+  + Mode
   
-Spread or Variability
-  * Variance
-  * Standard Deviation
-  * Interquartile Range
-  * Range
+* Spread or Variability
+  + Variance
+  + Standard Deviation
+  + Interquartile Range
+  + Range
+
+* Measures of Skewness
+* Measures of Kurtosis
   
 ---
 # But first, summation notation
@@ -143,6 +146,209 @@ Both 8 and 9 are observed seven times. In this case, the data can be considered 
 In general, the mode is rarely used and is particularly vulnerable to idiosyncratic patterns in the data.
 
 ---
+# Variability
+
+Knowing the central tendency of a distribution doesn't give us enough information.
+
+What if we want to know how much variation there is in life expectancy across nations?
+
+**Measures of Variability:**
+* Range
+* Interquartile Range
+* Variance
+* Standard Deviation
+
+---
+# Variability
+## Range
+
+* Represents the difference between the highest value and lowest value in the dataset.
+* Can provide a rough estimate of spread
+
+> $$range(71, 73, 76, 78, 79) = 79 - 71 = 8$$
+
+* Very vulnerable to outliers. One observation can make a big difference!
+
+> $$range(55, 73, 76, 78, 79) = 79 - 55 = 24$$
+
+---
+# Variability
+## Interquartile Range (IQR)
+* Represents the difference between the 1st quartile (25th percentile) and the 3rd quartile (75th percentile).
+
+* **Percentile** refers to the percentage of observations that fall at or below that score.
+  + e.g., 25% of observed national life expectancies fall at or below 66 years of age.
+
+* IQR summarizes the range of "average" scores in the dataset.
+
+```{r, echo = F}
+ggplot(who, aes(x = life_expectancy)) +
+  geom_density() +
+  geom_vline(xintercept = quantile(who$life_expectancy, .25)) +
+  geom_label(
+    x = quantile(who$life_expectancy, .25),
+    y = .03,
+    label = paste("25th %ile =", quantile(who$life_expectancy, .25))
+  ) +
+  geom_vline(xintercept = quantile(who$life_expectancy, .75)) +
+  geom_label(
+    x = quantile(who$life_expectancy, .75),
+    y = .03,
+    label = paste("75th %ile =", quantile(who$life_expectancy, .75))
+  ) +
+  geom_segment(
+    x = quantile(who$life_expectancy, .25),
+    xend = quantile(who$life_expectancy, .75),
+    y = .015,
+    yend = .015,
+    linetype = 2
+  ) +
+  geom_label(x = 71.5,
+             y = 0.01,
+             label = "IQR = 11") +
+  theme_classic()
+  
+```
+
+---
+# Variability
+## Variance
+* Represents the **average squared deviation** of each observation from the mean.
+
+ $$s^{2} = \frac{\sum_{i=i}^{n} x_{i}}{n}$$
+
+**Why do we square the average deviation?**
+
+```{r, echo = F}
+who$life_cnt <- round((who$life_expectancy - mean(who$life_expectancy)))
+who$life_type <- ifelse(who$life_cnt < 0, "below", "above")
+who$region <- as.factor(who$region)
+
+set.seed(154)
+var_plot <- who %>%
+  sample_frac(.10) %>% 
+  arrange(life_cnt) %>% 
+  ggplot(aes(x=reorder(region, desc(life_cnt)), y=life_cnt, label=life_cnt)) +
+geom_bar(stat='identity', aes(fill=life_type), width=.5) +
+scale_fill_manual(name="Life Expectancy (deviation)",
+labels = c("Above Average", "Below Average"),
+values = c("above"="#00ba38", "below"="#0b8fd3")) +
+labs(subtitle="Mean-centered life expectancy for random subset of nations") +
+  coord_flip() +
+  theme_minimal()
+
+var_plot
+```
+* Here are some national life expectancies centered around the mean. Their value represents their difference relative to the sample mean.
+
+* Some observations fall below the mean so their deviation is a negative value. If we took the average of our positive and negative deviations, we'd just get zero!
+
+---
+# Variance
+Since any number squared is positive, let's try squaring our deviations.
+
+```{r, echo = F}
+who$life_cnt_sq <- round((who$life_expectancy - mean(who$life_expectancy))^2)
+
+set.seed(154)
+var_plot_sq <- who %>% 
+  sample_frac(.10) %>% 
+  arrange(life_cnt) %>% 
+  ggplot(aes(x=reorder(region, desc(life_cnt)), y=life_cnt_sq, label=life_cnt)) +
+geom_bar(stat='identity', aes(fill=life_type), width=.5) +
+scale_fill_manual(name="Life Expectancy (deviation)",
+labels = c("Above Average", "Below Average"),
+values = c("above"="#00ba38", "below"="#0b8fd3")) +
+labs(subtitle="Mean-centered life expectancy (squared) for random subset of nations") +
+  theme_minimal() +
+  coord_flip()
+
+var_plot_sq
+```
+Now we can take the average of our squared deviations and get a non-zero value!
+---
+## Variance
+
+Our variance (or average squared deviation) is approximately 66.43.
+
+```{r, echo = F}
+var_plot_sq +
+  geom_hline(yintercept = mean(who$life_cnt_sq), color = "red")
+```
+
+By itself, a variance of 66.43 is not very meaningful to us. It does not reflect the raw units of our original scale (it represents squared units).
+---
+# Variability
+## Standard Deviation
+
+* If we take the square root of our sample variance, we can summarize average deviations back on our raw scale. 
+
+* The standard deviation represents the **positive square root of the variance**.
+$$ s = \sqrt{s^2} $$
+$$ \sqrt{66.43} = 8.15 $$
+
+The standard deviation of life expectancy in 2015 was approximately 8.15 *years*.
+
+Here is our original plot with our standard deviation plotted below and above the mean (i.e., -1 SD, +1 SD).
+
+```{r}
+var_plot +
+  geom_vline(xintercept = 8.15, color = "red")
+  geom_vline(xintercept = -8.15, color = "red")
+```
+
+The standard deviation of life expectancy in 2015 was approximately 8.15 *years*.
+
+---
+# Variability
+## Variance and Standard Deviation
+
+* Because variance and standard deviations are calculated from the mean, they are sensitive to skew and outliers (just like the mean).
+
+WORTH ADDING VISUALS? (PROBABLY NOT THESE)
+```{r}
+ggplot(x, aes(x = pos_skew)) +
+  geom_density(adjust = 3) +
+  geom_vline(xintercept = mean(x$pos_skew), color = "red", linetype = "dotted") +
+  geom_vline(xintercept = mean(x$pos_skew) - sd(x$pos_skew), color = "cornflowerblue") +
+  geom_vline(xintercept = mean(x$pos_skew) + sd(x$pos_skew), color = "cornflowerblue")
+
+ggplot(x, aes(x = neg_skew)) +
+  geom_density(adjust = 3) +
+  geom_vline(xintercept = mean(x$neg_skew), color = "red", linetype = "dotted") +
+  geom_vline(xintercept = mean(x$neg_skew) - sd(x$neg_skew), color = "cornflowerblue") +
+  geom_vline(xintercept = mean(x$neg_skew) + sd(x$neg_skew), color = "cornflowerblue")
+
+ggplot(x, aes(x = central)) +
+  geom_density(adjust = 3) +
+  geom_vline(xintercept = mean(x$central), color = "red", linetype = "dotted") +
+  geom_vline(xintercept = mean(x$central) - sd(x$central), color = "cornflowerblue") +
+  geom_vline(xintercept = mean(x$central) + sd(x$central), color = "cornflowerblue")
+
+```
+---
+## Visualizing Variance
+ADD CONTENT ON BOXPLOTS, ETC.
+
+---
+```{r}
+map(x, ~ ggplot(x, aes(.x)) +
+  geom_density() +
+  theme_minimal() +
+  geom_vline(xintercept = mean(.x), color = "red") +
+  geom_vline(xintercept = median(.x), color = "green", type = "dash") +
+  geom_vline(xintercept = getmode(.x), color = "blue"))
+
+ggplot(x, aes(pos_skew)) +
+  geom_density() +
+  geom_vline(xintercept = mean(pos_skew))
+
+ggplot(x, aes(neg_skew)) +
+  geom_density()
+
+```
+---
+
 # Distributional Shape
 ## Skew
 * In a normal distribution, the <span style="color: red;">mean</span>, <span style="color: blue;">median</span>, and <span style="color: purple;">mode</span>, will provide similar estimates of central tendency.
@@ -236,7 +442,7 @@ central <- ggplot(k, aes(central)) +
   ylim(0, .5) +
   theme_classic() +
   theme(axis.title = element_blank()) +
-  ggtitle("Normal")
+  ggtitle("Mesokurtic (No Kurtosis)")
 
 
 gridExtra::grid.arrange(platy, central, lepto, nrow = 1)
@@ -336,31 +542,9 @@ gridExtra::grid.arrange(narrow, wide, nrow = 1)
 ```
 
 ---
+# Sampling Distributions
+```
 
-# Variability
-
-Knowing the central tendency of a distribution doesn't give us enough information.
-
-What if we want to know how much variation there is in life expectancy across nations?
-
-**Measures of Variability:**
-* Range
-* Interquartile Range
-* Variance
-* Standard Deviation
-
----
-# Variability
-## Range
-
-* Represents the difference between the highest value and lowest value in the dataset.
-* Can provide a rough estimate of spread
-
-> $$range(71, 73, 76, 78, 79) = 79 - 71 = 8$$
-
-* Very vulnerable to outliers. One observation can make a big difference!
-
-> $$range(55, 73, 76, 78, 79) = 79 - 55 = 24$$
 
 ### Applied Coding
 ```{r}
@@ -374,157 +558,3 @@ max(who$life_expectancy) - min(who$life_expectancy)
 ```
 
 National average life expectancies in 2015 **ranged from 51 to 88**, for a total difference of **37 years**.
-
----
-# Variability
-## Interquartile Range
-* Represents the difference between the 1st quartile (25th percentile) and the 3rd quartile (75th percentile).
-
-* **Percentile** refers to the percentage of observations that fall at or below that score. 
-
-* Summarizes the range of "average" scores in the dataset.
-
-### ADD QUANTILE PLOT
-
-```{r, echo = F}
-ggplot(who, aes(x = life_expectancy)) +
-  geom_density()
-```
-
-```{r}
-IQR(who$life_expectancy)
-```
----
-# Variability
-## Variance
-* Represents the **average squared deviation** of each observation from the mean.
-
- $$s^{2} = \frac{\sum_{i=i}^{n} x_{i}}{n}$$
-
-**Why do we square the average deviation?**
-
-```{r, echo = F}
-who$life_cnt <- round((who$life_expectancy - mean(who$life_expectancy)))
-who$life_type <- ifelse(who$life_cnt < 0, "below", "above")
-who$region <- as.factor(who$region)
-
-set.seed(154)
-who %>%
-  sample_frac(.10) %>% 
-  arrange(life_cnt) %>% 
-  ggplot(aes(x=reorder(region, desc(life_cnt)), y=life_cnt, label=life_cnt)) +
-geom_bar(stat='identity', aes(fill=life_type), width=.5) +
-scale_fill_manual(name="Life Expectancy (deviation)",
-labels = c("Above Average", "Below Average"),
-values = c("above"="#00ba38", "below"="#0b8fd3")) +
-labs(subtitle="Mean-centered life expectancy for random subset of nations") +
-  coord_flip() +
-  theme_minimal()
-```
-* Here are some national life expectancies centered around the mean. Their value represents their difference relative to the sample mean.
-
-* Some observations fall below the mean so their deviation is a negative value. If we took the average of our positive and negative deviations, we'd just get zero!
-
----
-# Variance
-Since any number squared is positive, let's try squaring our deviations.
-
-```{r, echo = F}
-who$life_cnt_sq <- round((who$life_expectancy - mean(who$life_expectancy))^2)
-
-set.seed(154)
-var_plot_sq <- who %>% 
-  sample_frac(.10) %>% 
-  arrange(life_cnt) %>% 
-  ggplot(aes(x=reorder(region, desc(life_cnt)), y=life_cnt_sq, label=life_cnt)) +
-geom_bar(stat='identity', aes(fill=life_type), width=.5) +
-scale_fill_manual(name="Life Expectancy (deviation)",
-labels = c("Above Average", "Below Average"),
-values = c("above"="#00ba38", "below"="#0b8fd3")) +
-labs(subtitle="Mean-centered life expectancy (squared) for random subset of nations") +
-  theme_minimal() +
-  coord_flip()
-
-var_plot_sq
-```
-Now we can take the average of our squared deviations and get a non-zero value!
----
-## Variance
-
-```{r}
-var(who$life_expectancy)
-```
-
-Our variance (or average squared deviation) is approximately 66.43.
-
-```{r, echo = F}
-var_plot_sq +
-  geom_hline(yintercept = mean(who$life_cnt_sq), color = "red")
-```
-
-By itself, a variance of 66.43 is not very meaningful to us. It does not reflect the raw units of our original scale (it represents squared units).
----
-# Variability
-## Standard Deviation
-
-* If we take the square root of our sample variance, we can summarize average deviations back on our raw scale. 
-
-* The standard deviation represents the **positive square root of the variance**.
-$$ s = \sqrt{s^2} $$
-```{r}
-sd(who$life_expectancy)
-```
-
-The standard deviation of life expectancy in 2015 was approximately 8.15 *years*.
----
-# Variability
-## Variance and Standard Deviation
-
-* Because variance and standard deviations are calculated from the mean, they are sensitive to skew and outliers (just like the mean).
-
-WORTH ADDING VISUALS? (PROBABLY NOT THESE)
-```{r}
-ggplot(x, aes(x = pos_skew)) +
-  geom_density(adjust = 3) +
-  geom_vline(xintercept = mean(x$pos_skew), color = "red", linetype = "dotted") +
-  geom_vline(xintercept = mean(x$pos_skew) - sd(x$pos_skew), color = "cornflowerblue") +
-  geom_vline(xintercept = mean(x$pos_skew) + sd(x$pos_skew), color = "cornflowerblue")
-
-ggplot(x, aes(x = neg_skew)) +
-  geom_density(adjust = 3) +
-  geom_vline(xintercept = mean(x$neg_skew), color = "red", linetype = "dotted") +
-  geom_vline(xintercept = mean(x$neg_skew) - sd(x$neg_skew), color = "cornflowerblue") +
-  geom_vline(xintercept = mean(x$neg_skew) + sd(x$neg_skew), color = "cornflowerblue")
-
-ggplot(x, aes(x = central)) +
-  geom_density(adjust = 3) +
-  geom_vline(xintercept = mean(x$central), color = "red", linetype = "dotted") +
-  geom_vline(xintercept = mean(x$central) - sd(x$central), color = "cornflowerblue") +
-  geom_vline(xintercept = mean(x$central) + sd(x$central), color = "cornflowerblue")
-
-```
----
-## Visualizing Variance
-ADD CONTENT ON BOXPLOTS, ETC.
-
----
-```{r}
-map(x, ~ ggplot(x, aes(.x)) +
-  geom_density() +
-  theme_minimal() +
-  geom_vline(xintercept = mean(.x), color = "red") +
-  geom_vline(xintercept = median(.x), color = "green", type = "dash") +
-  geom_vline(xintercept = getmode(.x), color = "blue"))
-
-ggplot(x, aes(pos_skew)) +
-  geom_density() +
-  geom_vline(xintercept = mean(pos_skew))
-
-ggplot(x, aes(neg_skew)) +
-  geom_density()
-
-```
-
----
-# Sampling Distributions
-```
