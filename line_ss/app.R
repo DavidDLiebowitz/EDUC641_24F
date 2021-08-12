@@ -31,7 +31,7 @@ ui <- fluidPage(
                           "View Sums of Squares",
                           choices = list(
                               "Normal View" = 1,
-                              "View Deviance" = 2,
+                              "View Residuals" = 2,
                               "View Sums of Squares" = 3),
                          selected = 1),
             h3("Data Simulation"),
