@@ -24,8 +24,7 @@ knitr::opts_chunk$set(warning = FALSE,
                       fig.height = 3)
 
 if (!require(pacman)) install.packages('pacman', repos = 'https://cran.rstudio.com')
-pacman::p_load(tidyverse, here, knitr, dplyr, ggplot2, blogdown, rio)
-needs(gifski)
+pacman::p_load(tidyverse, here, knitr, dplyr, ggplot2, blogdown, rio, gifski)
 ```
 
 ```{r, echo = F}
