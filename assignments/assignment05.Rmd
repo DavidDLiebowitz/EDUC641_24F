@@ -34,7 +34,7 @@ Please upload below two files on Canvas before TBD time:
 
 The dataset we'll be using in this assignment is drawn from the third and fourth waves of National Longitudinal Study of Adolescent to Adult Health ([Add Health](https://addhealth.cpc.unc.edu/data/#public-use)) public-use data. Add Health is a longitudinal study of a nationally representative sample of over 20,000 adolescents (the public-use data sample is much smaller in size) who were in grades 7-12 during the 1994-95 school year, containing rich demographic, social, familial, socioeconomic, behavioral, psychosocial, cognitive, and health information. When the third (2001) and fourth (2008) waves took place, the participants were aged from 18-26 and from 24-32.
 
-In their working paper, [Kraft et al (2021)](https://www.edworkingpapers.com/ai21-441) examined an understudied area - the pathway through which mentoring relationship between students and school personnel influences human capital development. Particularly, they found that having a school-based mentor is associated with an increase of 0.24 GPA points at high-school, a full year of additional education, and an increase of $60,600-$92,400 in lifetime earnings. Inspired by their study, we step further and take interested in whether and to what extent having a school-based mentor earlier in their life is also related to these short- and long-term school outcomes. In this final project, we invite you to investigate one research question, either from the questions in Kraft et al paper or our further inquiries, listed below:
+In their working paper, [Kraft et al (2021)](https://www.edworkingpapers.com/ai21-441) examined an understudied area - the pathway through which mentoring relationship between students and school personnel influences human capital development. Particularly, they found that having a school-based mentor is associated with an increase of 0.24 GPA points at high-school, a full year of additional education, and an increase of $60,600-$92,400 in lifetime earnings. Inspired by their study, we step further and take interested in whether and to what extent having a school-based mentor earlier in their life is also related to these short- and long-term school outcomes. In this final project, we invite you to investigate two research questions, one from the questions 1-3 in Kraft et al paper and one from our further inquiries 4-6, listed below:
 
 1. Whether and to what extent having a school-based mentor impacts participant high school overall GPA?
 
@@ -63,4 +63,22 @@ In their working paper, [Kraft et al (2021)](https://www.edworkingpapers.com/ai2
  * *income_log*, the individual's log-transformed annual earnings (including salary and all types of other incomes). 
  
  * *gpa*, the individual's high school final GPA points.
+
+### Assignment Details
+
+Your final project should be delivered in two forms: (a) an R script that we can run without errors, and (b) a 2-3 page writeup of the analysis, results, and discussions of your research questions, which should largely match APA 7th edition style. This writeup should contain the following elements:
+
+What are the two research questions you choose to investigate (they has to be one from questions 1-3 and one from 4-6)? What are the predictor variable(s) and outcome variable(s) for each question? 
+
+Present the summary statistics of your data in table(s) and describe what you observe.
+
+For each research question, visualize the relationship(s) between the predictor and outcome variables in a plot and describe what you observe.
+
+For each research question, state your null hypothesis followed by the appropriate testing, present your results in a table.
+
+For each research question, interpret your results and briefly discuss the substances of your findings.
+
+
+
+
 
