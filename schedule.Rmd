@@ -19,9 +19,10 @@ Topic: Introduction to scientific principles and data analysis
 
 Readings: TBD
 
-Lecture slides: [html file](./slides/EDUC641_1_intro.html), [pdf file](./slides/EDUC641_1_intro.pdf)
+Lecture:
 
-R Tutorial slides: [html file](./slides/tutorial.html)
+* Lecture slides: [html file](./slides/EDUC641_1_intro.html), [pdf file](./slides/EDUC641_1_intro.pdf)
+* R Tutorial slides: [html file](./slides/tutorial.html)
 
 ### Week 2 
 
