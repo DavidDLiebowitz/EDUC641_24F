@@ -55,4 +55,167 @@ options(knitr.table.format = "html")
 ```{r, out.width = "90%", echo=F}
   include_graphics("Roadmap_4.png")
 ```
-                     
+
+                                                       
+---
+# Goals of the unit
+
+- Describe relationships between quantitative data that are continuous
+- Visualize and substantively describe the relationship between two continuous variables 
+- Describe and interpret a fitted bivariate regression line
+- Describe and interpret components of a fitted bivariate linear regression model
+- Visualize and substantively interpret residuals resulting from a bivariate regression model
+- Conduct a statistical inference test of the slope and intercept of a bivariate regression model
+- Write R scripts to conduct these analyses
+
+
+---
+# A reminder of our motivating question
+
+### <span style="color:blue"> Do individuals living in countries with more total years of attendance in school experience, on average, higher life expectancy? </span>
+
+#### In other words, we are asking are whether the variables *SCHOOLING* and *LIFE_EXPECTANCY* are related.
+
+---
+# Materials
+
+### 1. Death penalty data (in file called life_expectancy.csv)
+### 2. Codebook describing the contents of said data
+### 3. R script available ...
+
+---
+class: middle, inverse
+# Bivariate relationships between continuous variables
+
+
+---
+# Recall life expectancy distr.
+```{r, echo = F, fig.height=5.5}
+who <- read.csv(here::here("data/life_expectancy.csv")) %>%
+ janitor::clean_names() %>% 
+ filter(year == 2015) %>%
+ select(country, schooling, year, life_expectancy) %>% 
+ mutate(life_expectancy = round(life_expectancy, digits = 0))
+
+
+stem(who$life_expectancy)
+```
+
+---
+# Another way
+```{r, echo=F, fig.height=5.5}
+ggplot(who, aes(x = life_expectancy)) +
+  geom_histogram(binwidth = 1) 
+```
+
+
+---
+# What about schooling?
+```{r, echo=F, fig.height=5.5}
+stem(who$schooling)
+```
+
+---
+# And differently again
+```{r, echo=F, fig.height=5.5}
+ggplot(who, aes(x = schooling)) +
+  geom_histogram(binwidth = 1) 
+```
+
+---
+# Numerical univariate statistics
+
+```{r, echo=T}
+summary(who$life_expectancy)
+summary(who$schooling)
+```
+
+<br>
+
+<span style="color:blue"> *Can you interpret the univariate statistics and displays on this and the previous slides?* </span>
+
+---
+# Visualizing the relationship
+
+```{r, echo = F, fig.height=5.5}
+
+biv <- ggplot(who, aes(x = schooling, y = life_expectancy)) + 
+  geom_point() + 
+  xlim(0, 22) +
+  ylab("Life Expectancy (Yrs)") + xlab("Schooling (Yrs)") +
+  scale_y_continuous(breaks = seq(35, 90, 10), limits = c(35, 90))
+
+biv
+
+```
+
+--
+
+Horizontal axis (or *x*-axis) labels the value of the "predictor" *SCHOOLING*. Vertical axis (or *y*-axis) labels the value of the "outcome" *LIFE_EXPECTANCY*
+
+<span style="color:blue"> *Can you interpret the bivariate display? What does it (and does it NOT) say about the relationship between schooling and life expectancy?* </span>
+
+---
+# Visualizing the relationship
+
+```{r, echo = F, fig.height=5.5}
+who_chile <- filter(who, country == "Chile")
+
+biv_c <- biv + 
+  geom_point(data = who_chile, aes(x=schooling, y = life_expectancy),
+                    color = 'red',
+                    size = 3) +
+  geom_vline(xintercept = 16.3, color = "red", linetype = "dashed", size = 0.75) +
+  geom_hline(yintercept = 85, color = "red", linetype = "dashed" , size = 0.75) +
+  annotate('text', label = "Chile", x = 15.5, y = 87, color = "red", size = 6) +
+  annotate('text', label = "16.3", color = "red", x = 16.9, y = 35, size = 5) +
+  annotate('text', label = "85", color = "red", x = 0, y = 87, size =5) 
+
+
+biv_c
+
+```
+
+--
+
+<span style="color:blue"> *Can you interpret what this display says about the country of Chile?* </span>
+
+---
+# You try...
+
+```{r, echo = F, fig.height=5.5}
+who_egypt <- filter(who, country == "Egypt")
+
+biv_c + 
+   geom_point(data = who_egypt, aes(x=schooling, y = life_expectancy),
+                    color = 'blue',
+                    size = 3) +
+   annotate('text', label = "Egypt", x = 12.1, y = 79, color = "blue", size = 6)
+
+```
+
+<span style="color:blue"> *Can you interpret what this display says about the country of Egypt?* </span>
+
+---
+# What about the relationship?
+```{r, echo = F, fig.height=5.5}
+biv
+```
+
+<span style="color:blue"> *Is there a relationship between SCHOOLING and LIFE_EXPECTANCY? How do you know?* </span>
+
+--
+
+<span style="color:blue"> *What kind of line, curve or other construction best summarizes the observed relationship between SCHOOLING and LIFE_EXPECTANCY?* </span>
+
+---
+class: middle, inverse
+# A gentle introduction to bivariate regression: <br> Ordinary-Least Squares (OLS)-fitted regression lines
+
+
+---
+class: middle, inverse
+
+# A gentle introduction to bivariate regression: <br> Residual analysis
+
+

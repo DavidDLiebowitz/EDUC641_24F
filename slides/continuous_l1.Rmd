@@ -53,7 +53,7 @@ Suppose you are working for the World Health Organization and are investigating 
 
 > Using this dataset, we can ask questions like:
 > * How does life expectancy compare in developing vs. developed regions?
-> * What is the relationship between average years of schooling and life expectancy?
+> * Do individuals living in countries with more total years of attendance in school experience, on average, higher life expectancy??
 
 
 **But**, before making comparisons between social/economic conditions, we want to start with describing the full dataset, looking at all 183 nations in the dataset.
@@ -306,47 +306,12 @@ The standard deviation of life expectancy in 2015 was approximately 8.15 *years*
 * Because variance and standard deviations are calculated from the mean, they are sensitive to skew and outliers (just like the mean).
 
 WORTH ADDING VISUALS? (PROBABLY NOT THESE)
-```{r}
-ggplot(x, aes(x = pos_skew)) +
-  geom_density(adjust = 3) +
-  geom_vline(xintercept = mean(x$pos_skew), color = "red", linetype = "dotted") +
-  geom_vline(xintercept = mean(x$pos_skew) - sd(x$pos_skew), color = "cornflowerblue") +
-  geom_vline(xintercept = mean(x$pos_skew) + sd(x$pos_skew), color = "cornflowerblue")
 
-ggplot(x, aes(x = neg_skew)) +
-  geom_density(adjust = 3) +
-  geom_vline(xintercept = mean(x$neg_skew), color = "red", linetype = "dotted") +
-  geom_vline(xintercept = mean(x$neg_skew) - sd(x$neg_skew), color = "cornflowerblue") +
-  geom_vline(xintercept = mean(x$neg_skew) + sd(x$neg_skew), color = "cornflowerblue")
-
-ggplot(x, aes(x = central)) +
-  geom_density(adjust = 3) +
-  geom_vline(xintercept = mean(x$central), color = "red", linetype = "dotted") +
-  geom_vline(xintercept = mean(x$central) - sd(x$central), color = "cornflowerblue") +
-  geom_vline(xintercept = mean(x$central) + sd(x$central), color = "cornflowerblue")
-
-```
 ---
 ## Visualizing Variance
 ADD CONTENT ON BOXPLOTS, ETC.
 
----
-```{r}
-map(x, ~ ggplot(x, aes(.x)) +
-  geom_density() +
-  theme_minimal() +
-  geom_vline(xintercept = mean(.x), color = "red") +
-  geom_vline(xintercept = median(.x), color = "green", type = "dash") +
-  geom_vline(xintercept = getmode(.x), color = "blue"))
 
-ggplot(x, aes(pos_skew)) +
-  geom_density() +
-  geom_vline(xintercept = mean(pos_skew))
-
-ggplot(x, aes(neg_skew)) +
-  geom_density()
-
-```
 ---
 
 # Distributional Shape
