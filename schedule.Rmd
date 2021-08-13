@@ -19,7 +19,7 @@ Topic: Introduction to scientific principles and data analysis
 
 Readings: TBD
 
-Lecture slides: [html file](./slides/EDUC641_1_intro.html)
+Lecture slides: [html file](./slides/EDUC641_1_intro.html), [pdf file](./slides/EDUC641_2_categ_1.pdf)
 
 R Tutorial slides: [html file](./slides/tutorial.html)
 
@@ -40,7 +40,7 @@ Readings: TBD
 
 Lecture: 
 
- * Slides: [html file](./slides/EDUC641_2_categ_1.html)
+ * Slides: [html file](./slides/EDUC641_2_categ_1.html), [pdf file](./slides/EDUC641_2_categ_2.pdf)
  * Data: [deathpenalty.csv](./data/deathpenalty.csv), [codebook](./data/deathpenalty.csv)
  * R script: [R script](./slides/EDUC641_2_code.R)
 
