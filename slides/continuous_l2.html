@@ -14,7 +14,7 @@ class: center, middle, inverse, title-slide
 
 # EDUC 641 Continuous Data
 ### Professor Name
-### 09 August, 2021
+### 16 August, 2021
 
 ---
 
@@ -63,90 +63,60 @@ Variability:
 
 Shape: 
 + Symmetrical
++ Skewness &amp; Kurtosis = 0
 
 ---
-# Z-unit Distribution
 
-* A normal distribution can have any mean and any (positive) standard deviation.
-* A z normal distribution is a useful distribution with a mean of 0 `\((\mu)\)` and a standard deviation `\((\sigma)\)` of 1.
+# Normal Distributions
+
+* The area under a normal distribution is always equal to 100% (it represents the whole of observations)
+
+* The area under the normal distribution curve corresponds to the percentage of observations
+
+* We can always infer the percentage of observations in any part of a normal distribution.
 
 &lt;img src="continuous_l2_files/figure-html/unnamed-chunk-2-1.png" style="display: block; margin: auto;" /&gt;
 
-
 ---
-# Transforming Distributions
-* Any normal distribution can be transformed into a z distribution using a linear function.
 
-Each observation is transformed into a **z-score** using the following formula:
-`$$z = \frac{X - \mu}{\sigma}$$`
+# Normal Distributions
 
-* A z-score is calculated by **subtracting the mean** from each value and **dividing by the standard deviation**.
+We can use our understanding of the normal distribution to calculate the probability of observing a value in a certain range. This is known as the **empirical rule**.
 
-* An observations z-score value is equal to its deviation from the mean, as measured in standard deviation units.
-
----
-# Transforming Distributions
-
-Here is a histogram of our life expectancy data.
 &lt;img src="continuous_l2_files/figure-html/unnamed-chunk-3-1.png" style="display: block; margin: auto;" /&gt;
 
-We are going to create a new variable called `life_expectancy_zscore` using the linear function described on the previous slide.
+* A randomly selected observation has an approximately **68% chance of being within 1 SD** of the mean.
+ + `\(P(-1 &lt; Z &lt; 1) = 0.683\)`
+ 
+---
+# Normal Distributions
 
-```r
-who$life_expectancy_zscore &lt;- (who$life_expectancy - mean(who$life_expectancy))/sd(who$life_expectancy)
-```
+&lt;img src="continuous_l2_files/figure-html/unnamed-chunk-4-1.png" style="display: block; margin: auto;" /&gt;
+
+* A randomly selected observation has an approximately **95.5% chance of being within 2 SD** of the mean.
+ + $ P(-2 &lt; Z &lt; 2) = 0.955 $
+
+* With a standard normal distribution, we can calculate the percentage of observations under any region.
 
 ---
-# Transforming Distributions
+# Z-Test
+* Suppose that the population mean national life expectancy is 71.64 `\((\mu)\)` with a SD of 8.15 `\((\sigma)\)`.
 
-Let's look at the first few transformed values.
+* **Assuming a normal distribution, what is the probability of randomly selecting a country with a life expectancy greater than 76?**
 
-```r
-head(who$life_expectancy_zscore)
-```
+* After we conduct a z-transformation, we can calculate the percentage of observations above our z-score.
 
-```
-## [1] -0.8145996  0.7804065  0.5350210 -2.4096058  0.5350210  0.5350210
-```
+$$ z = \frac{76-71.64}{8.15} = 0.53$$
+
+&lt;img src="continuous_l2_files/figure-html/unnamed-chunk-5-1.png" style="display: block; margin: auto;" /&gt;
 
 
-```r
-## Histogram of the new z-scores
-hist(who$life_expectancy_zscore)
-```
+---
+# Z-Test
+* The probability of randomly selecting a country with a national life expectancy greater than 76 is 30%.
+  + $ P(z &gt; 0.53) = 0.30 $
 
 &lt;img src="continuous_l2_files/figure-html/unnamed-chunk-6-1.png" style="display: block; margin: auto;" /&gt;
-
-Our new mean is approximately 0.
-
-```r
-mean(who$life_expectancy_zscore)
-```
-
-```
-## [1] -1.030433e-16
-```
-
-Our new standard deviation is 1.
-
-```r
-sd(who$life_expectancy_zscore)
-```
-
-```
-## [1] 1
-```
-
----
-# Normal Distribution
-
-* The area under a normal distribution is always equal to 1.
-* The area under the curve corresponds to the proportion of observations.
-* The percentage of observations in any part of a normal distribution is always known. 
-
-&lt;img src="continuous_l2_files/figure-html/unnamed-chunk-9-1.png" style="display: block; margin: auto;" /&gt;
-
-What percentage of observations fall at least 1 standard deviation below the mean?
 
 ---
 # Population vs. Sample Distributions
@@ -159,26 +129,27 @@ Our **population statistic** represents the true value across all countries.
 
 
 
-&lt;img src="continuous_l2_files/figure-html/unnamed-chunk-11-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="continuous_l2_files/figure-html/unnamed-chunk-8-1.png" style="display: block; margin: auto;" /&gt;
 ]
 
 .pull-right[
 Our **sample statistic** will be our estimate of the population statistic using the countries we examine.
 
-&lt;img src="continuous_l2_files/figure-html/unnamed-chunk-12-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="continuous_l2_files/figure-html/unnamed-chunk-9-1.png" style="display: block; margin: auto;" /&gt;
 ]
 
 ---
 # Sample Estimates
 
-* Assume that our &lt;span style="color: blue;"&gt;true population statistic &lt;/span&gt; is 71.64. 
+* Assume that our &lt;span style="color: blue;"&gt;true population mean &lt;/span&gt; is 71.64. 
 
-* Each possible random sample of 10 countries will produce its own &lt;span style="color: red;"&gt; sample mean or population estimate &lt;/span&gt;.
+* Each possible random sample of 10 countries will produce its own &lt;span style="color: red;"&gt; sample mean or population mean estimate &lt;/span&gt;.
+
+* These estimated means have their own variability around the true population mean.
 
 
-&lt;img src="continuous_l2_files/figure-html/unnamed-chunk-14-1.png" style="display: block; margin: auto;" /&gt;
 
-These estimated means have their own variability around the true population mean.
+&lt;img src="continuous_l2_files/figure-html/unnamed-chunk-11-1.png" style="display: block; margin: auto;" /&gt;
 
 ---
 # Population vs. Sample Distribution
@@ -188,7 +159,7 @@ If we sample our population **100 times** and plot the estimated mean of each sa
 
 
 
-&lt;img src="continuous_l2_files/figure-html/unnamed-chunk-16-.gif" style="display: block; margin: auto;" /&gt;
+&lt;img src="continuous_l2_files/figure-html/unnamed-chunk-13-.gif" style="display: block; margin: auto;" /&gt;
 
 The mean of our sampling distribution (mean of means) approximates the &lt;span style="color: blue;"&gt; population mean&lt;/span&gt;. This is an example of the **central limit theorem**.
 
@@ -218,8 +189,9 @@ $$ \sigma_\bar{X} = \frac{\sigma}{\sqrt{n}}$$
 * Here is a histogram of the means of 1000 random samples from our WHO data.
 * The center of the distribution is our population mean.
 * The standard deviation is the standard error of the mean.
+{https://onlinestatbook.com/stat_sim/sampling_dist/}
 
-&lt;img src="continuous_l2_files/figure-html/unnamed-chunk-18-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="continuous_l2_files/figure-html/unnamed-chunk-15-1.png" style="display: block; margin: auto;" /&gt;
 
 ---
 # T-Tests
@@ -228,6 +200,28 @@ $$ \sigma_\bar{X} = \frac{\sigma}{\sqrt{n}}$$
 * Applied Example
 * Hypothesis Testing
 
+---
+# T-Distributions
+* In a z-test, the population standard deviation is assumed to be known.
+
+* In practice, we **rarely** know the true population standard deviation due to:
+  + Measurement Error
+  + Population statistics can be in constant flux (e.g., average life expectancies can change moment to moment)
+  + Can be unfeasible to measure entire population
+
+.pull-left[
+* **T-Distributions**:
+  + Assume that the population standard deviation `\((\sigma)\)` is unknown. 
+  + Resemble Z-distributions as degrees of freedom increase.
+  + The degrees of freedom for a t-test is always *n*-1, where *n* is your sample size.
+]
+
+.pull-right[
+&lt;img src="continuous_l2_files/figure-html/unnamed-chunk-16-.gif" style="display: block; margin: auto;" /&gt;
+]
+
+
+
 
 ---
 # One Sample T-Test
@@ -235,83 +229,91 @@ $$ \sigma_\bar{X} = \frac{\sigma}{\sqrt{n}}$$
 
 * The purpose of a one-sample t-test is to describe the probability of obtaining a particular sample mean through random sampling variability, assuming the population mean = K.
   + e.g. Is our observed sample mean to be expected, assuming it reflects a random sample of the population?
-  
-\center **Null Hypothesis** `\((H_0)\)`: `\(\mu = K\)`, where `\(K\)` is any constant. \center
 
 * Does **not** tests probability of obtaining the sample distribution or data itself, only the sample mean.
-
-* Why is it called a t-test? 
-  + We calculate probabilities from a t-distribution.
   
----
-# T-Distributions
-* In a z-test, the population standard deviation is assumed to be known.
-
-* In practice, we **rarely** know the true population standard deviation due to:
-  + Measurement Error
-  + Population statistics can be in constant flux
-  + Can be unfeasible to measure entire population
-
-* T-Distributions:
-  + Assume that the population standard deviation `\((\sigma)\)` is unknown. 
-  + Resemble Z-distributions as degrees of freedom increase.
-  + The degree of freedom for a t-test is always *n*-1, where *n* is your sample size.
-  
-&lt;img src="continuous_l2_files/figure-html/unnamed-chunk-19-1.png" style="display: block; margin: auto;" /&gt;
+* **Null Hypothesis** `\((H_0)\)`: `\(\mu = K\)`, where `\(K\)` is any constant.
 
 ---
 # One-Sample T-Test
 
 * The t-statistic is calculated like a z-score, but we replace the population standard deviation with the sample standard deviation.
 
-.pull-right[
 $$ t = \frac{\bar{X} - \mu}{\hat{\sigma}/\sqrt{n}} $$
-]
-.pull-left[
-`$$z = \frac{X - \mu}{\sigma}$$`
-]
 
+.pull-left[
 * Distributional spread and proportion of the area under the curve beyond our t-value depends on our degrees of freedom.
 
 * Using a t-test, we can calculate the probability of obtaining a particular sample mean through random sampling.
-
-
-&lt;img src="continuous_l2_files/figure-html/unnamed-chunk-20-.gif" style="display: block; margin: auto;" /&gt;
-
----
-## Applying a T-Test
-Suppose we have data from a sample of 10 countries with a mean life expectancy of 66.87 and standard deviation of 5.82.
-
-If our population mean is thought to be 78.16 `\((H_0: \sigma = 78.16)\)`, what is the probability of obtaining a sample mean of 66.87, **or a more extreme mean value**, due to random sampling variability?
-`$$t(9) = \frac{66.87 - 75.16}{5.82/\sqrt{10}} = -1.24$$`
-.pull-left[
-&lt;img src="continuous_l2_files/figure-html/unnamed-chunk-21-1.png" style="display: block; margin: auto;" /&gt;
-Assuming a population mean of 78.16 and sample size of 10, the proportion of random samples that would demonstrate a sample mean **equal to or lower than 66.87** is 0.12 (i.e., *p* = 0.12).
 ]
 
 .pull-right[
-&lt;img src="continuous_l2_files/figure-html/unnamed-chunk-22-1.png" style="display: block; margin: auto;" /&gt;
-Assuming a population mean of 78.16 and sample size of 10, the proportion of random samples that would demonstrate a sample mean **equal to or more extreme than 66.87** is 0.24 (i.e., *p* = 0.24).
+&lt;img src="continuous_l2_files/figure-html/unnamed-chunk-18-.gif" style="display: block; margin: auto;" /&gt;
+]
+---
+## Applying a t-test
+Suppose we have data from a sample of 10 countries with a mean life expectancy of 66.87 and standard deviation of 5.82.
+
+If our population mean is thought to be 78.16 `\((H_0: \sigma = 78.16)\)`, what is the probability of obtaining a sample mean of 66.87, **or a more extreme mean value**, due to random sampling variability?
+`$$t(9) = \frac{66.87 - 75.16}{5.82/\sqrt{9}} = -1.24$$`
+&lt;img src="continuous_l2_files/figure-html/unnamed-chunk-19-1.png" style="display: block; margin: auto;" /&gt;
+
+---
+# Applying a t-test
+
+Assuming a population mean of 78.16 and sample size of 10...
+
+.pull-left[
+&lt;img src="continuous_l2_files/figure-html/unnamed-chunk-20-1.png" style="display: block; margin: auto;" /&gt;
+
+...the proportion of random samples that would demonstrate a sample mean **equal to or lower than 66.87** is 0.12 (i.e., *p* = 0.12).
+]
+
+.pull-right[
+&lt;img src="continuous_l2_files/figure-html/unnamed-chunk-21-1.png" style="display: block; margin: auto;" /&gt;
+...the proportion of random samples that would demonstrate a sample mean **equal to or more extreme than 66.87** is 0.24 (i.e., *p* = 0.24).
 ]
 
 **Note:** One-tailed tests are rarely warranted and we will always be conducting two-tailed tests.
 
+&gt; If the null hypothesis is true, the probability of obtaining a sample mean equal to or more extreme 66.87 is 0.24. What does this mean for the null hypothesis?
 ---
-# *p*-Values and Alpha Thresholds
+# Alpha Thresholds and *p*-Values
 * Alpha `\((\alpha)\)` represents our Type 1 error rate:
   + Type 1 Error - Rejecting the null hypothesis when it is actually true
   + `\(\alpha = .05\)` means we will mistakenly reject the null hypothesis 5% of the time.
   
 * Alpha is also equal to the maximum p-value necessary to reject the null hypothesis.
   + If `\(\alpha = .05\)` and `\(p &lt; .05\)`, we can reject the null hypothesis.
-  
-* Alpha should be identified **prior to conducting a statistical test**.
 
+* Alpha should be identified **prior to conducting a statistical test**.
+  + Most conventional `\(\alpha\)` values are .05 and .01.
+
+---
+# Alpha Thresholds and t-values
 * Critical t-values `\(t_{\alpha/2}(df)\)` are the thresholds at which our alpha threshold is met.
   + Vary depending on `\(df\)` and `\(\alpha\)`
   
-&lt;img src="continuous_l2_files/figure-html/unnamed-chunk-23-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="continuous_l2_files/figure-html/unnamed-chunk-22-1.png" style="display: block; margin: auto;" /&gt;
+
 With two-tailed tests, the total alpha is "split" across both tails of the distribution `\((\alpha(.05)/2 = .025)\)`.
+
+---
+
+* Assuming we had set our `\(\alpha\)` at .05, let's see if we reject our null hypothesis in our previous example.
+
+.pull-left[
+Our observed t-value did not surpass our critical t-values.
+&lt;img src="continuous_l2_files/figure-html/unnamed-chunk-23-1.png" style="display: block; margin: auto;" /&gt;
+]
+
+.pull-right[
+Our p-value is not less than .05 and does not satisfy our alpha threshold.
+&lt;img src="continuous_l2_files/figure-html/unnamed-chunk-24-1.png" style="display: block; margin: auto;" /&gt;
+]
+
+Assuming a population mean of 78.16 and sample size of 10, the proportion of random samples that would demonstrate a sample mean **equal to or more extreme than 66.87** is 0.24 `\((t = -1.24, p = 0.24)\)`. Because our p-value does not meet our alpha threshold of .05, we **fail to reject the null hypothesis**.
+
 ---
 # Thinking about *p*-values
 
@@ -330,7 +332,7 @@ Which of the following statements is correct, given *p* = .03:
 
 * None of the previous interpretations were correct, yet these are commonly expressed in scientific literature!
 
-* In frequentist statistics, we are accepting or rejecting the null hypothesis, set by a particular alpha value. 
+* In frequentist statistics, we are rejecting or failing to reject the null hypothesis, set by a particular alpha value. 
 
 * P-values are not a gradient and should only reference the alpha threshold and the null hypothesis.
 
@@ -348,7 +350,27 @@ An outcome can be more or less unlikely with a equally weighted die, but the die
 
 ---
 
-  
+
+```
+## # A tibble: 6 x 7
+## # Groups:   x_bin [4]
+##   region       status      year life_expectancy x_bin x_mid     y
+##   &lt;chr&gt;        &lt;chr&gt;      &lt;int&gt;           &lt;dbl&gt; &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt;
+## 1 Senegal      Developing  2015              67     4  67.5     1
+## 2 Sierra Leone Developing  2015              51     1  52.5     1
+## 3 Uzbekistan   Developing  2015              69     4  67.5     2
+## 4 Haiti        Developing  2015              64     3  62.5     1
+## 5 Tunisia      Developing  2015              75     5  72.5     1
+## 6 Cambodia     Developing  2015              69     4  67.5     3
+```
+
+&lt;img src="continuous_l2_files/figure-html/unnamed-chunk-25-1.png" style="display: block; margin: auto;" /&gt;
+
+
+---
+# Two-Sample t-test
+
+
 
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>

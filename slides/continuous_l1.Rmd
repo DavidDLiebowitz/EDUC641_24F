@@ -39,6 +39,12 @@ world <- map_data("world")
 who1<- unique(who$region)
 world1 <- unique(world$region)
 
+ 
+ getmode <- function(v) {
+   uniqv <- unique(v)
+   uniqv[which.max(tabulate(match(v, uniqv)))]
+}
+
 ```
 
 # Agenda
@@ -92,16 +98,13 @@ $$\sum_{i=i}^{n} x_{i}$$
 ## Mean
 * Represents the **average**, or the sum of all observations divided by the number of observations.
 * One of the most common forms of central tendency.
+* Represented by the Greek symbol $\mu$.
 
 > $$\bar{X} = \frac{1}{n}{\sum_{i=i}^{n} X_{i}}$$
  
 > $$mean(71, 73, 76, 78, 79) = \frac{71 + 73 + 76 + 78 + 79}{5} = 75.4$$
 
-```{r}
-mean(who$life_expectancy)
-```
-
-The mean national life expectancy in 2015 is **71.64** years
+The mean national life expectancy in 2015 is **71.64** years.
 ---
 # Central Tendency
 ## Median
@@ -146,21 +149,46 @@ Both 8 and 9 are observed seven times. In this case, the data can be considered 
 In general, the mode is rarely used and is particularly vulnerable to idiosyncratic patterns in the data.
 
 ---
-# Variability
 
-Knowing the central tendency of a distribution doesn't give us enough information.
+# Response Opportunity
+## Comparing Distributions
 
-What if we want to know how much variation there is in life expectancy across nations?
+These distributions have the same central tendency $(\mu = 100)$.
 
-**Measures of Variability:**
-* Range
-* Interquartile Range
-* Variance
-* Standard Deviation
+How are they different?
+
+```{r, echo = F}
+narrow <- tibble(values = rnorm(10000, mean = 100, sd = 1)) %>% 
+  ggplot(aes(values)) +
+  geom_density(adjust = 3) +
+  theme_classic() +
+  geom_vline(xintercept = 100, color = "red")
+
+wide <- tibble(values = rnorm(10000, mean = 100, sd = 10)) %>% 
+  ggplot(aes(values)) +
+  geom_density(adjust = 3) +
+  theme_classic() +
+  geom_vline(xintercept = 100, color = "red")
+
+gridExtra::grid.arrange(narrow, wide, nrow = 1)
+```
 
 ---
 # Variability
-## Range
+
+* Central tendency is only one component of a distribution.
+
+* What if we want to know how much variation there is in life expectancy across nations?
+  + How much does typical observation deviate from the mean?
+
+* **Measures of Variability:**
+  + Range
+  + Interquartile Range
+  + Variance
+  + Standard Deviation
+
+---
+# Range
 
 * Represents the difference between the highest value and lowest value in the dataset.
 * Can provide a rough estimate of spread
@@ -172,8 +200,7 @@ What if we want to know how much variation there is in life expectancy across na
 > $$range(55, 73, 76, 78, 79) = 79 - 55 = 24$$
 
 ---
-# Variability
-## Interquartile Range (IQR)
+# Interquartile Range (IQR)
 * Represents the difference between the 1st quartile (25th percentile) and the 3rd quartile (75th percentile).
 
 * **Percentile** refers to the percentage of observations that fall at or below that score.
@@ -211,14 +238,14 @@ ggplot(who, aes(x = life_expectancy)) +
 ```
 
 ---
-# Variability
-## Variance
+# Variance
 * Represents the **average squared deviation** of each observation from the mean.
 
- $$s^{2} = \frac{\sum_{i=i}^{n} x_{i}}{n}$$
-
-**Why do we square the average deviation?**
-
+$$s^{2} = \frac{\sum_{i=i}^{n} x_{i}}{n}$$
+* Why do we square the deviation?
+  + Here are some national life expectancies centered around the mean. Their value represents their difference relative to the sample mean.
+  + Some observations fall below the mean so their deviation is a negative value. If we took the average of our positive and negative deviations, we'd just get zero!
+  
 ```{r, echo = F}
 who$life_cnt <- round((who$life_expectancy - mean(who$life_expectancy)))
 who$life_type <- ifelse(who$life_cnt < 0, "below", "above")
@@ -239,10 +266,6 @@ labs(subtitle="Mean-centered life expectancy for random subset of nations") +
 
 var_plot
 ```
-* Here are some national life expectancies centered around the mean. Their value represents their difference relative to the sample mean.
-
-* Some observations fall below the mean so their deviation is a negative value. If we took the average of our positive and negative deviations, we'd just get zero!
-
 ---
 # Variance
 Since any number squared is positive, let's try squaring our deviations.
@@ -267,7 +290,7 @@ var_plot_sq
 ```
 Now we can take the average of our squared deviations and get a non-zero value!
 ---
-## Variance
+# Variance
 
 Our variance (or average squared deviation) is approximately 66.43.
 
@@ -278,8 +301,7 @@ var_plot_sq +
 
 By itself, a variance of 66.43 is not very meaningful to us. It does not reflect the raw units of our original scale (it represents squared units).
 ---
-# Variability
-## Standard Deviation
+# Standard Deviation
 
 * If we take the square root of our sample variance, we can summarize average deviations back on our raw scale. 
 
@@ -289,15 +311,273 @@ $$ \sqrt{66.43} = 8.15 $$
 
 The standard deviation of life expectancy in 2015 was approximately 8.15 *years*.
 
-Here is our original plot with our standard deviation plotted below and above the mean (i.e., -1 SD, +1 SD).
+---
+# Standard Deviation
 
-```{r}
+Here is our original plot with our <span style="color: red;">standard deviation</span> plotted below and above the mean (i.e., -1 SD, +1 SD).
+
+```{r, echo = F}
 var_plot +
-  geom_vline(xintercept = 8.15, color = "red")
-  geom_vline(xintercept = -8.15, color = "red")
+  geom_hline(yintercept = 8.15, color = "red", linetype = 2) +
+  geom_hline(yintercept = -8.15, color = "red", linetype = 2)
 ```
 
 The standard deviation of life expectancy in 2015 was approximately 8.15 *years*.
+
+---
+# Z-unit Distribution
+
+* A distribution can have any mean and any (positive) standard deviation.
+* A z-distribution is a useful distribution with a mean of 0 $(\mu)$ and a standard deviation $(\sigma)$ of 1.
+
+```{r echo=FALSE}
+ggplot(data.frame(x = c(-4, 4)), aes(x = x)) +
+  stat_function(fun = dnorm) +
+  scale_x_continuous(limits = c(-4, 4),
+                     breaks = c(seq(-4, 4, 1))) +
+  ylim(0, 0.4) +
+  theme_classic() +
+  ggtitle("Z Distribution", subtitle =  "m = 0, sd = 1") +
+  theme(plot.title = element_text(hjust = 0.5),
+        plot.subtitle = element_text(hjust = 0.5))
+```
+
+---
+# Transforming Distributions
+* Any distribution can be transformed into a z distribution using a linear function.
+
+Each observation is transformed into a **z-score** using the following formula:
+$$z = \frac{X - \mu}{\sigma}$$
+
+* A z-score is calculated by **subtracting the mean** from each value and **dividing by the standard deviation**.
+
+* An observations z-score value is equal to its deviation from the mean, as measured in standard deviation units.
+
+---
+# Transforming Distributions
+
+Here is a histogram of our life expectancy data.
+```{r, echo = F}
+hist(who$life_expectancy)
+```
+
+We are going to create a new variable called `life_expectancy_zscore` using the linear function described on the previous slide.
+```{r}
+who$life_expectancy_zscore <- (who$life_expectancy - mean(who$life_expectancy))/sd(who$life_expectancy)
+```
+
+---
+# Transforming Distributions
+
+Let's look at the first few transformed values.
+```{r}
+head(who$life_expectancy_zscore)
+```
+
+```{r}
+## Histogram of the new z-scores
+hist(who$life_expectancy_zscore)
+```
+
+Our new mean is 0.
+Our new standard deviation is 1.
+
+---
+# Distributional Shape
+## Skewness
+* Not all distributions in the real world are symmetrical. Often they have asymmetry or **skewness**.
+* Skewness describes how much a distribution is "bunched up" to the right or left.
+
+```{r, echo = F}
+set.seed(1000)
+ N <- 10000
+ x <- tibble(pos_skew = rbeta(10000, 1.5 ,5),
+                 neg_skew = rbeta(10000, 5, 1.5),
+                 central = rbeta(10000, 5 , 5)) %>% 
+     mutate(across(everything()), round(., digits = 2))
+ 
+pos_skew <- ggplot(x, aes(pos_skew)) +
+  geom_density(adjust = 4) +
+  xlim(0, 1) + 
+  ylim(0, 2.5) +
+  ggtitle("Positive Skew") +
+  theme_classic() +
+  theme(axis.title = element_blank())
+
+neg_skew <- ggplot(x, aes(neg_skew)) +
+  geom_density(adjust = 4) +
+  xlim(0, 1) + 
+  ylim(0, 2.5) +
+  ggtitle("Negative Skew") +
+  theme_classic() +
+  theme(axis.title = element_blank())
+
+normal <- ggplot(x, aes(central)) +
+  geom_density(adjust = 2) +
+  xlim(0, 1) + 
+  ylim(0, 2.5) +
+  ggtitle("No Skew") +
+  theme_classic() +
+  theme(axis.title = element_blank())
+
+gridExtra::grid.arrange(pos_skew, normal, neg_skew, nrow = 1)
+```
+
+* Positive Skew - Distribution is skewed to the left with a "positive-pointing finger."
+* Negative Skew - Distribution is skewed to the right with a "negative-pointing finger."
+
+---
+# Distributional Shape
+## Kurtosis
+
+* Kurtosis describes how much the values concentrate around the center.
+ + Leptokurtic distributions have more values around the center and have a "taller" peak.
+ + Platykurtic distributions do not have a prominent peak and have a flatter top.
+ 
+```{r, echo = F}
+# Fleischmann coeffiecients to generate a distribution with kurtosis = 4
+a <- 0
+b <- 0.7373813
+c <- 0
+d <- 0.08092509
+
+# Fleischmann coeffiecients to generate a distribution with kurtosis = -1
+e <- 0
+f <- 1.221009
+g <- 0
+h <- -0.08015816
+
+k <- tibble(central = rnorm(10000, 0, 1)) %>% 
+  mutate(lepto = a + b*central + c*(central^2) + d*(central^3),
+         platy = e + f*central + g*(central^2) + h*(central^3))
+         
+
+platy <- ggplot(k, aes(platy)) +
+  geom_density(adjust = 4) +
+  xlim(-3, 3) +
+  ylim(0, .5) +
+  theme_classic() +
+  theme(axis.title = element_blank()) +
+  ggtitle("Platykurtic")
+
+lepto <- ggplot(k, aes(lepto)) +
+  geom_density(adjust = 4) +
+  xlim(-3, 3) +
+  ylim(0, .5) +
+  theme_classic() +
+  theme(axis.title = element_blank()) +
+  ggtitle("Leptokurtic")
+
+central <- ggplot(k, aes(central)) +
+  geom_density(adjust = 4) +
+  xlim(-3, 3) +
+  ylim(0, .5) +
+  theme_classic() +
+  theme(axis.title = element_blank()) +
+  ggtitle("Mesokurtic (No Kurtosis)")
+
+
+gridExtra::grid.arrange(platy, central, lepto, nrow = 1)
+
+```
+---
+# Evaluating Skewness and Kurtosis
+
+* Skewness and kurtosis can be evaluated visually and summarized quantitatively.
+
+  + Positive skew (skewed to the left) ----> Skewness > 0
+  + Negative skew (skewed to the right) ----> Skewness > 0
+
+  + Leptokurtic ----> Kurtosis > 0
+  + Platykurtic ----> Kurtosis < 0
+  
+---
+# Summarizing Data
+## Applied Example
+
+* Here is a density plot of the WHO life expectancy data for 2015. 
+* How would you characterize the distribution?
+
+```{r, echo = F}
+ggplot(who, aes(life_expectancy)) +
+  geom_density() +
+  theme_minimal()
+```
+
+* Is there severe skew?
+* Is there severe kurtosis?
+
+---
+# Summarizing Data
+## Applied Example
+
+The distribution of life expectancy has a slightly negative skew.
+```{r, echo = F}
+ggplot(who, aes(life_expectancy)) +
+  geom_density() +
+  geom_vline(xintercept = mean(who$life_expectancy), color = "red") +
+  geom_vline(xintercept = median(who$life_expectancy), color = "blue") +
+  theme_minimal()
+```
+
+```{r}
+psych::describe(who$life_expectancy) %>% 
+  select(n, mean)
+```
+
+The <span style="color: red;">mean</span> national life expectancy in 2015 was **71.62** years.
+
+The <span style="color: blue;">median</span> national life expectancy in 2015 was **74** years.
+
+* The median appears to better capture the "center" of our distribution.
+
+---
+
+
+### Applied Coding
+```{r}
+# Outputs the min and max
+range(who$life_expectancy)
+```
+
+```{r}
+max(who$life_expectancy) - min(who$life_expectancy)
+
+```
+
+National average life expectancies in 2015 **ranged from 51 to 88**, for a total difference of **37 years**.
+
+
+
+---
+##### Fodder
+
+---
+# Central Tendency and Asymmetry 
+
+* <span style="color: red;">Mean</span>
+* <span style="color: blue;">Median</span>
+* <span style="color: purple;">Mode</span>
+
+```{r, echo = F}
+pos_vlines <- pos_skew + 
+  geom_vline(xintercept = mean(x$pos_skew), color = "red") +
+  geom_vline(xintercept = median(x$pos_skew), color = "blue") +
+  geom_vline(xintercept = getmode(x$pos_skew), color = "purple")
+
+neg_vlines <- neg_skew + 
+  geom_vline(xintercept = mean(x$neg_skew), color = "red") +
+  geom_vline(xintercept = median(x$neg_skew), color = "blue") +
+  geom_vline(xintercept = getmode(x$neg_skew), color = "purple")
+
+normal_vlines <- normal +
+  geom_vline(xintercept = mean(x$central), color = "red") +
+  geom_vline(xintercept = median(x$central), color = "blue") +
+  geom_vline(xintercept = getmode(x$central), color = "purple")
+
+gridExtra::grid.arrange(pos_vlines, normal_vlines, neg_vlines, nrow = 1)
+
+```
 
 ---
 # Variability
@@ -347,214 +627,3 @@ ggplot(x, aes(neg_skew)) +
   geom_density()
 
 ```
----
-
-# Distributional Shape
-## Skew
-* In a normal distribution, the <span style="color: red;">mean</span>, <span style="color: blue;">median</span>, and <span style="color: purple;">mode</span>, will provide similar estimates of central tendency.
-
-```{r, echo = F}
-set.seed(1000)
- N <- 10000
- x <- data_frame(pos_skew = rbeta(10000, 1.5 ,5),
-                 neg_skew = rbeta(10000, 5, 1.5),
-                 central = rbeta(10000, 5 ,5)) %>% 
-     mutate(across(everything()), round(., digits = 2))
- 
- getmode <- function(v) {
-   uniqv <- unique(v)
-   uniqv[which.max(tabulate(match(v, uniqv)))]
-}
-
-```
-
-* *But*, no distribution in the real world is perfectly normal and data can often have asymmetry or **skewness**.
-
-```{r, echo = F}
-pos_skew <- ggplot(x, aes(pos_skew)) +
-  geom_density(adjust = 4) +
-  xlim(0, 1) + 
-  ylim(0, 2.5) +
-  ggtitle("Positive Skew") +
-  theme_classic() +
-  theme(axis.title = element_blank())
-
-neg_skew <- ggplot(x, aes(neg_skew)) +
-  geom_density(adjust = 4) +
-  xlim(0, 1) + 
-  ylim(0, 2.5) +
-  ggtitle("Negative Skew") +
-  theme_classic() +
-  theme(axis.title = element_blank())
-
-normal <- ggplot(x, aes(central)) +
-  geom_density(adjust = 2) +
-  xlim(0, 1) + 
-  ylim(0, 2.5) +
-  ggtitle("Normal Distribution") +
-  theme_classic() +
-  theme(axis.title = element_blank())
-
-gridExtra::grid.arrange(pos_skew, normal, neg_skew, nrow = 1)
-
-```
-
----
-# Distributional Shape
-## Kurtosis
-```{r, echo = F}
-# Fleischmann coeffiecients to generate a distribution with kurtosis = 4
-a <- 0
-b <- 0.7373813
-c <- 0
-d <- 0.08092509
-
-# Fleischmann coeffiecients to generate a distribution with kurtosis = -1
-e <- 0
-f <- 1.221009
-g <- 0
-h <- -0.08015816
-
-k <- data_frame(central = rnorm(10000, 0, 1)) %>% 
-  mutate(lepto = a + b*central + c*(central^2) + d*(central^3),
-         platy = e + f*central + g*(central^2) + h*(central^3))
-         
-
-platy <- ggplot(k, aes(platy)) +
-  geom_density(adjust = 4) +
-  xlim(-3, 3) +
-  ylim(0, .5) +
-  theme_classic() +
-  theme(axis.title = element_blank()) +
-  ggtitle("Platykurtic")
-
-lepto <- ggplot(k, aes(lepto)) +
-  geom_density(adjust = 4) +
-  xlim(-3, 3) +
-  ylim(0, .5) +
-  theme_classic() +
-  theme(axis.title = element_blank()) +
-  ggtitle("Leptokurtic")
-
-central <- ggplot(k, aes(central)) +
-  geom_density(adjust = 4) +
-  xlim(-3, 3) +
-  ylim(0, .5) +
-  theme_classic() +
-  theme(axis.title = element_blank()) +
-  ggtitle("Mesokurtic (No Kurtosis)")
-
-
-gridExtra::grid.arrange(platy, central, lepto, nrow = 1)
-
-```
-
-
----
-# Central Tendency and Asymmetry 
-
-* <span style="color: red;">Mean</span>
-* <span style="color: blue;">Median</span>
-* <span style="color: purple;">Mode</span>
-
-```{r, echo = F}
-
-pos_vlines <- pos_skew + 
-  geom_vline(xintercept = mean(x$pos_skew), color = "red") +
-  geom_vline(xintercept = median(x$pos_skew), color = "blue") +
-  geom_vline(xintercept = getmode(x$pos_skew), color = "purple")
-
-neg_vlines <- neg_skew + 
-  geom_vline(xintercept = mean(x$neg_skew), color = "red") +
-  geom_vline(xintercept = median(x$neg_skew), color = "blue") +
-  geom_vline(xintercept = getmode(x$neg_skew), color = "purple")
-
-normal_vlines <- normal +
-  geom_vline(xintercept = mean(x$central), color = "red") +
-  geom_vline(xintercept = median(x$central), color = "blue") +
-  geom_vline(xintercept = getmode(x$central), color = "purple")
-
-gridExtra::grid.arrange(pos_vlines, normal_vlines, neg_vlines, nrow = 1)
-
-```
-
----
-# Summarizing Data
-## Applied Example
-
-* Here is a density plot of the WHO life expectancy data for 2015. 
-* How would you characterize the distribution?
-
-```{r, echo = F}
-ggplot(who, aes(life_expectancy)) +
-  geom_density() +
-  theme_minimal()
-```
-
-> * Is it approximately normal?
-> * Is there severe skew?
-> * Is there severe kurtosis?
-
-Which measure of central tendency would you be inclined to use?
----
-
-# Summarizing Data
-## Applied Example
-
-The distribution of life expectancy is approximately normal, though with a slightly negative skew.
-```{r, echo = F}
-ggplot(who, aes(life_expectancy)) +
-  geom_density() +
-  geom_vline(xintercept = mean(who$life_expectancy), color = "red") +
-  geom_vline(xintercept = median(who$life_expectancy), color = "blue") +
-  theme_minimal()
-```
-
-The <span style="color: red;">mean</span> national life expectancy in 2015 was **71.62** years.
-
-The <span style="color: blue;">median</span> national life expectancy in 2015 was **74** years.
-
-* The median appears to better capture the "center" of our distribution.
----
-
-# Response Opportunity
-## Comparing Distributions
-
-These distributions are approximately normal and have the same mean (m = 100).
-
-How are they different?
-
-```{r, echo = F}
-
-narrow <- data_frame(values = rnorm(10000, mean = 100, sd = 1)) %>% 
-  ggplot(aes(values)) +
-  geom_density(adjust = 3) +
-  theme_classic() +
-  geom_vline(xintercept = 100, color = "red")
-
-wide <- data_frame(values = rnorm(10000, mean = 100, sd = 10)) %>% 
-  ggplot(aes(values)) +
-  geom_density(adjust = 3) +
-  theme_classic() +
-  geom_vline(xintercept = 100, color = "red")
-
-gridExtra::grid.arrange(narrow, wide, nrow = 1)
-```
-
----
-# Sampling Distributions
-```
-
-
-### Applied Coding
-```{r}
-# Outputs the min and max
-range(who$life_expectancy)
-```
-
-```{r}
-max(who$life_expectancy) - min(who$life_expectancy)
-
-```
-
-National average life expectancies in 2015 **ranged from 51 to 88**, for a total difference of **37 years**.
