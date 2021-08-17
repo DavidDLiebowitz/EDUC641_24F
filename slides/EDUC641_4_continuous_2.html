@@ -4,7 +4,7 @@
     <title>Examining the relationship between continuous variables</title>
     <meta charset="utf-8" />
     <meta name="author" content="TBD" />
-    <script src="EDUC641_4_continuous_2_files/header-attrs-2.9/header-attrs.js"></script>
+    <script src="EDUC641_4_continuous_2_files/header-attrs-2.10/header-attrs.js"></script>
     <link href="EDUC641_4_continuous_2_files/remark-css-0.0.1/default.css" rel="stylesheet" />
     <link rel="stylesheet" href="new.css" type="text/css" />
   </head>
@@ -23,7 +23,177 @@ class: center, middle, inverse, title-slide
 # Roadmap
 
 &lt;img src="Roadmap_4.png" width="90%" style="display: block; margin: auto;" /&gt;
-                     
+
+                                                       
+---
+# Goals of the unit
+
+- Describe relationships between quantitative data that are continuous
+- Visualize and substantively describe the relationship between two continuous variables 
+- Describe and interpret a fitted bivariate regression line
+- Describe and interpret components of a fitted bivariate linear regression model
+- Visualize and substantively interpret residuals resulting from a bivariate regression model
+- Conduct a statistical inference test of the slope and intercept of a bivariate regression model
+- Write R scripts to conduct these analyses
+
+
+---
+# A reminder of our motivating question
+
+### &lt;span style="color:blue"&gt; Do individuals living in countries with more total years of attendance in school experience, on average, higher life expectancy? &lt;/span&gt;
+
+#### In other words, we are asking are whether the variables *SCHOOLING* and *LIFE_EXPECTANCY* are related.
+
+---
+# Materials
+
+### 1. Death penalty data (in file called life_expectancy.csv)
+### 2. Codebook describing the contents of said data
+### 3. R script available ...
+
+---
+class: middle, inverse
+# Bivariate relationships between continuous variables
+
+
+---
+# Recall life expectancy distr.
+
+```
+#&gt; 
+#&gt;   The decimal point is at the |
+#&gt; 
+#&gt;   50 | 0
+#&gt;   52 | 0000
+#&gt;   54 | 000
+#&gt;   56 | 00
+#&gt;   58 | 0000000
+#&gt;   60 | 0000000
+#&gt;   62 | 000000000
+#&gt;   64 | 000000000
+#&gt;   66 | 00000000000000
+#&gt;   68 | 000000000000
+#&gt;   70 | 0000000
+#&gt;   72 | 000000000000
+#&gt;   74 | 00000000000000000000000000000
+#&gt;   76 | 0000000000000000000000000
+#&gt;   78 | 000000000000
+#&gt;   80 | 00000000
+#&gt;   82 | 00000000000000000
+#&gt;   84 | 000
+#&gt;   86 | 0
+#&gt;   88 | 0
+```
+
+---
+# Another way
+&lt;img src="EDUC641_4_continuous_2_files/figure-html/unnamed-chunk-3-1.svg" style="display: block; margin: auto;" /&gt;
+
+
+---
+# What about schooling?
+
+```
+#&gt; 
+#&gt;   The decimal point is at the |
+#&gt; 
+#&gt;    4 | 9
+#&gt;    5 | 04
+#&gt;    6 | 3
+#&gt;    7 | 1237
+#&gt;    8 | 144589
+#&gt;    9 | 00111225569
+#&gt;   10 | 00011233346777888889
+#&gt;   11 | 111223444677779
+#&gt;   12 | 0112355566667777788999
+#&gt;   13 | 000111122333334445566789999
+#&gt;   14 | 0012223334455667889
+#&gt;   15 | 0000122333334566899
+#&gt;   16 | 0001333345566
+#&gt;   17 | 0123377
+#&gt;   18 | 16
+#&gt;   19 | 022
+#&gt;   20 | 4
+```
+
+---
+# And differently again
+&lt;img src="EDUC641_4_continuous_2_files/figure-html/unnamed-chunk-5-1.svg" style="display: block; margin: auto;" /&gt;
+
+---
+# Numerical univariate statistics
+
+
+```r
+summary(who$life_expectancy)
+```
+
+```
+#&gt;    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+#&gt;   51.00   66.00   74.00   71.64   77.00   88.00
+```
+
+```r
+summary(who$schooling)
+```
+
+```
+#&gt;    Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's 
+#&gt;    4.90   10.80   13.10   12.93   15.00   20.40      10
+```
+
+&lt;br&gt;
+
+&lt;span style="color:blue"&gt; *Can you interpret the univariate statistics and displays on this and the previous slides?* &lt;/span&gt;
+
+---
+# Visualizing the relationship
+
+&lt;img src="EDUC641_4_continuous_2_files/figure-html/unnamed-chunk-7-1.svg" style="display: block; margin: auto;" /&gt;
+
+--
+
+Horizontal axis (or *x*-axis) labels the value of the "predictor" *SCHOOLING*. Vertical axis (or *y*-axis) labels the value of the "outcome" *LIFE_EXPECTANCY*
+
+&lt;span style="color:blue"&gt; *Can you interpret the bivariate display? What does it (and does it NOT) say about the relationship between schooling and life expectancy?* &lt;/span&gt;
+
+---
+# Visualizing the relationship
+
+&lt;img src="EDUC641_4_continuous_2_files/figure-html/unnamed-chunk-8-1.svg" style="display: block; margin: auto;" /&gt;
+
+--
+
+&lt;span style="color:blue"&gt; *Can you interpret what this display says about the country of Chile?* &lt;/span&gt;
+
+---
+# You try...
+
+&lt;img src="EDUC641_4_continuous_2_files/figure-html/unnamed-chunk-9-1.svg" style="display: block; margin: auto;" /&gt;
+
+&lt;span style="color:blue"&gt; *Can you interpret what this display says about the country of Egypt?* &lt;/span&gt;
+
+---
+# What about the relationship?
+&lt;img src="EDUC641_4_continuous_2_files/figure-html/unnamed-chunk-10-1.svg" style="display: block; margin: auto;" /&gt;
+
+&lt;span style="color:blue"&gt; *Is there a relationship between SCHOOLING and LIFE_EXPECTANCY? How do you know?* &lt;/span&gt;
+
+--
+
+&lt;span style="color:blue"&gt; *What kind of line, curve or other construction best summarizes the observed relationship between SCHOOLING and LIFE_EXPECTANCY?* &lt;/span&gt;
+
+---
+class: middle, inverse
+# A gentle introduction to bivariate regression: &lt;br&gt; Ordinary-Least Squares (OLS)-fitted regression lines
+
+
+---
+class: middle, inverse
+
+# A gentle introduction to bivariate regression: &lt;br&gt; Residual analysis
+
+
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
@@ -71,32 +241,6 @@ if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
     deleted = true;
   });
 })();
-(function() {
-  "use strict"
-  // Replace <script> tags in slides area to make them executable
-  var scripts = document.querySelectorAll(
-    '.remark-slides-area .remark-slide-container script'
-  );
-  if (!scripts.length) return;
-  for (var i = 0; i < scripts.length; i++) {
-    var s = document.createElement('script');
-    var code = document.createTextNode(scripts[i].textContent);
-    s.appendChild(code);
-    var scriptAttrs = scripts[i].attributes;
-    for (var j = 0; j < scriptAttrs.length; j++) {
-      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
-    }
-    scripts[i].parentElement.replaceChild(s, scripts[i]);
-  }
-})();
-(function() {
-  var links = document.getElementsByTagName('a');
-  for (var i = 0; i < links.length; i++) {
-    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
-      links[i].target = '_blank';
-    }
-  }
-})();
 // adds .remark-code-has-line-highlighted class to <pre> parent elements
 // of code chunks containing highlighted lines with class .remark-code-line-highlighted
 (function(d) {
@@ -114,6 +258,17 @@ if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
   }
   preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
 })(document);</script>
+
+<script>
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+</script>
 
 <script>
 slideshow._releaseMath = function(el) {
