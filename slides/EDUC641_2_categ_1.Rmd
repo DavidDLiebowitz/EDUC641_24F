@@ -126,6 +126,14 @@ df <- read.csv(here("data/deathpenalty.csv"))
 # Understanding data structure
 
 ```{r, echo=T}
+df
+```
+
+---
+# Understanding data structure
+
+```{r, echo=T}
+names(df)
 head(df)
 str(df)
 ```

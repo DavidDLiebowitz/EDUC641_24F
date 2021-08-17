@@ -91,6 +91,34 @@ options(knitr.table.format = "html")
 ]
 
 ---
+# Goals of EDUC sequence
+
+- Develop the basic quantitative skills necessary to be a research scientist
++ Not all the skills you will need (and not the only courses you should take)
++ Foundations of statistics, methods and data science
+
+- Contextualize those skills
++ "Building a toolbox, not a cookbook"
+
+---
+# Kinds of statistics
+
+#### Descriptive and inferential
+#### Exploratory and confirmatory
+- In fact, on a continuum
+
+---
+# Research design and statistics
+
+#### This sequence focuses on statistics, but **research design** is AS (MORE?) important
+#### It can be tempting to use statistics to fix poor research design
+- "You can't fix by analysis what you bungled by design" -Light, Singer & Willett. (1990). *By Design*
+- Make sure you have mastered content from EDUC 612, particularly concepts of 
++ measurement, internal and external validity
+- Strongly encourage you to consider courses in advanced research design (EDUC 646, EDLD 650, EDLD 679)
+
+
+---
 # Types of data
 
 ```{r, out.width = "80%", echo=F}
