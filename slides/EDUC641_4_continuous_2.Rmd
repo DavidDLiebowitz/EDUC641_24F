@@ -148,11 +148,9 @@ ggplot(who, aes(x = schooling, y = life_expectancy)) +
 
 --
 
-Probably easier to see if we have some symbolic way of representing our data
+Probably easier to see if we have some symbolic way of representing our data...
 
--- 
 
-... in this case a point!
 
 ---
 # Visualizing the relationship
@@ -234,21 +232,29 @@ bar <- filter(who, country == "Egypt" | country=="Chile")
 ggplot(bar, aes(x = country, y = schooling)) + geom_col()
 ``` 
 
-<span style="color:red"> *Figures that compare measures of central tendency across groups (e.g., bar charts) should always start at zero (0) so as not to artificially inflate the differences between groups* </span>
+*Figures that compare measures of central tendency across groups (e.g., bar charts) should always start at zero (0) so as not to artificially inflate the differences between groups*
 
 ---
 # An aside about the origin
 
 ```{r, echo = F, fig.height=5.5}
-ggplot(who, aes(x = schooling, y = life_expectancy)) + 
+g1 <- ggplot(who, aes(x = schooling, y = life_expectancy)) + 
   geom_point() + 
   xlim(0, 22) +
   ylab("Life Expectancy (Yrs)") + xlab("Schooling (Yrs)") +
   scale_y_continuous(breaks = seq(0, 90, 10), limits = c(0, 90)) +
   annotate('text', label = "Origin", x = 1, y = 3, color = "red", size =5)
+
+g3 <- ggplot(who, aes(x = schooling, y = life_expectancy)) + 
+  geom_point() + 
+  xlim(0, 22) +
+  ylab("Life Expectancy (Yrs)") + xlab("Schooling (Yrs)") +
+  scale_y_continuous(breaks = seq(50, 90, 10), limits = c(50, 90))
+
+gridExtra::grid.arrange(g1, g3, ncol=2)
 ```
 
-<span style="color:red"> *Figures that describe relationships between two variables (e.g., scatter plots) can include the origin (0, 0), but this is not necessary. They key concept these charts seek to illustrate is the relationship.* </span>
+*Figures that describe relationships between two variables (e.g., scatter plots) might (or might not) include the origin (0, 0). The key concept these charts illustrate is the relationship. By adjusting the scale and range of each axis, we can make the relationship "look" different. But the strength and magnitude are the same.* More to come in EDUC 643...
 
 ---
 class: middle, inverse
@@ -296,7 +302,7 @@ fit <- lm(life_expectancy ~ schooling, data=who)
 summary(fit)
 ```
 ---
-# The Fitted Equation
+# The fitted equation
 ```{r, echo=F, fig.height=4}
 fit <- lm(life_expectancy ~ schooling, data=who)
 summary(fit)
@@ -533,11 +539,13 @@ $$
 & = 79.20
 \end{align}
 $$
-# An example: chile
+---
+# An example: Chile
 ```{r, echo=F, fig.height=5}
 resid_c
 ```
-$\hat{LIFE\_EXPECTANCY} = 79.20$
+$\hat{LIFE\_EXPECTANCY} = 79.20$ <br>
+Actual life expectancy = 85
 
 --
 
