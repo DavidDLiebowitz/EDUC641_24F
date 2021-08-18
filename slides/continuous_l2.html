@@ -14,7 +14,7 @@ class: center, middle, inverse, title-slide
 
 # EDUC 641 Continuous Data
 ### Professor Name
-### 16 August, 2021
+### 18 August, 2021
 
 ---
 
@@ -314,63 +314,28 @@ Our p-value is not less than .05 and does not satisfy our alpha threshold.
 
 Assuming a population mean of 78.16 and sample size of 10, the proportion of random samples that would demonstrate a sample mean **equal to or more extreme than 66.87** is 0.24 `\((t = -1.24, p = 0.24)\)`. Because our p-value does not meet our alpha threshold of .05, we **fail to reject the null hypothesis**.
 
----
-# Thinking about *p*-values
-
-Assume that we find that average national life expectancy is significantly greater in high-income countries compared to low-income countries. With an `\(\alpha\)` of .05, the (hypothetical) statistical test returns *p* = .03, meaning we can reject the null hypothesis.
-
-Which of the following statements is correct, given *p* = .03:
-* **A.** There is a 3% probability that high-income countries do not have a higher average life expectancy (the null hypothesis).
-* **B.** There is a 3% probability that the results are due to random chance, rather than the effect of income level.
-* **C.** A statistically significant difference means higher income-levels yield higher life expectancies.
-* **D.** The observed data would only occur 3% of the time if the null hypothesis was true.
-* **E.** Previous research found that in 2005, income-level failed to produce a significant difference in average life expectancy (*p* = .17). Therefore, income-level is more influential on life expectancy in 2015 than in 2005.
-* **F.** Another research group finds a statistically significant difference between countries with socialized medicine compared to those without (*p* = .001). Their smaller *p* value means that socialized medicine is more effective at increasing life expectancy than income level.
-
----
-# Thinking about *p*-values
-
-* None of the previous interpretations were correct, yet these are commonly expressed in scientific literature!
-
-* In frequentist statistics, we are rejecting or failing to reject the null hypothesis, set by a particular alpha value. 
-
-* P-values are not a gradient and should only reference the alpha threshold and the null hypothesis.
-
----
-# Analogy
-### (Feel free to drop or edit this analogy)
-
-You are given a six-sided die and told it is normally weighted. 
-
-`\(H_0:\)` The die is normally weighted.
-
-If the die is normally weighted, each number should come up with approximately equal frequency across 1000 rolls. Depending on the outcome and its probability under the null hypothesis, you can accept or reject the null hypothesis.
-
-An outcome can be more or less unlikely with a equally weighted die, but the die does not"approach unequal weighting" or is not a "marginally loaded die."
-
----
-
-
-```
-## # A tibble: 6 x 7
-## # Groups:   x_bin [4]
-##   region       status      year life_expectancy x_bin x_mid     y
-##   &lt;chr&gt;        &lt;chr&gt;      &lt;int&gt;           &lt;dbl&gt; &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt;
-## 1 Senegal      Developing  2015              67     4  67.5     1
-## 2 Sierra Leone Developing  2015              51     1  52.5     1
-## 3 Uzbekistan   Developing  2015              69     4  67.5     2
-## 4 Haiti        Developing  2015              64     3  62.5     1
-## 5 Tunisia      Developing  2015              75     5  72.5     1
-## 6 Cambodia     Developing  2015              69     4  67.5     3
-```
-
-&lt;img src="continuous_l2_files/figure-html/unnamed-chunk-25-1.png" style="display: block; margin: auto;" /&gt;
 
 
 ---
 # Two-Sample t-test
 
 
+```
+## # A tibble: 6 x 7
+## # Groups:   x_bin [3]
+##   region      status      year life_expectancy x_bin x_mid     y
+##   &lt;chr&gt;       &lt;chr&gt;      &lt;int&gt;           &lt;dbl&gt; &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt;
+## 1 Myanmar     Developing  2015              67     4  67.5     1
+## 2 Sudan       Developing  2015              64     3  62.5     1
+## 3 Philippines Developing  2015              68     4  67.5     2
+## 4 Liberia     Developing  2015              61     3  62.5     2
+## 5 Thailand    Developing  2015              75     5  72.5     1
+## 6 Ghana       Developing  2015              62     3  62.5     3
+```
+
+&lt;img src="continuous_l2_files/figure-html/unnamed-chunk-25-1.png" style="display: block; margin: auto;" /&gt;
+
+````
 
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>

@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Null Hypothesis Significance Testing critiques</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="TBD" />
+    <script src="EDUC641_4_continuous_3_files/header-attrs-2.9/header-attrs.js"></script>
+    <link href="EDUC641_4_continuous_3_files/remark-css-0.0.1/default.css" rel="stylesheet" />
+    <link rel="stylesheet" href="new.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# Null Hypothesis Significance Testing critiques
+## EDUC 641: Week XX
+### TBD
+
+---
+
+
+
+
+
+---
+# Critiques of NHST
+
+### 1. Re-thinking concepts of "statistical significance"
+### 2. A different way of thinking about probability (Bayesian)
+
+---
+# Problems w/ "significance"
+
+An explosion of [academic](https://www.tandfonline.com/toc/utas20/73/sup1?nav=tocList) and [popular press](https://www.nytimes.com/2015/08/28/science/many-social-science-findings-not-as-strong-as-claimed-study-says.html) attention to the "replication crisis" emerged in the early 2010s. 
+
+Aside from outright manufactured data, some problems include:
+- *p*&lt;0.05 as a condition for publication and a goal for researchers
+ + `\(\rightarrow\)` Publication bias: "successes" are published; "failures" end up in file drawers
+
+---
+# More problems
+
+If *p*&lt;0.05 is the goal, there are many ways to get there:
+- If your goal is to find a "statistically significant" result, you will detect one 1 out of 20 times (on average)
+- This can be the product of intentional "*p*-hacking" or "researcher degrees of freedom" (explore your data, test many different models, try this variable, etc.)
+
+Novelty as a condition for publication in top-tier journals
+ + If something is "unexpected" or "surprising" there's a decent chance it might not be true
+ 
+- Weak theory: 
+ + Low-precision "differences" between groups, with little interest in quantifying the differences
+ + No non-null hypotheses
+ + No prior belief about likelihood of findings
+ + Hypothesis After the Results are Known (HARK-ing)
+
+---
+# NHST and the trap of `\(p&lt;.05\)`
+
+Assume that we find that average national life expectancy is significantly greater in high-income countries compared to low-income countries. With an `\(\alpha\)` of .05, the (hypothetical) statistical test returns *p* = .03, meaning we can reject the null hypothesis.
+
+&lt;span style="color:blue"&gt;*Which of the following statements is correct, given p = .03*:&lt;/span&gt;
+* **A.** There is a 3% probability that high-income countries do not have a higher average life expectancy (the null hypothesis).
+* **B.** There is a 3% probability that the results are due to random chance, rather than the effect of income level.
+* **C.** A statistically significant difference means higher income-levels yield higher life expectancies.
+* **D.** The observed data would only occur 3% of the time if the null hypothesis was true.
+* **E.** Previous research found that in 2005, income-level failed to produce a significant difference in average life expectancy (*p* = .17). Therefore, income-level is more influential on life expectancy in 2015 than in 2005.
+* **F.** Another research group finds a statistically significant difference between countries with socialized medicine compared to those without (*p* = .001). Their smaller *p* value means that socialized medicine is more effective at increasing life expectancy than income level.
+
+---
+# NHST and the trap of *p*-values
+
+&lt;span style="color:red"&gt;None of the previous interpretations were correct, yet these are commonly expressed in scientific literature!&lt;/red&gt;
+
+In frequentist statistics, we establish an objective decision rule: if our observed data has less than a 5 percent chance of occurring (or less than 1% or less than 0.1% or less than 10%) due to sampling idiosyncrasy, we will conclude that the observed relationship in the sample represents a true relationship in the poulation. 
+
+- Once we set a threshold (an `\(\alpha\)`-theshold), we are making a binary decision about significance and non-significance
+
+- Relationships are *NOT* "more" or "less" significant 
+ + In fact, the distribution of p-values on either side of the alpha threshold is assumed to be uniform; thus, it's not correct to describe observed vs. expected probabilities in relationship to each (e.g., a *p*-value of 0.01 is **not** three times less likely than a *p*-value of 0.03). 
+
+
+- Much of this stems back to different ways of thinking about probability
+
+---
+# (Very) brief intro to probability
+
+**Two common ways to think about probability: the long-run view (frequentist) and priors (Bayesian)**
+
+- **Frequentist:**
+- With a known long-run outcome (e.g., a fair coin comes up heads half the time), we can consider the likelihood of a given short-run event
+ + A coin flipped twice will come up Heads both times with a probability of 0.25 (fairly likely); but a coin flipped 20 times will come up Heads every time with a probability of 0.000000095 (very unlikely)
+ + In the short-run, you can expect some variability, but in the long run, it will converge to the known distribution
+
+&lt;img src="EDUC641_4_continuous_3_files/figure-html/unnamed-chunk-1-1.svg" style="display: block; margin: auto;" /&gt;
+
+---
+# Probability and testing `\(H_{0}\)`
+
+We are asking how likely is it that we observe event X happening with Y frequency, if the expected probability of X happening is Z?
+
+&lt;span style="color:blue"&gt; *Imagine you were handed a coin and asked to determine whether it was weighted to one side. How certain would you be after 50 flips?* &lt;/span&gt;
+
+&lt;img src="EDUC641_4_continuous_3_files/figure-html/unnamed-chunk-2-1.svg" style="display: block; margin: auto;" /&gt;
+
+---
+# Probability and testing `\(H_{0}\)`
+
+We are asking how likely is it that we observe event X happening with Y frequency, if the expected probability of X happening is Z?
+
+&lt;span style="color:blue"&gt; *Imagine you were handed a coin and asked to determine whether it was weighted to one side. How certain would you be after 200 flips?* &lt;/span&gt;
+
+&lt;img src="EDUC641_4_continuous_3_files/figure-html/unnamed-chunk-3-1.svg" style="display: block; margin: auto;" /&gt;
+
+---
+# Probability and testing `\(H_{0}\)`
+
+We are asking how likely is it that we observe event X happening with Y frequency, if the expected probability of X happening is Z?
+
+&lt;span style="color:blue"&gt; *Imagine you were handed a coin and asked to determine whether it was weighted to one side. How certain would you be after 2000 flips?* &lt;/span&gt;
+
+&lt;img src="EDUC641_4_continuous_3_files/figure-html/unnamed-chunk-4-1.svg" style="display: block; margin: auto;" /&gt;
+
+
+---
+# Problems with probability
+
+In frequentist statistics, we assume that the null hypothesis has as good a chance as any other hypothesis at being true, and we then test how likely we are to observe the data as we see them when the null is actually true...**but is this the right framework???**
+
+How believable are the following findings?
+- People who wear glasses are more likely to be empathetic `\((p = 0.023)\)`
+- Medical doctors have fewer close relationships than those in other professions `\((p = 0.007)\)`
+- People who engage in [power posing](https://www.nytimes.com/2017/10/18/magazine/when-the-revolution-came-for-amy-cuddy.html) experience increased testosterone `\((p = 0.045)\)` (*a real paper*)
+
+
+--
+
+Perhaps it is wiser to start with a *prior* belief about the probability of an event?
+
+---
+# Bayesian statistics
+
+In contrast to frequentist approaches, Bayesian probability takes into account one's prior beliefs in determining the probability of an event
+- Key insight: adjust current beliefs based on previous knowledge/beliefs
+ + Adjust prior belief towards evidence in observed data
+- Prior beliefs could come from theory, research or personal belief
+
+#### Bayes Theorem (don't need to know this):
+
+$$
+\large P(A|B) = \frac{P(B|A)\cdot P(A)}{P(B)}
+$$
+---
+# Bayesian Example
+I have a theory that Oregonians are (generally) outdoors-y. I meet an outdoors-y person. What is the probability I have met an Oregonian?
+
+`\(P(Oregonian) = 0.02\)` (to make it simple 1 of 50 U.S. states) &lt;br&gt;
+`\(P(Outdoorsy | Oregonian) = 0.65\)` &lt;br&gt;
+`\(P(Outdoorsy) = 0.20\)`
+
+$$
+\large P(Oregonian | Outdoorsy) = \frac{(0.65)(0.02)}{0.20} = 0.065
+$$
+--
+
+Not surprisingly, I've updated my beliefs and now think there is a greater-than-base-rate likelihood (over 3x) that this person is an Oregonian. But it also tells me not to be too excited and claim the probability is 0.65 that I've met an Oregonian just because they are outdoors-y.
+
+--
+
+- Inferential statisticians make statements like, "the chance we would observe differences between the treatment and control as large as the ones we did when there was actually no effect is less than 5%"
+- Bayesian statisticians make statements like, "the chance that the treatment is more effective than the control is 92%"
+
+--
+
+&lt;span style="color:red"&gt; *Much more complexity to be explored in another course*&lt;/red&gt;
+
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

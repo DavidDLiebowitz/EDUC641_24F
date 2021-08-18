@@ -96,7 +96,8 @@ who <- read.csv(here::here("data/life_expectancy.csv")) %>%
  filter(year == 2015) %>%
  select(country, schooling, year, life_expectancy) %>% 
  mutate(life_expectancy = round(life_expectancy, digits = 0))
-
+who <- filter(who, !is.na(schooling))
+who <- filter(who, !is.na(life_expectancy))
 
 stem(who$life_expectancy)
 ```
@@ -138,12 +139,29 @@ summary(who$schooling)
 # Visualizing the relationship
 
 ```{r, echo = F, fig.height=5.5}
+ggplot(who, aes(x = schooling, y = life_expectancy)) + 
+  geom_label(aes(label=country)) + 
+  xlim(0, 22) +
+  ylab("Life Expectancy (Yrs)") + xlab("Schooling (Yrs)") +
+  scale_y_continuous(breaks = seq(40, 90, 10), limits = c(40, 90))
+```
 
+--
+
+Probably easier to see if we have some symbolic way of representing our data
+
+-- 
+
+... in this case a point!
+
+---
+# Visualizing the relationship
+```{r, echo=F, fig.height=5.5}
 biv <- ggplot(who, aes(x = schooling, y = life_expectancy)) + 
   geom_point() + 
   xlim(0, 22) +
   ylab("Life Expectancy (Yrs)") + xlab("Schooling (Yrs)") +
-  scale_y_continuous(breaks = seq(35, 90, 10), limits = c(35, 90))
+  scale_y_continuous(breaks = seq(40, 90, 10), limits = c(40, 90))
 
 biv
 
@@ -168,7 +186,7 @@ biv_c <- biv +
   geom_vline(xintercept = 16.3, color = "red", linetype = "dashed", size = 0.75) +
   geom_hline(yintercept = 85, color = "red", linetype = "dashed" , size = 0.75) +
   annotate('text', label = "Chile", x = 15.5, y = 87, color = "red", size = 6) +
-  annotate('text', label = "16.3", color = "red", x = 16.9, y = 35, size = 5) +
+  annotate('text', label = "16.3", color = "red", x = 16.9, y = 40, size = 5) +
   annotate('text', label = "85", color = "red", x = 0, y = 87, size =5) 
 
 
@@ -209,13 +227,446 @@ biv
 <span style="color:blue"> *What kind of line, curve or other construction best summarizes the observed relationship between SCHOOLING and LIFE_EXPECTANCY?* </span>
 
 ---
+# An aside about the origin
+```{r, echo = F, fig.height=5.5}
+bar <- filter(who, country == "Egypt" | country=="Chile")
+
+ggplot(bar, aes(x = country, y = schooling)) + geom_col()
+``` 
+
+<span style="color:red"> *Figures that compare measures of central tendency across groups (e.g., bar charts) should always start at zero (0) so as not to artificially inflate the differences between groups* </span>
+
+---
+# An aside about the origin
+
+```{r, echo = F, fig.height=5.5}
+ggplot(who, aes(x = schooling, y = life_expectancy)) + 
+  geom_point() + 
+  xlim(0, 22) +
+  ylab("Life Expectancy (Yrs)") + xlab("Schooling (Yrs)") +
+  scale_y_continuous(breaks = seq(0, 90, 10), limits = c(0, 90)) +
+  annotate('text', label = "Origin", x = 1, y = 3, color = "red", size =5)
+```
+
+<span style="color:red"> *Figures that describe relationships between two variables (e.g., scatter plots) can include the origin (0, 0), but this is not necessary. They key concept these charts seek to illustrate is the relationship.* </span>
+
+---
 class: middle, inverse
 # A gentle introduction to bivariate regression: <br> Ordinary-Least Squares (OLS)-fitted regression lines
 
+---
+# OLS-fitted regression line
+```{r, echo = F, fig.height=5.5}
+biv + geom_smooth(method = lm, se = F)
+```
 
+<span style="color:red"> *The fitted regression line tells us the best prediction for the values of LIFE_EXPECTANCY.* </span>
+
+---
+# Some intuition
+```{r, echo = F, fig.height=5.5}
+fit <- lm(life_expectancy ~ schooling, data=who)
+who$predict <- predict(fit)
+ggplot(who, aes(x = schooling, y = life_expectancy)) + 
+  geom_point() + 
+  geom_point(aes(y=predict), col = "blue", alpha=0.3) +
+  geom_segment(aes(xend = schooling, yend=predict), col = "green", alpha = 0.3) +
+  geom_smooth(method = lm, se = F) +
+  xlim(0, 22) +
+  ylab("Life Expectancy (Yrs)") + xlab("Schooling (Yrs)") +
+  scale_y_continuous(breaks = seq(40, 90, 10), limits = c(40, 90))
+```
+
+--
+
+Can think of the OLS-fitted regression line as a stick held in place by thumbtacks and elastic bands from each of the data points
+
+---
+# A visualization
+```{r, echo =F, asis=T}
+include_app(here::here("line_SS/app.R"))
+## focus only on residuals not SSEs
+
+```
+
+---
+# Implementing in R
+```{r, echo=T}
+fit <- lm(life_expectancy ~ schooling, data=who)
+summary(fit)
+```
+---
+# The Fitted Equation
+```{r, echo=F, fig.height=4}
+fit <- lm(life_expectancy ~ schooling, data=who)
+summary(fit)
+```
+
+These "coefficients" tell you where the fitted trend line should be drawn:
+$$
+\small{
+\left[ \textrm{Predicted value of } LIFE\_EXPECTANCY\right]  = 
+\left( 42.85 \right) + 2.23 * \left[ \textrm{Observed value of }SCHOOLING  \right] 
+}
+$$
+---
+# Fitted values
+
+Can substitute values for the "predictor" $(SCHOOLING)$ into the fitted equation to compute the *predicted* values of $LIFE\_EXPECTANCY$. 
+```{r, echo = F, fig.height=5.5}
+fit_c <- lm(life_expectancy ~ schooling, data=who)
+who$predict_c <- predict(fit_c)
+who_chile <- filter(who, country=="Chile")
+
+ggplot(who, aes(x = schooling, y = life_expectancy)) + 
+  geom_point() + 
+  geom_point(aes(y=predict), data=who_chile, col = "red", alpha=0.3) +
+  geom_point(data = who_chile, aes(x=schooling, y = life_expectancy),
+                    color = 'red',
+                    size = 2) +
+  geom_segment(aes(xend = schooling, yend=predict), col = "red", alpha = 0.3, data= who_chile) +
+  annotate('text', label = "Chile", x = 15.5, y = 87, color = "red", size = 5) +
+  xlim(0, 22) +
+  ylab("Life Expectancy (Yrs)") + xlab("Schooling (Yrs)") +
+  scale_y_continuous(breaks = seq(40, 90, 10), limits = c(40, 90))
+```
+
+--
+
+Can do this for our old friend Chile ... and all others...
+
+---
+# Fitted values
+
+So we can re-construct the line of best fit from the fitted values:
+
+```{r, echo = F, fig.height = 5.5}
+fit_val <- ggplot(who, aes(x = schooling, y = life_expectancy)) + 
+  geom_point() + 
+  geom_point(aes(y=predict), col = "red", alpha=0.3) +
+  xlim(0, 22) +
+  ylab("Life Expectancy (Yrs)") + xlab("Schooling (Yrs)") +
+  scale_y_continuous(breaks = seq(40, 90, 10), limits = c(40, 90))
+fit_val
+```
+
+---
+# Fitted values
+
+Note that the fitted line always goes through the average of the predictors
+```{r, echo=T}
+mean(who$schooling)
+mean(who$life_expectancy)
+```
+
+---
+# Fitted values
+
+Note that the fitted line always goes through the average of the predictors
+```{r, echo = F, fig.height = 5.5}
+fit_val +
+  geom_vline(xintercept = 12.93, col = "red", linetype="dashed") +
+  geom_hline(yintercept = 71.74, col = "red", linetype= "dashed") +
+  annotate('text', label = "(12.93,", x = 13.7, y = 68.5, color = "red", size = 4) +
+  annotate('text', label = "71.74)", x = 13.7, y = 65.5, color = "red", size =4)
+```
+---
+# The regression equation
+
+Each term in the regression equation has a specific interpretation
+
+$$
+\hat{LIFE\_EXPECTANCY} = 42.85 + 2.23 * \left( SCHOOLING \right)
+$$
+
+---
+# The regression equation
+
+Each term in the regression equation has a specific interpretation:
+
+$$
+\color{red}{\hat{LIFE\_EXPECTANCY}} = 42.85 + 2.23 * \left( SCHOOLING \right)
+$$
+
+The predicted value of $\color{red}{\hat{LIFE\_EXPECTANCY}}$ is based on the OLS regression fit. Its "hat" represents that it is a prediction.
+
+---
+# The regression equation
+
+Each term in the regression equation has a specific interpretation:
+
+$$
+\hat{LIFE\_EXPECTANCY} = \color{red}{42.85} + 2.23 * \left( SCHOOLING \right)
+$$
+
+42.85 represents the <span style="color:red"> *estimated intercept*</span>. It tells you the predicted value of $LIFE\_EXPECTANCY$ when $SCHOOLING$ is zero (0)
+
+- <span style="color:blue">*In this context, it doesn't make sense to interpret this. Why?* </span>
+
+---
+# The regression equation
+
+Each term in the regression equation has a specific interpretation:
+
+$$
+\hat{LIFE\_EXPECTANCY} = 42.85 + \color{red}{2.23} * \left( SCHOOLING \right)
+$$
+
+--
+
+2.23 represents the <span style="color:red"> *estimated slope*</span>. It summarizes the relationship between $LIFE\_EXPECTANCY$ and $SCHOOLING$. It tells you the difference in the predicted values of $LIFE\_EXPECTANCY$ *per unit difference* in  $SCHOOLING$.
+
+--
+
+Slopes can be positive (as in this case) or negative. Here, we conclude that countries that experience one additional year of schooling have an average life expectancy of 2.23 more years.
+
+
+---
+# The regression equation
+
+Each term in the regression equation has a specific interpretation:
+
+$$
+\hat{LIFE\_EXPECTANCY} = 42.85 + 2.23 * \left( \color{red}{SCHOOLING} \right)
+$$
+
+--
+
+$\color{red}{SCHOOLING}$ represents the <span style="color:red"> *actual values*</span> of the predictor $SCHOOLING$.
+
+---
+# Regression inference
+
+As with our categorical and single-variable continuous data analysis, we can ask whether we might have observed a relationship between $LIFE\_EXPECTANCY$ and $SCHOOLING$ by an idiosyncratic accident of sampling.
+
+--
+
+Could we have gotten a slope value of 2.23 by sampling from a population in which there was **no relationship** between $LIFE\_EXPECTANCY$ and $SCHOOLING$?
+
+- In other words, by sampling from a *null population* in which the slope was zero?
+
+---
+# Regression inference
+
+Could we have gotten a slope value of 2.23 by sampling from a population in which there was **no relationship** between $LIFE\_EXPECTANCY$ and $SCHOOLING$?
+
+```{r, echo=F}
+summary(fit)
+```
+
+--
+
+As with our previous analysis, R provides us with a *p*-value which can help us to judge the likelihood that our results are driven by idiosyncrasies of sampling
+
+---
+# Regression inference
+
+```{r, echo=F}
+summary(fit)
+```
+
+Here, the *p*-value for the $\frac{LIFE\_EXPECTANCY}{SCHOOLING}$ regression slope is $<0.0001$ (in fact, $<2^{-16}$). 
+
+With an alpha-threshold of 0.05, $2^{-16}$ is definitely less than 0.05. Thus, we reject the null hypothesis that there is no relationship  between $LIFE\_EXPECTANCY$ and $SCHOOLING$, on average in the population.
+
+---
+# Writing it up
+.pull-left[
+```{r, echo=F}
+ggplot(who, aes(x = schooling, y = life_expectancy)) + 
+  geom_point() + 
+  geom_smooth(method = lm, se = F) +
+  xlim(0, 22) +
+  ylab("Life Expectancy (Yrs)") + xlab("Schooling (Yrs)") +
+  scale_y_continuous(breaks = seq(40, 90, 10), limits = c(40, 90))
+```
+]
+
+.pull-right[
+> **The story so far** <br> <font size="2"> In our investigation of country-level aggregate measures of schooling and life expectancy, we have found that the average years of schooling in a country is related to the average life expectancy. In particular, when we relate the country-level life expectancy *LIFE_EXPECTANCY* to the country-level mean years of schooling *SCHOOLING*, we find that the trend-line estimated by ordinary-least-squares regression has a slope of 2.23 (*p*<0.0001). This suggesets that two countries that differ in their average years of schooling attainment by 1 year will have, on average, an difference in life expectancy of 2.23 years. Of course, this relationship is far from causal... </font>
+
+]
 ---
 class: middle, inverse
 
 # A gentle introduction to bivariate regression: <br> Residual analysis
+
+---
+# Residual analysis
+```{r, echo=F, fig.height=5}
+ggplot(who, aes(x = schooling, y = life_expectancy)) + 
+  geom_point() + 
+  geom_point(aes(y=predict), col = "blue", alpha=0.3) +
+  geom_segment(aes(xend = schooling, yend=predict), col = "green", alpha = 0.3) +
+  geom_smooth(method = lm, se = F) +
+  xlim(0, 22) +
+  ylab("Life Expectancy (Yrs)") + xlab("Schooling (Yrs)") +
+  scale_y_continuous(breaks = seq(40, 90, 10), limits = c(40, 90))
+```
+
+Our fitted regression line contains the "predicted" values of *LIFE_EXPECTANCY* for each value of *SCHOOLING*. But almost all of the "actual" values of *LIFE_EXPECTANCY* lie off the actual line regression line.
+
+---
+# An example: Chile
+
+```{r, echo=F, fig.height=5}
+resid_c <- ggplot(who, aes(x = schooling, y = life_expectancy)) + 
+  geom_point() + 
+  geom_smooth(method=lm, se=F, data=who) +
+  geom_point(aes(y=predict), data=who_chile, col = "red", alpha=0.3) +
+  geom_point(data = who_chile, aes(x=schooling, y = life_expectancy),
+                    color = 'red',
+                    size = 2) +
+  geom_segment(aes(xend = schooling, yend=predict), col = "red", alpha = 0.3, data= who_chile) +
+  annotate('text', label = "Chile", x = 15.5, y = 87, color = "red", size = 5) +
+  xlim(0, 22) +
+  ylab("Life Expectancy (Yrs)") + xlab("Schooling (Yrs)") +
+  scale_y_continuous(breaks = seq(40, 90, 10), limits = c(40, 90))
+resid_c
+```
+
+Observed values for Chile: $LIFE\_EXPECTANCY = 85$; $SCHOOLING = 16.3$ <br>
+Predicted value of *LIFE_EXPECTANCY* for Chile:
+$$
+\begin{align}
+\hat{LIFE\_EXPECTANCY} & = 42.85 + 2.23 * (16.3) \\
+& = 79.20
+\end{align}
+$$
+# An example: chile
+```{r, echo=F, fig.height=5}
+resid_c
+```
+$\hat{LIFE\_EXPECTANCY} = 79.20$
+
+--
+
+<span style="color:blue"> *What can we say about the country of Chile's average life expectancy, relative to our prediction?*</span> 
+
+---
+# Now Egypt
+```{r, echo=F, fig.height=5}
+resid_c +
+   geom_point(data = who_egypt, aes(x=schooling, y = life_expectancy),
+                    color = 'blue',
+                    size = 3) +
+   annotate('text', label = "Egypt", x = 12.1, y = 79, color = "blue", size = 5)
+```
+Observed values for Egypt: $LIFE\_EXPECTANCY = 79$; $SCHOOLING = 13.1$ <br>
+
+<span style="color:blue"> Can you calculate the predicted value of *LIFE_EXPECTANCY* for Egypt and compare it to the observed?
+
+---
+# What is a "residual"?
+
+#### The difference ("vertical distance") between the observed value of the outcome its predicted value is called the *residual*.
+
+#### Residuals can be substantively and statistically useful:
+- Represent individual deviations from average trend
+- Tell us about values of the outcome after taking into account ("adjusting for") the predictor
+ + In this case, tell us whether countries have better or worse life expectancies, given their average years of schooling
+ 
+---
+# Residual analysis
+
+```{r, echo=T}
+fit <- lm(life_expectancy ~ schooling, data=who)
+
+# predict asks for the predicted values
+who$predict <- predict(fit)
+
+# resid asks for the raw residual
+who$resid <- residuals(fit)
+```
+
+We can now treat these residual and predicted values as new variables in our dataset and examine using all the other univariate and multivariate analysis tools we have.
+
+---
+# Examining the residuals
+
+```{r, echo=T}
+summary(who$resid)
+```
+
+- Sample mean of the residuals is *always* exactly zero
+- We've done a very poor job of predicting life expectancy for some countries
+
+--
+
+```{r, echo=T}
+sd(who$resid)
+```
+
+- Standard deviation of the raw residuals can be quite useful in checking our assumptions
+ + <span style="color:blue"> *What assumption?* </span>
+ 
+---
+# Residual assumptions
+
+For the *p*-values that we computed in the regression analysis to be correct, the residuals **must be normally distributed**
+
+```{r, echo=T, fig.height=4.5}
+boxplot(resid(fit))
+```
+
+--
+
+A few outliers, but we seem to be doing ok...
+
+---
+# Residual assumptions
+
+For the *p*-values that we computed in the regression analysis to be correct, the residuals **must be normally distributed**
+
+```{r, echo=T, fig.height=4.5}
+ggplot(who, aes(x = resid)) + 
+  geom_histogram(binwidth = 1)
+```
+
+--
+
+Pretty good, pretty good...
+
+
+---
+# Residual vs. fitted plot 
+
+For the *p*-values that we computed in the regression analysis to be correct, the residuals **must be normally distributed**
+```{r, echo=F, fig.height=4.5}
+ggplot(who, aes(x = predict, y = resid)) + 
+         geom_point() +
+  geom_hline(yintercept = 0, color = "red", linetype="dashed") +
+  ylab("Residuals") + xlab("Fitted values") +
+  scale_y_continuous(limits=c(-20, 20))
+```
+
+#### Key assumption checks for normality:
+- The residuals "bounce randomly" around the 0 line. 
+- The residuals could be roughly contained within a rectangle around the 0 line. 
+- No one residual "stands out" from the basic random pattern of residuals.
+
+---
+# Residual vs. fitted plot
+
+For the *p*-values that we computed in the regression analysis to be correct, the residuals **must be normally distributed**
+```{r, echo=F, fig.height=4.5}
+ggplot(who, aes(x = predict, y = resid)) + 
+         geom_point() +
+  geom_hline(yintercept = 0, color = "red", linetype="dashed") +
+  annotate('rect', xmin = 53.8, xmax = 59.5, ymin = -10, ymax = 15, alpha = 0.3, fill = "purple") +
+  ylab("Residuals") + xlab("Fitted values") +
+  scale_y_continuous(limits=c(-20, 20))
+```
+
+#### Key assumption checks for normality:
+- The residuals "bounce randomly" around the 0 line. 
+- The residuals could be roughly contained within a rectangle around the 0 line. 
+- No one residual "stands out" from the basic random pattern of residuals.
+
+
+---
+class: middle, inverse
+# Synthesis and wrap-up
+
 
 
