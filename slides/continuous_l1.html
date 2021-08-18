@@ -6,9 +6,7 @@
     <meta name="author" content="Professor Name" />
     <script src="continuous_l1_files/header-attrs/header-attrs.js"></script>
     <link href="continuous_l1_files/remark-css/default.css" rel="stylesheet" />
-    <link href="continuous_l1_files/remark-css/metropolis.css" rel="stylesheet" />
-    <link href="continuous_l1_files/remark-css/metropolis-fonts.css" rel="stylesheet" />
-    <link rel="stylesheet" href="my-css.css" type="text/css" />
+    <link rel="stylesheet" href="new.css" type="text/css" />
   </head>
   <body>
     <textarea id="source">
@@ -16,7 +14,7 @@ class: center, middle, inverse, title-slide
 
 # EDUC 641 Continuous Data
 ### Professor Name
-### 16 August, 2021
+### 17 August, 2021
 
 ---
 
@@ -38,12 +36,19 @@ Suppose you are working for the World Health Organization and are investigating 
 
 &gt; Using this dataset, we can ask questions like:
 &gt; * How does life expectancy compare in developing vs. developed regions?
-&gt; * What is the relationship between average years of schooling and life expectancy?
+&gt; * Do individuals living in countries with more total years of attendance in school experience, on average, higher life expectancy??
 
 
 **But**, before making comparisons between social/economic conditions, we want to start with describing the full dataset, looking at all 183 nations in the dataset.
 
 **Our Task:** Describe the distribution of regional life expectancy in 2015.
+
+---
+# What is a distribution?
+
+A distribution describes the number of observations of variable that take a particular value.
+
+&lt;img src="continuous_l1_files/figure-html/unnamed-chunk-2-1.png" style="display: block; margin: auto;" /&gt;
 
 ---
 # Describing a Distribution
@@ -141,7 +146,7 @@ These distributions have the same central tendency `\((\mu = 100)\)`.
 
 How are they different?
 
-&lt;img src="continuous_l1_files/figure-html/unnamed-chunk-3-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="continuous_l1_files/figure-html/unnamed-chunk-4-1.png" style="display: block; margin: auto;" /&gt;
 
 ---
 # Variability
@@ -178,30 +183,35 @@ How are they different?
 
 * IQR summarizes the range of "average" scores in the dataset.
 
-&lt;img src="continuous_l1_files/figure-html/unnamed-chunk-4-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="continuous_l1_files/figure-html/unnamed-chunk-5-1.png" style="display: block; margin: auto;" /&gt;
 
 ---
 # Variance
 * Represents the **average squared deviation** of each observation from the mean.
 
 `$$s^{2} = \frac{\sum_{i=i}^{n} x_{i}}{n}$$`
+
 * Why do we square the deviation?
-  + Here are some national life expectancies centered around the mean. Their value represents their difference relative to the sample mean.
-  + Some observations fall below the mean so their deviation is a negative value. If we took the average of our positive and negative deviations, we'd just get zero!
+
+---
+# Variance
+Here are some national life expectancies centered around the mean. Their value represents their difference relative to the sample mean.
   
-&lt;img src="continuous_l1_files/figure-html/unnamed-chunk-5-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="continuous_l1_files/figure-html/unnamed-chunk-6-1.png" style="display: block; margin: auto;" /&gt;
+Some observations fall below the mean so their deviation is a negative value. If we took the average of our positive and negative deviations, we'd just get zero!
+
 ---
 # Variance
 Since any number squared is positive, let's try squaring our deviations.
 
-&lt;img src="continuous_l1_files/figure-html/unnamed-chunk-6-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="continuous_l1_files/figure-html/unnamed-chunk-7-1.png" style="display: block; margin: auto;" /&gt;
 Now we can take the average of our squared deviations and get a non-zero value!
 ---
 # Variance
 
 Our variance (or average squared deviation) is approximately 66.43.
 
-&lt;img src="continuous_l1_files/figure-html/unnamed-chunk-7-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="continuous_l1_files/figure-html/unnamed-chunk-8-1.png" style="display: block; margin: auto;" /&gt;
 
 By itself, a variance of 66.43 is not very meaningful to us. It does not reflect the raw units of our original scale (it represents squared units).
 ---
@@ -220,7 +230,7 @@ The standard deviation of life expectancy in 2015 was approximately 8.15 *years*
 
 Here is our original plot with our &lt;span style="color: red;"&gt;standard deviation&lt;/span&gt; plotted below and above the mean (i.e., -1 SD, +1 SD).
 
-&lt;img src="continuous_l1_files/figure-html/unnamed-chunk-8-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="continuous_l1_files/figure-html/unnamed-chunk-9-1.png" style="display: block; margin: auto;" /&gt;
 
 The standard deviation of life expectancy in 2015 was approximately 8.15 *years*.
 
@@ -230,7 +240,8 @@ The standard deviation of life expectancy in 2015 was approximately 8.15 *years*
 * A distribution can have any mean and any (positive) standard deviation.
 * A z-distribution is a useful distribution with a mean of 0 `\((\mu)\)` and a standard deviation `\((\sigma)\)` of 1.
 
-&lt;img src="continuous_l1_files/figure-html/unnamed-chunk-9-1.png" style="display: block; margin: auto;" /&gt;
+&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
+&lt;img src="continuous_l1_files/figure-html/unnamed-chunk-10-1.png" style="display: block; margin: auto;" /&gt;
 
 ---
 # Transforming Distributions
@@ -241,13 +252,13 @@ Each observation is transformed into a **z-score** using the following formula:
 
 * A z-score is calculated by **subtracting the mean** from each value and **dividing by the standard deviation**.
 
-* An observations z-score value is equal to its deviation from the mean, as measured in standard deviation units.
+* An observation's z-score value is equal to its distance from the mean, in standard deviation units.
 
 ---
 # Transforming Distributions
 
 Here is a histogram of our life expectancy data.
-&lt;img src="continuous_l1_files/figure-html/unnamed-chunk-10-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="continuous_l1_files/figure-html/unnamed-chunk-11-1.png" style="display: block; margin: auto;" /&gt;
 
 We are going to create a new variable called `life_expectancy_zscore` using the linear function described on the previous slide.
 
@@ -274,7 +285,7 @@ head(who$life_expectancy_zscore)
 hist(who$life_expectancy_zscore)
 ```
 
-&lt;img src="continuous_l1_files/figure-html/unnamed-chunk-13-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="continuous_l1_files/figure-html/unnamed-chunk-14-1.png" style="display: block; margin: auto;" /&gt;
 
 Our new mean is 0.
 Our new standard deviation is 1.
@@ -285,7 +296,7 @@ Our new standard deviation is 1.
 * Not all distributions in the real world are symmetrical. Often they have asymmetry or **skewness**.
 * Skewness describes how much a distribution is "bunched up" to the right or left.
 
-&lt;img src="continuous_l1_files/figure-html/unnamed-chunk-14-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="continuous_l1_files/figure-html/unnamed-chunk-15-1.png" style="display: block; margin: auto;" /&gt;
 
 * Positive Skew - Distribution is skewed to the left with a "positive-pointing finger."
 * Negative Skew - Distribution is skewed to the right with a "negative-pointing finger."
@@ -298,7 +309,7 @@ Our new standard deviation is 1.
  + Leptokurtic distributions have more values around the center and have a "taller" peak.
  + Platykurtic distributions do not have a prominent peak and have a flatter top.
  
-&lt;img src="continuous_l1_files/figure-html/unnamed-chunk-15-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="continuous_l1_files/figure-html/unnamed-chunk-16-1.png" style="display: block; margin: auto;" /&gt;
 ---
 # Evaluating Skewness and Kurtosis
 
@@ -317,7 +328,7 @@ Our new standard deviation is 1.
 * Here is a density plot of the WHO life expectancy data for 2015. 
 * How would you characterize the distribution?
 
-&lt;img src="continuous_l1_files/figure-html/unnamed-chunk-16-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="continuous_l1_files/figure-html/unnamed-chunk-17-1.png" style="display: block; margin: auto;" /&gt;
 
 * Is there severe skew?
 * Is there severe kurtosis?
@@ -327,7 +338,7 @@ Our new standard deviation is 1.
 ## Applied Example
 
 The distribution of life expectancy has a slightly negative skew.
-&lt;img src="continuous_l1_files/figure-html/unnamed-chunk-17-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="continuous_l1_files/figure-html/unnamed-chunk-18-1.png" style="display: block; margin: auto;" /&gt;
 
 
 ```r
@@ -383,7 +394,7 @@ National average life expectancies in 2015 **ranged from 51 to 88**, for a total
 * &lt;span style="color: blue;"&gt;Median&lt;/span&gt;
 * &lt;span style="color: purple;"&gt;Mode&lt;/span&gt;
 
-&lt;img src="continuous_l1_files/figure-html/unnamed-chunk-21-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="continuous_l1_files/figure-html/unnamed-chunk-22-1.png" style="display: block; margin: auto;" /&gt;
 
 ---
 # Variability
@@ -401,7 +412,7 @@ ggplot(x, aes(x = pos_skew)) +
   geom_vline(xintercept = mean(x$pos_skew) + sd(x$pos_skew), color = "cornflowerblue")
 ```
 
-&lt;img src="continuous_l1_files/figure-html/unnamed-chunk-22-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="continuous_l1_files/figure-html/unnamed-chunk-23-1.png" style="display: block; margin: auto;" /&gt;
 
 ```r
 ggplot(x, aes(x = neg_skew)) +
@@ -411,7 +422,7 @@ ggplot(x, aes(x = neg_skew)) +
   geom_vline(xintercept = mean(x$neg_skew) + sd(x$neg_skew), color = "cornflowerblue")
 ```
 
-&lt;img src="continuous_l1_files/figure-html/unnamed-chunk-22-2.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="continuous_l1_files/figure-html/unnamed-chunk-23-2.png" style="display: block; margin: auto;" /&gt;
 
 ```r
 ggplot(x, aes(x = central)) +
@@ -421,7 +432,7 @@ ggplot(x, aes(x = central)) +
   geom_vline(xintercept = mean(x$central) + sd(x$central), color = "cornflowerblue")
 ```
 
-&lt;img src="continuous_l1_files/figure-html/unnamed-chunk-22-3.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="continuous_l1_files/figure-html/unnamed-chunk-23-3.png" style="display: block; margin: auto;" /&gt;
 ---
 ## Visualizing Variance
 ADD CONTENT ON BOXPLOTS, ETC.
@@ -441,21 +452,21 @@ map(x, ~ ggplot(x, aes(.x)) +
 ## $pos_skew
 ```
 
-&lt;img src="continuous_l1_files/figure-html/unnamed-chunk-23-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="continuous_l1_files/figure-html/unnamed-chunk-24-1.png" style="display: block; margin: auto;" /&gt;
 
 ```
 ## 
 ## $neg_skew
 ```
 
-&lt;img src="continuous_l1_files/figure-html/unnamed-chunk-23-2.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="continuous_l1_files/figure-html/unnamed-chunk-24-2.png" style="display: block; margin: auto;" /&gt;
 
 ```
 ## 
 ## $central
 ```
 
-&lt;img src="continuous_l1_files/figure-html/unnamed-chunk-23-3.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="continuous_l1_files/figure-html/unnamed-chunk-24-3.png" style="display: block; margin: auto;" /&gt;
 
 ```r
 ggplot(x, aes(pos_skew)) +
@@ -463,14 +474,14 @@ ggplot(x, aes(pos_skew)) +
   geom_vline(xintercept = mean(pos_skew))
 ```
 
-&lt;img src="continuous_l1_files/figure-html/unnamed-chunk-23-4.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="continuous_l1_files/figure-html/unnamed-chunk-24-4.png" style="display: block; margin: auto;" /&gt;
 
 ```r
 ggplot(x, aes(neg_skew)) +
   geom_density()
 ```
 
-&lt;img src="continuous_l1_files/figure-html/unnamed-chunk-23-5.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="continuous_l1_files/figure-html/unnamed-chunk-24-5.png" style="display: block; margin: auto;" /&gt;
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
