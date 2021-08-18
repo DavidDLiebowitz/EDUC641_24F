@@ -57,10 +57,6 @@ options(knitr.table.format = "html")
 ```
                                                           
 ---
-# A reminder of our motivating question
-
-
----
 # Goals of the unit
 
 - Describe relationships between quantitative data that are categorical
@@ -69,6 +65,11 @@ options(knitr.table.format = "html")
 - Formulate and describe the purpose of a null hypothesis
 - Conceptually describe the criteria to make a statistical inference from a sample to a population
 - Interpret and report the results of a contingency-table analysis and a statistical inference from a chi-squared statistic
+
+---
+# A reminder of our motivating question
+
+### <span style="color:blue"> Were convicted murderers more likely to be sentenced to death in Georgia if they killed someone Black or if they killed someone White? </span>
 
 ---
 # Materials
@@ -90,7 +91,7 @@ df$deathpen <- factor(df$deathpen,
                       levels = c(0,1), labels = c("No", "Yes"))
 
 ```
-Up until now, we've been examining each variable by itself, 
+### Up until now, we've been examining each variable by itself, 
 
 ---
 class: middle, inverse
@@ -99,18 +100,21 @@ class: middle, inverse
 ---
 # Two-way tables
 
+Now we seek to create a *joint display* of the values of *RVICTIM* and *DEATHPEN*
+
 ```{r, echo=T}
 table(df$deathpen, df$rvictim)
 ```
 
 --
 
-It would be helpful to have these in percentage terms. Black victim: 
-$$\frac{20}{1483 + 20}*100= 1.33\%$$
+It would be helpful to have these in percentage terms. Proportion of convicted murderers sentenced to death in case of Black victim: 
+$$\frac{23}{1483 + 23}*100= 1.53\%$$
+--
 
 Can ask R for this too:
 ```{r, echo=T}
-prop.table(table(df$deathpen, df$rvictim), margin=2)*100
+round(prop.table(table(df$deathpen, df$rvictim), margin=2)*100, 2)
 ```
 
 ---
@@ -147,7 +151,51 @@ it might be helpful to imagine what the proportion of defendants sentenced to de
 .pull-left[
 ####Frequencies that we OBSERVE
 ```{r, echo=F}
-table(df$deathpen, df$rvictim)
+two_way <- table(df$deathpen, df$rvictim)
+addmargins(two_way)
+```
+]
+
+.pull-right[
+####Frequencies that we would EXPECT if there were NO relationship 
+
+|deathpen | Black | White | Sum
+|-------------------------------
+|No       |       |       | 2346
+|Yes      |       |       | 129
+|Sum      | 1506  |  969  | 2475
+]
+
+---
+# Observed vs. Expected
+
+.pull-left[
+####Frequencies that we OBSERVE
+```{r, echo=F}
+two_way <- table(df$deathpen, df$rvictim)
+addmargins(two_way)
+```
+]
+
+.pull-right[
+####Frequencies that we would EXPECT if there were NO relationship 
+
+|deathpen   | Black | White | Sum   | Proport.
+|------------------------------------------------
+|No         |       |       | 2346  | 0.948
+|Yes        |       |       | 129   | 0.052
+|Sum        | 1506  |  969  | 2475  | 1.000
+|Proportion | 0.608 | 0.392 | 1.000 |
+]
+
+---
+# Observed vs. Expected
+
+.pull-left[
+####Frequencies that we OBSERVE
+```{r, echo=F}
+two_way <- table(df$deathpen, df$rvictim)
+addmargins(two_way)
 ```
 ]
 
@@ -163,8 +211,19 @@ df <- ungroup(df) %>% mutate(prop_deathpen = sum_deathpen / n())
 df <- df %>% group_by(rvictim) %>% mutate(expec_death = sum_rvictim * prop_deathpen)
 
 df2 <- df %>% group_by(deathpen, rvictim) %>% summarise(expec_death = round(mean(expec_death), 0))
-
-df3 <- df2 %>% spread(rvictim, expec_death)
+sum_ref <- df %>% group_by(deathpen) %>% summarise(Sum = n())
+df2 <- left_join(df2, sum_ref, by = c("deathpen"))
+ 
+  df3 <- df2 %>% spread(rvictim, expec_death) %>% relocate(Sum, .after = last_col())
+  
+sum_vict <- df %>% group_by(rvictim) %>% summarise(sum_rvictim = n())
+  sum_vict <- sum_vict %>% spread(rvictim, sum_rvictim)
+  tot <- ungroup(df) %>% summarise(Sum = n())
+  death <- c("Sum") %>% as.data.frame() %>% setNames(c("deathpen"))
+   
+  sum_vict <- cbind(death, sum_vict, tot)
+  
+  df3 <- rbind(df3, sum_vict)
 
 kable(df3, format='html')
   
@@ -182,7 +241,8 @@ kable(df3, format='html')
 .pull-left[
 ####Frequencies that we OBSERVE
 ```{r, echo=F}
-table(df$deathpen, df$rvictim)
+two_way <- table(df$deathpen, df$rvictim)
+addmargins(two_way)
 ```
 ]
 .pull-right[
@@ -196,14 +256,15 @@ kable(df3, format='html')
 #### It would be nice to have an index of the **NET DISCREPANCY** between the **OBSERVED** and **EXPECTED** frequencies in the sample
 
 ---
-# The Chi-Squared Statistic
+# The Chi-Squared $\chi^2$ statistic
 
-We can summarize the **NET DISCREPANCY** between the tables of **OBSERVED** and **EXPECTED** frequencies, using a statistic called the Pearson Chi-Squared ( $\chi^2$) statistic
+We can summarize the **NET DISCREPANCY** between the tables of **OBSERVED** and **EXPECTED** frequencies, using a statistic called the Pearson Chi-Squared $(\chi^2)$ statistic
 
-####Frequencies that we OBSERVE
 .pull-left[
+####Frequencies that we OBSERVE
 ```{r, echo=F}
-table(df$deathpen, df$rvictim)
+two_way <- table(df$deathpen, df$rvictim)
+addmargins(two_way)
 ```
 ]
 .pull-right[
@@ -216,8 +277,8 @@ kable(df3, format='html')
 --
 
 <br>
-$$ \chi^2 = \frac{(1483-1425)^2}{1425} + \frac{(863-921)^2}{921} + \frac{(20-78)^2}{78} + \frac{(109-51)^2}{51} $$
-$$ \chi^2 = 114.7 $$
+$$ \chi^2 = \frac{(1483-1428)^2}{1428} + \frac{(863-918)^2}{918} + \frac{(23-78)^2}{78} + \frac{(106-51)^2}{51} $$
+$$ \chi^2 = 103.8 $$
 --
 
 Yay! We got an answer, but what does it mean...?
@@ -227,16 +288,321 @@ class: middle, inverse
 # Hypothesis testing and statistical inference
 
 ---
-# Hypothesis testing
+# Big or small?
 
----
-# The Null ( $H_0$) Hypothesis
+We can summarize the **NET DISCREPANCY** between the tables of **OBSERVED** and **EXPECTED** frequencies, using a statistic called the Pearson Chi-Squared ( $\chi^2$) statistic
+
+.pull-left[
+####Frequencies that we OBSERVE
+```{r, echo=F}
+two_way <- table(df$deathpen, df$rvictim)
+addmargins(two_way)
+```
+]
+.pull-right[
+####Frequencies that we would EXPECT if NO relationship 
+```{r, echo=F}
+kable(df3, format='html')
+```
+]
+
+<br>
+
+$$ \chi^2 = 103.8 $$
+--
+
+A decision rule: If $\chi^2$ is big, then declare that there is a relationship between *DEATHPEN* and *RVICTIM*; if $\chi^2$ is zero (or close to zero), then declare there is no relationship between *DEATHPEN* and *RVICTIM* ...
+
+--
+
+but what is **BIG**, what is **close to zero**, and is 103.8 **big** or **close to zero**?
 
 ---
 # Statistical inference
 
+Let's take a step back to capture the nature of the problem
+- We've looked at some data on some convicted murderers in the state of Georgia
+- We're not interested in only *these* murderers, but we're interested in a broader *population* of murderers from which our *sample* was drawn
+  + In fact, even if we could observe outcomes for all murderers in the state of Georgia, our observation of them is imperfect due to *measurement error* and so we only ever observe samples, never populations (more on this later)
+- Is there something about sampling from a population that could resolve our problem?
+- Is there some way to generalize our conclusions about our *sample* relationship between *DEATHPEN* and *RVICTIM* to the *underlying population*?
+  + This is called *statistical inference* and it is *the* critical contribution of quantitative methods to research
+
 ---
-# The Chi-Squared ( $\chi^2$) statistic
+# Sampling idiosyncrasy
+
+#### When you generalize from a sample back to its underlying population, you must be careful that your empirical study has not been the victim of *sampling idiosyncrasy*
+
+#### Is the following scenario plausible?
+- There really is no relationship between *DEATHPEN* and *RVICTIM* **in the population**
+- By accident, we have drawn an idiosyncratic sample from the population
+- This sampling idiosyncrasy ended up giving us a $\chi^2$ statistic as large as 103.8 by pure accident
+
+#### How can we assess the plausibility of this scenario? 
+
+---
+# The Null Hypothesis $(H_{0})$
+
+We start by imagining a hypothetical world in which there is **no relationship** between *DEATHPEN* and *RVICTIM* in a true population of convicted murderers. Then, we imagine drawing a series of samples of convicted murders over and over again (say...10,000 times) from this hypothetical population. What values of the $\chi^2$ statistic might we observe?
+
+```{r, out.width = "75%", echo=F}
+  include_graphics("null_pop.jpg")
+```
+
+---
+# Testing the null
+
+In this hypothetical example of repeated sampling from a null population, we could record all 10,000 values of the $\chi^2$ statistic
+```{r, echo=F, fig.height=5.5}
+set.seed(123456)
+chsq <- data.frame(Chi_Square=rchisq(1:10000, df=1))
+ch <- ggplot(chsq, aes(Chi_Square)) + geom_histogram()
+ch
+```
+
+The histogram summarizes the natural variation that could occur in a $\chi^2$ statistic as a result of *random sampling idiosyncrasy*, after drawing repeated samples from a hypothetical population in which there is no relationship between *DEATHPEN* and *RVICTIM*.
+
+---
+# Testing the null
+
+In this hypothetical example of repeated sampling from a null population, we could record all 10,000 values of the $\chi^2$ statistic
+```{r, echo=F, fig.height=5.5}
+ch + geom_vline(xintercept = 5, color = "blue", linetype = "dashed", size=1.5)
+```
+
+<span style="color:blue"> *If this were the histogram that could result from sampling idiosyncrasy, and this were the value of the $\chi^2$ statistic, what would you think?* </span>
+
+---
+# Testing the null
+
+In fact, this is the value of the $\chi^2$ statistic we observed:
+```{r, echo=F, fig.height=4.5}
+ggplot(chsq, aes(Chi_Square)) + geom_histogram(binwidth = 1) + geom_vline(xintercept = 103.8,  color = "red", size=1.5)
+```
+
+--
+
+<span style="color:blue"> *This is a histogram of possible $\chi^2$ values that could result from sampling idiosyncrasy, and then the actual value of the $\chi^2$ statistic in our sample. What do you think?* </span>
+
+--
+
+*WOOHOO!* In this thought exercise, you've just engaged in a rudimentary version of <span style="color:red"> *Null-Hypothesis Significance Testing (NHST)* </span>; the bedrock of the majority of social science research.
+
+---
+# Testing the null (*p*-values)
+
+In fact, we don't need to examine the full histogram. Instead, we can say that in a hypothetical exercise of sampling repeatedly from a null population, less than 1 in a 1,000,000,000,000,000 (trillion) of all accidental values of the $\chi^2$ statistic are larger than a value of 103.8
+
+```{r, echo=F, fig.height=4.5}
+ggplot(chsq, aes(Chi_Square)) + geom_histogram(binwidth = 1) + geom_vline(xintercept = 103.8,  color = "red", size=1.5)
+```
+
+--
+
+The statistic that captures the likelihood that one would observe a $\chi^2$ statistic of a given magnitude in a particular sample, in the presence of a null population, is called the <span style="color:red">  *p*-value </span>
+
+
+---
+# Testing the null (*p*-values)
+
+<span style="color:blue"> *At what p-value would you cease to believe that the value of the $\chi^2$ statistic in your own research was "big" (i.e., was unlikely to have occurred by accident)* </span>
+```{r, echo=F, fig.height=5}
+ggplot(chsq, aes(x=Chi_Square)) + geom_density(fill="pink", alpha=0.2) +
+  scale_x_continuous("Chi-Square values", limits = c(0,10))
+```
+
+---
+# Testing the null (*p*-values)
+
+<span style="color:blue"> *At what p-value would you cease to believe that the value of the $\chi^2$ statistic in your own research was "big" (i.e., was unlikely to have occurred by accident)* </span>
+```{r, echo=F, fig.height=5}
+chsq_right <- density(chsq$Chi_Square, from = 3.84, to = max(chsq$Chi_Square))
+chsq_data <- data.frame(x = chsq_right$x, y = chsq_right$y)
+ggplot(chsq, aes(x=Chi_Square)) + geom_density(fill="pink", alpha=0.2) +
+ geom_area(data = chsq_data, aes(x=x, y=y), fill = "blue", alpha=0.2) +
+  geom_vline(xintercept=3.84, color = "red", size = 0.5, linetype = "dashed") +
+  scale_x_continuous("Chi-Square values", limits = c(0,10)) +
+  scale_y_continuous("density")
+```
+
+--
+
+In social science research, it is customary to (arbitrarily) set that threshold at **5 percent (*p*<0.05)**. In other words, we say that if the difference between our observed data and our expected data would have happened in fewer than 1 out of 20 randomly drawn samples, that the difference reflects a true difference in the population.
+
+---
+# (Very) brief intro to probability
+
+**Two common ways to think about probability: the long-run view (frequentist) and priors (Bayesian)**
+
+- **Frequentist:**
+- With a known long-run outcome (e.g., a fair coin comes up heads half the time), we can consider the likelihood of a given short-run event
+ + A coin flipped twice will come up Heads both times with a probability of 0.25 (fairly likely); but a coin flipped 20 times will come up Heads every time with a probability of 0.000000095 (very unlikely)
+ + In the short-run, you can expect some variability, but in the long run, it will converge to the known distribution
+
+```{r, echo=F, fig.height=3.5}
+set.seed(12345)
+nsim = 2000
+X = matrix(NA, ncol=2, nrow=nsim)
+for(S in 1:nsim){
+  X[S,1] = S
+  X[S,2] = rbinom(n=1, size = S, prob = .5)/S
+}
+X = as.data.frame(X); names(X) = c("num", "coin")
+coin_true <- X %>% ggplot(aes(x = num, y= coin)) + geom_line() + geom_hline(aes(yintercept = .5), color = "red", linetype = 2) + scale_x_continuous("Number of tosses") + scale_y_continuous("Proportion of heads", breaks = seq(0, 1, .1), limits = c(0,1)) 
+coin_true
+```
+
+---
+# Probability and testing $H_{0}$
+
+We are asking how likely is it that we observe event X happening with Y frequency, if the expected probability of X happening is Z?
+
+<span style="color:blue"> *Imagine you were handed a coin and asked to determine whether it was weighted to one side. How certain would you be after 50 flips?* </span>
+
+```{r, echo=F, fig.height=3.5}
+nsim = 2000
+Y = matrix(NA, ncol=2, nrow=nsim)
+for(S in 1:nsim){
+  Y[S,1] = S
+  Y[S,2] = rbinom(n=1, size = S, prob = .6)/S
+}
+Y = as.data.frame(Y); names(Y) = c("num", "coin")
+filter(Y, num <=50) %>% ggplot(aes(x = num, y= coin)) + geom_line() + geom_hline(aes(yintercept = .5), color = "red", linetype = 2) + scale_x_continuous("Number of tosses") + scale_y_continuous("Proportion of heads", breaks = seq(0, 1, .1), limits = c(0,1)) 
+
+```
+
+---
+# Probability and testing $H_{0}$
+
+We are asking how likely is it that we observe event X happening with Y frequency, if the expected probability of X happening is Z?
+
+<span style="color:blue"> *Imagine you were handed a coin and asked to determine whether it was weighted to one side. How certain would you be after 200 flips?* </span>
+
+```{r, echo=F, fig.height=3.5}
+filter(Y, num <=200) %>% ggplot(aes(x = num, y= coin)) + geom_line() + geom_hline(aes(yintercept = .5), color = "red", linetype = 2) + scale_x_continuous("Number of tosses") + scale_y_continuous("Proportion of heads", breaks = seq(0, 1, .1), limits = c(0,1)) 
+
+```
+
+---
+# Probability and testing $H_{0}$
+
+We are asking how likely is it that we observe event X happening with Y frequency, if the expected probability of X happening is Z?
+
+<span style="color:blue"> *Imagine you were handed a coin and asked to determine whether it was weighted to one side. How certain would you be after 2000 flips?* </span>
+
+```{r, echo=F, fig.height=3.5}
+Y %>% ggplot(aes(x = num, y= coin)) + geom_line() + geom_hline(aes(yintercept = .5), color = "red", linetype = 2) + scale_x_continuous("Number of tosses", limits = c(0,2000)) + scale_y_continuous("Proportion of heads", breaks = seq(0, 1, .1), limits = c(0,1)) 
+
+```
+
+--
+
+<span style="color:red"> *But how do we know what the "expected" probability of X happening is????* </span>
+
+**In the next unit, we will answer this question**
+
+---
+# Putting it all together
+
+### Basic steps of classical statistical inference
+1. State a research question, including a null hypothesis $(H_{0})$ which states there exists no relationship between our variables of interest
+2. Display and describe the observed data
+3. Summarize the observed data in relationship to an expected value
+4. Set a threshold at which we will no longer believe that the discrepancy between the observed and expected relationship is due to sampling idiosyncrasy
+5. Estimate the *p*-value
+6. Reject or fail to reject the null hypothesis
+7. Interpret your findings drawing explicitly on plots, summary statistics and test statistics
+
+--
+
+#### Our intepretation:
+> In the population of convicted murderers in Georgia, the imposition of the death penalty and the race of the victim are related ( $\chi^2$ = 103.8, *p*< 0.001) The percentage of convicted murderers who were sentenced to death after killing a White victim was more than 8 times the percentage of convicted to murderers who were sentenced to death after killing a Black victim. In Figure 1, we show...
+
+---
+# Critiques of frequentist NHST
+
+### 1. Re-thinking concepts of "statistical significance"
+### 2. A different way of thinking about probability (Bayesian)
+
+---
+# Problems with "statistical significance"
+
+An explosion of [academic](https://www.tandfonline.com/toc/utas20/73/sup1?nav=tocList) and [popular press](https://www.nytimes.com/2015/08/28/science/many-social-science-findings-not-as-strong-as-claimed-study-says.html) attention to the "replication crisis" emerged in the early 2010s. 
+
+Aside from outright manufactured data, some problems include:
+- *p*<0.05 as a condition for publication and a goal for researchers
+ + $\rightarrow$ Publication bias: "successes" are published; "failures" end up in file drawers
+
+---
+# More problems
+
+If *p*<0.05 is the goal, there are many ways to get there:
+- If your goal is to find a "statistically significant" result, you will detect one 1 out of 20 times (on average)
+- This can be the product of intentional "*p*-hacking" or "researcher degrees of freedom" (explore your data, test many different models, try this variable, etc.)
+
+Novelty as a condition for publication in top-tier journals
+ + If something is "unexpected" or "surprising" there's a decent chance it might not be true
+ 
+- Weak theory: 
+ + Low-precision "differences" between groups, with little interesting in quantifying the differences
+ + No non-null hypotheses
+ + No prior belief about likelihood of findings
+ + Hypothesis After the Results are Known (HARK-ing)
+
+---
+# Problems with probability
+
+In frequentist statistics, we assume that the null hypothesis has as good a chance as any other hypothesis at being true, and we then test how likely we are to observe the data as we see them when the null is actually true...**but is this the right framework???**
+
+How believable are the following findings?
+- People who wear glasses are more likely to be empathetic $(p = 0.023)$
+- Medical doctors have fewer close relationships than those in other professions $(p = 0.007)$
+- People who engage in [power posing](https://www.nytimes.com/2017/10/18/magazine/when-the-revolution-came-for-amy-cuddy.html) experience increased testosterone $(p = 0.045)$ (*a real paper*)
+
+--
+
+Perhaps it is wiser to start with a *prior* belief about the probability of an event?
+
+---
+# Bayesian statistics
+
+In contrast to frequentist approaches, Bayesian probability takes into account one's prior beliefs in determining the probability of an event
+- Key insight: adjust current beliefs based on previous knowledge/beliefs
+ + Adjust prior belief towards evidence in observed data
+- Prior beliefs could come from theory, research or personal belief
+
+#### Bayes Theorem (don't need to know this):
+
+$$
+\large P(A|B) = \frac{P(B|A)\cdot P(A)}{P(B)}
+$$
+---
+# Bayesian Example
+I have a theory that Oregonians are (generally) outdoors-y. I meet an outdoors-y person. What is the probability I have met an Oregonian?
+
+$P(Oregonian) = 0.02$ (to make it simple 1 of 50 U.S. states) <br>
+$P(Outdoorsy | Oregonian) = 0.65$ <br>
+$P(Outdoorsy) = 0.20$
+
+$$
+\large P(Oregonian | Outdoorsy) = \frac{(0.65)(0.02)}{0.20} = 0.065
+$$
+--
+
+Not surprisingly, I've updated my beliefs and now think there is a greater-than-base-rate likelihood (over 3x) that this person is an Oregonian. But it also tells me not to be too excited and claim the probability is 0.65 that I've met an Oregonian just because they are outdoors-y.
+
+--
+
+- Inferential statisticians make statements like, "the chance we would observe differences between the treatment and control as large as the ones we did when there was actually no effect is less than 5%"
+- Bayesian statisticians make statements like, "the chance that the treatment is more effective than the control is 92%"
+
+--
+
+<span style="color:red"> *Much more complexity to be explored in another course*</red>
+
+---
+
+# Estimating the $\chi^2$ statistic in R
 
 ```{r, echo=T}
 chi_df <- chisq.test(df$deathpen, df$rvictim)
@@ -252,9 +618,136 @@ class: middle, inverse
 ---
 # Sub-sample comparisons
 
+There are more complex ways of doing this, but one approach is to replicate the original contingency table analysis in interesting "slices" of the sample, defined by a third variable
+
+--
+
+```{r, out.width = "80%", echo=F}
+  include_graphics("sub_sample.jpg")
+```
+
 ---
-class: middle, inverse
-# Reporting and interpreting
+# Cases with Black murderers
+
+```{r, echo=F}
+df_b <- filter(df, rdefend == "Black")
+table(df_b$deathpen, df_b$rvictim)
+```
+
+.pull-left[
+#### Black murderers, Black victims
+When a Black victim is killed by a Black murderer,
+$$ \frac{18}{18+1304} = 1.36 \% $$
+of the murderers are sentenced to death.
+]
+
+.pull-right[
+#### Black murderers, White victims
+When a White victim is killed by a Black murderer,
+$$ \frac{50}{50+63} = 44.25 \% $$
+of the murderers are sentenced to death.
+]
+
+--
+
+The percentage of Black murderers sentenced to death for killing a White victim is about 32.5 times the percentage of Black murderers sentenced to death for killing a Black victim, in Georgia
+
+---
+# A statistical test
+
+.pull-left[
+```{r, echo=F}
+chi_b <- chisq.test(df_b$deathpen, df_b$rvictim)
+```
+Observed:
+```{r, echo=F}
+chi_b$observed
+```
+Expected:
+```{r, echo=F}
+round(chi_b$expected, 0)
+```
+$\chi^2$ statistic:
+```{r, echo=F}
+chi_b$statistic
+```
+*p*-value
+```{r, echo=F}
+chi_b$p.value
+```
+]
+
+--
+
+.pull-right[
+- $H_{0}$: *DEATHPEN* and *RVICTIM* are unrelated in the population of convicted Black murderers in GA
+- $\chi^2$ statistic: 414.7
+- *p*-value: <0.0001
+- Decision: Reject $H_{0}$
+- Conclusion: There is a statistically significant relation between the assignment of the death penalty and the race of the victim, on average, in the population of Black murderers in GA.
+]
+
+---
+# Cases with White murderers
+
+```{r, echo=F}
+df_w <- filter(df, rdefend == "White")
+table(df_w$deathpen, df_w$rvictim)
+```
+
+.pull-left[
+#### White murderers, Black victims
+When a Black victim is killed by a White murderer,
+$$ \frac{5}{5+179} = 2.71 \% $$
+of the murderers are sentenced to death.
+]
+
+.pull-right[
+#### White murderers, White victims
+When a White victim is killed by a White murderer,
+$$ \frac{56}{56+800} = 6.89 \% $$
+of the murderers are sentenced to death.
+]
+
+--
+
+The percentage of White murderers sentenced to death for killing a White victim is about 2.5 times the percentage of White murderers sentenced to death for killing a Black victim, in Georgia
+
+---
+# A statistical test
+
+.pull-left[
+```{r, echo=F}
+chi_w <- chisq.test(df_w$deathpen, df_w$rvictim)
+```
+Observed:
+```{r, echo=F}
+chi_w$observed
+```
+Expected:
+```{r, echo=F}
+round(chi_w$expected, 0)
+```
+$\chi^2$ statistic:
+```{r, echo=F}
+chi_w$statistic
+```
+*p*-value
+```{r, echo=F}
+chi_w$p.value
+```
+]
+
+--
+
+.pull-right[
+- $H_{0}$: *DEATHPEN* and *RVICTIM* are unrelated in the population of convicted White murderers in GA
+- $\chi^2$ statistic: 3.35
+- *p*-value: 0.067
+- Decision: Fail to reject $H_{0}$
+- Conclusion: There is not a statistically significant relation between the assignment of the death penalty and the race of the victim, on average, in the population of White murderers in GA.
+]
+
 
 ---
 class: middle, inverse

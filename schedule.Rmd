@@ -19,9 +19,10 @@ Topic: Introduction to scientific principles and data analysis
 
 Readings: TBD
 
-Lecture slides: [html file](./slides/EDUC641_1_intro.html)
+Lecture:
 
-R Tutorial slides: [html file](./slides/tutorial.html)
+* Lecture slides: [html file](./slides/EDUC641_1_intro.html), [pdf file](./slides/EDUC641_1_intro.pdf)
+* R Tutorial slides: [html file](./slides/tutorial.html)
 
 ### Week 2 
 
@@ -40,7 +41,7 @@ Readings: TBD
 
 Lecture: 
 
- * Slides: [html file](./slides/EDUC641_2_categ_1.html)
+ * Slides: [html file](./slides/EDUC641_2_categ_1.html), [pdf file](./slides/EDUC641_2_categ_1.pdf) 
  * Data: [deathpenalty.csv](./data/deathpenalty.csv), [codebook](./data/deathpenalty.csv)
  * R script: [R script](./slides/EDUC641_2_code.R)
 
@@ -69,8 +70,8 @@ Readings: TBD
 
 Lecture:
 
- * Slides: [html file](./slides/EDUC641_2_categ_2.html)
- * Data: 
+ * Slides: [html file](./slides/EDUC641_2_categ_2.html), [pdf file](./slides/EDUC641_2_categ_2.pdf)
+ * Data: [deathpenalty.csv](./data/deathpenalty.csv), [codebook](./data/deathpenalty.csv)
  * R Script: 
  
 Assignment 2: 
@@ -102,7 +103,7 @@ Readings: TBD
 
 Lecture slides: 
 
- * Slides:
+ * Slides: [html file](./slides/continuous_l1.html) \& [html file](./slides/continuous_l2.html)
  * Data:
  * R script:
 
@@ -114,7 +115,7 @@ Assignment 3:
 
 
 
-### Weeks 7 - 9
+### Weeks 8 - 10
 
 Topic: Describing relationships between continuous data
 
@@ -122,7 +123,7 @@ Readings: TBD
 
 Lecture slides: 
 
- * Slides:
+ * Slides: [html file](./slides/EDUC641_4_continuous_2.html)
  * Data:
  * R script:
 
@@ -130,24 +131,12 @@ Assignment 4:
 
  * Due TBD
  * [html file](./assignments/assignment04.html)
- * [cont.csv dataset (./data/cont.csv)
+ * [cont.csv](./data/cont.csv)
 
-
-### Weeks 9-10
-
-Topic: 
-
-Readings: TBD
-
-Lecture slides: 
-
- * Slides:
- * Data:
- * R script:
 
 Assignment 5: 
 
  * Due TBD
  * [html file](./assignments/assignment05.html)
- * [cont.csv dataset ()
+ * [ah.csv](./data/ah.csv)
 

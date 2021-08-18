@@ -4,7 +4,8 @@ author: "Professor Name"
 date: "`r format(Sys.time(), '%d %B, %Y')`"
 output:
   xaringan::moon_reader:
-    css: ['default', 'metropolis', 'metropolis-fonts', 'my-css.css']
+    css: ['default','new.css']
+    # self_contained: true
     nature:
       highlightStyle: github
       highlightLines: true
@@ -59,12 +60,47 @@ Suppose you are working for the World Health Organization and are investigating 
 
 > Using this dataset, we can ask questions like:
 > * How does life expectancy compare in developing vs. developed regions?
-> * What is the relationship between average years of schooling and life expectancy?
+> * Do individuals living in countries with more total years of attendance in school experience, on average, higher life expectancy??
 
 
 **But**, before making comparisons between social/economic conditions, we want to start with describing the full dataset, looking at all 183 nations in the dataset.
 
 **Our Task:** Describe the distribution of regional life expectancy in 2015.
+
+---
+# What is a distribution?
+
+A distribution describes the number of observations of variable that take a particular value.
+
+```{r, echo = F, fig.height = 6, fig.width = 10}
+d <- who %>% 
+      filter(str_length(region) <= 12) %>% 
+      sample_n(60)
+
+d_hist <- hist(d$life_expectancy, plot = FALSE)
+
+d$x_bin <- cut(d$life_expectancy, 
+               breaks = d_hist$breaks,
+               label = FALSE)
+
+d$x_mid <- d_hist$mids[d$x_bin]
+d$y <- 1
+
+d <- d %>% 
+  group_by(x_bin) %>% 
+  mutate(y = cumsum(y))
+
+ggplot() +
+  geom_label(data = d, 
+             aes(x = x_mid,
+                 y = y,
+                 label = region),
+             size = 4) +
+  theme_bw(base_size = 12) +
+  theme(panel.grid = element_blank()) +
+  labs(x = "Average Life Expectancy", y = "Count")
+
+```
 
 ---
 # Describing a Distribution
@@ -242,11 +278,14 @@ ggplot(who, aes(x = life_expectancy)) +
 * Represents the **average squared deviation** of each observation from the mean.
 
 $$s^{2} = \frac{\sum_{i=i}^{n} x_{i}}{n}$$
+
 * Why do we square the deviation?
-  + Here are some national life expectancies centered around the mean. Their value represents their difference relative to the sample mean.
-  + Some observations fall below the mean so their deviation is a negative value. If we took the average of our positive and negative deviations, we'd just get zero!
+
+---
+# Variance
+Here are some national life expectancies centered around the mean. Their value represents their difference relative to the sample mean.
   
-```{r, echo = F}
+```{r, echo = F, fig.height = 5, fig.width = 8}
 who$life_cnt <- round((who$life_expectancy - mean(who$life_expectancy)))
 who$life_type <- ifelse(who$life_cnt < 0, "below", "above")
 who$region <- as.factor(who$region)
@@ -266,11 +305,13 @@ labs(subtitle="Mean-centered life expectancy for random subset of nations") +
 
 var_plot
 ```
+Some observations fall below the mean so their deviation is a negative value. If we took the average of our positive and negative deviations, we'd just get zero!
+
 ---
 # Variance
 Since any number squared is positive, let's try squaring our deviations.
 
-```{r, echo = F}
+```{r, echo = F, fig.height = 5, fig.width = 8}
 who$life_cnt_sq <- round((who$life_expectancy - mean(who$life_expectancy))^2)
 
 set.seed(154)
@@ -294,7 +335,7 @@ Now we can take the average of our squared deviations and get a non-zero value!
 
 Our variance (or average squared deviation) is approximately 66.43.
 
-```{r, echo = F}
+```{r, echo = F, fig.height = 5, fig.width = 8}
 var_plot_sq +
   geom_hline(yintercept = mean(who$life_cnt_sq), color = "red")
 ```
@@ -316,7 +357,7 @@ The standard deviation of life expectancy in 2015 was approximately 8.15 *years*
 
 Here is our original plot with our <span style="color: red;">standard deviation</span> plotted below and above the mean (i.e., -1 SD, +1 SD).
 
-```{r, echo = F}
+```{r, echo = F, fig.height = 5, fig.width = 8}
 var_plot +
   geom_hline(yintercept = 8.15, color = "red", linetype = 2) +
   geom_hline(yintercept = -8.15, color = "red", linetype = 2)
@@ -351,7 +392,7 @@ $$z = \frac{X - \mu}{\sigma}$$
 
 * A z-score is calculated by **subtracting the mean** from each value and **dividing by the standard deviation**.
 
-* An observations z-score value is equal to its deviation from the mean, as measured in standard deviation units.
+* An observation's z-score value is equal to its distance from the mean, in standard deviation units.
 
 ---
 # Transforming Distributions
