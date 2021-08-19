@@ -85,7 +85,7 @@ Shape:
 
 * The area under a normal distribution is always equal to 100% (it represents the whole of observations)
 
-* The area under the normal distribution curve corresponds to the percentage of observations
+* The area under the normal distribution curve corresponds to the percentage of observations.
 
 * We can always infer the percentage of observations in any part of a normal distribution.
 
@@ -162,15 +162,82 @@ ggplot(data.frame(x = c(-4, 4)), aes(x = x)) +
 * A randomly selected observation has an approximately **95.5% chance of being within 2 SD** of the mean.
  + $ P(-2 < Z < 2) = 0.955 $
 
-* With a standard normal distribution, we can calculate the percentage of observations under any region.
+---
+# What is normal?
+
+* A normal distribution can take on any mean and standard deviation.
+
+```{r}
+ggplot(data.frame(x = c(-20, 20)), aes(x = x)) +
+  stat_function(fun = dnorm, args = c(mean = 10, sd = 1), color = "red") +
+    stat_function(fun = dnorm, args = c(mean = 3, sd = 3), color = "black") +
+    stat_function(fun = dnorm, args = c(mean = -2, sd = 7), color = "blue") +
+  ggtitle("Normal Distributions") +
+  theme_classic()
+
+```
+* The area under the curve is always equal to 1.
+* The empirical rule applies to all normal distributions (e.g., 68% of observations occur within 1 SD of the mean).
+---
+
+# Standard Normal Distribution
+
+* The **standard** normal distribution has a mean of 0 and a standard deviation of 1.
+  
+```{r}
+ggplot(data.frame(x = c(-4, 4)), aes(x = x)) +
+  stat_function(fun = dnorm) +
+  theme_classic()
+
+```
+
+* The x-axis represents z-scores, meaning an observation's value represents how far it is from the mean.
+
+  + A z-score of -1 indicates that an observation is 1 SD below the mean.
+  + A z-score of +2 indicates that an observation is 2 SD above the mean.
+
+* With a standard normal distribution, we can easily calculate the percentage of observations under any region.
 
 ---
 # Z-Test
+
+Suppose we wanted to know the probability of scoring at least 1.5 SD above the mean on a standardized test. 
+
+```{r}
+ztest_plot <- ggplot(data.frame(x = c(-4, 4)), aes(x = x)) +
+  stat_function(fun = dnorm) +
+  geom_vline(xintercept = 1.5, color = "red") +
+  stat_function(fun = dnorm,
+                xlim = c(1.5, 4),
+                fill = "red",
+                geom = "area") +
+  theme_classic()
+
+ztest_plot
+```
+To answer this question, we just need to find the area of the shaded portion under the curve.
+
+---
+# Z-Test
+
+* We can either use a computational tool or a z-score look-up table to calculate the area under the normal curve.
+
+```{r}
+ztest_plot +
+    annotate("text", x = 2, y = .02, label = ".07")
+
+```
+
+Either approach would show the area above 1.5 SD of a standard normal curve is .07. Therefore, the probability of scoring above 1.5 SD on a standardized test is 7%.
+
+---
+# Z-Test
+Let's try it with our WHO data:
 * Suppose that the population mean national life expectancy is 71.64 $(\mu)$ with a SD of 8.15 $(\sigma)$.
 
 * **Assuming a normal distribution, what is the probability of randomly selecting a country with a life expectancy greater than 76?**
 
-* After we conduct a z-transformation, we can calculate the percentage of observations above our z-score.
+* First we need to standardize our value before we can calculate the percentage of observations above our z-score.
 
 $$ z = \frac{76-71.64}{8.15} = 0.53$$
 
@@ -196,8 +263,8 @@ ggplot(data.frame(x = c(-4, 4)), aes(x = x)) +
 
 ---
 # Z-Test
-* The probability of randomly selecting a country with a national life expectancy greater than 76 is 30%.
-  + $ P(z > 0.53) = 0.30 $
+
+* The area under the curve above a z-score of 0.53 is .30. Therefore, the probability of randomly selecting a country with a national life expectancy greater than 76 is 30%.
 
 ```{r}
 ggplot(data.frame(x = c(-4, 4)), aes(x = x)) +
@@ -847,11 +914,203 @@ ggplot() +
 
 
 ---
-# Two-Sample t-test
+# Independent Two-Sample t-test
 
+* An independent samples t-test is a comparison of the means from two different groups.
+
+* Enables a researchers to test for a significant difference between two groups.
+ + e.g., Does the life expectancy of high-income countries significantly differ from low-income countries?
+
+* Independent samples means a subject can only belong to one group. 
+
+$$ H_0: \mu_1 = \mu_2 $$
+$$ H_1: \mu_1 != \mu_2 $$
+---
+# Independent Two-Sample t-test
+
+If our null hypothesis is $H_0: \mu_1 = \mu_2$, then $\mu_1 - \mu_2$ should also equal 0.
+
+To calculate our test statistic we use the following formula:
+
+$$ t = \frac{\bar{X}_1 - \bar{X}_2}{SE} $$
+Assuming there is no difference between our sample means (null hypothesis is true), our t will always equal zero. 
+
+$$ t = \frac{0}{SE} = 0 $$
+Our standard error refers to the $\sigma$ for the sampling distribution of the **difference in means**. This is more complicated to calculate.
+---
+# Sampling a difference in means
+
+Population X - $\mu_X$
+
+Population Y- $\mu_Y$
+
+$$\mu_X - \mu_Y$$
+Sample 1 of Group X - $\bar{x}_1$
+
+Sample 1 of Group Y - $\bar{y}_1$
+
+$$\bar{x}_1 - \bar{y}_1$$
+Sample 2 of Group X - $\bar{x}_2$
+
+Sample 2 of Group Y - $\bar{y}_2$
+
+$$\bar{x}_2 - \bar{y}_2$$
+---
+# Sampling a difference in means
+
+Suppose we have two populations of students - students with infrequent school attendance and students who attend school regularly. On our standardized test, students with infrequent attendance have an average score of 95 $\mu_x = 95)$ and students with regular attendance have an average score of 104 $\mu_x = 104)$. Thus, our true difference in means is 9.
 ```{r}
+sim_2pop <- tibble(x = rnorm(1000, mean = 95, sd = 10),
+                    y = rnorm(1000, mean = 104, sd = 10))
 
+sim_2samp <- map(1:30, ~sim_2pop %>% 
+                   sample_n(40))
 
+sim_means <- tibble(samp = seq(1, 30, 1),
+                    x = map_dbl(sim_2samp, ~mean(.$x)),
+                    y = map_dbl(sim_2samp, ~mean(.$y)),
+                    diff = x - y)
+```
 
-````
+Just like with our one-sample t-test, every time we sample each population, we obtain a new estimated difference between the two groups. The estimated difference in means forms its own normal distribution.
+
+.pull-left[
+```{r , echo=F, animation.hook="gifski"}
+
+for (i in seq(1:30)) {
+
+dist_plots <- ggplot(sim_2samp[[i]]) +
+  geom_density(aes(x = sim_2samp[[i]]$x), color = "red") +
+  geom_density(aes(x = sim_2samp[[i]]$y), color = "blue") +
+  geom_vline(xintercept = mean(sim_2samp[[i]]$x), color = "red") +
+  geom_vline(xintercept = mean(sim_2samp[[i]]$y), color = "blue") +
+  geom_segment(x = mean(sim_2samp[[i]]$x), xend = mean(sim_2samp[[i]]$y), y = 0.015, yend = 0.015, linetype = 2) +
+  geom_label(x = ((mean(sim_2samp[[i]]$x) + mean(sim_2samp[[i]]$y))/2), 
+             y = 0.01, 
+             label = paste(round(sim_means$diff[i]), 2)) +
+  theme_minimal()
+ print(dist_plots)
+ 
+}
+```
+]
+
+.pull-right[
+```{r , echo=F, animation.hook="gifski"}
+for (i in seq(1:30)) {
+mean_plots <- ggplot(subset(sim_means, samp <= i), aes(diff)) +
+    geom_histogram(fill = "black", color = "grey") +
+    geom_vline(xintercept = -9, color = "blue") +
+    geom_vline(xintercept = mean(sim_means$diff[sim_means$samp <= i]), color = "orange") +
+    geom_label(aes(
+      x = -9,
+      y = +Inf,
+      vjust = 2,
+      label = -9
+    ),
+    colour = "blue",
+    size = 4) +
+        geom_label(aes(
+      x = mean(sim_means$diff[sim_means$samp <= i]),
+      y = +Inf,
+      vjust = 3,
+      label = paste(round(mean(sim_means$diff[sim_means$samp <= i]), 2))
+    ),
+    colour = "orange",
+    size = 4) + 
+    xlab("Mean Difference") +
+    theme_minimal()
+
+print(mean_plots)
+ }
+
+```
+]
+---
+# Central Limit Theorem
+
+Given two populations such that the mean is $\mu_X$ and standard deviation is $\sigma$ for Population 1 and the mean is $\mu_Y$ and standard deviation is $\sigma$ for Population 2, the sampling distribution of the difference in sample means is a normal distribution with a mean equal to $\mu_X - \mu_Y$ and standard deviation equal to $\sqrt{\frac{\sigma^2}{n_1} + \frac{\sigma^2}{n_2}}$, where $n_1$ and $n_2$ are the sample sizes.
+
+Notice we have only one $\sigma$ for both groups? This is an assumption of **homogeneity of variance**, meaning they share the same population variance despite differences in their means.
+
+---
+# Estimating Variance
+
+Since we rarely know the population standard deviation, we have to calculate a **pooled standard deviation** to estimate the populations standard deviation.
+
+$$\hat{\sigma} = \sqrt{\frac{(n_1-1)s_1 + (n_2-1)s_2 }{n_1+n_2-2}} $$
+* Sample sizes do not need to be equal.
+
+* Our degrees of freedom for an independent sample t-test is represented by $n_1+n_2-2$.
+
+---
+# Calculating the Standard Error
+
+Our standard error of the difference in mean $(\sigma_D)$ is calculated from our pooled standard deviation $(\hat{\sigma}_D)$ and sample sizes.
+
+$$SE(\sigma_D) = \sqrt{\frac{\hat{\sigma}^2}{n_1} + \frac{\hat{\sigma}^2}{n_2}} $$
+
+Then we just have to insert our standard error into our formula to find our test statistic.
+
+$$ t = \frac{\bar{X}_1 - \bar{X}_2}{SE} = \frac{\bar{X}_1 - \bar{X}_2}{\sqrt{\frac{\hat{\sigma}^2}{n_1} + \frac{\hat{\sigma}^2}{n_2}}}$$
+---
+# Independent Samples T-Test
+Null Hypothesis: Students with infrequent attendance have equal achievement scores to students with regular attendance.
+$$ H_0: \mu_1 = \mu_2 $$
+* Sample Sizes:
+  + $n_1 = 12$
+  + $n_2 = 76$
+* Means:
+  + $\bar{X_1} = 94.78$
+  + $\bar{X_2} = 103.22$
+* Sample Variance:
+  + $s_1 = 11.59$
+  + $s_2 = 10.26$
+  
+$$\hat{\sigma} = \sqrt{\frac{(12-1)11.59 + (76-1)103.22 }{12+76-2}} = 9.57 $$
+Observed Mean Difference $(\bar{X}_1 - \bar{X}_2)$ = $94.78 - 103.22 = -8.44$
+
+---
+# Independent Samples T-Test
+**Null Hypothesis:** Students with infrequent attendance have equal achievement scores to students with regular attendance.
+
+$$ H_0: \mu_1 = \mu_2 $$
+
+Pooled variance $(\hat{\sigma})$ = 9.57
+
+Sample Mean Difference $(\bar{X}_1 - \bar{X}_2)$ = $-8.44$
+
+$$  t = \frac{\bar{X}_1 - \bar{X}_2}{SE} = \frac{-8.44}{\sqrt{\frac{{9.57}^2}{12} + \frac{{9.57}^2}{76}}} = \frac{-8.44}{2.97} - -2.84$$
+If the null hypothesis is true, what is the probability of observing a t-statistic of -2.84, or a more extreme value (degrees of freedom = 86)?
+---
+
+The p-value for a two-tailed test with a t-value of -2.84 and degrees of freedom is .006. 
+```{r}
+ggplot(data.frame(x = c(-4, 4)), aes(x = x)) +
+  stat_function(fun = dt,
+                args = list(df = 86)) +
+  geom_vline(xintercept = -2.84, color = "red") +
+  stat_function(
+    fun = dt,
+    args = list(df = 86),
+    xlim = c(-4,-2.84),
+    fill = "red",
+    geom = "area"
+  ) +
+    stat_function(
+    fun = dt,
+    args = list(df = 86),
+    xlim = c(2.84, 4),
+    fill = "red",
+    geom = "area"
+  ) +
+  ggtitle("Distribution of the Difference in Means",
+  "t-value = -2.84, df = 86, p = .006") +
+  theme_minimal()
+  
+```
+
+Assuming the null hypothesis is true, the probability of obtaining a difference in sample means of +/- 8.44 or greater is .006. Because this is highly unlikely (p = .006 < .05), we can **reject the null hypothesis**.
+
+---
 
