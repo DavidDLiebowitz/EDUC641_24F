@@ -123,7 +123,7 @@ Readings: TBD
 
 Lecture slides: 
 
- * Slides: [html file](./slides/EDUC641_4_continuous_2.html)
+ * Slides: [html file](./slides/EDUC641_4_continuous_2.html) \& [html file](./slides/EDUC641_4_continuous_3.html)
  * Data:
  * R script:
 

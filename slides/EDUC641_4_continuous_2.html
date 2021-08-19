@@ -4,7 +4,7 @@
     <title>Examining the relationship between continuous variables</title>
     <meta charset="utf-8" />
     <meta name="author" content="TBD" />
-    <script src="EDUC641_4_continuous_2_files/header-attrs-2.10/header-attrs.js"></script>
+    <script src="EDUC641_4_continuous_2_files/header-attrs-2.9/header-attrs.js"></script>
     <link href="EDUC641_4_continuous_2_files/remark-css-0.0.1/default.css" rel="stylesheet" />
     <link rel="stylesheet" href="new.css" type="text/css" />
   </head>
@@ -64,22 +64,22 @@ class: middle, inverse
 #&gt;   The decimal point is at the |
 #&gt; 
 #&gt;   50 | 0
-#&gt;   52 | 0000
-#&gt;   54 | 000
+#&gt;   52 | 000
+#&gt;   54 | 00
 #&gt;   56 | 00
 #&gt;   58 | 0000000
-#&gt;   60 | 0000000
-#&gt;   62 | 000000000
+#&gt;   60 | 000000
+#&gt;   62 | 00000000
 #&gt;   64 | 000000000
 #&gt;   66 | 00000000000000
 #&gt;   68 | 000000000000
 #&gt;   70 | 0000000
-#&gt;   72 | 000000000000
+#&gt;   72 | 00000000000
 #&gt;   74 | 00000000000000000000000000000
-#&gt;   76 | 0000000000000000000000000
-#&gt;   78 | 000000000000
-#&gt;   80 | 00000000
-#&gt;   82 | 00000000000000000
+#&gt;   76 | 000000000000000000000000
+#&gt;   78 | 0000000000
+#&gt;   80 | 0000000
+#&gt;   82 | 0000000000000000
 #&gt;   84 | 000
 #&gt;   86 | 0
 #&gt;   88 | 0
@@ -130,7 +130,7 @@ summary(who$life_expectancy)
 
 ```
 #&gt;    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-#&gt;   51.00   66.00   74.00   71.64   77.00   88.00
+#&gt;   51.00   66.00   74.00   71.74   77.00   88.00
 ```
 
 ```r
@@ -138,8 +138,8 @@ summary(who$schooling)
 ```
 
 ```
-#&gt;    Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's 
-#&gt;    4.90   10.80   13.10   12.93   15.00   20.40      10
+#&gt;    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+#&gt;    4.90   10.80   13.10   12.93   15.00   20.40
 ```
 
 &lt;br&gt;
@@ -153,6 +153,16 @@ summary(who$schooling)
 
 --
 
+Probably easier to see if we have some symbolic way of representing our data...
+
+
+
+---
+# Visualizing the relationship
+&lt;img src="EDUC641_4_continuous_2_files/figure-html/unnamed-chunk-8-1.svg" style="display: block; margin: auto;" /&gt;
+
+--
+
 Horizontal axis (or *x*-axis) labels the value of the "predictor" *SCHOOLING*. Vertical axis (or *y*-axis) labels the value of the "outcome" *LIFE_EXPECTANCY*
 
 &lt;span style="color:blue"&gt; *Can you interpret the bivariate display? What does it (and does it NOT) say about the relationship between schooling and life expectancy?* &lt;/span&gt;
@@ -160,7 +170,7 @@ Horizontal axis (or *x*-axis) labels the value of the "predictor" *SCHOOLING*. V
 ---
 # Visualizing the relationship
 
-&lt;img src="EDUC641_4_continuous_2_files/figure-html/unnamed-chunk-8-1.svg" style="display: block; margin: auto;" /&gt;
+&lt;img src="EDUC641_4_continuous_2_files/figure-html/unnamed-chunk-9-1.svg" style="display: block; margin: auto;" /&gt;
 
 --
 
@@ -169,13 +179,13 @@ Horizontal axis (or *x*-axis) labels the value of the "predictor" *SCHOOLING*. V
 ---
 # You try...
 
-&lt;img src="EDUC641_4_continuous_2_files/figure-html/unnamed-chunk-9-1.svg" style="display: block; margin: auto;" /&gt;
+&lt;img src="EDUC641_4_continuous_2_files/figure-html/unnamed-chunk-10-1.svg" style="display: block; margin: auto;" /&gt;
 
 &lt;span style="color:blue"&gt; *Can you interpret what this display says about the country of Egypt?* &lt;/span&gt;
 
 ---
 # What about the relationship?
-&lt;img src="EDUC641_4_continuous_2_files/figure-html/unnamed-chunk-10-1.svg" style="display: block; margin: auto;" /&gt;
+&lt;img src="EDUC641_4_continuous_2_files/figure-html/unnamed-chunk-11-1.svg" style="display: block; margin: auto;" /&gt;
 
 &lt;span style="color:blue"&gt; *Is there a relationship between SCHOOLING and LIFE_EXPECTANCY? How do you know?* &lt;/span&gt;
 
@@ -184,14 +194,445 @@ Horizontal axis (or *x*-axis) labels the value of the "predictor" *SCHOOLING*. V
 &lt;span style="color:blue"&gt; *What kind of line, curve or other construction best summarizes the observed relationship between SCHOOLING and LIFE_EXPECTANCY?* &lt;/span&gt;
 
 ---
+# An aside about the origin
+&lt;img src="EDUC641_4_continuous_2_files/figure-html/unnamed-chunk-12-1.svg" style="display: block; margin: auto;" /&gt;
+
+*Figures that compare measures of central tendency across groups (e.g., bar charts) should always start at zero (0) so as not to artificially inflate the differences between groups*
+
+---
+# An aside about the origin
+
+&lt;img src="EDUC641_4_continuous_2_files/figure-html/unnamed-chunk-13-1.svg" style="display: block; margin: auto;" /&gt;
+
+*Figures that describe relationships between two variables (e.g., scatter plots) might (or might not) include the origin (0, 0). The key concept these charts illustrate is the relationship. By adjusting the scale and range of each axis, we can make the relationship "look" different. But the strength and magnitude are the same.* More to come in EDUC 643...
+
+---
 class: middle, inverse
 # A gentle introduction to bivariate regression: &lt;br&gt; Ordinary-Least Squares (OLS)-fitted regression lines
 
+---
+# OLS-fitted regression line
+&lt;img src="EDUC641_4_continuous_2_files/figure-html/unnamed-chunk-14-1.svg" style="display: block; margin: auto;" /&gt;
 
+&lt;span style="color:red"&gt; *The fitted regression line tells us the best prediction for the values of LIFE_EXPECTANCY.* &lt;/span&gt;
+
+---
+# Some intuition
+&lt;img src="EDUC641_4_continuous_2_files/figure-html/unnamed-chunk-15-1.svg" style="display: block; margin: auto;" /&gt;
+
+--
+
+Can think of the OLS-fitted regression line as a stick held in place by thumbtacks and elastic bands from each of the data points
+
+---
+# A visualization
+&lt;iframe src="C:/Users/daviddl/Documents/EDUC/641/641/line_SS/app.R?showcase=0" width="100%" height="400px"&gt;&lt;/iframe&gt;
+
+---
+# Implementing in R
+
+```r
+fit &lt;- lm(life_expectancy ~ schooling, data=who)
+summary(fit)
+```
+
+```
+#&gt; 
+#&gt; Call:
+#&gt; lm(formula = life_expectancy ~ schooling, data = who)
+#&gt; 
+#&gt; Residuals:
+#&gt;      Min       1Q   Median       3Q      Max 
+#&gt; -16.3270  -2.6565   0.1581   3.3095  10.9758 
+#&gt; 
+#&gt; Coefficients:
+#&gt;             Estimate Std. Error t value Pr(&gt;|t|)    
+#&gt; (Intercept)  42.8501     1.5976   26.82   &lt;2e-16 ***
+#&gt; schooling     2.2348     0.1206   18.53   &lt;2e-16 ***
+#&gt; ---
+#&gt; Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+#&gt; 
+#&gt; Residual standard error: 4.606 on 171 degrees of freedom
+#&gt; Multiple R-squared:  0.6676,	Adjusted R-squared:  0.6657 
+#&gt; F-statistic: 343.5 on 1 and 171 DF,  p-value: &lt; 2.2e-16
+```
+---
+# The fitted equation
+
+```
+#&gt; 
+#&gt; Call:
+#&gt; lm(formula = life_expectancy ~ schooling, data = who)
+#&gt; 
+#&gt; Residuals:
+#&gt;      Min       1Q   Median       3Q      Max 
+#&gt; -16.3270  -2.6565   0.1581   3.3095  10.9758 
+#&gt; 
+#&gt; Coefficients:
+#&gt;             Estimate Std. Error t value Pr(&gt;|t|)    
+#&gt; (Intercept)  42.8501     1.5976   26.82   &lt;2e-16 ***
+#&gt; schooling     2.2348     0.1206   18.53   &lt;2e-16 ***
+#&gt; ---
+#&gt; Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+#&gt; 
+#&gt; Residual standard error: 4.606 on 171 degrees of freedom
+#&gt; Multiple R-squared:  0.6676,	Adjusted R-squared:  0.6657 
+#&gt; F-statistic: 343.5 on 1 and 171 DF,  p-value: &lt; 2.2e-16
+```
+
+These "coefficients" tell you where the fitted trend line should be drawn:
+$$
+\small{
+\left[ \textrm{Predicted value of } LIFE\_EXPECTANCY\right]  = 
+\left( 42.85 \right) + 2.23 * \left[ \textrm{Observed value of }SCHOOLING  \right] 
+}
+$$
+---
+# Fitted values
+
+Can substitute values for the "predictor" `\((SCHOOLING)\)` into the fitted equation to compute the *predicted* values of `\(LIFE\_EXPECTANCY\)`. 
+&lt;img src="EDUC641_4_continuous_2_files/figure-html/unnamed-chunk-19-1.svg" style="display: block; margin: auto;" /&gt;
+
+--
+
+Can do this for our old friend Chile ... and all others...
+
+---
+# Fitted values
+
+So we can re-construct the line of best fit from the fitted values:
+
+&lt;img src="EDUC641_4_continuous_2_files/figure-html/unnamed-chunk-20-1.svg" style="display: block; margin: auto;" /&gt;
+
+---
+# Fitted values
+
+Note that the fitted line always goes through the average of the predictors
+
+```r
+mean(who$schooling)
+```
+
+```
+#&gt; [1] 12.92717
+```
+
+```r
+mean(who$life_expectancy)
+```
+
+```
+#&gt; [1] 71.73988
+```
+
+---
+# Fitted values
+
+Note that the fitted line always goes through the average of the predictors
+&lt;img src="EDUC641_4_continuous_2_files/figure-html/unnamed-chunk-22-1.svg" style="display: block; margin: auto;" /&gt;
+---
+# The regression equation
+
+Each term in the regression equation has a specific interpretation
+
+$$
+\hat{LIFE\_EXPECTANCY} = 42.85 + 2.23 * \left( SCHOOLING \right)
+$$
+
+---
+# The regression equation
+
+Each term in the regression equation has a specific interpretation:
+
+$$
+\color{red}{\hat{LIFE\_EXPECTANCY}} = 42.85 + 2.23 * \left( SCHOOLING \right)
+$$
+
+The predicted value of `\(\color{red}{\hat{LIFE\_EXPECTANCY}}\)` is based on the OLS regression fit. Its "hat" represents that it is a prediction.
+
+---
+# The regression equation
+
+Each term in the regression equation has a specific interpretation:
+
+$$
+\hat{LIFE\_EXPECTANCY} = \color{red}{42.85} + 2.23 * \left( SCHOOLING \right)
+$$
+
+42.85 represents the &lt;span style="color:red"&gt; *estimated intercept*&lt;/span&gt;. It tells you the predicted value of `\(LIFE\_EXPECTANCY\)` when `\(SCHOOLING\)` is zero (0)
+
+- &lt;span style="color:blue"&gt;*In this context, it doesn't make sense to interpret this. Why?* &lt;/span&gt;
+
+---
+# The regression equation
+
+Each term in the regression equation has a specific interpretation:
+
+$$
+\hat{LIFE\_EXPECTANCY} = 42.85 + \color{red}{2.23} * \left( SCHOOLING \right)
+$$
+
+--
+
+2.23 represents the &lt;span style="color:red"&gt; *estimated slope*&lt;/span&gt;. It summarizes the relationship between `\(LIFE\_EXPECTANCY\)` and `\(SCHOOLING\)`. It tells you the difference in the predicted values of `\(LIFE\_EXPECTANCY\)` *per unit difference* in  `\(SCHOOLING\)`.
+
+--
+
+Slopes can be positive (as in this case) or negative. Here, we conclude that countries that experience one additional year of schooling have an average life expectancy of 2.23 more years.
+
+
+---
+# The regression equation
+
+Each term in the regression equation has a specific interpretation:
+
+$$
+\hat{LIFE\_EXPECTANCY} = 42.85 + 2.23 * \left( \color{red}{SCHOOLING} \right)
+$$
+
+--
+
+`\(\color{red}{SCHOOLING}\)` represents the &lt;span style="color:red"&gt; *actual values*&lt;/span&gt; of the predictor `\(SCHOOLING\)`.
+
+---
+# Regression inference
+
+As with our categorical and single-variable continuous data analysis, we can ask whether we might have observed a relationship between `\(LIFE\_EXPECTANCY\)` and `\(SCHOOLING\)` by an idiosyncratic accident of sampling.
+
+--
+
+Could we have gotten a slope value of 2.23 by sampling from a population in which there was **no relationship** between `\(LIFE\_EXPECTANCY\)` and `\(SCHOOLING\)`?
+
+- In other words, by sampling from a *null population* in which the slope was zero?
+
+---
+# Regression inference
+
+Could we have gotten a slope value of 2.23 by sampling from a population in which there was **no relationship** between `\(LIFE\_EXPECTANCY\)` and `\(SCHOOLING\)`?
+
+
+```
+#&gt; 
+#&gt; Call:
+#&gt; lm(formula = life_expectancy ~ schooling, data = who)
+#&gt; 
+#&gt; Residuals:
+#&gt;      Min       1Q   Median       3Q      Max 
+#&gt; -16.3270  -2.6565   0.1581   3.3095  10.9758 
+#&gt; 
+#&gt; Coefficients:
+#&gt;             Estimate Std. Error t value Pr(&gt;|t|)    
+#&gt; (Intercept)  42.8501     1.5976   26.82   &lt;2e-16 ***
+#&gt; schooling     2.2348     0.1206   18.53   &lt;2e-16 ***
+#&gt; ---
+#&gt; Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+#&gt; 
+#&gt; Residual standard error: 4.606 on 171 degrees of freedom
+#&gt; Multiple R-squared:  0.6676,	Adjusted R-squared:  0.6657 
+#&gt; F-statistic: 343.5 on 1 and 171 DF,  p-value: &lt; 2.2e-16
+```
+
+--
+
+As with our previous analysis, R provides us with a *p*-value which can help us to judge the likelihood that our results are driven by idiosyncrasies of sampling
+
+---
+# Regression inference
+
+
+```
+#&gt; 
+#&gt; Call:
+#&gt; lm(formula = life_expectancy ~ schooling, data = who)
+#&gt; 
+#&gt; Residuals:
+#&gt;      Min       1Q   Median       3Q      Max 
+#&gt; -16.3270  -2.6565   0.1581   3.3095  10.9758 
+#&gt; 
+#&gt; Coefficients:
+#&gt;             Estimate Std. Error t value Pr(&gt;|t|)    
+#&gt; (Intercept)  42.8501     1.5976   26.82   &lt;2e-16 ***
+#&gt; schooling     2.2348     0.1206   18.53   &lt;2e-16 ***
+#&gt; ---
+#&gt; Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+#&gt; 
+#&gt; Residual standard error: 4.606 on 171 degrees of freedom
+#&gt; Multiple R-squared:  0.6676,	Adjusted R-squared:  0.6657 
+#&gt; F-statistic: 343.5 on 1 and 171 DF,  p-value: &lt; 2.2e-16
+```
+
+Here, the *p*-value for the `\(\frac{LIFE\_EXPECTANCY}{SCHOOLING}\)` regression slope is `\(&lt;0.0001\)` (in fact, `\(&lt;2^{-16}\)`). 
+
+With an alpha-threshold of 0.05, `\(2^{-16}\)` is definitely less than 0.05. Thus, we reject the null hypothesis that there is no relationship  between `\(LIFE\_EXPECTANCY\)` and `\(SCHOOLING\)`, on average in the population.
+
+---
+# Writing it up
+.pull-left[
+&lt;img src="EDUC641_4_continuous_2_files/figure-html/unnamed-chunk-25-1.svg" style="display: block; margin: auto;" /&gt;
+]
+
+.pull-right[
+&gt; **The story so far** &lt;br&gt; &lt;font size="2"&gt; In our investigation of country-level aggregate measures of schooling and life expectancy, we have found that the average years of schooling in a country is related to the average life expectancy. In particular, when we relate the country-level life expectancy *LIFE_EXPECTANCY* to the country-level mean years of schooling *SCHOOLING*, we find that the trend-line estimated by ordinary-least-squares regression has a slope of 2.23 (*p*&lt;0.0001). This suggesets that two countries that differ in their average years of schooling attainment by 1 year will have, on average, an difference in life expectancy of 2.23 years. Of course, this relationship is far from causal... &lt;/font&gt;
+
+]
 ---
 class: middle, inverse
 
 # A gentle introduction to bivariate regression: &lt;br&gt; Residual analysis
+
+---
+# Residual analysis
+&lt;img src="EDUC641_4_continuous_2_files/figure-html/unnamed-chunk-26-1.svg" style="display: block; margin: auto;" /&gt;
+
+Our fitted regression line contains the "predicted" values of *LIFE_EXPECTANCY* for each value of *SCHOOLING*. But almost all of the "actual" values of *LIFE_EXPECTANCY* lie off the actual line regression line.
+
+---
+# An example: Chile
+
+&lt;img src="EDUC641_4_continuous_2_files/figure-html/unnamed-chunk-27-1.svg" style="display: block; margin: auto;" /&gt;
+
+Observed values for Chile: `\(LIFE\_EXPECTANCY = 85\)`; `\(SCHOOLING = 16.3\)` &lt;br&gt;
+Predicted value of *LIFE_EXPECTANCY* for Chile:
+$$
+`\begin{align}
+\hat{LIFE\_EXPECTANCY} &amp; = 42.85 + 2.23 * (16.3) \\
+&amp; = 79.20
+\end{align}`
+$$
+---
+# An example: Chile
+&lt;img src="EDUC641_4_continuous_2_files/figure-html/unnamed-chunk-28-1.svg" style="display: block; margin: auto;" /&gt;
+`\(\hat{LIFE\_EXPECTANCY} = 79.20\)` &lt;br&gt;
+Actual life expectancy = 85
+
+--
+
+&lt;span style="color:blue"&gt; *What can we say about the country of Chile's average life expectancy, relative to our prediction?*&lt;/span&gt; 
+
+---
+# Now Egypt
+&lt;img src="EDUC641_4_continuous_2_files/figure-html/unnamed-chunk-29-1.svg" style="display: block; margin: auto;" /&gt;
+Observed values for Egypt: `\(LIFE\_EXPECTANCY = 79\)`; `\(SCHOOLING = 13.1\)` &lt;br&gt;
+
+&lt;span style="color:blue"&gt; Can you calculate the predicted value of *LIFE_EXPECTANCY* for Egypt and compare it to the observed?
+
+---
+# What is a "residual"?
+
+#### The difference ("vertical distance") between the observed value of the outcome its predicted value is called the *residual*.
+
+#### Residuals can be substantively and statistically useful:
+- Represent individual deviations from average trend
+- Tell us about values of the outcome after taking into account ("adjusting for") the predictor
+ + In this case, tell us whether countries have better or worse life expectancies, given their average years of schooling
+ 
+---
+# Residual analysis
+
+
+```r
+fit &lt;- lm(life_expectancy ~ schooling, data=who)
+
+# predict asks for the predicted values
+who$predict &lt;- predict(fit)
+
+# resid asks for the raw residual
+who$resid &lt;- residuals(fit)
+```
+
+We can now treat these residual and predicted values as new variables in our dataset and examine using all the other univariate and multivariate analysis tools we have.
+
+---
+# Examining the residuals
+
+
+```r
+summary(who$resid)
+```
+
+```
+#&gt;     Min.  1st Qu.   Median     Mean  3rd Qu.     Max. 
+#&gt; -16.3270  -2.6565   0.1581   0.0000   3.3095  10.9758
+```
+
+- Sample mean of the residuals is *always* exactly zero
+- We've done a very poor job of predicting life expectancy for some countries
+
+--
+
+
+```r
+sd(who$resid)
+```
+
+```
+#&gt; [1] 4.592143
+```
+
+- Standard deviation of the raw residuals can be quite useful in checking our assumptions
+ + &lt;span style="color:blue"&gt; *What assumption?* &lt;/span&gt;
+ 
+---
+# Residual assumptions
+
+For the *p*-values that we computed in the regression analysis to be correct, the residuals **must be normally distributed**
+
+
+```r
+boxplot(resid(fit))
+```
+
+&lt;img src="EDUC641_4_continuous_2_files/figure-html/unnamed-chunk-33-1.svg" style="display: block; margin: auto;" /&gt;
+
+--
+
+A few outliers, but we seem to be doing ok...
+
+---
+# Residual assumptions
+
+For the *p*-values that we computed in the regression analysis to be correct, the residuals **must be normally distributed**
+
+
+```r
+ggplot(who, aes(x = resid)) + 
+  geom_histogram(binwidth = 1)
+```
+
+&lt;img src="EDUC641_4_continuous_2_files/figure-html/unnamed-chunk-34-1.svg" style="display: block; margin: auto;" /&gt;
+
+--
+
+Pretty good, pretty good...
+
+
+---
+# Residual vs. fitted plot 
+
+For the *p*-values that we computed in the regression analysis to be correct, the residuals **must be normally distributed**
+&lt;img src="EDUC641_4_continuous_2_files/figure-html/unnamed-chunk-35-1.svg" style="display: block; margin: auto;" /&gt;
+
+#### Key assumption checks for normality:
+- The residuals "bounce randomly" around the 0 line. 
+- The residuals could be roughly contained within a rectangle around the 0 line. 
+- No one residual "stands out" from the basic random pattern of residuals.
+
+---
+# Residual vs. fitted plot
+
+For the *p*-values that we computed in the regression analysis to be correct, the residuals **must be normally distributed**
+&lt;img src="EDUC641_4_continuous_2_files/figure-html/unnamed-chunk-36-1.svg" style="display: block; margin: auto;" /&gt;
+
+#### Key assumption checks for normality:
+- The residuals "bounce randomly" around the 0 line. 
+- The residuals could be roughly contained within a rectangle around the 0 line. 
+- No one residual "stands out" from the basic random pattern of residuals.
+
+
+---
+class: middle, inverse
+# Synthesis and wrap-up
+
 
 
     </textarea>
@@ -241,6 +682,32 @@ if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
     deleted = true;
   });
 })();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
 // adds .remark-code-has-line-highlighted class to <pre> parent elements
 // of code chunks containing highlighted lines with class .remark-code-line-highlighted
 (function(d) {
@@ -258,17 +725,6 @@ if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
   }
   preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
 })(document);</script>
-
-<script>
-(function() {
-  var links = document.getElementsByTagName('a');
-  for (var i = 0; i < links.length; i++) {
-    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
-      links[i].target = '_blank';
-    }
-  }
-})();
-</script>
 
 <script>
 slideshow._releaseMath = function(el) {
