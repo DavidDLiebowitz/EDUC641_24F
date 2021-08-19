@@ -1,5 +1,5 @@
 ---
-title: "Null Hypothesis Significance Testing critiques"
+title: "Null-Hypothesis Significance Testing (NHST) critiques"
 subtitle: "EDUC 641: Week XX"
 author: "TBD"
 #date: "`r format(Sys.time(), '%d %B %Y')`"
@@ -230,3 +230,21 @@ Not surprisingly, I've updated my beliefs and now think there is a greater-than-
 
 <span style="color:red"> *Much more complexity to be explored in another course*</red>
 
+---
+# A path forward...
+
+So where does all this leave us? Some recommendations for moving forward:
+1. Move beyond a single metric to evaluate practice and theory
+ - Multiple studies w/ focus on generalizability
+ - Replication studies
+ - Systematic reviews/meta-analysis
+ - Focus on *confidence intervals* and *magnitude* of effects (**more in EDUC 643**)
+
+2. Open Science
+ - Pre-registration (REES, OSF, etc.)
+ - Registered reports
+ - Public materials and data
+ - Use of scripts!!!
+ - Statistical tests (GRIM, SPRITE, etc.)
+
+3. Changes in academic incentives
