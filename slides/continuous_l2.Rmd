@@ -50,7 +50,7 @@ leveneTest(life_expectancy ~ status, data = who)
 ---
 # Normal Distributions
 
-The normal distribution is a frequently occurring phenomenon across the social and natural sciences.
+The normal distribution describes a frequently occurring phenomenon across the social and natural sciences.
 
 ```{r}
 ggplot(subset(penguins, species == "Adelie"), aes(flipper_length_mm)) +
@@ -201,8 +201,8 @@ ggplot(data.frame(x = c(-20, 20)), aes(x = x)) +
   theme_classic()
 
 ```
-* The area under the curve is always equal to 1.
-* The empirical rule applies to all normal distributions (e.g., 68% of observations occur within 1 SD of the mean).
+* Regardless of the mean and standard deviation, the area under the curve is always equal to 1.
+* The empirical rule still applies (e.g., 68% of observations occur within 1 SD of the mean).
 ---
 
 # Standard Normal Distribution
@@ -225,7 +225,7 @@ ggplot(data.frame(x = c(-4, 4)), aes(x = x)) +
 
 ---
 # Z-Test
-Suppose we wanted to know the probability of scoring at least 1.5 SD above the mean on a standardized test. 
+Suppose we wanted to know the probability of scoring at least 1.5 SD above the mean on a standardized test of intelligence. 
 
 ```{r}
 ztest_plot <- ggplot(data.frame(x = c(-4, 4)), aes(x = x)) +
@@ -288,7 +288,7 @@ ggplot(data.frame(x = c(-4, 4)), aes(x = x)) +
 ---
 # Z-Test
 
-* The area under the curve above a z-score of 0.53 is .30. Therefore, the probability of randomly selecting a country with a national life expectancy greater than 76 is 30%.
+The area under the curve above a z-score of 0.53 is .30. Therefore, the probability of randomly selecting a country with a national life expectancy greater than 76 is 30%.
 
 ```{r}
 ggplot(data.frame(x = c(-4, 4)), aes(x = x)) +
@@ -465,6 +465,45 @@ The mean of our sampling distribution (mean of means) approximates the <span sty
 If we sampled all possible samples of size *n* from our population, our mean of sample means would be equal to the population mean.
 
 ---
+---
+# Central Limit Theorem
+
+* Here is a histogram of the means of 1000 random samples from our WHO data.
+* The center of the distribution is our population mean.
+* The standard deviation is the standard error of the mean.
+
+```{r, parse = T, echo = F}
+
+ggplot(samp_means, aes(means)) +
+  geom_histogram() +
+  geom_vline(xintercept = mean(samp_means$means), color = "red") +
+  geom_segment(
+    x = mean(samp_means$means),
+    xend = (mean(samp_means$means) + sd(samp_means$means)),
+    y = 30,
+    yend = 30,
+    color = "red"
+  ) +
+  geom_label(aes(
+    x = mean(samp_means$means),
+    y = +Inf,
+    vjust = 3,
+    label = paste('mu', "==", 71.64)
+  ), parse = T) +
+    geom_label(aes(
+    x = (mean(samp_means$means) + sd(samp_means$means)),
+    y = +Inf,
+    vjust = 6,
+    label = paste('sigma', "==", round(sd(samp_means$means), 2))
+  ), parse = T) +
+  theme_classic()
+  
+
+```
+
+See the following the link for more demonstrations of the central limit theorem:
+{https://onlinestatbook.com/stat_sim/sampling_dist/ }
+---
 # Central Limit Theorem
 
 > Given a population mean $\mu$ and standard deviation of $\sigma$, the sampling distribution of the mean is a normal distribution with a mean equal to $\mu$ and standard deviation equal to $\frac{\sigma}{\sqrt{n}}$, where *n* is the sample size.
@@ -499,44 +538,6 @@ for (i in seq(1, 100, 10)) {
      theme_minimal()
    print(x)
  }
-
-```
-
----
-# Central Limit Theorem
-## MOVE EARLIER
-
-* Here is a histogram of the means of 1000 random samples from our WHO data.
-* The center of the distribution is our population mean.
-* The standard deviation is the standard error of the mean.
-{https://onlinestatbook.com/stat_sim/sampling_dist/ }
-
-```{r, parse = T, echo = F}
-
-ggplot(samp_means, aes(means)) +
-  geom_histogram() +
-  geom_vline(xintercept = mean(samp_means$means), color = "red") +
-  geom_segment(
-    x = mean(samp_means$means),
-    xend = (mean(samp_means$means) + sd(samp_means$means)),
-    y = 30,
-    yend = 30,
-    color = "red"
-  ) +
-  geom_label(aes(
-    x = mean(samp_means$means),
-    y = +Inf,
-    vjust = 3,
-    label = paste('mu', "==", round(mean(samp_means$means), 2))
-  ), parse = T) +
-    geom_label(aes(
-    x = (mean(samp_means$means) + sd(samp_means$means)),
-    y = +Inf,
-    vjust = 6,
-    label = paste('sigma', "==", round(sd(samp_means$means), 2))
-  ), parse = T) +
-  theme_classic()
-  
 
 ```
 
@@ -617,30 +618,54 @@ ggplot(data.frame(x = c(-4, 4)), aes(x = x)) +
   + e.g. Is our observed sample mean to be expected if we repeatedly drew random samples from the population?
   
   
-Example Research Question:
+**Example Research Question:**
 Suppose the known average life expectancy is 76 years with a standard deviation of 3.2. Do countries around the Mediterranean Sea significantly differ from the known population average of 76?
+
 
 ---
 # One Sample T-Test
-* Does **not** test the probability of obtaining the sample distribution or data itself, only the sample mean.
+*  The one sample t-test does **not** test the probability of obtaining the sample distribution or data itself, only the sample mean.
   
-* **Null Hypothesis** $(H_0)$: $\mu = K$, where $K$ is any constant.
+*  Using the probability of obtaining a particular sample mean **Null Hypothesis** $(H_0)$: $\mu = K$, where $K$ is any constant.
+
 
 ---
 # One-Sample T-Test
+* With a z-test, we were able to find the number of observations that fell beyond a particular value. That value was our z-statistic.
+* The t-statistic is functionally like a z-statistic, but for the t-distribution.
 
-* The t-statistic is functionally like a z-score, but for the t-distribution.
-* To calculate a t-statistic,replace the population standard deviation with the sample standard deviation.
+```{r}
+z_dist <- ggplot(data.frame(x = c(-4, 4)), aes(x = x)) +
+  stat_function(fun = dnorm,
+                args = list(mean = 0, sd = 1)) +
+  geom_vline(xintercept = 1) +
+  geom_label(x = 1, y = 0.25, label = "z-statistic") +
+  xlab("z-score") +
+  ggtitle("Standard Normal Distribution") +
+  theme_classic()
 
-$$ t = \frac{\bar{X} - \mu}{\hat{\sigma}/\sqrt{n}} $$
 
-.pull-left[
-* Distributional spread and proportion of the area under the curve beyond our t-value depends on our degrees of freedom.
 
-* Using a t-test, we can calculate the probability of obtaining a particular sample mean through random sampling.
-]
+t_dist <- ggplot(data.frame(x = c(-4, 4)), aes(x = x)) +
+  stat_function(fun = dt,
+                args = list(df = 10)) +
+  geom_vline(xintercept = 1) +
+  geom_label(x = 1, y = 0.25, label = "t-statistic") +
+  xlab("t-value") +
+  ggtitle("T-Distribution (df = 10)") +
+  theme_classic()
 
-.pull-right[
+gridExtra::grid.arrange(z_dist, t_dist, ncol = 2)
+```
+
+
+---
+# T-Distribution
+* Shape of the t-distribution is slightly different depending on the degrees of freedom $(n-1)$.
+
+* Thus, the proportion of the area under the curve beyond our t-value also depends on our degrees of freedom.
+
+
 ```{r , echo=F, animation.hook="gifski", interval=0.4}
 samp_means <- tibble(df = seq(2, 20, 2), 
                      val = round(
@@ -673,7 +698,16 @@ for (i in 1:10) {
   print(x)
 }
 ```
-]
+
+---
+# One-Sample T-Test
+
+* To calculate a t-statistic, we use the same formula to calculate a z-score, but replace the population standard deviation with the sample's standard deviation.
+
+Since we don't know the population standard deviation $(\mu)$, our samples standard deviation $(s)$ is used as an estimate of the population standard deviation $(\hat{\mu})$.
+
+$$ t = \frac{\bar{X} - \mu}{\hat{\sigma}/\sqrt{n}} $$
+
 ---
 ## Applying a t-test
 Suppose we have data from a sample of 10 countries with a mean life expectancy of 66.87 and standard deviation of 5.82.
