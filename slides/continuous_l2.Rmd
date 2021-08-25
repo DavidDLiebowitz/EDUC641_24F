@@ -826,7 +826,7 @@ Tests the possibility of a significant difference in either direction.
 ---
 # Demonstration
 
-* Dr. DSM has developed a new intervention for depression.
+* Dr. DSM and Dr. APA have developed a new intervention for depression.
 
 * They would like to compare the post-treatment depression ratings for their research participants to average depression ratings following "business as usual."
 
@@ -858,9 +858,10 @@ What conclusion was missed with the one-tailed test?
 ---
 # Alpha Thresholds and t-values
 
-## NEEDS ELABORATION
-* Critical t-values $t_{\alpha/2}(df)$ are the thresholds at which our alpha threshold is met.
-  + Vary depending on $df$ and $\alpha$
+With two-tailed tests, the total alpha is "split" across both tails of the distribution.
+ * If $\alpha = .05$, $\alpha/2 = 0.025$.
+
+* Critical t-values $t_{\alpha/2}(df)$ are the values at which our alpha threshold is met.
   
 ```{r, echo = F}
 ggplot(data.frame(x = c(-4, 4)), aes(x = x)) +
@@ -902,9 +903,10 @@ ggplot(data.frame(x = c(-4, 4)), aes(x = x)) +
           subtitle = paste("p =", 2*round(pt(q= -2.2622, df = 9, lower.tail = T), 4)))
 ```
 
-With two-tailed tests, the total alpha is "split" across both tails of the distribution $(\alpha(.05)/2 = .025)$.
+If we conducted a t-test, our t-statistic would have to be less than -2.2622 or greater than 2.2622 to reject the null hypothesis.
 
 ---
+# One Sample T-test
 
 * Assuming we had set our $\alpha$ at .05, let's see if we reject our null hypothesis in our previous example.
 
@@ -942,7 +944,7 @@ ggplot(data.frame(x = c(-4, 4)), aes(x = x)) +
 Our p-value is not less than .05 and does not satisfy our alpha threshold.
 ```{r}
 
-ggplot(data.frame(x = c(-4, 4)), aes(x = x)) +
+two_tailed_test <- ggplot(data.frame(x = c(-4, 4)), aes(x = x)) +
   stat_function(fun = dt, 
                 args = list(df = 9), 
                 color = "black") +
@@ -971,8 +973,20 @@ ggplot(data.frame(x = c(-4, 4)), aes(x = x)) +
           subtitle = paste("p =", 2*round(pt(q= -1.24, df = 9, lower.tail = T), 2))) +
     theme(plot.title = element_text(hjust = 0.5),
         plot.subtitle = element_text(hjust = 0.5))
+
+two_tailed_test
 ```
 ]
+
+Whether we compare our t-statistic to our critical t-values or our look at our p-value, we come to the same conclusion.
+
+
+---
+# One Sample T-test
+
+```{r}
+two_tailed_test
+```
 
 Assuming a population mean of 78.16 and sample size of 10, the proportion of random samples that would demonstrate a sample mean **equal to or more extreme than 66.87** is 0.24 $(t = -1.24, p = 0.24)$. Because our p-value does not meet our alpha threshold of .05, we **fail to reject the null hypothesis**.
 
@@ -1020,7 +1034,9 @@ include_graphics("independent_samples.png")
 ---
 # Sampling a difference in means
 
-Suppose we have two populations of students - <span style="color: red;"> students with infrequent school attendance </span> and <span style="color: blue;"> students who attend school regularly </span>. On our standardized test, students with infrequent attendance have an average score of 95 $(\mu_x = 95)$ and students with regular attendance have an average score of 104 $(\mu_y = 104)$. Thus, our true difference in means is 9.
+Suppose we have two populations of students - <span style="color: red;"> students with infrequent school attendance </span> and <span style="color: blue;"> students who attend school regularly </span>.
+
+On our standardized test, students with infrequent attendance have an average score of 95 $(\mu_x = 95)$ and students with regular attendance have an average score of 104 $(\mu_y = 104)$. Thus, our true difference in means is 9.
 ```{r}
 sim_2pop <- tibble(x = rnorm(1000, mean = 95, sd = 10),
                     y = rnorm(1000, mean = 104, sd = 10))
@@ -1121,11 +1137,19 @@ ADD SLIDE THAT SHOWS CONVERGENCE TO NORMAL DISTRIUBTION
 ---
 # Central Limit Theorem
 
-Given two populations such that the mean is $\mu_X$ and standard deviation is $\sigma$ for Population 1 and the mean is $\mu_Y$ and standard deviation is $\sigma$ for Population 2, the sampling distribution of the difference in sample means is a normal distribution with a mean equal to $\mu_X - \mu_Y$ and standard deviation equal to $\sqrt{\frac{\sigma^2}{n_1} + \frac{\sigma^2}{n_2}}$, where $n_1$ and $n_2$ are the sample sizes.
+Given two populations such that:
+* The mean is $\mu_X$ and standard deviation is $\sigma$ for Population 1
+* The mean is $\mu_Y$ and standard deviation is $\sigma$ for Population 2
+
+...the sampling distribution of the *difference in sample means* is a normal distribution with a:
+* Mean equal to $\mu_X - \mu_Y$
+* Standard deviation equal to $\sqrt{\frac{\sigma^2}{n_1} + \frac{\sigma^2}{n_2}}$
+
+...where $n_1$ and $n_2$ are the sample sizes.
 
 Notice we have only one $\sigma$ for both groups. This is an assumption of **homogeneity of variance**, meaning they share the same population variance despite differences in their means.
 
-If we do not have homogeneity of variance, then we would conduct a Welch's t-test.
+If we do not have homogeneity of variance, then we would conduct a Welch's t-test (a variation of the independent samples t-test).
 ---
 # Estimating Variance
 

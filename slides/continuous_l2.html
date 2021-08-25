@@ -387,7 +387,7 @@ Tests the possibility of a significant difference in either direction.
 ---
 # Demonstration
 
-* Dr. DSM has developed a new intervention for depression.
+* Dr. DSM and Dr. APA have developed a new intervention for depression.
 
 * They would like to compare the post-treatment depression ratings for their research participants to average depression ratings following "business as usual."
 
@@ -405,15 +405,17 @@ What conclusion was missed with the one-tailed test?
 ---
 # Alpha Thresholds and t-values
 
-## NEEDS ELABORATION
-* Critical t-values `\(t_{\alpha/2}(df)\)` are the thresholds at which our alpha threshold is met.
-  + Vary depending on `\(df\)` and `\(\alpha\)`
+With two-tailed tests, the total alpha is "split" across both tails of the distribution.
+ * If `\(\alpha = .05\)`, `\(\alpha/2 = 0.025\)`.
+
+* Critical t-values `\(t_{\alpha/2}(df)\)` are the values at which our alpha threshold is met.
   
 &lt;img src="continuous_l2_files/figure-html/unnamed-chunk-29-1.png" style="display: block; margin: auto;" /&gt;
 
-With two-tailed tests, the total alpha is "split" across both tails of the distribution `\((\alpha(.05)/2 = .025)\)`.
+If we conducted a t-test, our t-statistic would have to be less than -2.2622 or greater than 2.2622 to reject the null hypothesis.
 
 ---
+# One Sample T-test
 
 * Assuming we had set our `\(\alpha\)` at .05, let's see if we reject our null hypothesis in our previous example.
 
@@ -426,6 +428,14 @@ Our observed t-value did not surpass our critical t-values.
 Our p-value is not less than .05 and does not satisfy our alpha threshold.
 &lt;img src="continuous_l2_files/figure-html/unnamed-chunk-31-1.png" style="display: block; margin: auto;" /&gt;
 ]
+
+Whether we compare our t-statistic to our critical t-values or our look at our p-value, we come to the same conclusion.
+
+
+---
+# One Sample T-test
+
+&lt;img src="continuous_l2_files/figure-html/unnamed-chunk-32-1.png" style="display: block; margin: auto;" /&gt;
 
 Assuming a population mean of 78.16 and sample size of 10, the proportion of random samples that would demonstrate a sample mean **equal to or more extreme than 66.87** is 0.24 `\((t = -1.24, p = 0.24)\)`. Because our p-value does not meet our alpha threshold of .05, we **fail to reject the null hypothesis**.
 
@@ -471,22 +481,24 @@ $$ t = \frac{0}{SE} = 0 $$
 ---
 # Sampling a difference in means
 
-Suppose we have two populations of students - &lt;span style="color: red;"&gt; students with infrequent school attendance &lt;/span&gt; and &lt;span style="color: blue;"&gt; students who attend school regularly &lt;/span&gt;. On our standardized test, students with infrequent attendance have an average score of 95 `\((\mu_x = 95)\)` and students with regular attendance have an average score of 104 `\((\mu_y = 104)\)`. Thus, our true difference in means is 9.
+Suppose we have two populations of students - &lt;span style="color: red;"&gt; students with infrequent school attendance &lt;/span&gt; and &lt;span style="color: blue;"&gt; students who attend school regularly &lt;/span&gt;.
+
+On our standardized test, students with infrequent attendance have an average score of 95 `\((\mu_x = 95)\)` and students with regular attendance have an average score of 104 `\((\mu_y = 104)\)`. Thus, our true difference in means is 9.
 
 
 Just like with our one-sample t-test, every time we sample each population, we obtain a new estimated difference between the two groups.
 
-&lt;img src="continuous_l2_files/figure-html/unnamed-chunk-34-.gif" style="display: block; margin: auto;" /&gt;
+&lt;img src="continuous_l2_files/figure-html/unnamed-chunk-35-.gif" style="display: block; margin: auto;" /&gt;
 
 ---
 
 As we take repeated samples, the estimated difference in means forms its own normal distribution.
 
-&lt;img src="continuous_l2_files/figure-html/unnamed-chunk-35-.gif" style="display: block; margin: auto;" /&gt;
+&lt;img src="continuous_l2_files/figure-html/unnamed-chunk-36-.gif" style="display: block; margin: auto;" /&gt;
 
 Just like the with the one-sample t-test, the &lt;span style="color: orange;"&gt; mean of sample statistics &lt;/span&gt; approaches the &lt;span style="color: purple;"&gt; population statistic &lt;/span&gt; with repeated sampling.
 
-&lt;img src="continuous_l2_files/figure-html/unnamed-chunk-36-.gif" style="display: block; margin: auto;" /&gt;
+&lt;img src="continuous_l2_files/figure-html/unnamed-chunk-37-.gif" style="display: block; margin: auto;" /&gt;
 
 ---
 ADD SLIDE THAT SHOWS CONVERGENCE TO NORMAL DISTRIUBTION
@@ -495,11 +507,19 @@ ADD SLIDE THAT SHOWS CONVERGENCE TO NORMAL DISTRIUBTION
 ---
 # Central Limit Theorem
 
-Given two populations such that the mean is `\(\mu_X\)` and standard deviation is `\(\sigma\)` for Population 1 and the mean is `\(\mu_Y\)` and standard deviation is `\(\sigma\)` for Population 2, the sampling distribution of the difference in sample means is a normal distribution with a mean equal to `\(\mu_X - \mu_Y\)` and standard deviation equal to `\(\sqrt{\frac{\sigma^2}{n_1} + \frac{\sigma^2}{n_2}}\)`, where `\(n_1\)` and `\(n_2\)` are the sample sizes.
+Given two populations such that:
+* The mean is `\(\mu_X\)` and standard deviation is `\(\sigma\)` for Population 1
+* The mean is `\(\mu_Y\)` and standard deviation is `\(\sigma\)` for Population 2
+
+...the sampling distribution of the *difference in sample means* is a normal distribution with a:
+* Mean equal to `\(\mu_X - \mu_Y\)`
+* Standard deviation equal to `\(\sqrt{\frac{\sigma^2}{n_1} + \frac{\sigma^2}{n_2}}\)`
+
+...where `\(n_1\)` and `\(n_2\)` are the sample sizes.
 
 Notice we have only one `\(\sigma\)` for both groups. This is an assumption of **homogeneity of variance**, meaning they share the same population variance despite differences in their means.
 
-If we do not have homogeneity of variance, then we would conduct a Welch's t-test.
+If we do not have homogeneity of variance, then we would conduct a Welch's t-test (a variation of the independent samples t-test).
 ---
 # Estimating Variance
 
@@ -561,7 +581,7 @@ $$  t = \frac{\bar{X}_1 - \bar{X}_2}{SE} = \frac{-8.44}{\sqrt{\frac{{9.57}^2}{12
 # Evaluating the Null Hypothesis
 
 The p-value for a two-tailed test with a t-value of -2.84 and degrees of freedom is .006. 
-&lt;img src="continuous_l2_files/figure-html/unnamed-chunk-37-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="continuous_l2_files/figure-html/unnamed-chunk-38-1.png" style="display: block; margin: auto;" /&gt;
 
 Assuming the null hypothesis is true, the probability of obtaining a difference in sample means of +/- 8.44 or greater is .006. Because this is highly unlikely (p = .006 &lt; .05), we can **reject the null hypothesis**.
 
