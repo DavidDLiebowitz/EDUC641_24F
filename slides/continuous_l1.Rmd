@@ -24,7 +24,7 @@ knitr::opts_chunk$set(warning = FALSE,
                       fig.height = 3)
 
 if (!require(pacman)) install.packages('pacman', repos = 'https://cran.rstudio.com')
-pacman::p_load(tidyverse, here, knitr, dplyr, ggplot2, blogdown, rio)
+pacman::p_load(tidyverse, here, knitr, dplyr, ggplot2, blogdown, rio, gridExtra)
 ```
 
 ```{r, echo = F}
@@ -72,9 +72,10 @@ Suppose you are working for the World Health Organization and are investigating 
 
 A distribution describes the number of observations of variable that take a particular value.
 
-```{r, echo = F, fig.height = 6, fig.width = 10}
+```{r, echo = F, fig.height = 6, fig.width = 10, dpi = 600}
+set.seed(200)
 d <- who %>% 
-      filter(str_length(region) <= 12) %>% 
+      filter(str_length(region) <= 8) %>% 
       sample_n(60)
 
 d_hist <- hist(d$life_expectancy, plot = FALSE)
@@ -103,11 +104,30 @@ country_plot <- ggplot() +
 country_plot
 ```
 ---
-Visualizing a Distribution
-Add density plot, histrogram, and country plot
+# Visualizing a Distribution
 
+Some of the most common ways to visualize a distribution are a:
 
+* Histogram
+  + Groups the data into "bins" and shows the count of observations in each bin
+  + Can specify number of bins/bin width
 
+```{r}
+ggplot(who, aes(life_expectancy)) +
+  geom_histogram()
+```
+---
+# Visualizing a Distribution
+
+* Density Plot
+  + Essentially a "smoothed out" histogram
+  + Values reflect the distribution's probability density function (not essential to understand their calculation)
+  
+```{r}
+ggplot(who, aes(life_expectancy)) +
+  geom_density()
+
+```
 
 ---
 # Describing a Distribution
@@ -132,8 +152,7 @@ Today we are reviewing:
   
 
 ---
-# Central Tendency
-## Mean
+# Mean
 * Represents the **average**, or the sum of all observations divided by the number of observations.
 * One of the most common forms of central tendency.
 * Represented by the Greek symbol $\mu$.
@@ -142,44 +161,99 @@ Today we are reviewing:
 > $$mean(71, 73, 76, 78, 79) = \frac{71 + 73 + 76 + 78 + 79}{5} = 75.4$$
 
 
+Writing this out can be a little tedious. Since our datasets can often have hundreds or thousands of observations, we often use **summation notation**.
 ---
-# SUMMATION NOTATION AS A SHORTHAND FOR MEAN CALCULATIONS
+# Summation Notation
 
 Summation (or sigma) notation is used to provide a concise expression for the sum of observations.
 
 $$\sum_{i=i}^{n} x_{i}$$
-> $$\bar{X} = \frac{1}{n}{\sum_{i=i}^{n} X_{i}}$$
+* i = index of summation
+* n = stopping point (number of observations)
+* $x_i$ = summation element (what we are summing)
 
-ADD DETAILS TO REFLECT WHO DATA HERE:
-> $$\bar{X} = \frac{1}{191}{\sum_{i=i}^{n} X_{i}}$$
+Our mean formula rewritten using summation notation:
+
+
+$$\bar{X} = \frac{1}{n}{\sum_{i=i}^{n} X_{i}}$$
 
 ---
-# Central Tendency
-## Mean
+# Summation Notation
 
-The mean represents the "balance point" of the distribution.
+Let's demonstrate using our WHO data of 183 countries to find the mean.
 
-```{R}
-country_plot +
-  geom_vline(xintercept = mean(who$life_expectancy))
+> $$\bar{X} = \frac{1}{183}{\sum_{i=1}^{183} X_{i}} = \frac{13110}{183} = 71.64$$
 
+The mean national life expectancy in 2015 is 71.64 years.
 
+---
+# Mean
+* The mean represents the "balance point" of the distribution.
+
+* Outliers, or observations with highly unusual values, can affect this balance point.
+
+* Thus, the mean is vulnerable to outliers.
+
+---
+# Vulnerability of the Mean
+* Humans on Mars and Venus have very low life expectancies (for now).
+* Here, having Mars and Venus in this sample of countries greatly shifted our mean away from the "peak" of the distribution.
+
+```{r, echo = F, fig.height=5.5, fig.width=10, dpi = 600}
+ggplot() +
+  geom_label(data = d, 
+             aes(x = x_mid,
+                 y = y,
+                 label = region),
+             size = 3) +
+  theme_bw(base_size = 12) +
+  theme(panel.grid = element_blank()) +
+  labs(x = "Average Life Expectancy", y = "Count") +
+  geom_label(aes(x = 2, y = 1, label = "Mars"), fill = "red", size = 3) +
+  geom_label(aes(x = 2, y = 2, label = "Venus"), fill = "red", size = 3) +
+  geom_vline(xintercept = mean(d$life_expectancy)) +
+  geom_vline(xintercept = ((sum(d$life_expectancy) + 2 + 2)/62), color = "red")
 ```
-# Central Tendency
-## Median
+
+---
+# Median
 * Represents the **midpoint** of the distribution.
+
 * Also called the *50th percentile* of a distribution or *2nd quartile*, meaning half of the observations are above the median and half are below.
+
 * Particularly useful for describing the central tendency of skewed distributions (more on this later).
+
 * To find the median, arrange the scores in ascending order and identify the middle value. If there are two middle values (even number of observations), use the average of the two.
 
 > $$median(71, 73, 76, 78, 79) = 76$$
 > $$median(71, 73, 76, 77, 78, 79) = 76.5$$
 
-The median national life expectancy in 2015 was **74** years.
-
 ---
-# Central Tendency
-## Mode
+# Median
+* Unlike the mean, the median is less affected by outliers.
+
+```{r, echo = F, fig.height=5.5, fig.width=10, dpi = 600}
+d_med <- d %>% 
+  ungroup() %>% 
+  add_row(region = "Mars", life_expectancy = 2) %>% 
+  add_row(region = "Venus", life_expectancy = 2)
+
+ggplot() +
+  geom_label(data = d, 
+             aes(x = x_mid,
+                 y = y,
+                 label = region),
+             size = 3) +
+  theme_bw(base_size = 12) +
+  theme(panel.grid = element_blank()) +
+  labs(x = "Average Life Expectancy", y = "Count") +
+  geom_label(aes(x = 2, y = 1, label = "Mars"), fill = "red", size = 3) +
+  geom_label(aes(x = 2, y = 2, label = "Venus"), fill = "red", size = 3) +
+  geom_vline(xintercept = median(d$life_expectancy)) +
+  geom_vline(xintercept = median(d_med$life_expectancy), color = "red")
+```
+---
+# Mode
 The mode simply refers to the **most frequent value** in the data.
 
 What is the mode of the following data?
@@ -193,8 +267,7 @@ It's easier if we sort the data first.
 78 is the most frequent value in the data. Therefore, the mode is 78.
 
 ---
-# Central Tendency
-## Mode
+# Mode
 
 Sometimes there may be more than one mode. Consider the following example:
 
@@ -205,9 +278,7 @@ Both 8 and 9 are observed seven times. In this case, the data can be considered 
 In general, the mode is rarely used and is particularly vulnerable to idiosyncratic patterns in the data.
 
 ---
-
-# Response Opportunity
-## Comparing Distributions
+# Comparing Distributions
 
 These distributions have the same central tendency $(\mu = 100)$.
 
@@ -247,7 +318,7 @@ gridExtra::grid.arrange(narrow, wide, nrow = 1)
 # Range
 
 * Represents the difference between the highest value and lowest value in the dataset.
-* Can provide a rough estimate of spread
+* Can provide a rough estimate of spr ead
 
 > $$range(71, 73, 76, 78, 79) = 79 - 71 = 8$$
 
@@ -386,16 +457,38 @@ var_plot +
 The standard deviation of life expectancy in 2015 was approximately 8.15 *years*.
 
 ---
-# Z-Transformation
-
-REWORD TO FOCUS ON TRANSFORMATIONS AND STANDARDIZING VALUES
+# Transformations
 * A distribution can have any mean and any (positive) standard deviation.
-* A z-distribution is a useful distribution with a mean of 0 $(\mu)$ and a standard deviation $(\sigma)$ of 1.
+* Sometimes it is helpful to standardize a distribution to a common mean and standard deviation so we can more easily compare them and identify extreme data points.
+
+```{r, echo = F}
+trans_samp <- tibble(d1 = rnorm(1000, mean = 54, sd = 7),
+                     d2 = rnorm(1000, mean = 850, sd = 100)) %>% 
+  mutate(d1_t = (d1-mean(d1))/sd(d1),
+         d2_t = (d2-mean(d2))/sd(d2))
+
+d1_plot <- ggplot(trans_samp, aes(x = d1)) +
+  geom_histogram() +
+  ggtitle("Distribution 1")
+d2_plot <- ggplot(trans_samp, aes(x = d2)) +
+  geom_histogram() +
+    ggtitle("Distribution 2")
+d1_tplot <- ggplot(trans_samp, aes(x = d1_t)) +
+  geom_histogram() +
+  ggtitle("Distribution 1 - Transformed")
+d2_tplot <- ggplot(trans_samp, aes(x = d2_t)) +
+  geom_histogram() +
+  ggtitle("Distribution 2 - Transformed")
+
+grid.arrange(d1_plot, d1_tplot, d2_plot, d1_tplot, ncol=2, nrow =2)
+
+```
+---
+# Transformations
+* The most common transformation is a z-transformation. 
+* A z-transformation rescales the distribution to a mean of 0 $(\mu)$ and a standard deviation $(\sigma)$ of 1.
 
 
-DISCUSS THE MOTIVATION FOR STANDARDIZING DISTRIUBTION
-
-DROP THE NORMAL PLOT
 ```{r echo=FALSE}
 ggplot(data.frame(x = c(-4, 4)), aes(x = x)) +
   stat_function(fun = dnorm) +
@@ -403,7 +496,7 @@ ggplot(data.frame(x = c(-4, 4)), aes(x = x)) +
                      breaks = c(seq(-4, 4, 1))) +
   ylim(0, 0.4) +
   theme_classic() +
-  ggtitle("Z Distribution", subtitle =  "m = 0, sd = 1") +
+  ggtitle("Standardized Distribution", subtitle =  "m = 0, sd = 1") +
   theme(plot.title = element_text(hjust = 0.5),
         plot.subtitle = element_text(hjust = 0.5))
 ```
@@ -418,10 +511,6 @@ $$z = \frac{X - \mu}{\sigma}$$
 * A z-score is calculated by **subtracting the mean** from each value and **dividing by the standard deviation**.
 
 * An observation's z-score value is equal to its distance from the mean, in standard deviation units.
-
----
-SLIDE ON HOW TRANSOFMRATIONS DON'T CHANGE SHAPE OF DISTRIBUTION
-
 
 ---
 
@@ -450,9 +539,23 @@ head(who$life_expectancy_zscore)
 hist(who$life_expectancy_zscore)
 ```
 
-Our new mean is 0.
-Our new standard deviation is 1.
+We now have a mean of 0 and standard deviation of 1.
 
+---
+# Transforming Distributions
+
+An important note about standardizing a distribution is that it changes the mean and standard deviation, but **does not change the overall shape.**
+
+```{r, echo = F}
+who_raw <- ggplot(who, aes(life_expectancy)) +
+  geom_histogram()
+
+who_stand <- ggplot(who, aes(life_expectancy_zscore)) +
+  geom_histogram()
+
+grid.arrange(who_raw, who_stand, ncol = 2, nrow = 1)
+
+```
 ---
 # Distributional Shape
 ## Skewness
@@ -552,38 +655,34 @@ gridExtra::grid.arrange(platy, central, lepto, nrow = 1)
 
 ```
 ---
+# Moments of a distribution
+1. Mean
+$$\mu = \frac{\Sigma(x_i)}{N}$$
+2. Variance
+$$\sigma^2 = \frac{\Sigma(X_i-\mu)^2}{N}$$
+3. Skewness
+$$skewness(X) = \frac{1}{N\sigma^3}\Sigma(X_i-\mu)^3$$
+4. Kurtosis
+$$kurtosis(X) = \frac{1}{N\sigma^4}\Sigma(X_i-\mu)^4-3$$
 
-Moments of a distribution
-add formulas
-1. 
-2. 
-3.
-4.
+We do not need to know how to calculate skew and kurtosis but we do need to have a sense of how to interpret them.
 
-We do not need to know how to calculate skew and kurtosis but we need to have a sense of how to interpret them.
-
-Key takeaway
 ---
 # Evaluating Skewness and Kurtosis
 
 * Skewness and kurtosis can be evaluated visually and summarized quantitatively.
 
-  + Positive skew (skewed to the left) ----> Skewness > 0
-  + Negative skew (skewed to the right) ----> Skewness > 0
+  + Positive skew (skewed to the left) $\rightarrow$ Skewness > 0
+  + Negative skew (skewed to the right) $\rightarrow$ Skewness > 0
 
-  + Leptokurtic ----> Kurtosis > 0
-  + Platykurtic ----> Kurtosis < 0
+  + Leptokurtic $\rightarrow$ Kurtosis > 0
+  + Platykurtic $\rightarrow$ Kurtosis < 0
   
----
 
-In this course we will focus visual analysis for severe skew or kurtosis. 
-
-Future courses will discuss how to correct for skew or kurtosis, as necessary. 
+Note: In this course we will focus visual analysis for severe skew or kurtosis. Future courses will discuss how to correct for skew or kurtosis, as necessary. 
 
 ---
-
 # Summarizing Data
-## Applied Example
 
 * Here is a density plot of the WHO life expectancy data for 2015. 
 * How would you characterize the distribution?
@@ -598,16 +697,9 @@ ggplot(who, aes(life_expectancy)) +
 * Is there severe kurtosis?
 
 ---
-# Other Vulnerabilities of Central Tendency Measures
-
-Touch on outliers
-
-
----
 # Summarizing Data
-## Applied Example
 
-The distribution of life expectancy has a slightly negative skew.
+The distribution of life expectancy has a slightly negative skew and no excess kurtosis. The skewness and kurtosis are not severe.
 ```{r, echo = F}
 ggplot(who, aes(life_expectancy)) +
   geom_density() +
@@ -616,19 +708,39 @@ ggplot(who, aes(life_expectancy)) +
   theme_minimal()
 ```
 
-```{r}
-psych::describe(who$life_expectancy) %>% 
-  select(n, mean)
-```
-
 The <span style="color: red;">mean</span> national life expectancy in 2015 was **71.62** years.
 
 The <span style="color: blue;">median</span> national life expectancy in 2015 was **74** years.
 
-* The median appears to better capture the "center" of our distribution.
+* Due to the slight skew, the median appears to better capture the "center" of our distribution.
 
 ---
+# Visualizing Distributions
 
+Although histograms and density plots are useful for evaluating the shape of a distribution, they do not efficiently summarize the central tendency and variance.
+
+.pull-left[
+Q2(Median) = 2.6350
+Q1 = 1.75
+Q3 = 3.00
+IQR = 1.25
+Lower Inner Fence : Q1 – 1.5*IQR = -0.125
+Upper Inner Fence : Q3 + 1.5*IQR = 4.875
+Lower adjacent value = smallest value > lower fence
+Upper adjacent value = largest value < upper fence
+]
+
+.pull-right[
+```{r, out.width = "80%", echo = F}
+include_graphics("boxplot.png")
+```
+]
+
+The boxplot also displays any values beyond the lower and upper adjacent values (outliers) with a *.
+
+---
+End of Slides
+---
 
 ### Applied Coding
 ```{r}
@@ -639,6 +751,7 @@ range(who$life_expectancy)
 ```{r}
 max(who$life_expectancy) - min(who$life_expectancy)
 
+stem(who$life_expectancy_zscore)
 ```
 
 National average life expectancies in 2015 **ranged from 51 to 88**, for a total difference of **37 years**.
@@ -706,24 +819,7 @@ ggplot(x, aes(x = central)) +
 ## Visualizing Variance
 ADD CONTENT ON BOXPLOTS, ETC.
 
----
-```{r}
-map(x, ~ ggplot(x, aes(.x)) +
-  geom_density() +
-  theme_minimal() +
-  geom_vline(xintercept = mean(.x), color = "red") +
-  geom_vline(xintercept = median(.x), color = "green", type = "dash") +
-  geom_vline(xintercept = getmode(.x), color = "blue"))
-
-ggplot(x, aes(pos_skew)) +
-  geom_density() +
-  geom_vline(xintercept = mean(pos_skew))
-
-ggplot(x, aes(neg_skew)) +
-  geom_density()
-
-```
----
+=
 
 # Boxplots
 A way to visualize central tendency and variance
