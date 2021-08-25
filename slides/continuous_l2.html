@@ -14,7 +14,7 @@ class: center, middle, inverse, title-slide
 
 # EDUC 641 Continuous Data
 ### Professor Name
-### 24 August, 2021
+### 25 August, 2021
 
 ---
 
@@ -41,7 +41,7 @@ class: inverse, center, middle
 ---
 # Normal Distributions
 
-The normal distribution is a frequently occurring phenomenon across the social and natural sciences.
+The normal distribution describes a frequently occurring phenomenon across the social and natural sciences.
 
 &lt;img src="continuous_l2_files/figure-html/unnamed-chunk-2-1.png" style="display: block; margin: auto;" /&gt;&lt;img src="continuous_l2_files/figure-html/unnamed-chunk-2-2.png" style="display: block; margin: auto;" /&gt;
 
@@ -112,8 +112,8 @@ We can use our understanding of the normal distribution to calculate the probabi
 * A normal distribution can take on any mean and standard deviation.
 
 &lt;img src="continuous_l2_files/figure-html/unnamed-chunk-6-1.png" style="display: block; margin: auto;" /&gt;
-* The area under the curve is always equal to 1.
-* The empirical rule applies to all normal distributions (e.g., 68% of observations occur within 1 SD of the mean).
+* Regardless of the mean and standard deviation, the area under the curve is always equal to 1.
+* The empirical rule still applies (e.g., 68% of observations occur within 1 SD of the mean).
 ---
 
 # Standard Normal Distribution
@@ -131,7 +131,7 @@ We can use our understanding of the normal distribution to calculate the probabi
 
 ---
 # Z-Test
-Suppose we wanted to know the probability of scoring at least 1.5 SD above the mean on a standardized test. 
+Suppose we wanted to know the probability of scoring at least 1.5 SD above the mean on a standardized test of intelligence. 
 
 &lt;img src="continuous_l2_files/figure-html/unnamed-chunk-8-1.png" style="display: block; margin: auto;" /&gt;
 To answer this question, we just need to find the area of the shaded portion under the curve.
@@ -162,7 +162,7 @@ $$ z = \frac{76-71.64}{8.15} = 0.53$$
 ---
 # Z-Test
 
-* The area under the curve above a z-score of 0.53 is .30. Therefore, the probability of randomly selecting a country with a national life expectancy greater than 76 is 30%.
+The area under the curve above a z-score of 0.53 is .30. Therefore, the probability of randomly selecting a country with a national life expectancy greater than 76 is 30%.
 
 &lt;img src="continuous_l2_files/figure-html/unnamed-chunk-11-1.png" style="display: block; margin: auto;" /&gt;
 
@@ -230,6 +230,18 @@ The mean of our sampling distribution (mean of means) approximates the &lt;span 
 If we sampled all possible samples of size *n* from our population, our mean of sample means would be equal to the population mean.
 
 ---
+---
+# Central Limit Theorem
+
+* Here is a histogram of the means of 1000 random samples from our WHO data.
+* The center of the distribution is our population mean.
+* The standard deviation is the standard error of the mean.
+
+&lt;img src="continuous_l2_files/figure-html/unnamed-chunk-19-1.png" style="display: block; margin: auto;" /&gt;
+
+See the following the link for more demonstrations of the central limit theorem:
+{https://onlinestatbook.com/stat_sim/sampling_dist/ }
+---
 # Central Limit Theorem
 
 &gt; Given a population mean `\(\mu\)` and standard deviation of `\(\sigma\)`, the sampling distribution of the mean is a normal distribution with a mean equal to `\(\mu\)` and standard deviation equal to `\(\frac{\sigma}{\sqrt{n}}\)`, where *n* is the sample size.
@@ -246,17 +258,6 @@ $$ \mu_\bar{X} = \mu$$
 $$ \sigma_\bar{X} = \frac{\sigma}{\sqrt{n}}$$
 
 
-
----
-# Central Limit Theorem
-## MOVE EARLIER
-
-* Here is a histogram of the means of 1000 random samples from our WHO data.
-* The center of the distribution is our population mean.
-* The standard deviation is the standard error of the mean.
-{https://onlinestatbook.com/stat_sim/sampling_dist/ }
-
-&lt;img src="continuous_l2_files/figure-html/unnamed-chunk-20-1.png" style="display: block; margin: auto;" /&gt;
 
 ---
 SUMMARY SLIDE ON WHAT THE CENTRAL LIMIT THEOREM ALLOWS US TO DO
@@ -296,39 +297,50 @@ SUMMARY SLIDE ON WHAT THE CENTRAL LIMIT THEOREM ALLOWS US TO DO
   + e.g. Is our observed sample mean to be expected if we repeatedly drew random samples from the population?
   
   
-Example Research Question:
+**Example Research Question:**
 Suppose the known average life expectancy is 76 years with a standard deviation of 3.2. Do countries around the Mediterranean Sea significantly differ from the known population average of 76?
+
 
 ---
 # One Sample T-Test
-* Does **not** test the probability of obtaining the sample distribution or data itself, only the sample mean.
+*  The one sample t-test does **not** test the probability of obtaining the sample distribution or data itself, only the sample mean.
   
-* **Null Hypothesis** `\((H_0)\)`: `\(\mu = K\)`, where `\(K\)` is any constant.
+*  Using the probability of obtaining a particular sample mean **Null Hypothesis** `\((H_0)\)`: `\(\mu = K\)`, where `\(K\)` is any constant.
+
+
+---
+# One-Sample T-Test
+* With a z-test, we were able to find the number of observations that fell beyond a particular value. That value was our z-statistic.
+* The t-statistic is functionally like a z-statistic, but for the t-distribution.
+
+&lt;img src="continuous_l2_files/figure-html/unnamed-chunk-23-1.png" style="display: block; margin: auto;" /&gt;
+
+
+---
+# T-Distribution
+* Shape of the t-distribution is slightly different depending on the degrees of freedom `\((n-1)\)`.
+
+* Thus, the proportion of the area under the curve beyond our t-value also depends on our degrees of freedom.
+
+
+&lt;img src="continuous_l2_files/figure-html/unnamed-chunk-24-.gif" style="display: block; margin: auto;" /&gt;
 
 ---
 # One-Sample T-Test
 
-* The t-statistic is functionally like a z-score, but for the t-distribution.
-* To calculate a t-statistic,replace the population standard deviation with the sample standard deviation.
+* To calculate a t-statistic, we use the same formula to calculate a z-score, but replace the population standard deviation with the sample's standard deviation.
+
+Since we don't know the population standard deviation `\((\mu)\)`, our samples standard deviation `\((s)\)` is used as an estimate of the population standard deviation `\((\hat{\mu})\)`.
 
 $$ t = \frac{\bar{X} - \mu}{\hat{\sigma}/\sqrt{n}} $$
 
-.pull-left[
-* Distributional spread and proportion of the area under the curve beyond our t-value depends on our degrees of freedom.
-
-* Using a t-test, we can calculate the probability of obtaining a particular sample mean through random sampling.
-]
-
-.pull-right[
-&lt;img src="continuous_l2_files/figure-html/unnamed-chunk-23-.gif" style="display: block; margin: auto;" /&gt;
-]
 ---
 ## Applying a t-test
 Suppose we have data from a sample of 10 countries with a mean life expectancy of 66.87 and standard deviation of 5.82.
 
 If our population mean is thought to be 78.16 `\((H_0: \sigma = 78.16)\)`, what is the probability of obtaining a sample mean of 66.87, **or a more extreme mean value**, due to random sampling variability?
 `$$t(9) = \frac{66.87 - 75.16}{5.82/\sqrt{9}} = -1.24$$`
-&lt;img src="continuous_l2_files/figure-html/unnamed-chunk-24-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="continuous_l2_files/figure-html/unnamed-chunk-25-1.png" style="display: block; margin: auto;" /&gt;
 
 ---
 # Applying a t-test
@@ -336,13 +348,13 @@ If our population mean is thought to be 78.16 `\((H_0: \sigma = 78.16)\)`, what 
 Assuming a population mean of 78.16 and sample size of 10...
 
 .pull-left[
-&lt;img src="continuous_l2_files/figure-html/unnamed-chunk-25-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="continuous_l2_files/figure-html/unnamed-chunk-26-1.png" style="display: block; margin: auto;" /&gt;
 
 ...the proportion of random samples that would demonstrate a sample mean **equal to or lower than 66.87** is 0.12 (i.e., *p* = 0.12).
 ]
 
 .pull-right[
-&lt;img src="continuous_l2_files/figure-html/unnamed-chunk-26-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="continuous_l2_files/figure-html/unnamed-chunk-27-1.png" style="display: block; margin: auto;" /&gt;
 ...the proportion of random samples that would demonstrate a sample mean **equal to or more extreme than 66.87** is 0.24 (i.e., *p* = 0.24).
 ]
 
@@ -387,7 +399,7 @@ Tests the possibility of a significant difference in either direction.
 # Demonstration
 
 Dr. DSM finds that the mean post-intervention depression rating did not fall below the critical t-value for the one-tailed test. The new intervention group did not demonstrate significantly lower than normal post-treatment averages.
-&lt;img src="continuous_l2_files/figure-html/unnamed-chunk-27-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="continuous_l2_files/figure-html/unnamed-chunk-28-1.png" style="display: block; margin: auto;" /&gt;
 
 What conclusion was missed with the one-tailed test?
 ---
@@ -397,7 +409,7 @@ What conclusion was missed with the one-tailed test?
 * Critical t-values `\(t_{\alpha/2}(df)\)` are the thresholds at which our alpha threshold is met.
   + Vary depending on `\(df\)` and `\(\alpha\)`
   
-&lt;img src="continuous_l2_files/figure-html/unnamed-chunk-28-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="continuous_l2_files/figure-html/unnamed-chunk-29-1.png" style="display: block; margin: auto;" /&gt;
 
 With two-tailed tests, the total alpha is "split" across both tails of the distribution `\((\alpha(.05)/2 = .025)\)`.
 
@@ -407,12 +419,12 @@ With two-tailed tests, the total alpha is "split" across both tails of the distr
 
 .pull-left[
 Our observed t-value did not surpass our critical t-values.
-&lt;img src="continuous_l2_files/figure-html/unnamed-chunk-29-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="continuous_l2_files/figure-html/unnamed-chunk-30-1.png" style="display: block; margin: auto;" /&gt;
 ]
 
 .pull-right[
 Our p-value is not less than .05 and does not satisfy our alpha threshold.
-&lt;img src="continuous_l2_files/figure-html/unnamed-chunk-30-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="continuous_l2_files/figure-html/unnamed-chunk-31-1.png" style="display: block; margin: auto;" /&gt;
 ]
 
 Assuming a population mean of 78.16 and sample size of 10, the proportion of random samples that would demonstrate a sample mean **equal to or more extreme than 66.87** is 0.24 `\((t = -1.24, p = 0.24)\)`. Because our p-value does not meet our alpha threshold of .05, we **fail to reject the null hypothesis**.
@@ -464,17 +476,17 @@ Suppose we have two populations of students - &lt;span style="color: red;"&gt; s
 
 Just like with our one-sample t-test, every time we sample each population, we obtain a new estimated difference between the two groups.
 
-&lt;img src="continuous_l2_files/figure-html/unnamed-chunk-33-.gif" style="display: block; margin: auto;" /&gt;
+&lt;img src="continuous_l2_files/figure-html/unnamed-chunk-34-.gif" style="display: block; margin: auto;" /&gt;
 
 ---
 
 As we take repeated samples, the estimated difference in means forms its own normal distribution.
 
-&lt;img src="continuous_l2_files/figure-html/unnamed-chunk-34-.gif" style="display: block; margin: auto;" /&gt;
+&lt;img src="continuous_l2_files/figure-html/unnamed-chunk-35-.gif" style="display: block; margin: auto;" /&gt;
 
 Just like the with the one-sample t-test, the &lt;span style="color: orange;"&gt; mean of sample statistics &lt;/span&gt; approaches the &lt;span style="color: purple;"&gt; population statistic &lt;/span&gt; with repeated sampling.
 
-&lt;img src="continuous_l2_files/figure-html/unnamed-chunk-35-.gif" style="display: block; margin: auto;" /&gt;
+&lt;img src="continuous_l2_files/figure-html/unnamed-chunk-36-.gif" style="display: block; margin: auto;" /&gt;
 
 ---
 ADD SLIDE THAT SHOWS CONVERGENCE TO NORMAL DISTRIUBTION
@@ -549,7 +561,7 @@ $$  t = \frac{\bar{X}_1 - \bar{X}_2}{SE} = \frac{-8.44}{\sqrt{\frac{{9.57}^2}{12
 # Evaluating the Null Hypothesis
 
 The p-value for a two-tailed test with a t-value of -2.84 and degrees of freedom is .006. 
-&lt;img src="continuous_l2_files/figure-html/unnamed-chunk-36-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="continuous_l2_files/figure-html/unnamed-chunk-37-1.png" style="display: block; margin: auto;" /&gt;
 
 Assuming the null hypothesis is true, the probability of obtaining a difference in sample means of +/- 8.44 or greater is .006. Because this is highly unlikely (p = .006 &lt; .05), we can **reject the null hypothesis**.
 
