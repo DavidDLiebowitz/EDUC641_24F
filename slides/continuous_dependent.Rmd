@@ -54,76 +54,118 @@ who_wide <- who %>%
 ---
 # Dependent Samples T-Test
 
-* A dependent samples t-test acknowledges that our groups are not separate random samples.
-
-Suppose we wanted to determine if life expectancy in 2015 was signfificantly different than in 2005.
+Suppose we wanted to determine if life expectancy in 2015 was significantly different than in 2005.
 
 ```{r, echo = F}
 head(who_wide)
 ```
 
-By comparing the change in life expectancy within a sample of countries, we have less random "noise" than we'd find by using separate random samples in 2005 and 2015.
+Notice we our not drawing different samples at each time point. Since we are holding the countries in our samples constant, we have less random "noise."
+
+A dependent samples t-test acknowledges that our groups are not separate random samples.
+
 
 ---
-# Dependent Samples T-Test
+# Null Hypothesis
 
+$$H_0: \mu_{1} = \mu_{2}$$
+
+If our null hypothesis is true, there would be no difference between our sample means.
+
+$$H_0: \mu_{1} - \mu_{2} = 0$$
+
+---
 Imagine we have randomly sampled 10 countries from the world population and measured their average life expectancy in 2005 and 2015.
 
 .pull-left[
 ```{r, echo = F}
 set.seed(100)
-samp1 <- who_wide %>% 
+samp <- who_wide %>% 
   sample_n(10)
 
-print(samp1)
+print(samp)
 ```
 ]
 .pull-right[
-$$\bar{X}_{2005} = 63.1 \rightarrow \bar{X}_{2015} = 67$$
+$$\color{red}{\bar{X}_{2005} = 63.1 \rightarrow \bar{X}_{2015} = 67}$$
 $$s_{2005} = 10.64 \rightarrow s_{2015} = 10.10$$
 ]
-
-* Does our sample's increase in life expectancy reflect a true population difference?
-* Or, is our sample just peculiar, and our increase in life expectancy just a random occurrence due to sampling variability?
+ 
+Our mean has increased but does this reflect a true population difference?
 
 ---
 # Sampling Distribution
+
+If our null hypothesis is true, $\mu_{2005} - \mu_{2015} = 0$.
 ```{r, out.width = "75%", echo=F}
   include_graphics("dependent_samples.jpg")
 ```
 
-Our null hypothesis is that there is no difference between $\mu_{2005}$ and $\mu_{2015}$.
-
-$$H_0: \mu_{2005} = \mu_{2015} \rightarrow H_0: \mu_{2005} - \mu_{2015} = 0$$
+But, there is sampling variability. Assuming the null hypothesis is true, is our difference in sample means from 2005 to 2015 unusual?
 
 ---
 # Dependent Samples T-test
 
-To test our null hypothesis, we simply need to conduct a t-test on our difference scores.
+To test our null hypothesis, we simply need to conduct a t-test on our **difference scores**.
 
 $$H_0: \mu_{2005} - \mu_{2015} = 0 \rightarrow H_0: \mu_{diff} = 0$$
-Essentially, we are conducting a one-sample t-test on our difference scores, where $K = 0$.
-
-.pull-left[
-```{r}
-samp1 <- samp1 %>% 
+```{r, echo = F}
+samp <- samp %>% 
   mutate(difference = `2015` - `2005`)
-samp1
+```
+
+
+After converting our two observations to a single difference value, our analysis becomes simply a one-sample t-test with a null mean of 0.
+
+---
+.pull-left[
+```{r, echo = F}
+samp
 ```
 ]
-
 .pull-right[
 $$\bar{X}_{diff} = 3.9$$
 
 $$s_{diff} = 3.63$$
 ]
 
+The mean of our difference scores is 3.9 with a standard deviation of 3.63. Now we just compare this to the sampling distribution under the null hypothesis.
 ---
 # Sampling Distribution
 
 What does our sampling distribution look like?
 * Under the null hypothesis, the sampling distribution of *difference scores* has a mean of 0 $\mu_{diff} = 0$. 
 
-* The standard deviation reflects the standard error of difference scores.
+* The SD of our sampling distribution reflects the *standard error of difference scores*.
+   + SE equals the sample SD divided by the square root of the number of paired observations. $(\frac{\hat{\sigma}_{diff}}{\sqrt{N}})$
 
-$$ t_{df} = \frac{\bar{X}_{diff} - \mu_{diff}}{\frac{\hat{\sigma}_{diff}}{\sqrt{N}}} $$
+---
+# Test Statistic
+
+With our sample of 10 countries, we have a mean difference of 3.9 and a standard deviation of 3.63. Fill in the equation with the appropriate values.
+
+$$t_{df} = \frac{\bar{X}_{diff} - \mu_{diff}}{\frac{\hat{\sigma}_{diff}}{\sqrt{N}}}$$
+---
+# Test Statistic
+Your equation should have looked like the following. Remember, degrees of freedom = $n-1$.
+
+$$t_{9} = \frac{3.9 - 0}{\frac{3.63}{\sqrt{10}}}$$
+
+Now we have everything we need to run our dependent samples t-test.
+---
+# Dependent Samples T-Test Results
+```{r, echo = T}
+t.test(x = samp$`2005`, y = samp$`2015`,
+        paired = TRUE)
+```
+
+It is highly unlikely to obtain a sample mean of difference scores equal to or more extreme than 3.9 under the null hypothesis $(p = .008)$.
+
+We can safely reject the null hypothesis.
+
+---
+```{r}
+ggpubr::ggpaired(data = samp, cond1 = "2005", cond2 = "2015", line.color = "grey")
+```
+
+
