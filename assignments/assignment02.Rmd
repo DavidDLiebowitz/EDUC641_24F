@@ -43,7 +43,7 @@ The dataset we'll be using in this assignment is drawn from the NCRECE [Teacher 
 
 While the primary goals of the PD intervention were to improve language and literacy skills, researchers theorized that if teachers became more effective at teaching literacy, they might also improve the quality of their relationships with their students and families. In turn, these improved relationships might lead to other positive effects of the PD intervention. One pair of researchers ([Hanno and Gonzalez, 2020](https://doi.org/10.1080/19345747.2019.1634170)) wanted to learn whether the PD intervention improved student attendance. 
 
-The paired assignments 1 and 2 will ask you to answer a few research questions: Were the students less likely to be chronically absent if there teachers participated the consultancy PD intervention? Were the female students less likely to be chronically absent if there teachers participated in the consultancy PD intervention? How about the male students? 
+The paired assignments 1 and 2 will ask you to answer a few research questions: Were the students less likely to be chronically absent if their teachers participated the consultancy PD intervention? Were the female students less likely to be chronically absent if their teachers participated in the consultancy PD intervention? How about the male students? 
 
 **Sample**. Our dataset is student-level data for 942 preschool students, which is the same sample used in the original Hanno and Gonzalez (2020) paper. The authors test several approaches to compute the outcome variable, chronic absenteeism, since some key information on full year absent days is not publicly available. For simplifying reasons, the approach we use in our sample is one from the robustness check rather the one used in the main paper.
 
@@ -80,11 +80,11 @@ Open your RStudio, create a project and save it to your local. Go to the root di
 
 3.3. Our first research question of interest is about whether there was a relationship between the two variables, *treat* and *absenteeism*. What is your null hypothesis for this research question?
 
-3.4. Perform a Pearson's Chi-squared test (with Yates' continuity correction) in R to investigate the relationship between *absenteeism* and *treat*. Write 3-4 sentences to interpret your results and answer the research question: Were the students less likely to be chronically absent if there teachers participated the consultancy PD intervention? 
+3.4. Perform a Pearson's Chi-squared test (with Yates' continuity correction) in R to investigate the relationship between *absenteeism* and *treat*. Write 3-4 sentences to interpret your results and answer the research question: Were the students less likely to be chronically absent if their teachers participated the consultancy PD intervention? 
 
 #### 4. Sub-sample comparisons
 
-4.1. We are also interested in whether *absenteeism* and *treat* are related for female students. Perform a Pearson's Chi-squared test (with Yates' continuity correction) in R to investigate the relationship between *absenteeism* and *treat* for female students. Write 2-3 sentences to state your null hypothesis, interpret your results, and answer the research question: Were the female students less likely to be chronically absent if there teachers participated in the consultancy PD intervention? 
+4.1. We are also interested in whether *absenteeism* and *treat* are related for female students. Perform a Pearson's Chi-squared test (with Yates' continuity correction) in R to investigate the relationship between *absenteeism* and *treat* for female students. Write 2-3 sentences to state your null hypothesis, interpret your results, and answer the research question: Were the female students less likely to be chronically absent if their teachers participated in the consultancy PD intervention? 
 
 4.2. Do the same for male students.
 
