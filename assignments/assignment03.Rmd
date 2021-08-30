@@ -46,6 +46,7 @@ Details on all variables are as follows:
  * *treat*, consultancy treatment indicator, coded 1 if the teacher was in the treatment group, coded 0 if the teacher was in the control group.  
  * *coursework*, measure of how many sessions the teacher had participated in the coursework. 
  * *vocabulary*, the teacher's average student score on receptive vocabulary test. 
+ * *vocabulary_random*, a simulated random variable having the same length, mean, and standard deviation with the variable *vocabulary*. It'll be treated as the "true" student performance on the test because this sample is randomly selected for the population in which the study was conducted.
 
 ### Assignment Details
 
@@ -76,13 +77,9 @@ Note that you do not need to include these responses in your html/pdf file; only
 
 3.1 Random sample from the population 
 
- * 3.1.1. Using the mean and standard deviation of *vocabulary* to generate a normally distributed variable and name it *vocabulary_random* (hint: use the rnorm function that randomly select a vector of numbers based on the number of observations, mean, and standard deviation you define). 
+ * 3.1.1. Using the same type of plot you used for *vocabulary*, plot the distribution of *vocabulary_random*  and compare the two plots. You may choose one of the two ways to compare plots: (a) use base R code to put the two plots side-by-side, or (b) use {ggplot2} package to put the two into one plot. 
 
-IMPORTANT NOTE: before simulation, make sure to put set.seed(123) in your code so you can get the same sample and same results with those in the key.
-
- * 3.1.2. Using the same type of plot you used for *vocabulary*, plot the distribution of *vocabulary_random*  and compare the two plots. You may choose one of the two ways to do this: (a) use base R code to put the two plots side-by-side, or (b) use {ggplot2} package to put the two into one plot. 
-
- * 3.1.3. What are the statistical meanings of this new plot? Compare these two distributions and write one sentence to describe what you have observed. Circle back to question 2.1.2, do you think now whether vocabulary is normally distributed? 
+ * 3.1.2. What are the statistical meanings of the new plot? Compare these two distributions and write one sentence to describe what you have observed. Circle back to question 2.1.2, do you think now whether vocabulary is normally distributed? 
 
 3.2 One-sample t-test
 

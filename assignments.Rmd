@@ -62,7 +62,7 @@ Objectives of this assignment
 
 Deadline: TBD
 
-Download: [html file](./assignments/assignment02.html); [cat.csv dataset](./data/cat.csv)
+Download: [html file](./assignments/assignment02.html); [cat_2.csv dataset](./data/cat_2.csv)
 
 Key: [doc file](./assignments/keys/assignment02_key.docx); [R script](./assignments/keys/assignment02_key.R)
 
@@ -101,7 +101,7 @@ Deadline: TBD
 
 Download: [html file](./assignments/assignment05.html); [ah.csv dataset](./data/ah.csv)
 
-Key: 
+Key: [doc file](./assignments/keys/assignment05_key.docx); [R script](./assignments/keys/assignment05_key.R)
 
 
 

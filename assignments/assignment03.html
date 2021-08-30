@@ -208,6 +208,7 @@ pre code {
 </li>
 <li><em>coursework</em>, measure of how many sessions the teacher had participated in the coursework.</li>
 <li><em>vocabulary</em>, the teacher’s average student score on receptive vocabulary test.</li>
+<li><em>vocabulary_random</em>, a simulated random variable having the same length, mean, and standard deviation with the variable <em>vocabulary</em>. It’ll be treated as the “true” student performance on the test because this sample is randomly selected for the population in which the study was conducted.</li>
 </ul>
 </div>
 <div id="assignment-details" class="section level3">
@@ -235,12 +236,8 @@ pre code {
 <h4>3. Inferential statistics of the outcome variable</h4>
 <p>3.1 Random sample from the population</p>
 <ul>
-<li>3.1.1. Using the mean and standard deviation of <em>vocabulary</em> to generate a normally distributed variable and name it <em>vocabulary_random</em> (hint: use the rnorm function that randomly select a vector of numbers based on the number of observations, mean, and standard deviation you define).</li>
-</ul>
-<p>IMPORTANT NOTE: before simulation, make sure to put set.seed(123) in your code so you can get the same sample and same results with those in the key.</p>
-<ul>
-<li><p>3.1.2. Using the same type of plot you used for <em>vocabulary</em>, plot the distribution of <em>vocabulary_random</em> and compare the two plots. You may choose one of the two ways to do this: (a) use base R code to put the two plots side-by-side, or (b) use {ggplot2} package to put the two into one plot.</p></li>
-<li><p>3.1.3. What are the statistical meanings of this new plot? Compare these two distributions and write one sentence to describe what you have observed. Circle back to question 2.1.2, do you think now whether vocabulary is normally distributed?</p></li>
+<li><p>3.1.1. Using the same type of plot you used for <em>vocabulary</em>, plot the distribution of <em>vocabulary_random</em> and compare the two plots. You may choose one of the two ways to compare plots: (a) use base R code to put the two plots side-by-side, or (b) use {ggplot2} package to put the two into one plot.</p></li>
+<li><p>3.1.2. What are the statistical meanings of the new plot? Compare these two distributions and write one sentence to describe what you have observed. Circle back to question 2.1.2, do you think now whether vocabulary is normally distributed?</p></li>
 </ul>
 <p>3.2 One-sample t-test</p>
 <ul>
@@ -248,7 +245,6 @@ pre code {
 <li><p>3.2.2. What is the mean of <em>vocabulary_random</em>? Is it equal to the mean of <em>vocabulary</em>?</p></li>
 <li><p>3.2.3. We consider the population mean is equal to the mean of <em>vocabulary_random</em>. To test whether your null hypothesis in 3.2.1 is true, run a one-sample t-test and write 2-3 sentences to interpret your result.</p></li>
 </ul>
-<p><span class="math display">\[ \chi^2 = \frac{(330-340)^2}{340} + \frac{(440-430)^2}{430} + \frac{(86-76)^2}{76} + \frac{(86-96)^2}{96} = 2.884132\]</span></p>
 </div>
 </div>
 
