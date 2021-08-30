@@ -36,9 +36,6 @@ who <- import(here::here("data", "life_expectancy.csv")) %>%
   rename(region = country) %>% 
   mutate(life_expectancy = round(life_expectancy, digits = 0))
 
-needs(car)
-leveneTest(life_expectancy ~ status, data = who)
-
 ```
 
 # Agenda

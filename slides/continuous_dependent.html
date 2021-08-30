@@ -14,7 +14,7 @@ class: center, middle, inverse, title-slide
 
 # EDUC 641 Continuous Data - Dependent T-Test
 ### Professor Name
-### 24 August, 2021
+### 29 August, 2021
 
 ---
 
@@ -37,9 +37,7 @@ class: center, middle, inverse, title-slide
 ---
 # Dependent Samples T-Test
 
-* A dependent samples t-test acknowledges that our groups are not separate random samples.
-
-Suppose we wanted to determine if life expectancy in 2015 was signfificantly different than in 2005.
+Suppose we wanted to determine if life expectancy in 2015 was significantly different than in 2005.
 
 
 ```
@@ -54,11 +52,21 @@ Suppose we wanted to determine if life expectancy in 2015 was signfificantly dif
 ## 6 Argentina               75     76
 ```
 
-By comparing the change in life expectancy within a sample of countries, we have less random "noise" than we'd find by using separate random samples in 2005 and 2015.
+Notice we our not drawing different samples at each time point. Since we are holding the countries in our samples constant, we have less random "noise."
+
+A dependent samples t-test acknowledges that our groups are not separate random samples.
+
 
 ---
-# Dependent Samples T-Test
+# Null Hypothesis
 
+`$$H_0: \mu_{1} = \mu_{2}$$`
+
+If our null hypothesis is true, there would be no difference between our sample means.
+
+`$$H_0: \mu_{1} - \mu_{2} = 0$$`
+
+---
 Imagine we have randomly sampled 10 countries from the world population and measured their average life expectancy in 2005 and 2015.
 
 .pull-left[
@@ -80,29 +88,32 @@ Imagine we have randomly sampled 10 countries from the world population and meas
 ```
 ]
 .pull-right[
-`$$\bar{X}_{2005} = 63.1 \rightarrow \bar{X}_{2015} = 67$$`
+`$$\color{red}{\bar{X}_{2005} = 63.1 \rightarrow \bar{X}_{2015} = 67}$$`
 `$$s_{2005} = 10.64 \rightarrow s_{2015} = 10.10$$`
 ]
-
-* Does our sample's increase in life expectancy reflect a true population difference?
-* Or, is our sample just peculiar, and our increase in life expectancy just a random occurrence due to sampling variability?
+ 
+Our mean has increased but does this reflect a true population difference?
 
 ---
 # Sampling Distribution
+
+If our null hypothesis is true, `\(\mu_{2005} - \mu_{2015} = 0\)`.
 &lt;img src="dependent_samples.jpg" width="75%" style="display: block; margin: auto;" /&gt;
 
-Our null hypothesis is that there is no difference between `\(\mu_{2005}\)` and `\(\mu_{2015}\)`.
-
-`$$H_0: \mu_{2005} = \mu_{2015} \rightarrow H_0: \mu_{2005} - \mu_{2015} = 0$$`
+But, there is sampling variability. Assuming the null hypothesis is true, is our difference in sample means from 2005 to 2015 unusual?
 
 ---
 # Dependent Samples T-test
 
-To test our null hypothesis, we simply need to conduct a t-test on our difference scores.
+To test our null hypothesis, we simply need to conduct a t-test on our **difference scores**.
 
 `$$H_0: \mu_{2005} - \mu_{2015} = 0 \rightarrow H_0: \mu_{diff} = 0$$`
-Essentially, we are conducting a one-sample t-test on our difference scores, where `\(K = 0\)`.
 
+
+
+After converting our two observations to a single difference value, we are simplifying our analysis to a one-sample t-test with a null mean of 0.
+
+---
 .pull-left[
 
 ```
@@ -121,22 +132,26 @@ Essentially, we are conducting a one-sample t-test on our difference scores, whe
 ## 10 Cyprus          79     85          6
 ```
 ]
-
 .pull-right[
 `$$\bar{X}_{diff} = 3.9$$`
 
 `$$s_{diff} = 3.63$$`
 ]
 
+The mean of our difference scores is 3.9 with a standard deviation of 3.63. Now we just compare this to the sampling distribution under the null hypothesis.
 ---
-Sampling Distribution
+# Sampling Distribution
 
 What does our sampling distribution look like?
 * Under the null hypothesis, the sampling distribution of *difference scores* has a mean of 0 `\(\mu_{diff} = 0\)`. 
 
-* The standard deviation reflects the standard error of difference scores.
+* The SD of our sampling distribution reflects the standard error of difference scores.
+   + SE equals the sample SD divided by the square root of the number of paired observations. `\((\frac{\hat{\sigma}_{diff}}{\sqrt{N}})\)`
 
 $$ t_{df} = \frac{\bar{X}_{diff} - \mu_{diff}}{\frac{\hat{\sigma}_{diff}}{\sqrt{N}}} $$
+
+
+---
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
