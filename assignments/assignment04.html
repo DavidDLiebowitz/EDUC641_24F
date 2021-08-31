@@ -172,7 +172,7 @@ pre code {
 <div id="general-guidelines" class="section level3">
 <h3>General Guidelines</h3>
 <ul>
-<li>The purpose of this assignment is to practice the concepts and vocabulary we have been modeling in class and implement some of the techniques we have learned. You may work on your own or collaborate with one (1) partner. Please make sure that you engage in a a full, fair and mutually-agreeable collaboration if you do choose to collaborate. If you do collaborate, you should plan, execute and write-up your analyses together, not simply divide the work. Please make sure to indicate clearly when your work is joint and any other individual or resource (outside of class material) you consulted in your responses.</li>
+<li>The purpose of this assignment is to practice the concepts and vocabulary we have been modeling in class and implement some of the techniques we have learned. You may work on your own or collaborate with one partner. Please make sure that you engage in a a full, fair and mutually-agreeable collaboration if you do choose to collaborate. If you do collaborate, you should plan, execute and write-up your analyses together, not simply divide the work. Please make sure to indicate clearly when your work is joint and any other individual or resource (outside of class material) you consulted in your responses.</li>
 </ul>
 </div>
 <div id="submission-requirements" class="section level3">
@@ -198,7 +198,7 @@ pre code {
 <div id="data-background" class="section level3">
 <h3>Data Background</h3>
 <p>The dataset we’ll be using in this assignment is drawn from the NCRECE <a href="https://www.icpsr.umich.edu/web/ICPSR/studies/34848">Teacher Professional Development Study (PDS)</a> data. This professional development study was a randomized controlled evaluation of two forms of professional development (PD) - coursework (phase 1) and consultancy (phase 2) - delivered to about 490 early childhood education teachers across the nation. These PD supports aimed to improve teachers’ implementation of language/literacy activities and interactions with children, as well as promote gains in children’s social and academic development.</p>
-<p>The primary goals of the intervention were to improve language and literacy skills, however, prior studies have shown that there were no observed average impacts of either the coursework or the consultancy PD intervention on child outcomes at the end of phase 2 (<a href="https://www.tandfonline.com/doi/abs/10.1080/10409289.2017.1319783?journalCode=heed20">Pianta et al., 2017</a>). We draw a sample similar to the one used in Pianta et al (2017) but limit to only teachers who were treated in phase 1 then assigned to either treatment or control group in phase 2. This sample allows you to answer two questions: (a) did the consultancy PD intervention improve children vocabulary? and (b) did the dosage of the coursework PD intervention impact children vocabulary? You will answer these two questions in the assignments 3 and 4.</p>
+<p>The primary goal of the intervention was to improve language and literacy skills, however, prior studies have shown that there were no observed average impacts of either the coursework or the consultancy PD intervention on student outcomes at the end of phase 2 (<a href="https://www.tandfonline.com/doi/abs/10.1080/10409289.2017.1319783?journalCode=heed20">Pianta et al., 2017</a>). We draw a sample similar to the one used in Pianta et al (2017) but limit to only teachers who were treated in phase 1 then assigned to either treatment or control group in phase 2. This sample allows you to answer two questions: (a) did the consultancy PD intervention improve student vocabulary? and (b) did the dosage of the coursework PD intervention impact student vocabulary skills? You will answer these two questions in the paired assignments 3 and 4.</p>
 <p><strong>Sample</strong>. Our dataset is teacher-level data for 126 preschool teachers. They were in the treatment group for the 14-session coursework PD intervention, had no missing data on coursework attendance, and were in either the treatment or control group for the consultancy PD intervention.</p>
 <p><strong>Key variables</strong>. We have two treatment measures, a binary variable indicating whether the teacher was treated in the consultancy PD intervention and an integer variable capturing the total number of sessions the teacher participated in the coursework PD intervention. We also have an outcome measure, the teacher’s average student standard score on a receptive vocabulary test (Peabody Picture Vocabulary Test-3rd edition).</p>
 <p>Details on all variables are as follows:</p>
@@ -212,40 +212,40 @@ pre code {
 </div>
 <div id="assignment-details" class="section level3">
 <h3>Assignment Details</h3>
-<p>Prepare your data (same with assignment 3): open your RStudio, create a project and save it. Go to the root directory of the project and create a folder named “data”. Download the <a href="./data/cont.csv">cont.csv dataset</a> and store it in the folder “data”. Create an Rmd/R file in the project root directory. Then read the data into your R environment. Make sure to check whether the variable <em>treat</em> is factor as well as whether <em>coursework</em> and <em>vocabulary</em> are double. Transform them into correct types if needed.</p>
+<p>Prepare your data: open your RStudio, create a project and save it. Go to the root directory of the project and create a folder named “data”. Download the <a href="./data/cont.csv">cont2.csv dataset, NOT the one used in assignment 3</a> and store it in the folder “data”. Create an Rmd/R file in the project root directory. Then read the data into your R environment. Make sure to check whether the variable <em>treat</em> is factor as well as whether <em>coursework</em> and <em>vocabulary</em> are double. Transform them into correct types if needed.</p>
 <div id="descriptive-statistics" class="section level4">
 <h4>1. Descriptive Statistics</h4>
-<p>1.1. Summarize the dataset. Specifically, create a table for the cont.csv dataset to show the means and standard deviations of the continuous variables and the counts and percentages for each category of the categorical variables. Write 2-3 sentences to report and interpret these statistics.</p>
-<p>1.2. Summarize the outcome variable <em>vocabulary</em> by one of the two predictor variables, <em>treat</em>. Specifically, create a table and a plot (label the x and y axis) to show the mean and standard deviation of <em>vocabulary</em> separately for the treatment and control groups.</p>
+<p>1.1. Summarize the cont2.csv dataset (leave out <em>tchid</em>). Specifically, create a table to show the mean and standard deviation of each continuous variable and the count and percentage for each category of the categorical variables. Write 2-3 sentences to report and interpret these statistics.</p>
+<p>1.2. Summarize the variable <em>vocabulary</em> by <em>treat</em>. Specifically, create a table to show the mean and standard deviation of <em>vocabulary</em> for the treatment and control groups separately. Also, create a boxplot (make sure to label the x- and y-axes) to visualize the distributions of <em>vocabulary</em> for the treatment and control groups separately. You may choose one of the two ways: (a) use base R code to produce two plots side-by-side, or (b) use {ggplot2} package to produce one plot.</p>
 <ul>
 <li>1.2.1. Write 2-3 sentences to report and interpret these statistics.</li>
-<li>1.2.2. Compare the mean of <em>vocabulary</em> for the consultancy treatment group and control group. Can you decide which is larger? Why or why not?</li>
+<li>1.2.2. Compare the observed mean of <em>vocabulary</em> for the treatment group and control group. Can you decide whether the treated students score higher or lower than their peers in the studied population? Why or why not?</li>
 </ul>
-<p>1.3 Create a plot (label the x and y axis) to visualize the relationship between <em>vocabulary</em> and another predictor variable <em>coursework</em>.</p>
+<p>1.3. Create a plot (make sure to label the x- and y- axes) to visualize the relationship between <em>vocabulary</em> and <em>coursework</em>.</p>
 <ul>
-<li>1.3.1. Write one sentence describe your observation.</li>
+<li>1.3.1. Write one sentence to describe your observations.</li>
 <li>1.3.2. Can you conclude whether teachers who attended more coursework have higher student score? Why or why not?</li>
 </ul>
 </div>
-<div id="research-question-a-did-the-consultancy-pd-intervention-improve-children-vocabulary" class="section level4">
-<h4>2. Research Question (a): Did the consultancy PD intervention improve children vocabulary?</h4>
+<div id="research-question-a-did-the-consultancy-pd-intervention-improve-student-vocabulary" class="section level4">
+<h4>2. Research Question (a): Did the consultancy PD intervention improve student vocabulary?</h4>
 <p>2.1. Write your null hypothesis and the assumption(s) you make in investigating this research question.</p>
 <p>2.2. Test your hypothesis</p>
 <ul>
-<li><p>2.2.1. Which hypothesis testing you choose to answer this question? Why?</p></li>
-<li><p>2.2.2. Run the test then report and interpret your result.</p></li>
+<li><p>2.2.1. What hypothesis testing you choose to answer this question? Why?</p></li>
+<li><p>2.2.2. Run the test then report your results.</p></li>
 </ul>
-<p>2.3. What is your answer to this research question?</p>
+<p>2.3. Write a short paragraph to answer this research question.</p>
 </div>
-<div id="research-question-b-did-the-dosage-of-the-coursework-pd-intervention-impact-children-vocabulary" class="section level4">
-<h4>3. Research Question (b): Did the dosage of the coursework PD intervention impact children vocabulary?</h4>
+<div id="research-question-b-did-the-dosage-of-the-coursework-pd-intervention-impact-student-vocabulary-skills" class="section level4">
+<h4>3. Research Question (b): Did the dosage of the coursework PD intervention impact student vocabulary skills?</h4>
 <p>3.1. Write your null hypothesis and the assumption(s) you make in investigating this research question.</p>
 <p>3.2. Test your hypothesis</p>
 <ul>
 <li><p>3.2.1. Which hypothesis testing you choose to answer this question? Why?</p></li>
-<li><p>3.2.2. Run the test then report and interpret your result.</p></li>
+<li><p>3.2.2. Run the test then report your results.</p></li>
 </ul>
-<p>3.3. What is your answer to this research question?</p>
+<p>3.3. Write a short paragraph to answer this research question.</p>
 </div>
 </div>
 

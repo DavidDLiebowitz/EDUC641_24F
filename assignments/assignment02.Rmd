@@ -68,11 +68,11 @@ Open your RStudio, create a project and save it to your local. Go to the root di
 
 2.2. What are the percentages of chronically absent and not chronically absent students in treatment group? How about in control group? Provide your response and create a contingency table (percentages in cell) to demonstrate your answer.
 
-2.3. Create a figure to visualize the numbers of chronically absent/not chronically absent students for treatment and control groups. Make sure to label the x- and y-axis.
+2.3. Create a figure to visualize the numbers of chronically absent/not chronically absent students for treatment and control groups. Make sure to label the x- and y-axes.
 
 2.4. Based on your observations from 2.1 to 2.3, do you think there is a relationship between *absenteeism* and *treat* (e.g., students whose teacher were in treatment group were less likely absent)? Why or why not?
 
-#### 3. Calculate the Pearson Chi-Squared statistic 
+#### 3. Chi-Square Test of Categorical Association 
 
 3.1. What are the percentages of chronically absent and not chronically absent students in the full sample? Suppose that there's NO relationship between *absenteeism* and *treat*, redo the table in 2.1 using R code or by hand. 
 
@@ -80,7 +80,7 @@ Open your RStudio, create a project and save it to your local. Go to the root di
 
 3.3. Our first research question of interest is about whether there was a relationship between the two variables, *treat* and *absenteeism*. What is your null hypothesis for this research question?
 
-3.4. Perform a Pearson's Chi-squared test (with Yates' continuity correction) in R to investigate the relationship between *absenteeism* and *treat*. Write 3-4 sentences to interpret your results and answer the research question: Were the students less likely to be chronically absent if their teachers participated the consultancy PD intervention? 
+3.4. Perform a Pearson's Chi-squared test (with Yates' continuity correction) in R to test the relationship between *absenteeism* and *treat*. Write 3-4 sentences to interpret your results and answer the research question: Were the students less likely to be chronically absent if their teachers participated the consultancy PD intervention? 
 
 #### 4. Sub-sample comparisons
 

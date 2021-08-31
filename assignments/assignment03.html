@@ -198,7 +198,7 @@ pre code {
 <div id="data-background" class="section level3">
 <h3>Data Background</h3>
 <p>The dataset we’ll be using in this assignment is drawn from the NCRECE <a href="https://www.icpsr.umich.edu/web/ICPSR/studies/34848">Teacher Professional Development Study (PDS)</a> data. This professional development study was a randomized controlled evaluation of two forms of professional development (PD) - coursework (phase 1) and consultancy (phase 2) - delivered to about 490 early childhood education teachers across the nation. These PD supports aimed to improve teachers’ implementation of language/literacy activities and interactions with children, as well as promote gains in children’s social and academic development.</p>
-<p>The primary goals of the intervention were to improve language and literacy skills, however, prior studies have shown that there were no observed average impacts of either the coursework or the consultancy PD intervention on child outcomes at the end of phase 2 (<a href="https://www.tandfonline.com/doi/abs/10.1080/10409289.2017.1319783?journalCode=heed20">Pianta et al., 2017</a>). We draw a sample similar to the one used in Pianta et al (2017) but limit to only teachers who were treated in phase 1 then assigned to either treatment or control group in phase 2. This sample allows you to answer two questions: (a) did the consultancy PD intervention improve children vocabulary? and (b) did the dosage of the coursework PD intervention impact children vocabulary? You will answer these two questions in the assignments 3 and 4.</p>
+<p>The primary goal of the intervention was to improve language and literacy skills, however, prior studies have shown that there were no observed average impacts of either the coursework or the consultancy PD intervention on child outcomes at the end of phase 2 (<a href="https://www.tandfonline.com/doi/abs/10.1080/10409289.2017.1319783?journalCode=heed20">Pianta et al., 2017</a>). We draw a sample similar to the one used in Pianta et al (2017) but limit to only teachers who were treated in phase 1 then assigned to either treatment or control group in phase 2. This sample allows you to answer two questions: (a) did the consultancy PD intervention improve children vocabulary? and (b) did the dosage of the coursework PD intervention impact children vocabulary skills? You will answer these two questions in the paired assignments 3 and 4.</p>
 <p><strong>Sample</strong>. Our dataset is teacher-level data for 126 preschool teachers. They were in the treatment group for the 14-session coursework PD intervention, had no missing data on coursework attendance, and were in either the treatment or control group for the consultancy PD intervention.</p>
 <p><strong>Key variables</strong>. We have two treatment measures, a binary variable indicating whether the teacher was treated in the consultancy PD intervention and an integer variable capturing the total number of sessions the teacher participated in the coursework PD intervention. We also have an outcome measure, the teacher’s average student standard score on a receptive vocabulary test (Peabody Picture Vocabulary Test-3rd edition).</p>
 <p>Details on all variables are as follows:</p>
@@ -208,7 +208,7 @@ pre code {
 </li>
 <li><em>coursework</em>, measure of how many sessions the teacher had participated in the coursework.</li>
 <li><em>vocabulary</em>, the teacher’s average student score on receptive vocabulary test.</li>
-<li><em>vocabulary_random</em>, a simulated random variable having the same length, mean, and standard deviation with the variable <em>vocabulary</em>. It’ll be treated as the “true” student performance on the test because this sample is randomly selected for the population in which the study was conducted.</li>
+<li><em>vocabulary_random</em>, a simulated random variable having the same length, mean, and standard deviation with the variable <em>vocabulary</em>.</li>
 </ul>
 </div>
 <div id="assignment-details" class="section level3">
@@ -224,7 +224,7 @@ pre code {
 <p>2.1. Central tendency</p>
 <ul>
 <li><p>2.1.1 What are the mean and median of the outcome variable, <em>vocabulary</em>? Interpret the statistical meanings of these measures.</p></li>
-<li><p>2.1.2. Create a binned frequency table (suggested bin width = 5) for <em>vocabulary</em>. Then create a plot to show the distribution of <em>vocabulary</em> and make sure to label the x and y axis. Is it normally distributed? If not, describe how and how much the distribution is skewed. Did you notice any outliers?</p></li>
+<li><p>2.1.2. Create a binned frequency table (suggested bin width = 5) for <em>vocabulary</em>. Then create a plot to show the distribution of <em>vocabulary</em> and make sure to label the x- and y-axes. Is it normally distributed? If not, describe how and how much the distribution is skewed. Did you notice any outliers?</p></li>
 </ul>
 <p>2.2. Variability</p>
 <ul>
@@ -232,18 +232,14 @@ pre code {
 <li><p>2.2.2. List the quartiles, percentiles, interquartile range, and range of <em>vocabulary</em>.</p></li>
 </ul>
 </div>
-<div id="inferential-statistics-of-the-outcome-variable" class="section level4">
-<h4>3. Inferential statistics of the outcome variable</h4>
-<p>3.1 Random sample from the population</p>
+<div id="compare-observed-mean-of-vocabulary-to-population-mean" class="section level4">
+<h4>3. Compare observed mean of <em>vocabulary</em> to population mean</h4>
+<p>3.1. Using the same type of plot you used for <em>vocabulary</em>, plot the distribution of <em>vocabulary_random</em> and compare the two plots. You may choose one of the two ways to compare plots: (a) use base R code to produce two plots side-by-side, or (b) use {ggplot2} package to put the two into one plot. Compare these two distributions and write one sentence to describe what you have observed. Circle back to question 2.1.2, do you think now whether the distribution of <em>vocabulary</em> is approximately normal?</p>
+<p>3.2. Despite what your answer is for 3.1, you have to assume normal distribution of <em>vocabulary</em> before conducting any one-sample t-test. Note that we cannot observe the population mean but let’s suppose it is 87, we want to know whether our observed mean of <em>vocabulary</em> is equal to the population mean.</p>
 <ul>
-<li><p>3.1.1. Using the same type of plot you used for <em>vocabulary</em>, plot the distribution of <em>vocabulary_random</em> and compare the two plots. You may choose one of the two ways to compare plots: (a) use base R code to put the two plots side-by-side, or (b) use {ggplot2} package to put the two into one plot.</p></li>
-<li><p>3.1.2. What are the statistical meanings of the new plot? Compare these two distributions and write one sentence to describe what you have observed. Circle back to question 2.1.2, do you think now whether vocabulary is normally distributed?</p></li>
-</ul>
-<p>3.2 One-sample t-test</p>
-<ul>
-<li><p>3.2.1 Despite whether <em>vocabulary</em> is normally distributed, you want to assume normal distribution in your future analysis. At this point, please specify your null hypothesis for the one-sample t-test (which you’ll conduct in the following questions to see if your assumption holds).</p></li>
-<li><p>3.2.2. What is the mean of <em>vocabulary_random</em>? Is it equal to the mean of <em>vocabulary</em>?</p></li>
-<li><p>3.2.3. We consider the population mean is equal to the mean of <em>vocabulary_random</em>. To test whether your null hypothesis in 3.2.1 is true, run a one-sample t-test and write 2-3 sentences to interpret your result.</p></li>
+<li>3.2.1. What is your null-hypothesis?</li>
+<li>3.2.2. Run a one-sample t-test and provide your results.</li>
+<li>3.2.3. Write 2-3 sentences to interpret your results.</li>
 </ul>
 </div>
 </div>

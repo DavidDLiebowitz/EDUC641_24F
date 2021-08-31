@@ -50,7 +50,7 @@ IQR(pd$vocabulary)
 
 range(pd$vocabulary)
 
-# 3. Inferential statistics of the outcome variable
+# 3. Compare observed mean of vocabulary to population mean
 
 # 3.1
 plot(density(pd$vocabulary_random),
@@ -64,13 +64,10 @@ ggplot(pd, aes(vocabulary)) +
   geom_density(aes(vocabulary_random), color = "coral2") +
   labs(x = "Student Vocabulary Score",
        y = "Proportion",
-       title = "Compare Distributions (Blue: Observed, Red: Random Sample from Population)") +
+       title = "Compare Distributions (Blue: Observed, Red: Randomized)") +
   theme_classic()
-  
+
 # 3.2.
 
-mean(pd$vocabulary_random)
-mean(pd$vocabulary)
-
-t.test(pd$vocabulary, mu = mean(pd$vocabulary_random), alternative = "two.sided")
+t.test(pd$vocabulary, mu = 87, alternative = "two.sided")
 
