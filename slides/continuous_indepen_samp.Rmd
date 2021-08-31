@@ -66,11 +66,6 @@ ggplot(subset(who, status == "Developed"), aes(life_expectancy)) +
 ]
 
 ---
-* Independent samples means a subject can only belong to one group. 
-
-$$ H_0: \mu_1 = \mu_2 $$
-$$ H_1: \mu_1 \neq \mu_2 $$
----
 # Independent Two-Sample t-test
 
 If our null hypothesis is $H_0: \mu_1 = \mu_2$, then $\mu_1 - \mu_2$ should also equal 0.
