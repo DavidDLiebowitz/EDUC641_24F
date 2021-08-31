@@ -14,7 +14,7 @@ class: center, middle, inverse, title-slide
 
 # EDUC 641 Continuous Data - Dependent T-Test
 ### Professor Name
-### 29 August, 2021
+### 31 August, 2021
 
 ---
 
@@ -111,7 +111,7 @@ To test our null hypothesis, we simply need to conduct a t-test on our **differe
 
 
 
-After converting our two observations to a single difference value, we are simplifying our analysis to a one-sample t-test with a null mean of 0.
+After converting our two observations to a single difference value, our analysis becomes simply a one-sample t-test with a null mean of 0.
 
 ---
 .pull-left[
@@ -145,13 +145,57 @@ The mean of our difference scores is 3.9 with a standard deviation of 3.63. Now 
 What does our sampling distribution look like?
 * Under the null hypothesis, the sampling distribution of *difference scores* has a mean of 0 `\(\mu_{diff} = 0\)`. 
 
-* The SD of our sampling distribution reflects the standard error of difference scores.
+* The SD of our sampling distribution reflects the *standard error of difference scores*.
    + SE equals the sample SD divided by the square root of the number of paired observations. `\((\frac{\hat{\sigma}_{diff}}{\sqrt{N}})\)`
 
-$$ t_{df} = \frac{\bar{X}_{diff} - \mu_{diff}}{\frac{\hat{\sigma}_{diff}}{\sqrt{N}}} $$
+---
+# Test Statistic
 
+With our sample of 10 countries, we have a mean difference of 3.9 and a standard deviation of 3.63. Fill in the equation with the appropriate values.
+
+`$$t_{df} = \frac{\bar{X}_{diff} - \mu_{diff}}{\frac{\hat{\sigma}_{diff}}{\sqrt{N}}}$$`
+---
+# Test Statistic
+Your equation should have looked like the following. Remember, degrees of freedom = `\(n-1\)`.
+
+`$$t_{9} = \frac{3.9 - 0}{\frac{3.63}{\sqrt{10}}}$$`
+
+Now we have everything we need to run our dependent samples t-test.
+---
+# Dependent Samples T-Test Results
+
+```r
+t.test(x = samp$`2005`, y = samp$`2015`,
+        paired = TRUE)
+```
+
+```
+## 
+## 	Paired t-test
+## 
+## data:  samp$`2005` and samp$`2015`
+## t = -3.3931, df = 9, p-value = 0.00796
+## alternative hypothesis: true difference in means is not equal to 0
+## 95 percent confidence interval:
+##  -6.500114 -1.299886
+## sample estimates:
+## mean of the differences 
+##                    -3.9
+```
+
+It is highly unlikely to obtain a sample mean of difference scores equal to or more extreme than 3.9 under the null hypothesis `\((p = .008)\)`.
+
+We can safely reject the null hypothesis.
 
 ---
+
+The average national life expectancy was significantly higher in 2015 than in 2005, p &lt; .01, 95% CI [1.30, 6.50]. 
+
+Although this was the case for our mean differences, we can still find exceptions to this pattern in our data!
+
+&lt;img src="continuous_dependent_files/figure-html/unnamed-chunk-8-1.png" style="display: block; margin: auto;" /&gt;
+
+
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
