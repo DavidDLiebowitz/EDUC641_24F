@@ -1,7 +1,9 @@
 ---
 title: "EDUC 641 Assignment 3"
-subtitle: "(Summarizing and Displaying Continuous Data)"
-output: html_document
+output:
+  html_document:
+    toc: true
+    toc_float: true
 ---
 ```{R, setup, include = FALSE}
 if (!require(pacman)) install.packages('pacman', repos = 'https://cran.rstudio.com')
@@ -9,6 +11,9 @@ pacman::p_load(here, tidyverse, ggplot2, xaringan, knitr, kableExtra)
 
 opts_chunk$set(include = FALSE)
 ```
+
+
+Assignment 3: Summarizing and Displaying Continuous Data
 
 ### General Guidelines
 

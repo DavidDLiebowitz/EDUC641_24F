@@ -1,8 +1,12 @@
 ---
 title: "EDUC 641 Assignment 1"
-subtitle: "(Categorical Data Structure and Descriptives)"
-output: html_document
+output:
+  html_document:
+    toc: true
+    toc_float: true
 ---
+
+Assignment 1: Categorical Data Structure and Descriptives
 
 ### General Guidelines
 

@@ -29,6 +29,9 @@
        h6 {font-size: 12px;}
        code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
        pre:not([class]) { background-color: white }</style>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
@@ -57,7 +60,6 @@ if (window.hljs) {
 
 
 
-<link rel="stylesheet" href="educquant.css" type="text/css" />
 
 
 
@@ -219,6 +221,69 @@ $(document).ready(function () {
 
 
 
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
 
 </head>
 
@@ -226,6 +291,16 @@ $(document).ready(function () {
 
 
 <div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
 
 
 
@@ -282,8 +357,79 @@ $(document).ready(function () {
 <div id="textbooks-and-reading-materials" class="section level3">
 <h3>Textbooks and Reading Materials</h3>
 </div>
-<div id="weekly-schedule" class="section level3">
-<h3>Weekly <a href="./schedule.html">Schedule</a></h3>
+<div id="schedule" class="section level3">
+<h3>Schedule</h3>
+<p>For more details, see <a href="./schedule.html">here</a>.</p>
+<table style="width:100%;">
+<colgroup>
+<col width="7%" />
+<col width="6%" />
+<col width="47%" />
+<col width="18%" />
+<col width="13%" />
+<col width="8%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Unites</th>
+<th align="left">Weeks</th>
+<th align="left">Topics</th>
+<th align="left">Required Readings</th>
+<th align="left">Assignments</th>
+<th align="left">Quizzes</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">1</td>
+<td align="left">1</td>
+<td align="left">Intro scienctific principals and data analysis</td>
+<td align="left">LSWR Ch 3</td>
+<td align="left">-</td>
+<td align="left">Quiz 1</td>
+</tr>
+<tr class="even">
+<td align="left">2</td>
+<td align="left">2</td>
+<td align="left">summarizing and displaying categorical data</td>
+<td align="left">LSWR Ch 2</td>
+<td align="left">Assingment 1</td>
+<td align="left">Quiz 2</td>
+</tr>
+<tr class="odd">
+<td align="left">3</td>
+<td align="left">3-4</td>
+<td align="left">Relationships between categorical variables</td>
+<td align="left">LSWR Ch 7</td>
+<td align="left">Assignment 2</td>
+<td align="left">Quiz 3</td>
+</tr>
+<tr class="even">
+<td align="left">4</td>
+<td align="left">5-7</td>
+<td align="left">Summarizing and displaying continuous data</td>
+<td align="left">LSWR Ch 5</td>
+<td align="left">Assingment 3</td>
+<td align="left">Quiz 4</td>
+</tr>
+<tr class="odd">
+<td align="left">5</td>
+<td align="left">8-10</td>
+<td align="left">Relationships between continuous data</td>
+<td align="left">LSWR Ch 13</td>
+<td align="left">Assignment 4</td>
+<td align="left">Quiz 5</td>
+</tr>
+<tr class="even">
+<td align="left">Final</td>
+<td align="left">11</td>
+<td align="left">-</td>
+<td align="left">-</td>
+<td align="left">Assignment 5</td>
+<td align="left">-</td>
+</tr>
+</tbody>
+</table>
 </div>
 <div id="grading-components-and-criteria" class="section level3">
 <h3>Grading Components and Criteria</h3>
@@ -321,6 +467,8 @@ $(document).ready(function () {
 
 
 
+</div>
+</div>
 
 </div>
 
@@ -353,6 +501,32 @@ $(document).ready(function () {
 
 <!-- code folding -->
 
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
 
 <!-- dynamically load mathjax for compatibility with self-contained -->
 <script>

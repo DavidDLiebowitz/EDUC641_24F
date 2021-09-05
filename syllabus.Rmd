@@ -3,11 +3,13 @@ title: "EDUC 641 Syllabus"
 site: distill::distill_website
 output:
   html_document:
-    css: educquant.css
+    toc: true
+    toc_float: true
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
 ```
 
 ### General Course Information
@@ -22,7 +24,15 @@ knitr::opts_chunk$set(echo = TRUE)
 ### Textbooks and Reading Materials
 
 
-### Weekly [Schedule](./schedule.html) 
+### Schedule
+
+For more details, see [here](./schedule.html). 
+
+```{r, echo=FALSE, results='asis'}
+d <- readxl::read_xlsx(here::here("./data", "syllabus.xlsx"))
+d %>% 
+  knitr::kable()
+```
 
 
 ### Grading Components and Criteria 

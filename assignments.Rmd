@@ -3,7 +3,9 @@ title: "EDUC 641 Assignments"
 site: distill::distill_website
 output:
   html_document:
-    css: educquant.css
+    toc: true
+    toc_float: true
+    toc_depth: 4
 ---
 
 ```{r setup, include=FALSE}
@@ -102,9 +104,3 @@ Deadline: TBD
 Download: [html file](./assignments/assignment05.html); [ah.csv dataset](./data/ah.csv)
 
 Key: [doc file](./assignments/keys/assignment05_key.docx); [R script](./assignments/keys/assignment05_key.R)
-
-
-
-
-
-

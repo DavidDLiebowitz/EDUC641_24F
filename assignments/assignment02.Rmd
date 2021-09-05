@@ -1,7 +1,9 @@
 ---
 title: "EDUC 641 Assignment 2"
-subtitle: "(Relationship between categorical variables and the Chi-squared statistic)"
-output: html_document
+output:
+  html_document:
+    toc: true
+    toc_float: true
 ---
 ```{R, setup, include = FALSE}
 if (!require(pacman)) install.packages('pacman', repos = 'https://cran.rstudio.com')
@@ -9,6 +11,8 @@ pacman::p_load(tidyverse, knitr, kableExtra)
 
 opts_chunk$set(include = FALSE)
 ```
+
+Assignment 2: Relationship between categorical variables and the Chi-squared statistic
 
 ### General Guidelines
 
