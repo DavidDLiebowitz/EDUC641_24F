@@ -164,6 +164,11 @@ It is highly unlikely to obtain a sample mean of difference scores equal to or m
 We can safely reject the null hypothesis.
 
 ---
+
+The average national life expectancy was significantly higher in 2015 than in 2005, p < .01, 95% CI [1.30, 6.50]. 
+
+Although this was the case for our mean differences, we can still find exceptions to this pattern in our data!
+
 ```{r}
 ggpubr::ggpaired(data = samp, cond1 = "2005", cond2 = "2015", line.color = "grey")
 ```
