@@ -29,11 +29,11 @@ knitr::opts_chunk$set(echo = TRUE)
 
 1. [Terminologies](#term) 
 
-2. [Your steps to finish for this tutorial](#instr)
+2. [Instructions](#instr)
 
-3. [Software installation demo](#demo)
+3. [Software Installation Demo](#demo)
 
-4. [Hands-on activity (Week 1 participation points attached)](#activity)
+4. [Hands-on Activity (Week 1 Participation Point)](#activity)
 
 ---
 name: term
@@ -49,17 +49,17 @@ name: term
 
 ---
 name: instr
-# Your Steps to Finish:
+# Instructions
 
 1. Download [R](https://www.r-project.org/) and install it in your computer
 
 2. Download [RStudio Desktop](https://www.rstudio.com/products/rstudio/download/preview/) and install it in your computer
 
-3. Get to know your RStudio and finish the hands-on activity (week 1 participation point attached)
+3. Get to know your RStudio; open RStudion desktop and finish the hands-on activity (week 1 participation point attached)
 
 ---
 name: demo
-# Demo - Install R
+# Installation Demo - R
 
 Download R (then install it in your computer):
 
@@ -68,7 +68,7 @@ knitr::include_graphics("./pics/download_r.gif")
 ```
 
 ---
-# Demo - Install RStudio
+# Installation Demo - RStudio
 
 Download RStudio Desktop (then install it in your computer):
 
@@ -80,13 +80,9 @@ knitr::include_graphics("./pics/download_rstudio.gif")
 name: activity
 # RStudio Hands-on Activity
 
-Open your RStudio, run these below code in your console line-by-line, copy and paste the results in a **word document**.
-
-Create a new project in your local and an **R script** under that project, write the same code.
-
-Submit the word doc AND the R script to Canvas to get the first week's participation point (deadline is before our first class meeting). You'll be doing this for all the assignments over this term so let's get started now.
+Open your RStudio, run these below code in your console line-by-line, copy and paste the results in a word document, and submit the doc to Canvas to get the first week's participation point (deadline is before our first class meeting).
 
 ```{r, out.width = "50%", fig.align = "center", echo = FALSE}
-knitr::include_graphics("./pics/console_simplified.png")
+knitr::include_graphics("./pics/console.png")
 ```
 

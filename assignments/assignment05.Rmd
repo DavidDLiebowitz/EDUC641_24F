@@ -1,9 +1,7 @@
 ---
 title: "EDUC 641 Assignment 5"
-output:
-  html_document:
-    toc: true
-    toc_float: true
+subtitle: "(Final Project)"
+output: html_document
 ---
 ```{R, setup, include = FALSE}
 if (!require(pacman)) install.packages('pacman', repos = 'https://cran.rstudio.com')
@@ -11,8 +9,6 @@ pacman::p_load(here, tidyverse, ggplot2, xaringan, knitr, kableExtra)
 
 opts_chunk$set(include = FALSE)
 ```
-
-Assignment 5: Final Project
 
 ### General Guidelines
 

@@ -4,7 +4,7 @@
     <title>Examining the relationship between categorical variables</title>
     <meta charset="utf-8" />
     <meta name="author" content="TBD" />
-    <script src="EDUC641_2_categ_2_files/header-attrs-2.8/header-attrs.js"></script>
+    <script src="EDUC641_2_categ_2_files/header-attrs-2.9/header-attrs.js"></script>
     <link href="EDUC641_2_categ_2_files/remark-css-0.0.1/default.css" rel="stylesheet" />
     <link rel="stylesheet" href="new.css" type="text/css" />
   </head>
@@ -70,7 +70,7 @@ table(df$deathpen, df$rvictim)
 #&gt;      
 #&gt;       Black White
 #&gt;   No   1483   863
-#&gt;   Yes    20   109
+#&gt;   Yes    23   106
 ```
 
 --
@@ -88,8 +88,8 @@ round(prop.table(table(df$deathpen, df$rvictim), margin=2)*100, 2)
 ```
 #&gt;      
 #&gt;       Black White
-#&gt;   No  98.67 88.79
-#&gt;   Yes  1.33 11.21
+#&gt;   No  98.47 89.06
+#&gt;   Yes  1.53 10.94
 ```
 
 ---
@@ -133,8 +133,8 @@ it might be helpful to imagine what the proportion of defendants sentenced to de
 #&gt;      
 #&gt;       Black White  Sum
 #&gt;   No   1483   863 2346
-#&gt;   Yes    20   109  129
-#&gt;   Sum  1503   972 2475
+#&gt;   Yes    23   106  129
+#&gt;   Sum  1506   969 2475
 ```
 ]
 
@@ -158,8 +158,8 @@ it might be helpful to imagine what the proportion of defendants sentenced to de
 #&gt;      
 #&gt;       Black White  Sum
 #&gt;   No   1483   863 2346
-#&gt;   Yes    20   109  129
-#&gt;   Sum  1503   972 2475
+#&gt;   Yes    23   106  129
+#&gt;   Sum  1506   969 2475
 ```
 ]
 
@@ -184,8 +184,8 @@ it might be helpful to imagine what the proportion of defendants sentenced to de
 #&gt;      
 #&gt;       Black White  Sum
 #&gt;   No   1483   863 2346
-#&gt;   Yes    20   109  129
-#&gt;   Sum  1503   972 2475
+#&gt;   Yes    23   106  129
+#&gt;   Sum  1506   969 2475
 ```
 ]
 
@@ -194,27 +194,30 @@ it might be helpful to imagine what the proportion of defendants sentenced to de
 &lt;table&gt;
  &lt;thead&gt;
   &lt;tr&gt;
-   &lt;th style="text-align:left;"&gt;   &lt;/th&gt;
    &lt;th style="text-align:left;"&gt; deathpen &lt;/th&gt;
-   &lt;th style="text-align:left;"&gt; Black &lt;/th&gt;
-   &lt;th style="text-align:left;"&gt; White &lt;/th&gt;
-   &lt;th style="text-align:left;"&gt; Sum &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; Black &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; White &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; Sum &lt;/th&gt;
   &lt;/tr&gt;
  &lt;/thead&gt;
 &lt;tbody&gt;
   &lt;tr&gt;
-   &lt;td style="text-align:left;"&gt; df3 &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; 1:2 &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; c(1425, 78) &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; c(921, 51) &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; c(2346, 129) &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; No &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1428 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 918 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2346 &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
-   &lt;td style="text-align:left;"&gt; sum_vict &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; 1 &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; 1503 &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; 972 &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; 2475 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Yes &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 78 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 51 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 129 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Sum &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1506 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 969 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2475 &lt;/td&gt;
   &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
@@ -235,8 +238,8 @@ it might be helpful to imagine what the proportion of defendants sentenced to de
 #&gt;      
 #&gt;       Black White  Sum
 #&gt;   No   1483   863 2346
-#&gt;   Yes    20   109  129
-#&gt;   Sum  1503   972 2475
+#&gt;   Yes    23   106  129
+#&gt;   Sum  1506   969 2475
 ```
 ]
 .pull-right[
@@ -244,27 +247,30 @@ it might be helpful to imagine what the proportion of defendants sentenced to de
 &lt;table&gt;
  &lt;thead&gt;
   &lt;tr&gt;
-   &lt;th style="text-align:left;"&gt;   &lt;/th&gt;
    &lt;th style="text-align:left;"&gt; deathpen &lt;/th&gt;
-   &lt;th style="text-align:left;"&gt; Black &lt;/th&gt;
-   &lt;th style="text-align:left;"&gt; White &lt;/th&gt;
-   &lt;th style="text-align:left;"&gt; Sum &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; Black &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; White &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; Sum &lt;/th&gt;
   &lt;/tr&gt;
  &lt;/thead&gt;
 &lt;tbody&gt;
   &lt;tr&gt;
-   &lt;td style="text-align:left;"&gt; df3 &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; 1:2 &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; c(1425, 78) &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; c(921, 51) &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; c(2346, 129) &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; No &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1428 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 918 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2346 &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
-   &lt;td style="text-align:left;"&gt; sum_vict &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; 1 &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; 1503 &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; 972 &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; 2475 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Yes &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 78 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 51 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 129 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Sum &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1506 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 969 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2475 &lt;/td&gt;
   &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
@@ -285,8 +291,8 @@ We can summarize the **NET DISCREPANCY** between the tables of **OBSERVED** and 
 #&gt;      
 #&gt;       Black White  Sum
 #&gt;   No   1483   863 2346
-#&gt;   Yes    20   109  129
-#&gt;   Sum  1503   972 2475
+#&gt;   Yes    23   106  129
+#&gt;   Sum  1506   969 2475
 ```
 ]
 .pull-right[
@@ -294,27 +300,30 @@ We can summarize the **NET DISCREPANCY** between the tables of **OBSERVED** and 
 &lt;table&gt;
  &lt;thead&gt;
   &lt;tr&gt;
-   &lt;th style="text-align:left;"&gt;   &lt;/th&gt;
    &lt;th style="text-align:left;"&gt; deathpen &lt;/th&gt;
-   &lt;th style="text-align:left;"&gt; Black &lt;/th&gt;
-   &lt;th style="text-align:left;"&gt; White &lt;/th&gt;
-   &lt;th style="text-align:left;"&gt; Sum &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; Black &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; White &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; Sum &lt;/th&gt;
   &lt;/tr&gt;
  &lt;/thead&gt;
 &lt;tbody&gt;
   &lt;tr&gt;
-   &lt;td style="text-align:left;"&gt; df3 &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; 1:2 &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; c(1425, 78) &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; c(921, 51) &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; c(2346, 129) &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; No &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1428 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 918 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2346 &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
-   &lt;td style="text-align:left;"&gt; sum_vict &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; 1 &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; 1503 &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; 972 &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; 2475 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Yes &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 78 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 51 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 129 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Sum &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1506 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 969 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2475 &lt;/td&gt;
   &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
@@ -345,8 +354,8 @@ We can summarize the **NET DISCREPANCY** between the tables of **OBSERVED** and 
 #&gt;      
 #&gt;       Black White  Sum
 #&gt;   No   1483   863 2346
-#&gt;   Yes    20   109  129
-#&gt;   Sum  1503   972 2475
+#&gt;   Yes    23   106  129
+#&gt;   Sum  1506   969 2475
 ```
 ]
 .pull-right[
@@ -354,27 +363,30 @@ We can summarize the **NET DISCREPANCY** between the tables of **OBSERVED** and 
 &lt;table&gt;
  &lt;thead&gt;
   &lt;tr&gt;
-   &lt;th style="text-align:left;"&gt;   &lt;/th&gt;
    &lt;th style="text-align:left;"&gt; deathpen &lt;/th&gt;
-   &lt;th style="text-align:left;"&gt; Black &lt;/th&gt;
-   &lt;th style="text-align:left;"&gt; White &lt;/th&gt;
-   &lt;th style="text-align:left;"&gt; Sum &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; Black &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; White &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; Sum &lt;/th&gt;
   &lt;/tr&gt;
  &lt;/thead&gt;
 &lt;tbody&gt;
   &lt;tr&gt;
-   &lt;td style="text-align:left;"&gt; df3 &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; 1:2 &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; c(1425, 78) &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; c(921, 51) &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; c(2346, 129) &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; No &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1428 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 918 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2346 &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
-   &lt;td style="text-align:left;"&gt; sum_vict &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; 1 &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; 1503 &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; 972 &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; 2475 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Yes &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 78 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 51 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 129 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Sum &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1506 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 969 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2475 &lt;/td&gt;
   &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
@@ -520,7 +532,7 @@ chi_df
 #&gt; 	Pearson's Chi-squared test with Yates' continuity correction
 #&gt; 
 #&gt; data:  df$deathpen and df$rvictim
-#&gt; X-squared = 114.71, df = 1, p-value &lt; 2.2e-16
+#&gt; X-squared = 103.82, df = 1, p-value &lt; 2.2e-16
 ```
 
 ```r
@@ -530,8 +542,8 @@ chi_df$expected
 ```
 #&gt;            df$rvictim
 #&gt; df$deathpen      Black     White
-#&gt;         No  1424.66182 921.33818
-#&gt;         Yes   78.33818  50.66182
+#&gt;         No  1427.50545 918.49455
+#&gt;         Yes   78.49455  50.50545
 ```
 
 ```r
@@ -636,7 +648,7 @@ Expected:
 #&gt;      
 #&gt;       Black White
 #&gt;   No    179   800
-#&gt;   Yes     2    59
+#&gt;   Yes     5    56
 ```
 
 .pull-left[
@@ -668,26 +680,26 @@ Observed:
 #&gt;              df_w$rvictim
 #&gt; df_w$deathpen Black White
 #&gt;           No    179   800
-#&gt;           Yes     2    59
+#&gt;           Yes     5    56
 ```
 Expected:
 
 ```
 #&gt;              df_w$rvictim
 #&gt; df_w$deathpen Black White
-#&gt;           No    170   809
+#&gt;           No    173   806
 #&gt;           Yes    11    50
 ```
 `\(\chi^2\)` statistic:
 
 ```
 #&gt; X-squared 
-#&gt;  7.980624
+#&gt;  3.349547
 ```
 *p*-value
 
 ```
-#&gt; [1] 0.004728063
+#&gt; [1] 0.06722351
 ```
 ]
 

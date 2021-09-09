@@ -3,7 +3,7 @@
 if (!require(pacman)) install.packages('pacman', repos = 'https://cran.rstudio.com')
 pacman::p_load(tidyverse, knitr)
 
-pd <- read_csv(here::here("data", "cont2.csv"))
+pd <- read_csv(here::here("data", "cont.csv"))
 
 head(pd)
 
@@ -12,40 +12,23 @@ pd$treat <- factor(pd$treat)
 # 1. Descriptive Statistics
 
 # 1.1. 
+skimr::skim(pd %>% select(-tchid))
 
-summary(pd$vocabulary)
-sd(pd$vocabulary)
-
-summary(pd$coursework)
-sd(pd$coursework)
-
-summary(pd$treat)
+pd %>% 
+  select(-tchid) %>% 
+  gtsummary::tbl_summary(statistic = list(coursework ~ "{mean} ({sd})",
+                                          vocabulary ~ "{mean} ({sd})",
+                                          treat ~ "{n} / {N} ({p}%)")) %>%
+  gtsummary::modify_header(label ~ "**Variables**") 
 
 # 1.2. 
 
-pd_treat <- pd %>% 
-  filter(treat == 1)
+pd %>% 
+  select(-tchid, -coursework) %>% 
+  gtsummary::tbl_summary(by = treat,
+                         statistic = list(vocabulary ~ "{mean} ({sd})")) %>%
+  gtsummary::modify_header(label ~ "**Variables**")
 
-summary(pd_treat$vocabulary)
-sd(pd_treat$vocabulary)
-
-pd_control <- pd %>% 
-  filter(treat == 0)
-
-summary(pd_control$vocabulary)
-sd(pd_control$vocabulary)
-
-boxplot(pd_treat$vocabulary,
-        main = "Treatment Group",
-        xlab = "Vocabulary Score", 
-        ylab = "Distribution")
-
-boxplot(pd_control$vocabulary,
-        main = "Control Group",
-        xlab = "Vocabulary Score", 
-        ylab = "Distribution")
-
-# alternatively
 pd %>% 
   mutate(treat = factor(treat, levels = c(0, 1), labels = c("Control Group", "Treatment Group"))) %>% 
   ggplot(aes(treat, vocabulary)) +
@@ -65,4 +48,7 @@ pd %>%
   theme_bw(base_size = 14)
 
 # 2. Research question (a)
+
+t.test()
+
 

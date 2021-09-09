@@ -3,8 +3,7 @@ title: "EDUC 641 Schedule"
 site: distill::distill_website
 output:
   html_document:
-    toc: true
-    toc_float: true
+    css: educquant.css
 ---
 
 ```{r setup, include=FALSE}
@@ -112,7 +111,7 @@ Assignment 3:
 
  * Due TBD
  * [html file](./assignments/assignment03.html)
- * [cont.csv dataset](./data/cont.csv)
+ * [cont.csv dataset (./data/cont.csv)
 
 
 
@@ -132,12 +131,12 @@ Assignment 4:
 
  * Due TBD
  * [html file](./assignments/assignment04.html)
- * [cont2.csv dataset](./data/cont2.csv)
+ * [cont.csv](./data/cont.csv)
 
 
 Assignment 5: 
 
  * Due TBD
  * [html file](./assignments/assignment05.html)
- * [ah.csv dataset](./data/ah.csv)
+ * [ah.csv](./data/ah.csv)
 
