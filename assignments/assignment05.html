@@ -198,21 +198,21 @@ pre code {
 <div id="data-backgroud" class="section level3">
 <h3>Data Backgroud</h3>
 <p>The dataset we’ll be using in this assignment is drawn from the third and fourth waves of National Longitudinal Study of Adolescent to Adult Health (<a href="https://addhealth.cpc.unc.edu/data/#public-use">Add Health</a>) public-use data. Add Health is a longitudinal study of a nationally representative sample of over 20,000 adolescents (the public-use data sample is much smaller in size) who were in grades 7-12 during the 1994-95 school year, containing rich demographic, social, familial, socioeconomic, behavioral, psychosocial, cognitive, and health information. When the third (2001) and fourth (2008) waves took place, the participants were aged from 18-26 and from 24-32.</p>
-<p>In their working paper, <a href="https://www.edworkingpapers.com/ai21-441">Kraft et al (2021)</a> examined an understudied area - the pathway through which mentoring relationship between students and school personnel influences human capital development. Particularly, they found that having a school-based mentor is associated with an increase of 0.24 GPA points at high-school, a full year of additional education, and an increase of $60,600-$92,400 in lifetime earnings. Inspired by their study, we step further and take interested in whether and to what extent having a school-based mentor earlier in their life is also related to these short- and long-term school outcomes. In this final project, we invite you to investigate two research questions, one from the questions 1-3 in Kraft et al paper and one from our further inquiries 4-6, listed below:</p>
+<p>In their working paper, <a href="https://www.edworkingpapers.com/ai21-441">Kraft et al (2021)</a> examined an understudied area - the pathway through which mentoring relationship between students and school personnel influences human capital development. Particularly, they found that having a school-based mentor is associated with an increase of 0.24 GPA points at high-school, a full year of additional education, and an increase of $60,600-$92,400 in lifetime earnings. Inspired by their study, we step further and take interested in whether and to what extent having a school-based mentor earlier in their life is also related to these short- and long-term school outcomes. In this final project, we invite you to investigate two research questions, one from the questions 1-3 (using <a href="./data/ah01.csv">ah01.csv dataset</a>) in Kraft et al paper and one from our further inquiries 4-6 (using <a href="./data/ah02.csv">ah02.csv dataset</a>), listed below:</p>
 <ol style="list-style-type: decimal">
-<li><p>Whether and to what extent having a school-based mentor impacts participant high school overall GPA?</p></li>
-<li><p>Whether and to what extent having a school-based mentor impacts participant total years of education?</p></li>
-<li><p>Whether and to what extent having a school-based mentor impacts participant annual earnings?</p></li>
-<li><p>Whether and to what extent having a school-based mentor earlier in life participant high school overall GPA?</p></li>
-<li><p>Whether and to what extent having a school-based mentor earlier in life impacts participant total years of education?</p></li>
-<li><p>Whether and to what extent having a school-based mentor earlier in life impacts participant annual earnings?</p></li>
+<li><p>Whether and to what extent having a school-based mentor relates to participants’ high school overall GPA?</p></li>
+<li><p>Whether and to what extent having a school-based mentor relates to participants’ total years of education?</p></li>
+<li><p>Whether and to what extent having a school-based mentor relates to participants’ participant annual earnings?</p></li>
+<li><p>Whether and to what extent having a school-based mentor earlier in life relates to participants’ high school overall GPA?</p></li>
+<li><p>Whether and to what extent having a school-based mentor earlier in life relates to participants’ total years of education?</p></li>
+<li><p>Whether and to what extent having a school-based mentor earlier in life relates to participants’ annual earnings?</p></li>
 </ol>
-<p><strong>Sample</strong>. The dataset you’ll be using is individual-level data for 659 Add Health participants who have no missing data on our variables of interested in both waves 3 and 4. Note that for simplifying reasons, we use a smaller dataset than Kraft et al does and the measures of predictor and outcome variables are slightly different. Also we do not ask you to fit the fixed-effects models in Kraft et al, therefore all the results you get from this exercise cannot be interpreted as causal effects.</p>
+<p><strong>Sample</strong>. The dataset you’ll be using is individual-level data for Add Health participants who have no missing data on our variables of interested in both waves 3 and 4. Note that for simplifying reasons, we use smaller datasets than Kraft et al does and the measures of predictor and outcome variables are slightly different. Also we do not ask you to fit the fixed-effects models in Kraft et al, therefore all the results you get from this exercise cannot be interpreted as causal effects.</p>
 <p><strong>Key variables</strong>:</p>
 <ul>
 <li><p><em>id</em>, the individual’s unique identification number.</p></li>
-<li><p><em>mentor</em>, binary variable, coded 1 for individuals who reported to have a school-based mentor (teachers/guidance counselors and coaches/athletic directors) after 14 years old.</p></li>
-<li><p><em>mentee_age</em>, the individual’s age when the mentor started to have an impact in their life.</p></li>
+<li><p><em>mentor</em>, binary variable, coded 1 for individuals who reported to have a school-based mentor (teachers/guidance counselors and coaches/athletic directors). This variable exists only in ah01.csv dataset.</p></li>
+<li><p><em>mentee_age</em>, the individual’s age when the mentor started to have an impact in their life. This variable exists only in ah02.csv dataset.</p></li>
 <li><p><em>education</em>, the individual’s total years of education (recoded from Add Health data using the same approach in Kraft et al p.14).</p></li>
 <li><p><em>income_log</em>, the individual’s log-transformed annual earnings (including salary and all types of other incomes).</p></li>
 <li><p><em>gpa</em>, the individual’s high school final GPA points.</p></li>
@@ -220,11 +220,10 @@ pre code {
 </div>
 <div id="assignment-details" class="section level3">
 <h3>Assignment Details</h3>
-<p>Your final project should be delivered in two forms: (a) an R script that we can run without errors, and (b) a 2-3 page writeup of the analysis, results, and discussions of your research questions, which should largely match APA 7th edition style. This writeup should contain the following elements:</p>
+<p>Your final project should be delivered in two forms: (a) an R script that we can run without errors, and (b) a 2-3 paragraph write up of the analysis, results, and discussions of your research questions. This writeup should contain the following elements:</p>
 <p>What are the two research questions you choose to investigate (they has to be one from questions 1-3 and one from 4-6)? What are the predictor variable(s) and outcome variable(s) for each question?</p>
 <p>Present the summary statistics of your data in table(s) and describe what you observe.</p>
 <p>For each research question, visualize the relationship(s) between the predictor and outcome variables in a plot and describe what you observe.</p>
-<p>For each research question, state your null hypothesis followed by the appropriate testing, present your results in a table.</p>
 <p>For each research question, interpret your results and briefly discuss the substances of your findings.</p>
 </div>
 

@@ -34,29 +34,29 @@ Please upload below two files on Canvas before TBD time:
 
 The dataset we'll be using in this assignment is drawn from the third and fourth waves of National Longitudinal Study of Adolescent to Adult Health ([Add Health](https://addhealth.cpc.unc.edu/data/#public-use)) public-use data. Add Health is a longitudinal study of a nationally representative sample of over 20,000 adolescents (the public-use data sample is much smaller in size) who were in grades 7-12 during the 1994-95 school year, containing rich demographic, social, familial, socioeconomic, behavioral, psychosocial, cognitive, and health information. When the third (2001) and fourth (2008) waves took place, the participants were aged from 18-26 and from 24-32.
 
-In their working paper, [Kraft et al (2021)](https://www.edworkingpapers.com/ai21-441) examined an understudied area - the pathway through which mentoring relationship between students and school personnel influences human capital development. Particularly, they found that having a school-based mentor is associated with an increase of 0.24 GPA points at high-school, a full year of additional education, and an increase of $60,600-$92,400 in lifetime earnings. Inspired by their study, we step further and take interested in whether and to what extent having a school-based mentor earlier in their life is also related to these short- and long-term school outcomes. In this final project, we invite you to investigate two research questions, one from the questions 1-3 in Kraft et al paper and one from our further inquiries 4-6, listed below:
+In their working paper, [Kraft et al (2021)](https://www.edworkingpapers.com/ai21-441) examined an understudied area - the pathway through which mentoring relationship between students and school personnel influences human capital development. Particularly, they found that having a school-based mentor is associated with an increase of 0.24 GPA points at high-school, a full year of additional education, and an increase of $60,600-$92,400 in lifetime earnings. Inspired by their study, we step further and take interested in whether and to what extent having a school-based mentor earlier in their life is also related to these short- and long-term school outcomes. In this final project, we invite you to investigate two research questions, one from the questions 1-3 (using [ah01.csv dataset](./data/ah01.csv)) in Kraft et al paper and one from our further inquiries 4-6 (using [ah02.csv dataset](./data/ah02.csv)), listed below:
 
-1. Whether and to what extent having a school-based mentor impacts participant high school overall GPA?
+1. Whether and to what extent having a school-based mentor relates to participants' high school overall GPA?
 
-2. Whether and to what extent having a school-based mentor impacts participant total years of education?
+2. Whether and to what extent having a school-based mentor relates to participants' total years of education?
 
-3. Whether and to what extent having a school-based mentor impacts participant annual earnings?
+3. Whether and to what extent having a school-based mentor relates to participants' participant annual earnings?
 
-4. Whether and to what extent having a school-based mentor earlier in life participant high school overall GPA?
+4. Whether and to what extent having a school-based mentor earlier in life relates to participants' high school overall GPA?
 
-5. Whether and to what extent having a school-based mentor earlier in life impacts participant total years of education?
+5. Whether and to what extent having a school-based mentor earlier in life relates to participants' total years of education?
 
-6. Whether and to what extent having a school-based mentor earlier in life impacts participant annual earnings?
+6. Whether and to what extent having a school-based mentor earlier in life relates to participants' annual earnings?
 
-**Sample**. The dataset you'll be using is individual-level data for 659 Add Health participants who have no missing data on our variables of interested in both waves 3 and 4. Note that for simplifying reasons, we use a smaller dataset than Kraft et al does and the measures of predictor and outcome variables are slightly different. Also we do not ask you to fit the fixed-effects models in Kraft et al, therefore all the results you get from this exercise cannot be interpreted as causal effects. 
+**Sample**. The dataset you'll be using is individual-level data for Add Health participants who have no missing data on our variables of interested in both waves 3 and 4. Note that for simplifying reasons, we use smaller datasets than Kraft et al does and the measures of predictor and outcome variables are slightly different. Also we do not ask you to fit the fixed-effects models in Kraft et al, therefore all the results you get from this exercise cannot be interpreted as causal effects. 
 
 **Key variables**:
 
  * *id*, the individual's unique identification number.
  
- * *mentor*, binary variable, coded 1 for individuals who reported to have a school-based mentor (teachers/guidance counselors and coaches/athletic directors) after 14 years old. 
+ * *mentor*, binary variable, coded 1 for individuals who reported to have a school-based mentor (teachers/guidance counselors and coaches/athletic directors). This variable exists only in ah01.csv dataset.
  
- * *mentee_age*, the individual's age when the mentor started to have an impact in their life. 
+ * *mentee_age*, the individual's age when the mentor started to have an impact in their life. This variable exists only in ah02.csv dataset.
  
  * *education*, the individual's total years of education (recoded from Add Health data using the same approach in Kraft et al p.14).
 
@@ -66,15 +66,13 @@ In their working paper, [Kraft et al (2021)](https://www.edworkingpapers.com/ai2
 
 ### Assignment Details
 
-Your final project should be delivered in two forms: (a) an R script that we can run without errors, and (b) a 2-3 page writeup of the analysis, results, and discussions of your research questions, which should largely match APA 7th edition style. This writeup should contain the following elements:
+Your final project should be delivered in two forms: (a) an R script that we can run without errors, and (b) a 2-3 paragraph write up of the analysis, results, and discussions of your research questions. This writeup should contain the following elements:
 
 What are the two research questions you choose to investigate (they has to be one from questions 1-3 and one from 4-6)? What are the predictor variable(s) and outcome variable(s) for each question? 
 
 Present the summary statistics of your data in table(s) and describe what you observe.
 
-For each research question, visualize the relationship(s) between the predictor and outcome variables in a plot and describe what you observe.
-
-For each research question, state your null hypothesis followed by the appropriate testing, present your results in a table.
+For each research question, visualize the relationship(s) between the predictor and outcome variables in a plot and describe what you observe. 
 
 For each research question, interpret your results and briefly discuss the substances of your findings.
 

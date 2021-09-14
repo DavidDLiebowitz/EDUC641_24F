@@ -48,7 +48,12 @@ pd %>%
   theme_bw(base_size = 14)
 
 # 2. Research question (a)
+pd$treat <- as.factor(pd$treat)
+t.test(formula = vocabulary ~ treat, data = pd)
+# alternatively,
+t.test(pd$vocabulary[pd$treat == 0], pd$vocabulary[pd$treat == 1])
 
-t.test()
+# 3. Research question (b)
+summary(lm(vocabulary ~ coursework, data = pd))
 
 

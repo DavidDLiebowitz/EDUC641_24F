@@ -111,7 +111,7 @@ Assignment 3:
 
  * Due TBD
  * [html file](./assignments/assignment03.html)
- * [cont.csv dataset (./data/cont.csv)
+ * [cont.csv dataset](./data/cont.csv)
 
 
 
@@ -138,5 +138,5 @@ Assignment 5:
 
  * Due TBD
  * [html file](./assignments/assignment05.html)
- * [ah.csv](./data/ah.csv)
+ * [ah01.csv](./data/ah01.csv); [ah02.csv](./data/ah02.csv)
 

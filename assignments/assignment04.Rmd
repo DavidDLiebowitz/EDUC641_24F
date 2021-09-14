@@ -80,13 +80,5 @@ Prepare your data (same with assignment 3): open your RStudio, create a project 
 
 #### 3. Research Question (b): Did the dosage of the coursework PD intervention impact children vocabulary?
 
-3.1. Write your null hypothesis and the assumption(s) you make in investigating this research question.
-
-3.2. Test your hypothesis
-
- * 3.2.1. Which hypothesis testing you choose to answer this question? Why?
-
- * 3.2.2. Run the test then report and interpret your result.
-
-3.3. What is your answer to this research question?
+3.1. Using OLS regression to investigate the research question and write a short paragraph to report your results.
 
