@@ -4,9 +4,12 @@
     <title>Examining the relationship between continuous variables</title>
     <meta charset="utf-8" />
     <meta name="author" content="TBD" />
-    <script src="EDUC641_4_continuous_2_files/header-attrs-2.9/header-attrs.js"></script>
+    <script src="EDUC641_4_continuous_2_files/header-attrs-2.11/header-attrs.js"></script>
     <link href="EDUC641_4_continuous_2_files/remark-css-0.0.1/default.css" rel="stylesheet" />
-    <link rel="stylesheet" href="new.css" type="text/css" />
+    <link href="EDUC641_4_continuous_2_files/remark-css-0.0.1/uo.css" rel="stylesheet" />
+    <link href="EDUC641_4_continuous_2_files/remark-css-0.0.1/ki-fonts.css" rel="stylesheet" />
+    <link rel="stylesheet" href="my_custom.css" type="text/css" />
+    <link rel="stylesheet" href="xaringanthemer.css" type="text/css" />
   </head>
   <body>
     <textarea id="source">
@@ -35,21 +38,23 @@ class: center, middle, inverse, title-slide
 - Visualize and substantively interpret residuals resulting from a bivariate regression model
 - Conduct a statistical inference test of the slope and intercept of a bivariate regression model
 - Write R scripts to conduct these analyses
+- Articulate modern critiques of null-hypothesis significance testing framework
+- Describe strategies to improve replicability and generalizability of quantitative research
 
 
 ---
-# A reminder of our motivating question
+# Reminder of our motivating question
 
-### &lt;span style="color:blue"&gt; Do individuals living in countries with more total years of attendance in school experience, on average, higher life expectancy? &lt;/span&gt;
+### .blue[Do individuals living in countries with more total years of attendance in school experience, on average, higher life expectancy?]
 
-#### In other words, we are asking are whether the variables *SCHOOLING* and *LIFE_EXPECTANCY* are related.
+#### In other words, we are asking whether the variables *SCHOOLING* and *LIFE_EXPECTANCY* are related.
 
 ---
 # Materials
 
 ### 1. Death penalty data (in file called life_expectancy.csv)
 ### 2. Codebook describing the contents of said data
-### 3. R script available ...
+### 3. R script to conduct the data analytic tasks of the unit
 
 ---
 class: middle, inverse
@@ -144,7 +149,7 @@ summary(who$schooling)
 
 &lt;br&gt;
 
-&lt;span style="color:blue"&gt; *Can you interpret the univariate statistics and displays on this and the previous slides?* &lt;/span&gt;
+.blue[*Can you interpret the univariate statistics and displays on this and the previous slides?*]
 
 ---
 # Visualizing the relationship
@@ -165,7 +170,7 @@ Probably easier to see if we have some symbolic way of representing our data...
 
 Horizontal axis (or *x*-axis) labels the value of the "predictor" *SCHOOLING*. Vertical axis (or *y*-axis) labels the value of the "outcome" *LIFE_EXPECTANCY*
 
-&lt;span style="color:blue"&gt; *Can you interpret the bivariate display? What does it (and does it NOT) say about the relationship between schooling and life expectancy?* &lt;/span&gt;
+.blue[*Can you interpret the bivariate display? What does it (and does it NOT) say about the relationship between schooling and life expectancy?*]
 
 ---
 # Visualizing the relationship
@@ -174,24 +179,24 @@ Horizontal axis (or *x*-axis) labels the value of the "predictor" *SCHOOLING*. V
 
 --
 
-&lt;span style="color:blue"&gt; *Can you interpret what this display says about the country of Chile?* &lt;/span&gt;
+.blue[*Can you interpret what this display says about the country of Chile?*]
 
 ---
 # You try...
 
 &lt;img src="EDUC641_4_continuous_2_files/figure-html/unnamed-chunk-10-1.svg" style="display: block; margin: auto;" /&gt;
 
-&lt;span style="color:blue"&gt; *Can you interpret what this display says about the country of Egypt?* &lt;/span&gt;
+.blue[*Can you interpret what this display says about the country of Egypt?*]
 
 ---
 # What about the relationship?
 &lt;img src="EDUC641_4_continuous_2_files/figure-html/unnamed-chunk-11-1.svg" style="display: block; margin: auto;" /&gt;
 
-&lt;span style="color:blue"&gt; *Is there a relationship between SCHOOLING and LIFE_EXPECTANCY? How do you know?* &lt;/span&gt;
+.blue[*Is there a relationship between SCHOOLING and LIFE_EXPECTANCY? How do you know?*]
 
 --
 
-&lt;span style="color:blue"&gt; *What kind of line, curve or other construction best summarizes the observed relationship between SCHOOLING and LIFE_EXPECTANCY?* &lt;/span&gt;
+.blue[*What kind of line, curve or other construction best summarizes the observed relationship between SCHOOLING and LIFE_EXPECTANCY?*]
 
 ---
 # An aside about the origin
@@ -214,7 +219,7 @@ class: middle, inverse
 # OLS-fitted regression line
 &lt;img src="EDUC641_4_continuous_2_files/figure-html/unnamed-chunk-14-1.svg" style="display: block; margin: auto;" /&gt;
 
-&lt;span style="color:red"&gt; *The fitted regression line tells us the best prediction for the values of LIFE_EXPECTANCY.* &lt;/span&gt;
+.red[*The fitted regression line tells us the best prediction for the values of LIFE_EXPECTANCY.*]
 
 ---
 # Some intuition
@@ -270,8 +275,8 @@ summary(fit)
 #&gt; 
 #&gt; Coefficients:
 #&gt;             Estimate Std. Error t value Pr(&gt;|t|)    
-#&gt; (Intercept)  42.8501     1.5976   26.82   &lt;2e-16 ***
-#&gt; schooling     2.2348     0.1206   18.53   &lt;2e-16 ***
+*#&gt; (Intercept)  42.8501     1.5976   26.82   &lt;2e-16 ***
+*#&gt; schooling     2.2348     0.1206   18.53   &lt;2e-16 ***
 #&gt; ---
 #&gt; Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 #&gt; 
@@ -359,9 +364,9 @@ $$
 \hat{LIFE\_EXPECTANCY} = \color{red}{42.85} + 2.23 * \left( SCHOOLING \right)
 $$
 
-42.85 represents the &lt;span style="color:red"&gt; *estimated intercept*&lt;/span&gt;. It tells you the predicted value of `\(LIFE\_EXPECTANCY\)` when `\(SCHOOLING\)` is zero (0)
+42.85 represents the .red[*estimated intercept*]. It tells you the predicted value of `\(LIFE\_EXPECTANCY\)` when `\(SCHOOLING\)` is zero (0)
 
-- &lt;span style="color:blue"&gt;*In this context, it doesn't make sense to interpret this. Why?* &lt;/span&gt;
+- .blue[*In this context, it doesn't make sense to interpret this. Why?*]
 
 ---
 # The regression equation
@@ -374,7 +379,7 @@ $$
 
 --
 
-2.23 represents the &lt;span style="color:red"&gt; *estimated slope*&lt;/span&gt;. It summarizes the relationship between `\(LIFE\_EXPECTANCY\)` and `\(SCHOOLING\)`. It tells you the difference in the predicted values of `\(LIFE\_EXPECTANCY\)` *per unit difference* in  `\(SCHOOLING\)`.
+2.23 represents the .red[*estimated slope*]. It summarizes the relationship between `\(LIFE\_EXPECTANCY\)` and `\(SCHOOLING\)`. It tells you the difference in the predicted values of `\(LIFE\_EXPECTANCY\)` *per unit difference* in  `\(SCHOOLING\)`.
 
 --
 
@@ -392,7 +397,7 @@ $$
 
 --
 
-`\(\color{red}{SCHOOLING}\)` represents the &lt;span style="color:red"&gt; *actual values*&lt;/span&gt; of the predictor `\(SCHOOLING\)`.
+`\(\color{red}{SCHOOLING}\)` represents the .red[*actual values*] of the predictor `\(SCHOOLING\)`.
 
 ---
 # Regression inference
@@ -422,10 +427,10 @@ Could we have gotten a slope value of 2.23 by sampling from a population in whic
 #&gt; 
 #&gt; Coefficients:
 #&gt;             Estimate Std. Error t value Pr(&gt;|t|)    
-#&gt; (Intercept)  42.8501     1.5976   26.82   &lt;2e-16 ***
-#&gt; schooling     2.2348     0.1206   18.53   &lt;2e-16 ***
-#&gt; ---
-#&gt; Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+*#&gt; (Intercept)  42.8501     1.5976   26.82   &lt;2e-16 ***
+*#&gt; schooling     2.2348     0.1206   18.53   &lt;2e-16 ***
+*#&gt; ---
+*#&gt; Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 #&gt; 
 #&gt; Residual standard error: 4.606 on 171 degrees of freedom
 #&gt; Multiple R-squared:  0.6676,	Adjusted R-squared:  0.6657 
@@ -451,10 +456,10 @@ As with our previous analysis, R provides us with a *p*-value which can help us 
 #&gt; 
 #&gt; Coefficients:
 #&gt;             Estimate Std. Error t value Pr(&gt;|t|)    
-#&gt; (Intercept)  42.8501     1.5976   26.82   &lt;2e-16 ***
-#&gt; schooling     2.2348     0.1206   18.53   &lt;2e-16 ***
-#&gt; ---
-#&gt; Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+*#&gt; (Intercept)  42.8501     1.5976   26.82   &lt;2e-16 ***
+*#&gt; schooling     2.2348     0.1206   18.53   &lt;2e-16 ***
+*#&gt; ---
+*#&gt; Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 #&gt; 
 #&gt; Residual standard error: 4.606 on 171 degrees of freedom
 #&gt; Multiple R-squared:  0.6676,	Adjusted R-squared:  0.6657 
@@ -472,7 +477,7 @@ With an alpha-threshold of 0.05, `\(2^{-16}\)` is definitely less than 0.05. Thu
 ]
 
 .pull-right[
-&gt; **The story so far** &lt;br&gt; &lt;font size="2"&gt; In our investigation of country-level aggregate measures of schooling and life expectancy, we have found that the average years of schooling in a country is related to the average life expectancy. In particular, when we relate the country-level life expectancy *LIFE_EXPECTANCY* to the country-level mean years of schooling *SCHOOLING*, we find that the trend-line estimated by ordinary-least-squares regression has a slope of 2.23 (*p*&lt;0.0001). This suggesets that two countries that differ in their average years of schooling attainment by 1 year will have, on average, an difference in life expectancy of 2.23 years. Of course, this relationship is far from causal... &lt;/font&gt;
+&gt; **The story so far** &lt;br&gt; &lt;font size="2"&gt; In our investigation of country-level aggregate measures of schooling and life expectancy, we have found that the average years of schooling in a country is related to the average life expectancy. In particular, when we relate the country-level life expectancy (*LIFE_EXPECTANCY*) to the country-level mean years of schooling (*SCHOOLING*), we find that the trend-line estimated by ordinary-least-squares regression has a slope of 2.23 (*p*&lt;0.0001). This suggests that two countries that differ in their average years of schooling attainment by 1 year will have, on average, a difference in life expectancy of 2.23 years. Of course, this relationship is far from causal... &lt;/font&gt;
 
 ]
 ---
@@ -507,14 +512,14 @@ Actual life expectancy = 85
 
 --
 
-&lt;span style="color:blue"&gt; *What can we say about the country of Chile's average life expectancy, relative to our prediction?*&lt;/span&gt; 
+.blue[*What can we say about the country of Chile's average life expectancy, relative to our prediction?*] 
 
 ---
 # Now Egypt
 &lt;img src="EDUC641_4_continuous_2_files/figure-html/unnamed-chunk-29-1.svg" style="display: block; margin: auto;" /&gt;
 Observed values for Egypt: `\(LIFE\_EXPECTANCY = 79\)`; `\(SCHOOLING = 13.1\)` &lt;br&gt;
 
-&lt;span style="color:blue"&gt; Can you calculate the predicted value of *LIFE_EXPECTANCY* for Egypt and compare it to the observed?
+.blue[Can you calculate the predicted value of *LIFE_EXPECTANCY* for Egypt and compare it to the observed?]
 
 ---
 # What is a "residual"?
@@ -570,7 +575,7 @@ sd(who$resid)
 ```
 
 - Standard deviation of the raw residuals can be quite useful in checking our assumptions
- + &lt;span style="color:blue"&gt; *What assumption?* &lt;/span&gt;
+ + .blue[*What assumption?*]
  
 ---
 # Residual assumptions
@@ -628,6 +633,32 @@ For the *p*-values that we computed in the regression analysis to be correct, th
 - The residuals could be roughly contained within a rectangle around the 0 line. 
 - No one residual "stands out" from the basic random pattern of residuals.
 
+---
+# Writing it up
+
+&gt; &lt;font size="2"&gt; In our investigation of country-level aggregate measures of schooling and life expectancy, we have found that the average years of schooling in a country is related to the average life expectancy. In particular, when we relate the country-level life expectancy (*LIFE_EXPECTANCY*) to the country-level mean years of schooling (*SCHOOLING*), we find that the trend-line estimated by ordinary-least-squares regression has a slope of 2.23 (*p*&lt;0.0001). This suggests that two countries that differ in their average years of schooling attainment by 1 year will have, on average, a difference in life expectancy of 2.23 years. Of course, this relationship is far from causal... &lt;/font&gt; &lt;br&gt;&lt;br&gt;
+
+--
+
+&gt; &lt;font size="2"&gt; An analysis of the residuals from our fitted model suggests that our regression assumptions are reasonably well met and we have appropriately characterized the relationship between schooling and life expectancy. Despite the presence of a few outliers, our residuals are roughly symmetrically distributed around 0. Our fitted regression does seem to underpredict life expectancy for very low levels of schooling. &lt;/font&gt;
+
+---
+# Key takeaways
+
+- **Understand your data first**
+ + Summarize and visualize each variable independently
+ + Start with a visual representation of the relationship between your two variables
+ + How you display the relationship will influence your perception of the relationship, but will not change the relationship
+ + Try to describe what a particular observation in your visualized data represents
+- **The regression model represents your hypothesis about the population**
+ + When you fit a regression model, you are estimating *sample* values of *population* parameters that you will not directly observe
+ + The goal of classical regression inference (just as with categorical relationships) is to understand how likely the observed data in your sample are in the presence of no relationship in the unobserved population
+- **The regression model has a "smooth" and a "rough" component to it**
+ + The "smooth" part is the portion of the relationship that your model explains
+ + The "rough" part is the extent to which each observation (and the observations in aggregate) vary from the "smooth" part of your predictions
+ + The "rough" parts (the residuals) provide important information on the extent to which our models satisfy their assumptions
+ 
+.blue[**More on all of this in EDUC 643**]
 
 ---
 class: middle, inverse

@@ -87,7 +87,7 @@ include_graphics("mccleskey.png")
 ---
 # Goals of the unit
 
-### We'll use part of the quantitative data accumulated by Baldus et al. (1983) to:
+### We'll use a simplified version of the quantitative data accumulated by Baldus et al. (1983) to:
 - Understand and implement principles of tabular data in R
 - Describe and summarize quantitative data that are categorical
 - Create visualizations of quantitative data that are categorical
@@ -98,7 +98,7 @@ include_graphics("mccleskey.png")
 
 ### 1. Death penalty data (in file called deathpenalty.csv)
 ### 2. Codebook describing the contents of said data
-### 3. R script available ...
+### 3. R script to conduct the data analytic tasks of the unit
 
 
 ---
@@ -115,7 +115,7 @@ df <- read.csv(here("data/deathpenalty.csv"))
 
 # Also, note how I can write anything I want after a # sign and it 
 # doesn't cause any problems for your program. These are called  
-# comments and are critical to remind youf (and tell others) what 
+# comments and are critical to remind you (and tell others) what 
 # you are doing!
 ```
 

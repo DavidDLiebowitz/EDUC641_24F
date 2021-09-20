@@ -4,9 +4,12 @@
     <title>Null-Hypothesis Significance Testing (NHST) critiques</title>
     <meta charset="utf-8" />
     <meta name="author" content="TBD" />
-    <script src="EDUC641_4_continuous_3_files/header-attrs-2.9/header-attrs.js"></script>
+    <script src="EDUC641_4_continuous_3_files/header-attrs-2.11/header-attrs.js"></script>
     <link href="EDUC641_4_continuous_3_files/remark-css-0.0.1/default.css" rel="stylesheet" />
-    <link rel="stylesheet" href="new.css" type="text/css" />
+    <link href="EDUC641_4_continuous_3_files/remark-css-0.0.1/uo.css" rel="stylesheet" />
+    <link href="EDUC641_4_continuous_3_files/remark-css-0.0.1/ki-fonts.css" rel="stylesheet" />
+    <link rel="stylesheet" href="my_custom.css" type="text/css" />
+    <link rel="stylesheet" href="xaringanthemer.css" type="text/css" />
   </head>
   <body>
     <textarea id="source">
@@ -21,6 +24,19 @@ class: center, middle, inverse, title-slide
 
 
 
+---
+
+# Goals of the unit
+
+- Describe relationships between quantitative data that are continuous
+- Visualize and substantively describe the relationship between two continuous variables 
+- Describe and interpret a fitted bivariate regression line
+- Describe and interpret components of a fitted bivariate linear regression model
+- Visualize and substantively interpret residuals resulting from a bivariate regression model
+- Conduct a statistical inference test of the slope and intercept of a bivariate regression model
+- Write R scripts to conduct these analyses
+- Articulate modern critiques of null-hypothesis significance testing framework
+- Describe strategies to improve replicability and generalizability of quantitative research
 
 ---
 # Critiques of NHST
@@ -41,7 +57,7 @@ Aside from outright manufactured data, some problems include:
 # More problems
 
 If *p*&lt;0.05 is the goal, there are many ways to get there:
-- If your goal is to find a "statistically significant" result, you will detect one 1 out of 20 times (on average)
+- If your goal is to find a "statistically significant" result, you will detect such a relationship 1 out of 20 times (on average)
 - This can be the product of intentional "*p*-hacking" or "researcher degrees of freedom" (explore your data, test many different models, try this variable, etc.)
 
 Novelty as a condition for publication in top-tier journals
@@ -76,10 +92,10 @@ In frequentist statistics, we establish an objective decision rule: if our obser
 - Once we set a threshold (an `\(\alpha\)`-theshold), we are making a binary decision about significance and non-significance
 
 - Relationships are *NOT* "more" or "less" significant 
- + In fact, the distribution of p-values on either side of the alpha threshold is assumed to be uniform; thus, it's not correct to describe observed vs. expected probabilities in relationship to each (e.g., a *p*-value of 0.01 is **not** three times less likely than a *p*-value of 0.03). 
+ + In fact, the distribution of *p*-values on either side of the alpha threshold is assumed to be uniform; thus, it's not correct to describe observed vs. expected probabilities in relationship to each (e.g., a *p*-value of 0.01 is **not** three times less likely than a *p*-value of 0.03). 
 
 
-- Much of this stems back to different ways of thinking about probability
+- Many of these concerns (and conflicts) relate to different ways of thinking about probability
 
 ---
 # (Very) brief intro to probability
@@ -166,12 +182,34 @@ Not surprisingly, I've updated my beliefs and now think there is a greater-than-
 
 --
 
-- Inferential statisticians make statements like, "the chance we would observe differences between the treatment and control as large as the ones we did when there was actually no effect is less than 5%"
-- Bayesian statisticians make statements like, "the chance that the treatment is more effective than the control is 92%"
+- Inferential statisticians (and applied researchers like yourselves) make statements like, "the chance we would observe differences between the treatment and control as large as the ones we did when there was actually no effect is less than 5%"
+- Bayesian statisticians (and applied researchers like yourselves) make statements like, "the chance that the treatment is more effective than the control is 92%"
 
---
+---
+# An applied example
 
-&lt;span style="color:red"&gt; *Much more complexity to be explored in another course*&lt;/red&gt;
+.pull-left[
+University instructors are appraised based (in part) on student evaluations. [Fraile &amp; Bausch-Morrell (2010)](https://link.springer.com/article/10.1007%2Fs10734-014-9823-0) collected data on these evaluations over two years.
+
+They use the sample estimates from the first year of data, to estimate instructor evaluation ratings in the second year -- *given their prior evaluation ratings*.
+
+The range of the Bayesian estimates for the Year 2 student evaluation ratings is narrower than the sample estimates (shrinks from score range of 2 - 6 to 2.5 - 5.5). The precision with which they make their estimates is much tighter. More to come on confidence intervals (or in Bayesian terms, credible intervals) in EDUC 643.
+]
+
+.pull-right[
+&lt;img src="freqBayes.jpg" style="display: block; margin: auto;" /&gt;
+]
+
+---
+# Why not Bayes?
+
+### 1. Selecting a prior can be subjective
+### 2. Difficulty in finding informative prior
+### 3. Disputes over value of uninformative priors
+### 4. Similarity in results
+### 5. Stasis
+
+&lt;span style="color:red"&gt; **Much more complexity to be explored in another course** &lt;/red&gt;
 
 ---
 # A path forward...
@@ -191,6 +229,13 @@ So where does all this leave us? Some recommendations for moving forward:
  - Statistical tests (GRIM, SPRITE, etc.)
 
 3. Changes in academic incentives
+
+4. Recognition of the impact that subjective research decisions have on (some) quantitative empirical results
+
+---
+class: middle, inverse
+# Synthesis and wrap-up
+
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>

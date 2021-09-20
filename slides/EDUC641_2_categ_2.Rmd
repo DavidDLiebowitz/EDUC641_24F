@@ -76,7 +76,7 @@ options(knitr.table.format = "html")
 
 ### 1. Death penalty data (in file called deathpenalty.csv)
 ### 2. Codebook describing the contents of said data
-### 3. R script available ...
+### 3. R script to conduct the data analytic tasks of the unit
 
 ---
 # What we've done
@@ -91,7 +91,7 @@ df$deathpen <- factor(df$deathpen,
                       levels = c(0,1), labels = c("No", "Yes"))
 
 ```
-### Up until now, we've been examining each variable by itself, 
+### Up until now, we've been examining each variable by itself... 
 
 ---
 class: middle, inverse
@@ -100,7 +100,7 @@ class: middle, inverse
 ---
 # Two-way tables
 
-Now we seek to create a *joint display* of the values of *RVICTIM* and *DEATHPEN*
+...Now we seek to create a *joint display* of the values of *RVICTIM* and *DEATHPEN*
 
 ```{r, echo=T}
 table(df$deathpen, df$rvictim)
@@ -110,9 +110,10 @@ table(df$deathpen, df$rvictim)
 
 It would be helpful to have these in percentage terms. Proportion of convicted murderers sentenced to death in case of Black victim: 
 $$\frac{23}{1483 + 23}*100= 1.53\%$$
---
+---
+# Two-way tables
 
-Can ask R for this too:
+#### Can ask R for this too:
 ```{r, echo=T}
 round(prop.table(table(df$deathpen, df$rvictim), margin=2)*100, 2)
 ```
@@ -130,7 +131,7 @@ round(prop.table(table(df$deathpen, df$rvictim), margin=2)*100, 2)
 # Grouped charts
 Can visualize these counts
 
-```{r, echo=T, fig.height=4}
+```{r, echo=F, fig.height=5}
 ggplot(df, aes(x = rvictim,
                fill = deathpen)) +
         geom_bar(position = "dodge") + 
@@ -258,7 +259,7 @@ kable(df3, format='html')
 ---
 # The Chi-Squared $\chi^2$ statistic
 
-We can summarize the **NET DISCREPANCY** between the tables of **OBSERVED** and **EXPECTED** frequencies, using a statistic called the Pearson Chi-Squared $(\chi^2)$ statistic
+For a moment, assume that there is a powerful statistic that allows us to summarize the **NET DISCREPANCY** between the tables of **OBSERVED** and **EXPECTED** frequencies. Let's call this statistic the Pearson Chi-Squared $(\chi^2)$ statistic
 
 .pull-left[
 ####Frequencies that we OBSERVE
@@ -353,7 +354,7 @@ We start by imagining a hypothetical world in which there is **no relationship**
 # Testing the null
 
 In this hypothetical example of repeated sampling from a null population, we could record all 10,000 values of the $\chi^2$ statistic
-```{r, echo=F, fig.height=5.5}
+```{r, echo=F, fig.height=5.25}
 set.seed(123456)
 chsq <- data.frame(Chi_Square=rchisq(1:10000, df=1))
 ch <- ggplot(chsq, aes(Chi_Square)) + geom_histogram()
@@ -366,7 +367,7 @@ The histogram summarizes the natural variation that could occur in a $\chi^2$ st
 # Testing the null
 
 In this hypothetical example of repeated sampling from a null population, we could record all 10,000 values of the $\chi^2$ statistic
-```{r, echo=F, fig.height=5.5}
+```{r, echo=F, fig.height=5.25}
 ch + geom_vline(xintercept = 5, color = "blue", linetype = "dashed", size=1.5)
 ```
 
@@ -446,33 +447,6 @@ ggplot(chsq, aes(x=Chi_Square)) + geom_density(fill="pink", alpha=0.2) +
 --
 
 #### <span style="color:blue">Is this the right thing to do? At the end of the course, we will revisit this concept.</span>
-
----
-# Putting it all together
-
-### Basic steps of classical statistical inference
-1. State a research question, including a null hypothesis $(H_{0})$ which states there exists no relationship between our variables of interest
-2. Display and describe the observed data
-3. Summarize the observed data in relationship to an expected value
-4. Set a threshold at which we will no longer believe that the discrepancy between the observed and expected relationship is due to sampling idiosyncrasy
-5. Estimate the *p*-value
-6. Reject or fail to reject the null hypothesis
-7. Interpret your findings drawing explicitly on plots, summary statistics and test statistics
-
---
-
-#### Our intepretation:
-> In the population of convicted murderers in Georgia, the imposition of the death penalty and the race of the victim are related ( $\chi^2$ = 103.8, *p*< 0.001) The percentage of convicted murderers who were sentenced to death after killing a White victim was more than 8 times the percentage of convicted to murderers who were sentenced to death after killing a Black victim. In Figure 1, we show...
----
-
-# Estimating the $\chi^2$ statistic in R
-
-```{r, echo=T}
-chi_df <- chisq.test(df$deathpen, df$rvictim)
-chi_df
-chi_df$expected
-round(chi_df$p.value, 5)
-```
 
 ---
 class: middle, inverse
@@ -609,8 +583,41 @@ chi_w$p.value
 - *p*-value: 0.067
 - Decision: Fail to reject $H_{0}$
 - Conclusion: There is not a statistically significant relation between the assignment of the death penalty and the race of the victim, on average, in the population of White murderers in GA.
+
+
+
+- Note that we **NEVER** accept the null-hypothesis. We only ever *fail to reject* it.
 ]
 
+---
+# Putting it all together
+
+### Basic steps of classical statistical inference
+1. State a research question, including a null hypothesis $(H_{0})$ which states there exists no relationship between our variables of interest
+2. Display and describe the observed data
+3. Summarize the observed data in relationship to an expected value
+4. Set a threshold at which we will no longer believe that the discrepancy between the observed and expected relationship is due to sampling idiosyncrasy
+5. Estimate the *p*-value
+6. Reject or fail to reject the null hypothesis
+7. Interpret your findings drawing explicitly on plots, summary statistics and test statistics
+
+---
+# Our intepretation
+
+> In the population of convicted murderers in Georgia, the imposition of the death penalty and the race of the victim are related ( $\chi^2$ = 103.8, *p*< 0.001) The percentage of convicted murderers who were sentenced to death after killing a White victim was more than 8 times the percentage of convicted to murderers who were sentenced to death after killing a Black victim. In Figure 1, we show... 
+
+> This phenomenon is largely driven by the imposition of the death penalty on Black defendants. Courts sentenced Black defendants to death for killing White victims at more than 32 times the frequency than when they were convicted of killing Black defendants ( $\chi^2$ = 414.7, *p*<0.001); whereas, we detect no statistical difference between White defendants convicted of murdering White compared to Black victims ( $\chi^2$ = 3.3, *p*=0.067). In Table 1, we show...
+
+---
+
+# Estimating the $\chi^2$ statistic in R
+
+```{r, echo=T}
+chi_df <- chisq.test(df$deathpen, df$rvictim)
+chi_df
+chi_df$expected
+round(chi_df$p.value, 5)
+```
 
 ---
 class: middle, inverse
