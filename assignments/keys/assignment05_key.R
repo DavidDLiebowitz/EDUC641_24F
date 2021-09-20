@@ -3,15 +3,29 @@
 if (!require(pacman)) install.packages('pacman', repos = 'https://cran.rstudio.com')
 pacman::p_load(tidyverse, knitr)
 
-# 1. Mentor relates to high school GPA?
+# 1. Mentor relates to GPA above 3.0?
 
 ah01 <- read_csv(here::here("data", "ah01.csv"))
 
 head(ah01)
 
 ah01$mentor <- factor(ah01$mentor)
+ah01$gpa_3 <- factor(ah01$gpa_3)
 
+ah01 %>% 
+  select(mentor, gpa_3) %>% 
+  gtsummary::tbl_summary(statistic = list(gpa_3 ~ "{n} / {N} ({p}%)",
+                                          mentor ~ "{n} / {N} ({p}%)")) %>%
+  gtsummary::modify_header(label ~ "**Variables**") 
 
+ggplot(ah01, aes(x = gpa_3, fill = mentor)) +
+  geom_bar(position = "dodge") +
+  xlab("GPA above 3.0") +
+  ylab("Number of individuals") +
+  geom_text(aes(label = ..count..), stat = "count", vjust = -0.2, position = position_dodge(.9), color = "grey30")
+
+chisq.test(ah01$mentor, ah01$gpa_3)
+# 2. Mentor relates to high school GPA?
 
 ah01 %>% 
   select(mentor, gpa) %>% 
@@ -30,7 +44,7 @@ ah01 %>%
 
 t.test(formula = gpa ~ mentor, data = ah01)
 
-# 2. Mentee age relates to high school GPA?
+# 3. Mentee age relates to high school GPA?
 
 ah02 <- read_csv(here::here("data", "ah02.csv"))
 
