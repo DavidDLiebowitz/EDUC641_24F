@@ -65,6 +65,6 @@ ah02 %>%
   theme(text=element_text(size = 20)) +
   theme_bw(base_size = 14)
 
-summary(lm(gpa ~ mentee_age, data = ah02))
+cor.test(ah02$gpa, ah02$mentee_age, method = "pearson")
 
 
