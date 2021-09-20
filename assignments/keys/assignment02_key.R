@@ -65,4 +65,3 @@ pd_male <- pd %>%
   filter(cgender == "Male")
 
 chisq.test(pd_male$absenteeism, pd_male$treat)
-

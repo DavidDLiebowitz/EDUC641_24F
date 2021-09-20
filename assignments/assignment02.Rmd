@@ -1,12 +1,11 @@
 ---
 title: "EDUC 641 Assignment 2"
-subtitle: "(Chi-Square Analysis)"
+subtitle: "(Relationship between categorical variables and the Chi-squared statistic)"
 output: html_document
 ---
 ```{R, setup, include = FALSE}
 if (!require(pacman)) install.packages('pacman', repos = 'https://cran.rstudio.com')
 pacman::p_load(tidyverse, knitr, kableExtra)
-
 opts_chunk$set(include = FALSE)
 ```
 
@@ -41,89 +40,49 @@ Please upload below two files on Canvas before TBD time:
 
 The dataset we'll be using in this assignment is drawn from the NCRECE [Teacher Professional Development Study (PDS)](https://www.icpsr.umich.edu/web/ICPSR/studies/34848) data. This professional development study was a randomized controlled evaluation of two forms of professional development (PD) - coursework (phase 1) and consultancy (phase 2) - delivered to about 490 early childhood education teachers across the nation. These PD supports aimed to improve teachers' implementation of language/literacy activities and interactions with children, as well as promote gains in children's social and academic development. 
 
-While the primary goals of the PD intervention were to improve language and literacy skills, researchers theorized that if teachers became more effective at teaching literacy, they might also improve the quality of their relationships with their students and families. In turn, these improved relationships might lead to other positive effects of the PD intervention. One pair of researchers ([Hanno and Gonzalez, 2020](https://doi.org/10.1080/19345747.2019.1634170)) wanted to learn whether the PD intervention improved children's attendance. The next two assignments will ask you to answer just this question: did the coursework and consultancy PD intervention improve student attendance? 
+While the primary goals of the PD intervention were to improve language and literacy skills, researchers theorized that if teachers became more effective at teaching literacy, they might also improve the quality of their relationships with their students and families. In turn, these improved relationships might lead to other positive effects of the PD intervention. One pair of researchers ([Hanno and Gonzalez, 2020](https://doi.org/10.1080/19345747.2019.1634170)) wanted to learn whether the PD intervention improved student attendance. 
 
-**Sample**. Our dataset is student-level data for 942 preschool children, which is the same sample used in the original Hanno and Gonzalez (2020) paper. The authors test several approaches to compute the outcome variable, chronic absenteeism, since some key information on full year absent days is not publicly available. For simplifying reasons, the approach we use in our sample is one from the robustness check rather the one used in the main paper.
+The paired assignments 1 and 2 will ask you to answer a few research questions: Were the students less likely to be chronically absent if their teachers participated the consultancy PD intervention? Were the female students less likely to be chronically absent if their teachers participated in the consultancy PD intervention? How about the male students? 
+
+**Sample**. Our dataset is student-level data for 942 preschool students, which is the same sample used in the original Hanno and Gonzalez (2020) paper. The authors test several approaches to compute the outcome variable, chronic absenteeism, since some key information on full year absent days is not publicly available. For simplifying reasons, the approach we use in our sample is one from the robustness check rather the one used in the main paper.
 
 **Key variables**. The outcome measure in our data is whether a student is "chronically absent" from school. In many jurisdictions, students are labelled "chronically absent" if they miss 10 percent or more of the school year. Given the typical 180-day school, students are, therefore, defined as chronically absent if they miss 18 or more days in a year. 
 
 Details on all variables are as follows:
 
- * *childid*, the child's unique identification number.
- * *treat*, treatment condition measure, which is coded 1 if the child's teacher was in the consultancy treatment group, coded 0 if the child's teacher was in the control group.  
- * *absenteeism*, measure of chronic absenteeism, coded 1 if the child missed 10 percent or more school days and 0 if not. 
- * *cgender*, the child's gender, coded 1 for female and 0 for male.
+ * *childid*, the student's unique identification number.
+ * *treat*, treatment condition measure, which is coded 1 if the student's teacher was in the consultancy treatment group, coded 0 if the student's teacher was in the control group.  
+ * *absenteeism*, measure of chronic absenteeism, coded 1 if the student missed 10 percent or more school days and 0 if not. 
+ * *cgender*, the student's gender, coded 1 for female and 0 for male.
 
 ### Assignment Details
 
 #### 1. Read in the dataset
 
-Open your RStudio, create a project and save it to your local. Go to the root directory of the project and create a folder named "data". Download the [cat.csv dataset](./data/cat.csv) and store it in the folder "data". Create an Rmd/R file in the project root directory. Check for the types of all the variables and convert them to factor if needed. You don't need to include this answer to your html/pdf writeup; just in the R/RMD file.
+Open your RStudio, create a project and save it to your local. Go to the root directory of the project and create a folder named "data". Download the [cat.csv dataset](./data/cat.csv) and store it in the folder "data". Create an Rmd/R file in the project root directory. Read the data into your R environment. Check for the types of all the variables and convert them to factor if needed. You do not need to include this response in your memo; only in your code.
 
-```{r}
-pd <- read_csv(here::here("data", "cat.csv"))
-```
+#### 2. Observed relationship between *absenteeism* and *treat*
 
+2.1. How many students in treatment group were chronically absent/not chronically absent? How many students in control group were chronically absent/not chronically absent? Provide your response and create a contingency table (frequencies in cell) to demonstrate your answer.
 
-#### 2. Observed relationship between the two key variables - *treat* and *absenteeism*
+2.2. What are the percentages of chronically absent and not chronically absent students in treatment group? How about in control group? Provide your response and create a contingency table (percentages in cell) to demonstrate your answer.
 
-2.1. How many students in treatment group were chronically absent? How many students in control group were chronically absent? Provide your response and create a contingency table (frequencies in cell) to demonstrate your answer.
+2.3. Create a figure to visualize the numbers of chronically absent/not chronically absent students for treatment and control groups. Make sure to label the x- and y-axes.
 
+2.4. Based on your observations from 2.1 to 2.3, do you think there is a relationship between *absenteeism* and *treat* (e.g., students whose teacher were in treatment group were less likely absent)? Why or why not?
 
-2.2. What is the percentage of chronically absent students in treatment group? Control group? Provide your response and create a contingency table (percentages in cell) to demonstrate your answer.
+#### 3. Chi-Square Test of Categorical Association 
 
+3.1. What are the percentages of chronically absent and not chronically absent students in the full sample? Suppose that there's NO relationship between *absenteeism* and *treat*, redo the table in 2.1 using R code or by hand. 
 
-2.3. Create a figure to demonstrate the relationship between *treat* and *absenteeism*. Write a couple of sentences to describe what you see.
+3.2. Calculate the Chi-Squared statistic using the 2.1 and 3.1 tables. Use one sentence to describe the statistical meaning of this statistic. Do you think whether or not this statistic is resulted from sampling idiosyncrasy? Explain. 
 
+3.3. Our first research question of interest is about whether there was a relationship between the two variables, *treat* and *absenteeism*. What is your null hypothesis for this research question?
 
-#### 3. Calculate the Chi-Squared statistic 
+3.4. Perform a Pearson's Chi-squared test (with Yates' continuity correction) in R to test the relationship between *absenteeism* and *treat*. Write 3-4 sentences to interpret your results and answer the research question: Were the students less likely to be chronically absent if their teachers participated the consultancy PD intervention? 
 
-3.1. Copy-paste and run the code chunk below:
+#### 4. Sub-sample comparisons
 
-```{r, include = TRUE, message = FALSE}
-pd <- pd %>% group_by(treat) %>% mutate(sum_treat = n())
-pd <- pd %>% group_by(absenteeism) %>% mutate(sum_absenteeism = n())
+4.1. We are also interested in whether *absenteeism* and *treat* are related for female students. Perform a Pearson's Chi-squared test (with Yates' continuity correction) in R to investigate the relationship between *absenteeism* and *treat* for female students. Write 2-3 sentences to state your null hypothesis, interpret your results, and answer the research question: Were the female students less likely to be chronically absent if their teachers participated in the consultancy PD intervention? 
 
-pd <- ungroup(pd) %>% mutate(prop_treat = sum_treat / n())
-pd <- ungroup(pd) %>% mutate(prop_absenteeism = sum_absenteeism / n())
-
-pd <- pd %>% group_by(treat) %>% mutate(expec_absent = sum_treat * prop_absenteeism)
-
-pd2 <- pd %>% group_by(absenteeism, treat) %>% summarise(expec_absent = round(mean(expec_absent), 0))
-
-pd3 <- pd2 %>% spread(treat, expec_absent)
-
-kable(pd3, format='html') %>% 
-  kable_classic(full_width = F, html_font = "Cambria")
-```
-
-The table you just created demonstrates the frequencies that we would expect if there's NO relationship between *treat* and *absenteeism*.
-
-3.2. Calculate the Chi-Squared statistic using the tables from 4.2.1. and 4.3.1. 
-
-
-#### 4. Hypothesis testing and statistical inference
-
-4.1. We are interested in whether there is relationship between *treat* and *absenteeism*. What's the null hypothesis ($H_0$) that we should test? 
-
-
-4.2. Use the chisq.test() function to ask R for the Pearson's Chi-squared test result. Write a short paragraph to interprete the result.
-
-
-#### 5. Sub-sample comparisons
-
-5.1. We are insterested in whether the relationship between *treat* and *absenteeism* differ across gender. What's the null hypothesis ($H_0$) that we should test? 
-
-
-5.2. Use the chisq.test() function to ask R for the Pearson's Chi-squared test result. Write a short paragraph to interprete the result.
-
-
-
-
-
-
-
-
-
-
-
+4.2. Do the same for male students.

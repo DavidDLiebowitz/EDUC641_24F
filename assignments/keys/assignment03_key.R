@@ -17,16 +17,8 @@ pd$treat <- factor(pd$treat)
 # 2.1. Central tendency
 
 mean(pd$vocabulary)
-# mean(pd$vocabulary, na.rm = TRUE) to ignore the missing values
 
 median(pd$vocabulary)
-
-# pd %>%
-#   select(vocabulary) %>%
-#   group_by(vocabulary) %>%
-#   mutate(n = n()) %>%
-#   arrange(desc(n)) %>%
-#   head(10)
 
 table(cut(pd$vocabulary, seq(min(pd$vocabulary), max(pd$vocabulary), by = 5)))
 
@@ -58,12 +50,9 @@ IQR(pd$vocabulary)
 
 range(pd$vocabulary)
 
-# 3. Inferential statistics of the outcome variable
+# 3. Compare observed mean of vocabulary to population mean
 
 # 3.1
-set.seed(123)
-pd$vocabulary_random <- rnorm(length(pd$vocabulary), mean(pd$vocabulary), sd(pd$vocabulary))
-
 plot(density(pd$vocabulary_random),
      xlab = "Student Vocabulary Score",
      ylab = "Proportion",
@@ -75,13 +64,9 @@ ggplot(pd, aes(vocabulary)) +
   geom_density(aes(vocabulary_random), color = "coral2") +
   labs(x = "Student Vocabulary Score",
        y = "Proportion",
-       title = "Compare Distributions (Blue: Observed, Red: Random Sample from Population)") +
+       title = "Compare Distributions (Blue: Observed, Red: Randomized)") +
   theme_classic()
-  
+
 # 3.2.
 
-mean(pd$vocabulary_random)
-mean(pd$vocabulary)
-
-t.test(pd$vocabulary, mu = mean(pd$vocabulary_random), alternative = "two.sided")
-
+t.test(pd$vocabulary, mu = 87, alternative = "two.sided")

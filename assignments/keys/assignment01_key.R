@@ -51,4 +51,3 @@ text(barplot(tbl2,
      tbl2 + 0.05,
      tbl2)
 
-
