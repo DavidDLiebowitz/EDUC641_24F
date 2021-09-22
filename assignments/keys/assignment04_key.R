@@ -54,5 +54,4 @@ t.test(formula = vocabulary ~ treat, data = pd)
 t.test(pd$vocabulary[pd$treat == 0], pd$vocabulary[pd$treat == 1])
 
 # 3. Research question (b)
-cor.test(pd$coursework, pd$vocabulary, method = "pearson")
-
+summary(lm(vocabulary ~ coursework, data = pd))
