@@ -25,7 +25,7 @@ Objectives:
 
 Readings: 
 
-- [LSWR Chapter 3](https://learningstatisticswithr.com/lsr-0.6.pdf) and [Clayton 2020](https://nautil.us/issue/92/frontiers/how-eugenics-shaped-statistics)
+- [LSWR Chapters 2 and 3](https://learningstatisticswithr.com/lsr-0.6.pdf) and [Clayton 2020](https://nautil.us/issue/92/frontiers/how-eugenics-shaped-statistics)
 
 Lectures:
 
@@ -45,7 +45,7 @@ Objectives:
 
 Readings: 
 
-- [LSWR Chapters 2 and 7](https://learningstatisticswithr.com/lsr-0.6.pdf) and [Evans 2020](https://www.newstatesman.com/uncategorized/2020/07/ra-fisher-and-science-hatred)
+- [LSWR Chapters 6](https://learningstatisticswithr.com/lsr-0.6.pdf) and [Evans 2020](https://www.newstatesman.com/uncategorized/2020/07/ra-fisher-and-science-hatred)
 
 Lectures: 
 
@@ -73,7 +73,7 @@ Objectives:
  * Interpret and report the results of a contingency-table analysis and a statistical inference from a chi-squared statistic
 
 Readings: 
-- [LSWR Chapter 12](https://learningstatisticswithr.com/lsr-0.6.pdf) and [Levy 2019](http://gppreview.com/2019/12/16/eugenics-ethics-statistical-analysis/)
+- [LSWR Chapters 11 and 12](https://learningstatisticswithr.com/lsr-0.6.pdf) and [Levy 2019](http://gppreview.com/2019/12/16/eugenics-ethics-statistical-analysis/)
 
 Lectures:
 
@@ -106,7 +106,7 @@ Objectives:
 
 Readings: 
 
-- [LSWR Chapter 5](https://learningstatisticswithr.com/lsr-0.6.pdf) and [Hu 2021](https://bostonreview.net/science-nature-race/lily-hu-race-policing-and-limits-social-science)
+- [LSWR Chapters 5 and 10](https://learningstatisticswithr.com/lsr-0.6.pdf) and [Hu 2021](https://bostonreview.net/science-nature-race/lily-hu-race-policing-and-limits-social-science)
 
 
 Lecture slides: 
@@ -142,7 +142,7 @@ Objectives:
 
 Readings: 
 
-- [LSWR Chapter 13](https://learningstatisticswithr.com/lsr-0.6.pdf)
+- [LSWR Chapter 15.1 and 15.2](https://learningstatisticswithr.com/lsr-0.6.pdf)
 
 Lecture slides: 
 
