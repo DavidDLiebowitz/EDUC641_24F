@@ -17,9 +17,9 @@ navbar:
       - text: "Unit 2: Categorical relationships"
         href: ./slides/EDUC641_2_categ_2.html
       - text: "Unit 3a: Continuous descriptives"
-        href: ./slides/continuous_I1.html
+        href: ./slides/continuous_l1.html
       - text: "Unit 3b: Central Limit Theorem & Inference"
-        href: ./slides/continuous_I2.html
+        href: ./slides/continuous_l2.html
       - text: "Unit 4a: Continuous relationships"
         href: ./slides/EDUC641_4_continuous_2.html
       - text: "Unit 4b: NHST Critiques & Replicable research"
