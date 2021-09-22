@@ -30,7 +30,7 @@ By the end of this term, it is expected that students will be able to:
 3. Describe, summarize and visualize the relationships between quantitative data that are categorical and continuous
 4. Conduct a frequentist null-hypothesis significance test of the relationships between simple categorical and continuous data
 5. Describe strategies to improve the replicability and generalizability of quantitative research
-6. Use th R programming language to conduct all such analyses
+6. Use the R programming language to conduct all such analyses
 
 
 # Textbooks and Reading Materials
