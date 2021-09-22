@@ -10,7 +10,6 @@ output:
     toc_depth: 2
     toc_float: TRUE
     theme: cosmo
-    css: educquant.css
 ---
 
 ```{r setup, include=FALSE}

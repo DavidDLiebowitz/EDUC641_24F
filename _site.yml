@@ -8,7 +8,7 @@ navbar:
     href: syllabus.html
   - text: Schedule
     href: schedule.html
-  - text: Lectures'
+  - text: Lectures
     menu: 
       - text: "Unit 0: Intro & Sci Principles"
         href: EDUC641_1_intro.html

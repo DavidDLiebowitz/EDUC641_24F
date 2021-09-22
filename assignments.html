@@ -632,7 +632,7 @@ body {
 <script src="site_libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<link href="site_libs/bootstrap-3.3.5/css/cosmo.min.css" rel="stylesheet" />
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
@@ -645,6 +645,9 @@ body {
        h6 {font-size: 12px;}
        code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
        pre:not([class]) { background-color: white }</style>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
@@ -673,7 +676,6 @@ if (window.hljs) {
 
 
 
-<link rel="stylesheet" href="educquant.css" type="text/css" />
 
 
 
@@ -835,6 +837,69 @@ $(document).ready(function () {
 
 
 
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
 
 </head>
 
@@ -842,6 +907,16 @@ $(document).ready(function () {
 
 
 <div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
 
 
 
@@ -854,7 +929,7 @@ $(document).ready(function () {
 <a href="schedule.html">Schedule</a>
 <div class="nav-dropdown">
 <button class="nav-dropbtn">
-Lectures'
+Lectures
  
 <span class="down-arrow">&#x25BE;</span>
 </button>
@@ -900,7 +975,7 @@ Lectures'
 </li>
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    Lectures'
+    Lectures
      
     <span class="caret"></span>
   </a>
@@ -950,13 +1025,13 @@ Lectures'
 </div>
 
 
-<div id="general-guidelines" class="section level3">
-<h3>1. General Guidelines</h3>
+<div id="general-guidelines" class="section level1">
+<h1>1. General Guidelines</h1>
 <p>The goal of the assignments is to practice the concepts and vocabulary we have been modeling in class and implement some of the techniques we have learned. You may work on your own or collaborate with one (1) partner. Please make sure that you engage in a a full, fair and mutually-agreeable collaboration if you do choose to collaborate. If you do collaborate, you should plan, execute and write-up your analyses together, not simply divide the work. Please make sure to indicate clearly when your work is joint and any other individual or resource (outside of class material) you consulted in your responses.</p>
 <p>(Here we need to add more details about global expectations and requirements for all the assignments, grading and points distribution for participation, five assignments, and/or final project/exam, late submission policy, etc. from syllabus.)</p>
 </div>
-<div id="submission-requirements" class="section level3">
-<h3>2. Submission Requirements</h3>
+<div id="submission-requirements" class="section level1">
+<h1>2. Submission Requirements</h1>
 <p>Please upload below two files on Canvas before TBD time:</p>
 <ul>
 <li>An .html or .pdf file that includes both -
@@ -968,10 +1043,10 @@ Lectures'
 <li>The .Rmd or .R file that you used to render the tables and figures in the above html/pdf.</li>
 </ul>
 </div>
-<div id="details-about-assignments" class="section level3">
-<h3>3. Details about Assignments</h3>
-<div id="assignment-1" class="section level4">
-<h4>3.1. Assignment 1</h4>
+<div id="details-about-assignments" class="section level1">
+<h1>3. Details about Assignments</h1>
+<div id="assignment-1" class="section level2">
+<h2>3.1. Assignment 1</h2>
 <p>Categorical data 1: data structure and descriptives</p>
 <p>Objectives of this assignment</p>
 <ul>
@@ -982,8 +1057,8 @@ Lectures'
 <p>Download: <a href="./assignments/assignment01.html">html file</a>; <a href="./data/cat.csv">cat.csv dataset</a></p>
 <p>Key: <a href="./assignments/keys/assignment01_key.docx">doc file</a>; <a href="./assignments/keys/assignment01_key.R">R script</a></p>
 </div>
-<div id="assignment-2" class="section level4">
-<h4>3.2. Assignment 2</h4>
+<div id="assignment-2" class="section level2">
+<h2>3.2. Assignment 2</h2>
 <p>Categorical data 2: chi-square analysis</p>
 <p>Objectives of this assignment</p>
 <ul>
@@ -997,8 +1072,8 @@ Lectures'
 <p>Download: <a href="./assignments/assignment02.html">html file</a>; <a href="./data/cat.csv">cat.csv dataset</a></p>
 <p>Key: <a href="./assignments/keys/assignment02_key.docx">doc file</a>; <a href="./assignments/keys/assignment02_key.R">R script</a></p>
 </div>
-<div id="assignment-3" class="section level4">
-<h4>3.3. Assignment 3</h4>
+<div id="assignment-3" class="section level2">
+<h2>3.3. Assignment 3</h2>
 <p>Continuous data 1: summarizing and displaying continuous data</p>
 <p>Objectives of this assignment</p>
 <ul>
@@ -1009,15 +1084,15 @@ Lectures'
 <p>Download: <a href="./assignments/assignment03.html">html file</a>; <a href="./data/cont.csv">cont.csv dataset</a></p>
 <p>Key: <a href="./assignments/keys/assignment03_key.docx">doc file</a>; <a href="./assignments/keys/assignment03_key.R">R script</a></p>
 </div>
-<div id="assignment-4" class="section level4">
-<h4>3.4. Assignment 4</h4>
+<div id="assignment-4" class="section level2">
+<h2>3.4. Assignment 4</h2>
 <p>Continuous data 2: intro to bivariate regression</p>
 <p>Deadline: TBD</p>
 <p>Download: <a href="./assignments/assignment04.html">html file</a>; <a href="./data/cont.csv">cont.csv dataset</a></p>
 <p>Key: <a href="./assignments/keys/assignment04_key.docx">doc file</a>; <a href="./assignments/keys/assignment04_key.R">R script</a></p>
 </div>
-<div id="assignment-5" class="section level4">
-<h4>3.5. Assignment 5</h4>
+<div id="final" class="section level2">
+<h2>3.5. Final</h2>
 <p>Final assignment</p>
 <p>Deadline: TBD</p>
 <p>Download: <a href="./assignments/assignment05.html">html file</a>; <a href="./data/ah01.csv">ah01.csv dataset</a>; <a href="./data/ah02.csv">ah02.csv dataset</a></p>
@@ -1031,6 +1106,8 @@ Lectures'
 <!--/radix_placeholder_navigation_after_body-->
 
 
+</div>
+</div>
 
 </div>
 
@@ -1063,6 +1140,35 @@ $(document).ready(function () {
 
 <!-- code folding -->
 
+<script>
+$(document).ready(function ()  {
+
+    // temporarily add toc-ignore selector to headers for the consistency with Pandoc
+    $('.unlisted.unnumbered').addClass('toc-ignore')
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
 
 <!-- dynamically load mathjax for compatibility with self-contained -->
 <script>

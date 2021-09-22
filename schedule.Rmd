@@ -7,14 +7,13 @@ output:
     toc_depth: 2
     toc_float: TRUE
     theme: cosmo
-    css: educquant.css
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## Unit 1
+## Unit 0
 
 **Topic: Introduction to scientific principles and data analysis**
 
@@ -33,7 +32,7 @@ Lectures:
 - Slides: [html](./slides/EDUC641_1_intro.html) | [pdf](./slides/EDUC641_1_intro.pdf)
 - R Tutorial slides: [html](./slides/tutorial.html)
 
-## Unit 2 
+## Unit 1 
 
 **Topic: Summarizing and displaying categorical data**
 
@@ -60,7 +59,7 @@ Assignment 1:
 - [html file](./assignments/assignment01.html)
 - [cat.csv dataset](./data/cat.csv)
 
-## Unit 3
+## Unit 2
 
 **Topic: Examining the relationship between categorical variables**
 
@@ -88,7 +87,7 @@ Assignment 2:
 - [html file](./assignments/assignment02.html)
 - [cat.csv dataset](./data/cat.csv)
 
-## Unit 4
+## Unit 3
 
 **Topic: Summarizing and displaying continuous data**
 
