@@ -92,23 +92,31 @@ Five classes will begin with a very short multiple-choice quiz that is designed 
 # Student Engagement Inventory
 Graduate students are expected to perform work of high quality and quantity, typically with forty hours of student engagement for each student credit hour. For this course, the following table shows the number of hours a typical student would expect to spend in each of the following activities:
 
-| Educational activity     |     Hours     |    Explanatory comments
-|--------------------------------------------------------------------------
+| Educational activity     | Hours         |    Explanatory comments
+|--------------------------|---------------|---------------------------------
 | Class attendance         | 30            | TBD frequency
 | Class reading and prep   | 20            | Includes reading and review of slides
 | Homework Assignments     | 40            | Homework assignments will take 10 hours each (on avg.)
 | Final                    | 30            | Includes familiarization with data, data analysis, preparation of displays and writing
-| **Total hours**          | 120           | **These are approximations.** Reading and *especially* analytic time will vary per individual
+| **Total hours**          | **120**       | **These are approximations.** Reading and *especially* analytic time will vary per individual
 
 
+## Indigenous Recognition Statement
 ## Role of the GEs  
 ## Attendance and Absence Guidelines  
-## Expected Classroom Behavior
 ## Diversity, Equity, and Inclusion  
-## Indigenous Recognition Statement  
 ## Using Pronouns and Personal Preference  
-## Your Well-being
-## Reporting Obligations  
+## Accessible Education
+## Reporting Title IX Experiences
+## Reporting Obligations
+## Academic Misconduct
+## Inclement Weather
+## Mental Health and Wellness
+## Basic Needs
+## Accommodation for Religious Observances
+## Conflict Resolution
+## Grievance Policy
+## Course Incomplete Policy
 ## More per university requirements...
 
 
