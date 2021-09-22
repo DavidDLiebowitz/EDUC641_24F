@@ -1,24 +1,27 @@
 ---
-title: "EDUC 641: Inferences and Statistics in Education"
+title: "EDUC 641: Introduction to Data Analysis in Education and the Social Sciences"
+subtitle: "College of Education, University of Oregon"
+author: "TBD"
+
 site: distill::distill_website
 output:
   html_document:
+    toc: TRUE
+    toc_depth: 2
+    toc_float: TRUE
+    theme: cosmo
     css: educquant.css
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = FALSE)
+knitr::opts_chunk$set(
+  echo = FALSE)
 ```
 
-Welcome to EDUC 641 Inferences and Statistics in Education!
+# Course Overview
 
-This is the first course of the EDUC quantitative methods sequence. In this course, you will learn:
+This course provides a first introduction to quantitative data analysis in education and the social sciences. It is part of a three course sequence intended to provide a toolkit of statistical concepts, methods and their implementation to producers of applied research in education and other social sciences. The course is organized around the principle that research design depends in part on researchers' substantive questions and their quantitative data available to answer these question. In this introductory course, we will focus on describing categorical and continuous data and quantifying the relationship between categorical and continuous data. Students will form a solid foundation for frequentist, inferential statistics (and some of critiques of this model). The course seeks to blend a conceptual, mathematical and applied understanding of basic statistical concepts. At the core of our pedagogical approach is the belief that students learn statistical analysis by **doing** statistical analysis. *This course (or substitute) is a pre-requisite for EDUC 643*.
 
-Types of variables (manipulation of variable types; transformations)  
-Visualization of central tendency and variability  
-Central limit theorem  
-Inferential stats for different type of variables (t distributions, F distributions, Chi-squared distributions)  
-Bayesian perspectives  
-Related principles of programming  
-Power analyses and effect sizes  
-[Statistics they will be able to calculate: e.g., t-tests for two-group comparisons and correlations, F-tests for two-group comparisons, chi-squared contingency analyses]  
+# Meeting time and location
+
+# Instructors

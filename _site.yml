@@ -1,7 +1,7 @@
 name: EDUC 641
 output_dir: "."
 navbar:
-  title: EDUC 641
+  title: "EDUC 641"
   left:
   - text: Syllabus
     href: syllabus.html

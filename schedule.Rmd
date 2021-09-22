@@ -3,6 +3,10 @@ title: "EDUC 641 Schedule"
 site: distill::distill_website
 output:
   html_document:
+    toc: TRUE
+    toc_depth: 2
+    toc_float: TRUE
+    theme: cosmo
     css: educquant.css
 ---
 
@@ -10,52 +14,55 @@ output:
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-### Week 1
+## Unit 1
 
-Topic: Introduction to scientific principles and data analysis
-
- * Describe goals of course and principles of scientific research
- * Install statistical software
-
-Readings: TBD
-
-Lecture:
-
-* Lecture slides: [html file](./slides/EDUC641_1_intro.html), [pdf file](./slides/EDUC641_1_intro.pdf)
-* R Tutorial slides: [html file](./slides/tutorial.html)
-
-### Week 2 
-
-Date: TBD
-
-Topic: Summarizing and displaying categorical data
+**Topic: Introduction to scientific principles and data analysis**
 
 Objectives:
 
- * Understand and implement principles of tabular data in R
- * Describe and summarize quantitative data that are categorical
- * Create visualizations of quantitative data that are categorical
- * Write R scripts to conduct these analyses
+- Describe goals of course and principles of scientific research
+- Describe types of and differences in measurement scales
+- Install and familiarize self with statistical software
 
-Readings: TBD
+Readings: 
 
-Lecture: 
+- [LSWR Chapter 3](https://learningstatisticswithr.com/lsr-0.6.pdf) and [Clayton 2020](https://nautil.us/issue/92/frontiers/how-eugenics-shaped-statistics)
 
- * Slides: [html file](./slides/EDUC641_2_categ_1.html), [pdf file](./slides/EDUC641_2_categ_1.pdf) 
- * Data: [deathpenalty.csv](./data/deathpenalty.csv), [codebook](./data/deathpenalty.csv)
- * R script: [R script](./slides/EDUC641_2_code.R)
+Lectures:
+
+- Slides: [html](./slides/EDUC641_1_intro.html) | [pdf](./slides/EDUC641_1_intro.pdf)
+- R Tutorial slides: [html](./slides/tutorial.html)
+
+## Unit 2 
+
+**Topic: Summarizing and displaying categorical data**
+
+Objectives:
+
+- Understand and implement principles of tabular data in R
+- Describe and summarize quantitative data that are categorical
+- Create visualizations of quantitative data that are categorical
+- Write R scripts to conduct these analyses
+
+Readings: 
+
+- [LSWR Chapters 2 and 7](https://learningstatisticswithr.com/lsr-0.6.pdf) and [Evans 2020](https://www.newstatesman.com/uncategorized/2020/07/ra-fisher-and-science-hatred)
+
+Lectures: 
+
+- Slides: [html](./slides/EDUC641_2_categ_1.html) | [pdf](./slides/EDUC641_2_categ_1.pdf) 
+- Data: [deathpenalty.csv](./data/deathpenalty.csv) | [codebook](./data/deathpenalty.csv)
+- R code: [R script](./slides/EDUC641_2_code.R)
 
 Assignment 1: 
 
- * Due TBD; 
- * [html file](./assignments/assignment01.html)
- * [cat.csv dataset](./data/cat.csv)
+- Due: TBD 
+- [html file](./assignments/assignment01.html)
+- [cat.csv dataset](./data/cat.csv)
 
-### Week 3 - 4
+## Unit 3
 
-Date: TBD
-
-Topic: Examining the relationship between categorical variables
+**Topic: Examining the relationship between categorical variables**
 
 Objectives:
 
@@ -66,25 +73,24 @@ Objectives:
  * Conceptually describe the criteria to make a statistical inference from a sample to a population
  * Interpret and report the results of a contingency-table analysis and a statistical inference from a chi-squared statistic
 
-Readings: TBD
+Readings: 
+- [LSWR Chapter 12](https://learningstatisticswithr.com/lsr-0.6.pdf) and [Levy 2019](http://gppreview.com/2019/12/16/eugenics-ethics-statistical-analysis/)
 
-Lecture:
+Lectures:
 
- * Slides: [html file](./slides/EDUC641_2_categ_2.html), [pdf file](./slides/EDUC641_2_categ_2.pdf)
- * Data: [deathpenalty.csv](./data/deathpenalty.csv), [codebook](./data/deathpenalty.csv)
- * R Script: 
+- Slides: [html](./slides/EDUC641_2_categ_2.html) | [pdf file](./slides/EDUC641_2_categ_2.pdf)
+- Data: [deathpenalty.csv](./data/deathpenalty.csv) | [codebook](./data/deathpenalty.csv)
+- R code: [R script](./slides/EDUC641_2_code.R) 
  
 Assignment 2: 
 
- * Due TBD; 
- * [html file](./assignments/assignment02.html)
- * [cat.csv dataset](./data/cat.csv)
+- Due: TBD
+- [html file](./assignments/assignment02.html)
+- [cat.csv dataset](./data/cat.csv)
 
-### Weeks 5 - 7
+## Unit 4
 
-Date: TBD
-
-Topic: Summarizing and displaying continuous data
+**Topic: Summarizing and displaying continuous data**
 
 Objectives:
 
@@ -98,43 +104,62 @@ Objectives:
  * Describe distribution of repeated sample statistics drawn from a population and how this is informative to hypothesis testing
  * Apply CLT to understand whether mean value of a variable is different than a defined population value (when provided the SD of the variable)
    + Includes conducting single-sample t-test
-   
-Readings: TBD
+
+Readings: 
+
+- [LSWR Chapter 5](https://learningstatisticswithr.com/lsr-0.6.pdf) and [Hu 2021](https://bostonreview.net/science-nature-race/lily-hu-race-policing-and-limits-social-science)
+
 
 Lecture slides: 
 
- * Slides: [html file](./slides/continuous_l1.html) \& [html file](./slides/continuous_l2.html)
- * Data:
- * R script:
+- Distributions slides: [html](./slides/continuous_l1.html) 
+- CLT and inference slides: [html](./slides/continuous_l2.html)
+- Data: [life_expectancy.csv](./data/life_expectancy.csv)
+- R script:
 
 Assignment 3: 
 
- * Due TBD
- * [html file](./assignments/assignment03.html)
- * [cont.csv dataset](./data/cont.csv)
+- Due: TBD
+- [html file](./assignments/assignment03.html)
+- [cont.csv dataset](./data/cont.csv)
 
 
 
-### Weeks 8 - 10
+## Unit 4
 
-Topic: Describing relationships between continuous data
+**Topic: Describing relationships between continuous data**
 
-Readings: TBD
+Objectives:
+
+- Describe relationships between quantitative data that are continuous
+- Visualize and substantively describe the relationship between two continuous variables
+- Describe and interpret a fitted bivariate regression line
+- Describe and interpret components of a fitted bivariate linear regression model
+- Visualize and substantively interpret residuals resulting from a bivariate regression model
+- Conduct a statistical inference test of the slope and intercept of a bivariate regression model
+- Write R scripts to conduct these analyses
+- Articulate modern critiques of null-hypothesis significance testing framework
+- Describe strategies to improve replicability and generalizability of quantitative research
+
+Readings: 
+
+- [LSWR Chapter 13](https://learningstatisticswithr.com/lsr-0.6.pdf)
 
 Lecture slides: 
 
- * Slides: [html file](./slides/EDUC641_4_continuous_2.html) \& [html file](./slides/EDUC641_4_continuous_3.html)
- * Data:
- * R script:
+- Continuous relationship slides: [html](./slides/EDUC641_4_continuous_2.html) | [pdf](./slides/EDUC641_4_continuous_2.pdf)
+- NHST critiques slides: [html](./slides/EDUC641_4_continuous_3.html) | [pdf](./slides/EDUC641_4_continuous_3.pdf)
+- Data: [life_expectancy.csv](./data/life_expectancy.csv)
+- R code: [R script](./slides/EDUC641_4_code.R) 
 
 Assignment 4: 
 
- * Due TBD
- * [html file](./assignments/assignment04.html)
- * [cont.csv](./data/cont.csv)
+- Due TBD
+- [html file](./assignments/assignment04.html)
+- [cont.csv](./data/cont.csv)
 
 
-Assignment 5: 
+## Final Assignment
 
  * Due TBD
  * [html file](./assignments/assignment05.html)
