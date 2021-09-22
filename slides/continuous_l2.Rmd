@@ -25,7 +25,7 @@ knitr::opts_chunk$set(warning = FALSE,
                       fig.height = 3)
 
 if (!require(pacman)) install.packages('pacman', repos = 'https://cran.rstudio.com')
-pacman::p_load(tidyverse, here, knitr, dplyr, ggplot2, blogdown, rio, gifski)
+pacman::p_load(tidyverse, here, knitr, dplyr, ggplot2, blogdown, rio, gifski, palmerpenguins)
 ```
 
 ```{r, echo = F}
@@ -42,25 +42,41 @@ who <- import(here::here("data", "life_expectancy.csv")) %>%
 * Sampling Distributions
 * Central Limit Theorem
 
+
+
 ---
 # Normal Distributions
 
-Characterized by:
+The normal distribution describes a frequently occurring phenomenon across the social and natural sciences.
 
-* Central Tendency
-  + Mean
-  + Median
-  + Mode
+```{r}
+ggplot(subset(penguins, species == "Adelie"), aes(flipper_length_mm)) +
+  geom_density() + 
+  ggtitle("Flipper Length of Adelie Penguins") +
+  xlab("Flipper Length (mm)") +
+  theme_minimal()
 
-* Variability
-  + Range
-  + Interquartile Range
-  + Variance
-  + Standard Deviation
+birthweight <- import(here::here("data", "birthweight.csv"))
 
-* Shape
-  + Skew
-  + Kurtosis
+ggplot(birthweight, aes(Birthweight)) +
+  geom_density() +
+  ggtitle("Human Birthweight") +
+  xlab("Birthweight (kg)") +
+  theme_minimal()
+```
+
+---
+# Normal Distributions
+The normal distribution is a mathematical function that replicates this natural phenomenon using two parameters:
+* Mean $(\mu)$
+* Standard Deviation $(sigma)$
+
+It is defined by the following probability density function: 
+$$ p(X|\mu, \sigma) = \frac{1}{\sqrt{2\pi\sigma}}exp[-\frac{(X-\mu)^2}{2\sigma^2}] $$
+$$X\sim N(\mu,\sigma)$$
+**The normal curve is only a model of patterns that exist in the real world.**
+
+> "All models are wrong, but some are useful." - George Box
 
 ---
 # Normal Distributions
@@ -76,6 +92,7 @@ Variability:
 + 99% of observations are within 3 SDs
 
 Shape: 
++ Unimodal
 + Symmetrical
 + Skewness & Kurtosis = 0
 
@@ -85,7 +102,7 @@ Shape:
 
 * The area under a normal distribution is always equal to 100% (it represents the whole of observations)
 
-* The area under the normal distribution curve corresponds to the percentage of observations
+* The area under the normal distribution curve corresponds to the percentage of observations.
 
 * We can always infer the percentage of observations in any part of a normal distribution.
 
@@ -118,13 +135,22 @@ ggplot(data.frame(x = c(-4, 4)), aes(x = x)) +
 
 ---
 
-# Normal Distributions
-
+# Empirical Rule
 We can use our understanding of the normal distribution to calculate the probability of observing a value in a certain range. This is known as the **empirical rule**.
 
+.pull-left[
+A randomly selected observation has an approximately...
+* **68% chance of being within 1 SD** of the mean.
+ + $P(-1 < Z < 1) = 0.683$
+]
+.pull-right[
 ```{r}
-ggplot(data.frame(x = c(-4, 4)), aes(x = x)) +
+emp_rule <- ggplot(data.frame(x = c(-4, 4)), aes(x = x)) +
   stat_function(fun = dnorm) +
+  stat_function(fun = dnorm,
+                xlim = c(-1, 1),
+                fill = "purple",
+                geom = "area") +
   geom_segment(aes(x = 0, xend = 0, y = 0, yend = .38)) +
   geom_segment(aes(x = -1, xend = -1, y = 0, yend = .24)) +
   geom_segment(aes(x = 1, xend = 1, y = 0, yend = .24)) +
@@ -137,49 +163,178 @@ ggplot(data.frame(x = c(-4, 4)), aes(x = x)) +
   theme_classic()
 
 ```
-
-* A randomly selected observation has an approximately **68% chance of being within 1 SD** of the mean.
- + $P(-1 < Z < 1) = 0.683$
+]
  
 ---
-# Normal Distributions
+# Empirical Rule
 
+We can use our understanding of the normal distribution to calculate the probability of observing a value in a certain range. This is known as the **empirical rule**.
+
+.pull-left[
+A randomly selected observation has an approximately...
+* **68% chance of being within 1 SD** of the mean.
+ + $P(-1 < Z < 1) = 0.683$
+* **95.5% chance of being within 2 SD** of the mean.
+ + $P(-2 < Z < 2) = 0.955$
+]
+
+.pull-right[
 ```{r}
 ggplot(data.frame(x = c(-4, 4)), aes(x = x)) +
   stat_function(fun = dnorm) +
+    stat_function(fun = dnorm,
+                xlim = c(-2, 2),
+                fill = "purple",
+                geom = "area") +
+  geom_segment(aes(x = 0, xend = 0, y = 0, yend = .38)) +
+  geom_segment(aes(x = -1, xend = -1, y = 0, yend = .24)) +
+  geom_segment(aes(x = 1, xend = 1, y = 0, yend = .24)) +
+  annotate("text", x = -.5, y = .2, label = "34%") +
+  annotate("text", x = .5, y = .2, label = "34%") +
+    annotate("text", x = -1.5, y = .05, label = "13.5%") +
+  annotate("text", x = 1.5, y = .05, label = "13.5%") +
   geom_segment(aes(x = 0, xend = 0, y = 0, yend = .38)) +
   geom_segment(aes(x = -2, xend = -2, y = 0, yend = .056)) +
   geom_segment(aes(x = 2, xend = 2, y = 0, yend = .056)) +
-  annotate("text", x = -.5, y = .2, label = "34%") +
-  annotate("text", x = .5, y = .2, label = "34%") +
   geom_label(x = 0, y = 0.1, label = "95.5%") +
   scale_x_continuous(limits = c(-4, 4),
                      breaks = c(seq(-4, 4, 1))) +
   ylim(0, 0.4) +
   theme_classic()
 ```
+]
 
-* A randomly selected observation has an approximately **95.5% chance of being within 2 SD** of the mean.
- + $ P(-2 < Z < 2) = 0.955 $
+---
+# Empirical Rule
 
-* With a standard normal distribution, we can calculate the percentage of observations under any region.
+We can use our understanding of the normal distribution to calculate the probability of observing a value in a certain range. This is known as the **empirical rule**.
+
+.pull-left[
+A randomly selected observation has an approximately...
+* **68% chance of being within 1 SD** of the mean.
+ + $P(-1 < Z < 1) = 0.683$
+* **95.5% chance of being within 2 SD** of the mean.
+ + $P(-2 < Z < 2) = 0.955$
+* **99.7% chance of being within 3 SD** of the mean.
+ +  $P(-3 < Z < 3) = 0.997$
+]
+
+.pull-right[
+```{r}
+ggplot(data.frame(x = c(-4, 4)), aes(x = x)) +
+  stat_function(fun = dnorm) +
+    stat_function(fun = dnorm,
+                xlim = c(-3, 3),
+                fill = "purple",
+                geom = "area") +
+  geom_segment(aes(x = 0, xend = 0, y = 0, yend = .38)) +
+  geom_segment(aes(x = -1, xend = -1, y = 0, yend = .24)) +
+  geom_segment(aes(x = 1, xend = 1, y = 0, yend = .24)) +
+  annotate("text", x = -.5, y = .2, label = "34%") +
+  annotate("text", x = .5, y = .2, label = "34%") +
+    annotate("text", x = -1.5, y = .05, label = "13.5%") +
+  annotate("text", x = 1.5, y = .05, label = "13.5%") +
+      annotate("text", x = -2.6, y = .04, label = "0.15%") +
+  annotate("text", x = 2.6, y = .04, label = "0.15%") +
+  geom_segment(aes(x = 0, xend = 0, y = 0, yend = .38)) +
+  geom_segment(aes(x = -2, xend = -2, y = 0, yend = .056)) +
+  geom_segment(aes(x = 2, xend = 2, y = 0, yend = .056)) +
+    geom_segment(aes(x = -3, xend = -3, y = 0, yend = .005)) +
+  geom_segment(aes(x = 3, xend = 3, y = 0, yend = .005)) +
+  geom_label(x = 0, y = 0.1, label = "99.7%") +
+  scale_x_continuous(limits = c(-4, 4),
+                     breaks = c(seq(-4, 4, 1))) +
+  ylim(0, 0.4) +
+  theme_classic()
+
+```
+]
+---
+# What is normal?
+
+* A normal distribution can take on any mean and standard deviation.
+
+```{r}
+ggplot(data.frame(x = c(-20, 20)), aes(x = x)) +
+  stat_function(fun = dnorm, args = c(mean = 10, sd = 1), color = "red") +
+    stat_function(fun = dnorm, args = c(mean = 3, sd = 3), color = "black") +
+    stat_function(fun = dnorm, args = c(mean = -2, sd = 7), color = "blue") +
+  ggtitle("Normal Distributions") +
+  theme_classic()
+
+```
+* Regardless of the mean and standard deviation, the area under the curve is always equal to 1.
+* The empirical rule still applies (e.g., 68% of observations occur within 1 SD of the mean).
+---
+
+# Standard Normal Distribution
+
+* The **standard** normal distribution has a mean of 0 and a standard deviation of 1.
+  
+```{r}
+ggplot(data.frame(x = c(-4, 4)), aes(x = x)) +
+  stat_function(fun = dnorm) +
+  theme_classic()
+
+```
+
+* The x-axis represents z-scores, meaning an observation's value represents how far it is from the mean.
+
+  + A z-score of -1 indicates that an observation is 1 SD below the mean.
+  + A z-score of +2 indicates that an observation is 2 SD above the mean.
+
+* With a standard normal distribution, we can easily calculate the percentage of observations under any region.
+
+---
+# Area Under the Normal Curve
+Suppose we wanted to know the probability of scoring at least 1.5 SD above the mean on a standardized test of academic achievement. 
+
+```{r}
+ztest_plot <- ggplot(data.frame(x = c(-4, 4)), aes(x = x)) +
+  stat_function(fun = dnorm) +
+  geom_vline(xintercept = 1.5, color = "purple") +
+  stat_function(fun = dnorm,
+                xlim = c(1.5, 4),
+                fill = "purple",
+                geom = "area") +
+  theme_classic()
+
+ztest_plot
+```
+To answer this question, we just need to find the area of the shaded portion under the curve.
+
+---
+# Area Under the Normal Curve
+* We can either use a computational tool or a z-score look-up table to calculate the area under the normal curve.
+
+```{r}
+ztest_plot +
+    geom_label(x = 1.8, y = .02, label = ".07")
+
+```
+--
+Either approach would show the area above 1.5 SD of a standard normal curve is .07.
+
+--
+Therefore, the probability of scoring above 1.5 SD on a standardized test is 7%.
 
 ---
 # Z-Test
+Let's try it with our WHO data:
 * Suppose that the population mean national life expectancy is 71.64 $(\mu)$ with a SD of 8.15 $(\sigma)$.
 
 * **Assuming a normal distribution, what is the probability of randomly selecting a country with a life expectancy greater than 76?**
 
-* After we conduct a z-transformation, we can calculate the percentage of observations above our z-score.
+* First, we need to standardize our value before we can calculate the percentage of observations above our z-score.
 
-$$ z = \frac{76-71.64}{8.15} = 0.53$$
+$$ z = \frac{76-71.64}{8.15} = 0.535$$
 
 ```{r}
 ggplot(data.frame(x = c(-4, 4)), aes(x = x)) +
   stat_function(fun = dnorm) +
   stat_function(fun = dnorm,
                 xlim = c(0.53, 4),
-                fill = "red",
+                fill = "purple",
                 geom = "area") +
   geom_vline(xintercept = 0.53) +
   geom_label(aes(
@@ -196,15 +351,33 @@ ggplot(data.frame(x = c(-4, 4)), aes(x = x)) +
 
 ---
 # Z-Test
-* The probability of randomly selecting a country with a national life expectancy greater than 76 is 30%.
-  + $ P(z > 0.53) = 0.30 $
+
+```{r}
+z.test = function(x,mu,popvar){
+
+one.tail.p <- NULL
+
+z.score <- round((mean(x)-mu)/(popvar/sqrt(length(x))),3)
+
+one.tail.p <- round(pnorm(abs(z.score),lower.tail = FALSE),3)
+
+cat(" z =",z.score,"\n",
+
+"one-tailed probability =", one.tail.p,"\n",
+
+"two-tailed probability =", 2*one.tail.p )}
+
+z.test(x = 76, mu = 71.64, popvar = 8.15)
+```
+
+The area under the curve above a z-score of 0.53 is .30. Therefore, the probability of randomly selecting a country with a national life expectancy greater than 76 is 30%.
 
 ```{r}
 ggplot(data.frame(x = c(-4, 4)), aes(x = x)) +
   stat_function(fun = dnorm) +
   stat_function(fun = dnorm,
                 xlim = c(0.53, 4),
-                fill = "red",
+                fill = "purple",
                 geom = "area") +
   geom_vline(xintercept = 0.53) +
   geom_label(aes(
@@ -266,11 +439,27 @@ ggplot() +
 ]
 
 ---
+# Population vs. Sample Notation
+To distinguish population statistics from sample statistics, it is conventional to use separate notation.
+
+.pull-left[
+Population Statistics - Greek Alphabet
+* Mean - $\mu$
+* Standard Deviation - $\sigma$
+]
+
+.pull-right[
+Sample Statistics - Roman Alphabet
+* Mean - $\bar{x}$
+* Standard Deviation - $s$
+]
+
+---
 # Sample Estimates
 
-* Assume that our <span style="color: blue;">true population mean </span> is 71.64. 
+* Assume that our <span style="color: blue;">true population mean $(\mu)$ </span> is 71.64. 
 
-* Each possible random sample of 10 countries will produce its own <span style="color: red;"> sample mean or population mean estimate </span>.
+* Each possible random sample of 10 countries will produce its own <span style="color: red;"> sample mean $(\bar{x})$ or population mean estimate </span>.
 
 * These estimated means have their own variability around the true population mean.
 
@@ -316,7 +505,7 @@ marrangeGrob(plots, nrow=2, ncol=2, top = paste("Estimated Population Means Acro
 ---
 # Population vs. Sample Distribution
 
-If we sample our population **100 times** and plot the estimated mean of each sample, the estimated means begin to form their own normal distribution. The mean of sample means is our <span style="color: orange;"> **estimated population mean**. </span>.
+If we sample our population **100 times** and plot the estimated mean of each sample, the estimated means begin to form their own normal distribution. The mean of sample means is our <span style="color: orange;"> **estimated population mean** $(\hat{\mu})$ </span>.
 
 ```{r, echo = F}
 samp_means <- tibble(samp = 1:1000, means = map_dbl(region_samp, ~mean(.$life_expectancy)))
@@ -326,7 +515,7 @@ samp_means <- tibble(samp = 1:1000, means = map_dbl(region_samp, ~mean(.$life_ex
 ```{r, animation.hook="gifski", interval = 0.4, echo = F, eval = T}
 for (i in 1:10) {
   x <- ggplot(subset(samp_means, samp <= i), aes(means)) +
-    geom_histogram(fill = "darkred", color = "grey") +
+    geom_histogram(fill = "orange", color = "grey") +
     geom_vline(xintercept = 71.64, color = "blue") +
     geom_vline(xintercept = mean(samp_means$means[samp_means$samp <= i]), color = "orange") +
     geom_label(aes(
@@ -340,11 +529,11 @@ for (i in 1:10) {
         geom_label(aes(
       x = mean(samp_means$means[samp_means$samp <= i]),
       y = +Inf,
-      vjust = 3,
+      vjust = 3.5,
       label = paste(round(mean(samp_means$means[samp_means$samp <= i]), 2))
     ),
     colour = "orange",
-    size = 5) + 
+    size = 4) + 
     xlim(65, 85) +
     xlab("Mean Life Expectancy") +
     theme_minimal()
@@ -353,10 +542,56 @@ for (i in 1:10) {
 
 ```
 
-The mean of our sampling distribution (mean of means) approximates the <span style="color: blue;"> population mean</span>. This is an example of the **central limit theorem**.
+The mean of our sampling distribution (mean of means) approaches the <span style="color: blue;"> population mean $({\mu})$</span>. This is an example of the **central limit theorem**.
 
 If we sampled all possible samples of size *n* from our population, our mean of sample means would be equal to the population mean.
 
+---
+## Central Limit Theorem
+
+* There is a difference between the fact that many populations approximate the normal distribution vs. the normal curve of sampling distributions.
+
+* Random sampling from the population will return means that will be asymptotically normal in their distribution as the number of samples approaches infinity.
+
+* Because of that mathematical truth, we can conduct inference in the statistics.
+
+---
+## Central Limit Theorem
+* Here is a histogram of the means of 1000 random samples from our WHO data.
+* The center of the distribution is our population mean.
+* The standard deviation is the standard error of the mean.
+
+```{r, parse = T, echo = F}
+
+ggplot(samp_means, aes(means)) +
+  geom_histogram() +
+  geom_vline(xintercept = mean(samp_means$means), color = "red") +
+  geom_segment(
+    x = mean(samp_means$means),
+    xend = (mean(samp_means$means) + sd(samp_means$means)),
+    y = 30,
+    yend = 30,
+    color = "red"
+  ) +
+  geom_label(aes(
+    x = mean(samp_means$means),
+    y = +Inf,
+    vjust = 3,
+    label = paste('mu', "==", 71.64)
+  ), parse = T) +
+    geom_label(aes(
+    x = (mean(samp_means$means) + sd(samp_means$means)),
+    y = +Inf,
+    vjust = 6,
+    label = paste('sigma', "==", round(sd(samp_means$means), 2))
+  ), parse = T) +
+  theme_classic()
+  
+
+```
+
+See the following the link for more demonstrations of the central limit theorem:
+{https://onlinestatbook.com/stat_sim/sampling_dist/ }
 ---
 # Central Limit Theorem
 
@@ -396,43 +631,6 @@ for (i in seq(1, 100, 10)) {
 ```
 
 ---
-# Central Limit Theorem
-
-* Here is a histogram of the means of 1000 random samples from our WHO data.
-* The center of the distribution is our population mean.
-* The standard deviation is the standard error of the mean.
-{https://onlinestatbook.com/stat_sim/sampling_dist/}
-
-```{r, parse = T, echo = F}
-
-ggplot(samp_means, aes(means)) +
-  geom_histogram() +
-  geom_vline(xintercept = mean(samp_means$means), color = "red") +
-  geom_segment(
-    x = mean(samp_means$means),
-    xend = (mean(samp_means$means) + sd(samp_means$means)),
-    y = 30,
-    yend = 30,
-    color = "red"
-  ) +
-  geom_label(aes(
-    x = mean(samp_means$means),
-    y = +Inf,
-    vjust = 3,
-    label = paste('mu', "==", round(mean(samp_means$means), 2))
-  ), parse = T) +
-    geom_label(aes(
-    x = (mean(samp_means$means) + sd(samp_means$means)),
-    y = +Inf,
-    vjust = 6,
-    label = paste('sigma', "==", round(sd(samp_means$means), 2))
-  ), parse = T) +
-  theme_classic()
-  
-
-```
-
----
 # T-Tests
 * One-Sample T-Test
 * T-Distributions
@@ -440,7 +638,7 @@ ggplot(samp_means, aes(means)) +
 * Hypothesis Testing
 
 ---
-# T-Distributions
+# Population Variance
 * In a z-test, the population standard deviation is assumed to be known.
 
 * In practice, we **rarely** know the true population standard deviation due to:
@@ -448,14 +646,13 @@ ggplot(samp_means, aes(means)) +
   + Population statistics can be in constant flux (e.g., average life expectancies can change moment to moment)
   + Can be unfeasible to measure entire population
 
-.pull-left[
-* **T-Distributions**:
-  + Assume that the population standard deviation $(\sigma)$ is unknown. 
-  + Resemble Z-distributions as degrees of freedom increase.
-  + The degrees of freedom for a t-test is always *n*-1, where *n* is your sample size.
-]
-
-.pull-right[
+---
+# T-Distributions
+* Assume that the population standard deviation $(\sigma)$ is unknown. 
+* T-distributions with smaller degrees of freedom have fatter tails. Assumes more uncertainty with smaller sample sizes.
+* Resemble Z-distributions as degrees of freedom increase.
+* The degrees of freedom for a t-test is always *n*-1, where *n* is your sample size.
+  
 ```{r, echo=F, animation.hook="gifski", interval=0.4,}
 
 df_seq <- tibble(df = seq(1, 30, 3))
@@ -475,7 +672,6 @@ x <- ggplot(data.frame(x = c(-4, 4)), aes(x = x)) +
 print(x)
 }
 ```
-]
 
 
 ```{r , echo=F, animation.hook="gifski", interval=0.4, eval = F}
@@ -506,26 +702,57 @@ ggplot(data.frame(x = c(-4, 4)), aes(x = x)) +
 * T-tests are one of the most foundational statistical tests in classical statistics.
 
 * The purpose of a one-sample t-test is to describe the probability of obtaining a particular sample mean through random sampling variability, assuming the population mean = K.
-  + e.g. Is our observed sample mean to be expected, assuming it reflects a random sample of the population?
-
-* Does **not** tests probability of obtaining the sample distribution or data itself, only the sample mean.
+  + e.g. Is our observed sample mean to be expected if we repeatedly drew random samples from the population?
   
-* **Null Hypothesis** $(H_0)$: $\mu = K$, where $K$ is any constant.
+  
+**Example Research Question:**
+Suppose the known average life expectancy is 76 years with a standard deviation of 3.2. Do countries around the Mediterranean Sea significantly differ from the known population average of 76?
+
+
+---
+# One Sample T-Test
+*  The one sample t-test does **not** test the probability of obtaining the sample distribution or data itself, only the sample mean.
+  
+*  Using the probability of obtaining a particular sample mean **Null Hypothesis** $(H_0)$: $\mu = K$, where $K$ is any constant.
+
 
 ---
 # One-Sample T-Test
+* With a z-test, we were able to find the number of observations that fell beyond a particular value. That value was our z-statistic.
+* The t-statistic is functionally like a z-statistic, but for the t-distribution.
 
-* The t-statistic is calculated like a z-score, but we replace the population standard deviation with the sample standard deviation.
+```{r}
+z_dist <- ggplot(data.frame(x = c(-4, 4)), aes(x = x)) +
+  stat_function(fun = dnorm,
+                args = list(mean = 0, sd = 1)) +
+  geom_vline(xintercept = 1) +
+  geom_label(x = 1, y = 0.25, label = "z-statistic") +
+  xlab("z-score") +
+  ggtitle("Standard Normal Distribution") +
+  theme_classic()
 
-$$ t = \frac{\bar{X} - \mu}{\hat{\sigma}/\sqrt{n}} $$
 
-.pull-left[
-* Distributional spread and proportion of the area under the curve beyond our t-value depends on our degrees of freedom.
 
-* Using a t-test, we can calculate the probability of obtaining a particular sample mean through random sampling.
-]
+t_dist <- ggplot(data.frame(x = c(-4, 4)), aes(x = x)) +
+  stat_function(fun = dt,
+                args = list(df = 10)) +
+  geom_vline(xintercept = 1) +
+  geom_label(x = 1, y = 0.25, label = "t-statistic") +
+  xlab("t-value") +
+  ggtitle("T-Distribution (df = 10)") +
+  theme_classic()
 
-.pull-right[
+gridExtra::grid.arrange(z_dist, t_dist, ncol = 2)
+```
+
+
+---
+# T-Distribution
+* Shape of the t-distribution is slightly different depending on the degrees of freedom $(n-1)$.
+
+* Thus, the proportion of the area under the curve beyond our t-value also depends on our degrees of freedom.
+
+
 ```{r , echo=F, animation.hook="gifski", interval=0.4}
 samp_means <- tibble(df = seq(2, 20, 2), 
                      val = round(
@@ -558,13 +785,22 @@ for (i in 1:10) {
   print(x)
 }
 ```
-]
+
+---
+# One-Sample T-Test
+
+* To calculate a t-statistic, we use the same formula to calculate a z-score, but replace the population standard deviation with the sample's standard deviation.
+
+Since we don't know the population standard deviation $(\mu)$, our samples standard deviation $(s)$ is used as an estimate of the population standard deviation $(\hat{\mu})$.
+
+$$ t = \frac{\bar{X} - \mu}{s/\sqrt{n}} $$
+
 ---
 ## Applying a t-test
 Suppose we have data from a sample of 10 countries with a mean life expectancy of 66.87 and standard deviation of 5.82.
 
 If our population mean is thought to be 78.16 $(H_0: \sigma = 78.16)$, what is the probability of obtaining a sample mean of 66.87, **or a more extreme mean value**, due to random sampling variability?
-$$t(9) = \frac{66.87 - 75.16}{5.82/\sqrt{9}} = -1.24$$
+$$t(9) = \frac{66.87 - 75.16}{5.82/\sqrt{10}} = -1.24$$
 ```{r}
 ggplot(data.frame(x = c(-4, 4)), aes(x = x)) +
   stat_function(fun = dt, 
@@ -650,23 +886,74 @@ ggplot(data.frame(x = c(-4, 4)), aes(x = x)) +
 
 **Note:** One-tailed tests are rarely warranted and we will always be conducting two-tailed tests.
 
-> If the null hypothesis is true, the probability of obtaining a sample mean equal to or more extreme 66.87 is 0.24. What does this mean for the null hypothesis?
----
-# Alpha Thresholds and *p*-Values
-* Alpha $(\alpha)$ represents our Type 1 error rate:
-  + Type 1 Error - Rejecting the null hypothesis when it is actually true
-  + $\alpha = .05$ means we will mistakenly reject the null hypothesis 5% of the time.
-  
-* Alpha is also equal to the maximum p-value necessary to reject the null hypothesis.
-  + If $\alpha = .05$ and $p < .05$, we can reject the null hypothesis.
+> If the null hypothesis is true, the probability of obtaining a sample mean equal to or more extreme 66.87 is 0.24.
 
-* Alpha should be identified **prior to conducting a statistical test**.
-  + Most conventional $\alpha$ values are .05 and .01.
+---
+## One-Tailed Test vs. Two Tailed Test
+
+A one vs. two tailed test apply different alternative hypotheses from the null.
+
+$$H_0: \mu = K$$
+.pull-left[
+One-Tailed
+
+* $H_A: \mu < K$ or $\mu > K$
+
+Tests for a significant difference in one direction. Assumes a priori that the difference can only occur in one direction.
+
+]
+
+.pull-right[
+Two-Tailed
+
+* $H_A: \mu \neq K$
+
+Tests the possibility of a significant difference in either direction.
+]
+
+---
+# Demonstration
+
+* Dr. DSM and Dr. APA have developed a new intervention for depression.
+
+* They would like to compare the post-treatment depression ratings for their research participants to average depression ratings following "business as usual."
+
+* They conduct a one-tailed t-test to see if their sample's mean post-treatment rating is significantly better than the normal post-treatment averages.
+ + $(H_0: \mu < K)$
+ + Lower scores depression ratings are desirable.
+
+---
+# Demonstration
+
+Dr. DSM finds that the mean post-intervention depression rating did not fall below the critical t-value for the one-tailed test. The new intervention group did not demonstrate significantly lower than normal post-treatment averages.
+```{r, echo = F}
+ggplot(data.frame(x = c(-4, 4)), aes(x = x)) +
+  stat_function(fun = dt, 
+                args = list(df = 30), 
+                color = "black") +
+  stat_function(fun = dt, 
+                args = list(df = 30), 
+                xlim = c(-4, -1.70),
+                fill = "red",
+                geom = "area") +
+  geom_vline(xintercept = 3.8) + 
+  geom_label(x = 3.8, y = 0.2, label = "Sample Mean", size = 2) +
+  theme_minimal()
+
+```
+
+What conclusion was missed with the one-tailed test?
+
+--
+The sample had much higher levels of depression than we'd expect! Neither the null $(\mu = K)$ or alternative hypothesis $(\mu < K)$ seem tenable.
 
 ---
 # Alpha Thresholds and t-values
-* Critical t-values $t_{\alpha/2}(df)$ are the thresholds at which our alpha threshold is met.
-  + Vary depending on $df$ and $\alpha$
+
+With two-tailed tests, the total alpha is "split" across both tails of the distribution.
+ * If $\alpha = .05$, $\alpha/2 = 0.025$.
+
+* Critical t-values $t_{\alpha/2}(df)$ are the values at which our alpha threshold is met.
   
 ```{r, echo = F}
 ggplot(data.frame(x = c(-4, 4)), aes(x = x)) +
@@ -708,9 +995,10 @@ ggplot(data.frame(x = c(-4, 4)), aes(x = x)) +
           subtitle = paste("p =", 2*round(pt(q= -2.2622, df = 9, lower.tail = T), 4)))
 ```
 
-With two-tailed tests, the total alpha is "split" across both tails of the distribution $(\alpha(.05)/2 = .025)$.
+If we conducted a t-test, our t-statistic would have to be less than -2.2622 or greater than 2.2622 to reject the null hypothesis.
 
 ---
+# One Sample T-test
 
 * Assuming we had set our $\alpha$ at .05, let's see if we reject our null hypothesis in our previous example.
 
@@ -748,7 +1036,7 @@ ggplot(data.frame(x = c(-4, 4)), aes(x = x)) +
 Our p-value is not less than .05 and does not satisfy our alpha threshold.
 ```{r}
 
-ggplot(data.frame(x = c(-4, 4)), aes(x = x)) +
+two_tailed_test <- ggplot(data.frame(x = c(-4, 4)), aes(x = x)) +
   stat_function(fun = dt, 
                 args = list(df = 9), 
                 color = "black") +
@@ -777,44 +1065,22 @@ ggplot(data.frame(x = c(-4, 4)), aes(x = x)) +
           subtitle = paste("p =", 2*round(pt(q= -1.24, df = 9, lower.tail = T), 2))) +
     theme(plot.title = element_text(hjust = 0.5),
         plot.subtitle = element_text(hjust = 0.5))
+
+two_tailed_test
 ```
 ]
 
-Assuming a population mean of 78.16 and sample size of 10, the proportion of random samples that would demonstrate a sample mean **equal to or more extreme than 66.87** is 0.24 $(t = -1.24, p = 0.24)$. Because our p-value does not meet our alpha threshold of .05, we **fail to reject the null hypothesis**.
-
+Whether we compare our t-statistic to our critical t-values or our look at our p-value, we come to the same conclusion.
 
 
 ---
-# Two-Sample t-test
+# One Sample T-test
 
 ```{r}
-
-
-d <- who %>% 
-      filter(str_length(region) <= 12) %>% 
-      sample_n(60)
-d_hist <- hist(d$life_expectancy, plot = FALSE)
-d$x_bin <- cut(d$life_expectancy, breaks = d_hist$breaks, label = FALSE)
-d$x_mid <- d_hist$mids[d$x_bin]
-d$y <- 1
-
-d %<>% group_by(x_bin) %>% mutate(y = cumsum(y))
-head(d)
-
-ggplot() +
-  geom_label(
-    data = d,
-    mapping = aes(
-      x = x_mid,
-      y = y,
-      label = region
-    ),
-    size = 2
-  ) +
-  theme_bw(base_size = 12) +
-  theme(panel.grid = element_blank()) +
-  labs(x = "Average Life Expectancy", y = "Count")
+two_tailed_test
 ```
 
-````
+Assuming a population mean of 78.16 and sample size of 10, the proportion of random samples that would demonstrate a sample mean **equal to or more extreme than 66.87** is 0.24 $(t = -1.24, p = 0.24)$. Because our p-value does not meet our alpha threshold of .05, we **fail to reject the null hypothesis**.
+
+Thus, we can conclude that the mean life expectancy of this sample of countries is not different from the mean population average.
 
