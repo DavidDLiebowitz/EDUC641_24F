@@ -601,7 +601,8 @@ For the *p*-values that we computed in the regression analysis to be correct, th
 
 ```r
 ggplot(who, aes(x = resid)) + 
-  geom_histogram(binwidth = 1)
+  geom_histogram(binwidth = 1) +
+    theme_minimal(base_size = 16)
 ```
 
 &lt;img src="EDUC641_4_continuous_2_files/figure-html/unnamed-chunk-34-1.svg" style="display: block; margin: auto;" /&gt;

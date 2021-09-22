@@ -118,7 +118,8 @@ stem(who$life_expectancy)
 # Another way
 ```{r, echo=F, fig.height=5.5}
 ggplot(who, aes(x = life_expectancy)) +
-  geom_histogram(binwidth = 1) 
+  geom_histogram(binwidth = 1) +
+    theme_minimal(base_size = 16)
 ```
 
 
@@ -132,7 +133,8 @@ stem(who$schooling)
 # And differently again
 ```{r, echo=F, fig.height=5.5}
 ggplot(who, aes(x = schooling)) +
-  geom_histogram(binwidth = 1) 
+  geom_histogram(binwidth = 1) +
+    theme_minimal(base_size = 16)
 ```
 
 ---
@@ -155,7 +157,8 @@ ggplot(who, aes(x = schooling, y = life_expectancy)) +
   geom_label(aes(label=country)) + 
   xlim(0, 22) +
   ylab("Life Expectancy (Yrs)") + xlab("Schooling (Yrs)") +
-  scale_y_continuous(breaks = seq(40, 90, 10), limits = c(40, 90))
+  scale_y_continuous(breaks = seq(40, 90, 10), limits = c(40, 90)) +
+    theme_minimal(base_size = 16)
 ```
 
 --
@@ -171,7 +174,8 @@ biv <- ggplot(who, aes(x = schooling, y = life_expectancy)) +
   geom_point() + 
   xlim(0, 22) +
   ylab("Life Expectancy (Yrs)") + xlab("Schooling (Yrs)") +
-  scale_y_continuous(breaks = seq(40, 90, 10), limits = c(40, 90))
+  scale_y_continuous(breaks = seq(40, 90, 10), limits = c(40, 90)) +
+    theme_minimal(base_size = 16)
 
 biv
 
@@ -197,7 +201,8 @@ biv_c <- biv +
   geom_hline(yintercept = 85, color = "red", linetype = "dashed" , size = 0.75) +
   annotate('text', label = "Chile", x = 15.5, y = 87, color = "red", size = 6) +
   annotate('text', label = "16.3", color = "red", x = 16.9, y = 40, size = 5) +
-  annotate('text', label = "85", color = "red", x = 0, y = 87, size =5) 
+  annotate('text', label = "85", color = "red", x = 0, y = 87, size =5) +
+    theme_minimal(base_size = 16)
 
 
 biv_c
@@ -218,7 +223,8 @@ biv_c +
    geom_point(data = who_egypt, aes(x=schooling, y = life_expectancy),
                     color = 'blue',
                     size = 3) +
-   annotate('text', label = "Egypt", x = 12.1, y = 79, color = "blue", size = 6)
+   annotate('text', label = "Egypt", x = 12.1, y = 79, color = "blue", size = 6) +
+    theme_minimal(base_size = 16)
 
 ```
 
@@ -241,7 +247,9 @@ biv
 ```{r, echo = F, fig.height=5.5}
 bar <- filter(who, country == "Egypt" | country=="Chile")
 
-ggplot(bar, aes(x = country, y = schooling)) + geom_col()
+ggplot(bar, aes(x = country, y = schooling)) + 
+  geom_col() +
+    theme_minimal(base_size = 16)
 ``` 
 
 *Figures that compare measures of central tendency across groups (e.g., bar charts) should always start at zero (0) so as not to artificially inflate the differences between groups*
@@ -255,13 +263,15 @@ g1 <- ggplot(who, aes(x = schooling, y = life_expectancy)) +
   xlim(0, 22) +
   ylab("Life Expectancy (Yrs)") + xlab("Schooling (Yrs)") +
   scale_y_continuous(breaks = seq(0, 90, 10), limits = c(0, 90)) +
-  annotate('text', label = "Origin", x = 1, y = 3, color = "red", size =5)
+  annotate('text', label = "Origin", x = 1, y = 3, color = "red", size =5) +
+    theme_minimal(base_size = 16)
 
 g3 <- ggplot(who, aes(x = schooling, y = life_expectancy)) + 
   geom_point() + 
   xlim(0, 22) +
   ylab("Life Expectancy (Yrs)") + xlab("Schooling (Yrs)") +
-  scale_y_continuous(breaks = seq(50, 90, 10), limits = c(50, 90))
+  scale_y_continuous(breaks = seq(50, 90, 10), limits = c(50, 90)) +
+    theme_minimal(base_size = 16)
 
 gridExtra::grid.arrange(g1, g3, ncol=2)
 ```
@@ -292,7 +302,8 @@ ggplot(who, aes(x = schooling, y = life_expectancy)) +
   geom_smooth(method = lm, se = F) +
   xlim(0, 22) +
   ylab("Life Expectancy (Yrs)") + xlab("Schooling (Yrs)") +
-  scale_y_continuous(breaks = seq(40, 90, 10), limits = c(40, 90))
+  scale_y_continuous(breaks = seq(40, 90, 10), limits = c(40, 90)) +
+    theme_minimal(base_size = 16)
 ```
 
 --
@@ -346,7 +357,8 @@ ggplot(who, aes(x = schooling, y = life_expectancy)) +
   annotate('text', label = "Chile", x = 15.5, y = 87, color = "red", size = 5) +
   xlim(0, 22) +
   ylab("Life Expectancy (Yrs)") + xlab("Schooling (Yrs)") +
-  scale_y_continuous(breaks = seq(40, 90, 10), limits = c(40, 90))
+  scale_y_continuous(breaks = seq(40, 90, 10), limits = c(40, 90)) +
+    theme_minimal(base_size = 16)
 ```
 
 --
@@ -364,7 +376,8 @@ fit_val <- ggplot(who, aes(x = schooling, y = life_expectancy)) +
   geom_point(aes(y=predict), col = "red", alpha=0.3) +
   xlim(0, 22) +
   ylab("Life Expectancy (Yrs)") + xlab("Schooling (Yrs)") +
-  scale_y_continuous(breaks = seq(40, 90, 10), limits = c(40, 90))
+  scale_y_continuous(breaks = seq(40, 90, 10), limits = c(40, 90)) +
+    theme_minimal(base_size = 16)
 fit_val
 ```
 
@@ -386,7 +399,8 @@ fit_val +
   geom_vline(xintercept = 12.93, col = "red", linetype="dashed") +
   geom_hline(yintercept = 71.74, col = "red", linetype= "dashed") +
   annotate('text', label = "(12.93,", x = 13.7, y = 68.5, color = "red", size = 4) +
-  annotate('text', label = "71.74)", x = 13.7, y = 65.5, color = "red", size =4)
+  annotate('text', label = "71.74)", x = 13.7, y = 65.5, color = "red", size =4) +
+    theme_minimal(base_size = 16)
 ```
 ---
 # The regression equation
@@ -496,7 +510,8 @@ ggplot(who, aes(x = schooling, y = life_expectancy)) +
   geom_smooth(method = lm, se = F) +
   xlim(0, 22) +
   ylab("Life Expectancy (Yrs)") + xlab("Schooling (Yrs)") +
-  scale_y_continuous(breaks = seq(40, 90, 10), limits = c(40, 90))
+  scale_y_continuous(breaks = seq(40, 90, 10), limits = c(40, 90)) +
+    theme_minimal(base_size = 16)
 ```
 ]
 
@@ -519,7 +534,8 @@ ggplot(who, aes(x = schooling, y = life_expectancy)) +
   geom_smooth(method = lm, se = F) +
   xlim(0, 22) +
   ylab("Life Expectancy (Yrs)") + xlab("Schooling (Yrs)") +
-  scale_y_continuous(breaks = seq(40, 90, 10), limits = c(40, 90))
+  scale_y_continuous(breaks = seq(40, 90, 10), limits = c(40, 90)) +
+    theme_minimal(base_size = 16)
 ```
 
 Our fitted regression line contains the "predicted" values of *LIFE_EXPECTANCY* for each value of *SCHOOLING*. But almost all of the "actual" values of *LIFE_EXPECTANCY* lie off the actual line regression line.
@@ -539,7 +555,8 @@ resid_c <- ggplot(who, aes(x = schooling, y = life_expectancy)) +
   annotate('text', label = "Chile", x = 15.5, y = 87, color = "red", size = 5) +
   xlim(0, 22) +
   ylab("Life Expectancy (Yrs)") + xlab("Schooling (Yrs)") +
-  scale_y_continuous(breaks = seq(40, 90, 10), limits = c(40, 90))
+  scale_y_continuous(breaks = seq(40, 90, 10), limits = c(40, 90)) +
+    theme_minimal(base_size = 16)
 resid_c
 ```
 
@@ -570,7 +587,8 @@ resid_c +
    geom_point(data = who_egypt, aes(x=schooling, y = life_expectancy),
                     color = 'blue',
                     size = 3) +
-   annotate('text', label = "Egypt", x = 12.1, y = 79, color = "blue", size = 5)
+   annotate('text', label = "Egypt", x = 12.1, y = 79, color = "blue", size = 5) +
+    theme_minimal(base_size = 16)
 ```
 Observed values for Egypt: $LIFE\_EXPECTANCY = 79$; $SCHOOLING = 13.1$ <br>
 
@@ -640,7 +658,8 @@ For the *p*-values that we computed in the regression analysis to be correct, th
 
 ```{r, echo=T, fig.height=4.5}
 ggplot(who, aes(x = resid)) + 
-  geom_histogram(binwidth = 1)
+  geom_histogram(binwidth = 1) +
+    theme_minimal(base_size = 16)
 ```
 
 --
@@ -657,7 +676,8 @@ ggplot(who, aes(x = predict, y = resid)) +
          geom_point() +
   geom_hline(yintercept = 0, color = "red", linetype="dashed") +
   ylab("Residuals") + xlab("Fitted values") +
-  scale_y_continuous(limits=c(-20, 20))
+  scale_y_continuous(limits=c(-20, 20)) +
+    theme_minimal(base_size = 16)
 ```
 
 #### Key assumption checks for normality:
@@ -675,7 +695,8 @@ ggplot(who, aes(x = predict, y = resid)) +
   geom_hline(yintercept = 0, color = "red", linetype="dashed") +
   annotate('rect', xmin = 53.8, xmax = 59.5, ymin = -10, ymax = 15, alpha = 0.3, fill = "purple") +
   ylab("Residuals") + xlab("Fitted values") +
-  scale_y_continuous(limits=c(-20, 20))
+  scale_y_continuous(limits=c(-20, 20)) +
+    theme_minimal(base_size = 16)
 ```
 
 #### Key assumption checks for normality:

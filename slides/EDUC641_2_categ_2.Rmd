@@ -144,7 +144,8 @@ Can visualize these counts
 ggplot(df, aes(x = rvictim,
                fill = deathpen)) +
         geom_bar(position = "dodge") + 
-        xlab("Race of victim") 
+        xlab("Race of victim") +
+        theme_minimal(base_size = 16)
 ```
 
 ---
@@ -366,7 +367,8 @@ In this hypothetical example of repeated sampling from a null population, we cou
 ```{r, echo=F, fig.height=5.25}
 set.seed(123456)
 chsq <- data.frame(Chi_Square=rchisq(1:10000, df=1))
-ch <- ggplot(chsq, aes(Chi_Square)) + geom_histogram()
+ch <- ggplot(chsq, aes(Chi_Square)) + geom_histogram() +
+            theme_minimal(base_size = 16)
 ch
 ```
 
@@ -387,7 +389,10 @@ ch + geom_vline(xintercept = 5, color = "blue", linetype = "dashed", size=1.5)
 
 In fact, this is the value of the $\chi^2$ statistic we observed:
 ```{r, echo=F, fig.height=4.5}
-ggplot(chsq, aes(Chi_Square)) + geom_histogram(binwidth = 1) + geom_vline(xintercept = 103.8,  color = "red", size=1.5)
+ggplot(chsq, aes(Chi_Square)) + 
+  geom_histogram(binwidth = 1) + 
+  geom_vline(xintercept = 103.8,  color = "red", size=1.5) +
+    theme_minimal(base_size = 16)
 ```
 
 --
@@ -404,7 +409,10 @@ ggplot(chsq, aes(Chi_Square)) + geom_histogram(binwidth = 1) + geom_vline(xinter
 In fact, we don't need to examine the full histogram. Instead, we can say that in a hypothetical exercise of sampling repeatedly from a null population, less than 1 in a 1,000,000,000,000,000 (trillion) of all accidental values of the $\chi^2$ statistic are larger than a value of 103.8
 
 ```{r, echo=F, fig.height=4.5}
-ggplot(chsq, aes(Chi_Square)) + geom_histogram(binwidth = 1) + geom_vline(xintercept = 103.8,  color = "red", size=1.5)
+ggplot(chsq, aes(Chi_Square)) + 
+  geom_histogram(binwidth = 1) + 
+  geom_vline(xintercept = 103.8,  color = "red", size=1.5) +
+    theme_minimal(base_size = 16)
 ```
 
 --
@@ -418,7 +426,8 @@ The statistic that captures the likelihood that one would observe a $\chi^2$ sta
 <span style="color:blue"> *At what p-value would you cease to believe that the value of the $\chi^2$ statistic in your own research was "big" (i.e., was unlikely to have occurred by accident)* </span>
 ```{r, echo=F, fig.height=5}
 ggplot(chsq, aes(x=Chi_Square)) + geom_density(fill="pink", alpha=0.2) +
-  scale_x_continuous("Chi-Square values", limits = c(0,10))
+  scale_x_continuous("Chi-Square values", limits = c(0,10)) +
+    theme_minimal(base_size = 16)
 ```
 
 ---
@@ -432,7 +441,8 @@ ggplot(chsq, aes(x=Chi_Square)) + geom_density(fill="pink", alpha=0.2) +
  geom_area(data = chsq_data, aes(x=x, y=y), fill = "blue", alpha=0.2) +
   geom_vline(xintercept=3.84, color = "red", size = 0.5, linetype = "dashed") +
   scale_x_continuous("Chi-Square values", limits = c(0,10)) +
-  scale_y_continuous("density")
+  scale_y_continuous("density") +
+    theme_minimal(base_size = 16)
 ```
 
 --
@@ -450,7 +460,8 @@ ggplot(chsq, aes(x=Chi_Square)) + geom_density(fill="pink", alpha=0.2) +
  geom_area(data = chsq_data, aes(x=x, y=y), fill = "blue", alpha=0.2) +
   geom_vline(xintercept=3.84, color = "red", size = 0.5, linetype = "dashed") +
   scale_x_continuous("Chi-Square values", limits = c(0,10)) +
-  scale_y_continuous("density")
+  scale_y_continuous("density") +
+    theme_minimal(base_size = 16)
 ```
 
 --

@@ -68,7 +68,9 @@ rd
 # Here we add bar value labels to the bars
 rd + geom_text(aes(label = ..count..), stat='count', vjust = -0.5)
 
-rd + geom_text(aes(label = ..count..), stat='count', vjust = -0.5)
+# And now can make it a little prettier
+rd + geom_text(aes(label = ..count..), stat='count', vjust = -0.5) +
+  theme_minimal(base_size = 16)
 
 ###############################################################################
 ####                    UNIT 2 Relationships Between Categorical Data
@@ -86,7 +88,8 @@ round(prop.table(table(df$deathpen, df$rvictim), margin=2)*100, 2)
 ggplot(df, aes(x = rvictim,
               fill = deathpen)) +
               geom_bar(position = "dodge") + 
-              xlab("Race of victim") 
+              xlab("Race of victim") +
+               theme_minimal(base_size = 16)
 
 # A two-way table with "marginal" values
 two_way <- table(df$deathpen, df$rvictim)
