@@ -27,12 +27,6 @@ class: inverse, center, middle
 
 
 
-# Agenda
-* Sampling Distributions
-* Central Limit Theorem
-
-
-
 ---
 # Normal Distributions
 
@@ -222,22 +216,6 @@ Our **sample statistic** will be our estimate of the population statistic using 
 ]
 
 ---
-# Population vs. Sample Notation
-To distinguish population statistics from sample statistics, it is conventional to use separate notation.
-
-.pull-left[
-Population Statistics - Greek Alphabet
-* Mean - `\(\mu\)`
-* Standard Deviation - `\(\sigma\)`
-]
-
-.pull-right[
-Sample Statistics - Roman Alphabet
-* Mean - `\(\bar{x}\)`
-* Standard Deviation - `\(s\)`
-]
-
----
 # Sample Estimates
 
 * Assume that our &lt;span style="color: blue;"&gt;true population mean `\((\mu)\)` &lt;/span&gt; is 71.64. 
@@ -273,16 +251,26 @@ If we sampled all possible samples of size *n* from our population, our mean of 
 
 * Because of that mathematical truth, we can conduct inference in the statistics.
 
----
-## Central Limit Theorem
-* Here is a histogram of the means of 1000 random samples from our WHO data.
-* The center of the distribution is our population mean.
-* The standard deviation is the standard error of the mean.
+--
 
+.pull-left[
+* Here is a histogram of the means of 1000 random samples from our WHO data.
+ + The center of the distribution is our population mean.
+ + The standard deviation is the standard error of the mean.
+]
+
+.pull-right[
 &lt;img src="continuous_l2_files/figure-html/unnamed-chunk-21-1.png" style="display: block; margin: auto;" /&gt;
+]
+
+Even though our life expectancy distribution is only approximately normal, our sampling curve **is** normal.
+
+---
+## Central Limit Demonstration
 
 See the following the link for more demonstrations of the central limit theorem:
 {https://onlinestatbook.com/stat_sim/sampling_dist/ }
+
 ---
 # Central Limit Theorem
 

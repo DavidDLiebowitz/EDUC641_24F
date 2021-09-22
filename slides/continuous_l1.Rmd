@@ -779,8 +779,6 @@ Box and Whisker Plot (Boxplot)
   - Lower Fence (Q1 - 1.5*IQR)
   - Upper Fence (Q3 + 1.5*IQR)
 
----
-# Boxplot
 Here is a sample boxplot of our WHO data overlayed on a density plot.
 
 ```{r, echo = F, fig.width = 6, fig.height = 4}
@@ -832,87 +830,30 @@ p +
 ```
 
 ---
-
-### Applied Coding
-```{r}
-# Outputs the min and max
-range(who$life_expectancy)
-```
-
-```{r}
-max(who$life_expectancy) - min(who$life_expectancy)
-
-stem(who$life_expectancy_zscore)
-```
-
-National average life expectancies in 2015 **ranged from 51 to 88**, for a total difference of **37 years**.
-
-
-
----
-##### Fodder
-
----
-# Central Tendency and Asymmetry 
-
-* <span style="color: red;">Mean</span>
-* <span style="color: blue;">Median</span>
-* <span style="color: purple;">Mode</span>
-
-```{r, echo = F}
-pos_vlines <- pos_skew + 
-  geom_vline(xintercept = mean(x$pos_skew), color = "red") +
-  geom_vline(xintercept = median(x$pos_skew), color = "blue") +
-  geom_vline(xintercept = getmode(x$pos_skew), color = "purple")
-
-neg_vlines <- neg_skew + 
-  geom_vline(xintercept = mean(x$neg_skew), color = "red") +
-  geom_vline(xintercept = median(x$neg_skew), color = "blue") +
-  geom_vline(xintercept = getmode(x$neg_skew), color = "purple")
-
-normal_vlines <- normal +
-  geom_vline(xintercept = mean(x$central), color = "red") +
-  geom_vline(xintercept = median(x$central), color = "blue") +
-  geom_vline(xintercept = getmode(x$central), color = "purple")
-
-gridExtra::grid.arrange(pos_vlines, normal_vlines, neg_vlines, nrow = 1)
-
-```
-
----
-# Variability
-## Variance and Standard Deviation
-
-* Because variance and standard deviations are calculated from the mean, they are sensitive to skew and outliers (just like the mean).
-
-WORTH ADDING VISUALS? (PROBABLY NOT THESE)
-```{r}
-ggplot(x, aes(x = pos_skew)) +
-  geom_density(adjust = 3) +
-  geom_vline(xintercept = mean(x$pos_skew), color = "red", linetype = "dotted") +
-  geom_vline(xintercept = mean(x$pos_skew) - sd(x$pos_skew), color = "cornflowerblue") +
-  geom_vline(xintercept = mean(x$pos_skew) + sd(x$pos_skew), color = "cornflowerblue")
-
-ggplot(x, aes(x = neg_skew)) +
-  geom_density(adjust = 3) +
-  geom_vline(xintercept = mean(x$neg_skew), color = "red", linetype = "dotted") +
-  geom_vline(xintercept = mean(x$neg_skew) - sd(x$neg_skew), color = "cornflowerblue") +
-  geom_vline(xintercept = mean(x$neg_skew) + sd(x$neg_skew), color = "cornflowerblue")
-
-ggplot(x, aes(x = central)) +
-  geom_density(adjust = 3) +
-  geom_vline(xintercept = mean(x$central), color = "red", linetype = "dotted") +
-  geom_vline(xintercept = mean(x$central) - sd(x$central), color = "cornflowerblue") +
-  geom_vline(xintercept = mean(x$central) + sd(x$central), color = "cornflowerblue")
-
-```
----
-## Visualizing Variance
-ADD CONTENT ON BOXPLOTS, ETC.
-
-=
-
 # Boxplots
-A way to visualize central tendency and variance
 
-# Stem and Leaf plot
+Normally, we visualize boxplots vertically with groups plotted along the x-axis for comparison.
+
+```{r, fig.height=4, fig.width=6, echo = F}
+who_more <- import(here::here("data", "life_expectancy.csv")) %>% 
+  janitor::clean_names() %>% 
+  filter(year >= 2010 & year <= 2015) %>% 
+  select(country, status, year, life_expectancy) %>% 
+  rename(region = country) %>% 
+  mutate(life_expectancy = round(life_expectancy, digits = 0))
+
+who_more %>% 
+  ggplot(aes(factor(year), life_expectancy, fill = factor(year))) +
+  geom_boxplot() +
+  theme_minimal()
+```
+
+Which part of the boxplot do you notice changing the most from year-to-year?
+
+--
+
+> In general, it appears the life expectancy of Q1 increases more each year than the median or Q3. Thus, we might hypothesize that lower life expectancy countries made bigger gains from 2010 to 2015 than countries with higher than average life expectancies.
+
+But more exploration would be needed to confirm this!
+---
+End of slides

@@ -49,12 +49,6 @@ who <- import(here::here("data", "life_expectancy.csv")) %>%
 
 ```
 
-# Agenda
-* Sampling Distributions
-* Central Limit Theorem
-
-
-
 ---
 # Normal Distributions
 
@@ -450,22 +444,6 @@ ggplot() +
 ]
 
 ---
-# Population vs. Sample Notation
-To distinguish population statistics from sample statistics, it is conventional to use separate notation.
-
-.pull-left[
-Population Statistics - Greek Alphabet
-* Mean - $\mu$
-* Standard Deviation - $\sigma$
-]
-
-.pull-right[
-Sample Statistics - Roman Alphabet
-* Mean - $\bar{x}$
-* Standard Deviation - $s$
-]
-
----
 # Sample Estimates
 
 * Assume that our <span style="color: blue;">true population mean $(\mu)$ </span> is 71.64. 
@@ -566,14 +544,16 @@ If we sampled all possible samples of size *n* from our population, our mean of 
 
 * Because of that mathematical truth, we can conduct inference in the statistics.
 
----
-## Central Limit Theorem
+--
+
+.pull-left[
 * Here is a histogram of the means of 1000 random samples from our WHO data.
-* The center of the distribution is our population mean.
-* The standard deviation is the standard error of the mean.
+ + The center of the distribution is our population mean.
+ + The standard deviation is the standard error of the mean.
+]
 
-```{r, parse = T, echo = F}
-
+.pull-right[
+```{r, parse = T, echo = F, fig.width=5, fig.height = 3}
 ggplot(samp_means, aes(means)) +
   geom_histogram() +
   geom_vline(xintercept = mean(samp_means$means), color = "red") +
@@ -597,12 +577,17 @@ ggplot(samp_means, aes(means)) +
     label = paste('sigma', "==", round(sd(samp_means$means), 2))
   ), parse = T) +
   theme_classic()
-  
-
 ```
+]
+
+Even though our life expectancy distribution is only approximately normal, our sampling curve **is** normal.
+
+---
+## Central Limit Demonstration
 
 See the following the link for more demonstrations of the central limit theorem:
 {https://onlinestatbook.com/stat_sim/sampling_dist/ }
+
 ---
 # Central Limit Theorem
 
