@@ -11,19 +11,19 @@ navbar:
   - text: Lectures
     menu: 
       - text: "Unit 0: Intro & Sci Principles"
-        href: EDUC641_1_intro.html
+        href: ./slides/EDUC641_1_intro.html
       - text: "Unit 1: Categorical descriptives"
-        href: EDUC641_2_categ_1.html
+        href: ./slides/EDUC641_2_categ_1.html
       - text: "Unit 2: Categorical relationships"
-        href: EDUC641_2_categ_2.html
+        href: ./slides/EDUC641_2_categ_2.html
       - text: "Unit 3a: Continuous descriptives"
-        href: continuous_I1.html
+        href: ./slides/continuous_I1.html
       - text: "Unit 3b: Central Limit Theorem & Inference"
-        href: continuous_I2.html
+        href: ./slides/continuous_I2.html
       - text: "Unit 4a: Continuous relationships"
-        href: EDUC641_4_continuous_2.html
+        href: ./slides/EDUC641_4_continuous_2.html
       - text: "Unit 4b: NHST Critiques & Replicable research"
-        href: EDUC641_4_continuous_3.html
+        href: ./slides/EDUC641_4_continuous_3.html
 
   right:
   - text: Assignments
