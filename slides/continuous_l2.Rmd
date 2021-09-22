@@ -4,7 +4,7 @@ author: "Professor Name"
 date: "`r format(Sys.time(), '%d %B, %Y')`"
 output:
   xaringan::moon_reader:
-    css: ['default','new.css']
+    css: ['default', 'uo', 'ki-fonts', 'my_custom.css', 'xaringanthemer.css']
     # self_contained: true
     nature:
       highlightStyle: github
@@ -25,7 +25,18 @@ knitr::opts_chunk$set(warning = FALSE,
                       fig.height = 3)
 
 if (!require(pacman)) install.packages('pacman', repos = 'https://cran.rstudio.com')
-pacman::p_load(tidyverse, here, knitr, dplyr, ggplot2, blogdown, rio, gifski, palmerpenguins)
+pacman::p_load(tidyverse, here, knitr, dplyr, ggplot2, blogdown, rio, gifski, palmerpenguins, xaringanthemer)
+
+extra_css <- list(
+  ".red"   = list(color = "red"),
+  ".blue"  =list(color = "blue"),
+  ".red-pink" = list(color= "red_pink"),
+  ".grey-light" = list(color= "grey_light"),
+  ".purple" = list(color = "purple"),
+  ".small" = list("font-size" = "90%"))
+
+write_extra_css(css = extra_css, outfile = "my_custom.css")
+
 ```
 
 ```{r, echo = F}
