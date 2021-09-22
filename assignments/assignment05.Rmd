@@ -78,7 +78,7 @@ Your final project should be delivered in two forms: (a) an R script that we can
 
  * Visualize the relationship between the predictor and outcome variables in a plot and describe what you observe. 
 
- * State your null hypothesis and the hypothesis testing you choose. Report and interpret your results and briefly discuss the substances of your findings.
+ * Describe your method, report your results, and discuss your findings.
 
 
 
