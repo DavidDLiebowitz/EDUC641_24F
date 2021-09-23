@@ -1,7 +1,8 @@
 ---
-title: "EDUC 641 Continuous Data"
-author: "Professor Name"
-date: "`r format(Sys.time(), '%d %B, %Y')`"
+title: "Summarizing and displaying continuous data 1"
+subtitle: "EDUC 641: Week XX"
+author: "TBD"
+#date: "`r format(Sys.time(), '%d %B, %Y')`"
 output:
   xaringan::moon_reader:
     css: ['default', 'uo', 'ki-fonts', 'my_custom.css', 'xaringanthemer.css']
@@ -29,8 +30,8 @@ pacman::p_load(tidyverse, here, knitr, dplyr, ggplot2, blogdown, rio, gridExtra,
 extra_css <- list(
   ".red"   = list(color = "red"),
   ".blue"  =list(color = "blue"),
-  ".red-pink" = list(color= "red_pink"),
-  ".grey-light" = list(color= "grey_light"),
+  ".red-pink" = list(color= "#e64173"),
+  ".grey-light" = list(color= "#dbd7d8"),
   ".purple" = list(color = "purple"),
   ".small" = list("font-size" = "90%"))
 
@@ -65,17 +66,45 @@ world1 <- unique(world$region)
 * Measures of Variability
 
 ---
+# Roadmap
+
+```{r, out.width = "80%", echo=F}
+  include_graphics("Roadmap_3.png")
+```
+
+---
 # Life Expectancy Data
 Suppose you are working for the World Health Organization and are investigating life expectancy across different regions. 
 
 > Using this dataset, we can ask questions like:
-> * How does life expectancy compare in developing vs. developed regions?
-> * Do individuals living in countries with more total years of attendance in school experience, on average, higher life expectancy??
+> * How does life expectancy compare in high- vs. middle- and low-income countries?
+> * Do individuals living in countries with more total years of attendance in school experience, on average, higher life expectancy?
 
 
-**But**, before making comparisons between social/economic conditions, we want to start with describing the full dataset, looking at all 183 nations in the dataset.
+**But**, before making comparisons between social/economic conditions, we want to start with describing our data, looking at all 183 nations in the dataset.
 
-**Our Task:** Describe the distribution of regional life expectancy in 2015.
+**Our first task:** Describe the distribution of regional life expectancy in 2015.
+
+---
+# Goals for the unit 
+
+- Describe and summarize quantitative data that are continuous
+- Describe the purpose and compute the following measures of central tendency: mean, median and mode
+- Descripe the purpose and compute the following measures of variability: quartiles, inter-quartile range, range, variance and standard deviation
+  + Describe conceptually the principles of skewness and kurtosis
+- Create visualizations of quantitative data that are continuous using R
+  + Includes constructing histograms, densities, stem-and-leaf, and box-and-whisker plots
+
+.grey-light[
+- Describe special features of a normal distribution
+- Describe the distribution of repeated sample statistics drawn from a population, how this relates to the Central Limit Theorem (CLT) and how this is informative to statistical hypothesis testing
+- Determine whether the mean value of a sample is different than a defined population value (when provided the *SD* of the variable, aka $Z$-test)
+- Conduct one-sample $t$-tests
+]
+
+---
+class: middle, inverse
+# Distributions
 
 ---
 # Describing a Distribution
@@ -138,9 +167,9 @@ country_plot
 ---
 # Visualizing a Distribution
 
-Some of the most common ways to visualize a distribution are a:
+Some of the most common ways to visualize a distribution are:
 
-* Histogram
+### Histogram
   + Groups the data into "bins" and shows the count of observations in each bin
   + Can specify number of bins/bin width
 
@@ -148,12 +177,27 @@ Some of the most common ways to visualize a distribution are a:
 ggplot(who, aes(life_expectancy)) +
   geom_histogram()
 ```
----
-# Visualizing a Distribution
 
-* Density Plot
-  + Essentially a "smoothed out" histogram
-  + Values reflect the distribution's probability density function (not essential to understand their calculation)
+--
+
+.blue[*What can you already say about the shape of this distribution?*]
+
+---
+# Stem-and-leaf plot
+
+- The "leaf" represents the last digit of a number (typically the 1s place, unless data need to be rounded to the nearest ten)
+- The "stem" contains all other digits of number and serves as a grouping category for observations
+
+---
+```{r}
+stem(who$life_expectancy)
+```
+
+---
+# Density Plot
+  
+- Can think of this as a "smoothed out" histogram
+- Values reflect the distribution's probability density function (not essential to understand their calculation)
   
 ```{r}
 ggplot(who, aes(life_expectancy)) +
@@ -164,10 +208,13 @@ ggplot(who, aes(life_expectancy)) +
 * Any point on the curve records the probability that you would observe that value of the variable by randomly drawing one observation from your sample
 
 ---
+class: middle, inverse
+# Measures of central tendency
+
+---
 # Mean
 * Represents the **average**, or the sum of all observations divided by the number of observations.
 * One of the most common forms of central tendency.
-* Represented by the Greek symbol $\mu$.
 
  
 > $$mean(71, 73, 76, 78, 79) = \frac{71 + 73 + 76 + 78 + 79}{5} = 75.4$$
@@ -180,7 +227,7 @@ Writing this out can be a little tedious. Since our datasets can often have hund
 Summation (or sigma) notation is used to provide a concise expression for the sum of observations.
 
 $$\sum_{i=i}^{n} x_{i}$$
-* i = index of summation
+* i = index of summation (the unit that the observations are in; e.g., schools, students, numbers)
 * n = stopping point (number of observations)
 * $x_i$ = summation element (what we are summing)
 
@@ -188,6 +235,9 @@ Our mean formula rewritten using summation notation:
 
 
 $$\bar{X} = \frac{1}{n}{\sum_{i=i}^{n} X_{i}}$$
+--
+
+We use the bar on the X ( $\bar{X}$) to indicate that we are calcualting the mean value of the variable.
 
 ---
 # Summation Notation
@@ -196,7 +246,7 @@ Let's demonstrate using our WHO data of 183 countries to find the mean.
 
 > $$\bar{X} = \frac{1}{183}{\sum_{i=1}^{183} X_{i}} = \frac{13110}{183} = 71.64$$
 
-The mean national life expectancy in 2015 is 71.64 years.
+The mean national life expectancy for these countries in 2015 is 71.64 years.
 
 ---
 # Mean
@@ -209,7 +259,7 @@ The mean national life expectancy in 2015 is 71.64 years.
 ---
 # Vulnerability of the Mean
 * Humans on Mars and Venus have very low life expectancies (for now).
-* Here, having Mars and Venus in this sample of countries greatly shifted our mean away from the "peak" of the distribution.
+* Here, having Mars and Venus in this sample of countries greatly shifts our mean away from the "peak" of the distribution.
 
 ```{r, echo = F, fig.height=5.5, fig.width=10, dpi = 600}
 ggplot() +
@@ -287,14 +337,14 @@ Sometimes there may be more than one mode. Consider the following example:
 
 Both 8 and 9 are observed seven times. In this case, the data can be considered **bimodal** and both modes would be reported.
 
-In general, the mode is rarely used and is particularly vulnerable to idiosyncratic patterns in the data.
+In general, the mode--as a statistic--is rarely used and is particularly vulnerable to idiosyncratic patterns in the data. However, the concept can be helpful in describing the overall shape of a distribution.
 
 ---
 # Comparing Distributions
 
-These distributions have the same central tendency $(\mu = 100)$.
+These distributions have the same central tendency mean = 100.
 
-How are they different?
+.blue[How are they different?]
 
 ```{r, echo = F}
 narrow <- tibble(values = rnorm(10000, mean = 100, sd = 1)) %>% 
@@ -311,6 +361,9 @@ wide <- tibble(values = rnorm(10000, mean = 100, sd = 10)) %>%
 
 gridExtra::grid.arrange(narrow, wide, nrow = 1)
 ```
+---
+class: middle, inverse
+# Measures of variability
 
 ---
 # Variability
@@ -318,7 +371,7 @@ gridExtra::grid.arrange(narrow, wide, nrow = 1)
 * Central tendency is only one component of a distribution.
 
 * What if we want to know how much variation there is in life expectancy across nations?
-  + How much does typical observation deviate from the mean?
+  + How much does the typical observation deviate from the mean?
 
 * **Measures of Variability:**
   + Range
@@ -330,7 +383,7 @@ gridExtra::grid.arrange(narrow, wide, nrow = 1)
 # Range
 
 * Represents the difference between the highest value and lowest value in the dataset.
-* Can provide a rough estimate of spr ead
+* Can provide a rough estimate of spread
 
 > $$range(71, 73, 76, 78, 79) = 79 - 71 = 8$$
 
@@ -378,11 +431,11 @@ ggplot(who, aes(x = life_expectancy)) +
 
 ---
 # Variance
-* Represents the **average squared deviation** of each observation from the mean.
+* Represents the **average squared deviation** (let's call this $s^{2}$) of each observation from the mean.
 
 $$s^{2} = \frac{\sum_{i=i}^{n} x_{i}}{n}$$
 
-* Why do we square the deviation?
+* .blue[*Why do we square the deviation?*]
 
 ---
 # Variance
@@ -458,7 +511,7 @@ The standard deviation of life expectancy in 2015 was approximately 8.15 *years*
 ---
 # Standard Deviation
 
-Here is our original plot with our <span style="color: red;">standard deviation</span> plotted below and above the mean (i.e., -1 SD, +1 SD).
+Here is our original plot with our .red[standard deviation (*SD*)] plotted below and above the mean (i.e., -1 *SD*, +1 *SD*).
 
 ```{r, echo = F, fig.height = 5, fig.width = 8}
 var_plot +
@@ -472,8 +525,8 @@ The standard deviation of life expectancy in 2015 was approximately 8.15 *years*
 # Statistical Notation
 
 Statistics usually have two notational forms:
-* Population statistics (Greek alphabet) - Values in the real world
-* Sample statistics (Roman alphabet) - Values in our research sample
+* Population statistics (Greek alphabet) - Hypothetical values in the full universe of all possible values
+* Sample statistics (Roman alphabet) - Actual values in our research sample
 
 .pull-left[
 Sample Statistics - Roman Alphabet
@@ -509,6 +562,11 @@ Population Statistics - Greek Alphabet
 * Variance - $\sigma^2$
 ]
 
+--
+
+<br>
+
+*These Greek letters are conventions that statisticians have used over the years. There are many other of these notational conventions (for example, when to use capital- or lower-case Greek letters). There's no inherent reason why they are used (e.g., you could use $\psi$ to represent the mean), but we tend to use the conventional symbols to reduce cognitive load. You'll want to get familiar with some of the most commonly used ones yourself.*
 
 ---
 # Transformations
@@ -534,13 +592,13 @@ d2_tplot <- ggplot(trans_samp, aes(x = d2_t)) +
   geom_histogram() +
   ggtitle("Distribution 2 - Transformed")
 
-grid.arrange(d1_plot, d1_tplot, d2_plot, d1_tplot, ncol=2, nrow =2)
+grid.arrange(d1_plot, d1_tplot, d2_plot, d2_tplot, ncol=2, nrow =2)
 
 ```
 ---
 # Transformations
 * The most common transformation is a z-transformation. 
-* A z-transformation rescales the distribution to a mean of 0 $(\mu)$ and a standard deviation $(\sigma)$ of 1.
+* A z-transformation rescales the distribution to a mean $(\mu)$ of 0 and a standard deviation $(\sigma)$ of 1.
 
 
 ```{r echo=FALSE}
@@ -557,10 +615,11 @@ ggplot(data.frame(x = c(-4, 4)), aes(x = x)) +
 
 ---
 # Transforming Distributions
-* Any distribution can be standardized using a linear function.
+* Any distribution can be standardized using a simple algorithm.
 
-Each observation is transformed into a **z-score** using the following formula:
-$$z = \frac{X - \mu}{\sigma}$$
+Each observation $(i)$ is transformed into a **z-score** using the following formula:
+
+$$z_{i} = \frac{X_{i} - \mu}{\sigma}$$
 
 * A z-score is calculated by **subtracting the mean** from each value and **dividing by the standard deviation**.
 
@@ -577,7 +636,9 @@ hist(who$life_expectancy)
 
 We are going to create a new variable called `life_expectancy_zscore` using the linear function described on the previous slide.
 ```{r}
-who$life_expectancy_zscore <- (who$life_expectancy - mean(who$life_expectancy))/sd(who$life_expectancy)
+who$life_expectancy_zscore <- 
+  (who$life_expectancy - mean(who$life_expectancy)) /
+        sd(who$life_expectancy)
 ```
 
 ---
@@ -587,6 +648,8 @@ Let's look at the first few transformed values.
 ```{r}
 head(who$life_expectancy_zscore)
 ```
+
+--
 
 ```{r}
 ## Histogram of the new z-scores
@@ -651,16 +714,17 @@ normal <- ggplot(x, aes(central)) +
 gridExtra::grid.arrange(pos_skew, normal, neg_skew, nrow = 1)
 ```
 
-* Positive Skew - Distribution is skewed to the right with a "positive-pointing finger."
-* Negative Skew - Distribution is skewed to the left with a "negative-pointing finger."
+* .red[**Positive Skew**] - Distribution is skewed to the right with a "positive-pointing finger."
+* .red[**Negative Skew**] - Distribution is skewed to the left with a "negative-pointing finger."
 
 ---
 # Distributional Shape
 ## Kurtosis
 
-* Kurtosis describes how much the values concentrate around the center (the "pointiness" of a distribution)
- + Leptokurtic distributions have more values around the center and have a "taller" peak.
- + Platykurtic distributions do not have a prominent peak and have a flatter top.
+* .red[**Kurtosis**] describes how much the values concentrate around the center (the "pointiness" of a distribution)
+ + .red[Leptokurtic] distributions have more values around the center and have a "taller" peak.
+ + .red[Platykurtic] distributions do not have a prominent peak and have a flatter top.
+ 
  
 ```{r, echo = F}
 # Fleischmann coeffiecients to generate a distribution with kurtosis = 4
@@ -710,14 +774,17 @@ gridExtra::grid.arrange(platy, central, lepto, nrow = 1)
 ```
 ---
 # Moments of a distribution
+Each of these statistics we've covered describe a different .red["moment of a distribution."]
+
 1. Mean
 $$\mu = \frac{\Sigma(x_i)}{N}$$
 2. Variance
 $$\sigma^2 = \frac{\Sigma(X_i-\mu)^2}{N}$$
 3. Skewness
-$$skewness(X) = \frac{1}{N\sigma^3}\Sigma(X_i-\mu)^3$$
+$$\color{lightgray}{ skewness(X) = \frac{1}{N\sigma^3}\Sigma(X_i-\mu)^3}$$
 4. Kurtosis
-$$kurtosis(X) = \frac{1}{N\sigma^4}\Sigma(X_i-\mu)^4-3$$
+$$\color{lightgray}{ kurtosis(X) = \frac{1}{N\sigma^4}\Sigma(X_i-\mu)^4-3}$$
+
 
 We do not need to know how to calculate skew and kurtosis but we do need to have a sense of how to interpret them.
 
@@ -747,8 +814,8 @@ ggplot(who, aes(life_expectancy)) +
   theme_minimal()
 ```
 
-* Is there severe skew?
-* Is there severe kurtosis?
+* .blue[Is there severe skew?]
+* .blue[Is there severe kurtosis?]
 
 ---
 # Summarizing Data
@@ -762,9 +829,10 @@ ggplot(who, aes(life_expectancy)) +
   theme_minimal()
 ```
 
-The <span style="color: red;">mean</span> national life expectancy in 2015 was **71.62** years.
 
-The <span style="color: blue;">median</span> national life expectancy in 2015 was **74** years.
+The .red[mean] national life expectancy in 2015 was **71.62** years.
+
+The .blue[median] national life expectancy in 2015 was **74** years.
 
 * Due to the slight skew, the median appears to better capture the "center" of our distribution.
 
@@ -774,7 +842,7 @@ The <span style="color: blue;">median</span> national life expectancy in 2015 wa
 Although histograms and density plots are useful for evaluating the shape of a distribution, they do not efficiently summarize the central tendency and variance.
 
 Box and Whisker Plot (Boxplot)
-* Provides a five number of a distribution
+* Provides five helpful numbers of a distribution
   - Q1, Q2 (Median), Q3
   - Lower Fence (Q1 - 1.5*IQR)
   - Upper Fence (Q3 + 1.5*IQR)
@@ -832,7 +900,16 @@ p +
 ---
 # Boxplots
 
-Normally, we visualize boxplots vertically with groups plotted along the x-axis for comparison.
+A basic boxplot can quickly capture the median, the interquartile range and any outlying values (we don't have any of these in our data).
+
+```{r, fig.height=5}
+boxplot(who$life_expectancy, horizontal=T)
+```
+
+---
+# Boxplots
+
+However, we frequently visualize boxplots vertically with groups plotted along the x-axis for comparison.
 
 ```{r, fig.height=4, fig.width=6, echo = F}
 who_more <- import(here::here("data", "life_expectancy.csv")) %>% 
@@ -848,7 +925,7 @@ who_more %>%
   theme_minimal()
 ```
 
-Which part of the boxplot do you notice changing the most from year-to-year?
+.blue[Which part of the boxplot do you notice changing the most from year-to-year?]
 
 --
 
@@ -856,4 +933,17 @@ Which part of the boxplot do you notice changing the most from year-to-year?
 
 But more exploration would be needed to confirm this!
 ---
-End of slides
+# Summing up
+
+So we have characterized some features of the average national life expectancy among countries in the WHO database. However, we are still interested in asking more complex questions such as:
+
+> * How does life expectancy compare in high- vs. middle- and low-income countries?
+> * Do individuals living in countries with more total years of attendance in school experience, on average, higher life expectancy?
+
+--
+
+### .purple[**That is where we will turn to next!**]
+
+---
+class: middle, inverse
+# Synthesis and wrap-up

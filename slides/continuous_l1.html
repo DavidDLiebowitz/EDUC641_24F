@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="" xml:lang="">
   <head>
-    <title>EDUC 641 Continuous Data</title>
+    <title>Summarizing and displaying continuous data 1</title>
     <meta charset="utf-8" />
-    <meta name="author" content="Professor Name" />
+    <meta name="author" content="TBD" />
     <script src="continuous_l1_files/header-attrs/header-attrs.js"></script>
     <link href="continuous_l1_files/remark-css/default.css" rel="stylesheet" />
     <link href="continuous_l1_files/remark-css/uo.css" rel="stylesheet" />
@@ -15,9 +15,9 @@
     <textarea id="source">
 class: center, middle, inverse, title-slide
 
-# EDUC 641 Continuous Data
-### Professor Name
-### 22 September, 2021
+# Summarizing and displaying continuous data 1
+## EDUC 641: Week XX
+### TBD
 
 ---
 
@@ -34,17 +34,43 @@ class: inverse, center, middle
 * Measures of Variability
 
 ---
+# Roadmap
+
+&lt;img src="Roadmap_3.png" width="80%" style="display: block; margin: auto;" /&gt;
+
+---
 # Life Expectancy Data
 Suppose you are working for the World Health Organization and are investigating life expectancy across different regions. 
 
 &gt; Using this dataset, we can ask questions like:
-&gt; * How does life expectancy compare in developing vs. developed regions?
-&gt; * Do individuals living in countries with more total years of attendance in school experience, on average, higher life expectancy??
+&gt; * How does life expectancy compare in high- vs. middle- and low-income countries?
+&gt; * Do individuals living in countries with more total years of attendance in school experience, on average, higher life expectancy?
 
 
-**But**, before making comparisons between social/economic conditions, we want to start with describing the full dataset, looking at all 183 nations in the dataset.
+**But**, before making comparisons between social/economic conditions, we want to start with describing our data, looking at all 183 nations in the dataset.
 
-**Our Task:** Describe the distribution of regional life expectancy in 2015.
+**Our first task:** Describe the distribution of regional life expectancy in 2015.
+
+---
+# Goals for the unit 
+
+- Describe and summarize quantitative data that are continuous
+- Describe the purpose and compute the following measures of central tendency: mean, median and mode
+- Descripe the purpose and compute the following measures of variability: quartiles, inter-quartile range, range, variance and standard deviation
+  + Describe conceptually the principles of skewness and kurtosis
+- Create visualizations of quantitative data that are continuous using R
+  + Includes constructing histograms, densities, stem-and-leaf, and box-and-whisker plots
+
+.grey-light[
+- Describe special features of a normal distribution
+- Describe the distribution of repeated sample statistics drawn from a population, how this relates to the Central Limit Theorem (CLT) and how this is informative to statistical hypothesis testing
+- Determine whether the mean value of a sample is different than a defined population value (when provided the *SD* of the variable, aka `\(Z\)`-test)
+- Conduct one-sample `\(t\)`-tests
+]
+
+---
+class: middle, inverse
+# Distributions
 
 ---
 # Describing a Distribution
@@ -73,13 +99,13 @@ Today we are reviewing:
 
 A distribution describes the number of observations of variable that take a particular value.
 
-&lt;img src="continuous_l1_files/figure-html/unnamed-chunk-2-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="continuous_l1_files/figure-html/unnamed-chunk-3-1.png" style="display: block; margin: auto;" /&gt;
 ---
 # Visualizing a Distribution
 
-Some of the most common ways to visualize a distribution are a:
+Some of the most common ways to visualize a distribution are:
 
-* Histogram
+### Histogram
   + Groups the data into "bins" and shows the count of observations in each bin
   + Can specify number of bins/bin width
 
@@ -89,13 +115,55 @@ ggplot(who, aes(life_expectancy)) +
   geom_histogram()
 ```
 
-&lt;img src="continuous_l1_files/figure-html/unnamed-chunk-3-1.png" style="display: block; margin: auto;" /&gt;
----
-# Visualizing a Distribution
+&lt;img src="continuous_l1_files/figure-html/unnamed-chunk-4-1.png" style="display: block; margin: auto;" /&gt;
 
-* Density Plot
-  + Essentially a "smoothed out" histogram
-  + Values reflect the distribution's probability density function (not essential to understand their calculation)
+--
+
+.blue[*What can you already say about the shape of this distribution?*]
+
+---
+# Stem-and-leaf plot
+
+- The "leaf" represents the last digit of a number (typically the 1s place, unless data need to be rounded to the nearest ten)
+- The "stem" contains all other digits of number and serves as a grouping category for observations
+
+---
+
+```r
+stem(who$life_expectancy)
+```
+
+```
+## 
+##   The decimal point is at the |
+## 
+##   50 | 0
+##   52 | 0000
+##   54 | 000
+##   56 | 00
+##   58 | 0000000
+##   60 | 0000000
+##   62 | 000000000
+##   64 | 000000000
+##   66 | 00000000000000
+##   68 | 000000000000
+##   70 | 0000000
+##   72 | 000000000000
+##   74 | 00000000000000000000000000000
+##   76 | 0000000000000000000000000
+##   78 | 000000000000
+##   80 | 00000000
+##   82 | 00000000000000000
+##   84 | 000
+##   86 | 0
+##   88 | 0
+```
+
+---
+# Density Plot
+  
+- Can think of this as a "smoothed out" histogram
+- Values reflect the distribution's probability density function (not essential to understand their calculation)
   
 
 ```r
@@ -103,15 +171,18 @@ ggplot(who, aes(life_expectancy)) +
   geom_density()
 ```
 
-&lt;img src="continuous_l1_files/figure-html/unnamed-chunk-4-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="continuous_l1_files/figure-html/unnamed-chunk-6-1.png" style="display: block; margin: auto;" /&gt;
 
 * Any point on the curve records the probability that you would observe that value of the variable by randomly drawing one observation from your sample
+
+---
+class: middle, inverse
+# Measures of central tendency
 
 ---
 # Mean
 * Represents the **average**, or the sum of all observations divided by the number of observations.
 * One of the most common forms of central tendency.
-* Represented by the Greek symbol `\(\mu\)`.
 
  
 &gt; `$$mean(71, 73, 76, 78, 79) = \frac{71 + 73 + 76 + 78 + 79}{5} = 75.4$$`
@@ -124,7 +195,7 @@ Writing this out can be a little tedious. Since our datasets can often have hund
 Summation (or sigma) notation is used to provide a concise expression for the sum of observations.
 
 `$$\sum_{i=i}^{n} x_{i}$$`
-* i = index of summation
+* i = index of summation (the unit that the observations are in; e.g., schools, students, numbers)
 * n = stopping point (number of observations)
 * `\(x_i\)` = summation element (what we are summing)
 
@@ -132,6 +203,9 @@ Our mean formula rewritten using summation notation:
 
 
 `$$\bar{X} = \frac{1}{n}{\sum_{i=i}^{n} X_{i}}$$`
+--
+
+We use the bar on the X ( `\(\bar{X}\)`) to indicate that we are calcualting the mean value of the variable.
 
 ---
 # Summation Notation
@@ -140,7 +214,7 @@ Let's demonstrate using our WHO data of 183 countries to find the mean.
 
 &gt; `$$\bar{X} = \frac{1}{183}{\sum_{i=1}^{183} X_{i}} = \frac{13110}{183} = 71.64$$`
 
-The mean national life expectancy in 2015 is 71.64 years.
+The mean national life expectancy for these countries in 2015 is 71.64 years.
 
 ---
 # Mean
@@ -153,9 +227,9 @@ The mean national life expectancy in 2015 is 71.64 years.
 ---
 # Vulnerability of the Mean
 * Humans on Mars and Venus have very low life expectancies (for now).
-* Here, having Mars and Venus in this sample of countries greatly shifted our mean away from the "peak" of the distribution.
+* Here, having Mars and Venus in this sample of countries greatly shifts our mean away from the "peak" of the distribution.
 
-&lt;img src="continuous_l1_files/figure-html/unnamed-chunk-5-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="continuous_l1_files/figure-html/unnamed-chunk-7-1.png" style="display: block; margin: auto;" /&gt;
 
 ---
 # Median
@@ -174,7 +248,7 @@ The mean national life expectancy in 2015 is 71.64 years.
 # Median
 * Unlike the mean, the median is less affected by outliers.
 
-&lt;img src="continuous_l1_files/figure-html/unnamed-chunk-6-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="continuous_l1_files/figure-html/unnamed-chunk-8-1.png" style="display: block; margin: auto;" /&gt;
 ---
 # Mode
 The mode simply refers to the **most frequent value** in the data.
@@ -198,16 +272,19 @@ Sometimes there may be more than one mode. Consider the following example:
 
 Both 8 and 9 are observed seven times. In this case, the data can be considered **bimodal** and both modes would be reported.
 
-In general, the mode is rarely used and is particularly vulnerable to idiosyncratic patterns in the data.
+In general, the mode--as a statistic--is rarely used and is particularly vulnerable to idiosyncratic patterns in the data. However, the concept can be helpful in describing the overall shape of a distribution.
 
 ---
 # Comparing Distributions
 
-These distributions have the same central tendency `\((\mu = 100)\)`.
+These distributions have the same central tendency mean = 100.
 
-How are they different?
+.blue[How are they different?]
 
-&lt;img src="continuous_l1_files/figure-html/unnamed-chunk-7-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="continuous_l1_files/figure-html/unnamed-chunk-9-1.png" style="display: block; margin: auto;" /&gt;
+---
+class: middle, inverse
+# Measures of variability
 
 ---
 # Variability
@@ -215,7 +292,7 @@ How are they different?
 * Central tendency is only one component of a distribution.
 
 * What if we want to know how much variation there is in life expectancy across nations?
-  + How much does typical observation deviate from the mean?
+  + How much does the typical observation deviate from the mean?
 
 * **Measures of Variability:**
   + Range
@@ -227,7 +304,7 @@ How are they different?
 # Range
 
 * Represents the difference between the highest value and lowest value in the dataset.
-* Can provide a rough estimate of spr ead
+* Can provide a rough estimate of spread
 
 &gt; `$$range(71, 73, 76, 78, 79) = 79 - 71 = 8$$`
 
@@ -244,35 +321,35 @@ How are they different?
 
 * IQR summarizes the range of "average" scores in the dataset.
 
-&lt;img src="continuous_l1_files/figure-html/unnamed-chunk-8-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="continuous_l1_files/figure-html/unnamed-chunk-10-1.png" style="display: block; margin: auto;" /&gt;
 
 ---
 # Variance
-* Represents the **average squared deviation** of each observation from the mean.
+* Represents the **average squared deviation** (let's call this `\(s^{2}\)`) of each observation from the mean.
 
 `$$s^{2} = \frac{\sum_{i=i}^{n} x_{i}}{n}$$`
 
-* Why do we square the deviation?
+* .blue[*Why do we square the deviation?*]
 
 ---
 # Variance
 Here are some national life expectancies centered around the mean. Their value represents their difference relative to the sample mean.
   
-&lt;img src="continuous_l1_files/figure-html/unnamed-chunk-9-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="continuous_l1_files/figure-html/unnamed-chunk-11-1.png" style="display: block; margin: auto;" /&gt;
 Some observations fall below the mean so their deviation is a negative value. If we took the average of our positive and negative deviations, we'd just get zero!
 
 ---
 # Variance
 Since any number squared is positive, let's try squaring our deviations.
 
-&lt;img src="continuous_l1_files/figure-html/unnamed-chunk-10-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="continuous_l1_files/figure-html/unnamed-chunk-12-1.png" style="display: block; margin: auto;" /&gt;
 Now we can take the average of our squared deviations and get a non-zero value!
 ---
 # Variance
 
 Our variance (or average squared deviation) is approximately 66.43.
 
-&lt;img src="continuous_l1_files/figure-html/unnamed-chunk-11-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="continuous_l1_files/figure-html/unnamed-chunk-13-1.png" style="display: block; margin: auto;" /&gt;
 
 By itself, a variance of 66.43 is not very meaningful to us. It does not reflect the raw units of our original scale (it represents squared units).
 ---
@@ -289,9 +366,9 @@ The standard deviation of life expectancy in 2015 was approximately 8.15 *years*
 ---
 # Standard Deviation
 
-Here is our original plot with our &lt;span style="color: red;"&gt;standard deviation&lt;/span&gt; plotted below and above the mean (i.e., -1 SD, +1 SD).
+Here is our original plot with our .red[standard deviation (*SD*)] plotted below and above the mean (i.e., -1 *SD*, +1 *SD*).
 
-&lt;img src="continuous_l1_files/figure-html/unnamed-chunk-12-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="continuous_l1_files/figure-html/unnamed-chunk-14-1.png" style="display: block; margin: auto;" /&gt;
 
 The standard deviation of life expectancy in 2015 was approximately 8.15 *years*.
 
@@ -299,8 +376,8 @@ The standard deviation of life expectancy in 2015 was approximately 8.15 *years*
 # Statistical Notation
 
 Statistics usually have two notational forms:
-* Population statistics (Greek alphabet) - Values in the real world
-* Sample statistics (Roman alphabet) - Values in our research sample
+* Population statistics (Greek alphabet) - Hypothetical values in the full universe of all possible values
+* Sample statistics (Roman alphabet) - Actual values in our research sample
 
 .pull-left[
 Sample Statistics - Roman Alphabet
@@ -336,27 +413,33 @@ Population Statistics - Greek Alphabet
 * Variance - `\(\sigma^2\)`
 ]
 
+--
+
+&lt;br&gt;
+
+*These Greek letters are conventions that statisticians have used over the years. There are many other of these notational conventions (for example, when to use capital- or lower-case Greek letters). There's no inherent reason why they are used (e.g., you could use `\(\psi\)` to represent the mean), but we tend to use the conventional symbols to reduce cognitive load. You'll want to get familiar with some of the most commonly used ones yourself.*
 
 ---
 # Transformations
 * A distribution can have any mean and any (positive) standard deviation.
 * Sometimes it is helpful to standardize a distribution to a common mean and standard deviation so we can more easily compare them and identify extreme data points.
 
-&lt;img src="continuous_l1_files/figure-html/unnamed-chunk-13-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="continuous_l1_files/figure-html/unnamed-chunk-15-1.png" style="display: block; margin: auto;" /&gt;
 ---
 # Transformations
 * The most common transformation is a z-transformation. 
-* A z-transformation rescales the distribution to a mean of 0 `\((\mu)\)` and a standard deviation `\((\sigma)\)` of 1.
+* A z-transformation rescales the distribution to a mean `\((\mu)\)` of 0 and a standard deviation `\((\sigma)\)` of 1.
 
 
-&lt;img src="continuous_l1_files/figure-html/unnamed-chunk-14-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="continuous_l1_files/figure-html/unnamed-chunk-16-1.png" style="display: block; margin: auto;" /&gt;
 
 ---
 # Transforming Distributions
-* Any distribution can be standardized using a linear function.
+* Any distribution can be standardized using a simple algorithm.
 
-Each observation is transformed into a **z-score** using the following formula:
-`$$z = \frac{X - \mu}{\sigma}$$`
+Each observation `\((i)\)` is transformed into a **z-score** using the following formula:
+
+`$$z_{i} = \frac{X_{i} - \mu}{\sigma}$$`
 
 * A z-score is calculated by **subtracting the mean** from each value and **dividing by the standard deviation**.
 
@@ -367,12 +450,14 @@ Each observation is transformed into a **z-score** using the following formula:
 # Transforming Distributions
 
 Here is a histogram of our life expectancy data.
-&lt;img src="continuous_l1_files/figure-html/unnamed-chunk-15-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="continuous_l1_files/figure-html/unnamed-chunk-17-1.png" style="display: block; margin: auto;" /&gt;
 
 We are going to create a new variable called `life_expectancy_zscore` using the linear function described on the previous slide.
 
 ```r
-who$life_expectancy_zscore &lt;- (who$life_expectancy - mean(who$life_expectancy))/sd(who$life_expectancy)
+who$life_expectancy_zscore &lt;- 
+  (who$life_expectancy - mean(who$life_expectancy)) /
+        sd(who$life_expectancy)
 ```
 
 ---
@@ -388,13 +473,15 @@ head(who$life_expectancy_zscore)
 ## [1] -0.8145996  0.7804065  0.5350210 -2.4096058  0.5350210  0.5350210
 ```
 
+--
+
 
 ```r
 ## Histogram of the new z-scores
 hist(who$life_expectancy_zscore)
 ```
 
-&lt;img src="continuous_l1_files/figure-html/unnamed-chunk-18-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="continuous_l1_files/figure-html/unnamed-chunk-20-1.png" style="display: block; margin: auto;" /&gt;
 
 We now have a mean of 0 and standard deviation of 1.
 
@@ -403,37 +490,41 @@ We now have a mean of 0 and standard deviation of 1.
 
 An important note about standardizing a distribution is that it changes the mean and standard deviation, but **does not change the overall shape.**
 
-&lt;img src="continuous_l1_files/figure-html/unnamed-chunk-19-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="continuous_l1_files/figure-html/unnamed-chunk-21-1.png" style="display: block; margin: auto;" /&gt;
 ---
 # Distributional Shape
 ## Skewness
 * Not all distributions in the real world are symmetrical. Often they have asymmetry or **skewness**.
 * Skewness describes how much a distribution is "bunched up" to the right or left.
 
-&lt;img src="continuous_l1_files/figure-html/unnamed-chunk-20-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="continuous_l1_files/figure-html/unnamed-chunk-22-1.png" style="display: block; margin: auto;" /&gt;
 
-* Positive Skew - Distribution is skewed to the right with a "positive-pointing finger."
-* Negative Skew - Distribution is skewed to the left with a "negative-pointing finger."
+* .red[**Positive Skew**] - Distribution is skewed to the right with a "positive-pointing finger."
+* .red[**Negative Skew**] - Distribution is skewed to the left with a "negative-pointing finger."
 
 ---
 # Distributional Shape
 ## Kurtosis
 
-* Kurtosis describes how much the values concentrate around the center (the "pointiness" of a distribution)
- + Leptokurtic distributions have more values around the center and have a "taller" peak.
- + Platykurtic distributions do not have a prominent peak and have a flatter top.
+* .red[**Kurtosis**] describes how much the values concentrate around the center (the "pointiness" of a distribution)
+ + .red[Leptokurtic] distributions have more values around the center and have a "taller" peak.
+ + .red[Platykurtic] distributions do not have a prominent peak and have a flatter top.
  
-&lt;img src="continuous_l1_files/figure-html/unnamed-chunk-21-1.png" style="display: block; margin: auto;" /&gt;
+ 
+&lt;img src="continuous_l1_files/figure-html/unnamed-chunk-23-1.png" style="display: block; margin: auto;" /&gt;
 ---
 # Moments of a distribution
+Each of these statistics we've covered describe a different .red["moment of a distribution."]
+
 1. Mean
 `$$\mu = \frac{\Sigma(x_i)}{N}$$`
 2. Variance
 `$$\sigma^2 = \frac{\Sigma(X_i-\mu)^2}{N}$$`
 3. Skewness
-`$$skewness(X) = \frac{1}{N\sigma^3}\Sigma(X_i-\mu)^3$$`
+`$$\color{lightgray}{ skewness(X) = \frac{1}{N\sigma^3}\Sigma(X_i-\mu)^3}$$`
 4. Kurtosis
-`$$kurtosis(X) = \frac{1}{N\sigma^4}\Sigma(X_i-\mu)^4-3$$`
+`$$\color{lightgray}{ kurtosis(X) = \frac{1}{N\sigma^4}\Sigma(X_i-\mu)^4-3}$$`
+
 
 We do not need to know how to calculate skew and kurtosis but we do need to have a sense of how to interpret them.
 
@@ -457,20 +548,21 @@ Note: In this course we will focus visual analysis for severe skew or kurtosis. 
 * Here is a density plot of the WHO life expectancy data for 2015. 
 * How would you characterize the distribution?
 
-&lt;img src="continuous_l1_files/figure-html/unnamed-chunk-22-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="continuous_l1_files/figure-html/unnamed-chunk-24-1.png" style="display: block; margin: auto;" /&gt;
 
-* Is there severe skew?
-* Is there severe kurtosis?
+* .blue[Is there severe skew?]
+* .blue[Is there severe kurtosis?]
 
 ---
 # Summarizing Data
 
 The distribution of life expectancy has a slightly negative skew and no excess kurtosis. The skewness and kurtosis are not severe.
-&lt;img src="continuous_l1_files/figure-html/unnamed-chunk-23-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="continuous_l1_files/figure-html/unnamed-chunk-25-1.png" style="display: block; margin: auto;" /&gt;
 
-The &lt;span style="color: red;"&gt;mean&lt;/span&gt; national life expectancy in 2015 was **71.62** years.
 
-The &lt;span style="color: blue;"&gt;median&lt;/span&gt; national life expectancy in 2015 was **74** years.
+The .red[mean] national life expectancy in 2015 was **71.62** years.
+
+The .blue[median] national life expectancy in 2015 was **74** years.
 
 * Due to the slight skew, the median appears to better capture the "center" of our distribution.
 
@@ -480,23 +572,35 @@ The &lt;span style="color: blue;"&gt;median&lt;/span&gt; national life expectanc
 Although histograms and density plots are useful for evaluating the shape of a distribution, they do not efficiently summarize the central tendency and variance.
 
 Box and Whisker Plot (Boxplot)
-* Provides a five number of a distribution
+* Provides five helpful numbers of a distribution
   - Q1, Q2 (Median), Q3
   - Lower Fence (Q1 - 1.5*IQR)
   - Upper Fence (Q3 + 1.5*IQR)
 
 Here is a sample boxplot of our WHO data overlayed on a density plot.
 
-&lt;img src="continuous_l1_files/figure-html/unnamed-chunk-24-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="continuous_l1_files/figure-html/unnamed-chunk-26-1.png" style="display: block; margin: auto;" /&gt;
 
 ---
 # Boxplots
 
-Normally, we visualize boxplots vertically with groups plotted along the x-axis for comparison.
+A basic boxplot can quickly capture the median, the interquartile range and any outlying values (we don't have any of these in our data).
 
-&lt;img src="continuous_l1_files/figure-html/unnamed-chunk-25-1.png" style="display: block; margin: auto;" /&gt;
 
-Which part of the boxplot do you notice changing the most from year-to-year?
+```r
+boxplot(who$life_expectancy, horizontal=T)
+```
+
+&lt;img src="continuous_l1_files/figure-html/unnamed-chunk-27-1.png" style="display: block; margin: auto;" /&gt;
+
+---
+# Boxplots
+
+However, we frequently visualize boxplots vertically with groups plotted along the x-axis for comparison.
+
+&lt;img src="continuous_l1_files/figure-html/unnamed-chunk-28-1.png" style="display: block; margin: auto;" /&gt;
+
+.blue[Which part of the boxplot do you notice changing the most from year-to-year?]
 
 --
 
@@ -504,7 +608,20 @@ Which part of the boxplot do you notice changing the most from year-to-year?
 
 But more exploration would be needed to confirm this!
 ---
-End of slides
+# Summing up
+
+So we have characterized some features of the average national life expectancy among countries in the WHO database. However, we are still interested in asking more complex questions such as:
+
+&gt; * How does life expectancy compare in high- vs. middle- and low-income countries?
+&gt; * Do individuals living in countries with more total years of attendance in school experience, on average, higher life expectancy?
+
+--
+
+### .purple[**That is where we will turn to next!**]
+
+---
+class: middle, inverse
+# Synthesis and wrap-up
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>

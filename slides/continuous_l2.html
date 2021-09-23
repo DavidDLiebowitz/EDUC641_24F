@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="" xml:lang="">
   <head>
-    <title>EDUC 641 Continuous Data</title>
+    <title>Summarizing and displaying continuous data 2</title>
     <meta charset="utf-8" />
-    <meta name="author" content="Professor Name" />
+    <meta name="author" content="TBD" />
     <script src="continuous_l2_files/header-attrs/header-attrs.js"></script>
     <link href="continuous_l2_files/remark-css/default.css" rel="stylesheet" />
     <link href="continuous_l2_files/remark-css/uo.css" rel="stylesheet" />
@@ -15,9 +15,9 @@
     <textarea id="source">
 class: center, middle, inverse, title-slide
 
-# EDUC 641 Continuous Data
-### Professor Name
-### 22 September, 2021
+# Summarizing and displaying continuous data 2
+## EDUC 641: Week XX
+### TBD
 
 ---
 
@@ -26,17 +26,66 @@ class: inverse, center, middle
 
 
 
+# Agenda
+* Objectives
+* Normal distributions
+* Central Limit Theorem (CLT) and statistical inference
+* One-sample `\(t\)`-tests
+---
+# Roadmap
+
+&lt;img src="Roadmap_3.png" width="80%" style="display: block; margin: auto;" /&gt;
+
+---
+# Goals for the unit 
+
+.grey-light[
+- Describe and summarize quantitative data that are continuous
+- Describe the purpose and compute the following measures of central tendency: mean, median and mode
+- Descripe the purpose and compute the following measures of variability: quartiles, inter-quartile range, range, variance and standard deviation
+  + Describe conceptually the principles of skewness and kurtosis
+- Create visualizations of quantitative data that are continuous using R
+  + Includes constructing histograms, densities, stem-and-leaf, and box-and-whisker plots
+]
+
+- Describe special features of a normal distribution
+- Describe the distribution of repeated sample statistics drawn from a population, how this relates to the Central Limit Theorem (CLT) and how this is informative to statistical hypothesis testing
+- Determine whether the mean value of a sample is different than a defined population value (when provided the *SD* of the variable, aka `\(Z\)`-test)
+- Conduct one-sample `\(t\)`-tests
+
+---
+# Life Expectancy Data
+
+### Reminder of our motivation: 
+
+Suppose you are working for the World Health Organization and are investigating life expectancy across different regions. 
+
+&gt; Using this dataset, we can ask questions like:
+&gt; * How does life expectancy compare in high- vs. middle- and low-income countries?
+&gt; * Do individuals living in countries with more total years of attendance in school experience, on average, higher life expectancy?
+
+
+**But**, before making comparisons between social/economic conditions, we want to start with describing our data. Let's say we *know* information on life expectancy about all the countries in the world, but we can only collect information on things like school experience on *some* countries.&lt;sup&gt;1&lt;/sup&gt;
+
+**Our second task:** .blue[How similar are these subset of countries' average life expectancy to our known "population" average?]
+
+.footnote[[1] This is somewhat of a simplification. As we will learn, even if we had data on *all* countries, we wouldn't really know the "population" average; in fact, we almost never do and we are always estimating it]
+
+---
+class: middle, inverse
+
+# Normal Distributions
+
+---
+# Bell curves
+
+You have likely heard of a frequent phenomenon that occurs when we quantify observations about the social and natural worlds: most observations tend to cluster in the middle, with others drifting out into narrower tails. You may have heard these described as "bell curves."
+
+&lt;img src="continuous_l2_files/figure-html/unnamed-chunk-3-1.png" style="display: block; margin: auto;" /&gt;&lt;img src="continuous_l2_files/figure-html/unnamed-chunk-3-2.png" style="display: block; margin: auto;" /&gt;
 
 ---
 # Normal Distributions
-
-The normal distribution describes a frequently occurring phenomenon across the social and natural sciences.
-
-&lt;img src="continuous_l2_files/figure-html/unnamed-chunk-2-1.png" style="display: block; margin: auto;" /&gt;&lt;img src="continuous_l2_files/figure-html/unnamed-chunk-2-2.png" style="display: block; margin: auto;" /&gt;
-
----
-# Normal Distributions
-The normal distribution is a mathematical function that replicates this natural phenomenon using two parameters:
+The normal distribution is a mathematical function that is a particularly specified form of this phenomenon using two parameters:
 * Mean `\((\mu)\)`
 * Standard Deviation `\((sigma)\)`
 
@@ -69,13 +118,13 @@ Shape:
 
 # Normal Distributions
 
-* The area under a normal distribution is always equal to 100% (it represents the whole of observations)
+* All members of a population fall within the normal distribution (it represents the whole of observations)
 
-* The area under the normal distribution curve corresponds to the percentage of observations.
+* Any area under the normal distribution curve corresponds to a defined percentage of observations that fall within that area.
 
 * We can always infer the percentage of observations in any part of a normal distribution.
 
-&lt;img src="continuous_l2_files/figure-html/unnamed-chunk-3-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="continuous_l2_files/figure-html/unnamed-chunk-4-1.png" style="display: block; margin: auto;" /&gt;
 
 ---
 
@@ -105,7 +154,7 @@ A randomly selected observation has an approximately...
 ]
 
 .pull-right[
-&lt;img src="continuous_l2_files/figure-html/unnamed-chunk-5-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="continuous_l2_files/figure-html/unnamed-chunk-6-1.png" style="display: block; margin: auto;" /&gt;
 ]
 
 ---
@@ -124,15 +173,15 @@ A randomly selected observation has an approximately...
 ]
 
 .pull-right[
-&lt;img src="continuous_l2_files/figure-html/unnamed-chunk-6-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="continuous_l2_files/figure-html/unnamed-chunk-7-1.png" style="display: block; margin: auto;" /&gt;
 ]
 ---
 # What is normal?
 
 * A normal distribution can take on any mean and standard deviation.
 
-&lt;img src="continuous_l2_files/figure-html/unnamed-chunk-7-1.png" style="display: block; margin: auto;" /&gt;
-* Regardless of the mean and standard deviation, the area under the curve is always equal to 1.
+&lt;img src="continuous_l2_files/figure-html/unnamed-chunk-8-1.png" style="display: block; margin: auto;" /&gt;
+* Regardless of the mean and standard deviation, the probability of selecting any particular value of that population at random always sums to 1.
 * The empirical rule still applies (e.g., 68% of observations occur within 1 SD of the mean).
 ---
 
@@ -140,7 +189,7 @@ A randomly selected observation has an approximately...
 
 * The **standard** normal distribution has a mean of 0 and a standard deviation of 1.
   
-&lt;img src="continuous_l2_files/figure-html/unnamed-chunk-8-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="continuous_l2_files/figure-html/unnamed-chunk-9-1.png" style="display: block; margin: auto;" /&gt;
 
 * The x-axis represents z-scores, meaning an observation's value represents how far it is from the mean.
 
@@ -150,25 +199,26 @@ A randomly selected observation has an approximately...
 * With a standard normal distribution, we can easily calculate the percentage of observations under any region.
 
 ---
-# Area Under the Normal Curve
+# Area under the normal curve
 Suppose we wanted to know the probability of scoring at least 1.5 SD above the mean on a standardized test of academic achievement. 
 
-&lt;img src="continuous_l2_files/figure-html/unnamed-chunk-9-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="continuous_l2_files/figure-html/unnamed-chunk-10-1.png" style="display: block; margin: auto;" /&gt;
 To answer this question, we just need to find the area of the shaded portion under the curve.
 
 ---
-# Area Under the Normal Curve
-* We can either use a computational tool or a z-score look-up table to calculate the area under the normal curve.
+# Area under the normal curve
+* We can either use some calculus or (more straightforward) a z-score look-up table to calculate the area under the normal curve.
 
-&lt;img src="continuous_l2_files/figure-html/unnamed-chunk-10-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="continuous_l2_files/figure-html/unnamed-chunk-11-1.png" style="display: block; margin: auto;" /&gt;
 --
 Either approach would show the area above 1.5 SD of a standard normal curve is .07.
 
 --
-Therefore, the probability of scoring above 1.5 SD on a standardized test is 7%.
+
+If the results of a basketball skills test fell in a standard normal distribution, then this would imply that 7 percent of all individuals score 1.5 SD or higher on this test.
 
 ---
-# Z-Test
+# `\(Z\)`-test
 Let's try it with our WHO data:
 * Suppose that the population mean national life expectancy is 71.64 `\((\mu)\)` with a SD of 8.15 `\((\sigma)\)`.
 
@@ -178,11 +228,11 @@ Let's try it with our WHO data:
 
 $$ z = \frac{76-71.64}{8.15} = 0.535$$
 
-&lt;img src="continuous_l2_files/figure-html/unnamed-chunk-11-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="continuous_l2_files/figure-html/unnamed-chunk-12-1.png" style="display: block; margin: auto;" /&gt;
 
 
 ---
-# Z-Test
+# `\(Z\)`-test
 
 
 ```
@@ -193,30 +243,36 @@ $$ z = \frac{76-71.64}{8.15} = 0.535$$
 
 The area under the curve above a z-score of 0.53 is .30. Therefore, the probability of randomly selecting a country with a national life expectancy greater than 76 is 30%.
 
-&lt;img src="continuous_l2_files/figure-html/unnamed-chunk-13-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="continuous_l2_files/figure-html/unnamed-chunk-14-1.png" style="display: block; margin: auto;" /&gt;
 
 ---
-# Population vs. Sample Distributions
+class: middle, inverse
+
+# Central Limit Theorem and statistical inference
+---
+# Population v. sample distribution
  
 Using the WHO dataset, let's say we want to identify the mean life expectancy across all countries. However, let's also assume we only have the resources to sample from 10 countries.
 
 .pull-left[
 
-Our **population statistic** represents the true value across all countries.
+Our **population statistic** represents the true value across all countries.&lt;sup&gt;1&lt;/sup&gt;
 
 
 
-&lt;img src="continuous_l2_files/figure-html/unnamed-chunk-15-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="continuous_l2_files/figure-html/unnamed-chunk-16-1.png" style="display: block; margin: auto;" /&gt;
 ]
 
 .pull-right[
 Our **sample statistic** will be our estimate of the population statistic using the countries we examine.
 
-&lt;img src="continuous_l2_files/figure-html/unnamed-chunk-16-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="continuous_l2_files/figure-html/unnamed-chunk-17-1.png" style="display: block; margin: auto;" /&gt;
 ]
 
+.footnote[[1] Again, this is somewhat of a simplification...we're getting close to why...!]
+
 ---
-# Sample Estimates
+# Sample estimates
 
 * Assume that our &lt;span style="color: blue;"&gt;true population mean `\((\mu)\)` &lt;/span&gt; is 71.64. 
 
@@ -226,30 +282,30 @@ Our **sample statistic** will be our estimate of the population statistic using 
 
 
 
-&lt;img src="continuous_l2_files/figure-html/unnamed-chunk-18-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="continuous_l2_files/figure-html/unnamed-chunk-19-1.png" style="display: block; margin: auto;" /&gt;
 
 ---
-# Population vs. Sample Distribution
+# Population v. sample distribution
 
 If we sample our population **100 times** and plot the estimated mean of each sample, the estimated means begin to form their own normal distribution. The mean of sample means is our &lt;span style="color: orange;"&gt; **estimated population mean** `\((\hat{\mu})\)` &lt;/span&gt;.
 
 
 
 
-&lt;img src="continuous_l2_files/figure-html/unnamed-chunk-20-.gif" style="display: block; margin: auto;" /&gt;
+&lt;img src="continuous_l2_files/figure-html/unnamed-chunk-21-.gif" style="display: block; margin: auto;" /&gt;
 
-The mean of our sampling distribution (mean of means) approaches the &lt;span style="color: blue;"&gt; population mean `\(({\mu})\)`&lt;/span&gt;. This is an example of the **central limit theorem**.
+The mean of our sampling distribution (mean of means) approaches the &lt;span style="color: blue;"&gt; population mean `\(({\mu})\)`&lt;/span&gt;. 
 
 If we sampled all possible samples of size *n* from our population, our mean of sample means would be equal to the population mean.
 
 ---
-## Central Limit Theorem
+# Central Limit Theorem
 
 * There is a difference between the fact that many populations approximate the normal distribution vs. the normal curve of sampling distributions.
 
-* Random sampling from the population will return means that will be asymptotically normal in their distribution as the number of samples approaches infinity.
+* Random sampling from the population **will return** means that will be asymptotically (approaching) normal in their distribution as the number of samples approaches infinity. This is mathematically what the Central Limit Theorem demonstrates.
 
-* Because of that mathematical truth, we can conduct inference in the statistics.
+* Because of that mathematical fact, we can conduct inference in the statistics.
 
 --
 
@@ -260,13 +316,13 @@ If we sampled all possible samples of size *n* from our population, our mean of 
 ]
 
 .pull-right[
-&lt;img src="continuous_l2_files/figure-html/unnamed-chunk-21-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="continuous_l2_files/figure-html/unnamed-chunk-22-1.png" style="display: block; margin: auto;" /&gt;
 ]
 
-Even though our life expectancy distribution is only approximately normal, our sampling curve **is** normal.
+Even though our life expectancy distribution is only approximately normal, the distribution of our sample means **is** (approaching) normal.
 
 ---
-## Central Limit Demonstration
+# Central Limit demonstration
 
 See the following the link for more demonstrations of the central limit theorem:
 {https://onlinestatbook.com/stat_sim/sampling_dist/ }
@@ -290,38 +346,72 @@ $$ \sigma_\bar{X} = \frac{\sigma}{\sqrt{n}}$$
 
 
 ---
-# T-Tests
-* One-Sample T-Test
-* T-Distributions
-* Applied Example
-* Hypothesis Testing
+class: middle, inverse
+
+# One sample `\(t\)`-tests
+---
+
+# `\(t\)`-tests
+* One-sample `\(t\)`-test
+* `\(t\)`-distributions
+* Applied example
+* Hypothesis testing
 
 ---
-# Population Variance
+# Population variance
 * In a z-test, the population standard deviation is assumed to be known.
 
-* In practice, we **rarely** know the true population standard deviation due to:
-  + Measurement Error
+* In practice, we **rarely** know the true population standard deviation **even if we observe all individuals in our "population"** (e.g., all students in a state, all countries in the world). This is because:
+  + Measurement error (e.g., we didn't measure how long everyone lived accurately)
   + Population statistics can be in constant flux (e.g., average life expectancies can change moment to moment)
+  + There are elements of idiosyncrasy in each individual's realized outcome that might have come out differently in some other lived reality (e.g. Sliding Doors, multi-verses)
   + Can be unfeasible to measure entire population
 
+--
+
+Thus, we tend to use ** `\(t\)`-distributions** to make our inferences, because these do not require us to know population variability.
+
 ---
-# T-Distributions
-* Assume that the population standard deviation `\((\sigma)\)` is unknown. 
-* T-distributions with smaller degrees of freedom have fatter tails. Assumes more uncertainty with smaller sample sizes.
-* Resemble Z-distributions as degrees of freedom increase.
-* The degrees of freedom for a t-test is always *n*-1, where *n* is your sample size.
+# `\(t\)`-distributions
+* Assume that the *population* standard deviation `\((\sigma)\)` is unknown. Instead, it uses the *sample* standard deviation. 
+* `\(t\)`-distributions with smaller sample sizes have "fatter" tails. Assumes more uncertainty with smaller sample sizes.
+* Resemble `\(Z\)`-distributions as .red[**degrees of freedom**] increase.
+
+---
+# An aside on degrees of freedom
+
+The .red[**degrees of freedom**] refers to the number of values in the calculation of a statistic that are free to vary. 
+
+In the calculation of simple, one-sample statistics (e.g., the mean) our degrees of freedom are always `\(n-1\)`, where `\(n\)` is our sample size.
+
+This is because once you know the mean and all but one of the values of the observations, the last observation must be a defined value:
+
+&gt; `$$mean(71, 73, 76, 78, ??) = 75.4$$`
+&gt; `$$\frac{71 + 73 + 76 + 78 + ??}{5} = 75.4$$`
+&gt; $$ ?? = (75.4 * 5) - 71 - 73 - 76 - 78$$
+&gt; $$ ?? = 79$$
+
+--
+
+In this case, therefore, our degrees of freedom are `\(5 - 1\)`; i.e. 4.
+
+---
+# `\(t\)`-distributions
+
+* Likewise, the degrees of freedom for a `\(t\)`-test is always *n*-1, where *n* is our sample size.
+* `\(t\)`-distributions with fewer degrees of freedom have "fatter" tails.
+
   
-&lt;img src="continuous_l2_files/figure-html/unnamed-chunk-23-.gif" style="display: block; margin: auto;" /&gt;
+&lt;img src="continuous_l2_files/figure-html/unnamed-chunk-24-.gif" style="display: block; margin: auto;" /&gt;
 
 
 
 
 ---
-# One Sample T-Test
-* T-tests are one of the most foundational statistical tests in classical statistics.
+# One sample `\(t\)`-test
+* `\(t\)`-tests are one of the most foundational statistical tests in classical statistics.
 
-* The purpose of a one-sample t-test is to describe the probability of obtaining a particular sample mean through random sampling variability, assuming the population mean = K.
+* The purpose of a one-sample `\(t\)`-test is to describe the probability of obtaining a particular sample mean through random sampling variability, assuming the population mean = K.
   + e.g. Is our observed sample mean to be expected if we repeatedly drew random samples from the population?
   
   
@@ -330,31 +420,31 @@ Suppose the known average life expectancy is 76 years with a standard deviation 
 
 
 ---
-# One Sample T-Test
+# One sample `\(t\)`-test
 *  The one sample t-test does **not** test the probability of obtaining the sample distribution or data itself, only the sample mean.
   
 *  Using the probability of obtaining a particular sample mean **Null Hypothesis** `\((H_0)\)`: `\(\mu = K\)`, where `\(K\)` is any constant.
 
 
 ---
-# One-Sample T-Test
+# One sample `\(t\)`-test
 * With a z-test, we were able to find the number of observations that fell beyond a particular value. That value was our z-statistic.
 * The t-statistic is functionally like a z-statistic, but for the t-distribution.
 
-&lt;img src="continuous_l2_files/figure-html/unnamed-chunk-25-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="continuous_l2_files/figure-html/unnamed-chunk-26-1.png" style="display: block; margin: auto;" /&gt;
 
 
 ---
-# T-Distribution
+# `\(t\)`-distribution
 * Shape of the t-distribution is slightly different depending on the degrees of freedom `\((n-1)\)`.
 
 * Thus, the proportion of the area under the curve beyond our t-value also depends on our degrees of freedom.
 
 
-&lt;img src="continuous_l2_files/figure-html/unnamed-chunk-26-.gif" style="display: block; margin: auto;" /&gt;
+&lt;img src="continuous_l2_files/figure-html/unnamed-chunk-27-.gif" style="display: block; margin: auto;" /&gt;
 
 ---
-# One-Sample T-Test
+# One sample `\(t\)`-test
 
 * To calculate a t-statistic, we use the same formula to calculate a z-score, but replace the population standard deviation with the sample's standard deviation.
 
@@ -363,26 +453,26 @@ Since we don't know the population standard deviation `\((\mu)\)`, our samples s
 $$ t = \frac{\bar{X} - \mu}{s/\sqrt{n}} $$
 
 ---
-## Applying a t-test
+# Applying a `\(t\)`-test
 Suppose we have data from a sample of 10 countries with a mean life expectancy of 66.87 and standard deviation of 5.82.
 
 If our population mean is thought to be 78.16 `\((H_0: \sigma = 78.16)\)`, what is the probability of obtaining a sample mean of 66.87, **or a more extreme mean value**, due to random sampling variability?
 `$$t(9) = \frac{66.87 - 75.16}{5.82/\sqrt{10}} = -1.24$$`
-&lt;img src="continuous_l2_files/figure-html/unnamed-chunk-27-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="continuous_l2_files/figure-html/unnamed-chunk-28-1.png" style="display: block; margin: auto;" /&gt;
 
 ---
-# Applying a t-test
+# Applying a `\(t\)`-test
 
 Assuming a population mean of 78.16 and sample size of 10...
 
 .pull-left[
-&lt;img src="continuous_l2_files/figure-html/unnamed-chunk-28-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="continuous_l2_files/figure-html/unnamed-chunk-29-1.png" style="display: block; margin: auto;" /&gt;
 
 ...the proportion of random samples that would demonstrate a sample mean **equal to or lower than 66.87** is 0.12 (i.e., *p* = 0.12).
 ]
 
 .pull-right[
-&lt;img src="continuous_l2_files/figure-html/unnamed-chunk-29-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="continuous_l2_files/figure-html/unnamed-chunk-30-1.png" style="display: block; margin: auto;" /&gt;
 ...the proportion of random samples that would demonstrate a sample mean **equal to or more extreme than 66.87** is 0.24 (i.e., *p* = 0.24).
 ]
 
@@ -391,7 +481,7 @@ Assuming a population mean of 78.16 and sample size of 10...
 &gt; If the null hypothesis is true, the probability of obtaining a sample mean equal to or more extreme 66.87 is 0.24.
 
 ---
-## One-Tailed Test vs. Two Tailed Test
+# One-tailed vs. two-tailed test
 
 A one vs. two tailed test apply different alternative hypotheses from the null.
 
@@ -428,51 +518,68 @@ Tests the possibility of a significant difference in either direction.
 # Demonstration
 
 Dr. DSM finds that the mean post-intervention depression rating did not fall below the critical t-value for the one-tailed test. The new intervention group did not demonstrate significantly lower than normal post-treatment averages.
-&lt;img src="continuous_l2_files/figure-html/unnamed-chunk-30-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="continuous_l2_files/figure-html/unnamed-chunk-31-1.png" style="display: block; margin: auto;" /&gt;
 
-What conclusion was missed with the one-tailed test?
+.blue[What conclusion was missed with the one-tailed test?]
 
 --
 The sample had much higher levels of depression than we'd expect! Neither the null `\((\mu = K)\)` or alternative hypothesis `\((\mu &lt; K)\)` seem tenable.
 
 ---
-# Alpha Thresholds and t-values
+# Alpha thresholds and `\(t\)`-values
 
 With two-tailed tests, the total alpha is "split" across both tails of the distribution.
  * If `\(\alpha = .05\)`, `\(\alpha/2 = 0.025\)`.
 
 * Critical t-values `\(t_{\alpha/2}(df)\)` are the values at which our alpha threshold is met.
   
-&lt;img src="continuous_l2_files/figure-html/unnamed-chunk-31-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="continuous_l2_files/figure-html/unnamed-chunk-32-1.png" style="display: block; margin: auto;" /&gt;
 
 If we conducted a t-test, our t-statistic would have to be less than -2.2622 or greater than 2.2622 to reject the null hypothesis.
 
 ---
-# One Sample T-test
+# One sample `\(t\)`-test
 
-* Assuming we had set our `\(\alpha\)` at .05, let's see if we reject our null hypothesis in our previous example.
+* Assuming we had set our `\(\alpha\)` at .05, let's see if we reject our null hypothesis in our earlier question: *do countries around the Mediterranean Sea significantly differ from the known population average?*
 
 .pull-left[
 Our observed t-value did not surpass our critical t-values.
-&lt;img src="continuous_l2_files/figure-html/unnamed-chunk-32-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="continuous_l2_files/figure-html/unnamed-chunk-33-1.png" style="display: block; margin: auto;" /&gt;
 ]
 
 .pull-right[
 Our p-value is not less than .05 and does not satisfy our alpha threshold.
-&lt;img src="continuous_l2_files/figure-html/unnamed-chunk-33-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="continuous_l2_files/figure-html/unnamed-chunk-34-1.png" style="display: block; margin: auto;" /&gt;
 ]
 
 Whether we compare our t-statistic to our critical t-values or our look at our p-value, we come to the same conclusion.
 
 
 ---
-# One Sample T-test
+# Interpretation of `\(t\)`-test
 
-&lt;img src="continuous_l2_files/figure-html/unnamed-chunk-34-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="continuous_l2_files/figure-html/unnamed-chunk-35-1.png" style="display: block; margin: auto;" /&gt;
 
 Assuming a population mean of 78.16 and sample size of 10, the proportion of random samples that would demonstrate a sample mean **equal to or more extreme than 66.87** is 0.24 `\((t = -1.24, p = 0.24)\)`. Because our p-value does not meet our alpha threshold of .05, we **fail to reject the null hypothesis**.
 
-Thus, we can conclude that the mean life expectancy of this sample of countries is not different from the mean population average.
+Thus, we can conclude that the mean life expectancy of this sample of countries around the Mediterranean is not different from the mean population average.
+
+---
+# Putting it together
+
+1. We can characterize the central tendency and variability of any distribution with several useful statistics
+2. The normal distribution has several features that allow us to state precisely how likely it is that we would observe any particular value under the normal curve
+3. Statistics calculated in samples that are drawn repeatedly from a population will form their own distributions. 
+4. Even if the population itself is not normal, the mean of sample means drawn from that population **will** be normal
+5. As a result, we can test whether any observed sample mean is different from the population mean
+
+.red[**Even if it's not apparent yet, these foundational building blocks will allow you later to compare two groups, characterize the relationship between two variables and more!**]
+
+---
+class: middle, inverse
+# Synthesis and wrap-up
+
+
 
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
