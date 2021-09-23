@@ -1111,3 +1111,24 @@
 .small {
   font-size: 90%;
 }
+
+
+/* Extra CSS */
+.red {
+  color: red;
+}
+.blue {
+  color: blue;
+}
+.red-pink {
+  color: #e64173;
+}
+.grey-light {
+  color: #dbd7d8;
+}
+.purple {
+  color: purple;
+}
+.small {
+  font-size: 90%;
+}
