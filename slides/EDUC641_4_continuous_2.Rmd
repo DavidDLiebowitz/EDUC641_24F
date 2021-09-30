@@ -314,8 +314,9 @@ Can think of the OLS-fitted regression line as a stick held in place by thumbtac
 
 ---
 # A visualization
-```{r, echo =F, asis=T}
-include_app(here::here("line_SS/app.R"))
+```{r, echo=F, asis=T, fig.height=8}
+include_app(c("https://daviddl.shinyapps.io/line_ss/"), height="550px")
+
 ## focus only on residuals not SSEs
 
 ```
