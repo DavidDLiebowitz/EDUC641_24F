@@ -119,7 +119,7 @@ In frequentist statistics, we establish an objective decision rule: if our obser
 - Once we set a threshold (an $\alpha$-theshold), we are making a binary decision about significance and non-significance
 
 - Relationships are *NOT* "more" or "less" significant 
- + In fact, the distribution of *p*-values on either side of the alpha threshold is assumed to be uniform; thus, it's not correct to describe observed vs. expected probabilities in relationship to each (e.g., a *p*-value of 0.01 is **not** three times less likely than a *p*-value of 0.03). 
+ + In fact, the distribution of *p*-values under the null hypothesis is a uniform one; thus, it's not correct to describe observed vs. expected probabilities in relationship to each (e.g., a *p*-value of 0.01 is **not** three times less likely than a *p*-value of 0.03). 
 
 
 - Many of these concerns (and conflicts) relate to different ways of thinking about probability
