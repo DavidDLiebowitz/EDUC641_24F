@@ -629,7 +629,7 @@ body {
   padding-top: 60px;
 }
 </style>
-<script src="site_libs/header-attrs-2.11/header-attrs.js"></script>
+<script src="site_libs/header-attrs-2.14.3/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/cosmo.min.css" rel="stylesheet" />
@@ -681,6 +681,7 @@ if (window.hljs) {
 
 
 
+
 <style type = "text/css">
 .main-container {
   max-width: 940px;
@@ -701,6 +702,9 @@ button.code-folding-btn:focus {
 }
 summary {
   display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
 }
 pre code {
   padding: 0;
@@ -758,11 +762,15 @@ $(document).ready(function () {
     href = "index.html";
   var menuAnchor = $('a[href="' + href + '"]');
 
-  // mark it active
-  menuAnchor.tab('show');
-
-  // if it's got a parent navbar menu mark it active as well
-  menuAnchor.closest('li.dropdown').addClass('active');
+  // mark the anchor link active (and if it's in a dropdown, also mark that active)
+  var dropdown = menuAnchor.closest('li.dropdown');
+  if (window.bootstrap) { // Bootstrap 4+
+    menuAnchor.addClass('active');
+    dropdown.find('> .dropdown-toggle').addClass('active');
+  } else { // Bootstrap 3
+    menuAnchor.parent().addClass('active');
+    dropdown.addClass('active');
+  }
 
   // Navbar adjustments
   var navHeight = $(".navbar").first().height() + 15;
@@ -936,13 +944,25 @@ Lectures
 <span class="down-arrow">&#x25BE;</span>
 </button>
 <div class="nav-dropdown-content">
-<a href="./slides/EDUC641_1_intro.html">Unit 0: Intro &amp; Sci Principles</a>
-<a href="./slides/EDUC641_2_categ_1.html">Unit 1: Categorical descriptives</a>
-<a href="./slides/EDUC641_2_categ_2.html">Unit 2: Categorical relationships</a>
-<a href="./slides/continuous_l1.html">Unit 3a: Continuous descriptives</a>
-<a href="./slides/continuous_l2.html">Unit 3b: Central Limit Theorem &amp; Inference</a>
-<a href="./slides/EDUC641_4_continuous_2.html">Unit 4a: Continuous relationships</a>
-<a href="./slides/EDUC641_4_continuous_3.html">Unit 4b: NHST Critiques &amp; Replicable research</a>
+<a href="./slides/EDUC641_1_intro.html">1. Intro &amp; research design</a>
+<span class="nav-dropdown-header">2. Variables</span>
+<span class="nav-dropdown-header">3. Categorical descriptives</span>
+<span class="nav-dropdown-header">4. Categorical relationships I</span>
+<span class="nav-dropdown-header">5. Categorical relationships II</span>
+<span class="nav-dropdown-header">6. Troubling history of stats</span>
+<span class="nav-dropdown-header">7. Continuous descriptives I</span>
+<span class="nav-dropdown-header">8. Continuous descriptives II</span>
+<span class="nav-dropdown-header">9. Z-scores and effect sizes</span>
+<span class="nav-dropdown-header">10. CLT I</span>
+<span class="nav-dropdown-header">11. CLT II</span>
+<span class="nav-dropdown-header">12. NHST</span>
+<span class="nav-dropdown-header">13. One-sample t-tests</span>
+<span class="nav-dropdown-header">14. Continuous relationships I</span>
+<span class="nav-dropdown-header">15. Continuous relationships II</span>
+<span class="nav-dropdown-header">16. Continuous relationships III</span>
+<span class="nav-dropdown-header">17. Correlation and causality</span>
+<span class="nav-dropdown-header">18. NHST critiques</span>
+<span class="nav-dropdown-header">Summing up</span>
 </div>
 </div>
 </div>
@@ -962,7 +982,7 @@ Lectures
 <div class="navbar navbar-default  navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
@@ -978,33 +998,33 @@ Lectures
   <a href="schedule.html">Schedule</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Lectures
      
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="./slides/EDUC641_1_intro.html">Unit 0: Intro &amp; Sci Principles</a>
+      <a href="./slides/EDUC641_1_intro.html">1. Intro &amp; research design</a>
     </li>
-    <li>
-      <a href="./slides/EDUC641_2_categ_1.html">Unit 1: Categorical descriptives</a>
-    </li>
-    <li>
-      <a href="./slides/EDUC641_2_categ_2.html">Unit 2: Categorical relationships</a>
-    </li>
-    <li>
-      <a href="./slides/continuous_l1.html">Unit 3a: Continuous descriptives</a>
-    </li>
-    <li>
-      <a href="./slides/continuous_l2.html">Unit 3b: Central Limit Theorem &amp; Inference</a>
-    </li>
-    <li>
-      <a href="./slides/EDUC641_4_continuous_2.html">Unit 4a: Continuous relationships</a>
-    </li>
-    <li>
-      <a href="./slides/EDUC641_4_continuous_3.html">Unit 4b: NHST Critiques &amp; Replicable research</a>
-    </li>
+    <li class="dropdown-header">2. Variables</li>
+    <li class="dropdown-header">3. Categorical descriptives</li>
+    <li class="dropdown-header">4. Categorical relationships I</li>
+    <li class="dropdown-header">5. Categorical relationships II</li>
+    <li class="dropdown-header">6. Troubling history of stats</li>
+    <li class="dropdown-header">7. Continuous descriptives I</li>
+    <li class="dropdown-header">8. Continuous descriptives II</li>
+    <li class="dropdown-header">9. Z-scores and effect sizes</li>
+    <li class="dropdown-header">10. CLT I</li>
+    <li class="dropdown-header">11. CLT II</li>
+    <li class="dropdown-header">12. NHST</li>
+    <li class="dropdown-header">13. One-sample t-tests</li>
+    <li class="dropdown-header">14. Continuous relationships I</li>
+    <li class="dropdown-header">15. Continuous relationships II</li>
+    <li class="dropdown-header">16. Continuous relationships III</li>
+    <li class="dropdown-header">17. Correlation and causality</li>
+    <li class="dropdown-header">18. NHST critiques</li>
+    <li class="dropdown-header">Summing up</li>
   </ul>
 </li>
       </ul>
@@ -1034,7 +1054,8 @@ Lectures
 
 <div id="unit-0" class="section level2">
 <h2>Unit 0</h2>
-<p><strong>Topic: Introduction to scientific principles and data analysis</strong></p>
+<p><strong>Topic: Introduction to scientific principles and data
+analysis</strong></p>
 <p>Objectives:</p>
 <ul>
 <li>Describe goals of course and principles of scientific research</li>
@@ -1043,17 +1064,22 @@ Lectures
 </ul>
 <p>Readings:</p>
 <ul>
-<li><a href="https://learningstatisticswithr.com/lsr-0.6.pdf">LSWR Chapters 2 and 3</a> and <a href="https://nautil.us/issue/92/frontiers/how-eugenics-shaped-statistics">Clayton 2020</a></li>
+<li><a href="https://learningstatisticswithr.com/lsr-0.6.pdf">LSWR
+Chapters 2 and 3</a> and <a
+href="https://nautil.us/issue/92/frontiers/how-eugenics-shaped-statistics">Clayton
+2020</a></li>
 </ul>
 <p>Lectures:</p>
 <ul>
-<li>Slides: <a href="./slides/EDUC641_1_intro.html">html</a> | <a href="./slides/EDUC641_1_intro.pdf">pdf</a></li>
+<li>Slides: <a href="./slides/EDUC641_1_intro.html">html</a> | <a
+href="./slides/EDUC641_1_intro.pdf">pdf</a></li>
 <li>R Tutorial slides: <a href="./slides/tutorial.html">html</a></li>
 </ul>
 </div>
 <div id="unit-1" class="section level2">
 <h2>Unit 1</h2>
-<p><strong>Topic: Summarizing and displaying categorical data</strong></p>
+<p><strong>Topic: Summarizing and displaying categorical
+data</strong></p>
 <p>Objectives:</p>
 <ul>
 <li>Understand and implement principles of tabular data in R</li>
@@ -1063,12 +1089,17 @@ Lectures
 </ul>
 <p>Readings:</p>
 <ul>
-<li><a href="https://learningstatisticswithr.com/lsr-0.6.pdf">LSWR Chapters 6</a> and <a href="https://www.newstatesman.com/uncategorized/2020/07/ra-fisher-and-science-hatred">Evans 2020</a></li>
+<li><a href="https://learningstatisticswithr.com/lsr-0.6.pdf">LSWR
+Chapters 6</a> and <a
+href="https://www.newstatesman.com/uncategorized/2020/07/ra-fisher-and-science-hatred">Evans
+2020</a></li>
 </ul>
 <p>Lectures:</p>
 <ul>
-<li>Slides: <a href="./slides/EDUC641_2_categ_1.html">html</a> | <a href="./slides/EDUC641_2_categ_1.pdf">pdf</a></li>
-<li>Data: <a href="./data/deathpenalty.csv">deathpenalty.csv</a> | <a href="./data/deathpenalty.csv">codebook</a></li>
+<li>Slides: <a href="./slides/EDUC641_2_categ_1.html">html</a> | <a
+href="./slides/EDUC641_2_categ_1.pdf">pdf</a></li>
+<li>Data: <a href="./data/deathpenalty.csv">deathpenalty.csv</a> | <a
+href="./data/deathpenalty.csv">codebook</a></li>
 <li>R code: <a href="./slides/EDUC641_2_code.R">R script</a></li>
 </ul>
 <p>Assignment 1:</p>
@@ -1080,21 +1111,33 @@ Lectures
 </div>
 <div id="unit-2" class="section level2">
 <h2>Unit 2</h2>
-<p><strong>Topic: Examining the relationship between categorical variables</strong></p>
+<p><strong>Topic: Examining the relationship between categorical
+variables</strong></p>
 <p>Objectives:</p>
 <ul>
-<li>Describe relationships between quantitative data that are categorical</li>
-<li>Calculate an index of the strength of the relationship between two categorical variables, the chi-squared ( <span class="math inline">\(\chi^2\)</span>) statistic</li>
+<li>Describe relationships between quantitative data that are
+categorical</li>
+<li>Calculate an index of the strength of the relationship between two
+categorical variables, the chi-squared ( <span
+class="math inline">\(\chi^2\)</span>) statistic</li>
 <li>Write R scripts to conduct these analyses</li>
 <li>Formulate and describe the purpose of a null hypothesis</li>
-<li>Conceptually describe the criteria to make a statistical inference from a sample to a population</li>
-<li>Interpret and report the results of a contingency-table analysis and a statistical inference from a chi-squared statistic</li>
+<li>Conceptually describe the criteria to make a statistical inference
+from a sample to a population</li>
+<li>Interpret and report the results of a contingency-table analysis and
+a statistical inference from a chi-squared statistic</li>
 </ul>
-<p>Readings: - <a href="https://learningstatisticswithr.com/lsr-0.6.pdf">LSWR Chapters 11 and 12</a> and <a href="http://gppreview.com/2019/12/16/eugenics-ethics-statistical-analysis/">Levy 2019</a></p>
+<p>Readings: - <a
+href="https://learningstatisticswithr.com/lsr-0.6.pdf">LSWR Chapters 11
+and 12</a> and <a
+href="http://gppreview.com/2019/12/16/eugenics-ethics-statistical-analysis/">Levy
+2019</a></p>
 <p>Lectures:</p>
 <ul>
-<li>Slides: <a href="./slides/EDUC641_2_categ_2.html">html</a> | <a href="./slides/EDUC641_2_categ_2.pdf">pdf file</a></li>
-<li>Data: <a href="./data/deathpenalty.csv">deathpenalty.csv</a> | <a href="./data/deathpenalty.csv">codebook</a></li>
+<li>Slides: <a href="./slides/EDUC641_2_categ_2.html">html</a> | <a
+href="./slides/EDUC641_2_categ_2.pdf">pdf file</a></li>
+<li>Data: <a href="./data/deathpenalty.csv">deathpenalty.csv</a> | <a
+href="./data/deathpenalty.csv">codebook</a></li>
 <li>R code: <a href="./slides/EDUC641_2_code.R">R script</a></li>
 </ul>
 <p>Assignment 2:</p>
@@ -1106,33 +1149,49 @@ Lectures
 </div>
 <div id="unit-3" class="section level2">
 <h2>Unit 3</h2>
-<p><strong>Topic: Summarizing and displaying continuous data</strong></p>
+<p><strong>Topic: Summarizing and displaying continuous
+data</strong></p>
 <p>Objectives:</p>
 <ul>
 <li>Describe and summarize quantitative data that are continuous</li>
-<li>Describe the purpose and compute the following measures of central tendency: mean, median and mode</li>
-<li>Descripe the purpose and compute the following measures of variability: quartiles, inter-quartile range, range, variance and standard deviation
+<li>Describe the purpose and compute the following measures of central
+tendency: mean, median and mode</li>
+<li>Descripe the purpose and compute the following measures of
+variability: quartiles, inter-quartile range, range, variance and
+standard deviation
 <ul>
 <li>Describe conceptually the principles of skewness and kurtosis</li>
 </ul></li>
-<li>Create visualizations of quantitative data that are continuous using R
+<li>Create visualizations of quantitative data that are continuous using
+R
 <ul>
-<li>Includes constructing histograms, densities, stem-and-leaf, and box-and-whisker plots</li>
+<li>Includes constructing histograms, densities, stem-and-leaf, and
+box-and-whisker plots</li>
 </ul></li>
 <li>Describe special features of a normal distribution</li>
-<li>Describe the distribution of repeated sample statistics drawn from a population, how this relates to the Central Limit Theorem (CLT) and how this is informative to statistical hypothesis testing</li>
-<li>Determine whether the mean value of a sample is different than a defined population value (when provided the <em>SD</em> of the variable, aka <span class="math inline">\(Z\)</span>-test)</li>
+<li>Describe the distribution of repeated sample statistics drawn from a
+population, how this relates to the Central Limit Theorem (CLT) and how
+this is informative to statistical hypothesis testing</li>
+<li>Determine whether the mean value of a sample is different than a
+defined population value (when provided the <em>SD</em> of the variable,
+aka <span class="math inline">\(Z\)</span>-test)</li>
 <li>Conduct one-sample <span class="math inline">\(t\)</span>-tests</li>
 </ul>
 <p>Readings:</p>
 <ul>
-<li><a href="https://learningstatisticswithr.com/lsr-0.6.pdf">LSWR Chapters 5 and 10</a> and <a href="https://bostonreview.net/science-nature-race/lily-hu-race-policing-and-limits-social-science">Hu 2021</a></li>
+<li><a href="https://learningstatisticswithr.com/lsr-0.6.pdf">LSWR
+Chapters 5 and 10</a> and <a
+href="https://bostonreview.net/science-nature-race/lily-hu-race-policing-and-limits-social-science">Hu
+2021</a></li>
 </ul>
 <p>Lecture slides:</p>
 <ul>
-<li>Distributions slides: <a href="./slides/continuous_l1.html">html</a></li>
-<li>CLT and inference slides: <a href="./slides/continuous_l2.html">html</a></li>
-<li>Data: <a href="./data/life_expectancy.csv">life_expectancy.csv</a></li>
+<li>Distributions slides: <a
+href="./slides/continuous_l1.html">html</a></li>
+<li>CLT and inference slides: <a
+href="./slides/continuous_l2.html">html</a></li>
+<li>Data: <a
+href="./data/life_expectancy.csv">life_expectancy.csv</a></li>
 <li>R script:</li>
 </ul>
 <p>Assignment 3:</p>
@@ -1144,28 +1203,42 @@ Lectures
 </div>
 <div id="unit-4" class="section level2">
 <h2>Unit 4</h2>
-<p><strong>Topic: Describing relationships between continuous data</strong></p>
+<p><strong>Topic: Describing relationships between continuous
+data</strong></p>
 <p>Objectives:</p>
 <ul>
-<li>Describe relationships between quantitative data that are continuous</li>
-<li>Visualize and substantively describe the relationship between two continuous variables</li>
+<li>Describe relationships between quantitative data that are
+continuous</li>
+<li>Visualize and substantively describe the relationship between two
+continuous variables</li>
 <li>Describe and interpret a fitted bivariate regression line</li>
-<li>Describe and interpret components of a fitted bivariate linear regression model</li>
-<li>Visualize and substantively interpret residuals resulting from a bivariate regression model</li>
-<li>Conduct a statistical inference test of the slope and intercept of a bivariate regression model</li>
+<li>Describe and interpret components of a fitted bivariate linear
+regression model</li>
+<li>Visualize and substantively interpret residuals resulting from a
+bivariate regression model</li>
+<li>Conduct a statistical inference test of the slope and intercept of a
+bivariate regression model</li>
 <li>Write R scripts to conduct these analyses</li>
-<li>Articulate modern critiques of null-hypothesis significance testing framework</li>
-<li>Describe strategies to improve replicability and generalizability of quantitative research</li>
+<li>Articulate modern critiques of null-hypothesis significance testing
+framework</li>
+<li>Describe strategies to improve replicability and generalizability of
+quantitative research</li>
 </ul>
 <p>Readings:</p>
 <ul>
-<li><a href="https://learningstatisticswithr.com/lsr-0.6.pdf">LSWR Chapter 15.1 and 15.2</a></li>
+<li><a href="https://learningstatisticswithr.com/lsr-0.6.pdf">LSWR
+Chapter 15.1 and 15.2</a></li>
 </ul>
 <p>Lecture slides:</p>
 <ul>
-<li>Continuous relationship slides: <a href="./slides/EDUC641_4_continuous_2.html">html</a> | <a href="./slides/EDUC641_4_continuous_2.pdf">pdf</a></li>
-<li>NHST critiques slides: <a href="./slides/EDUC641_4_continuous_3.html">html</a> | <a href="./slides/EDUC641_4_continuous_3.pdf">pdf</a></li>
-<li>Data: <a href="./data/life_expectancy.csv">life_expectancy.csv</a></li>
+<li>Continuous relationship slides: <a
+href="./slides/EDUC641_4_continuous_2.html">html</a> | <a
+href="./slides/EDUC641_4_continuous_2.pdf">pdf</a></li>
+<li>NHST critiques slides: <a
+href="./slides/EDUC641_4_continuous_3.html">html</a> | <a
+href="./slides/EDUC641_4_continuous_3.pdf">pdf</a></li>
+<li>Data: <a
+href="./data/life_expectancy.csv">life_expectancy.csv</a></li>
 <li>R code: <a href="./slides/EDUC641_4_code.R">R script</a></li>
 </ul>
 <p>Assignment 4:</p>
@@ -1180,7 +1253,8 @@ Lectures
 <ul>
 <li>Due TBD</li>
 <li><a href="./assignments/assignment05.html">html file</a></li>
-<li><a href="./data/ah01.csv">ah01.csv</a>; <a href="./data/ah02.csv">ah02.csv</a></li>
+<li><a href="./data/ah01.csv">ah01.csv</a>; <a
+href="./data/ah02.csv">ah02.csv</a></li>
 </ul>
 </div>
 

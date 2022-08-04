@@ -629,7 +629,7 @@ body {
   padding-top: 60px;
 }
 </style>
-<script src="site_libs/header-attrs-2.11/header-attrs.js"></script>
+<script src="site_libs/header-attrs-2.14.3/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
@@ -676,6 +676,7 @@ if (window.hljs) {
 
 
 
+
 <style type = "text/css">
 .main-container {
   max-width: 940px;
@@ -696,6 +697,9 @@ button.code-folding-btn:focus {
 }
 summary {
   display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
 }
 pre code {
   padding: 0;
@@ -753,11 +757,15 @@ $(document).ready(function () {
     href = "index.html";
   var menuAnchor = $('a[href="' + href + '"]');
 
-  // mark it active
-  menuAnchor.tab('show');
-
-  // if it's got a parent navbar menu mark it active as well
-  menuAnchor.closest('li.dropdown').addClass('active');
+  // mark the anchor link active (and if it's in a dropdown, also mark that active)
+  var dropdown = menuAnchor.closest('li.dropdown');
+  if (window.bootstrap) { // Bootstrap 4+
+    menuAnchor.addClass('active');
+    dropdown.find('> .dropdown-toggle').addClass('active');
+  } else { // Bootstrap 3
+    menuAnchor.parent().addClass('active');
+    dropdown.addClass('active');
+  }
 
   // Navbar adjustments
   var navHeight = $(".navbar").first().height() + 15;
@@ -858,13 +866,25 @@ Lectures
 <span class="down-arrow">&#x25BE;</span>
 </button>
 <div class="nav-dropdown-content">
-<a href="./slides/EDUC641_1_intro.html">Unit 0: Intro &amp; Sci Principles</a>
-<a href="./slides/EDUC641_2_categ_1.html">Unit 1: Categorical descriptives</a>
-<a href="./slides/EDUC641_2_categ_2.html">Unit 2: Categorical relationships</a>
-<a href="./slides/continuous_l1.html">Unit 3a: Continuous descriptives</a>
-<a href="./slides/continuous_l2.html">Unit 3b: Central Limit Theorem &amp; Inference</a>
-<a href="./slides/EDUC641_4_continuous_2.html">Unit 4a: Continuous relationships</a>
-<a href="./slides/EDUC641_4_continuous_3.html">Unit 4b: NHST Critiques &amp; Replicable research</a>
+<a href="./slides/EDUC641_1_intro.html">1. Intro &amp; research design</a>
+<span class="nav-dropdown-header">2. Variables</span>
+<span class="nav-dropdown-header">3. Categorical descriptives</span>
+<span class="nav-dropdown-header">4. Categorical relationships I</span>
+<span class="nav-dropdown-header">5. Categorical relationships II</span>
+<span class="nav-dropdown-header">6. Troubling history of stats</span>
+<span class="nav-dropdown-header">7. Continuous descriptives I</span>
+<span class="nav-dropdown-header">8. Continuous descriptives II</span>
+<span class="nav-dropdown-header">9. Z-scores and effect sizes</span>
+<span class="nav-dropdown-header">10. CLT I</span>
+<span class="nav-dropdown-header">11. CLT II</span>
+<span class="nav-dropdown-header">12. NHST</span>
+<span class="nav-dropdown-header">13. One-sample t-tests</span>
+<span class="nav-dropdown-header">14. Continuous relationships I</span>
+<span class="nav-dropdown-header">15. Continuous relationships II</span>
+<span class="nav-dropdown-header">16. Continuous relationships III</span>
+<span class="nav-dropdown-header">17. Correlation and causality</span>
+<span class="nav-dropdown-header">18. NHST critiques</span>
+<span class="nav-dropdown-header">Summing up</span>
 </div>
 </div>
 </div>
@@ -884,7 +904,7 @@ Lectures
 <div class="navbar navbar-default  navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
@@ -900,33 +920,33 @@ Lectures
   <a href="schedule.html">Schedule</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Lectures
      
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="./slides/EDUC641_1_intro.html">Unit 0: Intro &amp; Sci Principles</a>
+      <a href="./slides/EDUC641_1_intro.html">1. Intro &amp; research design</a>
     </li>
-    <li>
-      <a href="./slides/EDUC641_2_categ_1.html">Unit 1: Categorical descriptives</a>
-    </li>
-    <li>
-      <a href="./slides/EDUC641_2_categ_2.html">Unit 2: Categorical relationships</a>
-    </li>
-    <li>
-      <a href="./slides/continuous_l1.html">Unit 3a: Continuous descriptives</a>
-    </li>
-    <li>
-      <a href="./slides/continuous_l2.html">Unit 3b: Central Limit Theorem &amp; Inference</a>
-    </li>
-    <li>
-      <a href="./slides/EDUC641_4_continuous_2.html">Unit 4a: Continuous relationships</a>
-    </li>
-    <li>
-      <a href="./slides/EDUC641_4_continuous_3.html">Unit 4b: NHST Critiques &amp; Replicable research</a>
-    </li>
+    <li class="dropdown-header">2. Variables</li>
+    <li class="dropdown-header">3. Categorical descriptives</li>
+    <li class="dropdown-header">4. Categorical relationships I</li>
+    <li class="dropdown-header">5. Categorical relationships II</li>
+    <li class="dropdown-header">6. Troubling history of stats</li>
+    <li class="dropdown-header">7. Continuous descriptives I</li>
+    <li class="dropdown-header">8. Continuous descriptives II</li>
+    <li class="dropdown-header">9. Z-scores and effect sizes</li>
+    <li class="dropdown-header">10. CLT I</li>
+    <li class="dropdown-header">11. CLT II</li>
+    <li class="dropdown-header">12. NHST</li>
+    <li class="dropdown-header">13. One-sample t-tests</li>
+    <li class="dropdown-header">14. Continuous relationships I</li>
+    <li class="dropdown-header">15. Continuous relationships II</li>
+    <li class="dropdown-header">16. Continuous relationships III</li>
+    <li class="dropdown-header">17. Correlation and causality</li>
+    <li class="dropdown-header">18. NHST critiques</li>
+    <li class="dropdown-header">Summing up</li>
   </ul>
 </li>
       </ul>
@@ -955,9 +975,22 @@ Lectures
 
 <p>The MIT License (MIT)</p>
 <p>Copyright (c) 2021</p>
-<p>Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the “Software”), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:</p>
-<p>The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.</p>
-<p>THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</p>
+<p>Permission is hereby granted, free of charge, to any person obtaining
+a copy of this software and associated documentation files (the
+“Software”), to deal in the Software without restriction, including
+without limitation the rights to use, copy, modify, merge, publish,
+distribute, sublicense, and/or sell copies of the Software, and to
+permit persons to whom the Software is furnished to do so, subject to
+the following conditions:</p>
+<p>The above copyright notice and this permission notice shall be
+included in all copies or substantial portions of the Software.</p>
+<p>THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
+CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</p>
 
 <!--radix_placeholder_site_after_body-->
 <!--/radix_placeholder_site_after_body-->

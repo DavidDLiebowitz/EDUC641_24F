@@ -629,7 +629,7 @@ body {
   padding-top: 60px;
 }
 </style>
-<script src="site_libs/header-attrs-2.11/header-attrs.js"></script>
+<script src="site_libs/header-attrs-2.14.3/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/cosmo.min.css" rel="stylesheet" />
@@ -681,6 +681,7 @@ if (window.hljs) {
 
 
 
+
 <style type = "text/css">
 .main-container {
   max-width: 940px;
@@ -701,6 +702,9 @@ button.code-folding-btn:focus {
 }
 summary {
   display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
 }
 pre code {
   padding: 0;
@@ -758,11 +762,15 @@ $(document).ready(function () {
     href = "index.html";
   var menuAnchor = $('a[href="' + href + '"]');
 
-  // mark it active
-  menuAnchor.tab('show');
-
-  // if it's got a parent navbar menu mark it active as well
-  menuAnchor.closest('li.dropdown').addClass('active');
+  // mark the anchor link active (and if it's in a dropdown, also mark that active)
+  var dropdown = menuAnchor.closest('li.dropdown');
+  if (window.bootstrap) { // Bootstrap 4+
+    menuAnchor.addClass('active');
+    dropdown.find('> .dropdown-toggle').addClass('active');
+  } else { // Bootstrap 3
+    menuAnchor.parent().addClass('active');
+    dropdown.addClass('active');
+  }
 
   // Navbar adjustments
   var navHeight = $(".navbar").first().height() + 15;
@@ -936,13 +944,25 @@ Lectures
 <span class="down-arrow">&#x25BE;</span>
 </button>
 <div class="nav-dropdown-content">
-<a href="./slides/EDUC641_1_intro.html">Unit 0: Intro &amp; Sci Principles</a>
-<a href="./slides/EDUC641_2_categ_1.html">Unit 1: Categorical descriptives</a>
-<a href="./slides/EDUC641_2_categ_2.html">Unit 2: Categorical relationships</a>
-<a href="./slides/continuous_l1.html">Unit 3a: Continuous descriptives</a>
-<a href="./slides/continuous_l2.html">Unit 3b: Central Limit Theorem &amp; Inference</a>
-<a href="./slides/EDUC641_4_continuous_2.html">Unit 4a: Continuous relationships</a>
-<a href="./slides/EDUC641_4_continuous_3.html">Unit 4b: NHST Critiques &amp; Replicable research</a>
+<a href="./slides/EDUC641_1_intro.html">1. Intro &amp; research design</a>
+<span class="nav-dropdown-header">2. Variables</span>
+<span class="nav-dropdown-header">3. Categorical descriptives</span>
+<span class="nav-dropdown-header">4. Categorical relationships I</span>
+<span class="nav-dropdown-header">5. Categorical relationships II</span>
+<span class="nav-dropdown-header">6. Troubling history of stats</span>
+<span class="nav-dropdown-header">7. Continuous descriptives I</span>
+<span class="nav-dropdown-header">8. Continuous descriptives II</span>
+<span class="nav-dropdown-header">9. Z-scores and effect sizes</span>
+<span class="nav-dropdown-header">10. CLT I</span>
+<span class="nav-dropdown-header">11. CLT II</span>
+<span class="nav-dropdown-header">12. NHST</span>
+<span class="nav-dropdown-header">13. One-sample t-tests</span>
+<span class="nav-dropdown-header">14. Continuous relationships I</span>
+<span class="nav-dropdown-header">15. Continuous relationships II</span>
+<span class="nav-dropdown-header">16. Continuous relationships III</span>
+<span class="nav-dropdown-header">17. Correlation and causality</span>
+<span class="nav-dropdown-header">18. NHST critiques</span>
+<span class="nav-dropdown-header">Summing up</span>
 </div>
 </div>
 </div>
@@ -962,7 +982,7 @@ Lectures
 <div class="navbar navbar-default  navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
@@ -978,33 +998,33 @@ Lectures
   <a href="schedule.html">Schedule</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Lectures
      
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="./slides/EDUC641_1_intro.html">Unit 0: Intro &amp; Sci Principles</a>
+      <a href="./slides/EDUC641_1_intro.html">1. Intro &amp; research design</a>
     </li>
-    <li>
-      <a href="./slides/EDUC641_2_categ_1.html">Unit 1: Categorical descriptives</a>
-    </li>
-    <li>
-      <a href="./slides/EDUC641_2_categ_2.html">Unit 2: Categorical relationships</a>
-    </li>
-    <li>
-      <a href="./slides/continuous_l1.html">Unit 3a: Continuous descriptives</a>
-    </li>
-    <li>
-      <a href="./slides/continuous_l2.html">Unit 3b: Central Limit Theorem &amp; Inference</a>
-    </li>
-    <li>
-      <a href="./slides/EDUC641_4_continuous_2.html">Unit 4a: Continuous relationships</a>
-    </li>
-    <li>
-      <a href="./slides/EDUC641_4_continuous_3.html">Unit 4b: NHST Critiques &amp; Replicable research</a>
-    </li>
+    <li class="dropdown-header">2. Variables</li>
+    <li class="dropdown-header">3. Categorical descriptives</li>
+    <li class="dropdown-header">4. Categorical relationships I</li>
+    <li class="dropdown-header">5. Categorical relationships II</li>
+    <li class="dropdown-header">6. Troubling history of stats</li>
+    <li class="dropdown-header">7. Continuous descriptives I</li>
+    <li class="dropdown-header">8. Continuous descriptives II</li>
+    <li class="dropdown-header">9. Z-scores and effect sizes</li>
+    <li class="dropdown-header">10. CLT I</li>
+    <li class="dropdown-header">11. CLT II</li>
+    <li class="dropdown-header">12. NHST</li>
+    <li class="dropdown-header">13. One-sample t-tests</li>
+    <li class="dropdown-header">14. Continuous relationships I</li>
+    <li class="dropdown-header">15. Continuous relationships II</li>
+    <li class="dropdown-header">16. Continuous relationships III</li>
+    <li class="dropdown-header">17. Correlation and causality</li>
+    <li class="dropdown-header">18. NHST critiques</li>
+    <li class="dropdown-header">Summing up</li>
   </ul>
 </li>
       </ul>
@@ -1034,7 +1054,25 @@ Lectures
 
 <div id="course-overview" class="section level1">
 <h1>Course Overview</h1>
-<p>This course provides a first introduction to quantitative data analysis in education and the social sciences. It is part of a three course sequence intended to provide a toolkit of statistical concepts, methods and their implementation to producers of applied research in education and other social sciences. This course is intended for those who will pursue additional statistics courses with the aim of ultimately conducting their own, independent research. The course is organized around the principle that research design depends in part on researchers’ substantive questions and their quantitative data available to answer these question. In this introductory course, we will focus on describing categorical and continuous data and quantifying the relationship between categorical and continuous data. Students will form a solid foundation for frequentist, inferential statistics (and some of critiques of this model). The course seeks to blend a conceptual, mathematical and applied understanding of basic statistical concepts. At the core of our pedagogical approach is the belief that students learn statistical analysis by <strong>doing</strong> statistical analysis. <em>This course (or substitute) is a pre-requisite for EDUC 643</em>.</p>
+<p>This course provides a first introduction to quantitative data
+analysis in education and the social sciences. It is part of a three
+course sequence intended to provide a toolkit of statistical concepts,
+methods and their implementation to producers of applied research in
+education and other social sciences. This course is intended for those
+who will pursue additional statistics courses with the aim of ultimately
+conducting their own, independent research. The course is organized
+around the principle that research design depends in part on
+researchers’ substantive questions and their quantitative data available
+to answer these question. In this introductory course, we will focus on
+describing categorical and continuous data and quantifying the
+relationship between categorical and continuous data. Students will form
+a solid foundation for frequentist, inferential statistics (and some of
+critiques of this model). The course seeks to blend a conceptual,
+mathematical and applied understanding of basic statistical concepts. At
+the core of our pedagogical approach is the belief that students learn
+statistical analysis by <strong>doing</strong> statistical analysis.
+<em>This course (or substitute) is a pre-requisite for EDUC
+643</em>.</p>
 </div>
 <div id="meeting-time-and-location" class="section level1">
 <h1>Meeting Time and Location</h1>
@@ -1044,13 +1082,19 @@ Lectures
 </div>
 <div id="student-learning-outcomes" class="section level1">
 <h1>Student Learning Outcomes</h1>
-<p>By the end of this term, it is expected that students will be able to:</p>
+<p>By the end of this term, it is expected that students will be able
+to:</p>
 <ol style="list-style-type: decimal">
-<li>Articulate the principles of responsible and ethical quantitative research</li>
-<li>Describe, summarize and visualize quantitative data that are categorical and continuous</li>
-<li>Describe, summarize and visualize the relationships between quantitative data that are categorical and continuous</li>
-<li>Conduct a frequentist null-hypothesis significance test of the relationships between simple categorical and continuous data</li>
-<li>Describe strategies to improve the replicability and generalizability of quantitative research</li>
+<li>Articulate the principles of responsible and ethical quantitative
+research</li>
+<li>Describe, summarize and visualize quantitative data that are
+categorical and continuous</li>
+<li>Describe, summarize and visualize the relationships between
+quantitative data that are categorical and continuous</li>
+<li>Conduct a frequentist null-hypothesis significance test of the
+relationships between simple categorical and continuous data</li>
+<li>Describe strategies to improve the replicability and
+generalizability of quantitative research</li>
 <li>Use the R programming language to conduct all such analyses</li>
 </ol>
 </div>
@@ -1058,28 +1102,55 @@ Lectures
 <h1>Textbooks and Reading Materials</h1>
 <div id="textbook" class="section level2">
 <h2>Textbook</h2>
-<p>We will primarily be referring to chapters in <a href="https://learningstatisticswithr-bookdown.netlify.com/index.html">Learning Statistics with R</a> (<strong>LSWR</strong>) by Danielle Navarro. This textbook is available for free online. You may choose to purchase a paper copy if you wish, but it is not required.</p>
-<p>There are some additional readings assignments on the troubling historical origins of modern statistics that appear in the detailed <a href="./schedule.html">schedule</a>.</p>
+<p>We will primarily be referring to chapters in <a
+href="https://learningstatisticswithr-bookdown.netlify.com/index.html">Learning
+Statistics with R</a> (<strong>LSWR</strong>) by Danielle Navarro. This
+textbook is available for free online. You may choose to purchase a
+paper copy if you wish, but it is not required.</p>
+<p>There are some additional readings assignments on the troubling
+historical origins of modern statistics that appear in the detailed <a
+href="./schedule.html">schedule</a>.</p>
 <div id="other-text-resources" class="section level3">
 <h3>Other text resources</h3>
-<p>There are literally thousands of high-quality introductory statistics textbooks. We have particularly found…</p>
+<p>There are literally thousands of high-quality introductory statistics
+textbooks. We have particularly found…</p>
 </div>
 </div>
 <div id="r-and-rstudio" class="section level2">
 <h2>R and RStudio</h2>
-<p>Students must have the latest version of R, which can be downloaded <a href="https://ftp.osuosl.org/pub/cran/">here</a>. It is strongly recommended that students also download the RStudio GUI, available <a href="https://www.rstudio.com/products/rstudio/download/#download">here</a>. Both softwares are free. We will provide tutorials on R/RStudio installation and they are also accessible <a href=".slides/tutorial.html">here</a>.</p>
+<p>Students must have the latest version of R, which can be downloaded
+<a href="https://ftp.osuosl.org/pub/cran/">here</a>. It is strongly
+recommended that students also download the RStudio GUI, available <a
+href="https://www.rstudio.com/products/rstudio/download/#download">here</a>.
+Both softwares are free. We will provide tutorials on R/RStudio
+installation and they are also accessible <a
+href=".slides/tutorial.html">here</a>.</p>
 <div id="resources-for-r-and-rstudio" class="section level3">
 <h3>Resources for R and RStudio</h3>
-<p>While we will teach you how to effectively use R and RStudio to conduct analyses, one of the key skills required to use R is the ability to find answers on your own. Many common questions or problems are either available on blogs or have been asked and answered in discussion forums already. Finding and deciphering those answers is an important skill you should seek to hone. <em>You will never remember all of the programming commands!</em></p>
-<p>Here are some sites where you can find the answers to many R questions and learn new tricks:</p>
+<p>While we will teach you how to effectively use R and RStudio to
+conduct analyses, one of the key skills required to use R is the ability
+to find answers on your own. Many common questions or problems are
+either available on blogs or have been asked and answered in discussion
+forums already. Finding and deciphering those answers is an important
+skill you should seek to hone. <em>You will never remember all of the
+programming commands!</em></p>
+<p>Here are some sites where you can find the answers to many R
+questions and learn new tricks:</p>
 <ul>
-<li><a href="https://bookdown.org/ndphillips/YaRrr/"><em>YaRrr, the Pirate’s Guide to R</em></a> by Nathaniel Phillips</li>
-<li><a href="https://r4ds.had.co.nz/"><em>R for Data Science</em></a> by Hadley Wickham</li>
-<li><a href="http://www.cookbook-r.com/"><em>R Cookbook</em></a> by Winston Chang</li>
-<li><a href="http://www-bcf.usc.edu/~gareth/ISL"><em>An Introduction to Statistical Learning</em></a> by Gareth James, Daniela Witten, Trevor Hastie and Robert Tibshirani</li>
-<li><a href="https://www.rstudio.com/resources/cheatsheets">Cheat Sheets</a></li>
+<li><a href="https://bookdown.org/ndphillips/YaRrr/"><em>YaRrr, the
+Pirate’s Guide to R</em></a> by Nathaniel Phillips</li>
+<li><a href="https://r4ds.had.co.nz/"><em>R for Data Science</em></a> by
+Hadley Wickham</li>
+<li><a href="http://www.cookbook-r.com/"><em>R Cookbook</em></a> by
+Winston Chang</li>
+<li><a href="http://www-bcf.usc.edu/~gareth/ISL"><em>An Introduction to
+Statistical Learning</em></a> by Gareth James, Daniela Witten, Trevor
+Hastie and Robert Tibshirani</li>
+<li><a href="https://www.rstudio.com/resources/cheatsheets">Cheat
+Sheets</a></li>
 <li><a href="https://www.statmethods.net">Quick-R</a></li>
-<li><a href="https://stackoverflow.com/questions/tagged/r">StackOverflow</a></li>
+<li><a
+href="https://stackoverflow.com/questions/tagged/r">StackOverflow</a></li>
 <li><a href="https://stats.stackexchange.com">Stack Exchange</a></li>
 </ul>
 </div>
@@ -1112,7 +1183,9 @@ Lectures
 <td align="left">1</td>
 <td align="left">1</td>
 <td align="left">Intro to scienctific principles and data analysis</td>
-<td align="left">LSWR Ch 2 and 3 <br> <a href="https://nautil.us/issue/92/frontiers/how-eugenics-shaped-statistics">Clayton 2020</a></td>
+<td align="left">LSWR Ch 2 and 3 <br> <a
+href="https://nautil.us/issue/92/frontiers/how-eugenics-shaped-statistics">Clayton
+2020</a></td>
 <td align="left">-</td>
 <td align="left">Quiz 1</td>
 </tr>
@@ -1120,7 +1193,9 @@ Lectures
 <td align="left">2</td>
 <td align="left">2</td>
 <td align="left">Summarizing and displaying categorical data</td>
-<td align="left">LSWR Ch 6 <br> <a href="https://www.newstatesman.com/uncategorized/2020/07/ra-fisher-and-science-hatred">Evans 2020</a></td>
+<td align="left">LSWR Ch 6 <br> <a
+href="https://www.newstatesman.com/uncategorized/2020/07/ra-fisher-and-science-hatred">Evans
+2020</a></td>
 <td align="left">Assignment 1</td>
 <td align="left">Quiz 2</td>
 </tr>
@@ -1128,7 +1203,9 @@ Lectures
 <td align="left">3</td>
 <td align="left">3-4</td>
 <td align="left">Relationships between categorical variables</td>
-<td align="left">LSWR Ch 11 and 12 <br> <a href="http://gppreview.com/2019/12/16/eugenics-ethics-statistical-analysis/">Levy 2019</a></td>
+<td align="left">LSWR Ch 11 and 12 <br> <a
+href="http://gppreview.com/2019/12/16/eugenics-ethics-statistical-analysis/">Levy
+2019</a></td>
 <td align="left">Assignment 2</td>
 <td align="left">Quiz 3</td>
 </tr>
@@ -1136,7 +1213,9 @@ Lectures
 <td align="left">4</td>
 <td align="left">5-7</td>
 <td align="left">Summarizing and displaying continuous data</td>
-<td align="left">LSWR Ch 5 and 10 <br> <a href="https://bostonreview.net/science-nature-race/lily-hu-race-policing-and-limits-social-science">Hu 2021</a></td>
+<td align="left">LSWR Ch 5 and 10 <br> <a
+href="https://bostonreview.net/science-nature-race/lily-hu-race-policing-and-limits-social-science">Hu
+2021</a></td>
 <td align="left">Assignment 3</td>
 <td align="left">Quiz 4</td>
 </tr>
@@ -1169,20 +1248,45 @@ Lectures
 </ul>
 <div id="quizzes" class="section level2">
 <h2>Quizzes</h2>
-<p>Five classes will begin with a very short multiple-choice quiz that is designed to test your knowledge of the theoretical principles underlying the statistics we are studying for the week. While some may feel that this is overly paternalistic, research evidence shows that frequent quizzing increases learning (see a summary of <a href="https://www.nytimes.com/2013/11/21/education/frequent-tests-can-enhance-college-learning-study-finds.html">one study</a> from the University of Texas). Quizzes will be open book and notes (but not laptop/computer).</p>
+<p>Five classes will begin with a very short multiple-choice quiz that
+is designed to test your knowledge of the theoretical principles
+underlying the statistics we are studying for the week. While some may
+feel that this is overly paternalistic, research evidence shows that
+frequent quizzing increases learning (see a summary of <a
+href="https://www.nytimes.com/2013/11/21/education/frequent-tests-can-enhance-college-learning-study-finds.html">one
+study</a> from the University of Texas). Quizzes will be open book and
+notes (but not laptop/computer).</p>
 </div>
 <div id="assignments" class="section level2">
 <h2>Assignments</h2>
-<p>The goal of the assignments is to practice the concepts and vocabulary we have been modeling in class and implement some of the techniques we have learned. Each assignment has an associated data source, short codebook and detailed instructions for the required data and analytic tasks. You may work on your own or collaborate with one (1) partner. Please make sure that you engage in a a full, fair and mutually-agreeable collaboration if you do choose to collaborate. If you do collaborate, you should plan, execute and write-up your analyses together, not simply divide the work. Please make sure to indicate clearly when your work is joint and any other individual or resource (outside of class material) you consulted in your response. Further assignment details are available <a href="./assignments.html">here</a></p>
+<p>The goal of the assignments is to practice the concepts and
+vocabulary we have been modeling in class and implement some of the
+techniques we have learned. Each assignment has an associated data
+source, short codebook and detailed instructions for the required data
+and analytic tasks. You may work on your own or collaborate with one (1)
+partner. Please make sure that you engage in a a full, fair and
+mutually-agreeable collaboration if you do choose to collaborate. If you
+do collaborate, you should plan, execute and write-up your analyses
+together, not simply divide the work. Please make sure to indicate
+clearly when your work is joint and any other individual or resource
+(outside of class material) you consulted in your response. Further
+assignment details are available <a
+href="./assignments.html">here</a></p>
 </div>
 <div id="final" class="section level2">
 <h2>Final</h2>
-<p>The final assignment involves a more extended application and synthesis of the concepts of descriptive and relational applied data analysis covered in this course.</p>
+<p>The final assignment involves a more extended application and
+synthesis of the concepts of descriptive and relational applied data
+analysis covered in this course.</p>
 </div>
 </div>
 <div id="student-engagement-inventory" class="section level1">
 <h1>Student Engagement Inventory</h1>
-<p>Graduate students are expected to perform work of high quality and quantity, typically with forty hours of student engagement for each student credit hour. For this course, the following table shows the number of hours a typical student would expect to spend in each of the following activities:</p>
+<p>Graduate students are expected to perform work of high quality and
+quantity, typically with forty hours of student engagement for each
+student credit hour. For this course, the following table shows the
+number of hours a typical student would expect to spend in each of the
+following activities:</p>
 <table>
 <colgroup>
 <col width="35%" />
@@ -1215,12 +1319,14 @@ Lectures
 <tr class="even">
 <td>Final</td>
 <td>30</td>
-<td>Includes familiarization with data, data analysis, preparation of displays and writing</td>
+<td>Includes familiarization with data, data analysis, preparation of
+displays and writing</td>
 </tr>
 <tr class="odd">
 <td><strong>Total hours</strong></td>
 <td><strong>120</strong></td>
-<td><strong>These are approximations.</strong> Reading and <em>especially</em> analytic time will vary per individual</td>
+<td><strong>These are approximations.</strong> Reading and
+<em>especially</em> analytic time will vary per individual</td>
 </tr>
 </tbody>
 </table>
@@ -1260,7 +1366,8 @@ Lectures
 <div id="basic-needs" class="section level2">
 <h2>Basic Needs</h2>
 </div>
-<div id="accommodation-for-religious-observances" class="section level2">
+<div id="accommodation-for-religious-observances"
+class="section level2">
 <h2>Accommodation for Religious Observances</h2>
 </div>
 <div id="conflict-resolution" class="section level2">
