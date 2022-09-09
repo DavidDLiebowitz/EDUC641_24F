@@ -12,8 +12,8 @@ navbar:
     menu: 
       - text: "1. Intro & research design"
         href: ./slides/EDUC641_1_intro.html
-      - text: "2. Variables"
-        href: 
+      - text: "2. Measurement"
+        href: ./slides/EDUC641_2_measures.html
       - text: "3. Categorical descriptives"
         href: 
       - text: "4. Categorical relationships I"
@@ -46,8 +46,6 @@ navbar:
         href: 
       - text: "18. NHST critiques"
         href:
-      - text: "19. Summing up"
-        href: 
 
   right:
   - text: Assignments
