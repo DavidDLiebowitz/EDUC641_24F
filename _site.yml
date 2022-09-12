@@ -15,37 +15,37 @@ navbar:
       - text: "2. Measurement"
         href: ./slides/EDUC641_2_measures.html
       - text: "3. Categorical descriptives"
-        href: 
+        href: ./slides/EDUC641_3_categdescr.html
       - text: "4. Categorical relationships I"
-        href: 
+        href: ./slides/EDUC641_4_categrel.html
       - text: "5. Categorical relationships II"
-        href: 
+        href: ./slides/EDUC641_4_categrel.html
       - text: "6. Troubling history of stats"
         href: 
       - text: "7. Continuous descriptives I"
-        href: 
+        href: ./slides/EDUC641_7_continuousdescr.html
       - text: "8. Continuous descriptives II"
-        href: 
+        href: ./slides/EDUC641_7_continuousdescr.html
       - text: "9. Z-scores and effect sizes"
-        href:
+        href: ./slides/EDUC641_7_continuousdescr.html
       - text: "10. CLT I"
-        href: 
+        href: ./slides/EDUC641_10_inference.html
       - text: "11. CLT II"
-        href: 
+        href: ./slides/EDUC641_10_inference.html
       - text: "12. NHST"
-        href: 
+        href: ./slides/EDUC641_10_inference.html
       - text: "13. One-sample t-tests"
-        href:
+        href: ./slides/EDUC641_10_inference.html
       - text: "14. Continuous relationships I"
-        href: 
+        href: ./slides/EDUC641_14_continuousrel.html
       - text: "15. Continuous relationships II"
-        href: 
+        href: ./slides/EDUC641_14_continuousrel.html
       - text: "16. Continuous relationships III"
-        href:
-      - text: "17. Correlation and causality"
-        href: 
-      - text: "18. NHST critiques"
-        href:
+        href: ./slides/EDUC641_14_continuousrel.html
+      - text: "17. NHST critiques"
+        href: ./slides/EDUC641_17_critiques.html
+      - text: "18. NHST critiques and summary"
+        href: ./slides/EDUC641_17_critiques.html
 
   right:
   - text: Assignments

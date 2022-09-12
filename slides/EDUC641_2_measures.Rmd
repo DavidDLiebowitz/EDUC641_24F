@@ -219,6 +219,42 @@ Is there a mean (or standard deviation) for the hair color of the students in th
 
 ---
 # The measure of our class
+```{r, echo=F}
+  include_graphics("measures/Slide1.jpg")
+```
+
+---
+# The measure of our class
+```{r, echo=F}
+  include_graphics("measures/Slide2.jpg")
+```
+
+---
+# The measure of our class
+```{r, echo=F}
+  include_graphics("measures/Slide3.jpg")
+```
+
+---
+# The measure of our class
+```{r, echo=F}
+  include_graphics("measures/Slide4.jpg")
+```
+
+---
+# The measure of our class
+```{r, echo=F}
+  include_graphics("measures/Slide5.jpg")
+```
+
+---
+# The measure of our class
+```{r, echo=F}
+  include_graphics("measures/Slide6.jpg")
+```
+
+---
+# The measure of our class
 
 Qualtrics
 
@@ -235,13 +271,6 @@ class: middle, inverse
 ---
 # To-Dos
 
-### Reading: 
-- LSWR Chapter 2: this is a brief summary of what you have/will learn(ed) in EDUC 612 
-- LSWR Chapter 3: this covers some information from the R Bootcamp and more 
-    + You will **not** internalize all of this in one reading and practice session. Give it a skim, play around with R while you're doing so, and you can return to it as you want/need to build more of programming skills.
-- Clayton (2020)
-
-### Assignment:
-- Download and familiarize yourself with R/RStudio interface
-
+### Optional follow-up:
+- Complete Modules 2 - 4 in R Bootcamp
 
