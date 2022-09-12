@@ -1,0 +1,313 @@
+---
+title: "Null-Hypothesis Significance Testing (NHST) critiques"
+subtitle: "EDUC 641: Unit 5"
+author: "David D. Liebowitz"
+#date: "`r format(Sys.time(), '%d %B %Y')`"
+output:
+  xaringan::moon_reader:
+    css: ['default', 'uo', 'ki-fonts', 'my_custom.css', 'xaringanthemer.css']
+    # self_contained: true
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+
+---
+
+```{R, setup, include = F}
+library(pacman)
+p_load(here, tidyverse, ggplot2, xaringan, knitr, kableExtra, xaringanthemer)
+
+i_am("slides/EDUC641_17_critiques.rmd")
+
+# Define color
+red_pink <- "#e64173"
+turquoise <- "#20B2AA"
+orange <- "#FFA500"
+red <- "#fb6107"
+blue <- "#3b3b9a"
+green <- "#8bb174"
+grey_light <- "grey70"
+grey_mid <- "grey50"
+grey_dark <- "grey20"
+purple <- "#6A5ACD"
+slate <- "#314f4f"
+# Dark slate grey: #314f4f
+
+# Knitr options
+opts_chunk$set(
+  comment = "#>",
+  fig.align = "center",
+  fig.height = 6.75,
+  fig.width = 10.5,
+  warning = F,
+  message = F
+)
+opts_chunk$set(dev = "svg")
+options(device = function(file, width, height) {
+  svg(tempfile(), width = width, height = height)
+})
+options(knitr.table.format = "html")
+
+```
+
+
+# Goals of the unit
+
+- Distinguish between research designs that permit correlational associations and those that permit causal inferences
+- Articulate modern critiques of null-hypothesis significance testing framework
+- Describe strategies to improve replicability and generalizability of quantitative research
+
+---
+# Critiques of NHST
+
+### 1. Re-thinking concepts of "statistical significance"
+### 2. A different way of thinking about probability (Bayesian)
+
+---
+# Problems w/ "significance"
+
+An explosion of [academic](https://www.tandfonline.com/toc/utas20/73/sup1?nav=tocList) and [popular press](https://www.nytimes.com/2015/08/28/science/many-social-science-findings-not-as-strong-as-claimed-study-says.html) attention to the "replication crisis" emerged in the early 2010s. 
+
+Aside from outright manufactured data, some problems include:
+- *p*<0.05 as a condition for publication and a goal for researchers
+ + $\rightarrow$ Publication bias: "successes" are published; "failures" end up in file drawers
+
+---
+# More problems
+
+If *p*<0.05 is the goal, there are many ways to get there:
+- If your goal is to find a "statistically significant" result, you will detect such a relationship 1 out of 20 times (on average)
+- This can be the product of intentional "*p*-hacking" or "researcher degrees of freedom" (explore your data, test many different models, try this variable, etc.)
+
+Novelty as a condition for publication in top-tier journals
+ + If something is "unexpected" or "surprising" there's a decent chance it might not be true
+ 
+- Weak theory: 
+ + Low-precision "differences" between groups, with little interest in quantifying the differences
+ + No non-null hypotheses
+ + No prior belief about likelihood of findings
+ + Hypothesis After the Results are Known (HARK-ing)
+
+---
+# NHST and the trap of $p<.05$
+
+Assume that we find that average national life expectancy is significantly greater in high-income countries compared to low-income countries. With an $\alpha$ of .05, the (hypothetical) statistical test returns *p* = .03, meaning we can reject the null hypothesis.
+
+<span style="color:blue">*Which of the following statements is correct, given p = .03*:</span>
+* **A.** There is a 3% probability that high-income countries do not have a higher average life expectancy (the null hypothesis).
+* **B.** There is a 3% probability that the results are due to random chance, rather than the effect of income level.
+* **C.** A statistically significant difference means higher income-levels yield higher life expectancies.
+* **D.** The observed data would only occur 3% of the time if the null hypothesis was true.
+* **E.** Previous research found that in 2005, income-level failed to produce a significant difference in average life expectancy (*p* = .17). Therefore, income-level is more influential on life expectancy in 2015 than in 2005.
+* **F.** Another research group finds a statistically significant difference between countries with socialized medicine compared to those without (*p* = .001). Their smaller *p* value means that socialized medicine is more effective at increasing life expectancy than income level.
+
+---
+# NHST and the trap of *p*-values
+
+<span style="color:red">None of the previous interpretations were correct, yet these are commonly expressed in scientific literature!</red>
+
+In frequentist statistics, we establish an objective decision rule: if our observed data has less than a 5 percent chance of occurring (or less than 1% or less than 0.1% or less than 10%) due to sampling idiosyncrasy, we will conclude that the observed relationship in the sample represents a true relationship in the poulation. 
+
+- Once we set a threshold (an $\alpha$-theshold), we are making a binary decision about significance and non-significance
+
+- Relationships are *NOT* "more" or "less" significant 
+ + In fact, the distribution of *p*-values under the null hypothesis is a uniform one; thus, it's not correct to describe observed vs. expected probabilities in relationship to each (e.g., a *p*-value of 0.01 is **not** three times less likely than a *p*-value of 0.03). 
+
+
+- Many of these concerns (and conflicts) relate to different ways of thinking about probability
+
+---
+# (Very) brief intro to probability
+
+**Two common ways to think about probability: the long-run view (frequentist) and priors (Bayesian)**
+
+- **Frequentist:**
+- With a known long-run outcome (e.g., a fair coin comes up heads half the time), we can consider the likelihood of a given short-run event
+ + A coin flipped twice will come up Heads both times with a probability of 0.25 (fairly likely); but a coin flipped 20 times will come up Heads every time with a probability of 0.000000095 (very unlikely)
+ + In the short-run, you can expect some variability, but in the long run, it will converge to the known distribution
+
+```{r, echo=F, fig.height=3.5}
+set.seed(12345)
+nsim = 2000
+X = matrix(NA, ncol=2, nrow=nsim)
+for(S in 1:nsim){
+  X[S,1] = S
+  X[S,2] = rbinom(n=1, size = S, prob = .5)/S
+}
+X = as.data.frame(X); names(X) = c("num", "coin")
+coin_true <- X %>% ggplot(aes(x = num, y= coin)) + geom_line() + geom_hline(aes(yintercept = .5), color = "red", linetype = 2) +      scale_x_continuous("Number of tosses") + 
+  scale_y_continuous("Proportion of heads", breaks = seq(0, 1, .1), limits = c(0,1)) +
+    theme_minimal(base_size = 16)
+coin_true
+```
+
+---
+# Probability and testing $H_{0}$
+
+We are asking how likely is it that we observe event X happening with Y frequency, if the expected probability of X happening is Z?
+
+<span style="color:blue"> *Imagine you were handed a coin and asked to determine whether it was weighted to one side. How certain would you be after 50 flips?* </span>
+
+```{r, echo=F, fig.height=3.5}
+nsim = 2000
+Y = matrix(NA, ncol=2, nrow=nsim)
+for(S in 1:nsim){
+  Y[S,1] = S
+  Y[S,2] = rbinom(n=1, size = S, prob = .6)/S
+}
+Y = as.data.frame(Y); names(Y) = c("num", "coin")
+filter(Y, num <=50) %>% ggplot(aes(x = num, y= coin)) + geom_line() + geom_hline(aes(yintercept = .5), color = "red", linetype = 2) + scale_x_continuous("Number of tosses") + 
+  scale_y_continuous("Proportion of heads", breaks = seq(0, 1, .1), limits = c(0,1)) +
+    theme_minimal(base_size = 16)
+
+```
+
+---
+# Probability and testing $H_{0}$
+
+We are asking how likely is it that we observe event X happening with Y frequency, if the expected probability of X happening is Z?
+
+<span style="color:blue"> *Imagine you were handed a coin and asked to determine whether it was weighted to one side. How certain would you be after 200 flips?* </span>
+
+```{r, echo=F, fig.height=3.5}
+filter(Y, num <=200) %>% ggplot(aes(x = num, y= coin)) + 
+  geom_line() + geom_hline(aes(yintercept = .5), color = "red", linetype = 2) + 
+  scale_x_continuous("Number of tosses") + 
+  scale_y_continuous("Proportion of heads", breaks = seq(0, 1, .1), limits = c(0,1)) +
+    theme_minimal(base_size = 16)
+
+```
+
+---
+# Probability and testing $H_{0}$
+
+We are asking how likely is it that we observe event X happening with Y frequency, if the expected probability of X happening is Z?
+
+<span style="color:blue"> *Imagine you were handed a coin and asked to determine whether it was weighted to one side. How certain would you be after 2000 flips?* </span>
+
+```{r, echo=F, fig.height=3.5}
+Y %>% ggplot(aes(x = num, y= coin)) + 
+  geom_line() + 
+  geom_hline(aes(yintercept = .5), color = "red", linetype = 2) + 
+  scale_x_continuous("Number of tosses", limits = c(0,2000)) + 
+  scale_y_continuous("Proportion of heads", breaks = seq(0, 1, .1), limits = c(0,1)) +
+    theme_minimal(base_size = 16)
+
+```
+
+
+---
+# Problems with probability
+
+In frequentist statistics, we assume that the null hypothesis has as good a chance as any other hypothesis at being true, and we then test how likely we are to observe the data as we see them when the null is actually true...**but is this the right framework???**
+
+How believable are the following findings?
+- People who wear glasses are more likely to be empathetic $(p = 0.023)$
+- Medical doctors have fewer close relationships than those in other professions $(p = 0.007)$
+- People who engage in [power posing](https://www.nytimes.com/2017/10/18/magazine/when-the-revolution-came-for-amy-cuddy.html) experience increased testosterone $(p = 0.045)$ (*a real paper*)
+
+
+--
+
+Perhaps it is wiser to start with a *prior* belief about the probability of an event?
+
+---
+# Bayesian statistics
+
+In contrast to frequentist approaches, Bayesian probability takes into account one's prior beliefs in determining the probability of an event
+- Key insight: adjust current beliefs based on previous knowledge/beliefs
+ + Adjust prior belief towards evidence in observed data
+- Prior beliefs could come from theory, research or personal belief
+
+#### Bayes Theorem (don't need to know this):
+
+$$
+\large P(A|B) = \frac{P(B|A)\cdot P(A)}{P(B)}
+$$
+---
+# Bayesian Example
+I have a theory that Oregonians are (generally) outdoors-y. I meet an outdoors-y person. What is the probability I have met an Oregonian?
+
+$P(Oregonian) = 0.02$ (to make it simple 1 of 50 U.S. states) <br>
+$P(Outdoorsy | Oregonian) = 0.65$ <br>
+$P(Outdoorsy) = 0.20$
+
+$$
+\large P(Oregonian | Outdoorsy) = \frac{(0.65)(0.02)}{0.20} = 0.065
+$$
+--
+
+Not surprisingly, I've updated my beliefs and now think there is a greater-than-base-rate likelihood (over 3x) that this person is an Oregonian. But it also tells me not to be too excited and claim the probability is 0.65 that I've met an Oregonian just because they are outdoors-y.
+
+--
+
+- Inferential statisticians (and applied researchers like yourselves) make statements like, "the chance we would observe differences between the treatment and control as large as the ones we did when there was actually no effect is less than 5%"
+- Bayesian statisticians (and applied researchers like yourselves) make statements like, "the chance that the treatment is more effective than the control is 92%"
+
+---
+# An applied example
+
+.pull-left[
+University instructors are appraised based (in part) on student evaluations. [Fraile & Bausch-Morrell (2010)](https://link.springer.com/article/10.1007%2Fs10734-014-9823-0) collected data on these evaluations over two years.
+
+They use the sample estimates from the first year of data, to estimate instructor evaluation ratings in the second year -- *given their prior evaluation ratings*.
+
+The range of the Bayesian estimates for the Year 2 student evaluation ratings is narrower than the sample estimates (shrinks from score range of 2 - 6 to 2.5 - 5.5). The precision with which they make their estimates is much tighter. More to come on confidence intervals (or in Bayesian terms, credible intervals) in EDUC 643.
+]
+
+.pull-right[
+```{r, echo=F}
+include_graphics("freqBayes.jpg")
+```
+]
+
+---
+# Why not Bayes?
+
+### 1. Selecting a prior can be subjective
+### 2. Difficulty in finding informative prior
+### 3. Disputes over value of uninformative priors
+### 4. Similarity in results across approaches
+### 5. Stasis
+
+<span style="color:red"> **Much more complexity to be explored in another course** </red>
+
+---
+# A path forward...
+
+So where does all this leave us? Some recommendations for moving forward:
+1. Move beyond a single metric to evaluate practice and theory
+ - Multiple studies w/ focus on generalizability
+ - Replication studies
+ - Systematic reviews/meta-analysis
+ - Focus on *confidence intervals* and *magnitude* of effects (**more in EDUC 643**)
+
+2. Open Science
+ - Pre-registration (REES, OSF, etc.)
+ - Registered reports
+ - Public materials and data
+ - Use of scripts!!!
+ - Statistical tests (GRIM, SPRITE, etc.)
+
+3. Changes in academic incentives
+
+4. Recognition of the impact that subjective research decisions have on (some) quantitative empirical results
+
+---
+class: middle, inverse
+# Synthesis and wrap-up
+
+
+---
+# Goals of the unit
+
+- Distinguish between research designs that permit correlational associations and those that permit causal inferences
+- Articulate modern critiques of null-hypothesis significance testing framework
+- Describe strategies to improve replicability and generalizability of quantitative research
+
+---
+# To Dos
+
+### Final project 
+Due TBD
