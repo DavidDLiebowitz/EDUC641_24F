@@ -18,7 +18,7 @@ output:
 library(pacman)
 p_load(here, tidyverse, ggplot2, xaringan, knitr, kableExtra, xaringanthemer)
 
-i_am("slides/EDUC641_4_categrel.rmd")
+i_am("slides/EDUC641_6_history.rmd")
 
 
 red_pink <- "#e64173"
