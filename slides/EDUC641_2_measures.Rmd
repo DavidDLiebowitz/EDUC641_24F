@@ -220,37 +220,37 @@ Is there a mean (or standard deviation) for the hair color of the students in th
 ---
 # The measure of our class
 ```{r, echo=F}
-  include_graphics("measures/Slide1.jpg")
+  include_graphics("./measures/Slide1.jpg")
 ```
 
 ---
 # The measure of our class
 ```{r, echo=F}
-  include_graphics("measures/Slide2.jpg")
+  include_graphics("./measures/Slide2.jpg")
 ```
 
 ---
 # The measure of our class
 ```{r, echo=F}
-  include_graphics("measures/Slide3.jpg")
+  include_graphics("./measures/Slide3.jpg")
 ```
 
 ---
 # The measure of our class
 ```{r, echo=F}
-  include_graphics("measures/Slide4.jpg")
+  include_graphics("./measures/Slide4.jpg")
 ```
 
 ---
 # The measure of our class
 ```{r, echo=F}
-  include_graphics("measures/Slide5.jpg")
+  include_graphics("./measures/Slide5.jpg")
 ```
 
 ---
 # The measure of our class
 ```{r, echo=F}
-  include_graphics("measures/Slide6.jpg")
+  include_graphics("./measures/Slide6.jpg")
 ```
 
 ---
