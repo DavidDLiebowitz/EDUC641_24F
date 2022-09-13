@@ -74,6 +74,7 @@ Objectives:
  * Interpret and report the results of a contingency-table analysis and a statistical inference from a chi-squared statistic
 
 Readings: 
+
 - [LSWR Chapters 11 and 12](https://learningstatisticswithr.com/lsr-0.6.pdf) and [Levy 2019](http://gppreview.com/2019/12/16/eugenics-ethics-statistical-analysis/)
 
 Lectures:
@@ -83,7 +84,7 @@ Lectures:
 
 
 - Data: [deathpenalty.csv](./data/deathpenalty.csv) | [codebook](./data/deathpenalty.csv)
-- R code: [R script](./slides/EDUC641_2_code.R) 
+- R code: [R script](./slides/EDUC641_4_code.R) 
  
 Assignment 2: 
 
@@ -108,8 +109,6 @@ Objectives:
 - Determine whether the mean value of a sample is different than a defined population value (when provided the *SD* of the variable, aka $Z$-test)
 - Conduct one-sample $t$-tests
 
-
-
 Readings: 
 
 - [LSWR Chapters 5 and 10](https://learningstatisticswithr.com/lsr-0.6.pdf) and [Hu 2021](https://bostonreview.net/science-nature-race/lily-hu-race-policing-and-limits-social-science)
@@ -122,14 +121,13 @@ Lecture slides:
 
 
 - Data: [life_expectancy.csv](./data/life_expectancy.csv)
-- R code:
+- R code: [R Script](./slides/EDUC641_7_code.R)
 
 Assignment 3: 
 
 - Due: TBD
 - [html file](./assignments/assignment03.html)
 - [cont.csv dataset](./data/cont.csv)
-
 
 
 ## Unit 4
