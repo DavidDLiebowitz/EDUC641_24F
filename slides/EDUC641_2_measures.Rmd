@@ -61,7 +61,7 @@ options(device = function(file, width, height) {
 options(knitr.table.format = "html")
 
 ```
----
+
 class: middle, inverse
 
 # Quiz
@@ -272,5 +272,6 @@ class: middle, inverse
 # To-Dos
 
 ### Optional follow-up:
-- Complete Modules 2 - 4 in R Bootcamp
+- Complete Module 4 in R Bootcamp (data types)
+- Complete Module 5 in R Bootcamp (vectors)
 

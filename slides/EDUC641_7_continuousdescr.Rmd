@@ -949,10 +949,11 @@ class: middle, inverse
 # To Dos
 
 ### Reading
-LSWR Chapter 5: descriptive statistics
+- LSWR Chapter 5: descriptive statistics
 
 ### Optional follow-up
-Complete Module 7 (lists) and Module 10 (data management) in R Bootcamp
+- Complete Module 8 (dataframes) in R Bootcamp
+- Complete Module 10 (data management) in R Bootcamp
 
 ### Assignments
-Assignment #3 TBD
+- Assignment #3 TBD
