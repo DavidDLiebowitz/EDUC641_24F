@@ -15,13 +15,13 @@ knitr::opts_chunk$set(echo = TRUE)
 
 # 1. General Guidelines
 
-The goal of the assignments is to practice the concepts and vocabulary we have been modeling in class and implement some of the techniques we have learned. You may work on your own or collaborate with one (1) partner. Please make sure that you engage in a a full, fair and mutually-agreeable collaboration if you do choose to collaborate. If you do collaborate, you should plan, execute and write-up your analyses together, not simply divide the work. Please make sure to indicate clearly when your work is joint and any other individual or resource (outside of class material) you consulted in your responses.
+The goal of the assignments is to practice the concepts and vocabulary we have been modeling in class and implement some of the techniques we have learned. You may work on your own or collaborate with one (1) partner. Please make sure that you engage in a full, fair and mutually-agreeable collaboration if you choose to collaborate. If you do collaborate, you should plan, execute and write-up your analyses together, not simply divide the work. Please make sure to indicate clearly when your work is joint and any other individual or resource (outside of class material) you consulted in your responses.
 
-(Here we need to add more details about global expectations and requirements for all the assignments, grading and points distribution for participation, five assignments, and/or final project/exam, late submission policy, etc. from syllabus.)
+Each of the four assignments during the term is worth 15 points, and the final project is worth 30 points. Assignments are due at 11:59pm on their due date. If circumstances arise that require an extension on an assignment, please communicate with the lead instructor *prior* to the assignment's due date. We will publish the answer keys to assignments prior to class the following day; thus, late assignments will be penalized by two (2) points. Late final projects may results in a final grade of I or D/F.
 
 # 2. Submission Requirements
 
-Please upload below two files on Canvas before TBD time:  
+Please upload below two files on Canvas:  
 
  * An .html, .doc/x, or .pdf file that includes your typed responses (in your own words and not identical to anybody else's), tables, and/or figures to the problems  
  * The .Rmd or .R file that you used to render the tables and figures in the above html/doc/pdf. 

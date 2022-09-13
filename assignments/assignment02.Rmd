@@ -16,7 +16,7 @@ opts_chunk$set(include = FALSE)
 
 ### Submission Requirements
 
-Please upload below two files on Canvas before TBD time:  
+Please upload below two files on Canvas:  
 
  * An .html or .pdf file that includes both - 
    + your typed responses (in your own words and not identical to anybody else's), tables, and/or figures to the problems  
@@ -79,10 +79,10 @@ Open your RStudio, create a project and save it to your local. Go to the root di
 
 3.3. Our first research question of interest is about whether there was a relationship between the two variables, *treat* and *absenteeism*. What is your null hypothesis for this research question?
 
-3.4. Perform a Pearson's Chi-squared test (with Yates' continuity correction) in R to test the relationship between *absenteeism* and *treat*. Write 3-4 sentences to interpret your results and answer the research question: Were the students less likely to be chronically absent if their teachers participated the consultancy PD intervention? 
+3.4. Perform a Pearson's Chi-squared test in R to test the relationship between *absenteeism* and *treat*. Write 3-4 sentences to interpret your results and answer the research question: Were the students less likely to be chronically absent if their teachers participated the consultancy PD intervention? 
 
 #### 4. Sub-sample comparisons
 
-4.1. We are also interested in whether *absenteeism* and *treat* are related for female students. Perform a Pearson's Chi-squared test (with Yates' continuity correction) in R to investigate the relationship between *absenteeism* and *treat* for female students. Write 2-3 sentences to state your null hypothesis, interpret your results, and answer the research question: Were the female students less likely to be chronically absent if their teachers participated in the consultancy PD intervention? 
+4.1. We are also interested in whether *absenteeism* and *treat* are related for female students. Perform a Pearson's Chi-squared test in R to investigate the relationship between *absenteeism* and *treat* for female students. Write 2-3 sentences to state your null hypothesis, interpret your results, and answer the research question: Were the female students less likely to be chronically absent if their teachers participated in the consultancy PD intervention? 
 
 4.2. Do the same for male students.

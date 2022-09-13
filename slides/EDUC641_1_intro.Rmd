@@ -134,8 +134,9 @@ Concrete learning objectives:
 1. Two 1.5-hour lectures will introduce concepts in interactive lectures, discussion and activities
 2. Readings are intended to supplement material from lectures (these can be completed after the first class of the unit)
 3. Two *OPTIONAL, UNGRADED* weekly lab meetings intended to provide support for R programming tasks. Each lab will cover identical material.
-4. Five (5) quizzes worth trivial amount of points each
-5. Four (4) data analytic assignments + final project
+4. Independent, asynchronous extension activities from the University of Oregon COE [R Bootcamp](https://community.uoregon.edu/courses/18778)
+5. Five (5) quizzes worth trivial amount of points each (2% of grade)
+6. Four (4) data analytic assignments (15% each) + final project (30% of grade)
 
 --
 
@@ -229,5 +230,5 @@ class: middle, inverse
 - Clayton (2020)
 
 ### Assignment:
-- Have downloaded R/RStudio and familiarized yourself with the RStudio environment (Modules 1 & 2 from R Bootcamp)
+- Have downloaded R/RStudio and familiarized yourself with the RStudio environment (Modules 1 & 2 from [R Bootcamp](https://community.uoregon.edu/courses/18778))
 

@@ -15,7 +15,7 @@ opts_chunk$set(include = FALSE)
 
 ### Submission Requirements
 
-Please upload below two files on Canvas before TBD time:  
+Please upload below two files on Canvas:  
 
  * An .html or .pdf file that includes both - 
    + your typed responses (in your own words and not identical to anybody else's), tables, and/or figures to the problems  
@@ -62,7 +62,7 @@ Note that you do not need to include these responses in your html/pdf file; only
 
 2.1. Central tendency
 
- * 2.1.1 What are the mean and median of the outcome variable, *vocabulary*? Interpret the statistical meanings of these measures.
+ * 2.1.1 What are the mean and median of the outcome variable, *vocabulary*? Interpret the meanings of these measures.
 
  * 2.1.2. Create a binned frequency table (suggested bin width = 5) for *vocabulary*. Then create a plot to show the distribution of *vocabulary* and make sure to label the x- and y-axes. Is it normally distributed? If not, describe how and how much the distribution is skewed. Did you notice any outliers?
 

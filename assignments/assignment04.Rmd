@@ -16,7 +16,7 @@ opts_chunk$set(include = FALSE)
 
 ### Submission Requirements
 
-Please upload below two files on Canvas before TBD time:  
+Please upload below two files on Canvas:  
 
  * An .html or .pdf file that includes both - 
    + your typed responses (in your own words and not identical to anybody else's), tables, and/or figures to the problems  
