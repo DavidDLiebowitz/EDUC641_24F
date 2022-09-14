@@ -956,4 +956,4 @@ class: middle, inverse
 - Complete Module 10 (data management) in R Bootcamp
 
 ### Assignments
-- Assignment #3 TBD
+- Assignment #3 due November 7, 11:59pm

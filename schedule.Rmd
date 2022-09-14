@@ -13,6 +13,8 @@ output:
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+**Note: readings are intended to be completed *after* subject is covered by class lecture. You are welcome to read them in advance and encouraged to preview the slides prior to that unit's lectures.**
+
 ## Unit 0
 
 **Topic: Introduction to scientific principles and data analysis**
@@ -25,12 +27,12 @@ Objectives:
 
 Readings: 
 
-- [LSWR Chapters 2 and 3](https://learningstatisticswithr.com/lsr-0.6.pdf) and [Clayton 2020](https://nautil.us/issue/92/frontiers/how-eugenics-shaped-statistics)
+- Complete **prior to Sept. 29** class: [LSWR Chapters 2 and 3](https://learningstatisticswithr.com/lsr-0.6.pdf) and [Clayton 2020](https://nautil.us/issue/92/frontiers/how-eugenics-shaped-statistics)
 
 Lectures:
 
-- Class 1 slides: [html](./slides/EDUC641_1_intro.html) | [pdf](./slides/EDUC641_1_intro.pdf)
-- Class 2 slides: [html](./slides/EDUC641_2_measures.html) | [pdf](./slides/EDUC641_2_measures.pdf)
+- Class 1 (9/27) slides: [html](./slides/EDUC641_1_intro.html) | [pdf](./slides/EDUC641_1_intro.pdf)
+- Class 2 (9/29) slides: [html](./slides/EDUC641_2_measures.html) | [pdf](./slides/EDUC641_2_measures.pdf)
 - R Tutorial slides: [html](./slides/tutorial.html)
 
 ## Unit 1 
@@ -46,17 +48,17 @@ Objectives:
 
 Readings: 
 
-- [LSWR Chapter 6](https://learningstatisticswithr.com/lsr-0.6.pdf) and [Evans 2020](https://www.newstatesman.com/uncategorized/2020/07/ra-fisher-and-science-hatred)
+- Complete **prior to Oct. 6** class: [LSWR Chapter 6](https://learningstatisticswithr.com/lsr-0.6.pdf) and [Evans 2020](https://www.newstatesman.com/uncategorized/2020/07/ra-fisher-and-science-hatred)
 
 Lectures: 
 
-- Class 3 slides: [html](./slides/EDUC641_3_categdescr.html) | [pdf](./slides/EDUC641_3_categdescr.pdf) 
+- Class 3 (10/4) slides: [html](./slides/EDUC641_3_categdescr.html) | [pdf](./slides/EDUC641_3_categdescr.pdf) 
 - Data: [deathpenalty.csv](./data/deathpenalty.csv) | [codebook](./data/deathpenalty.csv)
 - R code: [R script](./slides/EDUC641_3_code.R)
 
 Assignment 1: 
 
-- Due: TBD 
+- Due: October 10, 11:59pm
 - [html file](./assignments/assignment01.html)
 - [cat.csv dataset](./data/cat.csv)
 
@@ -75,12 +77,12 @@ Objectives:
 
 Readings: 
 
-- [LSWR Chapters 11 and 12](https://learningstatisticswithr.com/lsr-0.6.pdf) and [Levy 2019](http://gppreview.com/2019/12/16/eugenics-ethics-statistical-analysis/)
+- Complete **prior to Oct. 13** class: [LSWR Chapters 11 and 12](https://learningstatisticswithr.com/lsr-0.6.pdf) and [Levy 2019](http://gppreview.com/2019/12/16/eugenics-ethics-statistical-analysis/)
 
 Lectures:
 
-- Class 4-5 slides: [html](./slides/EDUC641_4_categrel.html) | [pdf](./slides/EDUC641_4_categrel.pdf)
-- Class 6 slides: [html](./slides/EDUC641_6_history.html) | [pdf](./slides/EDUC641_6_history.pdf)
+- Classes 4-5 (10/6 and 10/11) slides: [html](./slides/EDUC641_4_categrel.html) | [pdf](./slides/EDUC641_4_categrel.pdf)
+- Class 6 (10/13) slides: [html](./slides/EDUC641_6_history.html) | [pdf](./slides/EDUC641_6_history.pdf)
 
 
 - Data: [deathpenalty.csv](./data/deathpenalty.csv) | [codebook](./data/deathpenalty.csv)
@@ -88,7 +90,7 @@ Lectures:
  
 Assignment 2: 
 
-- Due: TBD
+- Due: October 17, 11:59pm
 - [html file](./assignments/assignment02.html)
 - [cat.csv dataset](./data/cat.csv)
 
@@ -111,13 +113,14 @@ Objectives:
 
 Readings: 
 
-- [LSWR Chapters 5 and 10](https://learningstatisticswithr.com/lsr-0.6.pdf) and [Hu 2021](https://bostonreview.net/science-nature-race/lily-hu-race-policing-and-limits-social-science)
+- Complete **prior to Oct. 27** class: [LSWR Chapter 5](https://learningstatisticswithr.com/lsr-0.6.pdf) and [Hu 2021](https://bostonreview.net/science-nature-race/lily-hu-race-policing-and-limits-social-science)
+- Complete **prior to Nov. 10** class: [LSWR Chapter 10](https://learningstatisticswithr.com/lsr-0.6.pdf)
 
 
 Lecture slides: 
 
-- Class 7-9 slides: [html](./slides/EDUC641_7_continuousdescr.html) | [pdf](./slides/EDUC641_7_continuousdescr.pdf)
-- Class 10-13 slides: [html](./slides/EDUC641_10_inference.html) | [pdf](./slides/EDUC641_10_inference.pdf)
+- Classes 7-9 (10/18, 10/20 & 10/25) slides: [html](./slides/EDUC641_7_continuousdescr.html) | [pdf](./slides/EDUC641_7_continuousdescr.pdf)
+- Classes 10-13 (10/27, 11/1, 11/3 & 11/8) slides: [html](./slides/EDUC641_10_inference.html) | [pdf](./slides/EDUC641_10_inference.pdf)
 
 
 - Data: [life_expectancy.csv](./data/life_expectancy.csv)
@@ -125,7 +128,7 @@ Lecture slides:
 
 Assignment 3: 
 
-- Due: TBD
+- Due: November 7, 11:59pm
 - [html file](./assignments/assignment03.html)
 - [cont.csv dataset](./data/cont.csv)
 
@@ -148,31 +151,31 @@ Objectives:
 
 Readings: 
 
-- [LSWR Chapter 15.1 and 15.2](https://learningstatisticswithr.com/lsr-0.6.pdf)
+- Complete **prior to Nov. 22** class: [LSWR Chapter 15.1 and 15.2](https://learningstatisticswithr.com/lsr-0.6.pdf)
 
 Lecture slides: 
 
-
-- Class 14-17 slides: [html](./slides/EDUC641_14_continuousrel.html) | [pdf](./slides/EDUC641_14_continuousrel.pdf)
+- Classes 14-16 (11/10, 11/15 & 11/22) slides: [html](./slides/EDUC641_14_continuousrel.html) | [pdf](./slides/EDUC641_14_continuousrel.pdf)
+  + **No class on 11/17 (David traveling for conference) and 11/24 (university holiday)**
 
 - Data: [life_expectancy.csv](./data/life_expectancy.csv)
 - R code: [R script](./slides/EDUC641_14_code.R) 
 
 Assignment 4: 
 
-- Due TBD
+- Due Nov. 28, 11:59pm
 - [html file](./assignments/assignment04.html)
 - [cont.csv](./data/cont.csv)
 
 ## Unit 5
 
-- NHST critiques slides: [html](./slides/EDUC641_17_critiques.html) | [pdf](./slides/EDUC641_17_critiques.pdf)
+- Classes 17-18 (11/29 & 12/1): [html](./slides/EDUC641_17_critiques.html) | [pdf](./slides/EDUC641_17_critiques.pdf)
 
 - Data management cheat sheet: [pdf]
 
 ## Final Assignment
 
- * Due TBD
+ * Due December 7 at 11:59pm
  * [html file](./assignments/assignment05.html)
  * [ah01.csv](./data/ah01.csv); [ah02.csv](./data/ah02.csv)
 

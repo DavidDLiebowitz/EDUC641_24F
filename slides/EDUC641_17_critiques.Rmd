@@ -310,4 +310,4 @@ class: middle, inverse
 # To Dos
 
 ### Final project 
-Due TBD
+Due Dec. 7, 11:59pm

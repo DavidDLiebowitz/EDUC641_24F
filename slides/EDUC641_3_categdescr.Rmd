@@ -269,7 +269,7 @@ class: middle, inverse
 
 
 ### Assignment:
-- Assignment #1 Due TBD
+- Assignment #1 Due October 10, 11:59pm
 
 
 
