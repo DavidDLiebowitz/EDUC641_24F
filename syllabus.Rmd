@@ -23,7 +23,7 @@ This course provides a first introduction to quantitative data analysis in educa
 *Lab:* Mondays, 4:00pm - 4:50pm, 116 Lokey and Tuesdays, 5:30pm - 6:20pm 146 HEDCO 
 
 # Instructors
-David Liebowitz
+David Liebowitz (office hours: Mondays 1-2:30pm or by appointment)
 Claire Zhang
 Havisha Khurana
 
@@ -43,7 +43,9 @@ By the end of this term, it is expected that students will be able to:
 ## Textbook
 We will primarily be referring to chapters in [Learning Statistics with R](https://learningstatisticswithr-bookdown.netlify.com/index.html) (**LSWR**) by Danielle Navarro. This textbook is available for free online. You may choose to purchase a paper copy if you wish, but it is not required. 
 
-There are some additional readings assignments on the troubling historical origins of modern statistics that appear in the detailed [schedule](./schedule.html). 
+There are additional readings assignments on the troubling historical origins of modern statistics that appear in the detailed [schedule](./schedule.html). 
+
+We will generally ask that you complete the readings *after* the concepts have been introduced in class. See detailed schedule.
 
 ### Other text resources
 There are literally thousands of high-quality introductory statistics textbooks. We have particularly found the following to be helpful:
@@ -96,7 +98,7 @@ Final grades will be based on the following components:
 - Final: 30%
 
 ## Quizzes
-Five classes will begin with a very short multiple-choice quiz that is designed to test your knowledge of the theoretical principles underlying the statistics we are studying for the week. While some may feel that this is overly paternalistic, research evidence shows that frequent quizzing increases learning (see a summary of [one study](https://www.nytimes.com/2013/11/21/education/frequent-tests-can-enhance-college-learning-study-finds.html) from the University of Texas). Quizzes will be open book, notes and computer.
+Five classes will begin with a very short multiple-choice quiz that is designed to test your knowledge of the theoretical principles underlying the statistics we are studying for the week. While some may feel that this is overly paternalistic, research evidence shows that frequent quizzing increases learning (see a summary of [one study](https://www.nytimes.com/2013/11/21/education/frequent-tests-can-enhance-college-learning-study-finds.html) from the University of Texas). After we have covered each topic, you should review your lecture notes and ensure that you understand the core substantive content, referencing LSWR to help clarify any fuzziness. The quizzes will cover the substance of material introduced in class only. Quizzes will be open book, notes and computer.
 
 ## Assignments
 The goal of the assignments is to practice the concepts and vocabulary we have been modeling in class and implement some of the techniques we have learned. Each assignment has an associated data source, short codebook and detailed instructions for the required data and analytic tasks. You may work on your own or collaborate with one (1) partner. Please make sure that you engage in a full, fair and mutually-agreeable collaboration if you do choose to collaborate. If you do collaborate, you should plan, execute and write-up your analyses together, not simply divide the work. Please make sure to indicate clearly when your work is joint and any other individual or resource (outside of class material) you consulted in your response. Further assignment details are available [here](./assignments.html)

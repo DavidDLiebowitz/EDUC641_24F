@@ -26,6 +26,6 @@ This course provides a first introduction to quantitative data analysis in educa
 - *Lab:* Mondays, 4:00pm - 4:50pm, 116 Lokey and Tuesdays, 5:30pm - 6:20pm 146 HEDCO 
 
 # Instructors
-- David D. Liebowitz
+- David D. Liebowitz (office hours: Mondays 1-2:30pm or by appointment)
 - Claire Zhang
 - Havisha Khurana
