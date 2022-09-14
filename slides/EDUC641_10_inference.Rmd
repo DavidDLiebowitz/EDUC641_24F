@@ -1192,5 +1192,5 @@ To Dos
 - LSWR Chapter 10: inference and CLT
 
 ### Assignment
-- Assignment #3 Due TBD
+- Assignment #3 Due Nov. 7, 11:59pm
 
