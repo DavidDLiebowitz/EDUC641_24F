@@ -40,7 +40,8 @@ Objectives of this assignment
 
 Deadline: TBD
 
-Download: [html file](./assignments/assignment01.html); [cat.csv dataset](./data/cat.csv)
+Download: 
+<!-- [html file](./assignments/assignment01.html); [cat.csv dataset](./data/cat.csv) -->
 
 Key: [doc file]; [R script]
 
@@ -62,7 +63,8 @@ Objectives of this assignment
 
 Deadline: TBD
 
-Download: [html file](./assignments/assignment02.html); [cat.csv dataset](./data/cat.csv)
+Download: 
+<!-- [html file](./assignments/assignment02.html); [cat.csv dataset](./data/cat.csv) -->
 
 Key: [doc file]; [R script]
 
@@ -78,7 +80,8 @@ Objectives of this assignment
 
 Deadline: TBD
 
-Download: [html file](./assignments/assignment03.html); [cont.csv dataset](./data/cont.csv)
+Download: 
+<!-- [html file](./assignments/assignment03.html); [cont.csv dataset](./data/cont.csv) -->
 
 Key: [doc file]; [R script]
 
@@ -88,7 +91,8 @@ Continuous data 2: intro to bivariate regression
 
 Deadline: TBD
 
-Download: [html file](./assignments/assignment04.html); [cont.csv dataset](./data/cont.csv)
+Download: 
+<!-- [html file](./assignments/assignment04.html); [cont.csv dataset](./data/cont.csv) -->
 
 Key: [doc file]; [R script]
 
@@ -99,7 +103,8 @@ Final assignment
 
 Deadline: TBD
 
-Download: [html file](./assignments/assignment05.html); [ah01.csv dataset](./data/ah01.csv); [ah02.csv dataset](./data/ah02.csv)
+Download: 
+<!-- [html file](./assignments/assignment05.html); [ah01.csv dataset](./data/ah01.csv); [ah02.csv dataset](./data/ah02.csv) -->
 
 Key: [doc file]; [R script]
 

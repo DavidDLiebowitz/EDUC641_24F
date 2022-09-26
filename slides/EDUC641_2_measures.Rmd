@@ -256,7 +256,13 @@ Is there a mean (or standard deviation) for the hair color of the students in th
 ---
 # The measure of our class
 
-Qualtrics
+Qualtrics: https://oregon.qualtrics.com/jfe/form/SV_0MSB8ExhepNtVdA
+
+or
+
+```{r, echo=F}
+include_graphics("survey_qr.jpg")
+```
 
 ---
 class: middle, inverse
