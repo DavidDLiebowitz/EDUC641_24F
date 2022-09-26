@@ -62,11 +62,6 @@ options(knitr.table.format = "html")
 
 ```
 
-class: middle, inverse
-
-# Quiz
-
----
 # Roadmap
 
 ```{r, out.width = "90%", echo=F}
@@ -266,6 +261,13 @@ include_graphics("survey_qr.jpg")
 
 ---
 class: middle, inverse
+
+# Live coding!
+
+### Ahhh! Don't try this at home!
+
+---
+class: middle, inverse
 # Synthesis and wrap-up
 
 
@@ -276,6 +278,8 @@ class: middle, inverse
 
 ---
 # To-Dos
+
+### Quiz on Unit 0 next class
 
 ### Optional follow-up:
 - Complete Module 4 in R Bootcamp (data types)

@@ -96,7 +96,7 @@ options(knitr.table.format = "html")
 
 - Analysis follows research design that emerges from substantive questions
 - Students learn statistical analysis by doing statistical analysis
-- Start from an assumption of no prior background in mathematics, statistics or research
+- Start from an assumption of no prior background in mathematics, programming, statistics or research
 - Create an inclusive, supportive environment in which we learn from each other
 - Balance support and academic stretch across a variety of levels of prior experience and comfort with quantitative analysis
 
@@ -125,12 +125,13 @@ Concrete learning objectives:
 # My personal goals
 
 - Over next two terms, teach you the basics of applied statistics
-- Challenge you
-  + These courses assume .blue[*no prior knowledge*] beyond high-school Algebra I
+- Challenge you:
+  + These courses assume .blue[*no prior knowledge*] of either programming or math, beyond high-school Algebra I
   + Thus, I hope EDUC 641 provides a smooth on-ramp for everyone
   + If you're struggling, come talk to me
-  + If the course is too basic, consider the R Bootcamp extension activities (it will get more challenging)
+  + If the course is too basic, consider either recommended texts for more formal mathematical treatment **AND/OR** the R Bootcamp extension activities (it will get more challenging)
 - Induct you into a graduate-level focus on mastery, rather than an undergraduate-level focus on success
+- Contribute to building a community of live learners and life-long professional colleagues
 
 ---
 # Me
