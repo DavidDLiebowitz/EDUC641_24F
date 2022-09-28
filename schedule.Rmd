@@ -36,6 +36,7 @@ Lectures:
 - Class 1 (9/27) slides: [html](./slides/EDUC641_1_intro.html) | [pdf](./slides/EDUC641_1_intro.pdf)
 - Class 2 (9/29) slides: [html](./slides/EDUC641_2_measures.html) | [pdf](./slides/EDUC641_2_measures.pdf)
 - R Tutorial slides: [html](./slides/tutorial.html)
+- Lab slides: [html](https://claireconglizhang.github.io/my-slides/EDUC64122F/lab1.html)
 
 ## Unit 1 
 
