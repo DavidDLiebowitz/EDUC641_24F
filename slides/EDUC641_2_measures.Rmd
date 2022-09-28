@@ -308,6 +308,13 @@ include_graphics("survey_qr.jpg")
 ```
 
 ---
+class: middle, inverse
+
+# Live coding!
+
+### Ahhh! Don't try this at home!
+
+---
 # Measure reliability & validity
 
 ```{r, echo=F}
@@ -324,12 +331,6 @@ include_graphics("lo_rely.jpg")
 include_graphics("hi_rely.jpg")
 ```
 
----
-class: middle, inverse
-
-# Live coding!
-
-### Ahhh! Don't try this at home!
 
 ---
 class: middle, inverse
