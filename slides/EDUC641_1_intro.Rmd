@@ -39,6 +39,7 @@ extra_css <- list(
   ".red-pink" = list(color= "red_pink"),
   ".grey-light" = list(color= "grey_light"),
   ".purple" = list(color = "purple"),
+  ".large" = list("font-size" = "120%"),
   ".small" = list("font-size" = "90%"),
   ".tiny" = list("font-size" = "70%"),
   ".tiny2" = list("font-size" = "50%"))
@@ -66,11 +67,21 @@ options(knitr.table.format = "html")
 ```{r, out.width = "90%", echo=F}
   include_graphics("roadmap.png")
 ```
+---
+# Agenda
+
+.large[
+1. Overview of course: goals, pedagogy and logistics
+2. Research principles and design
+]
+
 
 ---
 # Class goals
 
+.large[
 1. Describe goals and structure and of the course (and the quantitative EDUC sequence more broadly) and principles of scientific research
+]
 
 ---
 # Goals of EDUC quant sequence
@@ -129,9 +140,10 @@ Concrete learning objectives:
   + These courses assume .blue[*no prior knowledge*] of either programming or math, beyond high-school Algebra I
   + Thus, I hope EDUC 641 provides a smooth on-ramp for everyone
   + If you're struggling, come talk to me
-  + If the course is too basic, consider either recommended texts for more formal mathematical treatment **AND/OR** the R Bootcamp extension activities (it will get more challenging)
+  + If the course is too basic, consider either recommended texts for more formal mathematical treatment **AND/OR** the R Bootcamp extension activities (it will get more challenging) **AND/OR** reflect on pedagogical approaches as a future instructor
 - Induct you into a graduate-level focus on mastery, rather than an undergraduate-level focus on success
 - Contribute to building a community of live learners and life-long professional colleagues
+- Assign everyone an A
 
 ---
 # Me
@@ -265,7 +277,9 @@ class: middle, inverse
 ---
 # Class goals
 
+.large[
 1. Describe goals and structure and of the course (and the quantitative EDUC sequence more broadly) and principles of scientific research
+]
 
 ---
 # To-Dos
