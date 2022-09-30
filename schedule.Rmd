@@ -56,8 +56,7 @@ Readings:
 Lectures: 
 
 - Class 3 (10/4) slides: [html](./slides/EDUC641_3_categdescr.html) | [pdf](./slides/EDUC641_3_categdescr.pdf)
-- Data: [deathpenalty.csv](./data/deathpenalty.csv) | [codebook](./data/deathpenalty.csv)
-- Codebook: [pdf](./data/deathpenalty_codebook.pdf)
+- Data: [deathpenalty.csv](./data/deathpenalty.csv) | [codebook](./data/deathpenalty_codebook.pdf)
 - R code: [R script](./slides/EDUC641_3_code.R)
 
 Assignment 1: 
