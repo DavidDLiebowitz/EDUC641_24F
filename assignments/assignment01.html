@@ -369,8 +369,7 @@ pre code {
 
 <div id="general-guidelines" class="section level3">
 <h3>General Guidelines</h3>
-<ul>
-<li>The purpose of this assignment is to practice the concepts and
+<p>The purpose of this assignment is to practice the concepts and
 vocabulary we have been modeling in class and implement some of the
 techniques we have learned. You may work on your own or collaborate with
 one partner. Please make sure that you engage in a a full, fair and
@@ -378,31 +377,29 @@ mutually-agreeable collaboration if you do choose to collaborate. If you
 do collaborate, you should plan, execute and write-up your analyses
 together, not simply divide the work. Please make sure to indicate
 clearly when your work is joint and any other individual or resource
-(outside of class material) you consulted in your responses.</li>
-</ul>
+(outside of class material) you consulted in your responses.</p>
 </div>
 <div id="submission-requirements" class="section level3">
 <h3>Submission Requirements</h3>
 <p>Please upload below two files on Canvas:</p>
-<ul>
-<li>An .html or .pdf file that includes both -
-<ul>
-<li>your typed responses (in your own words and not identical to anybody
-else’s), tables, and/or figures to the problems<br />
-</li>
-<li>and the R code chunks that generated your answers (hint: if you
-choose to compose your answers in Rmarkdown, simply set up echo = TRUE,
-include = TRUE in you .Rmd file)</li>
-</ul></li>
+<ol style="list-style-type: decimal">
+<li>An .html or .pdf file that includes your typed responses (in your
+own words and not identical to anybody else’s except your partner),
+tables, and/or figures to the problems</li>
 <li>The .Rmd or .R file that you used to render the tables and figures
 in the above html/pdf.</li>
-</ul>
+</ol>
+<p><em>If you have prior experience, you may choose to compose your
+answers in RMarkdown and render to a Word doc or pdf. If so, you can
+simply set up echo = TRUE and include = TRUE in your .Rmd file to allow
+both code and answers to display in a single output file. If you have no
+idea what the preceding sentence meant, ignore it.</em></p>
 </div>
 <div id="objectives-of-this-assignment" class="section level3">
 <h3>Objectives of this assignment</h3>
 <ul>
-<li><p>Describe and summarize categorical data</p></li>
-<li><p>Create visualizations of categorical data</p></li>
+<li>Describe and summarize categorical data</li>
+<li>Create visualizations of categorical data</li>
 </ul>
 </div>
 <div id="data-background" class="section level3">
@@ -425,19 +422,20 @@ turn, these improved relationships might lead to other positive effects
 of the PD intervention. One pair of researchers (<a href="https://doi.org/10.1080/19345747.2019.1634170">Hanno and Gonzalez,
 2020</a>) wanted to learn whether the PD intervention improved student
 attendance.</p>
-<p>The paired assignments 1 and 2 will ask you to answer a few research
-questions: Were the students less likely to be chronically absent if
-there teachers participated the consultancy PD intervention? Were the
-female students less likely to be chronically absent if there teachers
-participated in the consultancy PD intervention? How about the male
-students?</p>
+<p>The paired assignments 1 and 2 will ask you to answer two
+<strong>research questions</strong>:</p>
+<ol style="list-style-type: decimal">
+<li>Did teacher participation in a consultancy-based professional
+development decrease rates of student chronic absenteeism?</li>
+<li>Did the effects of teacher-participation in a consultancy-based
+professional development differ by students’ gender identities?</li>
+</ol>
 <p><strong>Sample</strong>. Our dataset is student-level data for 942
 preschool students, which is the same sample used in the original Hanno
 and Gonzalez (2020) paper. The authors test several approaches to
-compute the outcome variable, chronic absenteeism, since some key
-information on full year absent days is not publicly available. For
-simplifying reasons, the approach we use in our sample is one from the
-robustness check rather the one used in the main results of their
+compute the outcome variable: chronic absenteeism. For simplifying
+reasons, the approach we use in our sample is one from one of their the
+robustness checks rather the one used in the main results of their
 paper.</p>
 <p><strong>Key variables</strong>. The outcome measure in our data is
 whether a student is “chronically absent” from school. In many
@@ -463,11 +461,12 @@ male.</li>
 <div id="read-in-the-dataset" class="section level4">
 <h4>1. Read in the dataset</h4>
 <p>Open your RStudio, create a project and save it. Go to the root
-directory of the project and create a folder named “data”. Download the
-<a href="./data/cat.csv">cat.csv dataset</a> and store it in the folder
-“data”. Create an Rmd/R file in the project root directory. Read the
-data into your R environment. You do not need to include this response
-in your memo; only in your code.</p>
+directory of the project and create folders named: “Code”, “Data”,
+“Figures” and “Tables.” Download the <a href="./data/cat.csv">cat.csv
+dataset</a> and store it in the folder “Data”. Create an R script (or
+.Rmd) file in the Code folder. Read the data into your R environment.
+You do not need to include this response in your memo; only in your
+code.</p>
 </div>
 <div id="understand-the-structure-of-the-data" class="section level4">
 <h4>2. Understand the structure of the data</h4>
@@ -477,17 +476,21 @@ the current type of each variable and what the type should be, how many
 rows/observations, etc.).</p>
 <p>2.2. Write your own code to transform the variables, <em>treat</em>,
 <em>absenteeism</em>, and <em>cgender</em> into factor variables and
-label them consistently with the data background information above.</p>
+label them consistently with the data background information above. You
+do not need to include this response in your memo; only in your
+code.</p>
 </div>
 <div id="describe-and-summarize-the-two-key-variables" class="section level4">
 <h4>3. Describe and summarize the two key variables</h4>
-<p>3.1. How many students were in the treatment group? Control group?
-Provide your response and create a table AND a figure to demonstrate
-your answer. <em>Make sure to label all parts of your figure</em></p>
-<p>3.2. What proportion of students were chronically absent? Provide
-your response and create a table AND a figure to demonstrate your
-answer. Does this seem like a large or small proportion? <em>Make sure
-to label all parts of your figure</em></p>
+<p>3.1. Write one sentence that states how many students were in the
+treatment and control groups. Provide your response and create a table
+AND a figure to demonstrate your answer. <em>Make sure to label all
+parts of your figure</em></p>
+<p>3.2. Write one sentence that states what <em>proportion</em> of
+students were chronically absent? Provide your response and create a
+table AND a figure to demonstrate your answer. Write one sentence
+indicating whether this seems like a large or small proportion to you.
+<em>Make sure to label all parts of your figure</em></p>
 </div>
 </div>
 

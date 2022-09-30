@@ -29,6 +29,11 @@ class: center, middle, inverse, title-slide
 
 
 
+class: middle, inverse
+
+# Quiz
+
+---
 # Roadmap
 
 &lt;img src="Roadmap_1.png" width="80%" style="display: block; margin: auto;" /&gt;
@@ -49,7 +54,7 @@ class: center, middle, inverse, title-slide
 .pull-left[
 - [Warren McCleskey](https://www.theatlantic.com/politics/archive/2019/06/legacy-mccleskey-v-kemp/591424/) sentenced to death for murdering police officer during armed robbery in Georgia (1978)
 - McCleskey appeals to the Supreme Court, arguing his death sentence is due to racial bias in sentencing...his appeal is rejected
-- Senator Edward Kennedy sponsors the Racial Justice Act to enforce the Constitution's promise of equality under the law
+- Senator Edward Kennedy sponsors the Racial Justice Act to enforce "the Constitution's promise of equality under the law"
 - McCleskey executed in Georgia (1991)
 ]
 .pull-right[
@@ -79,10 +84,11 @@ class: center, middle, inverse, title-slide
 ---
 # Materials
 
-### 1. Death penalty data (in file called deathpenalty.csv)
-### 2. Codebook describing the contents of said data
-### 3. R script to conduct the data analytic tasks of the unit
-
+.large[
+1. Death penalty data (in file called deathpenalty.csv)
+2. Codebook describing the contents of said data (deathpenalty_codebook.pdf)
+3. R script to conduct the data analytic tasks of the unit (EDUC641_3_code.R)
+]
 
 ---
 # Let's first access the data
@@ -94,28 +100,51 @@ Baldus, Pulaski and Woodworth (1983) compiled criminal justice and crude demogra
 
 
 ```r
-d &lt;- read.csv('C:/Users/daviddl/Documents/EDUC/641/data/deathpenalty.csv')
+d &lt;- read.csv('C:/Users/daviddl/Documents/EDUC/EDUC641_22F/data/deathpenalty.csv')
 # but there are a lot of reasons to avoid using a hard-coded filepath
 # so instead, we'll use our first R package
-```
 
---
-
-
-```r
-df &lt;- read.csv(here("data/deathpenalty.csv"))
-# it is common in R to name our datasets short names 
-# so as to reduce typing (df for dataframe)
-
-# Also, note how I can write anything I want after a # sign and it 
+# Side note, I can write anything I want after a # sign and it 
 # doesn't cause any problems for your program. These are called  
 # comments and are critical to remind you (and tell others) what 
 # you are doing!
 ```
 
+---
+# Let's first access the data
+
+Baldus, Pulaski and Woodworth (1983) compiled criminal justice and crude demographic information on all convicted murderers in the state of Georgia from in the mid-1970s. We have access to a simplified version of these data.
+
+
+```r
+# The first thing we'll do is to install the package
+# install.packages(here)  &lt;- when you do this, remove the #
+# Then, we'll load the package:
+
+library(here)
+```
+
+--
+While you're at it, do the same for `tidyverse` and `ggplot2` !
+
+---
+# Let's first access the data
+
+Baldus, Pulaski and Woodworth (1983) compiled criminal justice and crude demographic information on all convicted murderers in the state of Georgia from in the mid-1970s. We have access to a simplified version of these data.
+
+
+```r
+# Ok, now we're ready to get started:
+
+df &lt;- read.csv(here("data/deathpenalty.csv"))
+# it is common in R to name our datasets short names 
+# so as to reduce typing (df for dataframe)
+```
+
 --
 
 #### but where did our data go?
+
 ---
 # Understanding data structure
 
@@ -2629,6 +2658,16 @@ head(df)
 #&gt; 6  6        0       2       1
 ```
 
+Some vocabulary:
+- .blue[**Observation**]: each row contains information on one person
+- .blue[**Variable**]: each column (R stores these as "vectors")
+- .blue[**Values**]: entries in the column
+
+
+---
+# Putting words to numbers
+
+
 ```r
 str(df)
 ```
@@ -2641,8 +2680,7 @@ str(df)
 #&gt;  $ rvictim : int  2 1 2 2 1 1 1 2 2 1 ...
 ```
 
----
-# Putting words to numbers
+--
 We know from our codebook what this long list of numbers means, so let's make our dataset a little more readable...
 
 
@@ -2702,7 +2740,7 @@ counts &lt;- table(df$deathpen)
 barplot(counts, xlab = "Sentenced to Death?")
 ```
 
-&lt;img src="EDUC641_3_categdescr_files/figure-html/unnamed-chunk-10-1.svg" style="display: block; margin: auto;" /&gt;
+&lt;img src="EDUC641_3_categdescr_files/figure-html/unnamed-chunk-12-1.svg" style="display: block; margin: auto;" /&gt;
 
 --
 
@@ -2719,7 +2757,7 @@ barplot(prop, xlab = "Race of Victim",
         ylab = "Proportion of victims")
 ```
 
-&lt;img src="EDUC641_3_categdescr_files/figure-html/unnamed-chunk-11-1.svg" style="display: block; margin: auto;" /&gt;
+&lt;img src="EDUC641_3_categdescr_files/figure-html/unnamed-chunk-13-1.svg" style="display: block; margin: auto;" /&gt;
 
 &gt; After inspecting this *chart of the proportions* of the variable *RVICTIM* in our data, we conclude ...
 
@@ -2729,11 +2767,11 @@ Let's start to get familiar with the beauty of `ggplot`
 
 
 ```r
-rd &lt;- ggplot2::ggplot(df, aes(rdefend)) + geom_bar() +
+rd &lt;- ggplot(df, aes(rdefend)) + geom_bar() +
          xlab("Race of Defendant") 
 ```
 
-&lt;img src="EDUC641_3_categdescr_files/figure-html/unnamed-chunk-13-1.svg" style="display: block; margin: auto;" /&gt;
+&lt;img src="EDUC641_3_categdescr_files/figure-html/unnamed-chunk-15-1.svg" style="display: block; margin: auto;" /&gt;
 
 &gt; After inspecting this *chart* of the values of the variable *RDEFEND* in our data, we conclude ...
 
