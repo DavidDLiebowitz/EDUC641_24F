@@ -288,6 +288,24 @@ rd + geom_text(aes(label = ..count..), stat='count', vjust = -0.5, size=6) +
 > After inspecting this *chart* of the values of the variable *RDEFEND* in our data, we conclude ...
 
 ---
+# BUT...
+
+
+.large[
+
+We still have not answered our motivating question: .blue[**Were convicted murderers more likely to be sentenced to death in Georgia if they killed someone Black or if they killed someone White?**]
+]
+
+--
+
+.large[
+We will do so next class and start our journey into the wild world of **statistical inference**!
+]
+
+--
+(*how's that for a cliffhanger?*)
+
+---
 class: middle, inverse
 # Synthesis and wrap-up
 

@@ -41,7 +41,7 @@ Objectives of this assignment
 Deadline: October 10, 11:59pm
 
 Download: 
-[html file](./assignments/assignment01.html); [cat.csv dataset](./data/cat.csv)
+[html file](./assignments/assignment01.html) | [cat.csv dataset](./data/cat.csv)
 
 Key: [doc file]; [R script]
 
@@ -64,7 +64,7 @@ Objectives of this assignment
 Deadline: October 19, 11:59pm
 
 Download: 
-<!-- [html file](./assignments/assignment02.html); [cat.csv dataset](./data/cat.csv) -->
+<!-- [html file](./assignments/assignment02.html) | [cat.csv dataset](./data/cat.csv) -->
 
 Key: [doc file]; [R script]
 
@@ -81,7 +81,7 @@ Objectives of this assignment
 Deadline: November 7, 11:59pm
 
 Download: 
-<!-- [html file](./assignments/assignment03.html); [cont.csv dataset](./data/cont.csv) -->
+<!-- [html file](./assignments/assignment03.html) | [cont.csv dataset](./data/cont.csv) -->
 
 Key: [doc file]; [R script]
 
@@ -92,7 +92,7 @@ Continuous data 2: intro to bivariate regression
 Deadline: November 28, 11:59pm
 
 Download: 
-<!-- [html file](./assignments/assignment04.html); [cont.csv dataset](./data/cont.csv) -->
+<!-- [html file](./assignments/assignment04.html) | [cont.csv dataset](./data/cont.csv) -->
 
 Key: [doc file]; [R script]
 
@@ -104,7 +104,7 @@ Final assignment
 Deadline: December 7, 11:59pm
 
 Download: 
-<!-- [html file](./assignments/assignment05.html); [ah01.csv dataset](./data/ah01.csv); [ah02.csv dataset](./data/ah02.csv) -->
+<!-- [html file](./assignments/assignment05.html) | [ah01.csv dataset](./data/ah01.csv); [ah02.csv dataset](./data/ah02.csv) -->
 
 Key: [doc file]; [R script]
 
