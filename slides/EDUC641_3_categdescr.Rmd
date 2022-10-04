@@ -78,7 +78,7 @@ class: middle, inverse
 ---
 # Class goals
 
-1. Understand and implement principles of tabular data in R
+1. Understand and implement principles of tabular (rectangular) data in R
 2. Describe and summarize quantitative data that are categorical
 3. Create visualizations of quantitative data that are categorical
 4. Write R scripts to conduct these analyses
@@ -312,7 +312,7 @@ class: middle, inverse
 ---
 # Class goals
 
-1. Understand and implement principles of tabular data in R
+1. Understand and implement principles of tabular (rectangular) data in R
 2. Describe and summarize quantitative data that are categorical
 3. Create visualizations of quantitative data that are categorical
 4. Write R scripts to conduct these analyses
