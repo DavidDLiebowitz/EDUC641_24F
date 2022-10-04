@@ -49,19 +49,19 @@ Details on all variables are as follows:
 
 #### 1. Read in the dataset
 
-Open your RStudio, create a project and save it. Go to the root directory of the project and create folders named: "Code", "Data", "Figures" and "Tables." Download the [cat.csv dataset](./data/cat.csv) and store it in the folder "Data". Create an R script (or .Rmd) file in the Code folder. Read the data into your R environment. You do not need to include this response in your memo; only in your code.
+Open your RStudio, create a project and save it. Go to the root directory of the project and create folders named: "Code", "Data", "Figures" and "Tables." Download the [cat.csv dataset](./data/cat.csv) and store it in the folder "Data". Create an R script (or .Rmd) file in the Code folder. Read the data into your R environment. You do not need to include this response in your memo; only in your code. **(1 point)**
 
 #### 2. Understand the structure of the data
 
-2.1. Write your own code to view the dataset and write 3-4 sentences about the structure of the data (how many variables are there, what is the current type of each variable and what the type should be, how many rows/observations, etc.).
+2.1. Write your own code to view the dataset and write 3-4 sentences about the structure of the data (how many variables are there, what is the current type of each variable and what the type should be, how many rows/observations, etc.). **(3 points)**
 
 
-2.2. Write your own code to transform the variables, *treat*, *absenteeism*, and *cgender* into factor variables and label them consistently with the data background information above. You do not need to include this response in your memo; only in your code.
+2.2. Write your own code to transform the variables, *treat*, *absenteeism*, and *cgender* into factor variables and label them consistently with the data background information above. You do not need to include this response in your memo; only in your code. **(1 point)**
 
 #### 3. Describe and summarize the two key variables
 
-3.1. Write one sentence that states how many students were in the treatment and control groups. Provide your response and create a table AND a figure to demonstrate your answer. *Make sure to label all parts of your figure*
+3.1. Write one sentence that states how many students were in the treatment and control groups. Provide your response and create a table AND a figure to demonstrate your answer. *Make sure to label all parts of your figure!* **(5 points)**
 
-3.2. Write one sentence that states what *proportion* of students were chronically absent? Provide your response and create a table AND a figure to demonstrate your answer. Write one sentence indicating whether this seems like a large or small proportion to you. *Make sure to label all parts of your figure*
+3.2. Write one sentence that states what *proportion* of students were chronically absent? Provide your response and create a table AND a figure to demonstrate your answer. Write one sentence indicating whether this seems like a large or small proportion to you. *Make sure to label all parts of your figure!* **(5 points)**
 
 
