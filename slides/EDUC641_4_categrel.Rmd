@@ -39,7 +39,11 @@ extra_css <- list(
   ".red-pink" = list(color= "red_pink"),
   ".grey-light" = list(color= "grey_light"),
   ".purple" = list(color = "purple"),
-  ".small" = list("font-size" = "90%"))
+  ".large" = list("font-size" = "120%"),
+  ".small" = list("font-size" = "90%"),
+  ".tiny" = list("font-size" = "70%"),
+  ".tiny2" = list("font-size" = "50%"))
+
 
 write_extra_css(css = extra_css, outfile = "my_custom.css")
 
@@ -76,9 +80,10 @@ options(knitr.table.format = "html")
 - Interpret and report the results of a contingency-table analysis and a statistical inference from a chi-squared statistic
 
 ---
-# A reminder of our motivating question
+# Reminder of motivating question
 
-### <span style="color:blue"> Were convicted murderers more likely to be sentenced to death in Georgia if they killed someone Black or if they killed someone White? </span>
+
+.blue[**Were convicted murderers more likely to be sentenced to death in Georgia if they killed someone Black or if they killed someone white?**]
 
 ---
 # Materials
@@ -109,15 +114,20 @@ class: middle, inverse
 ---
 # Two-way tables
 
-...Now we seek to create a *joint display* of the values of *RVICTIM* and *DEATHPEN*
-
+.small[Now we seek to create a *joint display* of the values of *RVICTIM* and *DEATHPEN*]
 ```{r, echo=T}
 table(df$deathpen, df$rvictim)
 ```
 
 --
+.small[Could do this other ways...]
+```{r, echo=T}
+xtabs(formula = ~ deathpen + rvictim, data = df)
+```
 
-It would be helpful to have these in percentage terms. Proportion of convicted murderers sentenced to death in case of Black victim: 
+--
+
+.small[Would be helpful to have these in percentage terms. Proportion of convicted murderers sentenced to death in case of Black victim:] 
 $$\frac{23}{1483 + 23}*100= 1.53\%$$
 ---
 # Two-way tables
@@ -127,25 +137,26 @@ $$\frac{23}{1483 + 23}*100= 1.53\%$$
 round(prop.table(table(df$deathpen, df$rvictim), margin=2)*100, 2)
 ```
 
----
-# Putting it into words
+--
+### Putting it into words
 
 > In our sample of convicted murderers in Georgia, when a **Black person** was a victim...
 
 --
 
-> In our sample of convicted murderers in Georgia, when a **White person** was a victim...
+> In our sample of convicted murderers in Georgia, when a **white person** was a victim...
 
 ---
 # Grouped charts
-Can visualize these counts
+We can visualize these counts:
 
 ```{r, echo=F, fig.height=5}
 ggplot(df, aes(x = rvictim,
                fill = deathpen)) +
         geom_bar(position = "dodge") + 
         xlab("Race of victim") +
-        theme_minimal(base_size = 16)
+        theme_minimal(base_size = 16) +
+        scale_fill_discrete(name = "Death sentence?")
 ```
 
 ---
@@ -322,11 +333,14 @@ kable(df3, format='html')
 $$ \chi^2 = 103.8 $$
 --
 
-A decision rule: If $\chi^2$ is big, then declare that there is a relationship between *DEATHPEN* and *RVICTIM*; if $\chi^2$ is zero (or close to zero), then declare there is no relationship between *DEATHPEN* and *RVICTIM* ...
+Decision rule: If $\chi^2$ is big, then declare that there is a relationship between *DEATHPEN* and *RVICTIM*; if $\chi^2$ is zero (or close), then declare there is no relationship between *DEATHPEN* and *RVICTIM*...
+
+--
+but what is **BIG**, what is **close to zero**, and is 103.8 **big** or **close to zero**?
 
 --
 
-but what is **BIG**, what is **close to zero**, and is 103.8 **big** or **close to zero**?
+For that we will use the this statistic to conduct a $\color{red}{\chi^2}$ .red[**goodness-of-fit**] test.
 
 ---
 # Statistical inference
@@ -356,7 +370,7 @@ Let's take a step back to capture the nature of the problem
 
 We start by imagining a hypothetical world in which there is **no relationship** between *DEATHPEN* and *RVICTIM* in a true population of convicted murderers. Then, we imagine drawing a series of samples of convicted murders over and over again (say...10,000 times) from this hypothetical population. What values of the $\chi^2$ statistic might we observe?
 
-```{r, out.width = "75%", echo=F}
+```{r, out.width = "70%", echo=F}
   include_graphics("null_pop.jpg")
 ```
 
@@ -382,7 +396,7 @@ In this hypothetical example of repeated sampling from a null population, we cou
 ch + geom_vline(xintercept = 5, color = "blue", linetype = "dashed", size=1.5)
 ```
 
-<span style="color:blue"> *If this were the histogram that could result from sampling idiosyncrasy, and this were the value of the $\chi^2$ statistic, what would you think?* </span>
+.blue[*If this were the histogram that could result from sampling idiosyncrasy, and this were the value of the chi-square statistic, what would you think?*]
 
 ---
 # Testing the null
@@ -397,11 +411,11 @@ ggplot(chsq, aes(Chi_Square)) +
 
 --
 
-<span style="color:blue"> *This is a histogram of possible $\chi^2$ values that could result from sampling idiosyncrasy, and then the actual value of the $\chi^2$ statistic in our sample. What do you think?* </span>
+.blue[*This is a histogram of possible chi-square values that could result from sampling idiosyncrasy, and then the actual value of the chi-squared statistic in our sample. What do you think?*]
 
 --
 
-*WOOHOO!* In this thought exercise, you've just engaged in a rudimentary version of <span style="color:red"> *Null-Hypothesis Significance Testing (NHST)* </span>; the bedrock of the majority of social science research.
+*WOOHOO!* In this thought exercise, you've just engaged in a rudimentary version of .red[*Null-Hypothesis Significance Testing (NHST)*]; the bedrock of most social science research.
 
 ---
 # Testing the null (*p*-values)
@@ -417,13 +431,13 @@ ggplot(chsq, aes(Chi_Square)) +
 
 --
 
-The statistic that captures the likelihood that one would observe a $\chi^2$ statistic of a given magnitude in a particular sample, in the presence of a null population, is called the <span style="color:red">  *p*-value </span>
+The statistic that captures the probability of observing a $\chi^2$ statistic of a given magnitude in a particular sample, in the presence of a null population, is called the .red[*p*-value]
 
 
 ---
 # Testing the null (*p*-values)
 
-<span style="color:blue"> *At what p-value would you cease to believe that the value of the $\chi^2$ statistic in your own research was "big" (i.e., was unlikely to have occurred by accident)* </span>
+.blue[*At what p-value would you start to believe that the value of the*] $\color{blue}{\chi^2}$ .blue[*statistic in your own research was "big" (i.e., was unlikely to have occurred by accident)*]
 ```{r, echo=F, fig.height=5}
 ggplot(chsq, aes(x=Chi_Square)) + geom_density(fill="pink", alpha=0.2) +
   scale_x_continuous("Chi-Square values", limits = c(0,10)) +
@@ -433,26 +447,7 @@ ggplot(chsq, aes(x=Chi_Square)) + geom_density(fill="pink", alpha=0.2) +
 ---
 # Testing the null (*p*-values)
 
-<span style="color:blue"> *At what p-value would you cease to believe that the value of the $\chi^2$ statistic in your own research was "big" (i.e., was unlikely to have occurred by accident)* </span>
-```{r, echo=F, fig.height=5}
-chsq_right <- density(chsq$Chi_Square, from = 3.84, to = max(chsq$Chi_Square))
-chsq_data <- data.frame(x = chsq_right$x, y = chsq_right$y)
-ggplot(chsq, aes(x=Chi_Square)) + geom_density(fill="pink", alpha=0.2) +
- geom_area(data = chsq_data, aes(x=x, y=y), fill = "blue", alpha=0.2) +
-  geom_vline(xintercept=3.84, color = "red", size = 0.5, linetype = "dashed") +
-  scale_x_continuous("Chi-Square values", limits = c(0,10)) +
-  scale_y_continuous("density") +
-    theme_minimal(base_size = 16)
-```
-
---
-
-In social science research, it is customary to (arbitrarily) set that threshold at **5 percent (*p*<0.05)**. In other words, we say that if the difference between our observed data and our expected data would have happened in fewer than 1 out of 20 randomly drawn samples, that the difference reflects a true difference in the population.
-
----
-# Testing the null (*p*-values)
-
-<span style="color:blue"> *In social science research, it is customary to (arbitrarily) set an alpha-threshold and conduct a Null-Hypothesis Significance Test* </span>
+.blue[*At what p-value would you start to believe that the value of the*] $\color{blue}{\chi^2}$ .blue[*statistic in your own research was "big" (i.e., was unlikely to have occurred by accident)*]
 ```{r, echo=F, fig.height=5}
 chsq_right <- density(chsq$Chi_Square, from = 3.84, to = max(chsq$Chi_Square))
 chsq_data <- data.frame(x = chsq_right$x, y = chsq_right$y)
@@ -466,12 +461,26 @@ ggplot(chsq, aes(x=Chi_Square)) + geom_density(fill="pink", alpha=0.2) +
 
 --
 
-#### <span style="color:blue">Is this the right thing to do? At the end of the course, we will revisit this concept.</span>
+.small[In social science research, it is customary to (arbitrarily) set that threshold at **5 percent (*p*<0.05)**. In other words, we say that if the difference between our observed data and our expected data would have happened in fewer than 1 out of 20 randomly drawn samples, that the difference reflects a true difference in the population.]
 
 ---
-class: middle, inverse
+# Testing the null (*p*-values)
 
-# Quiz
+.blue[*In social science research, it is customary to (arbitrarily) set an alpha-threshold and conduct a Null-Hypothesis Significance Test*]
+```{r, echo=F, fig.height=5}
+chsq_right <- density(chsq$Chi_Square, from = 3.84, to = max(chsq$Chi_Square))
+chsq_data <- data.frame(x = chsq_right$x, y = chsq_right$y)
+ggplot(chsq, aes(x=Chi_Square)) + geom_density(fill="pink", alpha=0.2) +
+ geom_area(data = chsq_data, aes(x=x, y=y), fill = "blue", alpha=0.2) +
+  geom_vline(xintercept=3.84, color = "red", size = 0.5, linetype = "dashed") +
+  scale_x_continuous("Chi-Square values", limits = c(0,10)) +
+  scale_y_continuous("density") +
+    theme_minimal(base_size = 16)
+```
+
+--
+
+.blue[**Is this the right thing to do? At the end of the course, we will revisit this concept.**]
 
 ---
 class: middle, inverse
@@ -664,13 +673,17 @@ class: middle, inverse
 ### Reading
 - LSWR Chapter 11: hypothesis testing
 - LSWR Chapter 12: categorical data analysis (chi-square test focus)
+    + Please do not worry about fully understanding the discussions on sampling distributions, degrees of freedom, one- vs. two-sided tests, or variations of chi-squared calculations. We will (partially) cover these topics in future classes.
 - Levy (2019)
+    + Last name A-H: Clayton; Last Name I-P: Evans; Last Name R-Z: Levy
+    + Prep to summarize main ideas and supporting details
 
 ### Optional follow-up
 - Complete R Bootcamp Module 6 (matrices)
 - Complete R Bootcamp Module 7 (lists)
 
 ### Assignments
+- Quiz on Units 1 & 2 next class (10/13)
 - Assignment #2 Due October 19, 11:59pm
 
 

@@ -44,9 +44,10 @@ class: center, middle, inverse, title-slide
 - Interpret and report the results of a contingency-table analysis and a statistical inference from a chi-squared statistic
 
 ---
-# A reminder of our motivating question
+# Reminder of motivating question
 
-### &lt;span style="color:blue"&gt; Were convicted murderers more likely to be sentenced to death in Georgia if they killed someone Black or if they killed someone White? &lt;/span&gt;
+
+.blue[**Were convicted murderers more likely to be sentenced to death in Georgia if they killed someone Black or if they killed someone white?**]
 
 ---
 # Materials
@@ -68,8 +69,7 @@ class: middle, inverse
 ---
 # Two-way tables
 
-...Now we seek to create a *joint display* of the values of *RVICTIM* and *DEATHPEN*
-
+.small[Now we seek to create a *joint display* of the values of *RVICTIM* and *DEATHPEN*]
 
 ```r
 table(df$deathpen, df$rvictim)
@@ -83,8 +83,22 @@ table(df$deathpen, df$rvictim)
 ```
 
 --
+.small[Could do this other ways...]
 
-It would be helpful to have these in percentage terms. Proportion of convicted murderers sentenced to death in case of Black victim: 
+```r
+xtabs(formula = ~ deathpen + rvictim, data = df)
+```
+
+```
+#&gt;         rvictim
+#&gt; deathpen Black White
+#&gt;      No   1483   863
+#&gt;      Yes    23   106
+```
+
+--
+
+.small[Would be helpful to have these in percentage terms. Proportion of convicted murderers sentenced to death in case of Black victim:] 
 `$$\frac{23}{1483 + 23}*100= 1.53\%$$`
 ---
 # Two-way tables
@@ -102,20 +116,20 @@ round(prop.table(table(df$deathpen, df$rvictim), margin=2)*100, 2)
 #&gt;   Yes  1.53 10.94
 ```
 
----
-# Putting it into words
+--
+### Putting it into words
 
 &gt; In our sample of convicted murderers in Georgia, when a **Black person** was a victim...
 
 --
 
-&gt; In our sample of convicted murderers in Georgia, when a **White person** was a victim...
+&gt; In our sample of convicted murderers in Georgia, when a **white person** was a victim...
 
 ---
 # Grouped charts
-Can visualize these counts
+We can visualize these counts:
 
-&lt;img src="EDUC641_4_categrel_files/figure-html/unnamed-chunk-5-1.svg" style="display: block; margin: auto;" /&gt;
+&lt;img src="EDUC641_4_categrel_files/figure-html/unnamed-chunk-6-1.svg" style="display: block; margin: auto;" /&gt;
 
 ---
 # What is "related"?
@@ -399,11 +413,14 @@ We can summarize the **NET DISCREPANCY** between the tables of **OBSERVED** and 
 $$ \chi^2 = 103.8 $$
 --
 
-A decision rule: If `\(\chi^2\)` is big, then declare that there is a relationship between *DEATHPEN* and *RVICTIM*; if `\(\chi^2\)` is zero (or close to zero), then declare there is no relationship between *DEATHPEN* and *RVICTIM* ...
+Decision rule: If `\(\chi^2\)` is big, then declare that there is a relationship between *DEATHPEN* and *RVICTIM*; if `\(\chi^2\)` is zero (or close), then declare there is no relationship between *DEATHPEN* and *RVICTIM*...
+
+--
+but what is **BIG**, what is **close to zero**, and is 103.8 **big** or **close to zero**?
 
 --
 
-but what is **BIG**, what is **close to zero**, and is 103.8 **big** or **close to zero**?
+For that we will use the this statistic to conduct a `\(\color{red}{\chi^2}\)` .red[**goodness-of-fit**] test.
 
 ---
 # Statistical inference
@@ -433,15 +450,7 @@ Let's take a step back to capture the nature of the problem
 
 We start by imagining a hypothetical world in which there is **no relationship** between *DEATHPEN* and *RVICTIM* in a true population of convicted murderers. Then, we imagine drawing a series of samples of convicted murders over and over again (say...10,000 times) from this hypothetical population. What values of the `\(\chi^2\)` statistic might we observe?
 
-&lt;img src="null_pop.jpg" width="75%" style="display: block; margin: auto;" /&gt;
-
----
-# Testing the null
-
-In this hypothetical example of repeated sampling from a null population, we could record all 10,000 values of the `\(\chi^2\)` statistic
-&lt;img src="EDUC641_4_categrel_files/figure-html/unnamed-chunk-17-1.svg" style="display: block; margin: auto;" /&gt;
-
-The histogram summarizes the natural variation that could occur in a `\(\chi^2\)` statistic as a result of *random sampling idiosyncrasy*, after drawing repeated samples from a hypothetical population in which there is no relationship between *DEATHPEN* and *RVICTIM*.
+&lt;img src="null_pop.jpg" width="70%" style="display: block; margin: auto;" /&gt;
 
 ---
 # Testing the null
@@ -449,64 +458,67 @@ The histogram summarizes the natural variation that could occur in a `\(\chi^2\)
 In this hypothetical example of repeated sampling from a null population, we could record all 10,000 values of the `\(\chi^2\)` statistic
 &lt;img src="EDUC641_4_categrel_files/figure-html/unnamed-chunk-18-1.svg" style="display: block; margin: auto;" /&gt;
 
-&lt;span style="color:blue"&gt; *If this were the histogram that could result from sampling idiosyncrasy, and this were the value of the `\(\chi^2\)` statistic, what would you think?* &lt;/span&gt;
+The histogram summarizes the natural variation that could occur in a `\(\chi^2\)` statistic as a result of *random sampling idiosyncrasy*, after drawing repeated samples from a hypothetical population in which there is no relationship between *DEATHPEN* and *RVICTIM*.
+
+---
+# Testing the null
+
+In this hypothetical example of repeated sampling from a null population, we could record all 10,000 values of the `\(\chi^2\)` statistic
+&lt;img src="EDUC641_4_categrel_files/figure-html/unnamed-chunk-19-1.svg" style="display: block; margin: auto;" /&gt;
+
+.blue[*If this were the histogram that could result from sampling idiosyncrasy, and this were the value of the chi-square statistic, what would you think?*]
 
 ---
 # Testing the null
 
 In fact, this is the value of the `\(\chi^2\)` statistic we observed:
-&lt;img src="EDUC641_4_categrel_files/figure-html/unnamed-chunk-19-1.svg" style="display: block; margin: auto;" /&gt;
+&lt;img src="EDUC641_4_categrel_files/figure-html/unnamed-chunk-20-1.svg" style="display: block; margin: auto;" /&gt;
 
 --
 
-&lt;span style="color:blue"&gt; *This is a histogram of possible `\(\chi^2\)` values that could result from sampling idiosyncrasy, and then the actual value of the `\(\chi^2\)` statistic in our sample. What do you think?* &lt;/span&gt;
+.blue[*This is a histogram of possible chi-square values that could result from sampling idiosyncrasy, and then the actual value of the chi-squared statistic in our sample. What do you think?*]
 
 --
 
-*WOOHOO!* In this thought exercise, you've just engaged in a rudimentary version of &lt;span style="color:red"&gt; *Null-Hypothesis Significance Testing (NHST)* &lt;/span&gt;; the bedrock of the majority of social science research.
+*WOOHOO!* In this thought exercise, you've just engaged in a rudimentary version of .red[*Null-Hypothesis Significance Testing (NHST)*]; the bedrock of most social science research.
 
 ---
 # Testing the null (*p*-values)
 
 In fact, we don't need to examine the full histogram. Instead, we can say that in a hypothetical exercise of sampling repeatedly from a null population, less than 1 in a 1,000,000,000,000,000 (trillion) of all accidental values of the `\(\chi^2\)` statistic are larger than a value of 103.8
 
-&lt;img src="EDUC641_4_categrel_files/figure-html/unnamed-chunk-20-1.svg" style="display: block; margin: auto;" /&gt;
-
---
-
-The statistic that captures the likelihood that one would observe a `\(\chi^2\)` statistic of a given magnitude in a particular sample, in the presence of a null population, is called the &lt;span style="color:red"&gt;  *p*-value &lt;/span&gt;
-
-
----
-# Testing the null (*p*-values)
-
-&lt;span style="color:blue"&gt; *At what p-value would you cease to believe that the value of the `\(\chi^2\)` statistic in your own research was "big" (i.e., was unlikely to have occurred by accident)* &lt;/span&gt;
 &lt;img src="EDUC641_4_categrel_files/figure-html/unnamed-chunk-21-1.svg" style="display: block; margin: auto;" /&gt;
 
----
-# Testing the null (*p*-values)
-
-&lt;span style="color:blue"&gt; *At what p-value would you cease to believe that the value of the `\(\chi^2\)` statistic in your own research was "big" (i.e., was unlikely to have occurred by accident)* &lt;/span&gt;
-&lt;img src="EDUC641_4_categrel_files/figure-html/unnamed-chunk-22-1.svg" style="display: block; margin: auto;" /&gt;
-
 --
 
-In social science research, it is customary to (arbitrarily) set that threshold at **5 percent (*p*&lt;0.05)**. In other words, we say that if the difference between our observed data and our expected data would have happened in fewer than 1 out of 20 randomly drawn samples, that the difference reflects a true difference in the population.
+The statistic that captures the probability of observing a `\(\chi^2\)` statistic of a given magnitude in a particular sample, in the presence of a null population, is called the .red[*p*-value]
+
 
 ---
 # Testing the null (*p*-values)
 
-&lt;span style="color:blue"&gt; *In social science research, it is customary to (arbitrarily) set an alpha-threshold and conduct a Null-Hypothesis Significance Test* &lt;/span&gt;
+.blue[*At what p-value would you start to believe that the value of the*] `\(\color{blue}{\chi^2}\)` .blue[*statistic in your own research was "big" (i.e., was unlikely to have occurred by accident)*]
+&lt;img src="EDUC641_4_categrel_files/figure-html/unnamed-chunk-22-1.svg" style="display: block; margin: auto;" /&gt;
+
+---
+# Testing the null (*p*-values)
+
+.blue[*At what p-value would you start to believe that the value of the*] `\(\color{blue}{\chi^2}\)` .blue[*statistic in your own research was "big" (i.e., was unlikely to have occurred by accident)*]
 &lt;img src="EDUC641_4_categrel_files/figure-html/unnamed-chunk-23-1.svg" style="display: block; margin: auto;" /&gt;
 
 --
 
-#### &lt;span style="color:blue"&gt;Is this the right thing to do? At the end of the course, we will revisit this concept.&lt;/span&gt;
+.small[In social science research, it is customary to (arbitrarily) set that threshold at **5 percent (*p*&lt;0.05)**. In other words, we say that if the difference between our observed data and our expected data would have happened in fewer than 1 out of 20 randomly drawn samples, that the difference reflects a true difference in the population.]
 
 ---
-class: middle, inverse
+# Testing the null (*p*-values)
 
-# Quiz
+.blue[*In social science research, it is customary to (arbitrarily) set an alpha-threshold and conduct a Null-Hypothesis Significance Test*]
+&lt;img src="EDUC641_4_categrel_files/figure-html/unnamed-chunk-24-1.svg" style="display: block; margin: auto;" /&gt;
+
+--
+
+.blue[**Is this the right thing to do? At the end of the course, we will revisit this concept.**]
 
 ---
 class: middle, inverse
@@ -747,13 +759,17 @@ class: middle, inverse
 ### Reading
 - LSWR Chapter 11: hypothesis testing
 - LSWR Chapter 12: categorical data analysis (chi-square test focus)
+    + Please do not worry about fully understanding the discussions on sampling distributions, degrees of freedom, one- vs. two-sided tests, or variations of chi-squared calculations. We will (partially) cover these topics in future classes.
 - Levy (2019)
+    + Last name A-H: Clayton; Last Name I-P: Evans; Last Name R-Z: Levy
+    + Prep to summarize main ideas and supporting details
 
 ### Optional follow-up
 - Complete R Bootcamp Module 6 (matrices)
 - Complete R Bootcamp Module 7 (lists)
 
 ### Assignments
+- Quiz on Units 1 &amp; 2 next class (10/13)
 - Assignment #2 Due October 19, 11:59pm
 
 

@@ -82,19 +82,17 @@ Objectives:
 Readings: 
 
 - Complete **prior to Oct. 13** class: [LSWR Chapters 11 and 12](https://learningstatisticswithr.com/lsr-0.6.pdf) and [Levy 2019](http://gppreview.com/2019/12/16/eugenics-ethics-statistical-analysis/)
+   + See lecture notes on what to focus on (and not) in LSWR
 
 Lectures:
 
-- Classes 4-5 (10/6 and 10/11) slides: 
-<!-- [html](./slides/EDUC641_4_categrel.html) | [pdf](./slides/EDUC641_4_categrel.pdf) -->
+- Classes 4-5 (10/6 and 10/11) slides: [html](./slides/EDUC641_4_categrel.html) | [pdf](./slides/EDUC641_4_categrel.pdf)
 - Class 6 (10/13) slides: 
 <!-- [html](./slides/EDUC641_6_history.html) | [pdf](./slides/EDUC641_6_history.pdf) -->
 
 
-- Data: 
-<!-- [deathpenalty.csv](./data/deathpenalty.csv) | [codebook](./data/deathpenalty.csv) -->
-- R code: 
-<!-- [R script](./slides/EDUC641_4_code.R)  -->
+- Data: [deathpenalty.csv](./data/deathpenalty.csv) | [codebook](./data/deathpenalty.csv) 
+- R code: [R script](./slides/EDUC641_4_code.R)
  
 Assignment 2: 
 
