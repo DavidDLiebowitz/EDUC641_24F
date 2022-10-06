@@ -673,7 +673,7 @@ class: middle, inverse
 ### Reading
 - LSWR Chapter 11: hypothesis testing
 - LSWR Chapter 12: categorical data analysis (chi-square test focus)
-    + Please do not worry about fully understanding the discussions on sampling distributions, degrees of freedom, one- vs. two-sided tests, or variations of chi-squared calculations. We will (partially) cover these topics in future classes.
+    + Please do not worry about fully understanding the discussions on sampling distributions, degrees of freedom, one- vs. two-sided tests, or variations of chi-squared calculations **(Sections 11.3, 11.4.3, 11.7, 11.8, 12.1.4-12.1.8, 12.3-12.9)**. We will (partially) cover these topics in future classes.
 - Levy (2019)
     + Last name A-H: Clayton; Last Name I-P: Evans; Last Name R-Z: Levy
     + Prep to summarize main ideas and supporting details
