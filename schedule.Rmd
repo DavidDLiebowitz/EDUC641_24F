@@ -51,7 +51,7 @@ Objectives:
 
 Readings: 
 
-- Complete **prior to Oct. 6** class: [LSWR Chapter 6](https://learningstatisticswithr.com/lsr-0.6.pdf) and [Evans 2020](https://www.newstatesman.com/uncategorized/2020/07/ra-fisher-and-science-hatred)
+- Complete **prior to Oct. 6** class: [LSWR Chapter 6](https://learningstatisticswithr.com/lsr-0.6.pdf) and [Evans 2020](https://www.newstatesman.com/uncategorized/2020/07/ra-fisher-and-science-hatred); alternate source for [Evans](./assignments/evans_2020.pdf)
 
 Lectures: 
 
@@ -81,7 +81,7 @@ Objectives:
 
 Readings: 
 
-- Complete **prior to Oct. 13** class: [LSWR Chapters 11 and 12](https://learningstatisticswithr.com/lsr-0.6.pdf) and [Levy 2019](http://gppreview.com/2019/12/16/eugenics-ethics-statistical-analysis/)
+- Complete **prior to Oct. 13** class: [LSWR Chapters 11 and 12](https://learningstatisticswithr.com/lsr-0.6.pdf) and [Levy 2019](http://gppreview.com/2019/12/16/eugenics-ethics-statistical-analysis/) 
    + See lecture notes on what to focus on (and not) in LSWR
 
 Lectures:
