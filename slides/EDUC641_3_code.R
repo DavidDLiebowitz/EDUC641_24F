@@ -79,6 +79,6 @@ rd + geom_text(aes(label = ..count..), stat='count', vjust = -0.5, size = 6) +
   theme_minimal(base_size = 16)
 
 # Now I can save the image I've created
-ggsave(filename = "rdefend.png")
+ggsave(filename = "slides/rdefend.png")
 
 
