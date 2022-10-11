@@ -62,8 +62,7 @@ Objectives of this assignment
 
 Deadline: October 19, 11:59pm
 
-Download: 
-<!-- [html file](./assignments/assignment02.html) | [cat.csv dataset](./data/cat.csv) -->
+Download: [html file](./assignments/assignment02.html) | [cat.csv dataset](./data/cat.csv)
 
 Key: [doc file]; [R script]
 
