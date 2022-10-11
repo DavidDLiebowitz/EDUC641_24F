@@ -13,7 +13,7 @@ The purpose of this assignment is to practice the concepts and vocabulary we hav
 
 Please upload below two files on Canvas:  
 
-1. An .html or .pdf file that includes your typed responses (in your own words and not identical to anybody else's except your partner), tables, and/or figures to the problems
+1. An .html, .doc(x) or .pdf file that includes your typed responses (in your own words and not identical to anybody else's except your partner), tables, and/or figures to the problems
 2. The .Rmd or .R file that you used to render the tables and figures in the above html/pdf. 
 
 *If you have prior experience, you may choose to compose your answers in RMarkdown and render to a Word doc or pdf. If so, you can simply set up echo = TRUE and include = TRUE in your .Rmd file to allow both code and answers to display in a single output file. If you have no idea what the preceding sentence meant, ignore it.* 

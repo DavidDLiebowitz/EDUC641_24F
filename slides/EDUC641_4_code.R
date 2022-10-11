@@ -35,6 +35,8 @@ table(df$deathpen, df$rvictim)
 xtabs(formula = ~ deathpen + rvictim, data = df)
 
 # Two-way table of percents
+# margin=2 asks for the column-wise percents
+# if you specify margin=1, you'll get the row percents
 
 round(prop.table(table(df$deathpen, df$rvictim), margin=2)*100, 2)
 
@@ -43,7 +45,8 @@ ggplot(df, aes(x = rvictim,
                fill = deathpen)) +
   geom_bar(position = "dodge") + 
   xlab("Race of victim") +
-  theme_minimal(base_size = 16)
+  theme_minimal(base_size = 16) +
+  scale_fill_discrete(name = "Death sentence?")
 
 # A two-way table with "marginal" values
 two_way <- table(df$deathpen, df$rvictim)
