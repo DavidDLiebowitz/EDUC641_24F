@@ -42,7 +42,7 @@ Deadline: October 10, 11:59pm
 
 Download: [html file](./assignments/assignment01.html) | [cat.csv dataset](./data/cat.csv)
 
-Key: [doc file](./assignments/keys/assignment01_key.docx); [R script](./assignments/keys/assignment_01_key.R)
+Key: [doc file](./assignments/keys/assignment01_key.docx); [R script](./assignments/keys/assignment01_key.R)
 
 ## 3.2. Assignment 2 
 
