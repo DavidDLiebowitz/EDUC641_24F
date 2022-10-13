@@ -501,6 +501,11 @@ There are more complex ways of doing this, but one approach is to replicate the 
 # Cases with Black murderers
 
 
+```r
+df_b &lt;- filter(df, rdefend == "Black")
+table(df_b$deathpen, df_b$rvictim)
+```
+
 ```
 #&gt;      
 #&gt;       Black White

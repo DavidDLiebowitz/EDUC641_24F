@@ -463,7 +463,7 @@ There are more complex ways of doing this, but one approach is to replicate the 
 ---
 # Cases with Black murderers
 
-```{r, echo=F}
+```{r, echo=T}
 df_b <- filter(df, rdefend == "Black")
 table(df_b$deathpen, df_b$rvictim)
 ```
