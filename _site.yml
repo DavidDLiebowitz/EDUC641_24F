@@ -23,11 +23,11 @@ navbar:
       - text: "6. Troubling history of stats"
         href: ./slides/EDUC641_6_history.html
       - text: "7. Continuous descriptives I"
-        # href: ./slides/EDUC641_7_continuousdescr.html
+        href: ./slides/EDUC641_7_continuousdescr.html
       - text: "8. Continuous descriptives II"
-        # href: ./slides/EDUC641_7_continuousdescr.html
+        href: ./slides/EDUC641_7_continuousdescr.html
       - text: "9. Z-scores and effect sizes"
-        # href: ./slides/EDUC641_7_continuousdescr.html
+        # href: ./slides/EDUC641_9_transformations.html
       - text: "10. CLT I"
         # href: ./slides/EDUC641_10_inference.html
       - text: "11. CLT II"

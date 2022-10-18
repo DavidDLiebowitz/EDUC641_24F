@@ -1,0 +1,187 @@
+---
+title: "Transformations, Z-scores and effect sizes"
+subtitle: "EDUC 641: Unit 3 Part 2"
+author: "David D. Liebowitz"
+#date: "`r format(Sys.time(), '%d %B, %Y')`"
+output:
+  xaringan::moon_reader:
+    css: ['default', 'uo', 'ki-fonts', 'my_custom.css', 'xaringanthemer.css']
+    # self_contained: true
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+  html_document:
+    keep_md: true
+---
+
+```{r setup, include = FALSE}
+options(htmltools.dir.version = FALSE)
+
+knitr::opts_chunk$set(warning = FALSE,
+                      message = FALSE,
+                      fig.align = "center",
+                      fig.height = 3)
+
+if (!require(pacman)) install.packages('pacman', repos = 'https://cran.rstudio.com')
+pacman::p_load(tidyverse, here, knitr, dplyr, ggplot2, blogdown, rio, gridExtra, xaringanthemer)
+
+extra_css <- list(
+  ".red"   = list(color = "red"),
+  ".blue"  =list(color = "blue"),
+  ".red-pink" = list(color= "#e64173"),
+  ".grey-light" = list(color= "#dbd7d8"),
+  ".purple" = list(color = "purple"),
+  ".large" = list("font-size" = "120%"),
+  ".small" = list("font-size" = "90%"),
+  ".tiny" = list("font-size" = "70%"),
+  ".tiny2" = list("font-size" = "50%"))
+
+write_extra_css(css = extra_css, outfile = "my_custom.css")
+```
+
+```{r, echo = F}
+ getmode <- function(v) {
+   uniqv <- unique(v)
+   uniqv[which.max(tabulate(match(v, uniqv)))]
+}
+
+```
+
+# Roadmap
+
+```{r, out.width = "90%", echo=F}
+  include_graphics("Roadmap_3.png")
+```
+
+---
+# Class goals
+
+.large[
+- Describe and summarize quantitative data that are continuous
+- Describe the purpose and compute the following measures of central tendency: mean, median and mode
+- Describe the purpose and compute the following measures of variability: quartiles, inter-quartile range, range, variance and standard deviation
+  + Describe conceptually the principles of skewness and kurtosis
+- Create visualizations of quantitative data that are continuous using R
+  + Includes constructing and interpreting histograms, densities, stem-and-leaf, and box-and-whisker plots
+]
+
+
+---
+# Transformations
+* A distribution can have any mean and any (positive) standard deviation.
+* Sometimes it is helpful to standardize a distribution to a common mean and standard deviation so we can more easily compare them and identify extreme data points.
+
+```{r, echo = F}
+trans_samp <- tibble(d1 = rnorm(1000, mean = 54, sd = 7),
+                     d2 = rnorm(1000, mean = 850, sd = 100)) %>% 
+  mutate(d1_t = (d1-mean(d1))/sd(d1),
+         d2_t = (d2-mean(d2))/sd(d2))
+
+d1_plot <- ggplot(trans_samp, aes(x = d1)) +
+  geom_histogram() +
+  ggtitle("Distribution 1")
+d2_plot <- ggplot(trans_samp, aes(x = d2)) +
+  geom_histogram() +
+    ggtitle("Distribution 2")
+d1_tplot <- ggplot(trans_samp, aes(x = d1_t)) +
+  geom_histogram() +
+  ggtitle("Distribution 1 - Transformed")
+d2_tplot <- ggplot(trans_samp, aes(x = d2_t)) +
+  geom_histogram() +
+  ggtitle("Distribution 2 - Transformed")
+
+grid.arrange(d1_plot, d1_tplot, d2_plot, d2_tplot, ncol=2, nrow =2)
+
+```
+---
+# Transformations
+* The most common transformation is a z-transformation. 
+* A z-transformation rescales the distribution to a mean $(\mu)$ of 0 and a standard deviation $(\sigma)$ of 1.
+
+
+```{r echo=FALSE}
+ggplot(data.frame(x = c(-4, 4)), aes(x = x)) +
+  stat_function(fun = dnorm) +
+  scale_x_continuous(limits = c(-4, 4),
+                     breaks = c(seq(-4, 4, 1))) +
+  ylim(0, 0.4) +
+  theme_classic() +
+  ggtitle("Standardized Distribution", subtitle =  "m = 0, sd = 1") +
+  theme(plot.title = element_text(hjust = 0.5),
+        plot.subtitle = element_text(hjust = 0.5))
+```
+
+---
+# Transforming Distributions
+* Any distribution can be standardized using a simple algorithm.
+
+Each observation $(i)$ is transformed into a **z-score** using the following formula:
+
+$$z_{i} = \frac{X_{i} - \mu}{\sigma}$$
+
+* A z-score is calculated by **subtracting the mean** from each value and **dividing by the standard deviation**.
+
+* An observation's z-score value is equal to its distance from the mean, in standard deviation units.
+
+---
+
+# Transforming Distributions
+
+Here is a histogram of our life expectancy data.
+```{r, echo = F}
+hist(who$life_expectancy)
+```
+
+We are going to create a new variable called `life_expectancy_zscore` using the linear function described on the previous slide.
+```{r}
+who$life_expectancy_zscore <- 
+  (who$life_expectancy - mean(who$life_expectancy)) /
+        sd(who$life_expectancy)
+```
+
+---
+# Transforming Distributions
+
+Let's look at the first few transformed values.
+```{r}
+head(who$life_expectancy_zscore)
+```
+
+--
+
+```{r}
+## Histogram of the new z-scores
+hist(who$life_expectancy_zscore)
+```
+
+We now have a mean of 0 and standard deviation of 1.
+
+---
+# Transforming Distributions
+
+An important note about standardizing a distribution is that it changes the mean and standard deviation, but **does not change the overall shape.**
+
+```{r, echo = F}
+who_raw <- ggplot(who, aes(life_expectancy)) +
+  geom_histogram()
+
+who_stand <- ggplot(who, aes(life_expectancy_zscore)) +
+  geom_histogram()
+
+grid.arrange(who_raw, who_stand, ncol = 2, nrow = 1)
+
+```
+
+---
+Recall that z-scores allow us to compare across units of measure; the products of standardized scores are themselves standardized.
+
+The correlation coefficient is a standardized effect size which can be used communicate the strength of a relationship.
+
+Effect sizes are often mis-interpreted. How?
+
+What can fix this?
+
+Pitfalls of small effects and large effects
+
+Recommendations?
