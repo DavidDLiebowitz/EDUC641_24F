@@ -664,7 +664,7 @@ The standard deviation of life expectancy in 2015 was approximately 8.15 *years*
 ---
 # You try
 
-Given the following set of observed value (66, 73, 75, 78, 78), calculate the:
+Given the following set of observed value (75, 66, 78, 73, 78), calculate the:
 * Mean
 * Median
 * Mode
