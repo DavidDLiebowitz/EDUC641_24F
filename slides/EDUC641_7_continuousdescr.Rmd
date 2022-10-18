@@ -85,6 +85,13 @@ Before making comparisons between social/economic conditions, we want to start w
 **Our first task:** Describe the distribution of regional life expectancy in 2015.
 
 ---
+# Materials
+
+### 1. Life expectancy data (in file called life_expectancy.csv)
+### 2. Codebook describing the contents of said data
+### 3. R script to conduct the data analytic tasks of the unit
+
+---
 # Read in life expectancy
 
 ```{r, echo=T}
