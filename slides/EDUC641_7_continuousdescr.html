@@ -123,7 +123,6 @@ There are many ways to describe the characteristics of a .blue[**distribution**]
   + Interquartile Range
   + Range
 
-* Distributional transformations
 * Measures of Skewness
 * Measures of Kurtosis
 
@@ -300,6 +299,10 @@ Let's demonstrate using our WHO data of 183 countries to find the mean.
 
 The mean national life expectancy for these countries in 2015 is 71.64 years.
 
+&gt; `\(i\)` = index of summation (the unit that the observations are in; e.g., schools, students, numbers)
+&gt; `\(n\)` = stopping point (number of observations)
+&gt; `\(x_i\)` = summation element (what we are summing)
+
 --
 
 While this isn't critical to understand right now, the reason we index the summation `\(i\)` through `\(n\)` is that we could, in principle, want to summarize only the first 6 countries. Or the 5th through 24th countries. We would write the latter as: 
@@ -418,6 +421,7 @@ median(who$life_expectancy)
 --
 
 Base R does not have an easy way of calculating the mode. There are some work-arounds, but we won't cover them in this class. Importantly `mode` does something altogether different.
+
 ---
 # Comparing distributions
 
@@ -556,9 +560,31 @@ Here is our original plot with our .blue[standard deviation (*SD*)] plotted belo
 The standard deviation of life expectancy in 2015 was approximately 8.15 *years*.
 
 ---
+# Implementing in R
+
+
+```r
+# Variance
+var(who$life_expectancy)
+```
+
+```
+## [1] 66.42965
+```
+
+```r
+# Standard deviation
+sd(who$life_expectancy)
+```
+
+```
+## [1] 8.150439
+```
+
+---
 # You try
 
-Given the following set of observed value (75, 66, 78, 73, 78), calculate the:
+Given the following set of observed value (75, 74, 66, 78, 73, 78), calculate the:
 * Mean
 * Median
 * Mode
@@ -614,16 +640,11 @@ Population Statistics - Greek Alphabet
 *These Greek letters are conventions that statisticians have used over the years. There are many other of these notational conventions (for example, when to use capital- or lower-case Greek letters). There's no inherent reason why they are used (e.g., you could use `\(\psi\)` to represent the mean), but we tend to use the conventional symbols to reduce cognitive load. You'll want to get familiar with some of the most commonly used ones yourself.*
 
 ---
-class: middle, inverse
-
-# End of class 1
-
----
 # Distributional shape: Skewness
 * Not all distributions in the real world are symmetrical. Often they have asymmetry or **skewness**.
 * Skewness describes how much a distribution is "bunched up" to the right or left.
 
-&lt;img src="EDUC641_7_continuousdescr_files/figure-html/unnamed-chunk-24-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="EDUC641_7_continuousdescr_files/figure-html/unnamed-chunk-25-1.png" style="display: block; margin: auto;" /&gt;
 
 * .red[**Positive Skew**] - Distribution is skewed to the right with a "positive-pointing finger."
 * .red[**Negative Skew**] - Distribution is skewed to the left with a "negative-pointing finger."
@@ -636,7 +657,7 @@ class: middle, inverse
  + .red[Platykurtic] distributions do not have a prominent peak and have a flatter top.
  
  
-&lt;img src="EDUC641_7_continuousdescr_files/figure-html/unnamed-chunk-25-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="EDUC641_7_continuousdescr_files/figure-html/unnamed-chunk-26-1.png" style="display: block; margin: auto;" /&gt;
 ---
 # Moments of a distribution
 Each of these statistics we've covered describe a different .red["moment of a distribution."]
@@ -659,7 +680,7 @@ We do not need to know how to calculate skew and kurtosis but we do need to have
 * Skewness and kurtosis can be evaluated visually and summarized quantitatively.
 
   + Positive skew (skewed to the right) `\(\rightarrow\)` Skewness &gt; 0
-  + Negative skew (skewed to the left) `\(\rightarrow\)` Skewness &gt; 0
+  + Negative skew (skewed to the left) `\(\rightarrow\)` Skewness &lt; 0
 
   + Leptokurtic `\(\rightarrow\)` Kurtosis &gt; 0
   + Platykurtic `\(\rightarrow\)` Kurtosis &lt; 0
@@ -673,7 +694,11 @@ Note: In this course we will focus visual analysis for severe skew or kurtosis. 
 * Here is a density plot of the WHO life expectancy data for 2015. 
 * How would you characterize the distribution?
 
-&lt;img src="EDUC641_7_continuousdescr_files/figure-html/unnamed-chunk-26-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="EDUC641_7_continuousdescr_files/figure-html/unnamed-chunk-27-1.png" style="display: block; margin: auto;" /&gt;
+
+* .blue[What kind of skew does this distribution have?]
+
+--
 
 * .blue[Is there severe skew?]
 * .blue[Is there severe kurtosis?]
@@ -682,7 +707,7 @@ Note: In this course we will focus visual analysis for severe skew or kurtosis. 
 # Summarizing Data
 
 The distribution of life expectancy has a slightly negative skew and no excess kurtosis. The skewness and kurtosis are not severe.
-&lt;img src="EDUC641_7_continuousdescr_files/figure-html/unnamed-chunk-27-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="EDUC641_7_continuousdescr_files/figure-html/unnamed-chunk-28-1.png" style="display: block; margin: auto;" /&gt;
 
 
 The .red[mean] national life expectancy in 2015 was **71.62** years.
@@ -704,7 +729,7 @@ Although histograms and density plots are useful for evaluating the shape of a d
 
 Here is a sample boxplot of our WHO data overlain on a density plot.
 
-&lt;img src="EDUC641_7_continuousdescr_files/figure-html/unnamed-chunk-28-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="EDUC641_7_continuousdescr_files/figure-html/unnamed-chunk-29-1.png" style="display: block; margin: auto;" /&gt;
 
 ---
 # Boxplots
@@ -716,7 +741,7 @@ A basic boxplot can quickly capture the median, the interquartile range and any 
 boxplot(who$life_expectancy, horizontal=T)
 ```
 
-&lt;img src="EDUC641_7_continuousdescr_files/figure-html/unnamed-chunk-29-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="EDUC641_7_continuousdescr_files/figure-html/unnamed-chunk-30-1.png" style="display: block; margin: auto;" /&gt;
 
 ---
 # Boxplots
@@ -733,7 +758,7 @@ ggplot(data = who_more, aes(factor(year), life_expectancy,
   theme_minimal() + theme(legend.position = "none")
 ```
 
-&lt;img src="EDUC641_7_continuousdescr_files/figure-html/unnamed-chunk-31-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="EDUC641_7_continuousdescr_files/figure-html/unnamed-chunk-32-1.png" style="display: block; margin: auto;" /&gt;
 
 
 --
@@ -760,18 +785,21 @@ class: middle, inverse
 ---
 # Class goals
 
+.large[
 - Describe and summarize quantitative data that are continuous
 - Describe the purpose and compute the following measures of central tendency: mean, median and mode
 - Describe the purpose and compute the following measures of variability: quartiles, inter-quartile range, range, variance and standard deviation
   + Describe conceptually the principles of skewness and kurtosis
 - Create visualizations of quantitative data that are continuous using R
   + Includes constructing histograms, densities, stem-and-leaf, and box-and-whisker plots
+]
 
 ---
 # To Dos
 
 ### Reading
 - LSWR Chapter 5: descriptive statistics
+- Hu (2021)
 
 ### Optional follow-up
 - Complete Module 8 (dataframes) in R Bootcamp

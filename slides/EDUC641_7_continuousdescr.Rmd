@@ -141,7 +141,6 @@ There are many ways to describe the characteristics of a .blue[**distribution**]
   + Interquartile Range
   + Range
 
-* Distributional transformations
 * Measures of Skewness
 * Measures of Kurtosis
 
@@ -321,6 +320,10 @@ Let's demonstrate using our WHO data of 183 countries to find the mean.
 
 The mean national life expectancy for these countries in 2015 is 71.64 years.
 
+> $i$ = index of summation (the unit that the observations are in; e.g., schools, students, numbers)
+> $n$ = stopping point (number of observations)
+> $x_i$ = summation element (what we are summing)
+
 --
 
 While this isn't critical to understand right now, the reason we index the summation $i$ through $n$ is that we could, in principle, want to summarize only the first 6 countries. Or the 5th through 24th countries. We would write the latter as: 
@@ -458,6 +461,7 @@ median(who$life_expectancy)
 --
 
 Base R does not have an easy way of calculating the mode. There are some work-arounds, but we won't cover them in this class. Importantly `mode` does something altogether different.
+
 ---
 # Comparing distributions
 
@@ -669,9 +673,22 @@ var_plot +
 The standard deviation of life expectancy in 2015 was approximately 8.15 *years*.
 
 ---
+# Implementing in R
+
+```{r, echo=T}
+
+# Variance
+var(who$life_expectancy)
+
+# Standard deviation
+sd(who$life_expectancy)
+
+```
+
+---
 # You try
 
-Given the following set of observed value (75, 66, 78, 73, 78), calculate the:
+Given the following set of observed value (75, 74, 66, 78, 73, 78), calculate the:
 * Mean
 * Median
 * Mode
@@ -725,11 +742,6 @@ Population Statistics - Greek Alphabet
 <br>
 
 *These Greek letters are conventions that statisticians have used over the years. There are many other of these notational conventions (for example, when to use capital- or lower-case Greek letters). There's no inherent reason why they are used (e.g., you could use $\psi$ to represent the mean), but we tend to use the conventional symbols to reduce cognitive load. You'll want to get familiar with some of the most commonly used ones yourself.*
-
----
-class: middle, inverse
-
-# End of class 1
 
 ---
 # Distributional shape: Skewness
@@ -850,7 +862,7 @@ We do not need to know how to calculate skew and kurtosis but we do need to have
 * Skewness and kurtosis can be evaluated visually and summarized quantitatively.
 
   + Positive skew (skewed to the right) $\rightarrow$ Skewness > 0
-  + Negative skew (skewed to the left) $\rightarrow$ Skewness > 0
+  + Negative skew (skewed to the left) $\rightarrow$ Skewness < 0
 
   + Leptokurtic $\rightarrow$ Kurtosis > 0
   + Platykurtic $\rightarrow$ Kurtosis < 0
@@ -869,6 +881,10 @@ ggplot(who, aes(life_expectancy)) +
   geom_density() +
   theme_minimal()
 ```
+
+* .blue[What kind of skew does this distribution have?]
+
+--
 
 * .blue[Is there severe skew?]
 * .blue[Is there severe kurtosis?]
@@ -1008,18 +1024,21 @@ class: middle, inverse
 ---
 # Class goals
 
+.large[
 - Describe and summarize quantitative data that are continuous
 - Describe the purpose and compute the following measures of central tendency: mean, median and mode
 - Describe the purpose and compute the following measures of variability: quartiles, inter-quartile range, range, variance and standard deviation
   + Describe conceptually the principles of skewness and kurtosis
 - Create visualizations of quantitative data that are continuous using R
   + Includes constructing histograms, densities, stem-and-leaf, and box-and-whisker plots
+]
 
 ---
 # To Dos
 
 ### Reading
 - LSWR Chapter 5: descriptive statistics
+- Hu (2021)
 
 ### Optional follow-up
 - Complete Module 8 (dataframes) in R Bootcamp
