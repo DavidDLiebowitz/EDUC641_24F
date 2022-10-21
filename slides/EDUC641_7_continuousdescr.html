@@ -516,11 +516,16 @@ quantile(who$life_expectancy)
 # Variance
 * Represents the **average squared deviation** (let's call this `\(s^{2}\)`) of each observation from the mean.&lt;sup&gt;1&lt;/sup&gt;
 
-`$$s^{2} = \frac{\sum_{i=i}^{n} x_{i}}{n}$$`
+`$$s^{2} = \frac{\Sigma_{i=1}^n(x_i-\bar{x})^2}{N}$$`
 
 * .blue[*Why do we square the deviation?*]
 
-.footnote[[1] This is actually not quite right. When calculating a sample statistic of the variance or standard deviation, the denominator in the above equation is actually `\(n-1\)`. We will learn why when we get to *degrees of freedom* in the next unit.]
+
+.footnote[[1] This is actually not quite right. When calculating a sample statistic of the variance or standard deviation, the denominator in the above equation is actually *N*-1. We will learn why when we get to *degrees of freedom* in the next unit.]
+
+--
+
+Let's unpack what this equation does...
 
 ---
 # Variance
