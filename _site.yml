@@ -26,8 +26,8 @@ navbar:
         href: ./slides/EDUC641_7_continuousdescr.html
       - text: "8. Continuous descriptives II"
         href: ./slides/EDUC641_7_continuousdescr.html
-      - text: "9. Z-scores and effect sizes"
-        # href: ./slides/EDUC641_9_transformations.html
+      - text: "9. Transformations and z-scores"
+        href: ./slides/EDUC641_9_transformations.html
       - text: "10. CLT I"
         # href: ./slides/EDUC641_10_inference.html
       - text: "11. CLT II"

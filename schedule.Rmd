@@ -125,7 +125,7 @@ Readings:
 Lecture slides: 
 
 - Classes 7-8 (10/18 & 10/20) slides: [html](./slides/EDUC641_7_continuousdescr.html) | [pdf](./slides/EDUC641_7_continuousdescr.pdf)
-- Class 9 (10/25) slides: [html] | [pdf]
+- Class 9 (10/25) slides: [html](./slides/EDUC641_9_transformations.html) | [pdf](./slides/EDUC641_9_transformations.pdf)
 - Classes 10-13 (10/27, 11/1, 11/3 & 11/8) slides: 
 <!-- [html](./slides/EDUC641_10_inference.html) | [pdf](./slides/EDUC641_10_inference.pdf) -->
 
