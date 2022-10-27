@@ -1,5 +1,6 @@
 library(here)
 library(tidyverse)
+library(gridExtra) # use to combine graphs
 
 
 ### This tells R where the script is located in relationship to the "root" directory of your project
@@ -111,3 +112,56 @@ quantile(who$life_expectancy)
 # For example, by quintiles
 quantile(who$life_expectancy, probs = seq(0, 1, 0.2))
 
+
+############################################################
+#######       z-Transformations               ##############
+#######     aka "standardizing"               ##############
+
+# Subtract mean and divide by standard deviation
+who$life_expectancy_zscore <- 
+  (who$life_expectancy - mean(who$life_expectancy)) /
+  sd(who$life_expectancy)
+
+# Can do the same thing using the `dplyr` verb `mutate`
+
+who <- who %>% mutate(life_expectancy_zscore = 
+                        (life_expectancy - mean(life_expectancy)) / 
+                        sd(life_expectancy))
+
+# note that if we didn't already know there weren't any missing values of life_expectancy,
+# we'd want to include na.rm=T in our mean and sd calculations
+
+## You can also do this with a single function: `scale`
+who <- who %>% mutate(schooling_zscore = scale(schooling))
+
+## Comparing across two standardized variables
+expect_stand <- ggplot(who, aes(life_expectancy_zscore)) +
+  geom_histogram(binwidth = 0.125) +
+  geom_vline(xintercept = 1.271, color = "red", linetype = "dashed") +
+  geom_vline(xintercept = 0, color = "blue", linetype = "dotdash") +
+  annotate("text", label= c("Canada"), color = "red", x = 1.7, y = 14)
+
+school_stand <- ggplot(who, aes(schooling_zscore)) + 
+  geom_histogram(binwidth = 0.125) +
+  geom_vline(xintercept = 1.158, color = "red", linetype = "dashed") +
+  geom_vline(xintercept = 0, color = "blue", linetype = "dotdash") +
+  annotate("text", label= c("Canada"), color = "red", x = 1.65, y = 10)
+
+grid.arrange(expect_stand, school_stand, ncol = 2, nrow = 1)
+
+## Look at outlying values
+head(sort(who$life_expectancy_zscore))
+tail(sort(who$life_expectancy_zscore))
+
+# Conduct a one-sample t-test
+
+# Look at just low-income countries
+low_inc <- filter(who, status=="Developing")
+
+t.test(low_inc$life_expectancy, mu = 71.64)
+
+# The defaults for t.test are to assume that 
+# you are conducting a two-sided one-sample test,
+# with an alpha threshold of 0.05. You can modify as needed:
+
+t.test(low_inc$life_expectancy, mu = 71.64, alternative = "less")
