@@ -111,10 +111,12 @@ Objectives:
   + Describe conceptually the principles of skewness and kurtosis
 - Create visualizations of quantitative data that are continuous using R
   + Includes constructing histograms, densities, stem-and-leaf, and box-and-whisker plots
-- Describe special features of a normal distribution
+- Construct a standardized or $z$-score and explain its substantive meaning
+- Use a $z$-transformation to compare distributions, observations within distributions and interpret outlying values
+- Describe special features of a normal (and standard normal) distribution
+- Interpret a $z$-statistic table
 - Describe the distribution of repeated sample statistics drawn from a population, how this relates to the Central Limit Theorem (CLT) and how this is informative to statistical hypothesis testing
-- Determine whether the mean value of a sample is different than a defined population value (when provided the *SD* of the variable, aka $Z$-test)
-- Conduct one-sample $t$-tests
+- Determine whether the mean value of a sample is different than a defined population mean, both when the population standard deviation of the variable is known ( $z$-test) and when it is unknown (one-sample $t$-test)
 
 Readings: 
 
@@ -126,8 +128,7 @@ Lecture slides:
 
 - Classes 7-8 (10/18 & 10/20) slides: [html](./slides/EDUC641_7_continuousdescr.html) | [pdf](./slides/EDUC641_7_continuousdescr.pdf)
 - Class 9 (10/25) slides: [html](./slides/EDUC641_9_transformations.html) | [pdf](./slides/EDUC641_9_transformations.pdf)
-- Classes 10-13 (10/27, 11/1, 11/3 & 11/8) slides: 
-<!-- [html](./slides/EDUC641_10_inference.html) | [pdf](./slides/EDUC641_10_inference.pdf) -->
+- Classes 10-13 (10/27, 11/1, 11/3 & 11/8) slides: [html](./slides/EDUC641_10_inference.html) | [pdf](./slides/EDUC641_10_inference.pdf)
 
 - Data: [life_expectancy.csv](./data/life_expectancy.csv) | [codebook](./data/life_expectancy_codebook.pdf)
 - R code: [R Script](./slides/EDUC641_7_code.R)

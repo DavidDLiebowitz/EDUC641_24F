@@ -28,14 +28,14 @@ navbar:
         href: ./slides/EDUC641_7_continuousdescr.html
       - text: "9. Transformations and z-scores"
         href: ./slides/EDUC641_9_transformations.html
-      - text: "10. CLT I"
-        # href: ./slides/EDUC641_10_inference.html
-      - text: "11. CLT II"
-        # href: ./slides/EDUC641_10_inference.html
-      - text: "12. NHST"
-        # href: ./slides/EDUC641_10_inference.html
-      - text: "13. One-sample t-tests"
-        # href: ./slides/EDUC641_10_inference.html
+      - text: "10. Normal distributions"
+        href: ./slides/EDUC641_10_inference.html
+      - text: "11. CLT I"
+        href: ./slides/EDUC641_10_inference.html
+      - text: "12. CLT II"
+        href: ./slides/EDUC641_10_inference.html
+      - text: "13. Z- and t-tests"
+        href: ./slides/EDUC641_10_inference.html
       - text: "14. Continuous relationships I"
         # href: ./slides/EDUC641_14_continuousrel.html
       - text: "15. Continuous relationships II"
