@@ -68,18 +68,19 @@ Key: [doc file](./assignments/keys/assignment02_key.docx); [R script](./assignme
 
 ## 3.3. Assignment 3 
 
-Continuous data 1: summarizing and displaying continuous data
+Continuous data 1: summarizing continuous data and $t$-tests
 
 Objectives of this assignment
 
  * Describe and summarize continuous data
 
  * Create visualizations of continuous data
+ 
+ * Conduct and interpret a one-sample $t$-test
 
 Deadline: November 7, 11:59pm
 
-Download: 
-<!-- [html file](./assignments/assignment03.html) | [cont.csv dataset](./data/cont.csv) -->
+Download: [html file](./assignments/assignment03.html) | [cont.csv dataset](./data/cont.csv)
 
 Key: [doc file]; [R script]
 
