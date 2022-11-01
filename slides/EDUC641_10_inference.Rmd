@@ -604,7 +604,7 @@ If we sampled all possible samples of size *n* from our population, our mean of 
 
 * Random sampling from the population **will return** means that will be asymptotically (approaching) normal in their distribution as the number of samples approaches infinity. With a little bit of math, the Central Limit Theorem proves this fact.
 
-* Because of that mathematical fact, we can conduct inference in the statistics.
+* Because of that mathematical fact, we can conduct inference in statistics.
 
 * We won't derive this formally, but instead will "prove" it by simulation (a few ways)
 
@@ -671,7 +671,7 @@ $$ \sigma_\bar{x} = \frac{\sigma}{\sqrt{n}}$$
 
 --
 
-.small[*Again, there is a difference between the fact that many populations approximate the normal distribution (i.e., "bell curves") vs. the normal curve of sampling distributions.*]
+.small[*Again, the observation that many populations take on "bell curve" shapes is different from the fact that the means calculated from repeatedly drawn samples form a normal distribution.*]
 
 ---
 # You interpret
@@ -698,6 +698,11 @@ Let's try this with our WHO data:
 
 We draw a sample and calculate the average life expectancy in the sample: 71.64. We set our $\alpha$-threshold at 0.05.
 
+--
+.blue[**What does this threshold mean?**]
+
+--
+
 We construct our $z$-score as follows:
 
 $$\frac{71.64-70}{8} = 0.205$$
@@ -712,7 +717,7 @@ $$\frac{71.64-70}{8} = 0.205$$
 
 Our $z$-score is .blue[**0.205**].
 
-How can we use our $z$-statistic [look-up table](https://www.math.arizona.edu/~rsims/ma464/standardnormaltable.pdf) to determine whether there is a less than 5 percent chance that our observed mean life expectancy is different from 70?
+How can we use our $z$-statistic [look-up table](https://www.math.arizona.edu/~rsims/ma464/standardnormaltable.pdf) to determine whether there is a less than 5 percent chance that our observed mean life expectancy is greater than 70?
 
 
 What do you conclude from your test?<sup>1</sup>
@@ -733,7 +738,7 @@ What do you conclude from your test?<sup>1</sup>
 
 Thus, we tend to use **Student's $t$-distributions** to make our inferences, because these do not require us to know population variability.<sup>1</sup>
 
-.footnote[[1] The name comes a pseudonym ("Student") used in papers written by [William Sealy Gossett](https://en.wikipedia.org/wiki/William_Sealy_Gosset), the Head Experimental Brewer at Guinness, in which he developed the statistical theory around the *t*-distribution. His interest in statistics was in improvements in the cultivation of barley grains. I have reviewed several biographical articles about him and none attribute eugenic beliefs to him, but he was friendly with Fisher and Pearson, so proceed with caution.]
+.footnote[[1] The name comes from a pseudonym ("Student") used in papers written by [William Sealy Gossett](https://en.wikipedia.org/wiki/William_Sealy_Gosset), the Head Experimental Brewer at Guinness, in which he developed the statistical theory around the *t*-distribution. His interest in statistics was in improvements in the cultivation of barley grains. I have reviewed several biographical articles about him and none attribute eugenic beliefs to him, but he was friendly with Fisher and Pearson, so proceed with caution.]
 
 ---
 # $t$-distributions
@@ -762,12 +767,14 @@ In this case, therefore, our degrees of freedom are $5 - 1$; i.e. 4.
 ---
 # Unbiased variance estimates
 
-As you'll recall, the formula for the standard deviation we used was:
+As you'll recall, the formula for the population standard deviation we used before was:
 $$\sigma = \sqrt{\frac{\Sigma_{i=1}^n(x_i-\mu)^2}{N}}$$
 
-but, when we calculate this in reality, we using the .red[**sample mean**] $(\bar{x})$ which is constructed **using each $x_i$**!
+but, when we calculate this in reality, we are using the .red[**sample mean**] $(\bar{x})$ which is constructed **using each $x_i$**!
 
-You can read a more detailed statistical treatment of [Bessel's correction](https://en.wikipedia.org/wiki/Bessel%27s_correction), but the key takeaway is that using sample statistics generates bias (inaccuracy) in the estimation of the population statistics. To produce an unbiased estimate of the mean, variance or standard deviation, we should always subtract one from the sample size in the denominator. For example, when we construct the standard deviation of a sample, we should calculate it as:
+You can read a more detailed statistical treatment of [Bessel's correction](https://en.wikipedia.org/wiki/Bessel%27s_correction), but the key takeaway is that using sample statistics generates bias (inaccuracy) in the estimation of the population statistics. 
+
+To produce an unbiased estimate of the mean, variance or standard deviation, we should always subtract one from the sample size in the denominator. For example, when we construct the standard deviation of a sample, we should calculate it as:
 
 $$s = \sqrt{\frac{\Sigma_{i=1}^n(x_i - \bar{x})^2}{n-1}}$$
 
@@ -780,7 +787,7 @@ $$s = \sqrt{\frac{\Sigma_{i=1}^n(x_i - \bar{x})^2}{n-1}}$$
   
 ```{r, echo=F, animation.hook="gifski", interval=0.4,}
 
-df_seq <- tibble(df = seq(1, 30, 3))
+df_seq <- tibble(df = seq(1, 30, 1))
 
 for (i in 1:nrow(df_seq)) {
 x <- ggplot(data.frame(x = c(-4, 4)), aes(x = x)) +
@@ -800,7 +807,8 @@ print(x)
 
 --
 
-As $n$ increases, the $t$-distribution approaches (asymptotically) the normal distribution. In large-ish samples (basically >650), the $t$- and $z$-statistics and test are essentially indistinguishable.
+As $n$ increases, the $t$-distribution approaches (asymptotically) the normal distribution. In large-ish samples (basically >650), the $t$- and $z$-statistics and associated tests are essentially indistinguishable.
+
 
 ---
 # One sample $t$-test
@@ -818,7 +826,7 @@ Suppose the known average life expectancy is 76 years. We collect a sample of al
 # One sample $t$-test
 *  The one sample $t$-test does **not** test the probability of obtaining the sample distribution or data itself, only the sample mean.
   
-*  Using the probability of obtaining a particular sample mean **Null Hypothesis** $(H_0)$: $\mu = K$, where $K$ is any constant.
+*  Using the probability of obtaining a particular sample mean, our **Null Hypothesis** $(H_0)$ is $\mu = K$, where $K$ is any constant.
 
 
 ---
@@ -893,12 +901,21 @@ for (i in 1:10) {
 }
 ```
 
+
+--
+
+You can look up the .blue[**critical *t*-value**] for any number of degrees of freedom and alpha-threshold in any number of $t$-statistic tables you can find [online](https://www.sjsu.edu/faculty/gerstman/StatPrimer/t-table.pdf).
+
 ---
 # One sample $t$-test
 
 To calculate a t-statistic, we use the same formula to calculate a z-score, but replace the population standard deviation with the sample's standard deviation.
 
-Since we don't know the population standard deviation $(\sigma)$, we use our sample's standard deviation $(s)$ as an estimate of the population standard deviation $(\hat{\sigma})$. And this is our $t$-statistic
+Since we don't know the population standard deviation $(\sigma)$, we use our sample's standard deviation $(s)$ as an estimate of the population standard deviation $(\hat{\sigma})$. The larger our sample (and more degrees of freedom we have), the less we need to worry about mismeasurement of our sample standard deviation.
+
+--
+
+Thus, this is our $t$-statistic:
 
 $$ t = \frac{\bar{x} - \mu}{\frac{s}{\sqrt{n}}} $$
 
@@ -1006,7 +1023,7 @@ One-Tailed
 
 * $H_A: \mu < K$ or $\mu > K$
 
-Tests for a significant difference in one direction. Assumes a priori that the difference can only occur in one direction.
+Tests for a significant difference in one direction. Assumes *a priori* that the difference can only occur in one direction.
 
 ]
 
@@ -1052,7 +1069,7 @@ ggplot(data.frame(x = c(-4, 4)), aes(x = x)) +
 .blue[What conclusion was missed with the one-tailed test?]
 
 --
-The sample had much higher levels of depression than we'd expect! Neither the null $(\mu = K)$ or alternative hypothesis $(\mu < K)$ seem tenable.
+The sample had much higher levels of depression than we'd expect! Neither the null $(\mu = K)$ nor the alternative hypothesis $(\mu < K)$ seem tenable.
 
 ---
 # Alpha thresholds and $t$-values
@@ -1187,7 +1204,7 @@ Whether we compare our t-statistic to our critical t-values or our look at our p
 two_tailed_test
 ```
 
-Assuming a population mean of 76 and sample size of 10, the proportion of random samples that would demonstrate a sample mean **equal to or more extreme than 74.75** is 0.24 $(t = -1.24, p = 0.24)$. Because our p-value does not meet our alpha threshold of .05, we **fail to reject the null hypothesis**.
+Assuming a population mean of 76 and sample size of 10, the proportion of random samples that would demonstrate a sample mean **equal to or more extreme than 74.75** is 0.24 $(t(9) = -1.24, p = 0.24)$. Because our p-value does not meet our alpha threshold of .05, we **fail to reject the null hypothesis**.
 
 Thus, we can conclude that the mean life expectancy of this sample of countries around the Mediterranean is not different from the mean population average.
 

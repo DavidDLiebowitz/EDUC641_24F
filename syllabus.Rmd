@@ -30,12 +30,12 @@ This course provides a first introduction to quantitative data analysis in educa
 # Student Learning Outcomes
 By the end of this term, it is expected that students will be able to:
 
-1. Articulate the principles of responsible and ethical quantitative research
+1. Articulate the principles of responsible and ethical quantitative research in education and human services
 2. Describe, summarize and visualize quantitative data that are categorical and continuous
 3. Describe, summarize and visualize the relationships between quantitative data that are categorical and continuous
 4. Conduct a frequentist null-hypothesis significance test of the relationships between simple categorical and continuous data
 5. Describe strategies to improve the replicability and generalizability of quantitative research
-6. Use the R programming language to conduct all such analyses
+6. Use an open-source, object-oriented programming language to conduct all such analyses
 
 
 # Textbooks and Reading Materials
@@ -48,7 +48,7 @@ There are additional readings assignments on the troubling historical origins of
 We will generally ask that you complete the readings *after* the concepts have been introduced in class. See detailed schedule.
 
 ### Other text resources
-There are literally thousands of high-quality introductory statistics textbooks. We have particularly found the following to be helpful:
+There are literally dozens of high-quality introductory statistics textbooks. We have particularly found the following to be helpful:
 
 Howell, D.C. (2013). Statistical Methods for Psychology. Cengage Learning: Belmont, CA. [A balanced book in terms of technical details and conceptual discussion. A lot of examples and discussions with a context in psychology and social science.]
 
