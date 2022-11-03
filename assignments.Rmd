@@ -78,7 +78,7 @@ Objectives of this assignment
  
  * Conduct and interpret a one-sample $t$-test
 
-Deadline: November 7, 11:59pm
+Deadline: November 9, 9:00am
 
 Download: [html file](./assignments/assignment03.html) | [cont.csv dataset](./data/cont.csv)
 
