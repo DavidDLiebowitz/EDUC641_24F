@@ -128,7 +128,7 @@ Lecture slides:
 
 - Classes 7-8 (10/18 & 10/20) slides: [html](./slides/EDUC641_7_continuousdescr.html) | [pdf](./slides/EDUC641_7_continuousdescr.pdf)
 - Class 9 (10/25) slides: [html](./slides/EDUC641_9_transformations.html) | [pdf](./slides/EDUC641_9_transformations.pdf)
-- Classes 10-13 (10/27, 11/1, 11/3 & 11/8) slides: [html](./slides/EDUC641_10_inference.html) | [pdf](./slides/EDUC641_10_inference.pdf)
+- Classes 10-12 (10/27, 11/1, & 11/3) slides: [html](./slides/EDUC641_10_inference.html) | [pdf](./slides/EDUC641_10_inference.pdf)
 
 - Data: [life_expectancy.csv](./data/life_expectancy.csv) | [codebook](./data/life_expectancy_codebook.pdf)
 - R code: [R Script](./slides/EDUC641_7_code.R)
@@ -162,14 +162,12 @@ Readings:
 
 Lecture slides: 
 
-- Classes 14-16 (11/10, 11/15 & 11/22) slides: 
-<!-- [html](./slides/EDUC641_14_continuousrel.html) | [pdf](./slides/EDUC641_14_continuousrel.pdf) -->
+- Class 13 slides (11/8) slides: [html](./slides/EDUC641_14_continuousrel.html) | [pdf](./slides/EDUC641_14_continuousrel.pdf)
+- Class 14-16 slides (11/10, 11/15 & 11/22)
   + **No class on 11/17 (David traveling for conference) and 11/24 (university holiday)**
 
-- Data: 
-<!-- [life_expectancy.csv](./data/life_expectancy.csv) -->
-- R code: 
-<!-- [R script](./slides/EDUC641_14_code.R)  -->
+- Data:  [life_expectancy.csv](./data/life_expectancy.csv)
+- R code: [R script](./slides/EDUC641_14_code.R)
 
 Assignment 4: 
 
@@ -187,6 +185,6 @@ Assignment 4:
 ## Final Assignment
 
  * Due December 7 at 11:59pm
- <!-- * [html file](./assignments/assignment05.html) -->
- <!-- * [ah01.csv](./data/ah01.csv); [ah02.csv](./data/ah02.csv) -->
+<!-- - [html file](./assignments/assignment05.html) -->
+<!-- - [ah01.csv](./data/ah01.csv); [ah02.csv](./data/ah02.csv) -->
 

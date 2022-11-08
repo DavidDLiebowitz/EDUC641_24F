@@ -30,18 +30,18 @@ navbar:
         href: ./slides/EDUC641_9_transformations.html
       - text: "10. Normal distributions"
         href: ./slides/EDUC641_10_inference.html
-      - text: "11. CLT I"
+      - text: "11. CLT"
         href: ./slides/EDUC641_10_inference.html
-      - text: "12. CLT II"
+      - text: "12. Z- and t-tests"
         href: ./slides/EDUC641_10_inference.html
-      - text: "13. Z- and t-tests"
-        href: ./slides/EDUC641_10_inference.html
-      - text: "14. Continuous relationships I"
-        # href: ./slides/EDUC641_14_continuousrel.html
-      - text: "15. Continuous relationships II"
-        # href: ./slides/EDUC641_14_continuousrel.html
-      - text: "16. Continuous relationships III"
-        # href: ./slides/EDUC641_14_continuousrel.html
+      - text: "13. Continuous relationships I"
+        href: ./slides/EDUC641_14_continuousrel.html
+      - text: "14. Bivariate regression I"
+        href: 
+      - text: "15. Bivariate regression II"
+        href: 
+      - text: "16. Regression assumptions"
+        href: 
       - text: "17. NHST critiques"
         # href: ./slides/EDUC641_17_critiques.html
       - text: "18. NHST critiques and summary"

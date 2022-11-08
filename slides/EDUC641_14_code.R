@@ -8,23 +8,26 @@ library(ggplot2)
 # Using this command you can then use shortened versions of file pathways that will work across different users' systems
 # A non-preferred alternative is to read the data in using the full filepath
 
-i_am("slides/EDUC641_4_code.r")
+i_am("slides/EDUC641_14_code.R")
 
 # Let's first access the data
-who <- read.csv(here::here("data/life_expectancy.csv")) 
+who <- read.csv(here("data/life_expectancy.csv")) 
 
 # We start with some simple data-cleaning steps that you will learn via practice on applied research projects
 # It is not necessary for you to know how to do this now
 
-who %>%  janitor::clean_names() %>% 
-  filter(year == 2015) %>%
-  select(country, schooling, year, life_expectancy) %>% 
-  mutate(life_expectancy = round(life_expectancy, digits = 0))
+who <- who %>%  janitor::clean_names() %>% 
+        filter(year == 2015) %>%
+        select(country, schooling, year, life_expectancy) %>% 
+        mutate(life_expectancy = round(life_expectancy, digits = 0))
 
 # We filter out missing values
 who <- filter(who, !is.na(schooling))
 who <- filter(who, !is.na(life_expectancy))
 
+
+#######################################################
+### Univariate statistics
 
 # Create a stem-and-leaf plot of LIFE_EXPECTANCY
 stem(who$life_expectancy)
@@ -41,6 +44,9 @@ ggplot(who, aes(x = schooling)) +
 # Generate univariate statistics
 summary(who$life_expectancy)
 summary(who$schooling)
+
+#########################################
+### Visualizing bivariate relationships
 
 
 # Visualize bivariate relationship (with observation label)
@@ -64,6 +70,10 @@ biv
 
 biv + geom_smooth(method = lm, se = F)
   # SE = F removes the confidence intervals. We'll learn about those in EDUC 643
+
+
+####################################################################
+## Bivariate regression
 
 # Fitting a relationship using Ordinary Least Squares (OLS)
 fit <- lm(life_expectancy ~ schooling, data=who)
