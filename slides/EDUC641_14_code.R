@@ -1,7 +1,5 @@
-
 library(here)
 library(tidyverse)
-library(ggplot2)
 
 
 ###This tells R where the script is located in relationship to the "root" directory of your project
@@ -21,9 +19,19 @@ who <- who %>%  janitor::clean_names() %>%
         select(country, schooling, year, life_expectancy) %>% 
         mutate(life_expectancy = round(life_expectancy, digits = 0))
 
-# We filter out missing values
+#####################################
+### Identifying missingness
+
+sum(is.na(who$life_expectancy))
+sum(is.na(who$schooling))
+
+### For the really ambitious, can do this for all columns in the data
+sapply(who, function(x) sum(is.na(x)))
+
+# We apply listwise deletion and filter out any observations with missing values of schooling
 who <- filter(who, !is.na(schooling))
-who <- filter(who, !is.na(life_expectancy))
+# We count the number of rows in our data
+nrow(who)
 
 
 #######################################################
@@ -50,7 +58,7 @@ summary(who$schooling)
 
 
 # Visualize bivariate relationship (with observation label)
-ggplot(who, aes(x = schooling, y = life_expectancy)) + 
+ggplot(data = who, aes(x = schooling, y = life_expectancy)) + 
   geom_label(aes(label=country)) + 
   # the commands below are for formatting purposes only
   xlim(0, 22) +
@@ -58,7 +66,7 @@ ggplot(who, aes(x = schooling, y = life_expectancy)) +
   scale_y_continuous(breaks = seq(40, 90, 10), limits = c(40, 90))
 
 # Visualize bivariate relationship in scatterplot form
-biv <- ggplot(who, aes(x = schooling, y = life_expectancy)) + 
+biv <- ggplot(data = who, aes(x = schooling, y = life_expectancy)) + 
   geom_point() + 
   xlim(0, 22) +
   ylab("Life Expectancy (Yrs)") + xlab("Schooling (Yrs)") +
@@ -79,8 +87,8 @@ biv + geom_smooth(method = lm, se = F)
 fit <- lm(life_expectancy ~ schooling, data=who)
 summary(fit)
 
-# Residual analysis
-fit <- lm(life_expectancy ~ schooling, data=who)
+####################################################################
+##  Residual analysis
 
 # 'predict' asks for the predicted values
 who$predict <- predict(fit)

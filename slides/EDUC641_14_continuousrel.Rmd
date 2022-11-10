@@ -95,7 +95,7 @@ options(knitr.table.format = "html")
 ---
 # Materials
 
-### 1. Death penalty data (in file called life_expectancy.csv)
+### 1. Life expectancy data (in file called life_expectancy.csv)
 ### 2. Codebook describing the contents of said data
 ### 3. R script to conduct the data analytic tasks of the unit (EDUC641_14_code.R)
 
