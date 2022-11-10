@@ -37,7 +37,7 @@ navbar:
       - text: "13. Continuous relationships I"
         href: ./slides/EDUC641_14_continuousrel.html
       - text: "14. Bivariate regression I"
-        href: 
+        href: ./slides/EDUC641_15_regression.html
       - text: "15. Bivariate regression II"
         href: 
       - text: "16. Regression assumptions"
