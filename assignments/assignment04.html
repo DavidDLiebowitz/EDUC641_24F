@@ -362,15 +362,15 @@ pre code {
 
 
 <h1 class="title toc-ignore">EDUC 641 Assignment 4</h1>
-<h3 class="subtitle">(Correlation and t-test)</h3>
+<h3 class="subtitle">Continuous relationships and bivariate
+regression</h3>
 
 </div>
 
 
 <div id="general-guidelines" class="section level3">
 <h3>General Guidelines</h3>
-<ul>
-<li>The purpose of this assignment is to practice the concepts and
+<p>The purpose of this assignment is to practice the concepts and
 vocabulary we have been modeling in class and implement some of the
 techniques we have learned. You may work on your own or collaborate with
 one partner. Please make sure that you engage in a a full, fair and
@@ -378,35 +378,30 @@ mutually-agreeable collaboration if you do choose to collaborate. If you
 do collaborate, you should plan, execute and write-up your analyses
 together, not simply divide the work. Please make sure to indicate
 clearly when your work is joint and any other individual or resource
-(outside of class material) you consulted in your responses.</li>
-</ul>
+(outside of class material) you consulted in your responses.</p>
 </div>
 <div id="submission-requirements" class="section level3">
 <h3>Submission Requirements</h3>
 <p>Please upload below two files on Canvas:</p>
-<ul>
-<li>An .html or .pdf file that includes both -
-<ul>
-<li>your typed responses (in your own words and not identical to anybody
-else’s), tables, and/or figures to the problems<br />
-</li>
-<li>and the R code chunks that generated your answers (hint: if you
-choose to compose your answers in markdown, simply set up echo = TRUE,
-include = TRUE in you .Rmd file)</li>
-</ul></li>
+<ol style="list-style-type: decimal">
+<li>An .html, .doc(x) or .pdf file that includes your typed responses
+(in your own words and not identical to anybody else’s except your
+partner), tables, and/or figures to the problems</li>
 <li>The .Rmd or .R file that you used to render the tables and figures
 in the above html/pdf.</li>
-</ul>
+</ol>
+<p><em>If you have prior experience, you may choose to compose your
+answers in RMarkdown and render to a Word doc or pdf. If so, you can
+simply set up echo = TRUE and include = TRUE in your .Rmd file to allow
+both code and answers to display in a single output file. If you have no
+idea what the preceding sentence meant, ignore it.</em></p>
 </div>
 <div id="objectives-of-this-assignment" class="section level3">
 <h3>Objectives of this assignment</h3>
 <ul>
 <li></li>
-<li></li>
+<li><h3 id="data-background">Data Background</h3></li>
 </ul>
-</div>
-<div id="data-background" class="section level3">
-<h3>Data Background</h3>
 <p>The dataset we’ll be using in this assignment is drawn from the
 NCRECE <a href="https://www.icpsr.umich.edu/web/ICPSR/studies/34848">Teacher
 Professional Development Study (PDS)</a> data. This professional
@@ -417,7 +412,7 @@ across the nation. These PD supports aimed to improve teachers’
 implementation of language/literacy activities and interactions with
 children, as well as promote gains in children’s social and academic
 development.</p>
-<p>The primary goals of the intervention were to improve language and
+<p>The primary goal of the intervention was to improve language and
 literacy skills, however, prior studies have shown that there were no
 observed average impacts of either the coursework or the consultancy PD
 intervention on child outcomes at the end of phase 2 (<a href="https://www.tandfonline.com/doi/abs/10.1080/10409289.2017.1319783?journalCode=heed20">Pianta
@@ -426,98 +421,77 @@ al (2017) but limit to only teachers who were treated in phase 1 then
 assigned to either treatment or control group in phase 2. This sample
 allows you to answer two questions: (a) did the consultancy PD
 intervention improve children vocabulary? and (b) did the dosage of the
-coursework PD intervention impact children vocabulary? You will answer
-these two questions in the assignments 3 and 4.</p>
+coursework PD intervention impact children vocabulary skills? You will
+answer these two questions in the paired assignments 3 and 4.</p>
 <p><strong>Sample</strong>. Our dataset is teacher-level data for 126
-preschool teachers. They were in the treatment group for the 14-session
-coursework PD intervention, had no missing data on coursework
+preschool teachers. They were all in the treatment group for the
+14-session coursework PD intervention, had no missing data on coursework
 attendance, and were in either the treatment or control group for the
 consultancy PD intervention.</p>
 <p><strong>Key variables</strong>. We have two treatment measures, a
 binary variable indicating whether the teacher was treated in the
 consultancy PD intervention and an integer variable capturing the total
 number of sessions the teacher participated in the coursework PD
-intervention. We also have an outcome measure, the teacher’s average
-student standard score on a receptive vocabulary test (Peabody Picture
+intervention. We also have an outcome measure, the average score of each
+teacher’s students on a receptive vocabulary test (Peabody Picture
 Vocabulary Test-3rd edition).</p>
 <p>Details on all variables are as follows:</p>
 <ul>
 <li><em>tchid</em>, the teacher’s unique identification number.</li>
 <li><em>treat</em>, consultancy treatment indicator, coded 1 if the
-teacher was in the treatment group, coded 0 if the teacher was in the
-control group.<br />
+teacher was in the treatment group (participated in consultancy PD),
+coded 0 if the teacher was in the control group.<br />
 </li>
-<li><em>coursework</em>, measure of how many sessions the teacher had
-participated in the coursework.</li>
-<li><em>vocabulary</em>, the teacher’s average student score on
-receptive vocabulary test.</li>
+<li><em>coursework</em>, continuous integer measure of how many sessions
+the teacher participated in the coursework.</li>
+<li><em>vocabulary</em>, the average score of the teacher’s students on
+a vocabulary test.</li>
 </ul>
 </div>
 <div id="assignment-details" class="section level3">
 <h3>Assignment Details</h3>
-<p>Prepare your data (same with assignment 3): open your RStudio, create
-a project and save it. Go to the root directory of the project and
-create a folder named “data”. Download the <a href="./data/cont.csv">cont.csv dataset</a> and store it in the folder
-“data”. Create an Rmd/R file in the project root directory. Then read
-the data into your R environment. Make sure to check whether the
-variable <em>treat</em> is factor as well as whether <em>coursework</em>
-and <em>vocabulary</em> are double. Transform them into correct types if
-needed.</p>
+<p><strong>Data preparation</strong> <em>(same as Assignment 3)</em>:
+Open your RStudio, create a project and save it. Go to the root
+directory of the project and create folders named: “Code”, “Data”,
+“Figures” and “Tables.” Download the <a href="./data/cont.csv">cont.csv
+dataset</a> and store it in the folder “Data”. Create an R script (or
+.Rmd) file in the Code folder. Read the data into your R environment.
+Transform variables, as needed. You do not need to include this part of
+the response in your memo; only in your code.</p>
 <div id="descriptive-statistics" class="section level4">
 <h4>1. Descriptive Statistics</h4>
 <p>1.1. Summarize the dataset. Specifically, create a table for the
 cont.csv dataset to show the means and standard deviations of the
 continuous variables and the counts and percentages for each category of
 the categorical variables. Write 2-3 sentences to report and interpret
-these statistics.</p>
-<p>1.2. Summarize the outcome variable <em>vocabulary</em> by one of the
-two predictor variables, <em>treat</em>. Specifically, create a table
-and a plot (label the x and y axis) to show the mean and standard
-deviation of <em>vocabulary</em> separately for the treatment and
-control groups.</p>
-<ul>
-<li>1.2.1. Write 2-3 sentences to report and interpret these
-statistics.</li>
-<li>1.2.2. Compare the mean of <em>vocabulary</em> for the consultancy
-treatment group and control group. Can you decide which is larger? Why
-or why not?</li>
-</ul>
-<p>1.3 Create a plot (label the x and y axis) to visualize the
-relationship between <em>vocabulary</em> and another predictor variable
-<em>coursework</em>.</p>
-<ul>
-<li>1.3.1. Write one sentence describe your observation.</li>
-<li>1.3.2. Can you conclude whether teachers who attended more
-coursework have higher student score? Why or why not?</li>
-</ul>
+these statistics. <strong>(2 point)</strong></p>
+<p>1.2 Create a plot (label the x and y axis) to visualize the
+relationship between the variable <span class="math inline">\(VOCABULARY\)</span> and <span class="math inline">\(COURSEWORK\)</span>. Include a line of best fit on
+this display. <strong>(2 points)</strong></p>
+<p>1.3 Write one sentence to interpret this visualized relationship.
+<strong>(1 point)</strong></p>
+<p>1.4 Can you conclude whether teachers who attended more coursework
+have higher student score? Why or why not? <strong>(1
+point)</strong></p>
 </div>
-<div id="research-question-a-did-the-consultancy-pd-intervention-improve-children-vocabulary" class="section level4">
-<h4>2. Research Question (a): Did the consultancy PD intervention
-improve children vocabulary?</h4>
-<p>2.1. Write your null hypothesis and the assumption(s) you make in
-investigating this research question.</p>
-<p>2.2. Test your hypothesis</p>
-<ul>
-<li><p>2.2.1. Which hypothesis testing you choose to answer this
-question? Why?</p></li>
-<li><p>2.2.2. Run the test then report and interpret your
-result.</p></li>
-</ul>
-<p>2.3. What is your answer to this research question?</p>
-</div>
-<div id="research-question-b-did-the-dosage-of-the-coursework-pd-intervention-impact-children-vocabulary" class="section level4">
-<h4>3. Research Question (b): Did the dosage of the coursework PD
+<div id="research-question-did-the-dosage-of-the-coursework-pd-intervention-impact-children-vocabulary" class="section level4">
+<h4>2. Research Question: Did the dosage of the coursework PD
 intervention impact children vocabulary?</h4>
-<p>3.1. Write your null hypothesis and the assumption(s) you make in
-investigating this research question.</p>
-<p>3.2. Test your hypothesis</p>
-<ul>
-<li><p>3.2.1. Which hypothesis testing you choose to answer this
-question? Why?</p></li>
-<li><p>3.2.2. Run the test then report and interpret your
-result.</p></li>
-</ul>
-<p>3.3. What is your answer to this research question?</p>
+<p>2.1. Write your null hypothesis about the relationship between
+coursework dosage and teachers’ students’ average vocabulary scores.
+<strong>(1 point)</strong></p>
+<p>2.2 Formally test your hypothesis using an Ordinary Least Squares
+estimation strategy. Conduct the test and report your results in a
+formatted table. <strong>(2 points)</strong></p>
+<p>2.3 Substantively interpret the results of your test. <strong>(2
+point)</strong></p>
+<p>2.4. What statistical assumption(s) have you made in modeling the
+relationship between <span class="math inline">\(VOCABULARY\)</span> and
+<span class="math inline">\(COURSEWORK\)</span> in this way? Test
+whether your estimates satisfy these assumptions. <strong>(2
+points)</strong></p>
+<p>2.5 What is your answer to this research question? <strong>(1
+point)</strong></p>
 </div>
 </div>
 

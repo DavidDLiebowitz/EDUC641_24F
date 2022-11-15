@@ -90,8 +90,7 @@ Continuous data 2: intro to bivariate regression
 
 Deadline: November 28, 11:59pm
 
-Download: 
-<!-- [html file](./assignments/assignment04.html) | [cont.csv dataset](./data/cont.csv) -->
+Download: [html file](./assignments/assignment04.html) | [cont.csv dataset](./data/cont.csv) 
 
 Key: [doc file]; [R script]
 

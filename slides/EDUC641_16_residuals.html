@@ -8,6 +8,8 @@
     <link href="EDUC641_16_residuals_files/remark-css-0.0.1/default.css" rel="stylesheet" />
     <link href="EDUC641_16_residuals_files/remark-css-0.0.1/uo.css" rel="stylesheet" />
     <link href="EDUC641_16_residuals_files/remark-css-0.0.1/ki-fonts.css" rel="stylesheet" />
+    <script src="EDUC641_16_residuals_files/kePrint-0.0.1/kePrint.js"></script>
+    <link href="EDUC641_16_residuals_files/lightable-0.0.1/lightable.css" rel="stylesheet" />
     <link rel="stylesheet" href="my_custom.css" type="text/css" />
     <link rel="stylesheet" href="xaringanthemer.css" type="text/css" />
   </head>
@@ -181,7 +183,11 @@ $$
 
 --
 
-Slopes can be positive (as in this case) or negative. Here, we conclude that countries that experience one additional year of schooling have an average life expectancy of 2.23 more years.
+Slopes can be positive (as in this case) or negative. Here, we conclude that countries where children, on average, experience one additional year of schooling have an average life expectancy of 2.23 more years.
+
+--
+
+We do **NOT** say that increasing the average years that children attend school by one year increases average life expectancy in that country by 2.23 years. .blue[**Why?**]
 
 
 ---
@@ -212,12 +218,12 @@ As with our categorical and single-variable continuous data analysis, we can ask
 
 Could we have gotten a slope value of 2.23 by sampling from a population in which there was **no relationship** between `\(LIFE\_EXPECTANCY\)` and `\(SCHOOLING\)`?
 
-- In other words, by sampling from a *null population* in which the slope was zero?
+- In other words, by sampling from a *null population* in which the slope of the relationship between `\(LIFE\_EXPECTANCY\)` and `\(SCHOOLING\)` was zero?
 
 ---
 # Regression inference
 
-Could we have gotten a slope value of 2.23 by sampling from a population in which there was **no relationship** between `\(LIFE\_EXPECTANCY\)` and `\(SCHOOLING\)`?
+What is the probability that we would have gotten a slope value of 2.23 by sampling from a population in which there was **no relationship** between `\(LIFE\_EXPECTANCY\)` and `\(SCHOOLING\)`?
 
 
 ```
@@ -274,6 +280,268 @@ With an alpha-threshold of 0.05, `\(2^{-16}\)` is definitely less than 0.05. Thu
 &gt; **The story so far** &lt;br&gt; .small[In our investigation of country-level aggregate measures of schooling and life expectancy, we have found that the average years of schooling in a country is related to the average life expectancy. In particular, when we relate the country-level life expectancy (*LIFE_EXPECTANCY*) to the country-level mean years of schooling (*SCHOOLING*), we find that the trend-line estimated by ordinary-least-squares regression has a slope of 2.23 (*p*&lt;0.0001). This suggests that two countries that differ in their average years of schooling attainment by 1 year will have, on average, a difference in life expectancy of 2.23 years. Of course, this relationship is far from causal...]
 
 ]
+
+---
+# Producing beautiful results
+
+### A descriptive table (Table 1):
+
+
+
+```r
+library(modelsummary)
+datasummary_skim(who1)
+```
+
+&lt;table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;"&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;"&gt;   &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; Unique (#) &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; Missing (%) &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; Mean &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; SD &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; Min &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; Median &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; Max &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt;    &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; schooling &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 89 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 12.9 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2.9 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 4.9 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 13.1 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 20.4 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt;  &lt;svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="svglite" width="48.00pt" height="12.00pt" viewBox="0 0 48.00 12.00"&gt;&lt;defs&gt;&lt;style type="text/css"&gt;
+    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {
+      fill: none;
+      stroke: #000000;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-miterlimit: 10.00;
+    }
+    .svglite text {
+      white-space: pre;
+    }
+  &lt;/style&gt;&lt;/defs&gt;&lt;rect width="100%" height="100%" style="stroke: none; fill: none;"&gt;&lt;/rect&gt;&lt;defs&gt;&lt;clipPath id="cpMC4wMHw0OC4wMHwwLjAwfDEyLjAw"&gt;&lt;rect x="0.00" y="0.00" width="48.00" height="12.00"&gt;&lt;/rect&gt;&lt;/clipPath&gt;&lt;/defs&gt;&lt;g clip-path="url(#cpMC4wMHw0OC4wMHwwLjAwfDEyLjAw)"&gt;
+&lt;/g&gt;&lt;defs&gt;&lt;clipPath id="cpMC4wMHw0OC4wMHwyLjg4fDEyLjAw"&gt;&lt;rect x="0.00" y="2.88" width="48.00" height="9.12"&gt;&lt;/rect&gt;&lt;/clipPath&gt;&lt;/defs&gt;&lt;g clip-path="url(#cpMC4wMHw0OC4wMHwyLjg4fDEyLjAw)"&gt;&lt;rect x="-0.80" y="11.16" width="5.73" height="0.51" style="stroke-width: 0.38; fill: #000000;"&gt;&lt;/rect&gt;&lt;rect x="4.93" y="10.82" width="5.73" height="0.84" style="stroke-width: 0.38; fill: #000000;"&gt;&lt;/rect&gt;&lt;rect x="10.67" y="8.28" width="5.73" height="3.38" style="stroke-width: 0.38; fill: #000000;"&gt;&lt;/rect&gt;&lt;rect x="16.40" y="6.09" width="5.73" height="5.57" style="stroke-width: 0.38; fill: #000000;"&gt;&lt;/rect&gt;&lt;rect x="22.14" y="3.22" width="5.73" height="8.44" style="stroke-width: 0.38; fill: #000000;"&gt;&lt;/rect&gt;&lt;rect x="27.87" y="5.08" width="5.73" height="6.59" style="stroke-width: 0.38; fill: #000000;"&gt;&lt;/rect&gt;&lt;rect x="33.61" y="8.79" width="5.73" height="2.87" style="stroke-width: 0.38; fill: #000000;"&gt;&lt;/rect&gt;&lt;rect x="39.34" y="10.82" width="5.73" height="0.84" style="stroke-width: 0.38; fill: #000000;"&gt;&lt;/rect&gt;&lt;rect x="45.08" y="11.49" width="5.73" height="0.17" style="stroke-width: 0.38; fill: #000000;"&gt;&lt;/rect&gt;&lt;/g&gt;&lt;/svg&gt;
+&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; life_expectancy &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 35 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 71.7 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 8.0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 51.0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 74.0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 88.0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt;  &lt;svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="svglite" width="48.00pt" height="12.00pt" viewBox="0 0 48.00 12.00"&gt;&lt;defs&gt;&lt;style type="text/css"&gt;
+    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {
+      fill: none;
+      stroke: #000000;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-miterlimit: 10.00;
+    }
+    .svglite text {
+      white-space: pre;
+    }
+  &lt;/style&gt;&lt;/defs&gt;&lt;rect width="100%" height="100%" style="stroke: none; fill: none;"&gt;&lt;/rect&gt;&lt;defs&gt;&lt;clipPath id="cpMC4wMHw0OC4wMHwwLjAwfDEyLjAw"&gt;&lt;rect x="0.00" y="0.00" width="48.00" height="12.00"&gt;&lt;/rect&gt;&lt;/clipPath&gt;&lt;/defs&gt;&lt;g clip-path="url(#cpMC4wMHw0OC4wMHwwLjAwfDEyLjAw)"&gt;
+&lt;/g&gt;&lt;defs&gt;&lt;clipPath id="cpMC4wMHw0OC4wMHwyLjg4fDEyLjAw"&gt;&lt;rect x="0.00" y="2.88" width="48.00" height="9.12"&gt;&lt;/rect&gt;&lt;/clipPath&gt;&lt;/defs&gt;&lt;g clip-path="url(#cpMC4wMHw0OC4wMHwyLjg4fDEyLjAw)"&gt;&lt;rect x="0.58" y="10.51" width="6.01" height="1.15" style="stroke-width: 0.38; fill: #000000;"&gt;&lt;/rect&gt;&lt;rect x="6.58" y="9.17" width="6.01" height="2.49" style="stroke-width: 0.38; fill: #000000;"&gt;&lt;/rect&gt;&lt;rect x="12.59" y="8.02" width="6.01" height="3.65" style="stroke-width: 0.38; fill: #000000;"&gt;&lt;/rect&gt;&lt;rect x="18.59" y="6.10" width="6.01" height="5.57" style="stroke-width: 0.38; fill: #000000;"&gt;&lt;/rect&gt;&lt;rect x="24.60" y="3.22" width="6.01" height="8.44" style="stroke-width: 0.38; fill: #000000;"&gt;&lt;/rect&gt;&lt;rect x="30.61" y="4.95" width="6.01" height="6.72" style="stroke-width: 0.38; fill: #000000;"&gt;&lt;/rect&gt;&lt;rect x="36.61" y="6.86" width="6.01" height="4.80" style="stroke-width: 0.38; fill: #000000;"&gt;&lt;/rect&gt;&lt;rect x="42.62" y="11.28" width="6.01" height="0.38" style="stroke-width: 0.38; fill: #000000;"&gt;&lt;/rect&gt;&lt;/g&gt;&lt;/svg&gt;
+&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+---
+# Producing beautiful results
+
+### A descriptive table (Table 1):
+
+```r
+datasummary_skim(who1, histogram=F)
+```
+
+&lt;table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;"&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;"&gt;   &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; Unique (#) &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; Missing (%) &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; Mean &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; SD &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; Min &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; Median &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; Max &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; schooling &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 89 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 12.9 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2.9 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 4.9 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 13.1 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 20.4 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; life_expectancy &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 35 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 71.7 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 8.0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 51.0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 74.0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 88.0 &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+---
+# Producing beautiful results
+### A descriptive table (Table 1):
+
+Saving it to a Word table:
+
+```r
+datasummary_skim(who1, histogram=F,
+                 output="table.docx")
+```
+
+```
+#&gt; [1] "table.docx"
+```
+
+---
+# Producing beautiful results
+
+### A regression output table (Table 2)
+
+```r
+modelsummary(fit)
+```
+
+&lt;table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;"&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;"&gt;   &lt;/th&gt;
+   &lt;th style="text-align:center;"&gt; Model 1 &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; (Intercept) &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; 42.850 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt;  &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; (1.598) &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; schooling &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; 2.235 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;box-shadow: 0px 1px"&gt;  &lt;/td&gt;
+   &lt;td style="text-align:center;box-shadow: 0px 1px"&gt; (0.121) &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Num.Obs. &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; 173 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; R2 &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; 0.668 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; R2 Adj. &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; 0.666 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; AIC &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; 1023.4 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; BIC &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; 1032.8 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; RMSE &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; 4.58 &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+---
+# Producing beautiful results
+
+### A regression output table (Table 2)
+
+```r
+modelsummary(fit, stars=T,
+             gof_omit = "Adj.|AIC|BIC|RMSE",
+             coef_rename = c("schooling" = "Yrs. Schooling"))
+```
+
+&lt;table style="NAborder-bottom: 0; width: auto !important; margin-left: auto; margin-right: auto;" class="table"&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;"&gt;   &lt;/th&gt;
+   &lt;th style="text-align:center;"&gt; Model 1 &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; (Intercept) &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; 42.850*** &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt;  &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; (1.598) &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Yrs. Schooling &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; 2.235*** &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;box-shadow: 0px 1px"&gt;  &lt;/td&gt;
+   &lt;td style="text-align:center;box-shadow: 0px 1px"&gt; (0.121) &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Num.Obs. &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; 173 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; R2 &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; 0.668 &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;tfoot&gt;&lt;tr&gt;&lt;td style="padding: 0; " colspan="100%"&gt;
+&lt;sup&gt;&lt;/sup&gt; + p &amp;lt; 0.1, * p &amp;lt; 0.05, ** p &amp;lt; 0.01, *** p &amp;lt; 0.001&lt;/td&gt;&lt;/tr&gt;&lt;/tfoot&gt;
+&lt;/table&gt;
+
+---
+# Producing beautiful results
+
+### A regression output table (Table 2)
+
+Saving it to a Word table:
+
+```r
+modelsummary(fit, stars=T,
+             gof_omit = "Adj.|AIC|BIC|RMSE",
+             coef_rename = c("schooling" = "Yrs. Schooling"),
+             output="table2.docx")
+```
+
 ---
 class: middle, inverse
 
@@ -281,14 +549,14 @@ class: middle, inverse
 
 ---
 # Residual analysis
-&lt;img src="EDUC641_16_residuals_files/figure-html/unnamed-chunk-12-1.svg" style="display: block; margin: auto;" /&gt;
+&lt;img src="EDUC641_16_residuals_files/figure-html/unnamed-chunk-19-1.svg" style="display: block; margin: auto;" /&gt;
 
 Our fitted regression line contains the "predicted" values of *LIFE_EXPECTANCY* for each value of *SCHOOLING*. But almost all of the "actual" values of *LIFE_EXPECTANCY* lie off the actual line regression line.
 
 ---
 # An example: Chile
 
-&lt;img src="EDUC641_16_residuals_files/figure-html/unnamed-chunk-13-1.svg" style="display: block; margin: auto;" /&gt;
+&lt;img src="EDUC641_16_residuals_files/figure-html/unnamed-chunk-20-1.svg" style="display: block; margin: auto;" /&gt;
 
 Observed values for Chile: `\(LIFE\_EXPECTANCY = 85\)`; `\(SCHOOLING = 16.3\)` &lt;br&gt;
 Predicted value of *LIFE_EXPECTANCY* for Chile:
@@ -300,7 +568,7 @@ $$
 $$
 ---
 # An example: Chile
-&lt;img src="EDUC641_16_residuals_files/figure-html/unnamed-chunk-14-1.svg" style="display: block; margin: auto;" /&gt;
+&lt;img src="EDUC641_16_residuals_files/figure-html/unnamed-chunk-21-1.svg" style="display: block; margin: auto;" /&gt;
 `\(\hat{LIFE\_EXPECTANCY} = 79.20\)` &lt;br&gt;
 Actual life expectancy = 85
 
@@ -310,7 +578,7 @@ Actual life expectancy = 85
 
 ---
 # Now Egypt
-&lt;img src="EDUC641_16_residuals_files/figure-html/unnamed-chunk-15-1.svg" style="display: block; margin: auto;" /&gt;
+&lt;img src="EDUC641_16_residuals_files/figure-html/unnamed-chunk-22-1.svg" style="display: block; margin: auto;" /&gt;
 Observed values for Egypt: `\(LIFE\_EXPECTANCY = 79\)`; `\(SCHOOLING = 13.1\)` &lt;br&gt;
 
 .blue[Can you calculate the predicted value of *LIFE_EXPECTANCY* for Egypt and compare it to the observed?]
@@ -381,7 +649,7 @@ For the *p*-values that we computed in the regression analysis to be correct, th
 boxplot(resid(fit))
 ```
 
-&lt;img src="EDUC641_16_residuals_files/figure-html/unnamed-chunk-19-1.svg" style="display: block; margin: auto;" /&gt;
+&lt;img src="EDUC641_16_residuals_files/figure-html/unnamed-chunk-26-1.svg" style="display: block; margin: auto;" /&gt;
 
 --
 
@@ -390,17 +658,11 @@ A few outliers, but we seem to be doing ok...
 ---
 # Residual assumptions
 
-For the *p*-values that we computed in the regression analysis to be correct, the residuals **must be normally distributed**
+For the *p*-values that we computed in the regression analysis to be correct, the residuals **must be normally distributed**&lt;sup&gt;1&lt;/sup&gt;
 
+&lt;img src="EDUC641_16_residuals_files/figure-html/unnamed-chunk-27-1.svg" style="display: block; margin: auto;" /&gt;
 
-```r
-ggplot(who, aes(x = resid)) + 
-  geom_histogram(binwidth = 1) +
-    theme_minimal(base_size = 16)
-```
-
-&lt;img src="EDUC641_16_residuals_files/figure-html/unnamed-chunk-20-1.svg" style="display: block; margin: auto;" /&gt;
-
+.footnote[[1] We have solutions if they are not which we will learn about in 643. ]
 --
 Pretty good, pretty good...
 
@@ -409,7 +671,7 @@ Pretty good, pretty good...
 # Residual vs. fitted plot 
 
 For the *p*-values that we computed in the regression analysis to be correct, the residuals **must be normally distributed**
-&lt;img src="EDUC641_16_residuals_files/figure-html/unnamed-chunk-21-1.svg" style="display: block; margin: auto;" /&gt;
+&lt;img src="EDUC641_16_residuals_files/figure-html/unnamed-chunk-28-1.svg" style="display: block; margin: auto;" /&gt;
 
 #### Key assumption checks for normality:
 - The residuals "bounce randomly" around the 0 line. 
@@ -420,7 +682,7 @@ For the *p*-values that we computed in the regression analysis to be correct, th
 # Residual vs. fitted plot
 
 For the *p*-values that we computed in the regression analysis to be correct, the residuals **must be normally distributed**
-&lt;img src="EDUC641_16_residuals_files/figure-html/unnamed-chunk-22-1.svg" style="display: block; margin: auto;" /&gt;
+&lt;img src="EDUC641_16_residuals_files/figure-html/unnamed-chunk-29-1.svg" style="display: block; margin: auto;" /&gt;
 
 #### Key assumption checks for normality:
 - The residuals "bounce randomly" around the 0 line. 
@@ -476,10 +738,13 @@ class: middle, inverse
 # To Dos
 
 ### Reading
-LSWR Chapter 15.1 and 15.2: bivariate regression
+- LSWR Chapter 15.1 and 15.2: bivariate regression
 
 ### Assignments
-Assignment #4 Due November 28 at 11:59PM
+- Assignment #4 Due November 28 at 11:59PM
+- Quiz #5 on November 22/23 (due at 5pm)
+
+### No class on 11/17!
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>

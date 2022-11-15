@@ -39,9 +39,9 @@ navbar:
       - text: "14. Bivariate regression I"
         href: ./slides/EDUC641_15_regression.html
       - text: "15. Bivariate regression II"
-        href: 
+        href: ./slides/EDUC641_16_residuals.html
       - text: "16. Regression assumptions"
-        href: 
+        href: ./slides/EDUC641_16_residuals.html
       - text: "17. NHST critiques"
         # href: ./slides/EDUC641_17_critiques.html
       - text: "18. NHST critiques and summary"
