@@ -26,9 +26,12 @@ Please upload below two files on Canvas:
 
 ### Objectives of this assignment
 
- * 
+ * Create bivariate scatterplots and bivariate regression estimates
 
- * 
+ * State null hypothesis and interpret results of linear regression test of bivariate continuous relationship
+ 
+ * Test (some) assumptions of bivariate regression estimation
+ 
 ### Data Background
 
 The dataset we'll be using in this assignment is drawn from the NCRECE [Teacher Professional Development Study (PDS)](https://www.icpsr.umich.edu/web/ICPSR/studies/34848) data. This professional development study was a randomized controlled evaluation of two forms of professional development (PD) - coursework (phase 1) and consultancy (phase 2) - delivered to about 490 early childhood education teachers across the nation. These PD supports aimed to improve teachers' implementation of language/literacy activities and interactions with children, as well as promote gains in children's social and academic development. 
