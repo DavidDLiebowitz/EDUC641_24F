@@ -88,6 +88,39 @@ fit <- lm(life_expectancy ~ schooling, data=who)
 summary(fit)
 
 ####################################################################
+##  Constructing tables
+
+
+## First, install the modelsummary package
+install.packages("modelsummary")
+library(modelsummary)
+
+# Generate an un-modified summary statistics table
+datasummary_skim(who)
+
+# Remove the histogram
+datasummary_skim(who, histogram = F)
+
+# Export the table to Word
+datasummary_skim(who, histogram = F,
+                 output="slides/table.docx") # <- note that you should direct R to save the table to a defined folder
+
+# Generate an un-modified regression output table
+modelsummary(fit)
+
+# Remove unnecessary elements
+modelsummary(fit,
+             gof_omit = "Adj.|AIC|BIC|Log|RMSE|F",  # <- removes goodness-of-fit (gof) statistics containing these strings; the | indicates OR
+             coef_rename = c("schooling" = "Yrs. Schooling")) # use interpretable coefficient names
+
+# Export this table to word
+modelsummary(fit,
+             gof_omit = "Adj.|AIC|BIC|Log|RMSE|F",  
+             coef_rename = c("schooling" = "Yrs. Schooling"),
+             output = "slides/table2.docx")
+
+
+####################################################################
 ##  Residual analysis
 
 # 'predict' asks for the predicted values
