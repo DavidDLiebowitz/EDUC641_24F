@@ -390,6 +390,41 @@ datasummary_skim(who1, histogram=F,
 
 ---
 # Producing beautiful results
+### A descriptive table (Table 1):
+
+For categorical variables
+
+```{r, echo=T}
+datasummary_skim(who1, 
+                 type = "categorical")
+```
+
+
+---
+# Producing beautiful results
+### A descriptive table (Table 1):
+
+Numeric variables by a categorical variable
+
+```{r, echo=T}
+datasummary_balance(~ status, # tells R to cut by this variable
+                    data=who1)
+```
+
+---
+# Producing beautiful results
+### A descriptive table (Table 1):
+
+Numeric variables by a categorical variable
+
+```{r, echo=T}
+datasummary_balance(~ status,
+                    dinm = F, # drop the diff-in-means
+                    data=who1)
+```
+
+---
+# Producing beautiful results
 
 ### A regression output table (Table 2)
 ```{r, echo=T}
@@ -537,8 +572,10 @@ summary(who$resid)
 sd(who$resid)
 ```
 
-- Standard deviation of the raw residuals can be quite useful in checking our assumptions
- + .blue[*What assumption?*]
+- Standard deviation of the raw residuals can be quite useful in examining the quality of our fit.
+
+--
+.blue[How?]
  
 ---
 # Residual assumptions
@@ -564,9 +601,13 @@ ggplot(who, aes(x = resid)) +
     theme_minimal(base_size = 16)
 ```
 
-.footnote[[1] We have solutions if they are not which we will learn about in 643. ]
+.footnote[[1] We have solutions if they are not which we will learn about in EDUC 643. ]
 --
 Pretty good, pretty good...
+
+--
+
+.blue[**Understanding check:** can you write out the code to create the above figure?]
 
 
 ---
@@ -607,15 +648,44 @@ ggplot(who, aes(x = predict, y = resid)) +
 - No one residual "stands out" from the basic random pattern of residuals.
 
 ---
+# Implementing residual v. fitted
+
+```{r, echo=T, fig.height=4.5}
+ggplot(who, aes(x = predict, y = resid)) + 
+         geom_point() +
+  geom_hline(yintercept = 0, color = "red", linetype="dashed") +
+  ylab("Residuals") + xlab("Fitted values") +
+  scale_y_continuous(limits=c(-20, 20)) +
+  theme_minimal(base_size = 16)
+```
+
+---
 # Writing it up
 
-> .small[In our investigation of country-level aggregate measures of schooling and life expectancy, we have found that the average years of schooling in a country is related to the average life expectancy. In particular, when we relate the country-level life expectancy (*LIFE_EXPECTANCY*) to the country-level mean years of schooling (*SCHOOLING*), we find that the trend-line estimated by ordinary-least-squares regression has a slope of 2.23 (*p*<0.0001). This suggests that two countries that differ in their average years of schooling attainment by 1 year will have, on average, a difference in life expectancy of 2.23 years. Of course, this relationship is far from causal...] 
+> .small[In our investigation of country-level aggregate measures of schooling and life expectancy, we have found that the average years of schooling in a country is related to the average life expectancy. As we show in Table 2, when we relate the country-level life expectancy to the country-level mean years of schooling, we find that the trend-line estimated by ordinary-least-squares regression has a slope of 2.23 (*p*<0.0001). This suggests that two countries that differ in their average years of schooling attainment by 1 year will have, on average, a difference in life expectancy of 2.23 years.] 
 
-<br><br>
+```{r, echo=F}
+modelsummary(fit, stars=T,
+             gof_omit = "Adj.|AIC|BIC|RMSE",
+             title = c("Table 2. Estimates of relationship between life expectancy and schooling"),
+             coef_rename = c("schooling" = "Yrs. Schooling"),
+             notes = c("Cells report coefficients and standard errors."))
+```
 
---
+---
+# Writing it up II
 
-> .small[An analysis of the residuals from our fitted model suggests that our regression assumptions are reasonably well met and we have appropriately characterized the relationship between schooling and life expectancy. Despite the presence of a few outliers, our residuals are roughly symmetrically distributed around 0. Our fitted regression does seem to underpredict life expectancy for very low levels of schooling.]
+> .small[An analysis of the residuals from our fitted model suggests that our regression assumptions are reasonably well met and we have appropriately characterized the relationship between schooling and life expectancy. Despite the presence of a few outliers, our residuals are roughly symmetrically distributed around 0. As we note in Appendix Figure A1, our fitted regression does seem to underpredict life expectancy for very low levels of schooling.]
+
+```{r, echo=F, fig.height=4.5}
+ggplot(who, aes(x = predict, y = resid)) + 
+         geom_point() +
+  geom_hline(yintercept = 0, color = "red", linetype="dashed") +
+  ylab("Residuals") + xlab("Fitted values") +
+  scale_y_continuous(limits=c(-20, 20)) +
+  theme_minimal(base_size = 16) +
+  ggtitle("Figure A1. Residuals vs. fitted plot of life expectancy and schooling")
+```
 
 ---
 # Key takeaways
