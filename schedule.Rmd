@@ -172,7 +172,7 @@ Lecture slides:
 
 Assignment 4: 
 
-- Due Nov. 28, 11:59pm
+- Due Nov. 29, 11:59pm
  - [html file](./assignments/assignment04.html)
  - [cont.csv](./data/cont.csv)
 
