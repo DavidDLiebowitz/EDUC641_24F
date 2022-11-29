@@ -68,23 +68,6 @@ class: center, middle, inverse, title-slide
 **Learn more about all of this in EDUC 612 and 646!!**
 
 ---
-# Failure to reproduce
-
-Replication work often seen as un-original, weak incentives
-Many replications fail:
-- New contexts
-- Incomplete communication of treatment and conditions
-  + Missing protocol, methodological or data management details
-  + Incomplete specification of sequence of tests
-- Disagreement as to what "counts" as a replication
-  + **In design:** Exact replication, conceptual replication, replication + extension
-  + **In outcome:** 
-   
-&lt;img src="anderson2016.png" width="743" style="display: block; margin: auto;" /&gt;
-
-.footnote[Anderson, S. &amp; Maxwell, S. (2016). There's more than one way to conduct a replication study: Beyond statistical significance. *Psychological Methods, 21*(1), 1-12.]
-
----
 class: middle, inverse
 
 # Problems with "statistical significance"
@@ -94,7 +77,31 @@ class: middle, inverse
 
 An explosion of [academic](https://www.tandfonline.com/toc/utas20/73/sup1?nav=tocList) and [popular press](https://www.nytimes.com/2015/08/28/science/many-social-science-findings-not-as-strong-as-claimed-study-says.html) attention to the "replication crisis" emerged in the early 2010s. 
 
-Some problems include:
+
+---
+# Failure to reproduce
+
+Replication work often seen as un-original; weak incentives to conduct replications.
+
+Many replications fail:
+.small[
+- New contexts
+- Incomplete communication of treatment and conditions
+  + Missing protocol, methodological or data management details
+  + Incomplete specification of sequence of tests
+- Disagreement as to what "counts" as a replication
+  + **In design:** Exact replication, conceptual replication, replication + extension
+  + **In outcome:** 
+]
+
+&lt;img src="anderson2016.png" width="668" style="display: block; margin: auto;" /&gt;
+
+.footnote[Anderson, S. &amp; Maxwell, S. (2016). There's more than one way to conduct a replication study: Beyond statistical significance. *Psychological Methods, 21*(1), 1-12.]
+
+---
+# Problems with significance
+
+Some problems with the binary decision-making process of NHST include:
 - Statistical significance as a condition for publication and a goal for researchers
  + `\(\rightarrow\)` Publication bias: "successes" are published; "failures" end up in file drawers
 - Novelty as a condition for publication in top-tier journals
@@ -425,9 +432,9 @@ bayes &lt;- stan_glm(life_expectancy ~ schooling, data = who,
 #&gt; Chain 1: Iteration: 1800 / 2000 [ 90%]  (Sampling)
 #&gt; Chain 1: Iteration: 2000 / 2000 [100%]  (Sampling)
 #&gt; Chain 1: 
-#&gt; Chain 1:  Elapsed Time: 0.041 seconds (Warm-up)
-#&gt; Chain 1:                0.049 seconds (Sampling)
-#&gt; Chain 1:                0.09 seconds (Total)
+#&gt; Chain 1:  Elapsed Time: 0.042 seconds (Warm-up)
+#&gt; Chain 1:                0.045 seconds (Sampling)
+#&gt; Chain 1:                0.087 seconds (Total)
 #&gt; Chain 1: 
 #&gt; 
 #&gt; SAMPLING FOR MODEL 'continuous' NOW (CHAIN 2).
@@ -450,9 +457,9 @@ bayes &lt;- stan_glm(life_expectancy ~ schooling, data = who,
 #&gt; Chain 2: Iteration: 1800 / 2000 [ 90%]  (Sampling)
 #&gt; Chain 2: Iteration: 2000 / 2000 [100%]  (Sampling)
 #&gt; Chain 2: 
-#&gt; Chain 2:  Elapsed Time: 0.04 seconds (Warm-up)
-#&gt; Chain 2:                0.043 seconds (Sampling)
-#&gt; Chain 2:                0.083 seconds (Total)
+#&gt; Chain 2:  Elapsed Time: 0.038 seconds (Warm-up)
+#&gt; Chain 2:                0.042 seconds (Sampling)
+#&gt; Chain 2:                0.08 seconds (Total)
 #&gt; Chain 2: 
 #&gt; 
 #&gt; SAMPLING FOR MODEL 'continuous' NOW (CHAIN 3).
@@ -475,8 +482,8 @@ bayes &lt;- stan_glm(life_expectancy ~ schooling, data = who,
 #&gt; Chain 3: Iteration: 1800 / 2000 [ 90%]  (Sampling)
 #&gt; Chain 3: Iteration: 2000 / 2000 [100%]  (Sampling)
 #&gt; Chain 3: 
-#&gt; Chain 3:  Elapsed Time: 0.036 seconds (Warm-up)
-#&gt; Chain 3:                0.042 seconds (Sampling)
+#&gt; Chain 3:  Elapsed Time: 0.037 seconds (Warm-up)
+#&gt; Chain 3:                0.041 seconds (Sampling)
 #&gt; Chain 3:                0.078 seconds (Total)
 #&gt; Chain 3: 
 #&gt; 

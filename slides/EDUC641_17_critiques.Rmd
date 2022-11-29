@@ -101,25 +101,6 @@ options(knitr.table.format = "html")
 **Learn more about all of this in EDUC 612 and 646!!**
 
 ---
-# Failure to reproduce
-
-Replication work often seen as un-original, weak incentives
-Many replications fail:
-- New contexts
-- Incomplete communication of treatment and conditions
-  + Missing protocol, methodological or data management details
-  + Incomplete specification of sequence of tests
-- Disagreement as to what "counts" as a replication
-  + **In design:** Exact replication, conceptual replication, replication + extension
-  + **In outcome:** 
-   
-```{r, echo=F}
-include_graphics("anderson2016.png")
-```
-
-.footnote[Anderson, S. & Maxwell, S. (2016). There's more than one way to conduct a replication study: Beyond statistical significance. *Psychological Methods, 21*(1), 1-12.]
-
----
 class: middle, inverse
 
 # Problems with "statistical significance"
@@ -129,7 +110,33 @@ class: middle, inverse
 
 An explosion of [academic](https://www.tandfonline.com/toc/utas20/73/sup1?nav=tocList) and [popular press](https://www.nytimes.com/2015/08/28/science/many-social-science-findings-not-as-strong-as-claimed-study-says.html) attention to the "replication crisis" emerged in the early 2010s. 
 
-Some problems include:
+
+---
+# Failure to reproduce
+
+Replication work often seen as un-original; weak incentives to conduct replications.
+
+Many replications fail:
+.small[
+- New contexts
+- Incomplete communication of treatment and conditions
+  + Missing protocol, methodological or data management details
+  + Incomplete specification of sequence of tests
+- Disagreement as to what "counts" as a replication
+  + **In design:** Exact replication, conceptual replication, replication + extension
+  + **In outcome:** 
+]
+
+```{r, echo=F}
+include_graphics("anderson2016.png")
+```
+
+.footnote[Anderson, S. & Maxwell, S. (2016). There's more than one way to conduct a replication study: Beyond statistical significance. *Psychological Methods, 21*(1), 1-12.]
+
+---
+# Problems with significance
+
+Some problems with the binary decision-making process of NHST include:
 - Statistical significance as a condition for publication and a goal for researchers
  + $\rightarrow$ Publication bias: "successes" are published; "failures" end up in file drawers
 - Novelty as a condition for publication in top-tier journals
