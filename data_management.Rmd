@@ -12,6 +12,7 @@ output:
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+
 ## Setting up project and directory structure
 
 Open your RStudio, create a project and save it. Go to the root directory of the project and create folders named: "Code", "Data", "Figures" and "Tables." Download the [life_expectancy.csv dataset](./data/life_expectancy.csv) and store it in the folder "Data". Create an R script (or .Rmd) file in the Code folder. 
@@ -83,6 +84,7 @@ sum(is.na(df$schooling))
 
 ## Decide on listwise/pairwise deletion
 ```{r, echo=T}
+# In this case, we'll use listwise
 df <- filter(df, !is.na(schooling))
 ```
 
@@ -92,6 +94,7 @@ mean(df$life_expectancy)
 median(df$life_expectancy)
 sd(df$life_expectancy)
 summary(df$life_expectancy)
+table(df$status, exclude=NULL)
 ```
 
 ## Visualize variables (categorical)
@@ -106,8 +109,12 @@ hist(df$life_expectancy)
 plot(density(df$schooling))
 ```
 
-## Create descriptive table
+## Create descriptive table (continuous)
 ```{r, echo=T}
 datasummary_skim(df)
 ```
 
+## Create descriptive table (categorical)
+```{r, echo=T}
+datasummary_skim(df, type="categorical")
+```
