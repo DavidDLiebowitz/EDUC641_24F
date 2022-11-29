@@ -102,7 +102,7 @@ Final assignment
 Deadline: December 7, 11:59pm
 
 Download: 
-<!-- [html file](./assignments/assignment05.html) | [ah01.csv dataset](./data/ah01.csv); [ah02.csv dataset](./data/ah02.csv) -->
+[html file](./assignments/assignment05.html) | [ah01.csv dataset](./data/ah01.csv); [ah02.csv dataset](./data/ah02.csv) 
 
 Key: [doc file]; [R script]
 

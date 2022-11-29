@@ -153,8 +153,7 @@ Objectives:
 - Visualize and substantively interpret residuals resulting from a bivariate regression model
 - Conduct a statistical inference test of the slope and intercept of a bivariate regression model
 - Write R scripts to conduct these analyses
-- Articulate modern critiques of null-hypothesis significance testing framework
-- Describe strategies to improve replicability and generalizability of quantitative research
+
 
 Readings: 
 
@@ -178,14 +177,21 @@ Assignment 4:
 
 ## Unit 5
 
-- Classes 17-18 (11/29 & 12/1): 
-<!-- [html](./slides/EDUC641_17_critiques.html) | [pdf](./slides/EDUC641_17_critiques.pdf) -->
+
+**Topic: Critiques of NHST**
+
+Objectives:
+
+- Articulate modern critiques of null-hypothesis significance testing framework
+- Describe strategies to improve replicability and generalizability of quantitative research
+
+- Classes 17-18 (11/29 & 12/1): [html](./slides/EDUC641_17_critiques.html) | [pdf](./slides/EDUC641_17_critiques.pdf) -
 
 - Data management cheat sheet: [pdf]
 
 ## Final Assignment
 
  * Due December 7 at 11:59pm
-<!-- - [html file](./assignments/assignment05.html) -->
-<!-- - [ah01.csv](./data/ah01.csv); [ah02.csv](./data/ah02.csv) -->
+- [html file](./assignments/assignment05.html)
+- [ah01.csv](./data/ah01.csv) | [ah02.csv](./data/ah02.csv) 
 

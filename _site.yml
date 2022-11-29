@@ -43,9 +43,9 @@ navbar:
       - text: "16. Regression assumptions"
         href: ./slides/EDUC641_16_residuals.html
       - text: "17. NHST critiques"
-        # href: ./slides/EDUC641_17_critiques.html
+        href: ./slides/EDUC641_17_critiques.html
       - text: "18. NHST critiques and summary"
-        # href: ./slides/EDUC641_17_critiques.html
+        href: ./slides/EDUC641_17_critiques.html
 
   right:
   - text: Assignments
