@@ -1,8 +1,11 @@
 ---
 title: "Data Management Cheat Sheet"
-author: "David Liebowitz"
+author: "David D. Liebowitz"
 date: "EDUC 641: Fall 2022"
-output: html_document
+site: distill::distill_website
+output: 
+  html_document:
+    theme: cosmo
 ---
 
 ```{r setup, include=FALSE}
@@ -11,7 +14,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ## Setting up project and directory structure
 
-Open your RStudio, create a project and save it. Go to the root directory of the project and create folders named: "Code", "Data", "Figures" and "Tables." Download the [cont.csv dataset](./data/cont.csv) and store it in the folder "Data". Create an R script (or .Rmd) file in the Code folder. 
+Open your RStudio, create a project and save it. Go to the root directory of the project and create folders named: "Code", "Data", "Figures" and "Tables." Download the [life_expectancy.csv dataset](./data/life_expectancy.csv) and store it in the folder "Data". Create an R script (or .Rmd) file in the Code folder. 
 
 ## Load relevant packages
 ```{r, echo=T, results="hide"}
