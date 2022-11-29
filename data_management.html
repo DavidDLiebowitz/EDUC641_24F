@@ -9,9 +9,10 @@
 <meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
 
+<meta name="author" content="David Liebowitz" />
 
 
-<title>EDUC 641 Schedule</title>
+<title>Data Management Cheat Sheet</title>
 
 <!--radix_placeholder_navigation_in_header-->
 <meta name="distill:offset" content=""/>
@@ -632,7 +633,7 @@ body {
 <script src="site_libs/header-attrs-2.14.3/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<link href="site_libs/bootstrap-3.3.5/css/cosmo.min.css" rel="stylesheet" />
+<link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
@@ -645,12 +646,11 @@ body {
        h6 {font-size: 12px;}
        code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
        pre:not([class]) { background-color: white }</style>
-<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
-<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
-<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<script src="site_libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="site_libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
 <link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
 <link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
 
@@ -847,69 +847,6 @@ $(document).ready(function () {
 
 
 
-<style type="text/css">
-
-#TOC {
-  margin: 25px 0px 20px 0px;
-}
-@media (max-width: 768px) {
-#TOC {
-  position: relative;
-  width: 100%;
-}
-}
-
-@media print {
-.toc-content {
-  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
-  float: right;
-}
-}
-
-.toc-content {
-  padding-left: 30px;
-  padding-right: 40px;
-}
-
-div.main-container {
-  max-width: 1200px;
-}
-
-div.tocify {
-  width: 20%;
-  max-width: 260px;
-  max-height: 85%;
-}
-
-@media (min-width: 768px) and (max-width: 991px) {
-  div.tocify {
-    width: 25%;
-  }
-}
-
-@media (max-width: 767px) {
-  div.tocify {
-    width: 100%;
-    max-width: none;
-  }
-}
-
-.tocify ul, .tocify li {
-  line-height: 20px;
-}
-
-.tocify-subheader .tocify-item {
-  font-size: 0.90em;
-}
-
-.tocify .list-group-item {
-  border-radius: 0px;
-}
-
-
-</style>
-
-
 
 </head>
 
@@ -917,16 +854,6 @@ div.tocify {
 
 
 <div class="container-fluid main-container">
-
-
-<!-- setup 3col/9col grid for toc_float and main content  -->
-<div class="row">
-<div class="col-xs-12 col-sm-4 col-md-3">
-<div id="TOC" class="tocify">
-</div>
-</div>
-
-<div class="toc-content col-xs-12 col-sm-8 col-md-9">
 
 
 
@@ -1079,286 +1006,285 @@ Lectures
 
 
 
-<h1 class="title toc-ignore">EDUC 641 Schedule</h1>
+<h1 class="title toc-ignore">Data Management Cheat Sheet</h1>
+<h4 class="author">David Liebowitz</h4>
+<h4 class="date">EDUC 641: Fall 2022</h4>
 
 </div>
 
 
-<p><strong>Note: readings are intended to be completed <em>after</em>
-subject is covered by class lecture; however, you are welcome to read
-them in advance. You are encouraged to preview the slides prior to that
-unit’s lectures.</strong></p>
-<p><em>We have provided the lecture slides in .html and .pdf format.
-Some of the slide features will only work in .html format while
-connected to the internet. Feel free to download the PDFs for later use
-(you’ll miss out on animations and interactivities, but most information
-will render correctly).</em></p>
-<div id="unit-0" class="section level2">
-<h2>Unit 0</h2>
-<p><strong>Topic: Introduction to scientific principles and data
-analysis</strong></p>
-<p>Objectives:</p>
-<ul>
-<li>Describe goals of course and principles of scientific research</li>
-<li>Describe types of and differences in measurement scales</li>
-<li>Install and familiarize self with statistical software</li>
-</ul>
-<p>Readings:</p>
-<ul>
-<li>Complete <strong>prior to Sept. 29</strong> class: <a
-href="https://learningstatisticswithr.com/lsr-0.6.pdf">LSWR Chapters 2
-and 3</a> and <a
-href="https://nautil.us/how-eugenics-shaped-statistics-238014/">Clayton
-2020</a></li>
-</ul>
-<p>Lectures:</p>
-<ul>
-<li>Class 1 (9/27) slides: <a
-href="./slides/EDUC641_1_intro.html">html</a> | <a
-href="./slides/EDUC641_1_intro.pdf">pdf</a></li>
-<li>Class 2 (9/29) slides: <a
-href="./slides/EDUC641_2_measures.html">html</a> | <a
-href="./slides/EDUC641_2_measures.pdf">pdf</a></li>
-<li>R Tutorial slides: <a href="./slides/tutorial.html">html</a></li>
-<li>Lab slides: <a
-href="https://claireconglizhang.github.io/my-slides/EDUC64122F/lab1.html">html</a></li>
-</ul>
+<div id="setting-up-project-and-directory-structure"
+class="section level2">
+<h2>Setting up project and directory structure</h2>
+<p>Open your RStudio, create a project and save it. Go to the root
+directory of the project and create folders named: “Code”, “Data”,
+“Figures” and “Tables.” Download the <a href="./data/cont.csv">cont.csv
+dataset</a> and store it in the folder “Data”. Create an R script (or
+.Rmd) file in the Code folder.</p>
 </div>
-<div id="unit-1" class="section level2">
-<h2>Unit 1</h2>
-<p><strong>Topic: Summarizing and displaying categorical
-data</strong></p>
-<p>Objectives:</p>
-<ul>
-<li>Understand and implement principles of tabular data in R</li>
-<li>Describe and summarize quantitative data that are categorical</li>
-<li>Create visualizations of quantitative data that are categorical</li>
-<li>Write R scripts to conduct these analyses</li>
-</ul>
-<p>Readings:</p>
-<ul>
-<li>Complete <strong>prior to Oct. 6</strong> class: <a
-href="https://learningstatisticswithr.com/lsr-0.6.pdf">LSWR Chapter
-6</a> and <a
-href="https://www.newstatesman.com/uncategorized/2020/07/ra-fisher-and-science-hatred">Evans
-2020</a>; alternate source for <a
-href="./assignments/evans_2020.pdf">Evans</a></li>
-</ul>
-<p>Lectures:</p>
-<ul>
-<li>Class 3 (10/4) slides: <a
-href="./slides/EDUC641_3_categdescr.html">html</a> | <a
-href="./slides/EDUC641_3_categdescr.pdf">pdf</a></li>
-<li>Data: <a href="./data/deathpenalty.csv">deathpenalty.csv</a> | <a
-href="./data/deathpenalty_codebook.pdf">codebook</a></li>
-<li>R code: <a href="./slides/EDUC641_3_code.R">R script</a></li>
-<li>Lab slides: <a
-href="https://claireconglizhang.github.io/my-slides/EDUC64122F/lab2.html#1">html</a></li>
-</ul>
-<p>Assignment 1:</p>
-<ul>
-<li>Due: October 10, 11:59pm</li>
-<li><a href="./assignments/assignment01.html">html file</a></li>
-<li><a href="./data/cat.csv">cat.csv dataset</a></li>
-</ul>
+<div id="load-relevant-packages" class="section level2">
+<h2>Load relevant packages</h2>
+<pre class="r"><code># Call one package
+library(pacman)
+# Call multiple packages at once
+p_load(tidyverse, here, modelsummary)</code></pre>
 </div>
-<div id="unit-2" class="section level2">
-<h2>Unit 2</h2>
-<p><strong>Topic: Examining the relationship between categorical
-variables</strong></p>
-<p>Objectives:</p>
-<ul>
-<li>Describe relationships between quantitative data that are
-categorical</li>
-<li>Calculate an index of the strength of the relationship between two
-categorical variables, the chi-squared ( <span
-class="math inline">\(\chi^2\)</span>) statistic</li>
-<li>Write R scripts to conduct these analyses</li>
-<li>Formulate and describe the purpose of a null hypothesis</li>
-<li>Conceptually describe the criteria to make a statistical inference
-from a sample to a population</li>
-<li>Interpret and report the results of a contingency-table analysis and
-a statistical inference from a chi-squared statistic</li>
-</ul>
-<p>Readings:</p>
-<ul>
-<li>Complete <strong>prior to Oct. 13</strong> class: <a
-href="https://learningstatisticswithr.com/lsr-0.6.pdf">LSWR Chapters 11
-and 12</a> and <a
-href="http://gppreview.com/2019/12/16/eugenics-ethics-statistical-analysis/">Levy
-2019</a>
-<ul>
-<li>See lecture notes on what to focus on (and not) in LSWR</li>
-</ul></li>
-</ul>
-<p>Lectures:</p>
-<ul>
-<li><p>Classes 4-5 (10/6 and 10/11) slides: <a
-href="./slides/EDUC641_4_categrel.html">html</a> | <a
-href="./slides/EDUC641_4_categrel.pdf">pdf</a></p></li>
-<li><p>Class 6 (10/13) slides: <a
-href="./slides/EDUC641_6_history.html">html</a> | <a
-href="./slides/EDUC641_6_history.pdf">pdf</a></p></li>
-<li><p>Data: <a href="./data/deathpenalty.csv">deathpenalty.csv</a> | <a
-href="./data/deathpenalty.csv">codebook</a></p></li>
-<li><p>R code: <a href="./slides/EDUC641_4_code.R">R script</a></p></li>
-</ul>
-<p>Assignment 2:</p>
-<ul>
-<li>Due: October 19, 11:59pm</li>
-<li><a href="./assignments/assignment02.html">html file</a></li>
-<li><a href="./data/cat.csv">cat.csv dataset</a></li>
-</ul>
+<div id="read-the-data-in" class="section level2">
+<h2>Read the data in</h2>
+<pre class="r"><code>df &lt;- read.csv(here(&quot;data/life_expectancy.csv&quot;))
+# There are other packages to read in data that are much faster and more flexible</code></pre>
 </div>
-<div id="unit-3" class="section level2">
-<h2>Unit 3</h2>
-<p><strong>Topic: Summarizing and displaying continuous
-data</strong></p>
-<p>Objectives:</p>
-<ul>
-<li>Describe and summarize quantitative data that are continuous</li>
-<li>Describe the purpose and compute the following measures of central
-tendency: mean, median and mode</li>
-<li>Descripe the purpose and compute the following measures of
-variability: quartiles, inter-quartile range, range, variance and
-standard deviation
-<ul>
-<li>Describe conceptually the principles of skewness and kurtosis</li>
-</ul></li>
-<li>Create visualizations of quantitative data that are continuous using
-R
-<ul>
-<li>Includes constructing histograms, densities, stem-and-leaf, and
-box-and-whisker plots</li>
-</ul></li>
-<li>Construct a standardized or <span
-class="math inline">\(z\)</span>-score and explain its substantive
-meaning</li>
-<li>Use a <span class="math inline">\(z\)</span>-transformation to
-compare distributions, observations within distributions and interpret
-outlying values</li>
-<li>Describe special features of a normal (and standard normal)
-distribution</li>
-<li>Interpret a <span class="math inline">\(z\)</span>-statistic
-table</li>
-<li>Describe the distribution of repeated sample statistics drawn from a
-population, how this relates to the Central Limit Theorem (CLT) and how
-this is informative to statistical hypothesis testing</li>
-<li>Determine whether the mean value of a sample is different than a
-defined population mean, both when the population standard deviation of
-the variable is known ( <span class="math inline">\(z\)</span>-test) and
-when it is unknown (one-sample <span
-class="math inline">\(t\)</span>-test)</li>
-</ul>
-<p>Readings:</p>
-<ul>
-<li>Complete <strong>prior to Oct. 27</strong> class: <a
-href="https://learningstatisticswithr.com/lsr-0.6.pdf">LSWR Chapter
-5</a> and <a
-href="https://bostonreview.net/science-nature-race/lily-hu-race-policing-and-limits-social-science">Hu
-2021</a></li>
-<li>Complete <strong>prior to Nov. 10</strong> class: <a
-href="https://learningstatisticswithr.com/lsr-0.6.pdf">LSWR Chapter
-10</a></li>
-</ul>
-<p>Lecture slides:</p>
-<ul>
-<li><p>Classes 7-8 (10/18 &amp; 10/20) slides: <a
-href="./slides/EDUC641_7_continuousdescr.html">html</a> | <a
-href="./slides/EDUC641_7_continuousdescr.pdf">pdf</a></p></li>
-<li><p>Class 9 (10/25) slides: <a
-href="./slides/EDUC641_9_transformations.html">html</a> | <a
-href="./slides/EDUC641_9_transformations.pdf">pdf</a></p></li>
-<li><p>Classes 10-12 (10/27, 11/1, &amp; 11/3) slides: <a
-href="./slides/EDUC641_10_inference.html">html</a> | <a
-href="./slides/EDUC641_10_inference.pdf">pdf</a></p></li>
-<li><p>Data: <a
-href="./data/life_expectancy.csv">life_expectancy.csv</a> | <a
-href="./data/life_expectancy_codebook.pdf">codebook</a></p></li>
-<li><p>R code: <a href="./slides/EDUC641_7_code.R">R Script</a></p></li>
-</ul>
-<p>Assignment 3:</p>
-<ul>
-<li>Due: November 9, 9:00am</li>
-<li><a href="./assignments/assignment03.html">html file</a></li>
-<li><a href="./data/cont.csv">cont.csv dataset</a></li>
-</ul>
+<div id="extract-cases" class="section level2">
+<h2>Extract cases</h2>
+<pre class="r"><code>df &lt;- filter(df, year == 2015)</code></pre>
 </div>
-<div id="unit-4" class="section level2">
-<h2>Unit 4</h2>
-<p><strong>Topic: Describing relationships between continuous
-data</strong></p>
-<p>Objectives:</p>
-<ul>
-<li>Describe relationships between quantitative data that are
-continuous</li>
-<li>Visualize and substantively describe the relationship between two
-continuous variables</li>
-<li>Describe and interpret a fitted bivariate regression line</li>
-<li>Describe and interpret components of a fitted bivariate linear
-regression model</li>
-<li>Visualize and substantively interpret residuals resulting from a
-bivariate regression model</li>
-<li>Conduct a statistical inference test of the slope and intercept of a
-bivariate regression model</li>
-<li>Write R scripts to conduct these analyses</li>
-</ul>
-<p>Readings:</p>
-<ul>
-<li>Complete <strong>prior to Nov. 22</strong> class: <a
-href="https://learningstatisticswithr.com/lsr-0.6.pdf">LSWR Chapter 15.1
-and 15.2</a></li>
-</ul>
-<p>Lecture slides:</p>
-<ul>
-<li>Class 13 (11/8) slides: <a
-href="./slides/EDUC641_14_continuousrel.html">html</a> | <a
-href="./slides/EDUC641_14_continuousrel.pdf">pdf</a></li>
-<li>Class 14 (11/10) slides: <a
-href="./slides/EDUC641_15_regression.html">html</a> | <a
-href="./slides/EDUC641_15_regression.pdf">pdf</a></li>
-<li>Class 15-16 slides (11/15 &amp; 11/22): <a
-href="./slides/EDUC641_16_residuals.html">html</a> | <a
-href="./slides/EDUC641_16_residuals.pdf">pdf</a>
-<ul>
-<li><strong>No class on 11/17 (David traveling for conference) and 11/24
-(university holiday)</strong></li>
-</ul></li>
-<li>Data: <a
-href="./data/life_expectancy.csv">life_expectancy.csv</a></li>
-<li>R code: <a href="./slides/EDUC641_14_code.R">R script</a></li>
-</ul>
-<p>Assignment 4:</p>
-<ul>
-<li>Due Nov. 29, 11:59pm</li>
-<li><a href="./assignments/assignment04.html">html file</a></li>
-<li><a href="./data/cont.csv">cont.csv</a></li>
-</ul>
+<div id="extract-variables" class="section level2">
+<h2>Extract variables</h2>
+<pre class="r"><code>df &lt;- df %&gt;% select(country, status, schooling, life_expectancy)</code></pre>
 </div>
-<div id="unit-5" class="section level2">
-<h2>Unit 5</h2>
-<p><strong>Topic: Critiques of NHST</strong></p>
-<p>Objectives:</p>
-<ul>
-<li><p>Articulate modern critiques of null-hypothesis significance
-testing framework</p></li>
-<li><p>Describe strategies to improve replicability and generalizability
-of quantitative research</p></li>
-<li><p>Classes 17-18 (11/29 &amp; 12/1): <a
-href="./slides/EDUC641_17_critiques.html">html</a> | <a
-href="./slides/EDUC641_17_critiques.pdf">pdf</a></p></li>
-<li><p>Data management cheat sheet: <a
-href="data_management.html">html</a></p></li>
-</ul>
+<div id="rename-variable" class="section level2">
+<h2>Rename variable</h2>
+<pre class="r"><code>df &lt;- rename(df, region = country)</code></pre>
 </div>
-<div id="final-assignment" class="section level2">
-<h2>Final Assignment</h2>
-<ul>
-<li>Due December 7 at 11:59pm</li>
-<li><a href="./assignments/assignment05.html">html file</a></li>
-<li><a href="./data/ah01.csv">ah01.csv</a> | <a
-href="./data/ah02.csv">ah02.csv</a></li>
-</ul>
+<div id="create-a-new-variable-based-on-existing-ones"
+class="section level2">
+<h2>Create a new variable based on existing one(s)</h2>
+<pre class="r"><code># Replace existing variable
+df &lt;- df %&gt;%  
+      mutate(life_expectancy = round(life_expectancy, digits = 0))
+# Create a new one
+df &lt;- df %&gt;%
+      mutate(life2 = life_expectancy * life_expectancy)</code></pre>
+</div>
+<div id="inspect-your-data" class="section level2">
+<h2>Inspect your data</h2>
+<pre class="r"><code>head(df)</code></pre>
+<pre><code>##                region status schooling life_expectancy life2
+## 1         Afghanistan      0      10.1              65  4225
+## 2             Albania      0      14.2              78  6084
+## 3             Algeria      0      14.4              76  5776
+## 4              Angola      0      11.4              52  2704
+## 5 Antigua and Barbuda      0      13.9              76  5776
+## 6           Argentina      0      17.3              76  5776</code></pre>
+<pre class="r"><code>str(df)</code></pre>
+<pre><code>## &#39;data.frame&#39;:    183 obs. of  5 variables:
+##  $ region         : chr  &quot;Afghanistan&quot; &quot;Albania&quot; &quot;Algeria&quot; &quot;Angola&quot; ...
+##  $ status         : num  0 0 0 0 0 0 0 1 1 0 ...
+##  $ schooling      : num  10.1 14.2 14.4 11.4 13.9 17.3 12.7 20.4 15.9 12.7 ...
+##  $ life_expectancy: num  65 78 76 52 76 76 75 83 82 73 ...
+##  $ life2          : num  4225 6084 5776 2704 5776 ...</code></pre>
+</div>
+<div id="transform-variables-as-needed" class="section level2">
+<h2>Transform variables, as needed</h2>
+<pre class="r"><code>df$status &lt;- factor(df$status,
+                   levels = c(0, 1),
+                   labels = c(&quot;Developing&quot;, &quot;Developed&quot;))</code></pre>
+</div>
+<div id="examine-missingness" class="section level2">
+<h2>Examine missingness</h2>
+<pre class="r"><code>sum(is.na(df$schooling))</code></pre>
+<pre><code>## [1] 10</code></pre>
+</div>
+<div id="decide-on-listwisepairwise-deletion" class="section level2">
+<h2>Decide on listwise/pairwise deletion</h2>
+<pre class="r"><code>df &lt;- filter(df, !is.na(schooling))</code></pre>
+</div>
+<div id="calculate-summary-statistics" class="section level2">
+<h2>Calculate summary statistics</h2>
+<pre class="r"><code>mean(df$life_expectancy)</code></pre>
+<pre><code>## [1] 71.73988</code></pre>
+<pre class="r"><code>median(df$life_expectancy)</code></pre>
+<pre><code>## [1] 74</code></pre>
+<pre class="r"><code>sd(df$life_expectancy)</code></pre>
+<pre><code>## [1] 7.965512</code></pre>
+<pre class="r"><code>summary(df$life_expectancy)</code></pre>
+<pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##   51.00   66.00   74.00   71.74   77.00   88.00</code></pre>
+</div>
+<div id="visualize-variables-categorical" class="section level2">
+<h2>Visualize variables (categorical)</h2>
+<pre class="r"><code>counts &lt;- table(df$status)
+barplot(counts)</code></pre>
+<p><img src="data_management_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
+</div>
+<div id="visualize-variables-continuous" class="section level2">
+<h2>Visualize variables (continuous)</h2>
+<pre class="r"><code>hist(df$life_expectancy)</code></pre>
+<p><img src="data_management_files/figure-html/unnamed-chunk-14-1.png" width="672" /></p>
+<pre class="r"><code>plot(density(df$schooling))</code></pre>
+<p><img src="data_management_files/figure-html/unnamed-chunk-14-2.png" width="672" /></p>
+</div>
+<div id="create-descriptive-table" class="section level2">
+<h2>Create descriptive table</h2>
+<pre class="r"><code>datasummary_skim(df)</code></pre>
+<table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:right;">
+Unique (#)
+</th>
+<th style="text-align:right;">
+Missing (%)
+</th>
+<th style="text-align:right;">
+Mean
+</th>
+<th style="text-align:right;">
+SD
+</th>
+<th style="text-align:right;">
+Min
+</th>
+<th style="text-align:right;">
+Median
+</th>
+<th style="text-align:right;">
+Max
+</th>
+<th style="text-align:right;">
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+schooling
+</td>
+<td style="text-align:right;">
+89
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+12.9
+</td>
+<td style="text-align:right;">
+2.9
+</td>
+<td style="text-align:right;">
+4.9
+</td>
+<td style="text-align:right;">
+13.1
+</td>
+<td style="text-align:right;">
+20.4
+</td>
+<td style="text-align:right;">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="svglite" width="48.00pt" height="12.00pt" viewBox="0 0 48.00 12.00">
+<defs>
+<style type="text/css">
+    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {
+      fill: none;
+      stroke: #000000;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-miterlimit: 10.00;
+    }
+    .svglite text {
+      white-space: pre;
+    }
+  </style>
+</defs><rect width="100%" height="100%" style="stroke: none; fill: none;"></rect><defs><clipPath id="cpMC4wMHw0OC4wMHwwLjAwfDEyLjAw"><rect x="0.00" y="0.00" width="48.00" height="12.00"></rect></clipPath></defs><g clip-path="url(#cpMC4wMHw0OC4wMHwwLjAwfDEyLjAw)">
+</g><defs><clipPath id="cpMC4wMHw0OC4wMHwyLjg4fDEyLjAw"><rect x="0.00" y="2.88" width="48.00" height="9.12"></rect></clipPath></defs><g clip-path="url(#cpMC4wMHw0OC4wMHwyLjg4fDEyLjAw)"><rect x="-0.80" y="11.16" width="5.73" height="0.51" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="4.93" y="10.82" width="5.73" height="0.84" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="10.67" y="8.28" width="5.73" height="3.38" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="16.40" y="6.09" width="5.73" height="5.57" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="22.14" y="3.22" width="5.73" height="8.44" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="27.87" y="5.08" width="5.73" height="6.59" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="33.61" y="8.79" width="5.73" height="2.87" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="39.34" y="10.82" width="5.73" height="0.84" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="45.08" y="11.49" width="5.73" height="0.17" style="stroke-width: 0.38; fill: #000000;"></rect></g>
+</svg>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+life_expectancy
+</td>
+<td style="text-align:right;">
+35
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+71.7
+</td>
+<td style="text-align:right;">
+8.0
+</td>
+<td style="text-align:right;">
+51.0
+</td>
+<td style="text-align:right;">
+74.0
+</td>
+<td style="text-align:right;">
+88.0
+</td>
+<td style="text-align:right;">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="svglite" width="48.00pt" height="12.00pt" viewBox="0 0 48.00 12.00">
+<defs>
+<style type="text/css">
+    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {
+      fill: none;
+      stroke: #000000;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-miterlimit: 10.00;
+    }
+    .svglite text {
+      white-space: pre;
+    }
+  </style>
+</defs><rect width="100%" height="100%" style="stroke: none; fill: none;"></rect><defs><clipPath id="cpMC4wMHw0OC4wMHwwLjAwfDEyLjAw"><rect x="0.00" y="0.00" width="48.00" height="12.00"></rect></clipPath></defs><g clip-path="url(#cpMC4wMHw0OC4wMHwwLjAwfDEyLjAw)">
+</g><defs><clipPath id="cpMC4wMHw0OC4wMHwyLjg4fDEyLjAw"><rect x="0.00" y="2.88" width="48.00" height="9.12"></rect></clipPath></defs><g clip-path="url(#cpMC4wMHw0OC4wMHwyLjg4fDEyLjAw)"><rect x="0.58" y="10.51" width="6.01" height="1.15" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="6.58" y="9.17" width="6.01" height="2.49" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="12.59" y="8.02" width="6.01" height="3.65" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="18.59" y="6.10" width="6.01" height="5.57" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="24.60" y="3.22" width="6.01" height="8.44" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="30.61" y="4.95" width="6.01" height="6.72" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="36.61" y="6.86" width="6.01" height="4.80" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="42.62" y="11.28" width="6.01" height="0.38" style="stroke-width: 0.38; fill: #000000;"></rect></g>
+</svg>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+life2
+</td>
+<td style="text-align:right;">
+35
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+5209.7
+</td>
+<td style="text-align:right;">
+1114.4
+</td>
+<td style="text-align:right;">
+2601.0
+</td>
+<td style="text-align:right;">
+5476.0
+</td>
+<td style="text-align:right;">
+7744.0
+</td>
+<td style="text-align:right;">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="svglite" width="48.00pt" height="12.00pt" viewBox="0 0 48.00 12.00">
+<defs>
+<style type="text/css">
+    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {
+      fill: none;
+      stroke: #000000;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-miterlimit: 10.00;
+    }
+    .svglite text {
+      white-space: pre;
+    }
+  </style>
+</defs><rect width="100%" height="100%" style="stroke: none; fill: none;"></rect><defs><clipPath id="cpMC4wMHw0OC4wMHwwLjAwfDEyLjAw"><rect x="0.00" y="0.00" width="48.00" height="12.00"></rect></clipPath></defs><g clip-path="url(#cpMC4wMHw0OC4wMHwwLjAwfDEyLjAw)">
+</g><defs><clipPath id="cpMC4wMHw0OC4wMHwyLjg4fDEyLjAw"><rect x="0.00" y="2.88" width="48.00" height="9.12"></rect></clipPath></defs><g clip-path="url(#cpMC4wMHw0OC4wMHwyLjg4fDEyLjAw)"><rect x="0.90" y="10.40" width="4.32" height="1.27" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="5.23" y="9.76" width="4.32" height="1.90" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="9.55" y="8.71" width="4.32" height="2.96" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="13.87" y="6.81" width="4.32" height="4.86" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="18.19" y="8.50" width="4.32" height="3.17" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="22.51" y="5.75" width="4.32" height="5.91" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="26.83" y="3.22" width="4.32" height="8.44" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="31.15" y="9.34" width="4.32" height="2.32" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="35.47" y="7.02" width="4.32" height="4.64" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="39.79" y="10.82" width="4.32" height="0.84" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="44.11" y="11.45" width="4.32" height="0.21" style="stroke-width: 0.38; fill: #000000;"></rect></g>
+</svg>
+</td>
+</tr>
+</tbody>
+</table>
 </div>
 
 <!--radix_placeholder_site_after_body-->
@@ -1367,8 +1293,6 @@ href="./data/ah02.csv">ah02.csv</a></li>
 <!--/radix_placeholder_navigation_after_body-->
 
 
-</div>
-</div>
 
 </div>
 
@@ -1401,35 +1325,6 @@ $(document).ready(function () {
 
 <!-- code folding -->
 
-<script>
-$(document).ready(function ()  {
-
-    // temporarily add toc-ignore selector to headers for the consistency with Pandoc
-    $('.unlisted.unnumbered').addClass('toc-ignore')
-
-    // move toc-ignore selectors from section div to header
-    $('div.section.toc-ignore')
-        .removeClass('toc-ignore')
-        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
-
-    // establish options
-    var options = {
-      selectors: "h1,h2",
-      theme: "bootstrap3",
-      context: '.toc-content',
-      hashGenerator: function (text) {
-        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
-      },
-      ignoreSelector: ".toc-ignore",
-      scrollTo: 0
-    };
-    options.showAndHide = true;
-    options.smoothScroll = true;
-
-    // tocify
-    var toc = $("#TOC").tocify(options).data("toc-tocify");
-});
-</script>
 
 <!-- dynamically load mathjax for compatibility with self-contained -->
 <script>
