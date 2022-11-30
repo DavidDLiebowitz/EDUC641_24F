@@ -53,7 +53,7 @@ Details on all variables are as follows:
 
 #### 1. Read in the dataset
 
-Open your RStudio, create a project and save it. Go to the root directory of the project and create folders named: "Code", "Data", "Figures" and "Tables." Download the [cat.csv dataset](./data/cat.csv) and store it in the folder "Data". Create an R script (or .Rmd) file in the Code folder. Read the data into your R environment. You do not need to include this response in your memo; only in your code.
+Open your RStudio, create a project and save it. Go to the root directory of the project and create folders named: "Code", "Data", "Figures" and "Tables." Download the [cat.csv dataset](../data/cat.csv) and store it in the folder "Data". Create an R script (or .Rmd) file in the Code folder. Read the data into your R environment. You do not need to include this response in your memo; only in your code.
 
 #### 2. Observed relationship between *absenteeism* and *treat*
 

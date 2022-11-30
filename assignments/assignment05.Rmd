@@ -39,7 +39,7 @@ In a recent working paper, [Kraft et al. (2021)](https://www.edworkingpapers.com
 
 ### Research Questions
 
-Inspired by Kraft et al., we examine whether and to what extent having a school-based mentor in one's schooling trajectory is related to these outcomes. In this final project, we invite you to investigate **THREE** research questions. Everyone will address Question 1 (using the [ah01.csv dataset](./data/ah01.csv)). You will pick either Question 2 or 3, using the same dataset. Then, you will extend Kraft et al. by choosing one of Questions 4 or 5 (using the [ah02.csv dataset](./data/ah02.csv)). The research questions you will tackle are:
+Inspired by Kraft et al., we examine whether and to what extent having a school-based mentor in one's schooling trajectory is related to these outcomes. In this final project, we invite you to investigate **THREE** research questions. Everyone will address Question 1 (using the [ah01.csv dataset](../data/ah01.csv)). You will pick either Question 2 or 3, using the same dataset. Then, you will extend Kraft et al. by choosing one of Questions 4 or 5 (using the [ah02.csv dataset](../data/ah02.csv)). The research questions you will tackle are:
 
 **REQUIRED**:
 
