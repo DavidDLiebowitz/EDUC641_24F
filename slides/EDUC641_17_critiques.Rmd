@@ -333,16 +333,16 @@ Assume that we find that average national life expectancy is significantly great
 
 .blue[**Which of the following statements is correct, given *p* = .03**]:
 * **A.** There is a 3% probability that high-income countries do not have a higher average life expectancy (the null hypothesis).
-* **B.** There is a 3% probability that the results are due to random chance, rather than the effect of income level.
+* **B.** There is a 3% probability that the results are due to sampling idiosyncrasy, rather than a true relationship in the population.
 * **C.** A statistically significant difference means higher income-levels yield higher life expectancies.
-* **D.** The observed data would only occur 3% of the time if the null hypothesis was true.
-* **E.** Previous research found that in 2005, income-level failed to produce a significant difference in average life expectancy (*p* = .17). Therefore, income-level is more influential on life expectancy in 2015 than in 2005.
+* **D.** The observed data would occur 3% of the time if the null hypothesis were true.
+* **E.** Previous research found that in 2005, income-level was not related to average life expectancy (*p* = .17). Therefore, income-level is more stronyl related to life expectancy in 2015 than in 2005.
 * **F.** Another research group finds a statistically significant difference between countries with socialized medicine compared to those without (*p* = .001). Their smaller *p* value means that socialized medicine is more effective at increasing life expectancy than income level.
 
 ---
 # The convoluted logic of NHST
 
-.red-pink[**None of the previous interpretations were correct, yet these are commonly expressed in scientific literature!**]
+.red-pink[**Only D on the previous slide is correct, yet all of these are commonly expressed in the scientific literature!**]
 
 In frequentist statistics, we establish an **objective decision rule**: if our observed data has less than a 5 percent chance of occurring (or less than 1% or less than 0.1% or less than 10%) due to sampling idiosyncrasy, we will conclude that the observed relationship in the sample represents a true relationship in the population. 
 
@@ -471,7 +471,7 @@ $$
 $$
 --
 
-I found this to be a helpful explainer [video](https://www.youtube.com/watch?v=HaYbxQC61pw)
+I found this to be a helpful explainer [video](https://www.youtube.com/watch?v=HaYbxQC61pw).
 
 ---
 # Bayesian Example
@@ -592,3 +592,9 @@ Due Dec. 7, 11:59pm
 
 ### Re-submission
 Assignments <13.5, resubmissions due on Canvas 12/2 at 5pm
+
+### End-of-term SES
+
+--
+
+# .red[**Thanks!**]
