@@ -1083,8 +1083,13 @@ df &lt;- df %&gt;%
 </div>
 <div id="examine-missingness" class="section level2">
 <h2>Examine missingness</h2>
-<pre class="r"><code>sum(is.na(df$schooling))</code></pre>
+<pre class="r"><code># One at a time
+sum(is.na(df$schooling))</code></pre>
 <pre><code>## [1] 10</code></pre>
+<pre class="r"><code># All at once
+sapply(df, function(x) sum(is.na(x)))</code></pre>
+<pre><code>##          region          status       schooling life_expectancy           life2 
+##               0               0              10               0               0</code></pre>
 </div>
 <div id="decide-on-listwisepairwise-deletion" class="section level2">
 <h2>Decide on listwise/pairwise deletion</h2>

@@ -79,7 +79,11 @@ df$status <- factor(df$status,
 
 ## Examine missingness
 ```{r, echo=T}
+# One at a time
 sum(is.na(df$schooling))
+
+# All at once
+sapply(df, function(x) sum(is.na(x)))
 ```
 
 ## Decide on listwise/pairwise deletion
