@@ -66,7 +66,7 @@ Details on all variables are as follows:
 1.4 Can you conclude whether teachers who attended more coursework have higher student score? Why or why not? **(1 point)**
 
 
-#### 2. Research Question: Did the dosage of the coursework PD intervention impact children vocabulary?
+#### 2. Research Question: Is the dosage the PD intervention related to children's vocabulary scores?
 
 2.1. Write your null hypothesis about the relationship between coursework dosage and teachers' students' average vocabulary scores. **(1 point)**
 
