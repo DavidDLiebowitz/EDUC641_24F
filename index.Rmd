@@ -1,5 +1,5 @@
 ---
-title: "EDUC 641: Applied Statistics in Education and Human Services"
+title: "EDUC 641: Applied Statistics in Education and Human Services I"
 subtitle: "College of Education, University of Oregon"
 author: "David D. Liebowitz"
 
@@ -26,6 +26,6 @@ This course provides a first introduction to quantitative data analysis in educa
 - *Lab:* Mondays, 4:00pm - 4:50pm, 116 Lokey and Tuesdays, 5:30pm - 6:20pm 146 HEDCO 
 
 # Instructors
-- David D. Liebowitz
+- David D. Liebowitz (office hours: Thursdays 9:00-10:30am or by appointment)
 - Claire Zhang
 - Havisha Khurana

@@ -13,6 +13,10 @@ output:
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+**Note: readings are intended to be completed *after* subject is covered by class lecture; however, you are welcome to read them in advance. You are encouraged to preview the slides prior to that unit's lectures.**
+
+*We have provided the lecture slides in .html and .pdf format. Some of the slide features will only work in .html format while connected to the internet. Feel free to download the PDFs for later use (you'll miss out on animations and interactivities, but most information will render correctly).*
+
 ## Unit 0
 
 **Topic: Introduction to scientific principles and data analysis**
@@ -25,13 +29,14 @@ Objectives:
 
 Readings: 
 
-- [LSWR Chapters 2 and 3](https://learningstatisticswithr.com/lsr-0.6.pdf) and [Clayton 2020](https://nautil.us/issue/92/frontiers/how-eugenics-shaped-statistics)
+- Complete **prior to Sept. 29** class: [LSWR Chapters 2 and 3](https://learningstatisticswithr.com/lsr-0.6.pdf) and [Clayton 2020](https://nautil.us/how-eugenics-shaped-statistics-238014/)
 
 Lectures:
 
-- Class 1 slides: [html](./slides/EDUC641_1_intro.html) | [pdf](./slides/EDUC641_1_intro.pdf)
-- Class 2 slides: [html](./slides/EDUC641_2_measures.html) | [pdf](./slides/EDUC641_2_measures.pdf)
+- Class 1 (9/27) slides: [html](./slides/EDUC641_1_intro.html) | [pdf](./slides/EDUC641_1_intro.pdf)
+- Class 2 (9/29) slides: [html](./slides/EDUC641_2_measures.html) | [pdf](./slides/EDUC641_2_measures.pdf)
 - R Tutorial slides: [html](./slides/tutorial.html)
+- Lab slides: [html](https://claireconglizhang.github.io/my-slides/EDUC64122F/lab1.html)
 
 ## Unit 1 
 
@@ -46,17 +51,18 @@ Objectives:
 
 Readings: 
 
-- [LSWR Chapter 6](https://learningstatisticswithr.com/lsr-0.6.pdf) and [Evans 2020](https://www.newstatesman.com/uncategorized/2020/07/ra-fisher-and-science-hatred)
+- Complete **prior to Oct. 6** class: [LSWR Chapter 6](https://learningstatisticswithr.com/lsr-0.6.pdf) and [Evans 2020](https://www.newstatesman.com/uncategorized/2020/07/ra-fisher-and-science-hatred); alternate source for [Evans](./assignments/evans_2020.pdf)
 
 Lectures: 
 
-- Class 3 slides: [html](./slides/EDUC641_3_categdescr.html) | [pdf](./slides/EDUC641_3_categdescr.pdf) 
-- Data: [deathpenalty.csv](./data/deathpenalty.csv) | [codebook](./data/deathpenalty.csv)
+- Class 3 (10/4) slides: [html](./slides/EDUC641_3_categdescr.html) | [pdf](./slides/EDUC641_3_categdescr.pdf)
+- Data: [deathpenalty.csv](./data/deathpenalty.csv) | [codebook](./data/deathpenalty_codebook.pdf)
 - R code: [R script](./slides/EDUC641_3_code.R)
+- Lab slides: [html](https://claireconglizhang.github.io/my-slides/EDUC64122F/lab2.html#1)
 
 Assignment 1: 
 
-- Due: TBD 
+- Due: October 10, 11:59pm
 - [html file](./assignments/assignment01.html)
 - [cat.csv dataset](./data/cat.csv)
 
@@ -75,20 +81,21 @@ Objectives:
 
 Readings: 
 
-- [LSWR Chapters 11 and 12](https://learningstatisticswithr.com/lsr-0.6.pdf) and [Levy 2019](http://gppreview.com/2019/12/16/eugenics-ethics-statistical-analysis/)
+- Complete **prior to Oct. 13** class: [LSWR Chapters 11 and 12](https://learningstatisticswithr.com/lsr-0.6.pdf) and [Levy 2019](http://gppreview.com/2019/12/16/eugenics-ethics-statistical-analysis/) 
+   + See lecture notes on what to focus on (and not) in LSWR
 
 Lectures:
 
-- Class 4-5 slides: [html](./slides/EDUC641_4_categrel.html) | [pdf](./slides/EDUC641_4_categrel.pdf)
-- Class 6 slides: [html](./slides/EDUC641_6_history.html) | [pdf](./slides/EDUC641_6_history.pdf)
+- Classes 4-5 (10/6 and 10/11) slides: [html](./slides/EDUC641_4_categrel.html) | [pdf](./slides/EDUC641_4_categrel.pdf)
+- Class 6 (10/13) slides: [html](./slides/EDUC641_6_history.html) | [pdf](./slides/EDUC641_6_history.pdf)
 
 
-- Data: [deathpenalty.csv](./data/deathpenalty.csv) | [codebook](./data/deathpenalty.csv)
-- R code: [R script](./slides/EDUC641_4_code.R) 
+- Data: [deathpenalty.csv](./data/deathpenalty.csv) | [codebook](./data/deathpenalty.csv) 
+- R code: [R script](./slides/EDUC641_4_code.R)
  
 Assignment 2: 
 
-- Due: TBD
+- Due: October 19, 11:59pm
 - [html file](./assignments/assignment02.html)
 - [cat.csv dataset](./data/cat.csv)
 
@@ -104,28 +111,31 @@ Objectives:
   + Describe conceptually the principles of skewness and kurtosis
 - Create visualizations of quantitative data that are continuous using R
   + Includes constructing histograms, densities, stem-and-leaf, and box-and-whisker plots
-- Describe special features of a normal distribution
+- Construct a standardized or $z$-score and explain its substantive meaning
+- Use a $z$-transformation to compare distributions, observations within distributions and interpret outlying values
+- Describe special features of a normal (and standard normal) distribution
+- Interpret a $z$-statistic table
 - Describe the distribution of repeated sample statistics drawn from a population, how this relates to the Central Limit Theorem (CLT) and how this is informative to statistical hypothesis testing
-- Determine whether the mean value of a sample is different than a defined population value (when provided the *SD* of the variable, aka $Z$-test)
-- Conduct one-sample $t$-tests
+- Determine whether the mean value of a sample is different than a defined population mean, both when the population standard deviation of the variable is known ( $z$-test) and when it is unknown (one-sample $t$-test)
 
 Readings: 
 
-- [LSWR Chapters 5 and 10](https://learningstatisticswithr.com/lsr-0.6.pdf) and [Hu 2021](https://bostonreview.net/science-nature-race/lily-hu-race-policing-and-limits-social-science)
+- Complete **prior to Oct. 27** class: [LSWR Chapter 5](https://learningstatisticswithr.com/lsr-0.6.pdf) and [Hu 2021](https://bostonreview.net/science-nature-race/lily-hu-race-policing-and-limits-social-science)
+- Complete **prior to Nov. 10** class: [LSWR Chapter 10](https://learningstatisticswithr.com/lsr-0.6.pdf)
 
 
 Lecture slides: 
 
-- Class 7-9 slides: [html](./slides/EDUC641_7_continuousdescr.html) | [pdf](./slides/EDUC641_7_continuousdescr.pdf)
-- Class 10-13 slides: [html](./slides/EDUC641_10_inference.html) | [pdf](./slides/EDUC641_10_inference.pdf)
+- Classes 7-8 (10/18 & 10/20) slides: [html](./slides/EDUC641_7_continuousdescr.html) | [pdf](./slides/EDUC641_7_continuousdescr.pdf)
+- Class 9 (10/25) slides: [html](./slides/EDUC641_9_transformations.html) | [pdf](./slides/EDUC641_9_transformations.pdf)
+- Classes 10-12 (10/27, 11/1, & 11/3) slides: [html](./slides/EDUC641_10_inference.html) | [pdf](./slides/EDUC641_10_inference.pdf)
 
-
-- Data: [life_expectancy.csv](./data/life_expectancy.csv)
+- Data: [life_expectancy.csv](./data/life_expectancy.csv) | [codebook](./data/life_expectancy_codebook.pdf)
 - R code: [R Script](./slides/EDUC641_7_code.R)
 
 Assignment 3: 
 
-- Due: TBD
+- Due: November 9, 9:00am
 - [html file](./assignments/assignment03.html)
 - [cont.csv dataset](./data/cont.csv)
 
@@ -143,36 +153,45 @@ Objectives:
 - Visualize and substantively interpret residuals resulting from a bivariate regression model
 - Conduct a statistical inference test of the slope and intercept of a bivariate regression model
 - Write R scripts to conduct these analyses
-- Articulate modern critiques of null-hypothesis significance testing framework
-- Describe strategies to improve replicability and generalizability of quantitative research
+
 
 Readings: 
 
-- [LSWR Chapter 15.1 and 15.2](https://learningstatisticswithr.com/lsr-0.6.pdf)
+- Complete **prior to Nov. 22** class: [LSWR Chapter 15.1 and 15.2](https://learningstatisticswithr.com/lsr-0.6.pdf)
 
 Lecture slides: 
 
+- Class 13 (11/8) slides: [html](./slides/EDUC641_14_continuousrel.html) | [pdf](./slides/EDUC641_14_continuousrel.pdf)
+- Class 14 (11/10) slides: [html](./slides/EDUC641_15_regression.html) | [pdf](./slides/EDUC641_15_regression.pdf)
+- Class 15-16 slides (11/15 & 11/22): [html](./slides/EDUC641_16_residuals.html) | [pdf](./slides/EDUC641_16_residuals.pdf)
+  + **No class on 11/17 (David traveling for conference) and 11/24 (university holiday)**
 
-- Class 14-17 slides: [html](./slides/EDUC641_14_continuousrel.html) | [pdf](./slides/EDUC641_14_continuousrel.pdf)
-
-- Data: [life_expectancy.csv](./data/life_expectancy.csv)
-- R code: [R script](./slides/EDUC641_14_code.R) 
+- Data:  [life_expectancy.csv](./data/life_expectancy.csv)
+- R code: [R script](./slides/EDUC641_14_code.R)
 
 Assignment 4: 
 
-- Due TBD
-- [html file](./assignments/assignment04.html)
-- [cont.csv](./data/cont.csv)
+- Due Nov. 29, 11:59pm
+ - [html file](./assignments/assignment04.html)
+ - [cont.csv](./data/cont.csv)
 
 ## Unit 5
 
-- NHST critiques slides: [html](./slides/EDUC641_17_critiques.html) | [pdf](./slides/EDUC641_17_critiques.pdf)
 
-- Data management cheat sheet: [pdf]
+**Topic: Critiques of NHST**
+
+Objectives:
+
+- Articulate modern critiques of null-hypothesis significance testing framework
+- Describe strategies to improve replicability and generalizability of quantitative research
+
+- Classes 17-18 (11/29 & 12/1): [html](./slides/EDUC641_17_critiques.html) | [pdf](./slides/EDUC641_17_critiques.pdf)
+
+- Data management cheat sheet: [html](data_management.html)
 
 ## Final Assignment
 
- * Due TBD
- * [html file](./assignments/assignment05.html)
- * [ah01.csv](./data/ah01.csv); [ah02.csv](./data/ah02.csv)
+ * Due December 7 at 11:59pm
+- [html file](./assignments/assignment05.html)
+- [ah01.csv](./data/ah01.csv) | [ah02.csv](./data/ah02.csv) 
 

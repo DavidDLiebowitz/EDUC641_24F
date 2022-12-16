@@ -4,7 +4,7 @@
     <title>RStudio Basics</title>
     <meta charset="utf-8" />
     <meta name="author" content="Instruction Team" />
-    <script src="libs/header-attrs-2.8/header-attrs.js"></script>
+    <script src="libs/header-attrs-2.14.3/header-attrs.js"></script>
     <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
     <link href="libs/remark-css-0.0.1/uo.css" rel="stylesheet" />
     <link href="libs/remark-css-0.0.1/nhsr-fonts.css" rel="stylesheet" />
@@ -13,10 +13,15 @@
     <textarea id="source">
 class: center, middle, inverse, title-slide
 
+.title[
 # RStudio Basics
-## (Required Before EDUC 641 First Class)
+]
+.author[
 ### Instruction Team
+]
+.date[
 ### Last update: 2021 Summer
+]
 
 ---
 
@@ -39,7 +44,7 @@ name: toc
 
 3. [Software Installation Demo](#demo)
 
-4. [Hands-on Activity (Week 1 Participation Point)](#activity)
+4. [Hands-on Activity](#activity)
 
 ---
 name: term
@@ -61,7 +66,7 @@ name: instr
 
 2. Download [RStudio Desktop](https://www.rstudio.com/products/rstudio/download/preview/) and install it in your computer
 
-3. Get to know your RStudio; open RStudion desktop and finish the hands-on activity (week 1 participation point attached)
+3. Get to know your RStudio; open RStudio on your desktop and practice with the hands-on activity
 
 ---
 name: demo
@@ -82,7 +87,7 @@ Download RStudio Desktop (then install it in your computer):
 name: activity
 # RStudio Hands-on Activity
 
-Open your RStudio, run these below code in your console line-by-line, copy and paste the results in a word document, and submit the doc to Canvas to get the first week's participation point (deadline is before our first class meeting).
+Open your RStudio, run these below code in your console line-by-line for some practice working in R.
 
 &lt;img src="./pics/console.png" width="50%" style="display: block; margin: auto;" /&gt;
 
@@ -133,6 +138,19 @@ if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
     deleted = true;
   });
 })();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
 (function() {
   "use strict"
   // Replace <script> tags in slides area to make them executable
