@@ -15,6 +15,14 @@ df <- read.csv(here("data/deathpenalty.csv"))
 # it is common in R to name our datasets short names 
 # so as to reduce typing (df for dataframe)
 
+# Label our variables
+df$rvictim <- factor(df$rvictim,
+                     levels = c(1,2), labels=c("Black", "White"))
+df$rdefend <- factor(df$rdefend,
+                     levels = c(1,2), labels=c("Black", "White"))
+df$deathpen <- factor(df$deathpen, 
+                      levels = c(0,1), labels = c("No", "Yes"))
+
 ###############################################################################
 ####                    UNIT 2 Relationships Between Categorical Data
 ###############################################################################
@@ -23,7 +31,12 @@ df <- read.csv(here("data/deathpenalty.csv"))
 
 table(df$deathpen, df$rvictim)
 
+# Another way to do a two-way table
+xtabs(formula = ~ deathpen + rvictim, data = df)
+
 # Two-way table of percents
+# margin=2 asks for the column-wise percents
+# if you specify margin=1, you'll get the row percents
 
 round(prop.table(table(df$deathpen, df$rvictim), margin=2)*100, 2)
 
@@ -32,7 +45,8 @@ ggplot(df, aes(x = rvictim,
                fill = deathpen)) +
   geom_bar(position = "dodge") + 
   xlab("Race of victim") +
-  theme_minimal(base_size = 16)
+  theme_minimal(base_size = 16) +
+  scale_fill_discrete(name = "Death sentence?")
 
 # A two-way table with "marginal" values
 two_way <- table(df$deathpen, df$rvictim)
@@ -77,10 +91,13 @@ chi_b
 chi_b$observed
 
 ## Two-way table of expected frequencies
-round(chi_b$expected, 0) # rounded
+round(chi_b$expected, 0) # rounded to an even number
 
 ## Display the chi^2 statistic:
 chi_b$statistic
 
 ## Display the p-value
 chi_b$p.value
+
+# or rounded to 10-significant digits...
+round(chi_b$p.value, 10)

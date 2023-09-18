@@ -941,18 +941,18 @@ Lectures
 <a href="./slides/EDUC641_2_measures.html">2. Measurement</a>
 <a href="./slides/EDUC641_3_categdescr.html">3. Categorical descriptives</a>
 <a href="./slides/EDUC641_4_categrel.html">4. Categorical relationships I</a>
-<a href="./slides/EDUC641_4_categrel.html">5. Categorical relationships II</a>
+<a href="./slides/EDUC641_5_categrel.html">5. Categorical relationships II</a>
 <a href="./slides/EDUC641_6_history.html">6. Troubling history of stats</a>
 <a href="./slides/EDUC641_7_continuousdescr.html">7. Continuous descriptives I</a>
 <a href="./slides/EDUC641_7_continuousdescr.html">8. Continuous descriptives II</a>
-<a href="./slides/EDUC641_7_continuousdescr.html">9. Z-scores and effect sizes</a>
-<a href="./slides/EDUC641_10_inference.html">10. CLT I</a>
-<a href="./slides/EDUC641_10_inference.html">11. CLT II</a>
-<a href="./slides/EDUC641_10_inference.html">12. NHST</a>
-<a href="./slides/EDUC641_10_inference.html">13. One-sample t-tests</a>
-<a href="./slides/EDUC641_14_continuousrel.html">14. Continuous relationships I</a>
-<a href="./slides/EDUC641_14_continuousrel.html">15. Continuous relationships II</a>
-<a href="./slides/EDUC641_14_continuousrel.html">16. Continuous relationships III</a>
+<a href="./slides/EDUC641_9_transformations.html">9. Transformations and z-scores</a>
+<a href="./slides/EDUC641_10_inference.html">10. Normal distributions</a>
+<a href="./slides/EDUC641_10_inference.html">11. CLT</a>
+<a href="./slides/EDUC641_10_inference.html">12. Z- and t-tests</a>
+<a href="./slides/EDUC641_14_continuousrel.html">13. Continuous relationships I</a>
+<a href="./slides/EDUC641_15_regression.html">14. Bivariate regression I</a>
+<a href="./slides/EDUC641_16_residuals.html">15. Bivariate regression II</a>
+<a href="./slides/EDUC641_16_residuals.html">16. Regression assumptions</a>
 <a href="./slides/EDUC641_17_critiques.html">17. NHST critiques</a>
 <a href="./slides/EDUC641_17_critiques.html">18. NHST critiques and summary</a>
 </div>
@@ -1009,7 +1009,7 @@ Lectures
       <a href="./slides/EDUC641_4_categrel.html">4. Categorical relationships I</a>
     </li>
     <li>
-      <a href="./slides/EDUC641_4_categrel.html">5. Categorical relationships II</a>
+      <a href="./slides/EDUC641_5_categrel.html">5. Categorical relationships II</a>
     </li>
     <li>
       <a href="./slides/EDUC641_6_history.html">6. Troubling history of stats</a>
@@ -1021,28 +1021,28 @@ Lectures
       <a href="./slides/EDUC641_7_continuousdescr.html">8. Continuous descriptives II</a>
     </li>
     <li>
-      <a href="./slides/EDUC641_7_continuousdescr.html">9. Z-scores and effect sizes</a>
+      <a href="./slides/EDUC641_9_transformations.html">9. Transformations and z-scores</a>
     </li>
     <li>
-      <a href="./slides/EDUC641_10_inference.html">10. CLT I</a>
+      <a href="./slides/EDUC641_10_inference.html">10. Normal distributions</a>
     </li>
     <li>
-      <a href="./slides/EDUC641_10_inference.html">11. CLT II</a>
+      <a href="./slides/EDUC641_10_inference.html">11. CLT</a>
     </li>
     <li>
-      <a href="./slides/EDUC641_10_inference.html">12. NHST</a>
+      <a href="./slides/EDUC641_10_inference.html">12. Z- and t-tests</a>
     </li>
     <li>
-      <a href="./slides/EDUC641_10_inference.html">13. One-sample t-tests</a>
+      <a href="./slides/EDUC641_14_continuousrel.html">13. Continuous relationships I</a>
     </li>
     <li>
-      <a href="./slides/EDUC641_14_continuousrel.html">14. Continuous relationships I</a>
+      <a href="./slides/EDUC641_15_regression.html">14. Bivariate regression I</a>
     </li>
     <li>
-      <a href="./slides/EDUC641_14_continuousrel.html">15. Continuous relationships II</a>
+      <a href="./slides/EDUC641_16_residuals.html">15. Bivariate regression II</a>
     </li>
     <li>
-      <a href="./slides/EDUC641_14_continuousrel.html">16. Continuous relationships III</a>
+      <a href="./slides/EDUC641_16_residuals.html">16. Regression assumptions</a>
     </li>
     <li>
       <a href="./slides/EDUC641_17_critiques.html">17. NHST critiques</a>
@@ -1077,6 +1077,15 @@ Lectures
 </div>
 
 
+<p><strong>Note: readings are intended to be completed <em>after</em>
+subject is covered by class lecture; however, you are welcome to read
+them in advance. You are encouraged to preview the slides prior to that
+unit’s lectures.</strong></p>
+<p><em>We have provided the lecture slides in .html and .pdf format.
+Some of the slide features will only work in .html format while
+connected to the internet. Feel free to download the PDFs for later use
+(you’ll miss out on animations and interactivities, but most information
+will render correctly).</em></p>
 <div id="unit-0" class="section level2">
 <h2>Unit 0</h2>
 <p><strong>Topic: Introduction to scientific principles and data
@@ -1088,19 +1097,28 @@ analysis</strong></p>
 <li>Install and familiarize self with statistical software</li>
 </ul>
 <p>Readings:</p>
-<ul>
-<li><a href="https://learningstatisticswithr.com/lsr-0.6.pdf">LSWR
-Chapters 2 and 3</a> and <a
+<p>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD - <a
+href="https://learningstatisticswithr.com/lsr-0.6.pdf">LSWR Chapters 2
+and 3</a> and <a
 href="./assignments/Light%20Singer%20Willet%201990.pdf">Light, Singer
-&amp; Willet, 1990, pp. 1-40</a></li>
-</ul>
+&amp; Willet, 1990, pp. 1-40</a> ======= - Complete <strong>prior to
+Sept. 29</strong> class: <a
+href="https://learningstatisticswithr.com/lsr-0.6.pdf">LSWR Chapters 2
+and 3</a> and <a
+href="https://nautil.us/how-eugenics-shaped-statistics-238014/">Clayton
+2020</a> &gt;&gt;&gt;&gt;&gt;&gt;&gt;
+e0db08480a45fd8031d1aa71ae1a60584fe5d9ef</p>
 <p>Lectures:</p>
 <ul>
-<li>Class 1 slides: <a href="./slides/EDUC641_1_intro.html">html</a> |
-<a href="./slides/EDUC641_1_intro.pdf">pdf</a></li>
-<li>Class 2 slides: <a href="./slides/EDUC641_2_measures.html">html</a>
-| <a href="./slides/EDUC641_2_measures.pdf">pdf</a></li>
+<li>Class 1 (9/27) slides: <a
+href="./slides/EDUC641_1_intro.html">html</a> | <a
+href="./slides/EDUC641_1_intro.pdf">pdf</a></li>
+<li>Class 2 (9/29) slides: <a
+href="./slides/EDUC641_2_measures.html">html</a> | <a
+href="./slides/EDUC641_2_measures.pdf">pdf</a></li>
 <li>R Tutorial slides: <a href="./slides/tutorial.html">html</a></li>
+<li>Lab slides: <a
+href="https://claireconglizhang.github.io/my-slides/EDUC64122F/lab1.html">html</a></li>
 </ul>
 </div>
 <div id="unit-1" class="section level2">
@@ -1115,25 +1133,34 @@ data</strong></p>
 <li>Write R scripts to conduct these analyses</li>
 </ul>
 <p>Readings:</p>
-<ul>
-<li><a href="https://learningstatisticswithr.com/lsr-0.6.pdf">LSWR
-Chapter 6</a> and <a
+<p>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD - <a
+href="https://learningstatisticswithr.com/lsr-0.6.pdf">LSWR Chapter
+6</a> and <a
 href="https://www.newstatesman.com/uncategorized/2020/07/ra-fisher-and-science-hatred">Evans
 2020</a>; alternate source for <a
-href="./assignments/evans_2020.pdf">Evans</a></li>
-</ul>
+href="./assignments/evans_2020.pdf">Evans</a> ======= - Complete
+<strong>prior to Oct. 6</strong> class: <a
+href="https://learningstatisticswithr.com/lsr-0.6.pdf">LSWR Chapter
+6</a> and <a
+href="https://www.newstatesman.com/uncategorized/2020/07/ra-fisher-and-science-hatred">Evans
+2020</a>; alternate source for <a
+href="./assignments/evans_2020.pdf">Evans</a>
+&gt;&gt;&gt;&gt;&gt;&gt;&gt;
+e0db08480a45fd8031d1aa71ae1a60584fe5d9ef</p>
 <p>Lectures:</p>
 <ul>
-<li>Class 3 slides: <a
+<li>Class 3 (10/4) slides: <a
 href="./slides/EDUC641_3_categdescr.html">html</a> | <a
 href="./slides/EDUC641_3_categdescr.pdf">pdf</a></li>
 <li>Data: <a href="./data/deathpenalty.csv">deathpenalty.csv</a> | <a
-href="./data/deathpenalty.csv">codebook</a></li>
+href="./data/deathpenalty_codebook.pdf">codebook</a></li>
 <li>R code: <a href="./slides/EDUC641_3_code.R">R script</a></li>
+<li>Lab slides: <a
+href="https://claireconglizhang.github.io/my-slides/EDUC64122F/lab2.html#1">html</a></li>
 </ul>
 <p>Assignment 1:</p>
 <ul>
-<li>Due: TBD</li>
+<li>Due: October 10, 11:59pm</li>
 <li><a href="./assignments/assignment01.html">html file</a></li>
 <li><a href="./data/cat.csv">cat.csv dataset</a></li>
 </ul>
@@ -1157,18 +1184,23 @@ from a sample to a population</li>
 a statistical inference from a chi-squared statistic</li>
 </ul>
 <p>Readings:</p>
-<ul>
-<li><a href="https://learningstatisticswithr.com/lsr-0.6.pdf">LSWR
-Chapters 11 and 12</a> and <a
+<p>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD - <a
+href="https://learningstatisticswithr.com/lsr-0.6.pdf">LSWR Chapters 11
+and 12</a> and <a
 href="https://nautil.us/issue/92/frontiers/how-eugenics-shaped-statistics">Clayton
-2020</a></li>
-</ul>
+2020</a> ======= - Complete <strong>prior to Oct. 13</strong> class: <a
+href="https://learningstatisticswithr.com/lsr-0.6.pdf">LSWR Chapters 11
+and 12</a> and <a
+href="http://gppreview.com/2019/12/16/eugenics-ethics-statistical-analysis/">Levy
+2019</a> + See lecture notes on what to focus on (and not) in LSWR
+&gt;&gt;&gt;&gt;&gt;&gt;&gt;
+e0db08480a45fd8031d1aa71ae1a60584fe5d9ef</p>
 <p>Lectures:</p>
 <ul>
-<li><p>Class 4-5 slides: <a
+<li><p>Classes 4-5 (10/6 and 10/11) slides: <a
 href="./slides/EDUC641_4_categrel.html">html</a> | <a
 href="./slides/EDUC641_4_categrel.pdf">pdf</a></p></li>
-<li><p>Class 6 slides: <a
+<li><p>Class 6 (10/13) slides: <a
 href="./slides/EDUC641_6_history.html">html</a> | <a
 href="./slides/EDUC641_6_history.pdf">pdf</a></p></li>
 <li><p>Data: <a href="./data/deathpenalty.csv">deathpenalty.csv</a> | <a
@@ -1177,7 +1209,7 @@ href="./data/deathpenalty.csv">codebook</a></p></li>
 </ul>
 <p>Assignment 2:</p>
 <ul>
-<li>Due: TBD</li>
+<li>Due: October 19, 11:59pm</li>
 <li><a href="./assignments/assignment02.html">html file</a></li>
 <li><a href="./data/cat.csv">cat.csv dataset</a></li>
 </ul>
@@ -1203,35 +1235,55 @@ R
 <li>Includes constructing histograms, densities, stem-and-leaf, and
 box-and-whisker plots</li>
 </ul></li>
-<li>Describe special features of a normal distribution</li>
+<li>Construct a standardized or <span
+class="math inline">\(z\)</span>-score and explain its substantive
+meaning</li>
+<li>Use a <span class="math inline">\(z\)</span>-transformation to
+compare distributions, observations within distributions and interpret
+outlying values</li>
+<li>Describe special features of a normal (and standard normal)
+distribution</li>
+<li>Interpret a <span class="math inline">\(z\)</span>-statistic
+table</li>
 <li>Describe the distribution of repeated sample statistics drawn from a
 population, how this relates to the Central Limit Theorem (CLT) and how
 this is informative to statistical hypothesis testing</li>
 <li>Determine whether the mean value of a sample is different than a
-defined population value (when provided the <em>SD</em> of the variable,
-aka <span class="math inline">\(Z\)</span>-test)</li>
-<li>Conduct one-sample <span class="math inline">\(t\)</span>-tests</li>
+defined population mean, both when the population standard deviation of
+the variable is known ( <span class="math inline">\(z\)</span>-test) and
+when it is unknown (one-sample <span
+class="math inline">\(t\)</span>-test)</li>
 </ul>
 <p>Readings:</p>
-<ul>
-<li><a href="https://learningstatisticswithr.com/lsr-0.6.pdf">LSWR
-Chapters 5 and 10</a></li>
-</ul>
+<p>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD - <a
+href="https://learningstatisticswithr.com/lsr-0.6.pdf">LSWR Chapters 5
+and 10</a> ======= - Complete <strong>prior to Oct. 27</strong> class:
+<a href="https://learningstatisticswithr.com/lsr-0.6.pdf">LSWR Chapter
+5</a> and <a
+href="https://bostonreview.net/science-nature-race/lily-hu-race-policing-and-limits-social-science">Hu
+2021</a> - Complete <strong>prior to Nov. 10</strong> class: <a
+href="https://learningstatisticswithr.com/lsr-0.6.pdf">LSWR Chapter
+10</a> &gt;&gt;&gt;&gt;&gt;&gt;&gt;
+e0db08480a45fd8031d1aa71ae1a60584fe5d9ef</p>
 <p>Lecture slides:</p>
 <ul>
-<li><p>Class 7-9 slides: <a
+<li><p>Classes 7-8 (10/18 &amp; 10/20) slides: <a
 href="./slides/EDUC641_7_continuousdescr.html">html</a> | <a
 href="./slides/EDUC641_7_continuousdescr.pdf">pdf</a></p></li>
-<li><p>Class 10-13 slides: <a
+<li><p>Class 9 (10/25) slides: <a
+href="./slides/EDUC641_9_transformations.html">html</a> | <a
+href="./slides/EDUC641_9_transformations.pdf">pdf</a></p></li>
+<li><p>Classes 10-12 (10/27, 11/1, &amp; 11/3) slides: <a
 href="./slides/EDUC641_10_inference.html">html</a> | <a
 href="./slides/EDUC641_10_inference.pdf">pdf</a></p></li>
 <li><p>Data: <a
-href="./data/life_expectancy.csv">life_expectancy.csv</a></p></li>
+href="./data/life_expectancy.csv">life_expectancy.csv</a> | <a
+href="./data/life_expectancy_codebook.pdf">codebook</a></p></li>
 <li><p>R code: <a href="./slides/EDUC641_7_code.R">R Script</a></p></li>
 </ul>
 <p>Assignment 3:</p>
 <ul>
-<li>Due: TBD</li>
+<li>Due: November 9, 9:00am</li>
 <li><a href="./assignments/assignment03.html">html file</a></li>
 <li><a href="./data/cont.csv">cont.csv dataset</a></li>
 </ul>
@@ -1254,48 +1306,61 @@ bivariate regression model</li>
 <li>Conduct a statistical inference test of the slope and intercept of a
 bivariate regression model</li>
 <li>Write R scripts to conduct these analyses</li>
-<li>Articulate modern critiques of null-hypothesis significance testing
-framework</li>
-<li>Describe strategies to improve replicability and generalizability of
-quantitative research</li>
 </ul>
 <p>Readings:</p>
 <ul>
-<li><a href="https://learningstatisticswithr.com/lsr-0.6.pdf">LSWR
-Chapter 15.1 and 15.2</a></li>
+<li>Complete <strong>prior to Nov. 22</strong> class: <a
+href="https://learningstatisticswithr.com/lsr-0.6.pdf">LSWR Chapter 15.1
+and 15.2</a></li>
 </ul>
 <p>Lecture slides:</p>
 <ul>
-<li><p>Class 14-17 slides: <a
+<li>Class 13 (11/8) slides: <a
 href="./slides/EDUC641_14_continuousrel.html">html</a> | <a
-href="./slides/EDUC641_14_continuousrel.pdf">pdf</a></p></li>
-<li><p>Data: <a
-href="./data/life_expectancy.csv">life_expectancy.csv</a></p></li>
-<li><p>R code: <a href="./slides/EDUC641_14_code.R">R
-script</a></p></li>
+href="./slides/EDUC641_14_continuousrel.pdf">pdf</a></li>
+<li>Class 14 (11/10) slides: <a
+href="./slides/EDUC641_15_regression.html">html</a> | <a
+href="./slides/EDUC641_15_regression.pdf">pdf</a></li>
+<li>Class 15-16 slides (11/15 &amp; 11/22): <a
+href="./slides/EDUC641_16_residuals.html">html</a> | <a
+href="./slides/EDUC641_16_residuals.pdf">pdf</a>
+<ul>
+<li><strong>No class on 11/17 (David traveling for conference) and 11/24
+(university holiday)</strong></li>
+</ul></li>
+<li>Data: <a
+href="./data/life_expectancy.csv">life_expectancy.csv</a></li>
+<li>R code: <a href="./slides/EDUC641_14_code.R">R script</a></li>
 </ul>
 <p>Assignment 4:</p>
 <ul>
-<li>Due TBD</li>
+<li>Due Nov. 29, 11:59pm</li>
 <li><a href="./assignments/assignment04.html">html file</a></li>
 <li><a href="./data/cont.csv">cont.csv</a></li>
 </ul>
 </div>
 <div id="unit-5" class="section level2">
 <h2>Unit 5</h2>
+<p><strong>Topic: Critiques of NHST</strong></p>
+<p>Objectives:</p>
 <ul>
-<li><p>NHST critiques slides: <a
+<li><p>Articulate modern critiques of null-hypothesis significance
+testing framework</p></li>
+<li><p>Describe strategies to improve replicability and generalizability
+of quantitative research</p></li>
+<li><p>Classes 17-18 (11/29 &amp; 12/1): <a
 href="./slides/EDUC641_17_critiques.html">html</a> | <a
 href="./slides/EDUC641_17_critiques.pdf">pdf</a></p></li>
-<li><p>Data management cheat sheet: [pdf]</p></li>
+<li><p>Data management cheat sheet: <a
+href="data_management.html">html</a></p></li>
 </ul>
 </div>
 <div id="final-assignment" class="section level2">
 <h2>Final Assignment</h2>
 <ul>
-<li>Due TBD</li>
+<li>Due December 7 at 11:59pm</li>
 <li><a href="./assignments/assignment05.html">html file</a></li>
-<li><a href="./data/ah01.csv">ah01.csv</a>; <a
+<li><a href="./data/ah01.csv">ah01.csv</a> | <a
 href="./data/ah02.csv">ah02.csv</a></li>
 </ul>
 </div>

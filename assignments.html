@@ -941,18 +941,18 @@ Lectures
 <a href="./slides/EDUC641_2_measures.html">2. Measurement</a>
 <a href="./slides/EDUC641_3_categdescr.html">3. Categorical descriptives</a>
 <a href="./slides/EDUC641_4_categrel.html">4. Categorical relationships I</a>
-<a href="./slides/EDUC641_4_categrel.html">5. Categorical relationships II</a>
+<a href="./slides/EDUC641_5_categrel.html">5. Categorical relationships II</a>
 <a href="./slides/EDUC641_6_history.html">6. Troubling history of stats</a>
 <a href="./slides/EDUC641_7_continuousdescr.html">7. Continuous descriptives I</a>
 <a href="./slides/EDUC641_7_continuousdescr.html">8. Continuous descriptives II</a>
-<a href="./slides/EDUC641_7_continuousdescr.html">9. Z-scores and effect sizes</a>
-<a href="./slides/EDUC641_10_inference.html">10. CLT I</a>
-<a href="./slides/EDUC641_10_inference.html">11. CLT II</a>
-<a href="./slides/EDUC641_10_inference.html">12. NHST</a>
-<a href="./slides/EDUC641_10_inference.html">13. One-sample t-tests</a>
-<a href="./slides/EDUC641_14_continuousrel.html">14. Continuous relationships I</a>
-<a href="./slides/EDUC641_14_continuousrel.html">15. Continuous relationships II</a>
-<a href="./slides/EDUC641_14_continuousrel.html">16. Continuous relationships III</a>
+<a href="./slides/EDUC641_9_transformations.html">9. Transformations and z-scores</a>
+<a href="./slides/EDUC641_10_inference.html">10. Normal distributions</a>
+<a href="./slides/EDUC641_10_inference.html">11. CLT</a>
+<a href="./slides/EDUC641_10_inference.html">12. Z- and t-tests</a>
+<a href="./slides/EDUC641_14_continuousrel.html">13. Continuous relationships I</a>
+<a href="./slides/EDUC641_15_regression.html">14. Bivariate regression I</a>
+<a href="./slides/EDUC641_16_residuals.html">15. Bivariate regression II</a>
+<a href="./slides/EDUC641_16_residuals.html">16. Regression assumptions</a>
 <a href="./slides/EDUC641_17_critiques.html">17. NHST critiques</a>
 <a href="./slides/EDUC641_17_critiques.html">18. NHST critiques and summary</a>
 </div>
@@ -1009,7 +1009,7 @@ Lectures
       <a href="./slides/EDUC641_4_categrel.html">4. Categorical relationships I</a>
     </li>
     <li>
-      <a href="./slides/EDUC641_4_categrel.html">5. Categorical relationships II</a>
+      <a href="./slides/EDUC641_5_categrel.html">5. Categorical relationships II</a>
     </li>
     <li>
       <a href="./slides/EDUC641_6_history.html">6. Troubling history of stats</a>
@@ -1021,28 +1021,28 @@ Lectures
       <a href="./slides/EDUC641_7_continuousdescr.html">8. Continuous descriptives II</a>
     </li>
     <li>
-      <a href="./slides/EDUC641_7_continuousdescr.html">9. Z-scores and effect sizes</a>
+      <a href="./slides/EDUC641_9_transformations.html">9. Transformations and z-scores</a>
     </li>
     <li>
-      <a href="./slides/EDUC641_10_inference.html">10. CLT I</a>
+      <a href="./slides/EDUC641_10_inference.html">10. Normal distributions</a>
     </li>
     <li>
-      <a href="./slides/EDUC641_10_inference.html">11. CLT II</a>
+      <a href="./slides/EDUC641_10_inference.html">11. CLT</a>
     </li>
     <li>
-      <a href="./slides/EDUC641_10_inference.html">12. NHST</a>
+      <a href="./slides/EDUC641_10_inference.html">12. Z- and t-tests</a>
     </li>
     <li>
-      <a href="./slides/EDUC641_10_inference.html">13. One-sample t-tests</a>
+      <a href="./slides/EDUC641_14_continuousrel.html">13. Continuous relationships I</a>
     </li>
     <li>
-      <a href="./slides/EDUC641_14_continuousrel.html">14. Continuous relationships I</a>
+      <a href="./slides/EDUC641_15_regression.html">14. Bivariate regression I</a>
     </li>
     <li>
-      <a href="./slides/EDUC641_14_continuousrel.html">15. Continuous relationships II</a>
+      <a href="./slides/EDUC641_16_residuals.html">15. Bivariate regression II</a>
     </li>
     <li>
-      <a href="./slides/EDUC641_14_continuousrel.html">16. Continuous relationships III</a>
+      <a href="./slides/EDUC641_16_residuals.html">16. Regression assumptions</a>
     </li>
     <li>
       <a href="./slides/EDUC641_17_critiques.html">17. NHST critiques</a>
@@ -1127,10 +1127,11 @@ in the above html/doc/pdf.</li>
 <li><p>Describe and summarize categorical data</p></li>
 <li><p>Create visualizations of categorical data</p></li>
 </ul>
-<p>Deadline: TBD</p>
-<p>Download: <a href="./assignments/assignment01.html">html file</a>; <a
-href="./data/cat.csv">cat.csv dataset</a></p>
-<p>Key: [doc file]; [R script]</p>
+<p>Deadline: October 10, 11:59pm</p>
+<p>Download: <a href="./assignments/assignment01.html">html file</a> |
+<a href="./data/cat.csv">cat.csv dataset</a></p>
+<p>Key:
+<!-- [doc file](./assignments/keys/assignment01_key.docx); [R script](./assignments/keys/assignment01_key.R) --></p>
 </div>
 <div id="assignment-2" class="section level2">
 <h2>3.2. Assignment 2</h2>
@@ -1147,40 +1148,46 @@ inference from a sample to a population</p></li>
 <li><p>Interpret and report the results of a contingency-table analysis
 and a statistical inference from a chi-squared statistic</p></li>
 </ul>
-<p>Deadline: TBD</p>
-<p>Download: <a href="./assignments/assignment02.html">html file</a>; <a
-href="./data/cat.csv">cat.csv dataset</a></p>
-<p>Key: [doc file]; [R script]</p>
+<p>Deadline: October 19, 11:59pm</p>
+<p>Download: <a href="./assignments/assignment02.html">html file</a> |
+<a href="./data/cat.csv">cat.csv dataset</a></p>
+<p>Key:
+<!-- [doc file](./assignments/keys/assignment02_key.docx); [R script](./assignments/keys/assignment02_key.R) --></p>
 </div>
 <div id="assignment-3" class="section level2">
 <h2>3.3. Assignment 3</h2>
-<p>Continuous data 1: summarizing and displaying continuous data</p>
+<p>Continuous data 1: summarizing continuous data and <span
+class="math inline">\(t\)</span>-tests</p>
 <p>Objectives of this assignment</p>
 <ul>
 <li><p>Describe and summarize continuous data</p></li>
 <li><p>Create visualizations of continuous data</p></li>
+<li><p>Conduct and interpret a one-sample <span
+class="math inline">\(t\)</span>-test</p></li>
 </ul>
-<p>Deadline: TBD</p>
-<p>Download: <a href="./assignments/assignment03.html">html file</a>; <a
-href="./data/cont.csv">cont.csv dataset</a></p>
-<p>Key: [doc file]; [R script]</p>
+<p>Deadline: November 9, 9:00am</p>
+<p>Download: <a href="./assignments/assignment03.html">html file</a> |
+<a href="./data/cont.csv">cont.csv dataset</a></p>
+<p>Key:
+<!-- [doc file](./assignments/keys/assignment03_key.docx); [R script](./assignments/keys/assignment03_key.R) --></p>
 </div>
 <div id="assignment-4" class="section level2">
 <h2>3.4. Assignment 4</h2>
 <p>Continuous data 2: intro to bivariate regression</p>
-<p>Deadline: TBD</p>
-<p>Download: <a href="./assignments/assignment04.html">html file</a>; <a
-href="./data/cont.csv">cont.csv dataset</a></p>
-<p>Key: [doc file]; [R script]</p>
+<p>Deadline: November 29, 11:59pm</p>
+<p>Download: <a href="./assignments/assignment04.html">html file</a> |
+<a href="./data/cont.csv">cont.csv dataset</a></p>
+<p>Key:
+<!-- [doc file](./assignments/keys/assignment04_key.docx); [R script](./assignments/keys/assignment04_key.R) --></p>
 </div>
 <div id="final" class="section level2">
 <h2>3.5. Final</h2>
 <p>Final assignment</p>
-<p>Deadline: TBD</p>
-<p>Download: <a href="./assignments/assignment05.html">html file</a>; <a
-href="./data/ah01.csv">ah01.csv dataset</a>; <a
+<p>Deadline: December 7, 11:59pm</p>
+<p>Download: <a href="./assignments/assignment05.html">html file</a> |
+<a href="./data/ah01.csv">ah01.csv dataset</a>; <a
 href="./data/ah02.csv">ah02.csv dataset</a></p>
-<p>Key: [doc file]; [R script]</p>
+<p>Key:</p>
 </div>
 </div>
 

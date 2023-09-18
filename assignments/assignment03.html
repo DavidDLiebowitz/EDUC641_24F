@@ -362,47 +362,45 @@ pre code {
 
 
 <h1 class="title toc-ignore">EDUC 641 Assignment 3</h1>
-<h3 class="subtitle">(Summarizing and Displaying Continuous Data)</h3>
+<h3 class="subtitle">(Summarizing continuous data and <span class="math inline">\(t\)</span>-tests)</h3>
 
 </div>
 
 
 <div id="general-guidelines" class="section level3">
 <h3>General Guidelines</h3>
-<ul>
-<li>The purpose of this assignment is to practice the concepts and
+<p>The purpose of this assignment is to practice the concepts and
 vocabulary we have been modeling in class and implement some of the
 techniques we have learned. You may work on your own or collaborate with
-one (1) partner. Please make sure that you engage in a a full, fair and
+one partner. Please make sure that you engage in a a full, fair and
 mutually-agreeable collaboration if you do choose to collaborate. If you
 do collaborate, you should plan, execute and write-up your analyses
 together, not simply divide the work. Please make sure to indicate
 clearly when your work is joint and any other individual or resource
-(outside of class material) you consulted in your responses.</li>
-</ul>
+(outside of class material) you consulted in your responses.</p>
 </div>
 <div id="submission-requirements" class="section level3">
 <h3>Submission Requirements</h3>
 <p>Please upload below two files on Canvas:</p>
-<ul>
-<li>An .html or .pdf file that includes both -
-<ul>
-<li>your typed responses (in your own words and not identical to anybody
-else’s), tables, and/or figures to the problems<br />
-</li>
-<li>and the R code chunks that generated your answers (hint: if you
-choose to compose your answers in markdown, simply set up echo = TRUE,
-include = TRUE in you .Rmd file)</li>
-</ul></li>
+<ol style="list-style-type: decimal">
+<li>An .html, .doc(x) or .pdf file that includes your typed responses
+(in your own words and not identical to anybody else’s except your
+partner), tables, and/or figures to the problems</li>
 <li>The .Rmd or .R file that you used to render the tables and figures
 in the above html/pdf.</li>
-</ul>
+</ol>
+<p><em>If you have prior experience, you may choose to compose your
+answers in RMarkdown and render to a Word doc or pdf. If so, you can
+simply set up echo = TRUE and include = TRUE in your .Rmd file to allow
+both code and answers to display in a single output file. If you have no
+idea what the preceding sentence meant, ignore it.</em></p>
 </div>
 <div id="objectives-of-this-assignment" class="section level3">
 <h3>Objectives of this assignment</h3>
 <ul>
 <li><p>Describe and summarize continuous data</p></li>
 <li><p>Create visualizations of continuous data</p></li>
+<li><p>Conduct and interpret a one-sample <span class="math inline">\(t\)</span>-test</p></li>
 </ul>
 </div>
 <div id="data-background" class="section level3">
@@ -429,31 +427,28 @@ intervention improve children vocabulary? and (b) did the dosage of the
 coursework PD intervention impact children vocabulary skills? You will
 answer these two questions in the paired assignments 3 and 4.</p>
 <p><strong>Sample</strong>. Our dataset is teacher-level data for 126
-preschool teachers. They were in the treatment group for the 14-session
-coursework PD intervention, had no missing data on coursework
+preschool teachers. They were all in the treatment group for the
+14-session coursework PD intervention, had no missing data on coursework
 attendance, and were in either the treatment or control group for the
 consultancy PD intervention.</p>
 <p><strong>Key variables</strong>. We have two treatment measures, a
 binary variable indicating whether the teacher was treated in the
 consultancy PD intervention and an integer variable capturing the total
 number of sessions the teacher participated in the coursework PD
-intervention. We also have an outcome measure, the teacher’s average
-student standard score on a receptive vocabulary test (Peabody Picture
+intervention. We also have an outcome measure, the average score of each
+teacher’s students on a receptive vocabulary test (Peabody Picture
 Vocabulary Test-3rd edition).</p>
 <p>Details on all variables are as follows:</p>
 <ul>
 <li><em>tchid</em>, the teacher’s unique identification number.</li>
 <li><em>treat</em>, consultancy treatment indicator, coded 1 if the
-teacher was in the treatment group, coded 0 if the teacher was in the
-control group.<br />
+teacher was in the treatment group (participated in consultancy PD),
+coded 0 if the teacher was in the control group.<br />
 </li>
-<li><em>coursework</em>, measure of how many sessions the teacher had
-participated in the coursework.</li>
-<li><em>vocabulary</em>, the teacher’s average student score on
-receptive vocabulary test.</li>
-<li><em>vocabulary_random</em>, a simulated random variable having the
-same length, mean, and standard deviation with the variable
-<em>vocabulary</em>.</li>
+<li><em>coursework</em>, continuous integer measure of how many sessions
+the teacher participated in the coursework.</li>
+<li><em>vocabulary</em>, the average score of the teacher’s students on
+a vocabulary test.</li>
 </ul>
 </div>
 <div id="assignment-details" class="section level3">
@@ -461,60 +456,80 @@ same length, mean, and standard deviation with the variable
 <div id="dataset" class="section level4">
 <h4>1. Dataset</h4>
 <p>1.1. Open your RStudio, create a project and save it. Go to the root
-directory of the project and create a folder named “data”. Download the
-<a href="./data/cont.csv">cont.csv dataset</a> and store it in the
-folder “data”. Create an Rmd/R file in the project root directory. Then
-read the data into your R environment. Make sure to check whether the
-variable <em>treat</em> is factor as well as whether <em>coursework</em>
-and <em>vocabulary</em> are double. Transform them into correct types if
-needed.</p>
-<p>Note that you do not need to include these responses in your html/pdf
-file; only in your RMD/R file.</p>
-<p>1.2. Write your own code to view the dataset and write 3-4 sentences
-about the structure of the data (how many variables are there, what type
-is each variable, how many rows/observations, etc.).</p>
+directory of the project and create folders named: “Code”, “Data”,
+“Figures” and “Tables.” Download the <a href="../data/cont.csv">cont.csv
+dataset</a> and store it in the folder “Data”. Create an R script (or
+.Rmd) file in the Code folder. Read the data into your R environment.
+You do not need to include this part of the response in your memo; only
+in your code.</p>
+<p>Review the codebook above and transform any variable into its correct
+type (format), as needed. <strong>(1 point)</strong></p>
+<p>1.2. Write your own code to view the structure of the dataset and
+write 3-4 sentences about the structure of the data. How many
+rows/observations are there? How many variables are there? What type is
+each variable (after converting types)? What does each variable
+represent? <strong>(1 point)</strong></p>
 </div>
 <div id="descriptive-statistics-of-the-outcome-variable" class="section level4">
 <h4>2. Descriptive statistics of the outcome variable</h4>
-<p>2.1. Central tendency</p>
+<p><strong>Central tendency</strong></p>
 <ul>
-<li><p>2.1.1 What are the mean and median of the outcome variable,
-<em>vocabulary</em>? Interpret the meanings of these measures.</p></li>
-<li><p>2.1.2. Create a binned frequency table (suggested bin width = 5)
-for <em>vocabulary</em>. Then create a plot to show the distribution of
-<em>vocabulary</em> and make sure to label the x- and y-axes. Is it
-normally distributed? If not, describe how and how much the distribution
-is skewed. Did you notice any outliers?</p></li>
+<li><p>2.1 What are the mean and median of <em>vocabulary</em>? In 2
+sentences, interpret the meaning of these measures. <strong>(1
+point)</strong></p></li>
+<li><p>2.2 What are the mean and median of <em>coursework</em>? You will
+find that the mean is a smaller value than the median. In 1-2 sentences,
+explain why this is the case. <strong>(1 point)</strong></p></li>
 </ul>
-<p>2.2. Variability</p>
+<p><strong>Variability</strong></p>
 <ul>
-<li><p>2.2.1. What are the variance and standard deviation of
-<em>vocabulary</em>? Interpret the statistical meanings of these
-measures.</p></li>
-<li><p>2.2.2. List the quartiles, percentiles, interquartile range, and
-range of <em>vocabulary</em>.</p></li>
+<li><p>2.3. Create a plot to show the distribution of
+<em>vocabulary</em> and make sure to label the x- and y-axes. In 2-4
+sentences, describe the distribution, referencing your plot as
+appropriate. Make sure to use the following terms: tail(s), skew,
+kurtosis, mound/modal. <strong>(2 points)</strong></p></li>
+<li><p>2.4. What are the range and inter-quartile range of
+<em>vocabulary</em> (provide both the upper/lower limits as well as the
+ranges themselves). <strong>(1 points)</strong></p></li>
+<li><p>2.2.3. What are the variance and standard deviation of
+<em>vocabulary</em>? In 1 sentence, interpret the statistical meaning of
+these measures. <strong>(1 point)</strong></p></li>
+</ul>
+</div>
+<div id="transformations" class="section level4">
+<h4>3. Transformations</h4>
+<ul>
+<li><p>3.1. Standardize the variables <em>coursework</em>
+<strong>and</strong> <em>vocabulary</em> to have a mean of 0 and
+standard deviation of 1. You do not need to include this part of the
+response in your memo; only in your code. <strong>(1
+point)</strong></p></li>
+<li><p>3.2. Let’s examine one particular teacher: Teacher 1832
+(<em>tchid</em>==1832). This teacher did not participate in much
+coursework, nor did their students perform particularly well on their
+vocabulary test. For which variable (<em>coursework</em> or
+<em>vocabulary</em>) was this teacher observation more extreme, given
+the distribution of these particular variables in our sample? Explain
+and interpret in 1-2 sentences <strong>(1 point)</strong></p></li>
 </ul>
 </div>
 <div id="compare-observed-mean-of-vocabulary-to-population-mean" class="section level4">
-<h4>3. Compare observed mean of <em>vocabulary</em> to population
+<h4>4. Compare observed mean of <em>vocabulary</em> to population
 mean</h4>
-<p>3.1. Using the same type of plot you used for <em>vocabulary</em>,
-plot the distribution of <em>vocabulary_random</em> and compare the two
-plots. You may choose one of the two ways to compare plots: (a) use base
-R code to produce two plots side-by-side, or (b) use {ggplot2} package
-to put the two into one plot. Compare these two distributions and write
-one sentence to describe what you have observed. Circle back to question
-2.1.2, do you think now whether the distribution of <em>vocabulary</em>
-is approximately normal?</p>
-<p>3.2. Despite what your answer is for 3.1, you have to assume normal
-distribution of <em>vocabulary</em> before conducting any one-sample
-t-test. Note that we cannot observe the population mean but let’s
-suppose it is 87, we want to know whether our observed mean of
-<em>vocabulary</em> is equal to the population mean.</p>
+<p>Assume that the test publisher informs you that the population mean
+of the teacher-level average score on this vocabulary test is 87 (again,
+we can’t truly know this, but play along). We want to know whether the
+observed mean of <em>vocabulary</em> in our sample is equal to the
+population mean.</p>
 <ul>
-<li>3.2.1. What is your null-hypothesis?</li>
-<li>3.2.2. Run a one-sample t-test and provide your results.</li>
-<li>3.2.3. Write 2-3 sentences to interpret your results.</li>
+<li>4.2. In one sentence, state your null-hypothesis. <strong>(1
+point)</strong></li>
+<li>4.2. Conduct a one-sample <span class="math inline">\(t\)</span>-test. State the results of your test,
+including the alpha-threshold you have set and whether you have
+conducted a one- or two-tailed test and why. <strong>(2
+points)</strong></li>
+<li>4.3. Write 2-3 sentences to interpret the results of your test in
+the preceding question. <strong>(2 points)</strong></li>
 </ul>
 </div>
 </div>

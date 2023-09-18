@@ -1,10 +1,15 @@
+install.packages("here")
+install.packages("tidyverse")
+install.packages("ggplot2")
+
+
 
 library(here)
 library(tidyverse)
 library(ggplot2)
 
 
-###This tells R where the script is located in relationship to the "root" directory of your project
+### The first command tells R where the script is located in relationship to the "root" directory of your project
 # Using this command you can then use shortened versions of file pathways that will work across different users' systems
 # A non-preferred alternative is to read the data in using the full filepath
 
@@ -69,7 +74,11 @@ rd
 rd + geom_text(aes(label = ..count..), stat='count', vjust = -0.5)
 
 # And now can make it a little prettier
-rd + geom_text(aes(label = ..count..), stat='count', vjust = -0.5) +
+rd + geom_text(aes(label = ..count..), stat='count', vjust = -0.5, size = 6) +
+  ylim(0,1550) +
   theme_minimal(base_size = 16)
+
+# Now I can save the image I've created
+ggsave(filename = "slides/rdefend.png")
 
 

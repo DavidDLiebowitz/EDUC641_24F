@@ -1,6 +1,5 @@
 ---
 title: "RStudio Basics"
-subtitle: "(Required Before EDUC 641 First Class)"
 author: "Instruction Team"
 date: "Last update: 2021 Summer"
 output:
@@ -33,7 +32,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 3. [Software Installation Demo](#demo)
 
-4. [Hands-on Activity (Week 1 Participation Point)](#activity)
+4. [Hands-on Activity](#activity)
 
 ---
 name: term
@@ -55,7 +54,7 @@ name: instr
 
 2. Download [RStudio Desktop](https://www.rstudio.com/products/rstudio/download/preview/) and install it in your computer
 
-3. Get to know your RStudio; open RStudion desktop and finish the hands-on activity (week 1 participation point attached)
+3. Get to know your RStudio; open RStudio on your desktop and practice with the hands-on activity
 
 ---
 name: demo
@@ -80,7 +79,7 @@ knitr::include_graphics("./pics/download_rstudio.gif")
 name: activity
 # RStudio Hands-on Activity
 
-Open your RStudio, run these below code in your console line-by-line, copy and paste the results in a word document, and submit the doc to Canvas to get the first week's participation point (deadline is before our first class meeting).
+Open your RStudio, run these below code in your console line-by-line for some practice working in R.
 
 ```{r, out.width = "50%", fig.align = "center", echo = FALSE}
 knitr::include_graphics("./pics/console.png")
