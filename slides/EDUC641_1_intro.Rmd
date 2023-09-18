@@ -227,7 +227,7 @@ class: middle, inverse
 - LSWR Chapter 2: this is a brief summary of what you have/will learn(ed) in EDUC 612 
 - LSWR Chapter 3: this covers some information from the R Bootcamp and more 
     + You will **not** internalize all of this in one reading and practice session. Give it a skim, play around with R while you're doing so, and you can return to it as you want/need to build more of programming skills.
-- Clayton (2020)
+- Light, Singer & Willet (1990), pp. 1-40
 
 ### Assignment:
 - Have downloaded R/RStudio and familiarized yourself with the RStudio environment (Modules 1 & 2 from [R Bootcamp](https://community.uoregon.edu/courses/18778))

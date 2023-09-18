@@ -629,7 +629,7 @@ body {
   padding-top: 60px;
 }
 </style>
-<script src="site_libs/header-attrs-2.14.3/header-attrs.js"></script>
+<script src="site_libs/header-attrs-2.20/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/cosmo.min.css" rel="stylesheet" />
@@ -799,8 +799,8 @@ $(document).ready(function () {
   border-radius: 4px;
 }
 
-.tabset-dropdown > .nav-tabs > li.active:before {
-  content: "";
+.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "\e259";
   font-family: 'Glyphicons Halflings';
   display: inline-block;
   padding: 10px;
@@ -808,16 +808,9 @@ $(document).ready(function () {
 }
 
 .tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
-  content: "&#xe258;";
-  border: none;
-}
-
-.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
-  content: "";
+  content: "\e258";
   font-family: 'Glyphicons Halflings';
-  display: inline-block;
-  padding: 10px;
-  border-right: 1px solid #ddd;
+  border: none;
 }
 
 .tabset-dropdown > .nav-tabs > li.active {
@@ -1098,8 +1091,8 @@ analysis</strong></p>
 <ul>
 <li><a href="https://learningstatisticswithr.com/lsr-0.6.pdf">LSWR
 Chapters 2 and 3</a> and <a
-href="https://nautil.us/issue/92/frontiers/how-eugenics-shaped-statistics">Clayton
-2020</a></li>
+href="./assignments/Light%20Singer%20Willet%201990.pdf">Light, Singer
+&amp; Willet, 1990, pp. 1-40</a></li>
 </ul>
 <p>Lectures:</p>
 <ul>
@@ -1126,7 +1119,8 @@ data</strong></p>
 <li><a href="https://learningstatisticswithr.com/lsr-0.6.pdf">LSWR
 Chapter 6</a> and <a
 href="https://www.newstatesman.com/uncategorized/2020/07/ra-fisher-and-science-hatred">Evans
-2020</a></li>
+2020</a>; alternate source for <a
+href="./assignments/evans_2020.pdf">Evans</a></li>
 </ul>
 <p>Lectures:</p>
 <ul>
@@ -1166,8 +1160,8 @@ a statistical inference from a chi-squared statistic</li>
 <ul>
 <li><a href="https://learningstatisticswithr.com/lsr-0.6.pdf">LSWR
 Chapters 11 and 12</a> and <a
-href="http://gppreview.com/2019/12/16/eugenics-ethics-statistical-analysis/">Levy
-2019</a></li>
+href="https://nautil.us/issue/92/frontiers/how-eugenics-shaped-statistics">Clayton
+2020</a></li>
 </ul>
 <p>Lectures:</p>
 <ul>
@@ -1221,9 +1215,7 @@ aka <span class="math inline">\(Z\)</span>-test)</li>
 <p>Readings:</p>
 <ul>
 <li><a href="https://learningstatisticswithr.com/lsr-0.6.pdf">LSWR
-Chapters 5 and 10</a> and <a
-href="https://bostonreview.net/science-nature-race/lily-hu-race-policing-and-limits-social-science">Hu
-2021</a></li>
+Chapters 5 and 10</a></li>
 </ul>
 <p>Lecture slides:</p>
 <ul>

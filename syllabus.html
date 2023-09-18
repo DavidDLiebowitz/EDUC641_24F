@@ -629,7 +629,7 @@ body {
   padding-top: 60px;
 }
 </style>
-<script src="site_libs/header-attrs-2.14.3/header-attrs.js"></script>
+<script src="site_libs/header-attrs-2.20/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/cosmo.min.css" rel="stylesheet" />
@@ -799,8 +799,8 @@ $(document).ready(function () {
   border-radius: 4px;
 }
 
-.tabset-dropdown > .nav-tabs > li.active:before {
-  content: "";
+.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "\e259";
   font-family: 'Glyphicons Halflings';
   display: inline-block;
   padding: 10px;
@@ -808,16 +808,9 @@ $(document).ready(function () {
 }
 
 .tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
-  content: "&#xe258;";
-  border: none;
-}
-
-.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
-  content: "";
+  content: "\e258";
   font-family: 'Glyphicons Halflings';
-  display: inline-block;
-  padding: 10px;
-  border-right: 1px solid #ddd;
+  border: none;
 }
 
 .tabset-dropdown > .nav-tabs > li.active {
@@ -1108,13 +1101,12 @@ statistical analysis by <strong>doing</strong> statistical analysis.
 </div>
 <div id="meeting-time-and-location" class="section level1">
 <h1>Meeting Time and Location</h1>
-<p><em>Class:</em> Tuesdays and Thursdays, 4:00pm - 5:20pm, 146 HEDCO
-<em>Lab:</em> Mondays, 4:00pm - 4:50pm, 116 Lokey and Tuesdays, 5:30pm -
-6:20pm 146 HEDCO</p>
+<p><em>Class:</em> Tuesdays and Thursdays, 4:00pm - 5:20pm,
+<em>Lab:</em></p>
 </div>
 <div id="instructors" class="section level1">
 <h1>Instructors</h1>
-<p>David Liebowitz Claire Zhang Havisha Khurana</p>
+<p>David Liebowitz</p>
 </div>
 <div id="student-learning-outcomes" class="section level1">
 <h1>Student Learning Outcomes</h1>
@@ -1122,7 +1114,7 @@ statistical analysis by <strong>doing</strong> statistical analysis.
 to:</p>
 <ol style="list-style-type: decimal">
 <li>Articulate the principles of responsible and ethical quantitative
-research</li>
+research in educatino and human services</li>
 <li>Describe, summarize and visualize quantitative data that are
 categorical and continuous</li>
 <li>Describe, summarize and visualize the relationships between
@@ -1131,7 +1123,8 @@ quantitative data that are categorical and continuous</li>
 relationships between simple categorical and continuous data</li>
 <li>Describe strategies to improve the replicability and
 generalizability of quantitative research</li>
-<li>Use the R programming language to conduct all such analyses</li>
+<li>Use on open-source, object-oriented statistical programming language
+(in this case R) to conduct all such analyses</li>
 </ol>
 </div>
 <div id="textbooks-and-reading-materials" class="section level1">
@@ -1183,10 +1176,11 @@ R/Rstudio installation <a href=".slides/tutorial.html">here</a>.</p>
 <p>While we will teach you how to effectively use R and RStudio to
 conduct analyses, one of the key skills required to use R is the ability
 to find answers on your own. Many common questions or problems are
-either available on blogs or have been asked and answered in discussion
-forums already. Finding and deciphering those answers is an important
-skill you should seek to hone. <em>You will never remember all of the
-programming commands!</em></p>
+available on blogs, have been asked and answered in discussion forums
+already, or can be problem-solved using the assistance of artificial
+intelligence chat bots (more below). Finding and deciphering those
+answers is an important skill you should seek to hone. <em>You will
+never remember all of the programming commands!</em></p>
 <p>Here are some sites where you can find the answers to many R
 questions and learn new tricks:</p>
 <ul>
@@ -1207,19 +1201,46 @@ href="https://stackoverflow.com/questions/tagged/r">StackOverflow</a></li>
 <li><a href="https://stats.stackexchange.com">Stack Exchange</a></li>
 </ul>
 </div>
+<div id="using-artifical-intelligence-ai-tools" class="section level3">
+<h3>Using Artifical Intelligence (AI) Tools</h3>
+<p>Artificial Intelligence (AI) chatbots and the Large Language Models
+(LLMs) on which they rely have dramatically increased the speed and
+efficiency of many programmers. Members of the teaching regularly use
+such tools in their analytic and drafting tasks. That said, they are not
+(as least currently) substitutes for skilled analysts and writers.
+Beyond AI chatbots known proclivity for “hallucinating” facts, their
+solutions to programming tasks often require adaptation and revision by
+a knowledgeable human. Further, because their ability to generate text
+relies on using billions of phrase chunks in the public domain to
+predict the next word, their language on technical topics can be
+imprecise when many other writers on these topics are also imprecise.
+Thus, while we encourage you to investigate how AI chatbots can help
+improve your programming and statistical analysis skills, we caution you
+to skeptically review all code and language produced to ensure its
+alignment to the course expectations. To be explicit: you may use AI
+chatbots for assistance with your assignments. If you use one to
+generate your responses, you must indicate so on your assignment. You do
+not need to do so if you have used these tools only to help with coding
+tasks and/or light editing of your written responses. You are likely
+already familiar with OpenAI’s <a href="chat.openai.com">ChatGPT</a>. As
+you gain more experience as a programmer, you may want to use an AI tool
+that is designed specifically to help with coding such as <a
+href="github.com/features/copilot">GitHub Copilot</a> or <a
+href="https://www.askcodi.com/">AskCodi</a>.</p>
+</div>
 </div>
 </div>
 <div id="schedule" class="section level1">
 <h1>Schedule</h1>
 <p>For more details, see <a href="./schedule.html">here</a>.</p>
-<table style="width:100%;">
+<table>
 <colgroup>
-<col width="2%" />
-<col width="2%" />
-<col width="23%" />
-<col width="60%" />
-<col width="6%" />
-<col width="3%" />
+<col width="4%" />
+<col width="4%" />
+<col width="35%" />
+<col width="39%" />
+<col width="10%" />
+<col width="5%" />
 </colgroup>
 <thead>
 <tr class="header">
@@ -1235,10 +1256,9 @@ href="https://stackoverflow.com/questions/tagged/r">StackOverflow</a></li>
 <tr class="odd">
 <td align="left">0</td>
 <td align="left">1</td>
-<td align="left">Intro to scienctific principles and data analysis</td>
-<td align="left">LSWR Ch 2 and 3 <br> <a
-href="https://nautil.us/issue/92/frontiers/how-eugenics-shaped-statistics">Clayton
-2020</a></td>
+<td align="left">Intro to scientific principles and data analysis</td>
+<td align="left">LSWR Ch 2 and 3 <br>Light, Singer &amp; Willet 1990,
+Ch. 2</td>
 <td align="left">-</td>
 <td align="left">Quiz 1</td>
 </tr>
@@ -1247,7 +1267,7 @@ href="https://nautil.us/issue/92/frontiers/how-eugenics-shaped-statistics">Clayt
 <td align="left">2</td>
 <td align="left">Summarizing and displaying categorical data</td>
 <td align="left">LSWR Ch 6 <br> <a
-href="https://www.newstatesman.com/uncategorized/2020/07/ra-fisher-and-science-hatred">Evans
+href="https://nautil.us/issue/92/frontiers/how-eugenics-shaped-statistics">Clayton
 2020</a></td>
 <td align="left">Assignment 1</td>
 <td align="left">Quiz 2</td>
@@ -1257,8 +1277,8 @@ href="https://www.newstatesman.com/uncategorized/2020/07/ra-fisher-and-science-h
 <td align="left">2-3</td>
 <td align="left">Relationships between categorical variables</td>
 <td align="left">LSWR Ch 11 and 12 <br> <a
-href="http://gppreview.com/2019/12/16/eugenics-ethics-statistical-analysis/">Levy
-2019</a></td>
+href="https://www.newstatesman.com/uncategorized/2020/07/ra-fisher-and-science-hatred">Evans
+2020</a></td>
 <td align="left">Assignment 2</td>
 <td align="left">Quiz 3</td>
 </tr>
@@ -1266,9 +1286,7 @@ href="http://gppreview.com/2019/12/16/eugenics-ethics-statistical-analysis/">Lev
 <td align="left">3</td>
 <td align="left">4-6</td>
 <td align="left">Summarizing and displaying continuous data</td>
-<td align="left">LSWR Ch 5 and 10 <br> <a
-href="https://bostonreview.net/science-nature-race/lily-hu-race-policing-and-limits-social-science">Hu
-2021</a></td>
+<td align="left">LSWR Ch 5 and 10</td>
 <td align="left">Assignment 3</td>
 <td align="left">Quiz 4</td>
 </tr>
@@ -1309,14 +1327,20 @@ href="https://bostonreview.net/science-nature-race/lily-hu-race-policing-and-lim
 </ul>
 <div id="quizzes" class="section level2">
 <h2>Quizzes</h2>
-<p>Five classes will begin with a very short multiple-choice quiz that
-is designed to test your knowledge of the theoretical principles
-underlying the statistics we are studying for the week. While some may
-feel that this is overly paternalistic, research evidence shows that
-frequent quizzing increases learning (see a summary of <a
+<p>There will be five (5) very short quizzes that are designed to test
+your knowledge of the theoretical principles underlying the statistics
+we are studying for the week. While some may feel that this is overly
+paternalistic, research evidence shows that frequent quizzing increases
+learning (see a summary of <a
 href="https://www.nytimes.com/2013/11/21/education/frequent-tests-can-enhance-college-learning-study-finds.html">one
 study</a> from the University of Texas). Quizzes will be open book,
-notes and computer.</p>
+notes and computer, and may (at your discretion) be completed in
+consultation with other students in the class. We will leave 15 minutes
+of class time available to complete each quiz, and any student who would
+benefit from additional time has until 5pm the following day to submit
+the quiz on Canvas. It is each student’s responsibility to submit the
+quiz, and the teaching team will not be able to send individualized
+reminders to do so.</p>
 </div>
 <div id="assignments" class="section level2">
 <h2>Assignments</h2>
@@ -1325,14 +1349,14 @@ vocabulary we have been modeling in class and implement some of the
 techniques we have learned. Each assignment has an associated data
 source, short codebook and detailed instructions for the required data
 and analytic tasks. You may work on your own or collaborate with one (1)
-partner. Please make sure that you engage in a full, fair and
-mutually-agreeable collaboration if you do choose to collaborate. If you
-do collaborate, you should plan, execute and write-up your analyses
-together, not simply divide the work. Please make sure to indicate
-clearly when your work is joint and any other individual or resource
-(outside of class material) you consulted in your response. Further
-assignment details are available <a
-href="./assignments.html">here</a></p>
+or two partner(s). No groups of more than three, please. Please make
+sure that you engage in a full, fair and mutually-agreeable
+collaboration if you do choose to collaborate. If you do collaborate,
+you should plan, execute and write-up your analyses together, not simply
+divide the work. Please make sure to indicate clearly when your work is
+joint and any other individual or resource (outside of class material)
+you consulted in your response. Further assignment details are available
+<a href="./assignments.html">here</a></p>
 </div>
 <div id="final" class="section level2">
 <h2>Final</h2>

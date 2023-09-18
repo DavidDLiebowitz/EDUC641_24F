@@ -630,7 +630,7 @@ body {
   padding-top: 60px;
 }
 </style>
-<script src="site_libs/header-attrs-2.14.3/header-attrs.js"></script>
+<script src="site_libs/header-attrs-2.20/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/cosmo.min.css" rel="stylesheet" />
@@ -800,8 +800,8 @@ $(document).ready(function () {
   border-radius: 4px;
 }
 
-.tabset-dropdown > .nav-tabs > li.active:before {
-  content: "";
+.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "\e259";
   font-family: 'Glyphicons Halflings';
   display: inline-block;
   padding: 10px;
@@ -809,16 +809,9 @@ $(document).ready(function () {
 }
 
 .tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
-  content: "&#xe258;";
-  border: none;
-}
-
-.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
-  content: "";
+  content: "\e258";
   font-family: 'Glyphicons Halflings';
-  display: inline-block;
-  padding: 10px;
-  border-right: 1px solid #ddd;
+  border: none;
 }
 
 .tabset-dropdown > .nav-tabs > li.active {
@@ -1110,18 +1103,15 @@ analysis by <strong>doing</strong> statistical analysis. <em>This course
 <div id="meeting-time-and-location" class="section level1">
 <h1>Meeting time and location</h1>
 <ul>
-<li><em>Class:</em> Tuesdays and Thursdays, 4:00pm - 5:20pm, 146
-HEDCO</li>
-<li><em>Lab:</em> Mondays, 4:00pm - 4:50pm, 116 Lokey and Tuesdays,
-5:30pm - 6:20pm 146 HEDCO</li>
+<li><em>Class:</em> Tuesdays and Thursdays, 4:00pm - 5:20pm,</li>
+<li><em>Lab:</em></li>
 </ul>
 </div>
 <div id="instructors" class="section level1">
 <h1>Instructors</h1>
 <ul>
 <li>David D. Liebowitz</li>
-<li>Claire Zhang</li>
-<li>Havisha Khurana</li>
+<li></li>
 </ul>
 </div>
 
