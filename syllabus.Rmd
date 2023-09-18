@@ -86,7 +86,7 @@ Artificial Intelligence (AI) chatbots and the Large Language Models (LLMs) on wh
 
 For more details, see [here](./schedule.html). 
 
-```{r, echo=FALSE}
+```{r, echo=FALSE, results='asis'}
 d <- readxl::read_xlsx(here::here("./data", "syllabus.xlsx"))
 d %>% 
   knitr::kable()
