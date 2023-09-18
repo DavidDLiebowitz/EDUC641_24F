@@ -19,40 +19,23 @@ library(tidyverse, knitr)
 This course provides a first introduction to quantitative data analysis in education and the social sciences. It is part of a three course sequence intended to provide a toolkit of statistical concepts, methods and their implementation to producers of applied research in education and other social sciences. This course is intended for those who will pursue additional statistics courses with the aim of ultimately conducting their own, independent research. The course is organized around the principle that research design depends in part on researchers' substantive questions and their quantitative data available to answer these question. In this introductory course, we will focus on describing categorical and continuous data and quantifying the relationship between categorical and continuous data. Students will form a solid foundation for frequentist, inferential statistics (and some of critiques of this model). The course seeks to blend a conceptual, mathematical and applied understanding of basic statistical concepts. At the core of our pedagogical approach is the belief that students learn statistical analysis by **doing** statistical analysis. *This course (or substitute) is a pre-requisite for EDUC 643*.
 
 # Meeting Time and Location
-<<<<<<< HEAD
 *Class:* Tuesdays and Thursdays, 4:00pm - 5:20pm, 
 *Lab:* 
 
 # Instructors
 David Liebowitz
 
-=======
-- *Class:* Tuesdays and Thursdays, 4:00pm - 5:20pm, 146 HEDCO
-- *Lab:* Mondays, 4:00pm - 4:50pm, 116 Lokey and Tuesdays, 5:30pm - 6:20pm 146 HEDCO 
 
-# Instructors
-- David Liebowitz (office hours: Thursdays 9-10:30am or by appointment)
-- Claire Zhang
-- Havisha Khurana
->>>>>>> e0db08480a45fd8031d1aa71ae1a60584fe5d9ef
 
 # Student Learning Outcomes
 By the end of this term, it is expected that students will be able to:
 
-<<<<<<< HEAD
-1. Articulate the principles of responsible and ethical quantitative research in educatino and human services
-=======
 1. Articulate the principles of responsible and ethical quantitative research in education and human services
->>>>>>> e0db08480a45fd8031d1aa71ae1a60584fe5d9ef
 2. Describe, summarize and visualize quantitative data that are categorical and continuous
 3. Describe, summarize and visualize the relationships between quantitative data that are categorical and continuous
 4. Conduct a frequentist null-hypothesis significance test of the relationships between simple categorical and continuous data
 5. Describe strategies to improve the replicability and generalizability of quantitative research
-<<<<<<< HEAD
 6. Use on open-source, object-oriented statistical programming language (in this case R) to conduct all such analyses
-=======
-6. Use an open-source, object-oriented programming language to conduct all such analyses
->>>>>>> e0db08480a45fd8031d1aa71ae1a60584fe5d9ef
 
 
 # Textbooks and Reading Materials
@@ -118,19 +101,10 @@ Final grades will be based on the following components:
 - Final: 30%
 
 ## Quizzes
-<<<<<<< HEAD
 There will be five (5) very short quizzes that are designed to test your knowledge of the theoretical principles underlying the statistics we are studying for the week. While some may feel that this is overly paternalistic, research evidence shows that frequent quizzing increases learning (see a summary of [one study](https://www.nytimes.com/2013/11/21/education/frequent-tests-can-enhance-college-learning-study-finds.html) from the University of Texas). Quizzes will be open book, notes and computer, and may (at your discretion) be completed in consultation with other students in the class. We will leave 15 minutes of class time available to complete each quiz, and any student who would benefit from additional time has until 5pm the following day to submit the quiz on Canvas. It is each student's responsibility to submit the quiz, and the teaching team will not be able to send individualized reminders to do so.
 
 ## Assignments
 The goal of the assignments is to practice the concepts and vocabulary we have been modeling in class and implement some of the techniques we have learned. Each assignment has an associated data source, short codebook and detailed instructions for the required data and analytic tasks. You may work on your own or collaborate with one (1) or two partner(s). No groups of more than three, please. Please make sure that you engage in a full, fair and mutually-agreeable collaboration if you do choose to collaborate. If you do collaborate, you should plan, execute and write-up your analyses together, not simply divide the work. Please make sure to indicate clearly when your work is joint and any other individual or resource (outside of class material) you consulted in your response. Further assignment details are available [here](./assignments.html)
-=======
-Five classes will include a very short multiple-choice quiz that is designed to test your knowledge of the theoretical principles underlying the statistics and analytic strategies we have covered in the previous classes. The goal of these quizzes is to serve as a gentle nudge to you to make sure you have fully understood and internalized the content we have covered. While some may feel that this is overly paternalistic, research evidence shows that frequent quizzing increases learning (see a summary of [one study](https://www.nytimes.com/2013/11/21/education/frequent-tests-can-enhance-college-learning-study-finds.html) from the University of Texas). After we have covered each topic, you should review your lecture notes and ensure that you understand the core substantive content, referencing LSWR to help clarify any fuzziness. The quizzes will cover the substance of material introduced in class only. Quizzes will be open book, notes and computer. Students who are absent and miss a quiz have until the end of the week to complete the quiz on Canvas.
-
-## Assignments
-The goal of the assignments is to practice the concepts and vocabulary we have been modeling in class and implement some of the techniques we have learned. Each assignment has an associated data source, short codebook and detailed instructions for the required data and analytic tasks. You may work on your own or collaborate with one (1) partner. Please make sure that you engage in a full, fair and mutually-agreeable collaboration if you do choose to collaborate. If you do collaborate, you should plan, execute and write-up your analyses together, not simply divide the work. Please make sure to indicate clearly when your work is joint and any other individual or resource (outside of class material) you consulted in your response. 
-
-Assignments are due at 11:59pm on their due date. If circumstances arise that require an extension on an assignment, please communicate with the lead instructor *prior* to the assignment's due date. We will publish the answer keys to assignments prior to class the following day; thus, late assignments will be penalized by two (2) points. Late final projects may results in a final grade of I or D/F. Further assignment details are available [here](./assignments.html)
->>>>>>> e0db08480a45fd8031d1aa71ae1a60584fe5d9ef
 
 ## Final
 The final assignment involves a more extended application and synthesis of the concepts of descriptive and relational applied data analysis covered in this course.
