@@ -34,14 +34,16 @@ navbar:
         #href: ./slides/EDUC641_10_inference.html
       - text: "12. Z- and t-tests"
         #href: ./slides/EDUC641_10_inference.html
-      - text: "13. Continuous relationships I"
-        #href: ./slides/EDUC641_14_continuousrel.html
+        href: ./slides/EDUC641_10_inference.html
+      - text: "13. Continuous relationships"
+        href: ./slides/EDUC641_14_continuousrel.html
       - text: "14. Bivariate regression I"
         #href: ./slides/EDUC641_15_regression.html
       - text: "15. Bivariate regression II"
         #href: ./slides/EDUC641_16_residuals.html
-      - text: "16. Regression assumptions"
-        #href: ./slides/EDUC641_16_residuals.html
+        href: ./slides/EDUC641_16_residuals.html
+      - text: "16. Bivariate regression III"
+        href: ./slides/EDUC641_16_residuals.html
       - text: "17. NHST critiques"
         #href: ./slides/EDUC641_17_critiques.html
       - text: "18. NHST critiques and summary"
