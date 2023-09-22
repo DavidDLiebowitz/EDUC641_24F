@@ -976,6 +976,8 @@ p +
   line_label(xint = 88, clr = "forestgreen", yint = .07, lbl = "Q3 + 1.5*IQR") +
   theme_minimal()
 
+ggsave("box_density.jpg")
+
 ```
 
 ---
