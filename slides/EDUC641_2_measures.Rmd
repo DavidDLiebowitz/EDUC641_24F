@@ -83,7 +83,7 @@ options(knitr.table.format = "html")
 **How we collect and quantify the data informs the kind of analysis we will conduct.**
 
 ---
-# Core concepts in measurement
+# Core measurement concepts
 
 **What is measurement?** assigning categories or numbers based on a set of rules
 
@@ -213,7 +213,7 @@ Discrete variable
 - Ratio/interval may or may not be (contrast "degrees Celsius" with "years")
 
 ---
-# Four levels/scales of measurement
+## Four levels/scales of measurement
 
 1. Nominal
 2. Ordinal
@@ -300,12 +300,12 @@ include_graphics("retract.jpg")
 ---
 # The measure of our class
 
-Qualtrics: https://oregon.qualtrics.com/jfe/form/SV_0MSB8ExhepNtVdA
+Qualtrics: [https://oregon.qualtrics.com/jfe/form/SV_eJ8vRcuLXwXnbsG](https://oregon.qualtrics.com/jfe/form/SV_eJ8vRcuLXwXnbsG)
 
 or
 
 ```{r, echo=F}
-include_graphics("survey_qr.jpg")
+include_graphics("survey_qr.png")
 ```
 
 ---

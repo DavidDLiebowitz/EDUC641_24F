@@ -159,7 +159,7 @@ Concrete learning objectives:
 ]
 
 .pull-right[
-```{r, echo=F}
+```{r, echo=F, out.width="85%"}
 include_graphics("kids.jpg")
 ```
 ]
@@ -337,4 +337,5 @@ class: middle, inverse
 
 ### Assignment:
 - Have downloaded R/RStudio and familiarized yourself with the RStudio environment (Modules 1 & 2 from [R Bootcamp](https://community.uoregon.edu/courses/18778))
+- Bring a device to next class (Thursday)
 
