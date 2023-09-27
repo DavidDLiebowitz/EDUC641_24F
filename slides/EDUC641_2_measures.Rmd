@@ -101,6 +101,8 @@ options(knitr.table.format = "html")
 
 4. A .blue[**variable**]: the thing that ends up in your data set
 
+.red-pink[**Table discussion:** Imagine you are trying to understand the ***construct*** of adolescent "well-being." Discuss some different kinds of measures you would use to study it  (describe what these would do, not a specific tool). What might some challenges be in operationalizing it? What sort of variable might you end up with.]
+
 ---
 # Levels/scales of measurement
 
@@ -109,7 +111,7 @@ options(knitr.table.format = "html")
 Each type of measurement has a set of properties which determines the appropriate analysis.
 
 --
-### Four levels/scales of measurement
+### Four ways of grouping levels/scales of measurement
 
 1. Nominal
 2. Ordinal
@@ -121,7 +123,7 @@ Each type of measurement has a set of properties which determines the appropriat
 
 #### No hierarchy among levels of a variable
 #### Levels are unordered, representing labels
-#### A variable defining whether someone is an omnivore, vegetarian, vegan or fruititarian is on a nominal sclae
+#### A variable defining whether someone is an omnivore, vegetarian, vegan or fruititarian is on a nominal scale
 
 #### Most demographic variables are nominal:
 - Hair color
@@ -192,7 +194,7 @@ Examples:
 
 
 ---
-# Alternative measure terms
+## Alternative measure categories
 
 Categorical variable
 - Nominal and ordinal measures
@@ -236,8 +238,9 @@ Is there a mean (or standard deviation) for the hair color of the students in th
 # More complexity
 
 - Quasi-interval scales
-- Non-negative interval scales
-- Quasi-ordinal scales
+    + Strongly disagree, disagree, neither agree or disagree, agree, strongly agree $\rightarrow$ (-2, -1, 0, 1, 2)?
+- Non-negative interval scales (number of suspensions: 0, 1, 2, 3, $\dots$)
+- Quasi-ordinal scales (e.g., implementation measures)
 
 --
 
@@ -247,7 +250,7 @@ Is there a mean (or standard deviation) for the hair color of the students in th
 # An example
 
 .pull-left[
-- Study in prominent journal (w. authors from U Chicago, U Toronto, U Cape Town) found that in more religious countries, children were less altruistic
+- Study in prominent journal (w. authors from U Chicago, U Toronto, U Cape Town) found that children raised in more religious households were less altruistic
 - Intended to compare within-country differences, so want to "adjust" for country-level "religiosity"
 - Included "country" as a ratio-scale variable: US = 1, Canada = 2, S. Africa = 3, etc.
  + $\rightarrow$ Canada has twice as much "country-ness" as US
@@ -331,7 +334,7 @@ include_graphics("lo_rely.jpg")
 ```
 
 --
-.blue[**What kind of validity are we referencing here?**]
+.blue[**What kind of validity (discussed in LSWR) are we referencing here?**]
 
 ---
 # Measure reliability & validity
