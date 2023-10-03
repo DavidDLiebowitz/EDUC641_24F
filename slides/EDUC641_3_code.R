@@ -1,12 +1,11 @@
 install.packages("here")
 install.packages("tidyverse")
-install.packages("ggplot2")
 
 
 
 library(here)
 library(tidyverse)
-library(ggplot2)
+
 
 
 ### The first command tells R where the script is located in relationship to the "root" directory of your project
