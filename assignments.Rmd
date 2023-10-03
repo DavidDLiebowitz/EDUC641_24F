@@ -38,7 +38,7 @@ Objectives of this assignment
 
  * Create visualizations of categorical data
 
-Deadline: October 10, 11:59pm
+Deadline: October 9, 11:59pm
 
 Download: [html file](./assignments/assignment01.html) | [cat.csv dataset](./data/cat.csv)
 
