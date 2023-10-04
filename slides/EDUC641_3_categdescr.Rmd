@@ -62,11 +62,7 @@ options(device = function(file, width, height) {
 options(knitr.table.format = "html")
 
 ```
-class: middle, inverse
 
-# Quiz
-
----
 # Roadmap
 
 ```{r, out.width = "80%", echo=F}
@@ -87,10 +83,12 @@ class: middle, inverse
 # The story behind the data
 
 .pull-left[
+.small[
 - [Warren McCleskey](https://www.theatlantic.com/politics/archive/2019/06/legacy-mccleskey-v-kemp/591424/) sentenced to death for murdering police officer during armed robbery in Georgia (1978)
 - McCleskey appeals to the Supreme Court, arguing his death sentence is due to racial bias in sentencing...his appeal is rejected
 - Senator Edward Kennedy sponsors the Racial Justice Act to enforce "the Constitution's promise of equality under the law"
 - McCleskey executed in Georgia (1991)
+]
 ]
 .pull-right[
 ```{r, echo=F}
@@ -161,7 +159,7 @@ library(here)
 ```
 
 --
-While you're at it, do the same for `tidyverse` and `ggplot2` !
+While you're at it, do the same for `tidyverse`. The `tidyverse` is a collection of helpful packages for manipulating and visualizing data. In particular, it includes the extremely useful `dplyr` and `ggplot2` !
 
 ---
 # Let's first access the data
@@ -333,7 +331,11 @@ class: middle, inverse
 
 
 ### Assignment:
-- Assignment #1 Due October 10, 11:59pm
+- Assignment #1 Due October 9, 11:59pm
 
+---
+class: middle, inverse
+
+# Quiz
 
 

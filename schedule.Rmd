@@ -62,16 +62,16 @@ Readings:
 
 Lectures: 
 
-- Class 3 (10/3) slides: <!-- [html](./slides/EDUC641_3_categdescr.html) | [pdf](./slides/EDUC641_3_categdescr.pdf)
+- Class 3 (10/3) slides: [html](./slides/EDUC641_3_categdescr.html) | [pdf](./slides/EDUC641_3_categdescr.pdf)
 - Data: [deathpenalty.csv](./data/deathpenalty.csv) | [codebook](./data/deathpenalty_codebook.pdf)
 - R code: [R script](./slides/EDUC641_3_code.R)
-- Lab slides: [html](https://claireconglizhang.github.io/my-slides/EDUC64122F/lab2.html#1) -->
+<!-- - Lab slides: [html](https://claireconglizhang.github.io/my-slides/EDUC64122F/lab2.html#1) -->
 
 Assignment 1: 
 
 - Due: October 9, 11:59pm
-- <!-- [html file](./assignments/assignment01.html)
-- [cat.csv dataset](./data/cat.csv) -->
+- [html file](./assignments/assignment01.html)
+- [cat.csv dataset](./data/cat.csv)
 
 ## Unit 2
 
