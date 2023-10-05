@@ -65,7 +65,6 @@ Lectures:
 - Class 3 (10/3) slides: [html](./slides/EDUC641_3_categdescr.html) | [pdf](./slides/EDUC641_3_categdescr.pdf)
 - Data: [deathpenalty.csv](./data/deathpenalty.csv) | [codebook](./data/deathpenalty_codebook.pdf)
 - R code: [R script](./slides/EDUC641_3_code.R)
-<!-- - Lab slides: [html](https://claireconglizhang.github.io/my-slides/EDUC64122F/lab2.html#1) -->
 
 Assignment 1: 
 
@@ -93,12 +92,12 @@ Readings:
 
 Lectures:
 
-- Classes 4-5 (10/5 and 10/10) slides: <!-- [html](./slides/EDUC641_4_categrel.html) | [pdf](./slides/EDUC641_4_categrel.pdf)
-- Class 6 (10/12) slides: [html](./slides/EDUC641_6_history.html) | [pdf](./slides/EDUC641_6_history.pdf)
+- Classes 4-5 (10/5 and 10/10) slides: [html](./slides/EDUC641_4_categrel.html) | [pdf](./slides/EDUC641_4_categrel.pdf)
+<!-- - Class 6 (10/12) slides: [html](./slides/EDUC641_6_history.html) | [pdf](./slides/EDUC641_6_history.pdf)  -->
 
 
-- Data: [deathpenalty.csv](./data/deathpenalty.csv) | [codebook](./data/deathpenalty.csv) 
-- R code: [R script](./slides/EDUC641_4_code.R) -->
+- Data: [deathpenalty.csv](./data/deathpenalty.csv) | [codebook](./data/deathpenalty_codebook.pdf) 
+- R code: [R script](./slides/EDUC641_4_code.R)
  
 Assignment 2: 
 

@@ -1,6 +1,5 @@
 library(here)
 library(tidyverse)
-library(ggplot2)
 
 
 ###This tells R where the script is located in relationship to the "root" directory of your project
