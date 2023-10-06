@@ -19,7 +19,7 @@ navbar:
       - text: "4. Categorical relationships I"
         href: ./slides/EDUC641_4_categrel.html
       - text: "5. Categorical relationships II"
-        #href: ./slides/EDUC641_5_categrel.html
+        href: ./slides/EDUC641_5_categrel.html#46
       - text: "6. Troubling history of stats"
         #href: ./slides/EDUC641_6_history.html
       - text: "7. Continuous descriptives I"
