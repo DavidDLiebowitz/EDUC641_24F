@@ -88,7 +88,7 @@ Objectives:
 
 Readings: 
 
-- Complete **prior to Oct. 12** class: [LSWR Chapters 11 and 12](https://learningstatisticswithr.com/lsr-0.6.pdf) and [Clayton 2020](https://nautil.us/issue/92/frontiers/how-eugenics-shaped-statistics)
+- Complete **prior to Oct. 12** class: [LSWR Chapters 11 and 12](https://learningstatisticswithr.com/lsr-0.6.pdf) and [Clayton 2020](https://nautil.us/how-eugenics-shaped-statistics-238014)
   + See lecture notes on what to focus on (and not) in LSWR
 
 Lectures:
