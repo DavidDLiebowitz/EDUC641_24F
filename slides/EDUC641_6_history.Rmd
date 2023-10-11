@@ -57,11 +57,7 @@ options(device = function(file, width, height) {
 options(knitr.table.format = "html")
 
 ```
-class: middle, inverse
 
-# Quiz
-
----
 # Goals of the class
 
 .large[
@@ -71,29 +67,26 @@ class: middle, inverse
 ]
 ---
 # Reading Discussion
-.small[
-Form groups of three with one member from each last name band: A-H, I-P, Q-Z and assign a timekeeper. In turn, each member summarizes key points from "their" article (2 minutes each).
-]
+.small[Form groups of four with two members from each last name band: A-L, M-Z and assign a timekeeper. Partners who share article discuss and summarize key points from "their" article (5 minutes). Then each pair shares key points from their article with other pair (2 minutes each).]
 
-Then, independently review the Clayton (2000) article (2 minutes) and be prepared to discuss the following questions:
+.small[Then, independently review the Clayton (2020) article (2 minutes) and be prepared to discuss the following questions:]
 
-### Four "A"s Protocol<sup>1</sup>:
+**Four "A"s Protocol**<sup>1</sup>:
 1. What **assumptions** does the author hold?
 2. What do you **agree** with in the text?
 3. With what do you want to **argue** in the text?
 4. To what does the text make you **aspire**?
 
-Each person in turn states their answer to question 1, citing examples from text as appropriate. Group does not respond or comment, but actively listens and takes notes. (1 minute per person, 3 minutes per round).
+.small[Each person in turn states their answer to question 1, citing examples from text as appropriate. Group does not respond or comment, but actively listens and takes notes. (1 minute per person, 3 minutes per round).]
 
 
 .footnote[[1] National School Reform Faculty. (2015). Four A's Text Protocol. Harmony Education Center.]
 
 --
-Repeat four times with each of the 4 A questions.
+.small[Repeat four times with each of the 4 A questions.]
 
 --
-
-Then, open small group discussion about these questions and more (15 minutes). We'll debrief as a full class after!
+.small[Then, open small group discussion about these questions and more (15 minutes). We'll debrief as a full class after!]
 
 ---
 # Principles of QuantCrit
@@ -136,9 +129,9 @@ class: middle, inverse
 - Complete R Bootcamp Module 8 (dataframes)
 
 ### Assignments
-- Assignment #2 Due October 19, 11:59pm
+- Assignment #2 Due October 20, 11:59pm
 
 --
 
-.red[*Midterm Student Experience Survey next week*]
+.large[.red[**Midterm Student Experience Survey next week**]]
 
