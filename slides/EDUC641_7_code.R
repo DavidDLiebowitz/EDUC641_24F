@@ -1,19 +1,22 @@
 library(here)
 library(tidyverse)
-library(gridExtra) # use to combine graphs
+library(gridExtra) # we use this to combine multiple graphs into a single one
 
 
 ### This tells R where the script is located in relationship to the "root" directory of your project
 # Using this command you can then use shortened versions of file pathways that will work across different users' systems
 # A non-preferred alternative is to read the data in using the full filepath
 
-i_am("slides/EDUC641_7_code.r")
+i_am("slides/EDUC641_7_code.R")
 
 
 ###############################################################################
 ####                    UNIT 3 Describing and Summarizing Categorical Data
 ###############################################################################
 
+##########################################
+### Part 1
+##########################################
 
 # Let's first access the data
 
@@ -112,6 +115,12 @@ quantile(who$life_expectancy)
 # For example, by quintiles
 quantile(who$life_expectancy, probs = seq(0, 1, 0.2))
 
+
+
+
+##########################################
+### Part 2
+##########################################
 
 ############################################################
 #######       z-Transformations               ##############

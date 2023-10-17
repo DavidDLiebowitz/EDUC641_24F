@@ -60,8 +60,8 @@ write_extra_css(css = extra_css, outfile = "my_custom.css")
 .large[
 - Describe and summarize quantitative data that are continuous
 - Describe the purpose and compute the following measures of central tendency: mean, median and mode
-- Describe the purpose and compute the following measures of variability: quartiles, inter-quartile range, range, variance and standard deviation
-  + Describe conceptually the principles of skewness and kurtosis
+- .grey-light[Describe the purpose and compute the following measures of variability: quartiles, inter-quartile range, range, variance and standard deviation]
+  + .grey-light[Describe conceptually the principles of skewness and kurtosis]
 - Create visualizations of quantitative data that are continuous using R
   + Includes constructing and interpreting histograms, densities, stem-and-leaf, and box-and-whisker plots
 ]
@@ -87,9 +87,11 @@ Before making comparisons between social/economic conditions, we want to start w
 ---
 # Materials
 
-### 1. Life expectancy data (in file called life_expectancy.csv)
-### 2. Codebook describing the contents of said data
-### 3. R script to conduct the data analytic tasks of the unit
+.large[
+1. Life expectancy data (in file called life_expectancy.csv)
+2. Codebook describing the contents of said data (life_expectancy_codebook.pdf)
+3. R script to conduct the data analytic tasks of the unit (EDUC641_7_code.R)
+]
 
 ---
 # Read in life expectancy
@@ -123,9 +125,9 @@ class: middle, inverse
 # Distributions
 
 ---
-# Describing a Distribution
+# Describing a distribution
 
-There are many ways to describe the characteristics of a .blue[**distribution**]. 
+There are many ways to describe the characteristics of a .red-pink[**distribution**]. 
 
 **In these classes, we are reviewing:**
 * What is a distribution?
@@ -147,7 +149,7 @@ There are many ways to describe the characteristics of a .blue[**distribution**]
 ---
 # What is a distribution?
 
-A distribution describes the number of observations of variable that take a particular value.
+.small[A distribution describes the number of observations of variable that take a particular value.]
 
 ```{r, echo = F, fig.height = 6, fig.width = 10, dpi = 600}
 set.seed(200)
@@ -186,6 +188,7 @@ country_plot <- ggplot() +
 
 country_plot
 ```
+
 ---
 ## Visualizing distributions: Histogram
 
@@ -268,7 +271,7 @@ stem(who$life_expectancy)
 ---
 ## Visualizing distributions: Density
   
-- Can think of this as a "smoothed out" histogram
+- Can think of a .red-pink[**density plot**] as a "smoothed out" histogram
 - Values reflect the distribution's probability density function (not essential to understand their calculation)
   
 ```{r}
@@ -293,6 +296,7 @@ class: middle, inverse
 
 
 Writing this out can be a little tedious. Since our datasets can often have hundreds, thousands or millions of observations, we often use **summation notation**.
+
 ---
 # Summation notation
 
@@ -336,17 +340,18 @@ $$\bar{X} = \frac{1}{20}{\sum_{i=5}^{24} X_{i}}$$
 
 ---
 # Mean
-* The mean can take a value not found in the data.
 
-* The mean represents the "balance point" or "fulcrum" of the distribution.
+* The mean can take a value not found in the data
 
-* Deviations from the mean sum to 0.
+* The mean represents the "balance point" or "fulcrum" of the distribution
 
-* Outliers, or observations with highly unusual values, can affect this balance point.
+* Deviations from the mean sum to 0
 
-* Thus, the mean is vulnerable to outliers.
+* Outliers, or observations with highly unusual values, can affect this balance point
 
-* Can only be used with interval- and ratio-level variables.
+* Thus, the mean is vulnerable to outliers
+
+* Can only be used with interval- and ratio-level variables
 
 ---
 # Vulnerability of the mean
@@ -355,7 +360,7 @@ $$\bar{X} = \frac{1}{20}{\sum_{i=5}^{24} X_{i}}$$
 * Here, having Mars and Venus in this sample of countries greatly shifts our mean away from the "peak" of the distribution and from the mean of the distribution, excluding these two outliers.
 ]
 
-```{r, echo = F, fig.height=5.5, fig.width=10, dpi = 600}
+```{r, echo = F, fig.height=5.25, fig.width=10, dpi = 600}
 ggplot() +
   geom_label(data = d, 
              aes(x = x_mid,
@@ -373,15 +378,15 @@ ggplot() +
 
 ---
 # Median
-* Represents the **midpoint** of the distribution.
+* Represents the **midpoint** of the distribution
 
-* Also called the *50th percentile* of a distribution or *2nd quartile*, meaning half of the observations are above the median and half are below.
+* Also called the *50th percentile* of a distribution or *2nd quartile*, meaning half of the observations are above the median and half are below
 
-* Particularly useful for describing the central tendency of skewed distributions (more on this later).
+* Particularly useful for describing the central tendency of skewed distributions (more on this later)
 
-* Can be used with ordinal-, interval-, or ratio-level variables.
+* Can be used with ordinal-, interval-, or ratio-level variables
 
-* To find the median, arrange the scores in ascending order and identify the middle value. If there are two middle values (i.e., an even number of observations), use the average of the two.
+* To find the median, arrange the scores in ascending order and identify the middle value. If there are two middle values (i.e., an even number of observations), use the average of the two:
 
 > $$median(71, 73, 76, 78, 79) = 76$$
 > $$median(71, 73, 76, 77, 78, 79) = 76.5$$
@@ -502,6 +507,11 @@ gridExtra::grid.arrange(narrow2, wide, nrow = 1)
 
 ---
 class: middle, inverse
+
+# Quiz
+
+---
+class: middle, inverse
 # Measures of variability
 
 ---
@@ -534,10 +544,10 @@ class: middle, inverse
 # Interquartile Range (IQR)
 * Represents the difference between the 1st quartile (25th percentile) and the 3rd quartile (75th percentile).
 
-* **Percentile** refers to the percentage of observations that fall at or below that score.
+* .red-pink[**Percentile**] refers to the percentage of observations that fall at or below that score.
   + e.g., 25% of observed national life expectancies fall at or below 66 years of age.
 
-* IQR summarizes the range of "average" scores in the dataset.
+* .red-pink[**IQR**] summarizes the range of the most commonly observed values in the dataset.
 
 ```{r, echo = F}
 ggplot(who, aes(x = life_expectancy)) +
@@ -578,13 +588,15 @@ IQR(who$life_expectancy)
 
 quantile(who$life_expectancy)
 
-# By default will give quartiles
-# Can change with probs sub-command
+# By default will give quartiles (25 percentiles)
+# Can change with 'probs' sub-command
+# e.g, quantile(who$life_expectancy, probs = seq(0,1,0.1))
+# will give the values of each decile btwn 0 and 1 (10 pp)
 ```
 
 ---
 # Variance
-* Represents the **average squared deviation** (let's call this $s^{2}$) of each observation from the mean.<sup>1</sup>
+* Represents the .red-pink[**average squared deviation**] (let's call this $s^{2}$) of each observation from the mean.<sup>1</sup>
 
 $$s^{2} = \frac{\Sigma_{i=1}^n(x_i-\bar{x})^2}{N}$$
 
@@ -656,13 +668,13 @@ var_plot_sq +
   geom_hline(yintercept = mean(who$life_cnt_sq), color = "red")
 ```
 
-By itself, a variance of 66.43 is not very meaningful to us. It does not reflect the raw units of our original scale (it represents squared units).
+By itself, a variance of 66.43 is not very meaningful to us. It does not reflect the raw units of our original scale (it is in squared years...what does that mean???).
 ---
 # Standard deviation
 
-* If we take the square root of our sample variance, we can summarize average deviations back on our raw scale. 
+* If we take the square root of our sample variance, we can summarize average deviations back onto our raw scale. 
 
-* The standard deviation represents the **positive square root of the variance**.
+* The .red-pink[**standard deviation**] represents the **positive square root of the variance**.
 Standard deviation = $$ s = \sqrt{s^2} $$
 Standard deviation = $$ \sqrt{66.43} = 8.15 $$
 
@@ -671,7 +683,7 @@ The standard deviation of life expectancy in 2015 was approximately 8.15 *years*
 ---
 # Standard deviation
 
-Here is our original plot with our .blue[standard deviation (*SD*)] plotted below and above the mean (i.e., -1 *SD*, +1 *SD*).
+Here is our original plot with our standard deviation (*SD*) plotted below and above the mean (i.e., -1 *SD*, +1 *SD*).
 
 ```{r, echo = F, fig.height = 5, fig.width = 8}
 var_plot +
@@ -728,7 +740,7 @@ Population Statistics - Greek Alphabet
 
 ---
 # Statistical notation
-Often times we use sample statistics to **estimate** population statistics. 
+Often times we use sample statistics to *estimate* population statistics. 
 
 An estimated value is denoted with a "hat."
 
@@ -754,7 +766,7 @@ Population Statistics - Greek Alphabet
 
 ---
 # Distributional shape: Skewness
-* Not all distributions in the real world are symmetrical. Often they have asymmetry or **skewness**.
+* Not all distributions in the real world are symmetrical. Often they have asymmetry or .red-pink[**skewness**].
 * Skewness describes how much a distribution is "bunched up" to the right or left.
 
 ```{r, echo = F}
@@ -792,15 +804,15 @@ normal <- ggplot(x, aes(central)) +
 gridExtra::grid.arrange(pos_skew, normal, neg_skew, nrow = 1)
 ```
 
-* .red[**Positive Skew**] - Distribution is skewed to the right with a "positive-pointing finger."
-* .red[**Negative Skew**] - Distribution is skewed to the left with a "negative-pointing finger."
+* .red-pink[**Positive Skew**] - Distribution is skewed to the right with a "positive-pointing finger."
+* .red-pink[**Negative Skew**] - Distribution is skewed to the left with a "negative-pointing finger."
 
 ---
 # Distributional shape: Kurtosis
 
-* .red[**Kurtosis**] describes how much the values concentrate around the center (the "pointiness" of a distribution)
- + .red[Leptokurtic] distributions have more values around the center and have a "taller" peak.
- + .red[Platykurtic] distributions do not have a prominent peak and have a flatter top.
+* .red-pink[**Kurtosis**] describes how much the values concentrate around the center (the "pointiness" of a distribution)
+ + .red-pink[Leptokurtic] distributions have more values around the center and have a "taller" peak.
+ + .red-pink[Platykurtic] distributions do not have a prominent peak and have a flatter top.
  
  
 ```{r, echo = F}
@@ -851,7 +863,7 @@ gridExtra::grid.arrange(platy, central, lepto, nrow = 1)
 ```
 ---
 # Moments of a distribution
-Each of these statistics we've covered describe a different .red["moment of a distribution."]
+Each of these statistics we've covered describe a different .red-pink["moment of a distribution."]
 
 1. Mean
 $$\mu = \frac{\Sigma(x_i)}{N}$$
@@ -866,7 +878,7 @@ $$\color{lightgray}{ kurtosis(X) = \frac{1}{N\sigma^4}\Sigma(X_i-\mu)^4-3}$$
 We do not need to know how to calculate skew and kurtosis but we do need to have a sense of how to interpret them.
 
 ---
-# Evaluating Skewness and Kurtosis
+## Evaluating skew and kurtosis
 
 * Skewness and kurtosis can be evaluated visually and summarized quantitatively.
 
@@ -899,7 +911,7 @@ ggplot(who, aes(life_expectancy)) +
 * .blue[Is there severe kurtosis?]
 
 ---
-# Summarizing Data
+# Summarizing data
 
 The distribution of life expectancy has a slightly negative skew and no excess kurtosis. The skewness and kurtosis are not severe.
 ```{r, echo = F}
@@ -918,11 +930,10 @@ The .blue[median] national life expectancy in 2015 was **74** years.
 * Due to the slight skew, the median appears to better capture the "center" of our distribution.
 
 ---
-# Other distribution visualizations
-
+# Other visualizations
 Although histograms and density plots are useful for evaluating the shape of a distribution, they do not efficiently summarize the central tendency and variance.
 
-### Box-and-whisker plot (aka "boxplot")
+.red-pink[**Box-and-whisker**] plot (aka ".red-pink[boxplot]")
 * Provides five helpful numbers of a distribution
   - Q1, Q2 (Median), Q3
   - Lower Fence (Q1 - 1.5*IQR)
@@ -1003,17 +1014,17 @@ who_more <- import(here::here("data", "life_expectancy.csv")) %>%
   mutate(life_expectancy = round(life_expectancy, digits = 0))
 ```
 
-```{r, fig.height=3.5, fig.width=6, echo = T}
+```{r, fig.height=3.25, fig.width=6, echo = T}
 ggplot(data = who_more, aes(factor(year), life_expectancy, 
                             fill = factor(year))) +
-  geom_boxplot() +
-  theme_minimal() + theme(legend.position = "none")
+        geom_boxplot() +
+        theme_minimal() + theme(legend.position = "none")
 ```
 
 
 --
 
-> It appears the life expectancy of Q1 increases more each year than the median or Q3. Thus, we might hypothesize that lower-life-expectancy countries made bigger gains from 2010-2015 than countries with higher-than-average life expectancies. **But more exploration would be needed to confirm this!**
+> It appears the life expectancy of Q1 increases more each year than the median or Q3. We might hypothesize that lower-life-expectancy countries made bigger gains from 2010-2015 than countries with higher life expectancies. **But more exploration would be needed to confirm this!**
 
 
 ---
@@ -1049,11 +1060,17 @@ class: middle, inverse
 
 ### Reading
 - LSWR Chapter 5: descriptive statistics
-- Hu (2021)
 
 ### Optional follow-up
 - Complete Module 8 (dataframes) in R Bootcamp
 - Complete Module 10 (data management) in R Bootcamp
 
+### Quiz
+- Covering Unit 3 on Oct. 31
+
 ### Assignments
-- Assignment #3 due November 7, 11:59pm
+- Assignment #3 due November 9, 11:59pm
+
+--
+
+.large[.red[**Complete midterm SES! If >=75% of the class does so, you all receive 1 extra percentage point on your grade!**]]
