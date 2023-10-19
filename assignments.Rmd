@@ -61,7 +61,7 @@ Objectives of this assignment
  
  * Interpret and report the results of a contingency-table analysis and a statistical inference from a chi-squared statistic
 
-Deadline: October 19, 11:59pm
+Deadline: October 20, 11:59pm
 
 Download: [html file](./assignments/assignment02.html) | [cat.csv dataset](./data/cat.csv)
 
