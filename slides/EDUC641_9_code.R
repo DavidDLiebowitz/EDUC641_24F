@@ -10,7 +10,7 @@ i_am("slides/EDUC641_9_code.r")
 
 
 ###############################################################################
-####                    UNIT 3 Describing and Summarizing Categorical Data
+####                    UNIT 3 Describing and Summarizing Continuous Data
 ###############################################################################
 
 
@@ -59,3 +59,12 @@ mean(can$life_expectancy)
 # (2) Subset
 mean(subset(who$life_expectancy, who$region == "Canada"))
 
+
+
+#### Unit 3, Part 3: Conducting a one-sample t-test
+
+# Going to focus in on just "developing" countries
+low_inc <- filter(who, status=="Developing")
+
+# Conduct a t-test against a known population mean of 71.64
+t.test(low_inc$life_expectancy, mu = 71.64)
