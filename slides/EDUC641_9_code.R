@@ -34,6 +34,7 @@ who$life_expectancy_zscore <-
   (who$life_expectancy - mean(who$life_expectancy)) /
   sd(who$life_expectancy)
 
+# Look at the first and last observations in the data
 head(who$life_expectancy_zscore)
 hist(who$life_expectancy_zscore)
 
@@ -45,4 +46,16 @@ ggplot(who, aes(life_expectancy)) +
 # Standardized
 who_stand <- ggplot(who, aes(life_expectancy_zscore)) +
   geom_histogram()
+
+who_stand
+
+#### Look at just the values for a single observations
+
+# Can do this two ways
+# (1) Filter
+can <- filter(who, region == "Canada")
+mean(can$life_expectancy)
+
+# (2) Subset
+mean(subset(who$life_expectancy, who$region == "Canada"))
 

@@ -48,7 +48,7 @@ class: center, middle, inverse, title-slide
 ---
 # A "standard" deviation
 
-The standard deviation (s) represents the **positive square root of the variance**.&lt;sup&gt;1&lt;/sup&gt;
+The standard deviation (s) represents the positive square root of the .red-pink[**variance**].&lt;sup&gt;1&lt;/sup&gt;
 
 `$$s = \sqrt{\frac{\Sigma_{i=1}^n(x_i-\bar{x})^2}{N}}$$`
 
@@ -88,16 +88,16 @@ The standard deviation (s) represents the **positive square root of the variance
 &lt;img src="EDUC641_9_transformations_files/figure-html/unnamed-chunk-5-1.png" style="display: block; margin: auto;" /&gt;
 
 ---
-# Z-transformations
+# `\(Z\)`-transformations
 * Any score and distribution can be standardized using a simple algorithm.
 
-* Each observation `\((i)\)` is transformed into a **z-score** using the following formula:
+* Each observation `\((i)\)` is transformed into a .red-pink[**z-score**] using the following formula:
 
 `$$z_{i} = \frac{x_{i} - \mu}{\sigma}$$`
 
 * A z-score is calculated by **subtracting the mean** from each value and **dividing by the standard deviation**.
 
-* An observation's z-score value is equal to its distance from the mean, in standard deviation units.
+* An observation's `\(z\)`-score value is equal to its distance from the mean, in standard deviation units.
 
 --
 
@@ -148,7 +148,7 @@ An important note about standardizing a distribution is that it changes the mean
 ---
 # How has this helped?
 
-So we started with the promise that "transforming" (or "standardizing") a distribution would help us to better understand the "distance" that a given observation is from the center of the distribution and that `\(z\)`-scores allow us to compare across units of measurement.
+We started with the hope that "transforming" (or "standardizing") a distribution would help us to better understand the "distance" that a given observation is from the center of the distribution and that `\(z\)`-scores allow us to compare across units of measurement.
 
 Let's say we are interested in the life expectancy in a particular country and how this compares to both the average life expectancy and the distribution of life expectancies. For convenience, say Canada:
 
@@ -174,7 +174,6 @@ mean(who$life_expectancy)
 .blue[**How different is life expectancy in Canada compared to our sample average?**]
 
 --
-
 .blue[*Ok, but how different are these two numbers?*]
 
 --
@@ -214,6 +213,13 @@ Average schooling:
 ```
 ## [1] 12.92717
 ```
+
+--
+
+.blue[*Is Canada more different than the WHO average in terms of its life expectancy or average schooling?*]
+
+--
+*...hard to say...*
 
 ---
 # Comparing on common metric
@@ -283,7 +289,10 @@ tail(sort(who$life_expectancy))
 
 --
 
-.blue[Are these extreme values a lot or a little away from the mean, given the rest of the distribution?]
+.blue[*Are these extreme values a lot or a little away from the mean, given the rest of the distribution?*]
+
+--
+...again, hard to say...
 
 ---
 # Outliers
@@ -311,14 +320,14 @@ tail(sort(who$life_expectancy_zscore))
 Careful&lt;sup&gt;1&lt;/sup&gt; standardization of continuous variables will permit:
 * Common understanding of any individual observation's distance from the center of the distribution, across variables
 * Ease of identifying outlying values
-* Ability to understand the standard normal distribution (next!)
-* Conduct a `\(z\)`-test (next!)
-* Calculation of magnitude of continuous relationships in a common metric known as the .blue[**effect size**]&lt;sup&gt;2&lt;/sup&gt;
+* Ability to understand the .red-pink[**standard normal distribution**] (next!)
+* Conduct a .red-pink[***z*-test**] (next!)
+* Calculation of magnitude of continuous relationships in a common metric known as the .red-pink[**effect size**]&lt;sup&gt;2&lt;/sup&gt;
 
 
 .footnote[[1] "Careful" because the distribution within which you standardize the variable has important implications for the transformation and the resulting analysis you will do. 
 
-[2] *Further thoughts for those interested*: the .blue[**correlation coefficient**] is a standardized effect size which can be used communicate the strength of a relationship. We will examine the correlation coefficient and the related concept of .blue[**effect size**] further in EDUC 643 this winter.]
+[2] *Further thoughts for those interested*: the .red-pink[**correlation coefficient**] is a standardized effect size which can be used communicate the strength of a relationship. We will examine the correlation coefficient and the related concept of .red-pink[**effect size**] further in EDUC 643 this winter.]
 
 
 ---
@@ -326,7 +335,11 @@ class: middle, inverse
 
 # Mid-term SES results
 
-### Response rate: 38 percent (11/29)
+### Response rate: 66 percent (23/35)
+
+--
+
+### ...ugggh so close!
 
 ---
 # Quantitative results
@@ -337,7 +350,6 @@ class: middle, inverse
 * Inclusivity
 * Support from instructors
 * Feedback provided
-* Quality of course materials
 * Communication
 * Organization
 * Relevance of content
@@ -348,10 +360,8 @@ class: middle, inverse
 .pull-right[
 **Generally insufficient:**
 (&lt;70% rate as beneficial)
-* Level of challenge
 * Clarity of assignment instructions/grading
 * Active learning
-* Student interaction
 ]
 
 --
@@ -363,33 +373,31 @@ There are diverging opinions within each of these categories, and so important t
 
 .pull-left[
 **Helpful:**
-* Take feedback &amp; adjust
-* Explanation of concepts
+.small[
+* Very well organized and high quality materials
+* Application opportunities on quizzes and assignments
+* Explanation of concepts (incl. scaffolding)
 * Feedback on how to improve
-* Response to students' questions
-* Generally supportive
 * Readings and class website
+]
 ]
 
 .pull-right[
 **Need improvement/suggestions:**
-* Demeanor/expression in class
-* 5 minutes to ask general questions
-* Follow existing formats for learning R/more time learning R/more focus on R
-* Clarity of quizzes
-* More explicit/direct instruction
-* Over-explanation of concepts `\(\rightarrow\)` confusion
+.small[
+* More opportunities to access help
+* Lack of clarity in grading of assignments
+* More focus on learning R
+* Facilities/projector issues
+* Too basic/easy
+* Too difficult/too much work
+]
 ]
 
----
-# Action steps
 
-1. Time for stats/programming questions (as much as possible)
-2. Practice explanation of concepts beforehand to improve clarity
-3. Improve quiz structure
-4. Increase opportunities for practice and student-student interaction
+--
 
-&lt;br&gt;
+Will reflect on feedback, particularly as it relates to ways to access help, active learning opportunities, and clarity in grading. 
 
 
 --
@@ -412,11 +420,18 @@ class: middle, inverse
 ---
 # To Dos
 
+### Reading
+- LSWR Chapter 5
+
 ### Quiz 3
-- Opens 3:45pm on Oct. 27, closes at 5pm on Oct. 28
+- Opens 3:45pm on Oct. 31, closes at 5pm on Nov. 1
 
 ### Assignments
-- Assignment #3 due November 7, 11:59pm
+- Assignment #3 due November 9, 11:59pm
+
+--
+
+.large[.red[**Important announcement: starting immediately, all classes will meet in Lokey 276 and all labs will meet in Lokey 115!**]]
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
