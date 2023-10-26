@@ -134,7 +134,7 @@ Lecture slides:
 
 - Classes 7-8 (10/17 & 10/19) slides: [html](./slides/EDUC641_7_continuousdescr.html) | [pdf](./slides/EDUC641_7_continuousdescr.pdf)
 - Class 9 (10/24) slides: [html](./slides/EDUC641_9_transformations.html) | [pdf](./slides/EDUC641_9_transformations.pdf)
-<!-- - Classes 10-12 (10/26, 10/31, & 11/2) slides: [html](./slides/EDUC641_10_inference.html) | [pdf](./slides/EDUC641_10_inference.pdf) -->
+- Classes 10-12 (10/26, 10/31, & 11/2) slides: [html](./slides/EDUC641_10_inference.html) | [pdf](./slides/EDUC641_10_inference.pdf)
 
 - Data: [life_expectancy.csv](./data/life_expectancy.csv) | [codebook](./data/life_expectancy_codebook.pdf)
 - R code: [Class 7 script](./slides/EDUC641_7_code.R) | [Class 9 script](./slides/EDUC641_9_code.R)
@@ -143,8 +143,8 @@ Lecture slides:
 Assignment 3: 
 
 - Due: November 9, 11:59p
-- <!-- [html file](./assignments/assignment03.html)
-- [cont.csv dataset](./data/cont.csv) -->
+- [html file](./assignments/assignment03.html)
+- [cont.csv dataset](./data/cont.csv)
 
 
 ## Unit 4

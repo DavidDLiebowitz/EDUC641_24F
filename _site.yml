@@ -29,11 +29,11 @@ navbar:
       - text: "9. Transformations and z-scores"
         href: ./slides/EDUC641_9_transformations.html
       - text: "10. Normal distributions"
-        #href: ./slides/EDUC641_10_inference.html
+        href: ./slides/EDUC641_10_inference.html
       - text: "11. CLT"
-        #href: ./slides/EDUC641_10_inference.html
+        href: ./slides/EDUC641_10_inference.html
       - text: "12. Z- and t-tests"
-        #href: ./slides/EDUC641_10_inference.html
+        href: ./slides/EDUC641_10_inference.html
       - text: "13. Continuous relationships"
         #href: ./slides/EDUC641_14_continuousrel.html
       - text: "14. Bivariate regression I"

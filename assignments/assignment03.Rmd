@@ -38,7 +38,7 @@ The primary goal of the intervention was to improve language and literacy skills
 
 **Sample**. Our dataset is teacher-level data for 126 preschool teachers. They were all in the treatment group for the 14-session coursework PD intervention, had no missing data on coursework attendance, and were in either the treatment or control group for the consultancy PD intervention.
 
-**Key variables**. We have two treatment measures, a binary variable indicating whether the teacher was treated in the consultancy PD intervention and an integer variable capturing the total number of sessions the teacher participated in the coursework PD intervention. We also have an outcome measure, the average score of each teacher's students on a receptive vocabulary test (Peabody Picture Vocabulary Test-3rd edition). 
+**Key variables**. We have two treatment measures, a binary variable indicating whether the teacher was treated in the consultancy PD intervention and a numeric (integer) variable capturing the total number of sessions the teacher participated in the coursework PD intervention. We also have an outcome measure, the average score of each teacher's students on a receptive vocabulary test (Peabody Picture Vocabulary Test-3rd edition). 
 
 Details on all variables are as follows:
 
