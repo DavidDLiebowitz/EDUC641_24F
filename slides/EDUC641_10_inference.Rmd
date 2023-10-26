@@ -25,7 +25,7 @@ knitr::opts_chunk$set(warning = FALSE,
                       fig.height = 3)
 
 if (!require(pacman)) install.packages('pacman', repos = 'https://cran.rstudio.com')
-pacman::p_load(tidyverse, here, knitr, dplyr, ggplot2, blogdown, rio, gifski, palmerpenguins, xaringanthemer)
+pacman::p_load(tidyverse, here, knitr, blogdown, rio, gifski, palmerpenguins, xaringanthemer)
 
 extra_css <- list(
   ".red"   = list(color = "red"),
@@ -79,14 +79,14 @@ Suppose you are working for the World Health Organization and are investigating 
 
 **Our second task:** .blue[How similar are these subset of countries' average life expectancy to our known "population" average?]
 
-.small[*Note*: I've updated EDUC641_7_code.R with some tasks from last class and the one bit of coding we'll do at the very end of this unit. These next few classes are conceptual, so focus your energies there.]
+.small[*Note*: These next few classes are focused on concepts rather than programming, so focus your energies there.]
 
 .footnote[[1] This is somewhat of a simplification. As we will learn, even if we had data on *all* countries, we wouldn't really know the "population" average; in fact, we almost never do and we are always estimating it.]
 
 ---
 class: middle, inverse
 
-# Normal Distributions
+# Normal distributions
 
 ---
 # Bell curves
@@ -140,7 +140,7 @@ $$X\sim N(\mu,\sigma)$$
 A normal distribution is a theoretical mathematical distribution with the following characteristics:
 
 Central Tendency:
-+ The mean, median, and mode are equivalent values.
++ The mean, median, and mode are all the same.
 
 Variability:
 + 68% of observations are within 1 SD
@@ -153,7 +153,6 @@ Shape:
 + Skewness & Kurtosis = 0
 
 ---
-
 # Normal distributions
 
 More characteristics of the normal distribution:
@@ -192,9 +191,8 @@ ggplot(data.frame(x = c(-4, 4)), aes(x = x)) +
 ```
 
 ---
-
 # Empirical Rule
-We can use our understanding of the normal distribution to calculate the probability of observing a value in a certain range. This is known as the .blue[**empirical rule**].
+We can use our understanding of the normal distribution to calculate the probability of observing a value in a certain range. This is known as the .red-pink[**empirical rule**].
 
 .pull-left[
 A randomly selected observation has an approximately...
@@ -227,7 +225,7 @@ ggplot(data.frame(x = c(-4, 4)), aes(x = x)) +
 ---
 # Empirical Rule
 
-We can use our understanding of the normal distribution to calculate the probability of observing a value in a certain range. This is known as the .blue[**empirical rule**].
+We can use our understanding of the normal distribution to calculate the probability of observing a value in a certain range. This is known as the .red-pink[**empirical rule**].
 
 .pull-left[
 A randomly selected observation has an approximately...
@@ -266,7 +264,7 @@ ggplot(data.frame(x = c(-4, 4)), aes(x = x)) +
 ---
 # Empirical Rule
 
-We can use our understanding of the normal distribution to calculate the probability of observing a value in a certain range. This is known as the .blue[**empirical rule**].
+We can use our understanding of the normal distribution to calculate the probability of observing a value in a certain range. This is known as the .red-pink[**empirical rule**].
 
 .pull-left[
 A randomly selected observation has an approximately...
@@ -309,7 +307,7 @@ ggplot(data.frame(x = c(-4, 4)), aes(x = x)) +
 ```
 ]
 ---
-# What is normal?
+# What is "normal"?
 
 * A normal distribution can take on any mean and standard deviation.
 
@@ -324,11 +322,11 @@ ggplot(data.frame(x = c(-20, 20)), aes(x = x)) +
 ```
 * Regardless of the mean and standard deviation, the probability of selecting any particular value of that population at random always sums to 1.
 * The empirical rule still applies (e.g., 68% of observations occur within 1 *SD* of the mean, 95.5% within 2 *SD* of mean, etc.).
----
 
+---
 # Standard normal distribution
 
-* The .blue[**standard normal distribution**] has a mean of 0 and a standard deviation of 1.
+* The .red-pink[**standard normal distribution**] has a mean of 0 and a standard deviation of 1.
   
 ```{r}
 ggplot(data.frame(x = c(-4, 4)), aes(x = x)) +
@@ -376,11 +374,11 @@ Either approach would show the area above 1.5 SD of a standard normal curve is .
 
 --
 
-If the results of a basketball skills test fell in a standard normal distribution, then this would imply that 7 percent of all individuals score 1.5 SD or higher on this test.
+If the results of (say) a basketball skills test fell in a standard normal distribution, then this would imply that 7 percent of all individuals score 1.5 SD or higher on this test.
 
 --
 
-.blue[Given these few facts about normal distributions, we are now ready to move on to understand how and why **statistical inference** is possible...!]
+.purple[Given these few facts about normal distributions, we are now ready to move on to understand how and why **statistical inference** is possible...!]
 
 --
 **But first...**
@@ -389,9 +387,9 @@ If the results of a basketball skills test fell in a standard normal distributio
 # You try
 
 Let's try it with our WHO data:
-* Suppose that the population mean national life expectancy is 71.64 $(\mu)$ with a SD of 8.15 $(\sigma)$.
+* Suppose population mean national life expectancy is 71.64 $(\mu)$ with a SD of 8.15 $(\sigma)$.
 
-* **Assuming that country-level average life expectancies follow a normal distribution (they don't!), what is the probability of randomly selecting a country with a life expectancy greater than 76?**
+* **Assuming that country-level average life expectancies follow a normal distribution (spoiler: they don't!), what is the probability of randomly selecting a country with a life expectancy greater than 76?**
 
 * First, we need to standardize our life expectancy value and give it a z-score. Then, use the $z$-score [look-up table](https://www.math.arizona.edu/~rsims/ma464/standardnormaltable.pdf) to answer the question.
 
@@ -399,7 +397,7 @@ Let's try it with our WHO data:
 
 $$ z = \frac{76-71.64}{8.15} = 0.535$$
 
-```{r}
+```{r, fig.height=2.5}
 ggplot(data.frame(x = c(-4, 4)), aes(x = x)) +
   stat_function(fun = dnorm) +
   stat_function(fun = dnorm,
@@ -422,7 +420,7 @@ ggplot(data.frame(x = c(-4, 4)), aes(x = x)) +
 ---
 # You try...answered!
 
-The proportion of the area under the curve above a z-score of 0.53 is 0.30. Therefore, there is a 30 percent probability of randomly selecting a country with a national life expectancy greater than 76.
+The proportion of the area under the curve above a z-score of 0.53 is just under 0.30 ($\approx 0.296). Therefore, there is a 30 percent probability of randomly selecting a country with a national life expectancy greater than 76.
 
 ```{r}
 ggplot(data.frame(x = c(-4, 4)), aes(x = x)) +
@@ -450,7 +448,7 @@ ggplot(data.frame(x = c(-4, 4)), aes(x = x)) +
 
 --
 
-Get ready to have your mind blown by the beauty of the .blue[.large[**Central Limit Theorem**]]!
+Get ready to have your mind blown by the beauty of the .red-pink[.large[**Central Limit Theorem**]]!
 
 ---
 class: middle, inverse
@@ -458,7 +456,7 @@ class: middle, inverse
 # Central Limit Theorem and statistical inference
 
 ---
-# Population v. sample distributions
+## Population v. sample distributions
  
 Using the WHO dataset, let's say we want to identify the mean life expectancy across all countries. However, let's also assume we only have the resources to sample from 10 countries.
 
@@ -554,7 +552,7 @@ marrangeGrob(plots, nrow=2, ncol=2, top = paste("Estimated Population Means Acro
 ```
 
 ---
-# Population v. sample distribution
+## Population v. sample distribution
 
 If we sample our population **100 times** and plot the estimated mean of each sample, the estimated means begin to form their own normal distribution. The mean of sample means is our .purple[**estimated population mean**] $\color{purple}{(\hat{\mu})}$.
 
@@ -613,7 +611,7 @@ If we sampled all possible samples of size *n* from our population, our mean of 
 .pull-left[
 * Here is a histogram of the means of 1000 random samples from our WHO data.
  + The center of the distribution is our population mean.
- + The standard deviation is the .blue[**standard error of the mean (SEM)**].
+ + The standard deviation is the .red-pink[**standard error of the mean (SEM)**].
 ]
 
 .pull-right[
@@ -659,7 +657,7 @@ See the following the link for more demonstrations of the central limit theorem:
 
 --
 
-* The distribution of sample means will approach the normal distribution as the sample size increases regardless of the shape of the population distribution. The standard error of the mean (SD of estimated mean) will shrink as our sample size increases.
+* The distribution of sample means will approach the normal distribution as sample size increases regardless of shape of the population distribution. The standard error of the mean (SD of estimated means) will shrink as sample size increases.
 
 * Center: Mean of sample means is the population mean: $\bar{X}_\bar{x} = \mu$
 
@@ -667,7 +665,7 @@ See the following the link for more demonstrations of the central limit theorem:
 
 $$ \sigma_\bar{x} = \frac{\sigma}{\sqrt{n}}$$
 
-* The sampling distribution of means approximates a normal distribution because it is estimating a statistic of the population distribution. It does not "recreate" the shape of the population distribution.
+* The sampling distribution of means approaches a normal distribution because it is estimating a statistic of the population distribution. It does not "recreate" the shape of the population distribution.
 
 --
 
@@ -715,14 +713,14 @@ $$\frac{71.64-70}{8} = 0.205$$
 
 > $H_A$: In the population, the mean life expectancy is greater than 70.
 
-Our $z$-score is .blue[**0.205**].
+Our $z$-score is .purple[**0.205**].
 
 How can we use our $z$-statistic [look-up table](https://www.math.arizona.edu/~rsims/ma464/standardnormaltable.pdf) to determine whether there is a less than 5 percent chance that our observed mean life expectancy is greater than 70?
 
 
 What do you conclude from your test?<sup>1</sup>
 
-.footnote[[1] *We are going to walk through the steps in class. Just looking at the slides is not sufficient here to know how to do this.*]
+.footnote[[1] *We are going to walk through the steps in class. Just looking at the slides is not sufficient for you to understand how to do this.*]
 
 ---
 # Population variance
@@ -742,14 +740,14 @@ Thus, we tend to use **Student's $t$-distributions** to make our inferences, bec
 
 ---
 # $t$-distributions
-* Assume that the *population* standard deviation $(\sigma)$ is unknown. Instead, it uses the *sample* standard deviation $(s)$. 
+* $t$-distributions assume that the *population* standard deviation $(\sigma)$ is unknown. Instead, it uses the *sample* standard deviation $(s)$. 
 * $t$-distributions with smaller sample sizes have "fatter" tails. Assumes more uncertainty with smaller sample sizes.
-* Resemble $z$-distributions as .red[**degrees of freedom**] increase.
+* $t$-distributions resemble $z$-distributions as .red-pink[**degrees of freedom**] increase.
 
 ---
 # Degrees of freedom
 
-The .red[**degrees of freedom**] refers to the number of values in the calculation of a statistic that are free to vary. 
+The .red-pink[**degrees of freedom**] refers to the number of values in the calculation of a statistic that are free to vary. 
 
 In the calculation of simple, one-sample statistics (e.g., the mean) our degrees of freedom are always $n-1$, where $n$ is our sample size.
 
@@ -770,7 +768,7 @@ In this case, therefore, our degrees of freedom are $5 - 1$; i.e. 4.
 As you'll recall, the formula for the population standard deviation we used before was:
 $$\sigma = \sqrt{\frac{\Sigma_{i=1}^n(x_i-\mu)^2}{N}}$$
 
-but, when we calculate this in reality, we are using the .red[**sample mean**] $(\bar{x})$ which is constructed **using each $x_i$**!
+but, when we calculate this in reality, we are using the .red-pink[**sample mean**] $(\bar{x})$ which is constructed **using each $x_i$**!
 
 You can read a more detailed statistical treatment of [Bessel's correction](https://en.wikipedia.org/wiki/Bessel%27s_correction), but the key takeaway is that using sample statistics generates bias (inaccuracy) in the estimation of the population statistics. 
 
@@ -904,7 +902,7 @@ for (i in 1:10) {
 
 --
 
-You can look up the .blue[**critical *t*-value**] for any number of degrees of freedom and alpha-threshold in any number of $t$-statistic tables you can find [online](https://www.sjsu.edu/faculty/gerstman/StatPrimer/t-table.pdf).
+You can look up the .red-pink[**critical *t*-value**] for any number of degrees of freedom and alpha-threshold in any number of $t$-statistic tables you can find [online](https://www.sjsu.edu/faculty/gerstman/StatPrimer/t-table.pdf).
 
 ---
 # One sample $t$-test
@@ -1010,7 +1008,7 @@ ggplot(data.frame(x = c(-4, 4)), aes(x = x)) +
 
 **Note:** One-tailed tests are rarely warranted and we will generally be conducting two-tailed tests.
 
-> If the null hypothesis is true, the probability of obtaining a sample mean equal to or more extreme 74.75 is 0.24.
+> If the null hypothesis is true, the probability of obtaining a sample mean equal to or more extreme than 74.75 is 0.24.
 
 ---
 # One-tailed vs. two-tailed test
@@ -1042,7 +1040,7 @@ Tests the possibility of a significant difference in either direction.
 
 * They would like to compare the post-treatment depression ratings for their research participants to average depression ratings following "business as usual."
 
-* They conduct a one-tailed t-test to see if their sample's mean post-treatment rating is significantly better than the normal post-treatment averages.
+* They conduct a one-tailed $t$-test to see if their sample's mean post-treatment rating is significantly better than the normal post-treatment averages.
  + $(H_0: \mu < K)$
  + Lower scores depression ratings are desirable.
 
@@ -1194,7 +1192,7 @@ two_tailed_test
 ```
 ]
 
-Whether we compare our t-statistic to our critical t-values or our look at our p-value, we come to the same conclusion.
+Whether we compare our t-statistic to our critical t-values or look at our p-value, we come to the same conclusion.
 
 
 ---
@@ -1265,8 +1263,9 @@ class: middle, inverse
 - LSWR Chapter 10: inference and CLT
 
 ### Quiz
-- Nov. 8 (due 5pm Nov. 9)
+- Quiz #3: Opens 3:45pm on Oct. 31, closes at 5pm Nov. 1
+- QuiZ #4: Opens 3:45pm on Nov. 14, closes at 5pm Nov. 15
 
 ### Assignment
-- Assignment #3 Due Nov. 9, 9:00am
+- Assignment #3 Due Nov. 9, 11:59pm
 
