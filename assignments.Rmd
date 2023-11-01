@@ -80,7 +80,7 @@ Objectives of this assignment
  
  * Conduct and interpret a one-sample $t$-test
 
-Deadline: November 9, 9:00am
+Deadline: November 9, 11:59pm
 
 Download: [html file](./assignments/assignment03.html) | [cont.csv dataset](./data/cont.csv)
 
