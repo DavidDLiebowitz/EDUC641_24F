@@ -175,7 +175,7 @@ Lecture slides:
   + **No class on 11/23 (university holiday)**
 
 - Data:  [life_expectancy.csv](./data/life_expectancy.csv)
-- R code: [R script](./slides/EDUC641_14_code.R)
+- R code: [R script](./slides/EDUC641_13_code.R)
 
 Assignment 4: 
 
