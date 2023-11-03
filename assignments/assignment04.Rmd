@@ -57,13 +57,13 @@ Details on all variables are as follows:
 
 #### 1. Descriptive Statistics
 
-1.1. Summarize the dataset. Specifically, create a table for the cont.csv dataset to show the means and standard deviations of the continuous variables and the counts and percentages for each category of the categorical variables. Write 2-3 sentences to report and interpret these statistics. **(2 point)**
+1.1. Summarize the dataset. Specifically, create a table for the cont.csv dataset to show the means and standard deviations of the continuous variables and the counts and percentages for each category of the categorical variables. Write 2-3 sentences to report and interpret these statistics. **(2 points)**
 
-1.2 Create a plot (label the x and y axis) to visualize the relationship between the variable $VOCABULARY$ and $COURSEWORK$. Include a line of best fit on this display. **(2 points)**
+1.2 Create a plot (label the $x$- and $y$-axes!) to visualize the relationship between the variable $VOCABULARY$ and $COURSEWORK$. Include a line of best fit on this display. **(2 points)**
 
 1.3 Write one sentence to interpret this visualized relationship. **(1 point)**
 
-1.4 Can you conclude whether teachers who attended more coursework have higher student score? Why or why not? **(1 point)**
+1.4 Can you conclude whether teachers who attended more total coursework sessions have students who score higher on a vocabulary test? Why or why not? **(1 point)**
 
 
 #### 2. Research Question: Is the dosage the PD intervention related to children's vocabulary scores?
@@ -72,9 +72,9 @@ Details on all variables are as follows:
 
 2.2 Formally test your hypothesis using an Ordinary Least Squares estimation strategy. Conduct the test and report your results in a formatted table. **(2 points)**
 
-2.3 Substantively interpret the results of your test. **(2 point)**
+2.3 Substantively interpret the results of your test. **(2 points)**
 
 2.4. What statistical assumption(s) have you made in modeling the relationship between $VOCABULARY$ and $COURSEWORK$ in this way? Test whether your estimates satisfy these assumptions. **(2 points)**
 
-2.5 What is your answer to this research question? **(1 point)**
+2.5 What is your answer to this research question? **(2 points)**
 
