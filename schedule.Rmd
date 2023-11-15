@@ -176,6 +176,7 @@ Lecture slides:
 
 - Data:  [life_expectancy.csv](./data/life_expectancy.csv)
 - R code: [R script](./slides/EDUC641_13_code.R)
+- Lab activities: [Week 8 Lab](./labs/Lab8.docx)
 
 Assignment 4: 
 

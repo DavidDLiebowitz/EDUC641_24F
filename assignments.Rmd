@@ -32,7 +32,7 @@ Please upload below two files on Canvas:
 
 Categorical data 1: data structure and descriptives 
 
-Objectives of this assignment
+Objectives of this assignment:
 
  * Describe and summarize categorical data
 
@@ -49,7 +49,7 @@ Key:
 
 Categorical data 2: chi-square analysis
 
-Objectives of this assignment
+Objectives of this assignment:
 
  * Describe relationships between categorical variables
  
@@ -72,7 +72,7 @@ Key:
 
 Continuous data 1: summarizing continuous data and $t$-tests
 
-Objectives of this assignment
+Objectives of this assignment:
 
  * Describe and summarize continuous data
 
@@ -90,6 +90,14 @@ Key:
 ## 3.4. Assignment 4 
 
 Continuous data 2: intro to bivariate regression
+
+Objectives of this assignment:
+
+ * Create bivariate scatterplots and bivariate regression estimates
+
+ * State null hypothesis and interpret results of linear regression test of bivariate continuous relationship
+
+ * Test (some) assumptions of bivariate regression estimation
 
 Deadline: November 29, 11:59pm
 
