@@ -99,7 +99,7 @@ Objectives of this assignment:
 
  * Test (some) assumptions of bivariate regression estimation
 
-Deadline: November 29, 11:59pm
+Deadline: November 27, 11:59pm
 
 Download: [html file](./assignments/assignment04.html) | [cont.csv dataset](./data/cont.csv)
 

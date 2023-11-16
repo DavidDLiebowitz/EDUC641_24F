@@ -1,5 +1,5 @@
 ---
-title: "Examining the Relationship Between Continuous Variables"
+title: "Examining Relationships of Continuous Variables"
 subtitle: "EDUC 641: Unit 4 Part 3"
 author: "David D. Liebowitz"
 #date: "`r format(Sys.time(), '%d %B %Y')`"
@@ -18,7 +18,7 @@ output:
 library(pacman)
 p_load(here, tidyverse, xaringan, knitr, kableExtra, xaringanthemer, modelsummary)
 
-i_am("slides/EDUC641_16_residuals.rmd")
+i_am("slides/EDUC641_15_regression2.rmd")
 
 
 red_pink <- "#e64173"
@@ -103,7 +103,7 @@ knit_hooks$set(output = function(x, options) {
 
 
 ---
-# Reminder of motivating question
+## Reminder of motivating question
 
 #### We learned a lot about the distribution of life expectancy in countries, now we are turning to thinking about relationships between life expectancy and other variables. In particular:
 
@@ -116,7 +116,8 @@ knit_hooks$set(output = function(x, options) {
 
 ### 1. Life expectancy data (in file called life_expectancy.csv)
 ### 2. Codebook describing the contents of said data
-### 3. R script to conduct the data analytic tasks of the unit
+### 3. R script to conduct the data analytic tasks of the unit (in file called EDUC641_13_code.R)
+
 ---
 class: middle, inverse
 
@@ -235,7 +236,7 @@ fit_val +
 Each term in the regression equation has a specific interpretation
 
 $$
-\hat{LIFE\_EXPECTANCY} = 42.85 + 2.23 * \left( SCHOOLING \right)
+\hat{LIFEEXPECTANCY} = 42.85 + 2.23 * \left( SCHOOLING \right)
 $$
 
 ---
@@ -244,7 +245,7 @@ $$
 Each term in the regression equation has a specific interpretation:
 
 $$
-\color{red}{\hat{LIFE\_EXPECTANCY}} = 42.85 + 2.23 * \left( SCHOOLING \right)
+\color{red}{\hat{LIFEEXPECTANCY}} = 42.85 + 2.23 * \left( SCHOOLING \right)
 $$
 
 The predicted value of $\color{red}{\hat{LIFE\_EXPECTANCY}}$ is based on the OLS regression fit. Its "hat" represents that it is a prediction.
@@ -255,10 +256,10 @@ The predicted value of $\color{red}{\hat{LIFE\_EXPECTANCY}}$ is based on the OLS
 Each term in the regression equation has a specific interpretation:
 
 $$
-\hat{LIFE\_EXPECTANCY} = \color{red}{42.85} + 2.23 * \left( SCHOOLING \right)
+\hat{LIFEEXPECTANCY} = \color{red}{42.85} + 2.23 * \left( SCHOOLING \right)
 $$
 
-42.85 represents the .red[*estimated intercept*]. It tells you the predicted value of $LIFE\_EXPECTANCY$ when $SCHOOLING$ is zero (0)
+42.85 represents the .red[**estimated intercept**]. It tells you the predicted value of $LIFE\_EXPECTANCY$ when $SCHOOLING$ is zero (0)
 
 - .blue[*In this context, it doesn't make sense to interpret this. Why?*]
 
@@ -268,12 +269,12 @@ $$
 Each term in the regression equation has a specific interpretation:
 
 $$
-\hat{LIFE\_EXPECTANCY} = 42.85 + \color{red}{2.23} * \left( SCHOOLING \right)
+\hat{LIFEEXPECTANCY} = 42.85 + \color{red}{2.23} * \left( SCHOOLING \right)
 $$
 
 --
 
-2.23 represents the .red[*estimated slope*]. It summarizes the relationship between $LIFE\_EXPECTANCY$ and $SCHOOLING$. It tells you the difference in the predicted values of $LIFE\_EXPECTANCY$ *per unit difference* in  $SCHOOLING$.
+2.23 represents the .red[**estimated slope**]. It summarizes the relationship between $LIFE\_EXPECTANCY$ and $SCHOOLING$. It tells you the difference in the predicted values of $LIFE\_EXPECTANCY$ *per unit difference* in  $SCHOOLING$.
 
 --
 
@@ -290,12 +291,12 @@ We do **NOT** say that increasing the average years that children attend school 
 Each term in the regression equation has a specific interpretation:
 
 $$
-\hat{LIFE\_EXPECTANCY} = 42.85 + 2.23 * \left( \color{red}{SCHOOLING} \right)
+\hat{LIFEEXPECTANCY} = 42.85 + 2.23 * \left( \color{red}{SCHOOLING} \right)
 $$
 
 --
 
-$\color{red}{SCHOOLING}$ represents the .red[*actual values*] of the predictor $SCHOOLING$.
+$\color{red}{SCHOOLING}$ represents the .red[**actual values**] of the predictor $SCHOOLING$.
 
 
 ---
@@ -325,7 +326,7 @@ summary(fit)
 
 --
 
-.small[As with our previous analysis, R provides us with a *p*-value which can help us to judge the likelihood that our results are driven by idiosyncrasies of sampling]
+.small[As with our previous analysis, R provides us with a *p*-value which can help us to judge the likelihood that our results are driven by idiosyncrasies of sampling.]
 
 ---
 # Regression inference
@@ -341,7 +342,7 @@ With an alpha-threshold of 0.05, $2^{-16}$ is definitely less than 0.05. Thus, w
 ---
 # Writing it up
 .pull-left[
-```{r, echo=F}
+```{r, echo=F, fig.width=5, fig.height=4}
 ggplot(who, aes(x = schooling, y = life_expectancy)) + 
   geom_point() + 
   geom_smooth(method = lm, se = F) +
@@ -353,12 +354,51 @@ ggplot(who, aes(x = schooling, y = life_expectancy)) +
 ]
 
 .pull-right[
-> **The story so far** <br> .small[In our investigation of country-level aggregate measures of schooling and life expectancy, we have found that the average years of schooling in a country is related to the average life expectancy. In particular, when we relate the country-level life expectancy (*LIFE_EXPECTANCY*) to the country-level mean years of schooling (*SCHOOLING*), we find that the trend-line estimated by ordinary-least-squares regression has a slope of 2.23 (*p*<0.0001). This suggests that two countries that differ in their average years of schooling attainment by 1 year will have, on average, a difference in life expectancy of 2.23 years. Of course, this relationship is far from causal...]
+.small[In our investigation of country-level aggregate measures of schooling and life expectancy, we have found that the average years of schooling in a country is related to the average life expectancy. In particular, when we relate the country-level life expectancy (*LIFE_EXPECTANCY*) to the country-level mean years of schooling (*SCHOOLING*), we find that the trend-line estimated by ordinary-least-squares regression has a slope of 2.23 (*p*<0.0001). This implies that two countries that differ in their average years of schooling attainment by 1 year will have, on average, a difference in life expectancy of 2.23 years. Of course, this relationship is far from causal...]
 
 ]
 
 ---
-# Producing beautiful results
+class: middle, inverse
+
+# Reporting results
+
+---
+# Descriptive statistics
+
+.large[.blue[**What do you want people to know about the nature of the variables in your data?**]]
+
+---
+# Descriptive statistics
+
+.large[.blue[**What do you want people to know about the nature of the variables in your data?**]]
+
+.pull-left[
+.small[
+Things people should probably know:
+- Number of observations (N)
+- Mean of continuous variables
+- Measure of variance of continuous variables (probably *SD*)
+- Count/proportion of values for categorical variables
+]
+]
+
+.pull-right[
+.small[
+Things people might need to know:
+- Min/max values
+- Median value
+- IQR
+- Missing %
+]
+]
+
+--
+
+.small[Things people (probably) **don't** need to know: number of unique values, summary stats on ID variables, ?]
+
+---
+# (Re)producing beautiful results
 
 ### A descriptive table (Table 1):
 ```{r, echo=F}
@@ -371,15 +411,17 @@ datasummary_skim(who1)
 ```
 
 ---
-# Producing beautiful results
+# (Re)producing beautiful results
 
 ### A descriptive table (Table 1):
 ```{r, echo=T}
-datasummary_skim(who1, histogram=F)
+datasummary((`Yrs of Schooling` = schooling) + 
+             (`Life Expectancy` = life_expectancy) ~ Mean + SD + N,
+                data = who1)
 ```
 
 ---
-# Producing beautiful results
+# (Re)producing beautiful results
 ### A descriptive table (Table 1):
 
 Saving it to a Word table:
@@ -389,7 +431,7 @@ datasummary_skim(who1, histogram=F,
 ```
 
 ---
-# Producing beautiful results
+# (Re)producing beautiful results
 ### A descriptive table (Table 1):
 
 For categorical variables
@@ -401,7 +443,7 @@ datasummary_skim(who1,
 
 
 ---
-# Producing beautiful results
+# (Re)producing beautiful results
 ### A descriptive table (Table 1):
 
 Numeric variables by a categorical variable
@@ -411,8 +453,12 @@ datasummary_balance(~ status, # tells R to cut by this variable
                     data=who1)
 ```
 
+--
+
+.blue[***Can you imagine when this might be an especially useful set of descriptive statistics to produce?***]
+
 ---
-# Producing beautiful results
+# (Re)producing beautiful results
 ### A descriptive table (Table 1):
 
 Numeric variables by a categorical variable
@@ -424,7 +470,7 @@ datasummary_balance(~ status,
 ```
 
 ---
-# Producing beautiful results
+# (Re)producing beautiful results
 
 ### A regression output table (Table 2)
 ```{r, echo=T}
@@ -432,24 +478,43 @@ modelsummary(fit)
 ```
 
 ---
-# Producing beautiful results
+# (Re)producing beautiful results
+
+.large[.blue[**Based on what you know so far, what do people need to know about your regression results?**]]
+
+---
+# (Re)producing beautiful results
+
+.large[.blue[**Based on what you know so far, what do people need to know about your regression results?**]]
+
+People should know:
+- Estimate of the intercept and coefficient(s)
+- Uncertainty in estimates of the intercept and coefficient(s)
+- Number of observations
+- $R^2$ (we'll learn about this later)
+
+Convention in most outlets to provide asterisks denoting conventional alpha thresholds (debatably helpful).
+
+
+---
+# (Re)producing beautiful results
 
 ### A regression output table (Table 2)
 ```{r, echo=T}
 modelsummary(fit, stars=T,
-             gof_omit = "Adj.|AIC|BIC|RMSE",
+             gof_omit = "Adj.|AIC|BIC|RMSE|Log",
              coef_rename = c("schooling" = "Yrs. Schooling"))
 ```
 
 ---
-# Producing beautiful results
+# (Re)producing beautiful results
 
 ### A regression output table (Table 2)
 
 Saving it to a Word table:
 ```{r, echo=T}
 modelsummary(fit, stars=T,
-             gof_omit = "Adj.|AIC|BIC|RMSE",
+             gof_omit = "Adj.|AIC|BIC|RMSE|Log",
              coef_rename = c("schooling" = "Yrs. Schooling"),
              output="table2.docx")
 ```
@@ -457,7 +522,9 @@ modelsummary(fit, stars=T,
 ---
 class: middle, inverse
 
-# A gentle introduction to bivariate regression: <br> Residual analysis
+# A gentle introduction to bivariate regression:  
+
+## Residual analysis
 
 ---
 # Residual analysis
@@ -587,7 +654,6 @@ boxplot(resid(fit))
 ```
 
 --
-
 A few outliers, but we seem to be doing ok...
 
 ---
@@ -606,7 +672,6 @@ ggplot(who, aes(x = resid)) +
 Pretty good, pretty good...
 
 --
-
 .blue[**Understanding check:** can you write out the code to create the above figure?]
 
 
@@ -623,7 +688,7 @@ ggplot(who, aes(x = predict, y = resid)) +
     theme_minimal(base_size = 16)
 ```
 
-#### Key assumption checks for normality:
+Key assumption checks for normality:
 - The residuals "bounce randomly" around the 0 line. 
 - The residuals could be roughly contained within a rectangle around the 0 line. 
 - No one residual "stands out" from the basic random pattern of residuals.
@@ -642,7 +707,7 @@ ggplot(who, aes(x = predict, y = resid)) +
     theme_minimal(base_size = 16)
 ```
 
-#### Key assumption checks for normality:
+Key assumption checks for normality:
 - The residuals "bounce randomly" around the 0 line. 
 - The residuals could be roughly contained within a rectangle around the 0 line. 
 - No one residual "stands out" from the basic random pattern of residuals.
@@ -662,11 +727,11 @@ ggplot(who, aes(x = predict, y = resid)) +
 ---
 # Writing it up
 
-> .small[In our investigation of country-level aggregate measures of schooling and life expectancy, we have found that the average years of schooling in a country is related to the average life expectancy. As we show in Table 2, when we relate the country-level life expectancy to the country-level mean years of schooling, we find that the trend-line estimated by ordinary-least-squares regression has a slope of 2.23 (*p*<0.0001). This suggests that two countries that differ in their average years of schooling attainment by 1 year will have, on average, a difference in life expectancy of 2.23 years.] 
+> .small[In our investigation of country-level measures of schooling and life expectancy, we found that the average years of schooling in a country is related to the average life expectancy. As we show in Table 2, when we relate the country-level life expectancy to the country-level mean years of schooling, we find that the trend-line estimated by ordinary-least-squares regression has a slope of 2.23 (*p*<0.0001). This suggests that two countries that differ in their average years of schooling attainment by 1 year will have, on average, a difference in life expectancy of 2.23 years.] 
 
 ```{r, echo=F}
 modelsummary(fit, stars=T,
-             gof_omit = "Adj.|AIC|BIC|RMSE",
+             gof_omit = "Adj.|AIC|BIC|RMSE|Log",
              title = c("Table 2. Estimates of relationship between life expectancy and schooling"),
              coef_rename = c("schooling" = "Yrs. Schooling"),
              notes = c("Cells report coefficients and standard errors."))
@@ -690,9 +755,10 @@ ggplot(who, aes(x = predict, y = resid)) +
 ---
 # Key takeaways
 
+- **Start with a RQ which you can answer in your data**
 - **Understand your data first**
  + Summarize and visualize each variable independently
- + Start with a visual representation of the relationship between your two variables
+ + Start with a visual representation of the relationship between your variables
  + How you display the relationship will influence your perception of the relationship, but will not change the relationship
  + Try to describe what a particular observation in your visualized data represents
 - **The regression model represents your hypothesis about the population**
@@ -725,10 +791,15 @@ class: middle, inverse
 # To Dos
 
 ### Reading
-- LSWR Chapter 15.1 and 15.2: bivariate regression
+- LSWR Chapter 15.1 and 15.2: bivariate regression by **Nov. 21**
 
 ### Assignments
-- Assignment #4 Due November 29 at 11:59PM
-- Quiz #5 on November 22/23 (due at 5pm)
+- Assignment #4 due **November 27** at 11:59PM
+- Quiz #5 on **November 21** (due Nov. 22 at 5pm)
 
-### No class on 11/17!
+### No lab on 11/22 or 11/23! No class on 11/23!
+
+---
+class: middle, inverse
+
+# Quiz

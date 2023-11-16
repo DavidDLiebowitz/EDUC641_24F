@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html lang="" xml:lang="">
   <head>
-    <title>Examining the Relationship Between Continuous Variables</title>
+    <title>Examining Relationships of Continuous Variables</title>
     <meta charset="utf-8" />
     <meta name="author" content="David D. Liebowitz" />
-    <script src="EDUC641_16_residuals_files/header-attrs-2.14.3/header-attrs.js"></script>
-    <link href="EDUC641_16_residuals_files/remark-css-0.0.1/default.css" rel="stylesheet" />
-    <link href="EDUC641_16_residuals_files/remark-css-0.0.1/uo.css" rel="stylesheet" />
-    <link href="EDUC641_16_residuals_files/remark-css-0.0.1/ki-fonts.css" rel="stylesheet" />
-    <script src="EDUC641_16_residuals_files/kePrint-0.0.1/kePrint.js"></script>
-    <link href="EDUC641_16_residuals_files/lightable-0.0.1/lightable.css" rel="stylesheet" />
+    <script src="EDUC641_15_regression2_files/header-attrs-2.20/header-attrs.js"></script>
+    <link href="EDUC641_15_regression2_files/remark-css-0.0.1/default.css" rel="stylesheet" />
+    <link href="EDUC641_15_regression2_files/remark-css-0.0.1/uo.css" rel="stylesheet" />
+    <link href="EDUC641_15_regression2_files/remark-css-0.0.1/ki-fonts.css" rel="stylesheet" />
+    <script src="EDUC641_15_regression2_files/kePrint-0.0.1/kePrint.js"></script>
+    <link href="EDUC641_15_regression2_files/lightable-0.0.1/lightable.css" rel="stylesheet" />
     <link rel="stylesheet" href="my_custom.css" type="text/css" />
     <link rel="stylesheet" href="xaringanthemer.css" type="text/css" />
   </head>
@@ -18,7 +18,7 @@
 class: center, middle, inverse, title-slide
 
 .title[
-# Examining the Relationship Between Continuous Variables
+# Examining Relationships of Continuous Variables
 ]
 .subtitle[
 ## EDUC 641: Unit 4 Part 3
@@ -49,7 +49,7 @@ class: center, middle, inverse, title-slide
 
 
 ---
-# Reminder of motivating question
+## Reminder of motivating question
 
 #### We learned a lot about the distribution of life expectancy in countries, now we are turning to thinking about relationships between life expectancy and other variables. In particular:
 
@@ -62,7 +62,8 @@ class: center, middle, inverse, title-slide
 
 ### 1. Life expectancy data (in file called life_expectancy.csv)
 ### 2. Codebook describing the contents of said data
-### 3. R script to conduct the data analytic tasks of the unit
+### 3. R script to conduct the data analytic tasks of the unit (in file called EDUC641_13_code.R)
+
 ---
 class: middle, inverse
 
@@ -79,7 +80,7 @@ class: middle, inverse
 biv &lt;- ggplot(data = who, aes(x = schooling, y = life_expectancy)) + 
         geom_point() 
 ```
-&lt;img src="EDUC641_16_residuals_files/figure-html/unnamed-chunk-4-1.svg" style="display: block; margin: auto;" /&gt;
+&lt;img src="EDUC641_15_regression2_files/figure-html/unnamed-chunk-4-1.svg" style="display: block; margin: auto;" /&gt;
 
 ---
 # The results of our linear fit
@@ -116,7 +117,7 @@ $$
 # Fitted values
 
 Can substitute values for the "predictor" `\((SCHOOLING)\)` into the fitted equation to compute the *predicted* values of `\(LIFE\_EXPECTANCY\)`. 
-&lt;img src="EDUC641_16_residuals_files/figure-html/unnamed-chunk-6-1.svg" style="display: block; margin: auto;" /&gt;
+&lt;img src="EDUC641_15_regression2_files/figure-html/unnamed-chunk-6-1.svg" style="display: block; margin: auto;" /&gt;
 
 --
 
@@ -127,13 +128,13 @@ Can do this for our old friend Chile ... and all others...
 
 So we can re-construct the line of best fit from the fitted values:
 
-&lt;img src="EDUC641_16_residuals_files/figure-html/unnamed-chunk-7-1.svg" style="display: block; margin: auto;" /&gt;
+&lt;img src="EDUC641_15_regression2_files/figure-html/unnamed-chunk-7-1.svg" style="display: block; margin: auto;" /&gt;
 
 ---
 # Fitted values
 
 Note that the fitted line always goes through the average of the predictors
-&lt;img src="EDUC641_16_residuals_files/figure-html/unnamed-chunk-8-1.svg" style="display: block; margin: auto;" /&gt;
+&lt;img src="EDUC641_15_regression2_files/figure-html/unnamed-chunk-8-1.svg" style="display: block; margin: auto;" /&gt;
 
 ---
 # The regression equation
@@ -141,7 +142,7 @@ Note that the fitted line always goes through the average of the predictors
 Each term in the regression equation has a specific interpretation
 
 $$
-\hat{LIFE\_EXPECTANCY} = 42.85 + 2.23 * \left( SCHOOLING \right)
+\hat{LIFEEXPECTANCY} = 42.85 + 2.23 * \left( SCHOOLING \right)
 $$
 
 ---
@@ -150,7 +151,7 @@ $$
 Each term in the regression equation has a specific interpretation:
 
 $$
-\color{red}{\hat{LIFE\_EXPECTANCY}} = 42.85 + 2.23 * \left( SCHOOLING \right)
+\color{red}{\hat{LIFEEXPECTANCY}} = 42.85 + 2.23 * \left( SCHOOLING \right)
 $$
 
 The predicted value of `\(\color{red}{\hat{LIFE\_EXPECTANCY}}\)` is based on the OLS regression fit. Its "hat" represents that it is a prediction.
@@ -161,10 +162,10 @@ The predicted value of `\(\color{red}{\hat{LIFE\_EXPECTANCY}}\)` is based on the
 Each term in the regression equation has a specific interpretation:
 
 $$
-\hat{LIFE\_EXPECTANCY} = \color{red}{42.85} + 2.23 * \left( SCHOOLING \right)
+\hat{LIFEEXPECTANCY} = \color{red}{42.85} + 2.23 * \left( SCHOOLING \right)
 $$
 
-42.85 represents the .red[*estimated intercept*]. It tells you the predicted value of `\(LIFE\_EXPECTANCY\)` when `\(SCHOOLING\)` is zero (0)
+42.85 represents the .red[**estimated intercept**]. It tells you the predicted value of `\(LIFE\_EXPECTANCY\)` when `\(SCHOOLING\)` is zero (0)
 
 - .blue[*In this context, it doesn't make sense to interpret this. Why?*]
 
@@ -174,12 +175,12 @@ $$
 Each term in the regression equation has a specific interpretation:
 
 $$
-\hat{LIFE\_EXPECTANCY} = 42.85 + \color{red}{2.23} * \left( SCHOOLING \right)
+\hat{LIFEEXPECTANCY} = 42.85 + \color{red}{2.23} * \left( SCHOOLING \right)
 $$
 
 --
 
-2.23 represents the .red[*estimated slope*]. It summarizes the relationship between `\(LIFE\_EXPECTANCY\)` and `\(SCHOOLING\)`. It tells you the difference in the predicted values of `\(LIFE\_EXPECTANCY\)` *per unit difference* in  `\(SCHOOLING\)`.
+2.23 represents the .red[**estimated slope**]. It summarizes the relationship between `\(LIFE\_EXPECTANCY\)` and `\(SCHOOLING\)`. It tells you the difference in the predicted values of `\(LIFE\_EXPECTANCY\)` *per unit difference* in  `\(SCHOOLING\)`.
 
 --
 
@@ -196,12 +197,12 @@ We do **NOT** say that increasing the average years that children attend school 
 Each term in the regression equation has a specific interpretation:
 
 $$
-\hat{LIFE\_EXPECTANCY} = 42.85 + 2.23 * \left( \color{red}{SCHOOLING} \right)
+\hat{LIFEEXPECTANCY} = 42.85 + 2.23 * \left( \color{red}{SCHOOLING} \right)
 $$
 
 --
 
-`\(\color{red}{SCHOOLING}\)` represents the .red[*actual values*] of the predictor `\(SCHOOLING\)`.
+`\(\color{red}{SCHOOLING}\)` represents the .red[**actual values**] of the predictor `\(SCHOOLING\)`.
 
 
 ---
@@ -244,7 +245,7 @@ What is the probability that we would have gotten a slope value of 2.23 by sampl
 
 --
 
-.small[As with our previous analysis, R provides us with a *p*-value which can help us to judge the likelihood that our results are driven by idiosyncrasies of sampling]
+.small[As with our previous analysis, R provides us with a *p*-value which can help us to judge the likelihood that our results are driven by idiosyncrasies of sampling.]
 
 ---
 # Regression inference
@@ -273,16 +274,55 @@ With an alpha-threshold of 0.05, `\(2^{-16}\)` is definitely less than 0.05. Thu
 ---
 # Writing it up
 .pull-left[
-&lt;img src="EDUC641_16_residuals_files/figure-html/unnamed-chunk-11-1.svg" style="display: block; margin: auto;" /&gt;
+&lt;img src="EDUC641_15_regression2_files/figure-html/unnamed-chunk-11-1.svg" style="display: block; margin: auto;" /&gt;
 ]
 
 .pull-right[
-&gt; **The story so far** &lt;br&gt; .small[In our investigation of country-level aggregate measures of schooling and life expectancy, we have found that the average years of schooling in a country is related to the average life expectancy. In particular, when we relate the country-level life expectancy (*LIFE_EXPECTANCY*) to the country-level mean years of schooling (*SCHOOLING*), we find that the trend-line estimated by ordinary-least-squares regression has a slope of 2.23 (*p*&lt;0.0001). This suggests that two countries that differ in their average years of schooling attainment by 1 year will have, on average, a difference in life expectancy of 2.23 years. Of course, this relationship is far from causal...]
+.small[In our investigation of country-level aggregate measures of schooling and life expectancy, we have found that the average years of schooling in a country is related to the average life expectancy. In particular, when we relate the country-level life expectancy (*LIFE_EXPECTANCY*) to the country-level mean years of schooling (*SCHOOLING*), we find that the trend-line estimated by ordinary-least-squares regression has a slope of 2.23 (*p*&lt;0.0001). This implies that two countries that differ in their average years of schooling attainment by 1 year will have, on average, a difference in life expectancy of 2.23 years. Of course, this relationship is far from causal...]
 
 ]
 
 ---
-# Producing beautiful results
+class: middle, inverse
+
+# Reporting results
+
+---
+# Descriptive statistics
+
+.large[.blue[**What do you want people to know about the nature of the variables in your data?**]]
+
+---
+# Descriptive statistics
+
+.large[.blue[**What do you want people to know about the nature of the variables in your data?**]]
+
+.pull-left[
+.small[
+Things people should probably know:
+- Number of observations (N)
+- Mean of continuous variables
+- Measure of variance of continuous variables (probably *SD*)
+- Count/proportion of values for categorical variables
+]
+]
+
+.pull-right[
+.small[
+Things people might need to know:
+- Min/max values
+- Median value
+- IQR
+- Missing %
+]
+]
+
+--
+
+.small[Things people (probably) **don't** need to know: number of unique values, summary stats on ID variables, ?]
+
+---
+# (Re)producing beautiful results
 
 ### A descriptive table (Table 1):
 
@@ -360,53 +400,43 @@ datasummary_skim(who1)
 &lt;/table&gt;
 
 ---
-# Producing beautiful results
+# (Re)producing beautiful results
 
 ### A descriptive table (Table 1):
 
 ```r
-datasummary_skim(who1, histogram=F)
+datasummary((`Yrs of Schooling` = schooling) + 
+             (`Life Expectancy` = life_expectancy) ~ Mean + SD + N,
+                data = who1)
 ```
 
 &lt;table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;"&gt;
  &lt;thead&gt;
   &lt;tr&gt;
    &lt;th style="text-align:left;"&gt;   &lt;/th&gt;
-   &lt;th style="text-align:right;"&gt; Unique (#) &lt;/th&gt;
-   &lt;th style="text-align:right;"&gt; Missing (%) &lt;/th&gt;
    &lt;th style="text-align:right;"&gt; Mean &lt;/th&gt;
    &lt;th style="text-align:right;"&gt; SD &lt;/th&gt;
-   &lt;th style="text-align:right;"&gt; Min &lt;/th&gt;
-   &lt;th style="text-align:right;"&gt; Median &lt;/th&gt;
-   &lt;th style="text-align:right;"&gt; Max &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; N &lt;/th&gt;
   &lt;/tr&gt;
  &lt;/thead&gt;
 &lt;tbody&gt;
   &lt;tr&gt;
-   &lt;td style="text-align:left;"&gt; schooling &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 89 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 12.9 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 2.9 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 4.9 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 13.1 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 20.4 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Yrs of Schooling &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 12.93 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2.91 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 173 &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
-   &lt;td style="text-align:left;"&gt; life_expectancy &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 35 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 71.7 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 8.0 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 51.0 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 74.0 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 88.0 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Life Expectancy &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 71.74 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 7.97 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 173 &lt;/td&gt;
   &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
 
 ---
-# Producing beautiful results
+# (Re)producing beautiful results
 ### A descriptive table (Table 1):
 
 Saving it to a Word table:
@@ -421,7 +451,7 @@ datasummary_skim(who1, histogram=F,
 ```
 
 ---
-# Producing beautiful results
+# (Re)producing beautiful results
 ### A descriptive table (Table 1):
 
 For categorical variables
@@ -456,7 +486,7 @@ datasummary_skim(who1,
 
 
 ---
-# Producing beautiful results
+# (Re)producing beautiful results
 ### A descriptive table (Table 1):
 
 Numeric variables by a categorical variable
@@ -507,8 +537,12 @@ datasummary_balance(~ status, # tells R to cut by this variable
 &lt;/tbody&gt;
 &lt;/table&gt;
 
+--
+
+.blue[***Can you imagine when this might be an especially useful set of descriptive statistics to produce?***]
+
 ---
-# Producing beautiful results
+# (Re)producing beautiful results
 ### A descriptive table (Table 1):
 
 Numeric variables by a categorical variable
@@ -554,7 +588,7 @@ datasummary_balance(~ status,
 &lt;/table&gt;
 
 ---
-# Producing beautiful results
+# (Re)producing beautiful results
 
 ### A regression output table (Table 2)
 
@@ -566,7 +600,7 @@ modelsummary(fit)
  &lt;thead&gt;
   &lt;tr&gt;
    &lt;th style="text-align:left;"&gt;   &lt;/th&gt;
-   &lt;th style="text-align:center;"&gt; Model 1 &lt;/th&gt;
+   &lt;th style="text-align:center;"&gt;  (1) &lt;/th&gt;
   &lt;/tr&gt;
  &lt;/thead&gt;
 &lt;tbody&gt;
@@ -583,8 +617,8 @@ modelsummary(fit)
    &lt;td style="text-align:center;"&gt; 2.235 &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
-   &lt;td style="text-align:left;box-shadow: 0px 1px"&gt;  &lt;/td&gt;
-   &lt;td style="text-align:center;box-shadow: 0px 1px"&gt; (0.121) &lt;/td&gt;
+   &lt;td style="text-align:left;box-shadow: 0px 1.5px"&gt;  &lt;/td&gt;
+   &lt;td style="text-align:center;box-shadow: 0px 1.5px"&gt; (0.121) &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
    &lt;td style="text-align:left;"&gt; Num.Obs. &lt;/td&gt;
@@ -607,6 +641,10 @@ modelsummary(fit)
    &lt;td style="text-align:center;"&gt; 1032.8 &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Log.Lik. &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; -508.687 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
    &lt;td style="text-align:left;"&gt; RMSE &lt;/td&gt;
    &lt;td style="text-align:center;"&gt; 4.58 &lt;/td&gt;
   &lt;/tr&gt;
@@ -614,13 +652,32 @@ modelsummary(fit)
 &lt;/table&gt;
 
 ---
-# Producing beautiful results
+# (Re)producing beautiful results
+
+.large[.blue[**Based on what you know so far, what do people need to know about your regression results?**]]
+
+---
+# (Re)producing beautiful results
+
+.large[.blue[**Based on what you know so far, what do people need to know about your regression results?**]]
+
+People should know:
+- Estimate of the intercept and coefficient(s)
+- Uncertainty in estimates of the intercept and coefficient(s)
+- Number of observations
+- `\(R^2\)` (we'll learn about this later)
+
+Convention in most outlets to provide asterisks denoting conventional alpha thresholds (debatably helpful).
+
+
+---
+# (Re)producing beautiful results
 
 ### A regression output table (Table 2)
 
 ```r
 modelsummary(fit, stars=T,
-             gof_omit = "Adj.|AIC|BIC|RMSE",
+             gof_omit = "Adj.|AIC|BIC|RMSE|Log",
              coef_rename = c("schooling" = "Yrs. Schooling"))
 ```
 
@@ -628,7 +685,7 @@ modelsummary(fit, stars=T,
  &lt;thead&gt;
   &lt;tr&gt;
    &lt;th style="text-align:left;"&gt;   &lt;/th&gt;
-   &lt;th style="text-align:center;"&gt; Model 1 &lt;/th&gt;
+   &lt;th style="text-align:center;"&gt;  (1) &lt;/th&gt;
   &lt;/tr&gt;
  &lt;/thead&gt;
 &lt;tbody&gt;
@@ -645,8 +702,8 @@ modelsummary(fit, stars=T,
    &lt;td style="text-align:center;"&gt; 2.235*** &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
-   &lt;td style="text-align:left;box-shadow: 0px 1px"&gt;  &lt;/td&gt;
-   &lt;td style="text-align:center;box-shadow: 0px 1px"&gt; (0.121) &lt;/td&gt;
+   &lt;td style="text-align:left;box-shadow: 0px 1.5px"&gt;  &lt;/td&gt;
+   &lt;td style="text-align:center;box-shadow: 0px 1.5px"&gt; (0.121) &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
    &lt;td style="text-align:left;"&gt; Num.Obs. &lt;/td&gt;
@@ -662,7 +719,7 @@ modelsummary(fit, stars=T,
 &lt;/table&gt;
 
 ---
-# Producing beautiful results
+# (Re)producing beautiful results
 
 ### A regression output table (Table 2)
 
@@ -670,7 +727,7 @@ Saving it to a Word table:
 
 ```r
 modelsummary(fit, stars=T,
-             gof_omit = "Adj.|AIC|BIC|RMSE",
+             gof_omit = "Adj.|AIC|BIC|RMSE|Log",
              coef_rename = c("schooling" = "Yrs. Schooling"),
              output="table2.docx")
 ```
@@ -678,18 +735,20 @@ modelsummary(fit, stars=T,
 ---
 class: middle, inverse
 
-# A gentle introduction to bivariate regression: &lt;br&gt; Residual analysis
+# A gentle introduction to bivariate regression:  
+
+## Residual analysis
 
 ---
 # Residual analysis
-&lt;img src="EDUC641_16_residuals_files/figure-html/unnamed-chunk-22-1.svg" style="display: block; margin: auto;" /&gt;
+&lt;img src="EDUC641_15_regression2_files/figure-html/unnamed-chunk-22-1.svg" style="display: block; margin: auto;" /&gt;
 
 Our fitted regression line contains the "predicted" values of *LIFE_EXPECTANCY* for each value of *SCHOOLING*. But almost all of the "actual" values of *LIFE_EXPECTANCY* lie off the actual line regression line.
 
 ---
 # An example: Chile
 
-&lt;img src="EDUC641_16_residuals_files/figure-html/unnamed-chunk-23-1.svg" style="display: block; margin: auto;" /&gt;
+&lt;img src="EDUC641_15_regression2_files/figure-html/unnamed-chunk-23-1.svg" style="display: block; margin: auto;" /&gt;
 
 Observed values for Chile: `\(LIFE\_EXPECTANCY = 85\)`; `\(SCHOOLING = 16.3\)` &lt;br&gt;
 Predicted value of *LIFE_EXPECTANCY* for Chile:
@@ -701,7 +760,7 @@ $$
 $$
 ---
 # An example: Chile
-&lt;img src="EDUC641_16_residuals_files/figure-html/unnamed-chunk-24-1.svg" style="display: block; margin: auto;" /&gt;
+&lt;img src="EDUC641_15_regression2_files/figure-html/unnamed-chunk-24-1.svg" style="display: block; margin: auto;" /&gt;
 `\(\hat{LIFE\_EXPECTANCY} = 79.20\)` &lt;br&gt;
 Actual life expectancy = 85
 
@@ -711,7 +770,7 @@ Actual life expectancy = 85
 
 ---
 # Now Egypt
-&lt;img src="EDUC641_16_residuals_files/figure-html/unnamed-chunk-25-1.svg" style="display: block; margin: auto;" /&gt;
+&lt;img src="EDUC641_15_regression2_files/figure-html/unnamed-chunk-25-1.svg" style="display: block; margin: auto;" /&gt;
 Observed values for Egypt: `\(LIFE\_EXPECTANCY = 79\)`; `\(SCHOOLING = 13.1\)` &lt;br&gt;
 
 .blue[Can you calculate the predicted value of *LIFE_EXPECTANCY* for Egypt and compare it to the observed?]
@@ -784,10 +843,9 @@ For the *p*-values that we computed in the regression analysis to be correct, th
 boxplot(resid(fit))
 ```
 
-&lt;img src="EDUC641_16_residuals_files/figure-html/unnamed-chunk-29-1.svg" style="display: block; margin: auto;" /&gt;
+&lt;img src="EDUC641_15_regression2_files/figure-html/unnamed-chunk-29-1.svg" style="display: block; margin: auto;" /&gt;
 
 --
-
 A few outliers, but we seem to be doing ok...
 
 ---
@@ -795,14 +853,13 @@ A few outliers, but we seem to be doing ok...
 
 For the *p*-values that we computed in the regression analysis to be correct, the residuals **must be normally distributed**&lt;sup&gt;1&lt;/sup&gt;
 
-&lt;img src="EDUC641_16_residuals_files/figure-html/unnamed-chunk-30-1.svg" style="display: block; margin: auto;" /&gt;
+&lt;img src="EDUC641_15_regression2_files/figure-html/unnamed-chunk-30-1.svg" style="display: block; margin: auto;" /&gt;
 
 .footnote[[1] We have solutions if they are not which we will learn about in EDUC 643. ]
 --
 Pretty good, pretty good...
 
 --
-
 .blue[**Understanding check:** can you write out the code to create the above figure?]
 
 
@@ -810,9 +867,9 @@ Pretty good, pretty good...
 # Residual vs. fitted plot 
 
 For the *p*-values that we computed in the regression analysis to be correct, the residuals **must be normally distributed**
-&lt;img src="EDUC641_16_residuals_files/figure-html/unnamed-chunk-31-1.svg" style="display: block; margin: auto;" /&gt;
+&lt;img src="EDUC641_15_regression2_files/figure-html/unnamed-chunk-31-1.svg" style="display: block; margin: auto;" /&gt;
 
-#### Key assumption checks for normality:
+Key assumption checks for normality:
 - The residuals "bounce randomly" around the 0 line. 
 - The residuals could be roughly contained within a rectangle around the 0 line. 
 - No one residual "stands out" from the basic random pattern of residuals.
@@ -821,9 +878,9 @@ For the *p*-values that we computed in the regression analysis to be correct, th
 # Residual vs. fitted plot
 
 For the *p*-values that we computed in the regression analysis to be correct, the residuals **must be normally distributed**
-&lt;img src="EDUC641_16_residuals_files/figure-html/unnamed-chunk-32-1.svg" style="display: block; margin: auto;" /&gt;
+&lt;img src="EDUC641_15_regression2_files/figure-html/unnamed-chunk-32-1.svg" style="display: block; margin: auto;" /&gt;
 
-#### Key assumption checks for normality:
+Key assumption checks for normality:
 - The residuals "bounce randomly" around the 0 line. 
 - The residuals could be roughly contained within a rectangle around the 0 line. 
 - No one residual "stands out" from the basic random pattern of residuals.
@@ -841,19 +898,19 @@ ggplot(who, aes(x = predict, y = resid)) +
   theme_minimal(base_size = 16)
 ```
 
-&lt;img src="EDUC641_16_residuals_files/figure-html/unnamed-chunk-33-1.svg" style="display: block; margin: auto;" /&gt;
+&lt;img src="EDUC641_15_regression2_files/figure-html/unnamed-chunk-33-1.svg" style="display: block; margin: auto;" /&gt;
 
 ---
 # Writing it up
 
-&gt; .small[In our investigation of country-level aggregate measures of schooling and life expectancy, we have found that the average years of schooling in a country is related to the average life expectancy. As we show in Table 2, when we relate the country-level life expectancy to the country-level mean years of schooling, we find that the trend-line estimated by ordinary-least-squares regression has a slope of 2.23 (*p*&lt;0.0001). This suggests that two countries that differ in their average years of schooling attainment by 1 year will have, on average, a difference in life expectancy of 2.23 years.] 
+&gt; .small[In our investigation of country-level measures of schooling and life expectancy, we found that the average years of schooling in a country is related to the average life expectancy. As we show in Table 2, when we relate the country-level life expectancy to the country-level mean years of schooling, we find that the trend-line estimated by ordinary-least-squares regression has a slope of 2.23 (*p*&lt;0.0001). This suggests that two countries that differ in their average years of schooling attainment by 1 year will have, on average, a difference in life expectancy of 2.23 years.] 
 
-&lt;table style="NAborder-bottom: 0;border-bottom: 0; width: auto !important; margin-left: auto; margin-right: auto;" class="table"&gt;
+&lt;table style="NAborder-bottom: 0; width: auto !important; margin-left: auto; margin-right: auto;" class="table"&gt;
 &lt;caption&gt;Table 2. Estimates of relationship between life expectancy and schooling&lt;/caption&gt;
  &lt;thead&gt;
   &lt;tr&gt;
    &lt;th style="text-align:left;"&gt;   &lt;/th&gt;
-   &lt;th style="text-align:center;"&gt; Model 1 &lt;/th&gt;
+   &lt;th style="text-align:center;"&gt;  (1) &lt;/th&gt;
   &lt;/tr&gt;
  &lt;/thead&gt;
 &lt;tbody&gt;
@@ -870,8 +927,8 @@ ggplot(who, aes(x = predict, y = resid)) +
    &lt;td style="text-align:center;"&gt; 2.235*** &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
-   &lt;td style="text-align:left;box-shadow: 0px 1px"&gt;  &lt;/td&gt;
-   &lt;td style="text-align:center;box-shadow: 0px 1px"&gt; (0.121) &lt;/td&gt;
+   &lt;td style="text-align:left;box-shadow: 0px 1.5px"&gt;  &lt;/td&gt;
+   &lt;td style="text-align:center;box-shadow: 0px 1.5px"&gt; (0.121) &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
    &lt;td style="text-align:left;"&gt; Num.Obs. &lt;/td&gt;
@@ -882,10 +939,12 @@ ggplot(who, aes(x = predict, y = resid)) +
    &lt;td style="text-align:center;"&gt; 0.668 &lt;/td&gt;
   &lt;/tr&gt;
 &lt;/tbody&gt;
-&lt;tfoot&gt;&lt;tr&gt;&lt;td style="padding: 0; " colspan="100%"&gt;
-&lt;sup&gt;&lt;/sup&gt; + p &amp;lt; 0.1, * p &amp;lt; 0.05, ** p &amp;lt; 0.01, *** p &amp;lt; 0.001&lt;/td&gt;&lt;/tr&gt;&lt;/tfoot&gt;
-&lt;tfoot&gt;&lt;tr&gt;&lt;td style="padding: 0; " colspan="100%"&gt;
-&lt;sup&gt;&lt;/sup&gt; Cells report coefficients and standard errors.&lt;/td&gt;&lt;/tr&gt;&lt;/tfoot&gt;
+&lt;tfoot&gt;
+&lt;tr&gt;&lt;td style="padding: 0; " colspan="100%"&gt;
+&lt;sup&gt;&lt;/sup&gt; + p &amp;lt; 0.1, * p &amp;lt; 0.05, ** p &amp;lt; 0.01, *** p &amp;lt; 0.001&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td style="padding: 0; " colspan="100%"&gt;
+&lt;sup&gt;&lt;/sup&gt; Cells report coefficients and standard errors.&lt;/td&gt;&lt;/tr&gt;
+&lt;/tfoot&gt;
 &lt;/table&gt;
 
 ---
@@ -893,14 +952,15 @@ ggplot(who, aes(x = predict, y = resid)) +
 
 &gt; .small[An analysis of the residuals from our fitted model suggests that our regression assumptions are reasonably well met and we have appropriately characterized the relationship between schooling and life expectancy. Despite the presence of a few outliers, our residuals are roughly symmetrically distributed around 0. As we note in Appendix Figure A1, our fitted regression does seem to underpredict life expectancy for very low levels of schooling.]
 
-&lt;img src="EDUC641_16_residuals_files/figure-html/unnamed-chunk-35-1.svg" style="display: block; margin: auto;" /&gt;
+&lt;img src="EDUC641_15_regression2_files/figure-html/unnamed-chunk-35-1.svg" style="display: block; margin: auto;" /&gt;
 
 ---
 # Key takeaways
 
+- **Start with a RQ which you can answer in your data**
 - **Understand your data first**
  + Summarize and visualize each variable independently
- + Start with a visual representation of the relationship between your two variables
+ + Start with a visual representation of the relationship between your variables
  + How you display the relationship will influence your perception of the relationship, but will not change the relationship
  + Try to describe what a particular observation in your visualized data represents
 - **The regression model represents your hypothesis about the population**
@@ -933,13 +993,18 @@ class: middle, inverse
 # To Dos
 
 ### Reading
-- LSWR Chapter 15.1 and 15.2: bivariate regression
+- LSWR Chapter 15.1 and 15.2: bivariate regression by **Nov. 21**
 
 ### Assignments
-- Assignment #4 Due November 29 at 11:59PM
-- Quiz #5 on November 22/23 (due at 5pm)
+- Assignment #4 due **November 27** at 11:59PM
+- Quiz #5 on **November 21** (due Nov. 22 at 5pm)
 
-### No class on 11/17!
+### No lab on 11/22 or 11/23! No class on 11/23!
+
+---
+class: middle, inverse
+
+# Quiz
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
