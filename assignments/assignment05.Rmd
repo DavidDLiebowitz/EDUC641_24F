@@ -13,11 +13,11 @@ opts_chunk$set(include = FALSE)
 
 ### General Guidelines
 
-The purpose of this assignment is to practice the concepts and vocabulary we have been modeling in class and implement some of the techniques we have learned. You may work on your own or collaborate with a partner. Please make sure that you engage in a a full, fair and mutually-agreeable collaboration if you do choose to collaborate. If you do collaborate, you should plan, execute and write-up your analyses together, not simply divide the work. Please make sure to indicate clearly when your work is joint and any other individual or resource (outside of class material) you consulted in your responses.
+The purpose of this assignment is to practice the concepts and vocabulary we have been modeling in class and implement some of the techniques we have learned. You may work on your own or collaborate with one partner. Please make sure that you engage in a a full, fair and mutually-agreeable collaboration if you do choose to collaborate. If you do collaborate, you should plan, execute and write-up your analyses together, not simply divide the work. Please make sure to indicate clearly when your work is joint and any other individual or resource (outside of class material) you consulted in your responses.
 
 ### Submission Requirements
 
-Please upload below two files on Canvas by **December 7th at 11:59pm**:  
+Please upload below two files on Canvas by **December 6th at 11:59pm**:  
 
 1. An .html, .doc(x) or .pdf file that includes your typed responses (in your own words and not identical to anybody else's except your partner), tables, and/or figures to the problems
 2. The .Rmd or .R file that you used to render the tables and figures in the above html/pdf. 
@@ -34,7 +34,9 @@ Please upload below two files on Canvas by **December 7th at 11:59pm**:
 
 The dataset we'll be using in this assignment is drawn from the third and fourth waves of National Longitudinal Study of Adolescent to Adult Health ([Add Health](https://addhealth.cpc.unc.edu/data/#public-use)) public-use data. Add Health is a longitudinal study of a nationally representative sample of over 20,000 adolescents (the public-use data sample is much smaller in size) who were in grades 7-12 during the 1994-95 school year. It contains rich demographic, social, familial, socioeconomic, behavioral, psychosocial, cognitive, and health information. When the third (2001) and fourth (2008) waves took place, the participants were aged from 18-26 and from 24-32, respectively.
 
-In a recent working paper, [Kraft et al. (2021)](https://www.edworkingpapers.com/ai21-441) examined an understudied area: the pathway through which informal mentoring relationships between students and school personnel influences children's skill development and future life opportunities. In particular, they found that students with a school-based mentor go on to receive high-school grade-point averages that are 0.24 points higher than peers without a mentor, they complete a full year of additional education, and they experience between \$60,600 and \$92,400 more in lifetime earnings. 
+In a recent paper, [Kraft et al. (2023)](https://doi.org/10.1016/j.econedurev.2023.102411) examined an understudied area: the pathway through which informal mentoring relationships between students and school personnel influences children's skill development and future life opportunities. In particular, they found that students with a school-based mentor go on to receive high-school grade-point averages that are around 0.25 points higher than peers without a mentor (roughly the difference between a C+ and a B-), and they complete almost a full year of additional education.
+
+*If you have trouble accessing the full article at the above link, try this [direct download](./assignments/Kraft et al 2023.pdf).*
 
 
 ### Research Questions
