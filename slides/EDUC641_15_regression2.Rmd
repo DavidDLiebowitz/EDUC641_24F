@@ -794,8 +794,9 @@ class: middle, inverse
 - LSWR Chapter 15.1 and 15.2: bivariate regression by **Nov. 21**
 
 ### Assignments
-- Assignment #4 due **November 27** at 11:59PM
 - Quiz #5 on **November 21** (due Nov. 22 at 5pm)
+- Assignment #4 due **November 27** at 11:59PM
+- Final assignment due **December 6** at 11:59PM
 
 ### No lab on 11/22 or 11/23! No class on 11/23!
 
