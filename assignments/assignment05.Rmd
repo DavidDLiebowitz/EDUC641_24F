@@ -36,7 +36,7 @@ The dataset we'll be using in this assignment is drawn from the third and fourth
 
 In a recent paper, [Kraft et al. (2023)](https://doi.org/10.1016/j.econedurev.2023.102411) examined an understudied area: the pathway through which informal mentoring relationships between students and school personnel influences children's skill development and future life opportunities. In particular, they found that students with a school-based mentor go on to receive high-school grade-point averages that are around 0.25 points higher than peers without a mentor (roughly the difference between a C+ and a B-), and they complete almost a full year of additional education.
 
-*If you have trouble accessing the full article at the above link, try this [direct download](./assignments/Kraft et al 2023.pdf).*
+*If you have trouble accessing the full article at the above link, try this [direct download](./Kraft et al 2023.pdf).*
 
 
 ### Research Questions
