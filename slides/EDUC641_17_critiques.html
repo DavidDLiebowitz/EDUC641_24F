@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="" xml:lang="">
   <head>
-    <title>Null-Hypothesis Significance Testing (NHST) critiques</title>
+    <title>NHST critiques</title>
     <meta charset="utf-8" />
     <meta name="author" content="David D. Liebowitz" />
-    <script src="EDUC641_17_critiques_files/header-attrs-2.14.3/header-attrs.js"></script>
+    <script src="EDUC641_17_critiques_files/header-attrs-2.20/header-attrs.js"></script>
     <link href="EDUC641_17_critiques_files/remark-css-0.0.1/default.css" rel="stylesheet" />
     <link href="EDUC641_17_critiques_files/remark-css-0.0.1/uo.css" rel="stylesheet" />
     <link href="EDUC641_17_critiques_files/remark-css-0.0.1/ki-fonts.css" rel="stylesheet" />
@@ -16,7 +16,7 @@
 class: center, middle, inverse, title-slide
 
 .title[
-# Null-Hypothesis Significance Testing (NHST) critiques
+# NHST critiques
 ]
 .subtitle[
 ## EDUC 641: Unit 5
@@ -33,7 +33,7 @@ class: center, middle, inverse, title-slide
 
 # Goals of the unit
 
-- Articulate modern critiques of null-hypothesis significance testing framework
+- Articulate modern quantitatively-based critiques of the null-hypothesis significance testing (NHST) framework
 - Describe strategies to improve replicability and generalizability of quantitative research
 
 ---
@@ -56,7 +56,7 @@ class: center, middle, inverse, title-slide
 ### Non-representative samples
 - Even in WEIRD countries, many samples are not representative of the national population
  + University students (at highly research-active universities)
- + Non-Hispanic, White and male patients more likely to be included in clinical trials
+ + Non-Hispanic, White &amp; male patients included in clinical trials more
  + Convenience sampling (especially in intervention and survey research)
  + Non-stratified samples prevents conclusion being drawn about low-*n* groups
 - Small samples are particularly at risk for returning idiosyncratic estimates
@@ -81,9 +81,8 @@ An explosion of [academic](https://www.tandfonline.com/toc/utas20/73/sup1?nav=to
 ---
 # Failure to reproduce
 
-Replication work often seen as un-original; weak incentives to conduct replications.
-
-Many replications fail:
+1. Replication work often seen as un-original; weak incentives to conduct replications. 
+2. Many replications fail:
 .small[
 - New contexts
 - Incomplete communication of treatment and conditions
@@ -99,7 +98,7 @@ Many replications fail:
 .footnote[Anderson, S. &amp; Maxwell, S. (2016). There's more than one way to conduct a replication study: Beyond statistical significance. *Psychological Methods, 21*(1), 1-12.]
 
 ---
-# Problems with significance
+# Problems with "significance"
 
 Some problems with the binary decision-making process of NHST include:
 - Statistical significance as a condition for publication and a goal for researchers
@@ -143,7 +142,7 @@ If you set the goal at 0.05 (or 0.01 or 0.001), that's what you'll get:
 .footnote[Brodeur, A., Cook, N. &amp; Heyes, A. (2020). Methods matter: p-Hacking and publication bias in causal analysis in economics. *American Economic Review, 110*(11), 3634-3660.]
 
 ---
-# What should that distribution be?
+## What should that distribution be?
 
 .pull-left[
 &lt;img src="z_stats.png" width="600" height="80%" style="display: block; margin: auto;" /&gt;
@@ -159,14 +158,14 @@ If you set the goal at 0.05 (or 0.01 or 0.001), that's what you'll get:
 
 
 ---
-# Open Science alone won't save us
+## Open Science alone won't save us
 
 &lt;img src="pre_reg.png" width="823" style="display: block; margin: auto;" /&gt;
 
-.footnote[Brodeur, A., Cook, N. Hartley, J. Heyes, A. (2022). Do pre-registration and pre-analysis plans reduce p-hacking and publication bias?]
+.footnote[Brodeur, A., Cook, N. Hartley, J. Heyes, A. (2022). Do pre-registration and pre-analysis plans reduce *p*-hacking and publication bias?]
 
 ---
-## Dangers of multiple hypothesis testing
+## Multiple hypothesis testing dangers
 
 If your goal is to find a "statistically significant" result, you will detect such a relationship 1 out of 20 times (on average).
 
@@ -192,14 +191,14 @@ If you conduct enough tests, you'll detect a relationship eventually.
 Instead of using `\(\alpha=0.05\)` for each individual test, use `\(\alpha=0.05\)` for the **family of tests** when we examine multiple contrasts to test a single hypothesis. 
 
 .pull-left[
-## Bonferroni method
+.red-pink[**Bonferroni method**]
 Take a given `\(\alpha\)`-threshold and "split it" across the entire family of tests. Assuming `\(\alpha = 0.05\)`:
 - For 2 tests, conduct each at 0.025 level;
 - For 3 tests, conduct each at 0.0167 level; etc. ...
 
 Use this new threshold to identify the critical `\(t\)`-statistic given the number of degrees of freedom.
 
-.red-pink[*Other approaches exist! Bonferroni is an extremely conservative one--beware!*]
+.red[*Other approaches exist! Bonferroni is an extremely conservative one--beware!*]
 ]
 
 .pull-right[
@@ -231,7 +230,7 @@ Failure to detect an effect when there is one there is just as important (but mo
 Type II error depends on the magnitude of the effect, the number of observations, the total variation in your variables, and the amount of the variation in the outcome you can explain. 
 
 ---
-# Other data and analysis challenges
+## Other data/analysis challenges
 
 Small, subjective researcher choices *can* have meaningful effects on results of study. 
 
@@ -247,13 +246,21 @@ Take the "Many Analysts"&lt;sup&gt;1&lt;/sup&gt; project in which 29 teams used 
 .purple[Critically, these were all studies done with the **exact same data** and the **exact same research question**!]
 
 ---
-# Other data and analysis challenges
+## Other data/analysis challenges
 
 Never **EVER** use Excel to read in your data
 &lt;img src="gene_name.png" width="440" style="display: block; margin: auto;" /&gt;
 
 --
 More importantly, without being able to observe researcher decisions in their code, we can't assess the reasonableness of choices and the potential for replication. .red-pink[**We need to learn how to code and not just point-and-click for Open Science.**]
+
+--
+Developing a consistent, reproducible [data management workflow](./data_management.html) is key
+
+---
+class: middle, inverse
+
+# Bayesian probability and inference
 
 ---
 # The convoluted logic of NHST
@@ -263,17 +270,19 @@ Many of the preceding issues result from the fundamentally convoluted rationale 
 Assume that we find that average national life expectancy is significantly greater in high-income countries compared to low-income countries. With an `\(\alpha\)` of .05, the (hypothetical) statistical test returns *p* = .03, meaning we can reject the null hypothesis.
 
 .blue[**Which of the following statements is correct, given *p* = .03**]:
+.small[
 * **A.** There is a 3% probability that high-income countries do not have a higher average life expectancy (the null hypothesis).
 * **B.** There is a 3% probability that the results are due to sampling idiosyncrasy, rather than a true relationship in the population.
 * **C.** A statistically significant difference means higher income-levels yield higher life expectancies.
 * **D.** The observed data would occur 3% of the time if the null hypothesis were true.
 * **E.** Previous research found that in 2005, income-level was not related to average life expectancy (*p* = .17). Therefore, income-level is more stronyl related to life expectancy in 2015 than in 2005.
 * **F.** Another research group finds a statistically significant difference between countries with socialized medicine compared to those without (*p* = .001). Their smaller *p* value means that socialized medicine is more effective at increasing life expectancy than income level.
+]
 
 ---
 # The convoluted logic of NHST
 
-.red-pink[**Only D on the previous slide is correct, yet all of these are commonly expressed in the scientific literature!**]
+.purple[**Only D on the previous slide is correct, yet all of these are commonly expressed in the scientific literature!**]
 
 In frequentist statistics, we establish an **objective decision rule**: if our observed data has less than a 5 percent chance of occurring (or less than 1% or less than 0.1% or less than 10%) due to sampling idiosyncrasy, we will conclude that the observed relationship in the sample represents a true relationship in the population. 
 
@@ -287,10 +296,7 @@ In frequentist statistics, we establish an **objective decision rule**: if our o
 --
 - Many of these concerns relate to different ways of thinking about probability...
 
----
-class: middle, inverse
 
-# Bayesian probability and inference
 
 ---
 # (Very) brief intro to probability
@@ -432,9 +438,9 @@ bayes &lt;- stan_glm(life_expectancy ~ schooling, data = who,
 #&gt; Chain 1: Iteration: 1800 / 2000 [ 90%]  (Sampling)
 #&gt; Chain 1: Iteration: 2000 / 2000 [100%]  (Sampling)
 #&gt; Chain 1: 
-#&gt; Chain 1:  Elapsed Time: 0.047 seconds (Warm-up)
-#&gt; Chain 1:                0.047 seconds (Sampling)
-#&gt; Chain 1:                0.094 seconds (Total)
+#&gt; Chain 1:  Elapsed Time: 0.055 seconds (Warm-up)
+#&gt; Chain 1:                0.055 seconds (Sampling)
+#&gt; Chain 1:                0.11 seconds (Total)
 #&gt; Chain 1: 
 #&gt; 
 #&gt; SAMPLING FOR MODEL 'continuous' NOW (CHAIN 2).
@@ -457,9 +463,9 @@ bayes &lt;- stan_glm(life_expectancy ~ schooling, data = who,
 #&gt; Chain 2: Iteration: 1800 / 2000 [ 90%]  (Sampling)
 #&gt; Chain 2: Iteration: 2000 / 2000 [100%]  (Sampling)
 #&gt; Chain 2: 
-#&gt; Chain 2:  Elapsed Time: 0.028 seconds (Warm-up)
-#&gt; Chain 2:                0.051 seconds (Sampling)
-#&gt; Chain 2:                0.079 seconds (Total)
+#&gt; Chain 2:  Elapsed Time: 0.04 seconds (Warm-up)
+#&gt; Chain 2:                0.05 seconds (Sampling)
+#&gt; Chain 2:                0.09 seconds (Total)
 #&gt; Chain 2: 
 #&gt; 
 #&gt; SAMPLING FOR MODEL 'continuous' NOW (CHAIN 3).
@@ -482,9 +488,9 @@ bayes &lt;- stan_glm(life_expectancy ~ schooling, data = who,
 #&gt; Chain 3: Iteration: 1800 / 2000 [ 90%]  (Sampling)
 #&gt; Chain 3: Iteration: 2000 / 2000 [100%]  (Sampling)
 #&gt; Chain 3: 
-#&gt; Chain 3:  Elapsed Time: 0.044 seconds (Warm-up)
-#&gt; Chain 3:                0.045 seconds (Sampling)
-#&gt; Chain 3:                0.089 seconds (Total)
+#&gt; Chain 3:  Elapsed Time: 0.045 seconds (Warm-up)
+#&gt; Chain 3:                0.04 seconds (Sampling)
+#&gt; Chain 3:                0.085 seconds (Total)
 #&gt; Chain 3: 
 #&gt; 
 #&gt; SAMPLING FOR MODEL 'continuous' NOW (CHAIN 4).
@@ -508,8 +514,8 @@ bayes &lt;- stan_glm(life_expectancy ~ schooling, data = who,
 #&gt; Chain 4: Iteration: 2000 / 2000 [100%]  (Sampling)
 #&gt; Chain 4: 
 #&gt; Chain 4:  Elapsed Time: 0.04 seconds (Warm-up)
-#&gt; Chain 4:                0.051 seconds (Sampling)
-#&gt; Chain 4:                0.091 seconds (Total)
+#&gt; Chain 4:                0.05 seconds (Sampling)
+#&gt; Chain 4:                0.09 seconds (Total)
 #&gt; Chain 4:
 ```
 ---
@@ -588,10 +594,10 @@ class: middle, inverse
 # To Dos
 
 ### Final project 
-Due Dec. 7, 11:59pm
+Due Dec. 6, 11:59pm
 
 ### Re-submission
-Assignments &lt;13.5, resubmissions due on Canvas 12/2 at 5pm
+Assignments &lt;13, resubmissions due on Canvas 12/1 at 5pm
 
 ### End-of-term SES
 

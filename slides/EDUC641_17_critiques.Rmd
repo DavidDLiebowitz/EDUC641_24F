@@ -1,5 +1,5 @@
 ---
-title: "Null-Hypothesis Significance Testing (NHST) critiques"
+title: "NHST critiques"
 subtitle: "EDUC 641: Unit 5"
 author: "David D. Liebowitz"
 #date: "`r format(Sys.time(), '%d %B %Y')`"
@@ -66,7 +66,7 @@ options(knitr.table.format = "html")
 
 # Goals of the unit
 
-- Articulate modern critiques of null-hypothesis significance testing framework
+- Articulate modern quantitatively-based critiques of the null-hypothesis significance testing (NHST) framework
 - Describe strategies to improve replicability and generalizability of quantitative research
 
 ---
@@ -89,7 +89,7 @@ options(knitr.table.format = "html")
 ### Non-representative samples
 - Even in WEIRD countries, many samples are not representative of the national population
  + University students (at highly research-active universities)
- + Non-Hispanic, White and male patients more likely to be included in clinical trials
+ + Non-Hispanic, White & male patients included in clinical trials more
  + Convenience sampling (especially in intervention and survey research)
  + Non-stratified samples prevents conclusion being drawn about low-*n* groups
 - Small samples are particularly at risk for returning idiosyncratic estimates
@@ -114,9 +114,8 @@ An explosion of [academic](https://www.tandfonline.com/toc/utas20/73/sup1?nav=to
 ---
 # Failure to reproduce
 
-Replication work often seen as un-original; weak incentives to conduct replications.
-
-Many replications fail:
+1. Replication work often seen as un-original; weak incentives to conduct replications. 
+2. Many replications fail:
 .small[
 - New contexts
 - Incomplete communication of treatment and conditions
@@ -134,7 +133,7 @@ include_graphics("anderson2016.png")
 .footnote[Anderson, S. & Maxwell, S. (2016). There's more than one way to conduct a replication study: Beyond statistical significance. *Psychological Methods, 21*(1), 1-12.]
 
 ---
-# Problems with significance
+# Problems with "significance"
 
 Some problems with the binary decision-making process of NHST include:
 - Statistical significance as a condition for publication and a goal for researchers
@@ -180,7 +179,7 @@ include_graphics("z_stats.png")
 .footnote[Brodeur, A., Cook, N. & Heyes, A. (2020). Methods matter: p-Hacking and publication bias in causal analysis in economics. *American Economic Review, 110*(11), 3634-3660.]
 
 ---
-# What should that distribution be?
+## What should that distribution be?
 
 .pull-left[
 ```{r, echo=F, out.height="80%"}
@@ -224,16 +223,16 @@ $H_0$ false, 10,000 simulations, $N=30, \mu=0.2, \sigma=1$
 
 
 ---
-# Open Science alone won't save us
+## Open Science alone won't save us
 
 ```{r, echo=F}
 include_graphics("pre_reg.png")
 ```
 
-.footnote[Brodeur, A., Cook, N. Hartley, J. Heyes, A. (2022). Do pre-registration and pre-analysis plans reduce p-hacking and publication bias?]
+.footnote[Brodeur, A., Cook, N. Hartley, J. Heyes, A. (2022). Do pre-registration and pre-analysis plans reduce *p*-hacking and publication bias?]
 
 ---
-## Dangers of multiple hypothesis testing
+## Multiple hypothesis testing dangers
 
 If your goal is to find a "statistically significant" result, you will detect such a relationship 1 out of 20 times (on average).
 
@@ -259,14 +258,14 @@ If you conduct enough tests, you'll detect a relationship eventually.
 Instead of using $\alpha=0.05$ for each individual test, use $\alpha=0.05$ for the **family of tests** when we examine multiple contrasts to test a single hypothesis. 
 
 .pull-left[
-## Bonferroni method
+.red-pink[**Bonferroni method**]
 Take a given $\alpha$-threshold and "split it" across the entire family of tests. Assuming $\alpha = 0.05$:
 - For 2 tests, conduct each at 0.025 level;
 - For 3 tests, conduct each at 0.0167 level; etc. ...
 
 Use this new threshold to identify the critical $t$-statistic given the number of degrees of freedom.
 
-.red-pink[*Other approaches exist! Bonferroni is an extremely conservative one--beware!*]
+.red[*Other approaches exist! Bonferroni is an extremely conservative one--beware!*]
 ]
 
 .pull-right[
@@ -298,7 +297,7 @@ Failure to detect an effect when there is one there is just as important (but mo
 Type II error depends on the magnitude of the effect, the number of observations, the total variation in your variables, and the amount of the variation in the outcome you can explain. 
 
 ---
-# Other data and analysis challenges
+## Other data/analysis challenges
 
 Small, subjective researcher choices *can* have meaningful effects on results of study. 
 
@@ -314,7 +313,7 @@ Take the "Many Analysts"<sup>1</sup> project in which 29 teams used the same dat
 .purple[Critically, these were all studies done with the **exact same data** and the **exact same research question**!]
 
 ---
-# Other data and analysis challenges
+## Other data/analysis challenges
 
 Never **EVER** use Excel to read in your data
 ```{r, echo=F}
@@ -324,6 +323,14 @@ include_graphics("gene_name.png")
 --
 More importantly, without being able to observe researcher decisions in their code, we can't assess the reasonableness of choices and the potential for replication. .red-pink[**We need to learn how to code and not just point-and-click for Open Science.**]
 
+--
+Developing a consistent, reproducible [data management workflow](./data_management.html) is key
+
+---
+class: middle, inverse
+
+# Bayesian probability and inference
+
 ---
 # The convoluted logic of NHST
 
@@ -332,17 +339,19 @@ Many of the preceding issues result from the fundamentally convoluted rationale 
 Assume that we find that average national life expectancy is significantly greater in high-income countries compared to low-income countries. With an $\alpha$ of .05, the (hypothetical) statistical test returns *p* = .03, meaning we can reject the null hypothesis.
 
 .blue[**Which of the following statements is correct, given *p* = .03**]:
+.small[
 * **A.** There is a 3% probability that high-income countries do not have a higher average life expectancy (the null hypothesis).
 * **B.** There is a 3% probability that the results are due to sampling idiosyncrasy, rather than a true relationship in the population.
 * **C.** A statistically significant difference means higher income-levels yield higher life expectancies.
 * **D.** The observed data would occur 3% of the time if the null hypothesis were true.
 * **E.** Previous research found that in 2005, income-level was not related to average life expectancy (*p* = .17). Therefore, income-level is more stronyl related to life expectancy in 2015 than in 2005.
 * **F.** Another research group finds a statistically significant difference between countries with socialized medicine compared to those without (*p* = .001). Their smaller *p* value means that socialized medicine is more effective at increasing life expectancy than income level.
+]
 
 ---
 # The convoluted logic of NHST
 
-.red-pink[**Only D on the previous slide is correct, yet all of these are commonly expressed in the scientific literature!**]
+.purple[**Only D on the previous slide is correct, yet all of these are commonly expressed in the scientific literature!**]
 
 In frequentist statistics, we establish an **objective decision rule**: if our observed data has less than a 5 percent chance of occurring (or less than 1% or less than 0.1% or less than 10%) due to sampling idiosyncrasy, we will conclude that the observed relationship in the sample represents a true relationship in the population. 
 
@@ -356,10 +365,7 @@ In frequentist statistics, we establish an **objective decision rule**: if our o
 --
 - Many of these concerns relate to different ways of thinking about probability...
 
----
-class: middle, inverse
 
-# Bayesian probability and inference
 
 ---
 # (Very) brief intro to probability
@@ -588,10 +594,10 @@ class: middle, inverse
 # To Dos
 
 ### Final project 
-Due Dec. 7, 11:59pm
+Due Dec. 6, 11:59pm
 
 ### Re-submission
-Assignments <13.5, resubmissions due on Canvas 12/2 at 5pm
+Assignments <13, resubmissions due on Canvas 12/1 at 5pm
 
 ### End-of-term SES
 
