@@ -324,7 +324,7 @@ include_graphics("gene_name.png")
 More importantly, without being able to observe researcher decisions in their code, we can't assess the reasonableness of choices and the potential for replication. .red-pink[**We need to learn how to code and not just point-and-click for Open Science.**]
 
 --
-Developing a consistent, reproducible [data management workflow](./data_management.html) is key
+Developing a consistent, reproducible [data management workflow](../data_management.html) is key
 
 ---
 class: middle, inverse
