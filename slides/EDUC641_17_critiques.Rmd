@@ -456,6 +456,7 @@ How believable are the following findings?
 - People who wear glasses are more likely to be empathetic $(p = 0.023)$
 - Medical doctors have fewer close relationships than those in other professions $(p = 0.007)$
 - People who engage in [power posing](https://www.nytimes.com/2017/10/18/magazine/when-the-revolution-came-for-amy-cuddy.html) experience increased testosterone $(p = 0.045)$ (*a real paper*)
+- Asking insurance customers to sign an [honesty pledge](https://www.nytimes.com/2023/06/24/business/economy/francesca-gino-harvard-dishonesty.html) at the beginning (compared to the end) of a policy review form led to more truthful reporting of driving habits $(p<0.001)$ (*a real, very contested paper*)
 
 
 --
