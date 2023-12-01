@@ -275,7 +275,7 @@ Assume that we find that average national life expectancy is significantly great
 * **B.** There is a 3% probability that the results are due to sampling idiosyncrasy, rather than a true relationship in the population.
 * **C.** A statistically significant difference means higher income-levels yield higher life expectancies.
 * **D.** The observed data would occur 3% of the time if the null hypothesis were true.
-* **E.** Previous research found that in 2005, income-level was not related to average life expectancy (*p* = .17). Therefore, income-level is more stronyl related to life expectancy in 2015 than in 2005.
+* **E.** Previous research found that in 2005, income-level was not related to average life expectancy (*p* = .17). Therefore, income-level is more strongly related to life expectancy in 2015 than in 2005.
 * **F.** Another research group finds a statistically significant difference between countries with socialized medicine compared to those without (*p* = .001). Their smaller *p* value means that socialized medicine is more effective at increasing life expectancy than income level.
 ]
 
@@ -440,8 +440,8 @@ bayes &lt;- stan_glm(life_expectancy ~ schooling, data = who,
 #&gt; Chain 1: Iteration: 2000 / 2000 [100%]  (Sampling)
 #&gt; Chain 1: 
 #&gt; Chain 1:  Elapsed Time: 0.061 seconds (Warm-up)
-#&gt; Chain 1:                0.057 seconds (Sampling)
-#&gt; Chain 1:                0.118 seconds (Total)
+#&gt; Chain 1:                0.049 seconds (Sampling)
+#&gt; Chain 1:                0.11 seconds (Total)
 #&gt; Chain 1: 
 #&gt; 
 #&gt; SAMPLING FOR MODEL 'continuous' NOW (CHAIN 2).
@@ -465,8 +465,8 @@ bayes &lt;- stan_glm(life_expectancy ~ schooling, data = who,
 #&gt; Chain 2: Iteration: 2000 / 2000 [100%]  (Sampling)
 #&gt; Chain 2: 
 #&gt; Chain 2:  Elapsed Time: 0.039 seconds (Warm-up)
-#&gt; Chain 2:                0.046 seconds (Sampling)
-#&gt; Chain 2:                0.085 seconds (Total)
+#&gt; Chain 2:                0.037 seconds (Sampling)
+#&gt; Chain 2:                0.076 seconds (Total)
 #&gt; Chain 2: 
 #&gt; 
 #&gt; SAMPLING FOR MODEL 'continuous' NOW (CHAIN 3).
@@ -489,9 +489,9 @@ bayes &lt;- stan_glm(life_expectancy ~ schooling, data = who,
 #&gt; Chain 3: Iteration: 1800 / 2000 [ 90%]  (Sampling)
 #&gt; Chain 3: Iteration: 2000 / 2000 [100%]  (Sampling)
 #&gt; Chain 3: 
-#&gt; Chain 3:  Elapsed Time: 0.042 seconds (Warm-up)
-#&gt; Chain 3:                0.048 seconds (Sampling)
-#&gt; Chain 3:                0.09 seconds (Total)
+#&gt; Chain 3:  Elapsed Time: 0.049 seconds (Warm-up)
+#&gt; Chain 3:                0.05 seconds (Sampling)
+#&gt; Chain 3:                0.099 seconds (Total)
 #&gt; Chain 3: 
 #&gt; 
 #&gt; SAMPLING FOR MODEL 'continuous' NOW (CHAIN 4).
@@ -514,9 +514,9 @@ bayes &lt;- stan_glm(life_expectancy ~ schooling, data = who,
 #&gt; Chain 4: Iteration: 1800 / 2000 [ 90%]  (Sampling)
 #&gt; Chain 4: Iteration: 2000 / 2000 [100%]  (Sampling)
 #&gt; Chain 4: 
-#&gt; Chain 4:  Elapsed Time: 0.042 seconds (Warm-up)
-#&gt; Chain 4:                0.05 seconds (Sampling)
-#&gt; Chain 4:                0.092 seconds (Total)
+#&gt; Chain 4:  Elapsed Time: 0.03 seconds (Warm-up)
+#&gt; Chain 4:                0.063 seconds (Sampling)
+#&gt; Chain 4:                0.093 seconds (Total)
 #&gt; Chain 4:
 ```
 ---
@@ -549,11 +549,14 @@ print(bayes)
 # Why not Bayes?
 
 .large[
-1. Selecting a prior can be **subjective**
-2. Difficulty in finding informative prior
-3. Disputes over value of uninformative priors
-4. Similarity in results across approaches
-5. Stasis
+1. If you're going to translate research into practice or policy, you actually do need to make a binary decision
+    + Yes/No we should do this thing; this clinical practice is (is not) better than this one
+    + Once you port the Bayesian framework over into this binary decision world, many of the same NHST concerns re-surface
+2. Selecting a prior can be **subjective**
+3. Difficulty in finding informative prior
+4. Disputes over value of uninformative priors
+5. Similarity in results across approaches
+6. Stasis
 ]
 
 .large[.red[**Much more complexity to be explored in another course**]]
