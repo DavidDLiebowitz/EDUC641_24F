@@ -40,8 +40,9 @@ Objectives of this assignment:
 
 Deadline: October 14, 11:59pm
 
-<!-- Download: [html file](./assignments/assignment01.html) | [cat.csv dataset](./data/cat.csv)
+Download: [html file](./assignments/assignment01.html) | [cat.csv dataset](./data/cat.csv)
 
+<!--
 Key: 
  [doc file](./assignments/keys/assignment01_key.docx); [R script](./assignments/keys/assignment01_key.R) -->
 
