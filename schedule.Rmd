@@ -34,7 +34,7 @@ Readings:
 
 Lectures:
 
-- Class 1 (9/26) slides: [html](./slides/EDUC641_1_intro.html) | [pdf](./slides/EDUC641_1_intro.pdf)
+- Class 1 (10/2) slides: [html](./slides/EDUC641_1_intro.html) | [pdf](./slides/EDUC641_1_intro.pdf)
 <!-- - Class 2 (9/28) slides: [html](./slides/EDUC641_2_measures.html) | [pdf](./slides/EDUC641_2_measures.pdf) -->
 - R Tutorial slides: [html](./slides/tutorial.html)
 
