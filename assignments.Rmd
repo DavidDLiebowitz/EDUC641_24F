@@ -38,12 +38,12 @@ Objectives of this assignment:
 
  * Create visualizations of categorical data
 
-Deadline: October 9, 11:59pm
+Deadline: October 14, 11:59pm
 
-Download: [html file](./assignments/assignment01.html) | [cat.csv dataset](./data/cat.csv)
+<!-- Download: [html file](./assignments/assignment01.html) | [cat.csv dataset](./data/cat.csv)
 
 Key: 
-<!-- [doc file](./assignments/keys/assignment01_key.docx); [R script](./assignments/keys/assignment01_key.R) -->
+ [doc file](./assignments/keys/assignment01_key.docx); [R script](./assignments/keys/assignment01_key.R) -->
 
 ## 3.2. Assignment 2 
 
@@ -61,12 +61,12 @@ Objectives of this assignment:
  
  * Interpret and report the results of a contingency-table analysis and a statistical inference from a chi-squared statistic
 
-Deadline: October 20, 11:59pm
+Deadline: October 25, 11:59pm
 
-Download: [html file](./assignments/assignment02.html) | [cat.csv dataset](./data/cat.csv)
+<!-- Download: [html file](./assignments/assignment02.html) | [cat.csv dataset](./data/cat.csv)
 
 Key: 
-<!-- [doc file](./assignments/keys/assignment02_key.docx); [R script](./assignments/keys/assignment02_key.R) -->
+ [doc file](./assignments/keys/assignment02_key.docx); [R script](./assignments/keys/assignment02_key.R) -->
 
 ## 3.3. Assignment 3 
 
@@ -80,12 +80,12 @@ Objectives of this assignment:
  
  * Conduct and interpret a one-sample $t$-test
 
-Deadline: November 9, 11:59pm
+Deadline: November 7, 11:59pm
 
-Download: [html file](./assignments/assignment03.html) | [cont.csv dataset](./data/cont.csv)
+<!-- Download: [html file](./assignments/assignment03.html) | [cont.csv dataset](./data/cont.csv)
 
 Key: 
-<!-- [doc file](./assignments/keys/assignment03_key.docx); [R script](./assignments/keys/assignment03_key.R) -->
+ [doc file](./assignments/keys/assignment03_key.docx); [R script](./assignments/keys/assignment03_key.R) -->
 
 ## 3.4. Assignment 4 
 
@@ -99,26 +99,27 @@ Objectives of this assignment:
 
  * Test (some) assumptions of bivariate regression estimation
 
-Deadline: November 27, 11:59pm
+Deadline: December 2, 11:59pm
 
-Download: [html file](./assignments/assignment04.html) | [cont.csv dataset](./data/cont.csv)
+<!-- Download: [html file](./assignments/assignment04.html) | [cont.csv dataset](./data/cont.csv)
 
 Key: 
-<!-- [doc file](./assignments/keys/assignment04_key.docx); [R script](./assignments/keys/assignment04_key.R) -->
+ [doc file](./assignments/keys/assignment04_key.docx); [R script](./assignments/keys/assignment04_key.R) -->
 
 
 ## 3.5. Final
 
 Final assignment 
 
-Deadline: December 6, 11:59pm
+Deadline: December 11, 4:59pm
 
+<!-- 
 Download: 
 [html file](./assignments/assignment05.html) | [ah01.csv dataset](./data/ah01.csv); [ah02.csv dataset](./data/ah02.csv) 
 
 Key:
 
-
+-->>
 
 
 
