@@ -29,7 +29,7 @@ Objectives:
 
 Readings: 
 
-- Complete **prior to Sept. 28** class: [LSWR Chapters 2 and 3](https://learningstatisticswithr.com/lsr-0.6.pdf) and [Light, Singer & Willet, 1990, pp. 1-40](./assignments/Light Singer Willett 1990.pdf)
+- Complete **prior to Oct. 3** class: [LSWR Chapters 2 and 3](https://learningstatisticswithr.com/lsr-0.6.pdf) and [Light, Singer & Willet, 1990, pp. 1-40](./assignments/Light Singer Willett 1990.pdf)
 
 
 Lectures:
@@ -58,18 +58,19 @@ Objectives:
 
 Readings: 
 
-- Complete **prior to Oct. 5** class: [LSWR Chapter 6](https://learningstatisticswithr.com/lsr-0.6.pdf) and [Evans 2020](https://www.newstatesman.com/uncategorized/2020/07/ra-fisher-and-science-hatred); alternate source for [Evans](./assignments/evans_2020.pdf)
+- Complete **prior to Oct. 10** class: [LSWR Chapter 6](https://learningstatisticswithr.com/lsr-0.6.pdf) and [Evans 2020](https://www.newstatesman.com/uncategorized/2020/07/ra-fisher-and-science-hatred); alternate source for [Evans](./assignments/evans_2020.pdf)
 
 Lectures: 
-
+<!--
 - Class 3 (10/3) slides: [html](./slides/EDUC641_3_categdescr.html) | [pdf](./slides/EDUC641_3_categdescr.pdf)
 - Data: [deathpenalty.csv](./data/deathpenalty.csv) | [codebook](./data/deathpenalty_codebook.pdf)
 - R code: [R script](./slides/EDUC641_3_code.R)
 - Lab activities: [doc](./labs/Lab2.docx)
+-->
 
 Assignment 1: 
 
-- Due: October 9, 11:59pm
+- Due: October 14, 11:59pm
 - [html file](./assignments/assignment01.html)
 - [cat.csv dataset](./data/cat.csv)
 
@@ -88,22 +89,27 @@ Objectives:
 
 Readings: 
 
-- Complete **prior to Oct. 12** class: [LSWR Chapters 11 and 12](https://learningstatisticswithr.com/lsr-0.6.pdf) and [Clayton 2020](https://nautil.us/how-eugenics-shaped-statistics-238014)
+- Complete **prior to Oct. 17** class: [LSWR Chapters 11 and 12](https://learningstatisticswithr.com/lsr-0.6.pdf) and [Clayton 2020](https://nautil.us/how-eugenics-shaped-statistics-238014)
   + See lecture notes on what to focus on (and not) in LSWR
 
 Lectures:
 
+<!--
 - Classes 4-5 (10/5 and 10/10) slides: [html](./slides/EDUC641_4_categrel.html) | [pdf](./slides/EDUC641_4_categrel.pdf)
 - Class 6 (10/12) slides: [html](./slides/EDUC641_6_history.html) | [pdf](./slides/EDUC641_6_history.pdf)
 - Data: [deathpenalty.csv](./data/deathpenalty.csv) | [codebook](./data/deathpenalty_codebook.pdf) 
 - R code: [R script](./slides/EDUC641_4_code.R)
 - Lab activities: [Week 3 Lab](./labs/Lab3.docx) | [Week 4 Lab](./labs/Lab4.docx)
- 
+-->
+
 Assignment 2: 
 
-- Due: October 20, 11:59pm
+- Due: October 25, 11:59pm
+
+<!--
 - [html file](./assignments/assignment02.html)
 - [cat.csv dataset](./data/cat.csv)
+-->
 
 ## Unit 3
 
@@ -126,12 +132,13 @@ Objectives:
 
 Readings: 
 
-- Complete **prior to Oct. 26** class: [LSWR Chapter 5](https://learningstatisticswithr.com/lsr-0.6.pdf)
+- Complete **prior to Oct. 31** class: [LSWR Chapter 5](https://learningstatisticswithr.com/lsr-0.6.pdf)
 - Complete **prior to Nov. 14** class: [LSWR Chapter 10](https://learningstatisticswithr.com/lsr-0.6.pdf)
 
 
 Lecture slides: 
 
+<!--
 - Classes 7-8 (10/17 & 10/19) slides: [html](./slides/EDUC641_7_continuousdescr.html) | [pdf](./slides/EDUC641_7_continuousdescr.pdf)
 - Class 9 (10/24) slides: [html](./slides/EDUC641_9_transformations.html) | [pdf](./slides/EDUC641_9_transformations.pdf)
 - Classes 10-12 (10/26, 10/31, & 11/2) slides: [html](./slides/EDUC641_10_inference.html) | [pdf](./slides/EDUC641_10_inference.pdf)
@@ -139,12 +146,15 @@ Lecture slides:
 - Data: [life_expectancy.csv](./data/life_expectancy.csv) | [codebook](./data/life_expectancy_codebook.pdf)
 - R code: [Class 7 script](./slides/EDUC641_7_code.R) | [Class 9 script](./slides/EDUC641_9_code.R)
 - Lab activities: [Week 5 lab](./labs/Lab5.docx) | [Week 6 lab](./labs/Lab6.docx) | [Week 7 lab](./labs/Lab7.docx)
+-->
 
 Assignment 3: 
 
-- Due: November 9, 11:59p
+- Due: November 7, 11:59p
+<!--
 - [html file](./assignments/assignment03.html)
 - [cont.csv dataset](./data/cont.csv)
+-->
 
 
 ## Unit 4
@@ -164,10 +174,11 @@ Objectives:
 
 Readings: 
 
-- Complete **prior to Nov. 21** class: [LSWR Chapter 15.1 and 15.2](https://learningstatisticswithr.com/lsr-0.6.pdf)
+- Complete **prior to Nov. 20**: [LSWR Chapter 15.1 and 15.2](https://learningstatisticswithr.com/lsr-0.6.pdf)
 
 Lecture slides: 
 
+<!--
 - Class 13 (11/7) slides: [html](./slides/EDUC641_13_continuousrel.html) | [pdf](./slides/EDUC641_13_continuousrel.pdf)
   + **No class on 11/9 (David traveling for conference)**
 - Class 14 (11/14) slides: [html](./slides/EDUC641_14_regression.html) | [pdf](./slides/EDUC641_14_regression.pdf)
@@ -178,11 +189,16 @@ Lecture slides:
 - R code: [R script](./slides/EDUC641_13_code.R)
 - Lab activities: [Week 8 Lab](./labs/Lab8.docx) | [Week 9 Lab](./labs/Lab9.docx)
 
+-->
+
 Assignment 4: 
 
-- Due Nov. 27, 11:59pm 
+- Due Dec. 2, 11:59pm 
+
+<!--
  - [html file](./assignments/assignment04.html)
  - [cont.csv](./data/cont.csv)
+-->
 
 ## Unit 5
 
@@ -194,13 +210,18 @@ Objectives:
 - Articulate modern critiques of null-hypothesis significance testing framework
 - Describe strategies to improve replicability and generalizability of quantitative research
 
+<!--
 - Classes 17-18 (11/28 & 11/30): [html](./slides/EDUC641_17_critiques.html) | [pdf](./slides/EDUC641_17_critiques.pdf)
-
 - Data management cheat sheet: [html](data_management.html) 
+
+-->
 
 ## Final Assignment
 
-* Due December 6 at 11:59pm
+* Due December 11 at 4:59pm
+
+<!--
 - [html file](./assignments/assignment05.html)
 - [ah01.csv](./data/ah01.csv) | [ah02.csv](./data/ah02.csv)
 
+-->

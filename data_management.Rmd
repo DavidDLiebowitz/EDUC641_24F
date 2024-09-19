@@ -1,7 +1,7 @@
 ---
 title: "Data Management Cheat Sheet"
 author: "David D. Liebowitz"
-date: "EDUC 641: Fall 2022"
+date: "EDUC 641: Fall 2024"
 site: distill::distill_website
 output: 
   html_document:
