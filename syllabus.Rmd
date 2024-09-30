@@ -41,7 +41,7 @@ By the end of this term, it is expected that students will be able to:
 # Textbooks and Reading Materials
 
 ## Textbook
-We will primarily be referring to chapters in [Learning Statistics with R](https://learningstatisticswithr-bookdown.netlify.com/index.html) (**LSWR**) by Danielle Navarro. This textbook is available for free online. You may choose to purchase a paper copy if you wish, but it is not required. 
+We will primarily be referring to chapters in [Learning Statistics with R](https://learningstatisticswithr.com/) (**LSWR**) by Danielle Navarro. This textbook is available for free online. You may choose to purchase a paper copy if you wish, but it is not required. 
 
 There are additional readings assignments on the troubling historical origins of modern statistics that appear in the detailed [schedule](./schedule.html). 
 
