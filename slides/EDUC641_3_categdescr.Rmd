@@ -144,6 +144,7 @@ d <- read.csv('C:/Users/daviddl/Documents/EDUC/EDUC641_22F/data/deathpenalty.csv
 # you are doing!
 ```
 
+
 ---
 # Let's first access the data
 
@@ -331,7 +332,7 @@ class: middle, inverse
 
 
 ### Assignment:
-- Assignment #1 Due October 9, 11:59pm
+- Assignment #1 Due October 14, 11:59pm
 
 ---
 class: middle, inverse
