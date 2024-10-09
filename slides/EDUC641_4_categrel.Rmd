@@ -88,9 +88,11 @@ options(knitr.table.format = "html")
 ---
 # Materials
 
-### 1. Death penalty data (in file called deathpenalty.csv)
-### 2. Codebook describing the contents of said data
-### 3. R script to conduct the data analytic tasks of the unit
+.large[
+1. Death penalty data (in file called deathpenalty.csv)
+2. Codebook describing the contents of said data
+3. R script to conduct the data analytic tasks of the unit
+]
 
 ---
 # What we've done
@@ -690,6 +692,6 @@ class: middle, inverse
 
 ### Assignments
 - Quiz on Units 1 & 2 on Oct. 17
-- Assignment #2 Due October 20, 11:59pm
+- Assignment #2 Due October 25, 11:59pm
 
 

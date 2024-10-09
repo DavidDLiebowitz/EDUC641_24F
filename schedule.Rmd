@@ -65,7 +65,7 @@ Lectures:
 - Class 3 (10/8) slides: [html](./slides/EDUC641_3_categdescr.html) | [pdf](./slides/EDUC641_3_categdescr.pdf)
 - Data: [deathpenalty.csv](./data/deathpenalty.csv) | [codebook](./data/deathpenalty_codebook.pdf)
 - R code: [R script](./slides/EDUC641_3_code.R)
-<!-- - Lab activities: [doc](./labs/Lab2.docx) -->
+- Lab activities: [doc](./labs/Lab2.docx)
 
 
 Assignment 1: 
