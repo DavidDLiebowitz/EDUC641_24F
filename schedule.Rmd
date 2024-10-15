@@ -105,7 +105,6 @@ Lectures:
 Assignment 2: 
 
 - Due: October 25, 11:59pm
-
 - [html file](./assignments/assignment02.html)
 - [cat.csv dataset](./data/cat.csv)
 
