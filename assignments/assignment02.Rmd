@@ -67,11 +67,11 @@ Open your RStudio, create a project and save it. Go to the root directory of the
 
 #### 3. Chi-squared goodness-of-fit test of categorical association 
 
-3.1. Our first research question of interest is whether teacher participation in professional development decreased rates of student chronic absenteeism. State your null hypothesis for this research question? **(2 point)**
+3.1. Our first research question of interest is whether teacher participation in professional development decreased rates of student chronic absenteeism. State your null hypothesis for this research question. **(2 point)**
 
 3.2 If there were **NO** relationship between *absenteeism* and *treat*, on average in the population, how many students would you **expect** to be chronically absent/not chronically absent in each of the treatment/control groups? Re-create the table from question 2.1 to show these expected values and interpret the values in this new table in 2-3 sentences. **(2 points)** 
 
-3.3. Calculate the Chi-squared statistic using the tables you generated in 2.1 and 3.2. In one sentence, state what this Chi-squared statistic represents. **(2 points)**
+3.3. Calculate the Chi-squared statistic **by hand** using the tables you generated in 2.1 and 3.2. In one sentence, state what this Chi-squared statistic represents. **(2 points)**
 
 3.4. Perform a Chi-squared goodness-of-fit test in R to examine the relationship between *absenteeism* and *treat*. Write 3-4 sentences to interpret your results and answer the research question: Were students less likely to be chronically absent if their teachers participated the consultancy PD intervention? **(2 points)**
 

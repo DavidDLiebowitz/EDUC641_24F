@@ -2,7 +2,7 @@
 # EDUC 641 Assignment 1 Key 
 ## David Liebowitz, Claire Zhang, Havisha Khurana
 ### First created: 8/1/21
-### Last update: 10/10/23
+### Last update: 10/15/24
 ### Inputs: cat.csv
 ### Purpose: load in data, understand structure, prepare descriptive tables and figures
 ##########################################################################################
@@ -61,7 +61,7 @@ ggplot(pd, aes(treat)) + geom_bar() +
         xlab("Treatment status") +
         ylab("Number of participants") +
         #Add bar labels   
-        geom_text(aes(label = ..count..), stat='count', vjust = -0.5, size = 4) +
+        geom_text(aes(label = after_stat(count)), stat='count', vjust = -0.5, size = 4) +
         #Make it look prettier
         ylim(0, 600) +
         theme_minimal()

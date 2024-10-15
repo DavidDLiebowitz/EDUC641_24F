@@ -531,6 +531,10 @@ of the murderers are sentenced to death.
 
 The percentage of Black murderers sentenced to death for killing a white victim is about 32.5 times the percentage of Black murderers sentenced to death for killing a Black victim, in Georgia.
 
+--
+
+.red-pink[**I've subset my data to only cases with Black defendants. See the [accompanying R script](./EDUC641_4_code.R) for how to do this.**]
+
 ---
 # A statistical test
 
