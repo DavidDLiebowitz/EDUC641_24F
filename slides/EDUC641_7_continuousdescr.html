@@ -131,7 +131,7 @@ There are many ways to describe the characteristics of a .red-pink[**distributio
 ---
 # What is a distribution?
 
-.small[A distribution describes the number of observations of variable that take a particular value.]
+.small[A distribution describes the number of observations of a variable that assume a particular value.]
 
 &lt;img src="EDUC641_7_continuousdescr_files/figure-html/unnamed-chunk-4-1.png" style="display: block; margin: auto;" /&gt;
 
@@ -139,7 +139,7 @@ There are many ways to describe the characteristics of a .red-pink[**distributio
 ## Visualizing distributions: Histogram
 
 + Groups the data into "bins" and shows the count of observations in each bin
-+ Can specify number of bins/bin width
++ R automatically creates a sensible bin size, but you can specify number of bins/bin width
 
 
 ```r
@@ -157,7 +157,7 @@ hist(who$life_expectancy)
 ## Visualizing distributions: Histogram
 
 + Groups the data into "bins" and shows the count of observations in each bin
-+ Can specify number of bins/bin width
++ R automatically creates a sensible bin size, but you can specify number of bins/bin width
 
 
 ```r
@@ -174,7 +174,7 @@ hist(who$life_expectancy, breaks = 16)
 ## Visualizing distributions: Histogram
 
 + Groups the data into "bins" and shows the count of observations in each bin
-+ Can specify number of bins/bin width
++ R automatically creates a sensible bin size, but you can specify number of bins/bin width
 
 
 ```r
@@ -192,7 +192,7 @@ ggplot(who, aes(life_expectancy)) + geom_histogram()
 
 
 + Groups the data into "bins" and shows the count of observations in each bin
-+ Can specify number of bins/bin width
++ R automatically creates a sensible bin size, but you can specify number of bins/bin width
 
 .pull-left[
 **Histogram**
@@ -208,7 +208,7 @@ ggplot(who, aes(life_expectancy)) + geom_histogram()
 
 
 ---
-## Visualizing distributions: Stem-and-leaf
+### Visualizing distributions: Stem-and-leaf
 
 - The "leaf" represents the last digit of a number (typically the 1s place, unless data need to be rounded to the nearest ten)
 - The "stem" contains all other digits of number and serves as a grouping category for observations
@@ -330,13 +330,13 @@ While this isn't critical to understand right now, the reason we index the summa
 
 * Thus, the mean is vulnerable to outliers
 
-* Can only be used with interval- and ratio-level variables
+* Can only be used with interval- and ratio-scale variables
 
 ---
 # Vulnerability of the mean
 .small[
 * Humans on Mars and Venus have very low life expectancies (for now).
-* Here, having Mars and Venus in this sample of countries greatly shifts our mean away from the "peak" of the distribution and from the mean of the distribution, excluding these two outliers.
+* Here, having Mars and Venus in this sample of countries substantially shifts our mean away from the "peak" of the distribution and from the mean of the distribution when excluding these two outliers.
 ]
 
 &lt;img src="EDUC641_7_continuousdescr_files/figure-html/unnamed-chunk-12-1.png" style="display: block; margin: auto;" /&gt;
@@ -349,7 +349,7 @@ While this isn't critical to understand right now, the reason we index the summa
 
 * Particularly useful for describing the central tendency of skewed distributions (more on this later)
 
-* Can be used with ordinal-, interval-, or ratio-level variables
+* Can be used with ordinal-, interval-, or ratio-scale variables
 
 * To find the median, arrange the scores in ascending order and identify the middle value. If there are two middle values (i.e., an even number of observations), use the average of the two:
 
@@ -429,7 +429,7 @@ median(who$life_expectancy)
 
 --
 
-Base R does not have an easy way of calculating the mode. There are some work-arounds, but we won't cover them in this class. Importantly `mode` does something altogether different.
+Base R does not have an easy way of calculating the mode. There are some work-arounds, but we won't cover them in this class. Importantly the `mode` function does something altogether different.
 
 ---
 # Comparing distributions
@@ -443,10 +443,6 @@ These distributions have the same central tendency (mean = 100).
 --
 &lt;img src="EDUC641_7_continuousdescr_files/figure-html/unnamed-chunk-17-1.png" style="display: block; margin: auto;" /&gt;
 
----
-class: middle, inverse
-
-# Quiz
 
 ---
 class: middle, inverse
@@ -563,13 +559,13 @@ By itself, a variance of 66.43 is not very meaningful to us. It does not reflect
 ---
 # Standard deviation
 
-* If we take the square root of our sample variance, we can summarize average deviations back onto our raw scale. 
+* If we take the square root of our sample variance, we can summarize average deviations from the mean back onto our original scale. 
 
 * The .red-pink[**standard deviation**] represents the **positive square root of the variance**.
 Standard deviation = $$ s = \sqrt{s^2} $$
 Standard deviation = $$ \sqrt{66.43} = 8.15 $$
 
-The standard deviation of life expectancy in 2015 was approximately 8.15 *years*.
+The standard deviation of life expectancy across countries in 2015 was approximately 8.15 *years*.
 
 ---
 # Standard deviation
@@ -727,7 +723,7 @@ Note: In this course we will focus visual analysis for severe skew or kurtosis. 
 ---
 # Summarizing data
 
-The distribution of life expectancy has a slightly negative skew and no excess kurtosis. The skewness and kurtosis are not severe.
+The distribution of life expectancy has a slightly negative skew and no excess kurtosis. The skewness and kurtosis do not appear to be severe.
 &lt;img src="EDUC641_7_continuousdescr_files/figure-html/unnamed-chunk-28-1.png" style="display: block; margin: auto;" /&gt;
 
 
@@ -828,7 +824,7 @@ class: middle, inverse
 - Covering Unit 3 on Oct. 31
 
 ### Assignments
-- Assignment #3 due November 9, 11:59pm
+- Assignment #3 due November 7, 11:59pm
 
 --
 
