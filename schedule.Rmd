@@ -99,7 +99,7 @@ Lectures:
 - Class 6 (10/17) slides: [html](./slides/EDUC641_6_history.html) | [pdf](./slides/EDUC641_6_history.pdf)
 - Data: [deathpenalty.csv](./data/deathpenalty.csv) | [codebook](./data/deathpenalty_codebook.pdf) 
 - R code: [R script](./slides/EDUC641_4_code.R)
-- Lab activities: [Week 3 Lab](./labs/Lab3.docx) <!-- | [Week 4 Lab](./labs/Lab4.docx) -->
+- Lab activities: [Week 3 Lab](./labs/Lab3.docx) | [Week 4 Lab](./labs/Lab4.docx)
 
 Assignment 2: 
 
