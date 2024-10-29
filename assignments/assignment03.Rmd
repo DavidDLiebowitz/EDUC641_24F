@@ -81,10 +81,10 @@ Review the codebook above and transform any variable into its correct type (form
   
   * 3.2. Let's examine one particular teacher: Teacher 1832 (*tchid*==1832). This teacher did not participate in much coursework, nor did their students perform particularly well on their vocabulary test. For which variable (*coursework* or *vocabulary*) was this teacher observation more extreme, given the  distribution of these particular variables in our sample? Explain and interpret in 1-2 sentences **(1 point)**
 
-#### 4. Compare observed mean of *vocabulary* to population mean
+#### 4. Compare observed mean of *vocabulary* to theoretical population mean
 
 Assume that the test publisher informs you that the population mean of the teacher-level average score on this vocabulary test is 87 (again, we can't truly know this, but play along). We want to know whether the observed mean of *vocabulary* in our sample is equal to the population mean.
 
- * 4.2. In one sentence, state your null-hypothesis. **(1 point)**
- * 4.2. Conduct a one-sample $t$-test. State the results of your test, including the alpha-threshold you have set and whether you have conducted a one- or two-tailed test and why. **(2 points)**
+ * 4.1. In one sentence, state your null-hypothesis. **(1 point)**
+ * 4.2. Conduct a one-sample $t$-test. State the results of your test, including the alpha-threshold you have set, whether you have conducted a one- or two-tailed test, and why. **(2 points)**
  * 4.3. Write 2-3 sentences to interpret the results of your test in the preceding question. **(2 points)**

@@ -27,7 +27,7 @@ navbar:
       - text: "8. Continuous descriptives II"
         href: ./slides/EDUC641_7_continuousdescr.html
       - text: "9. Transformations and z-scores"
-        #href: ./slides/EDUC641_9_transformations.html
+        href: ./slides/EDUC641_9_transformations.html
       - text: "10. Normal distributions"
         #href: ./slides/EDUC641_10_inference.html
       - text: "11. CLT"

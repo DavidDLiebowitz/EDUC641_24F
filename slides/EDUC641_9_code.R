@@ -68,3 +68,4 @@ low_inc <- filter(who, status=="Developing")
 
 # Conduct a t-test against a known population mean of 71.64
 t.test(low_inc$life_expectancy, mu = 71.64)
+

@@ -2,7 +2,7 @@
 # EDUC 641 Assignment 2 Key 
 ## David Liebowitz, Claire Zhang, Havisha Khurana
 ### First created: 8/1/21
-### Last update: 10/23/23
+### Last update: 10/29/24
 ### Inputs: cat.csv
 ### Purpose: load in data, understand structure, prepare descriptive tables and figures
 ##########################################################################################
@@ -40,7 +40,7 @@ ggplot(pd, aes(x = treat, fill = absenteeism)) +
   geom_bar(position = "dodge") +
   xlab("Treatment status") +
   ylab("Number of children") +
-  geom_text(aes(label = ..count..), stat = "count", vjust = -0.2, position = position_dodge(.9), color = "grey30") +
+  geom_text(aes(label = after_stat(count)), stat = "count", vjust = -0.2, position = position_dodge(.9), color = "grey30") +
   scale_fill_discrete(name = "Chronically absent?")
 
 ggsave(filename = "assignments/keys/treat_absent.png")
@@ -74,9 +74,14 @@ as.table(margin)
 # 3.3 and 3.4 Chi-square statistic and goodness-of-fit test
 chisq.test(pd$absenteeism, pd$treat)
 
+# Can do this without the Yates continuity and get the same value as in 3.3
+chisq.test(pd$absenteeism, pd$treat, correct=FALSE)
+
 # 4. Sub-group comparisons
 
 # 4.1 Female students
+
+# Filter to just the female students
 pd_female <- pd %>% 
   filter(cgender == "Female")
 

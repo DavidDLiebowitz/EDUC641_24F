@@ -357,22 +357,21 @@ class: middle, inverse
 
 # Mid-term SES results
 
-### Response rate: 66 percent (23/35)
+### Response rate: 41 percent (15/37)
 
 --
 
-### ...ugggh so close!
+### ...ugggh I can do better to offer reminders!
 
 ---
 # Quantitative results
 
 .pull-left[
 **Generally positive:**
-(>=70% rate as beneficial)
+(>=80% rate as beneficial)
 * Inclusivity
 * Support from instructors
-* Feedback provided
-* Communication
+* Active learning
 * Organization
 * Relevance of content
 * Assignments/projects
@@ -381,9 +380,10 @@ class: middle, inverse
 
 .pull-right[
 **Generally insufficient:**
-(<70% rate as beneficial)
+(<80% rate as beneficial)
+* Feedback provided
 * Clarity of assignment instructions/grading
-* Active learning
+* Instructor communication
 ]
 
 --
@@ -396,10 +396,9 @@ There are diverging opinions within each of these categories, and so important t
 .pull-left[
 **Helpful:**
 .small[
-* Very well organized and high quality materials
-* Application opportunities on quizzes and assignments
+* Group work and encouraging discussion
+* Very well organized and high quality materials (lectures, website, datasets)
 * Explanation of concepts (incl. scaffolding)
-* Feedback on how to improve
 * Readings and class website
 ]
 ]
@@ -407,19 +406,17 @@ There are diverging opinions within each of these categories, and so important t
 .pull-right[
 **Need improvement/suggestions:**
 .small[
-* More opportunities to access help
-* Lack of clarity in grading of assignments
-* More focus on learning R
-* Facilities/projector issues
+* Lack of clarity in expectations and grading of assignments
+* More focus on learning R/coding
 * Too basic/easy
-* Too difficult/too much work
+* Too difficult
 ]
 ]
 
 
 --
 
-Will reflect on feedback, particularly as it relates to ways to access help, active learning opportunities, and clarity in grading. 
+Will reflect on feedback, particularly as it relates to clarity in grading, expectations and communication generally. 
 
 
 --
@@ -449,8 +446,5 @@ class: middle, inverse
 - Opens 3:45pm on Oct. 31, closes at 5pm on Nov. 1
 
 ### Assignments
-- Assignment #3 due November 9, 11:59pm
+- Assignment #3 due November 7, 11:59pm
 
---
-
-.large[.red[**Important announcement: starting immediately, all classes will meet in Lokey 276 and all labs will meet in Lokey 115!**]]
