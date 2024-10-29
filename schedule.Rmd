@@ -135,10 +135,10 @@ Readings:
 Lecture slides: 
 
 - Classes 7-8 (10/22 & 10/24) slides: [html](./slides/EDUC641_7_continuousdescr.html) | [pdf](./slides/EDUC641_7_continuousdescr.pdf)
-- Class 9 (10/24) slides: [html](./slides/EDUC641_9_transformations.html) | [pdf](./slides/EDUC641_9_transformations.pdf)
+- Class 9 (10/29) slides: [html](./slides/EDUC641_9_transformations.html) | [pdf](./slides/EDUC641_9_transformations.pdf)
 
 <!--
-- Classes 10-12 (10/26, 10/31, & 11/2) slides: [html](./slides/EDUC641_10_inference.html) | [pdf](./slides/EDUC641_10_inference.pdf)
+- Classes 10-12 (10/31, 11/5, & 11/7) slides: [html](./slides/EDUC641_10_inference.html) | [pdf](./slides/EDUC641_10_inference.pdf)
 -->
 
 - Data: [life_expectancy.csv](./data/life_expectancy.csv) | [codebook](./data/life_expectancy_codebook.pdf)
