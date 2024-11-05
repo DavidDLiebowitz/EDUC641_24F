@@ -140,8 +140,7 @@ Lecture slides:
 - Data: [life_expectancy.csv](./data/life_expectancy.csv) | [codebook](./data/life_expectancy_codebook.pdf)
 - R code: [Class 7 script](./slides/EDUC641_7_code.R) | [Class 9 script](./slides/EDUC641_9_code.R)
 
-- Lab activities: [Week 5 lab](./labs/Lab5.docx) 
-<!-- | [Week 6 lab](./labs/Lab6.docx) | [Week 7 lab](./labs/Lab7.docx) -->
+- Lab activities: [Week 5 lab](./labs/Lab5.docx) | [Week 6 lab](./labs/Lab6.docx) <!-- | [Week 7 lab](./labs/Lab7.docx) -->
 
 Assignment 3: 
 
