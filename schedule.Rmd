@@ -144,7 +144,7 @@ Lecture slides:
 
 Assignment 3: 
 
-- Due: November 7, 11:59p
+- Due: November 8, 4:59p
 - [html file](./assignments/assignment03.html)
 - [cont.csv dataset](./data/cont.csv)
 
