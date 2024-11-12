@@ -76,5 +76,5 @@ Details on all variables are as follows:
 
 2.4. What statistical assumption(s) have you made in modeling the relationship between $VOCABULARY$ and $COURSEWORK$ in this way? Test whether your estimates satisfy these assumptions. **(2 points)**
 
-2.5 What is your answer to this research question? **(2 points)**
+2.5 What is your answer to the above research question? **(2 points)**
 

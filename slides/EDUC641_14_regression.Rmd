@@ -61,21 +61,6 @@ options(knitr.table.format = "html")
 
 ```
 
-.pull-left[
-<br> <br>
-```{r, echo=FALSE}
-include_graphics("rtr1.jpg")
-include_graphics("rtr4.jpg")
-```
-]
-
-.pull-right[
-```{r, out.width="55%", echo=F}
-include_graphics("rtr2.jpg")
-include_graphics("rtr3.jpg")
-```
-]
-
 ---
 # Roadmap
 

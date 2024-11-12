@@ -35,7 +35,7 @@ navbar:
       - text: "12. Z- and t-tests"
         href: ./slides/EDUC641_10_inference.html
       - text: "13. Continuous relationships"
-        #href: ./slides/EDUC641_13_continuousrel.html
+        href: ./slides/EDUC641_13_continuousrel.html
       - text: "14. Bivariate regression I"
         #href: ./slides/EDUC641_14_regression.html
       - text: "15. Bivariate regression II"

@@ -39,7 +39,10 @@ extra_css <- list(
   ".red-pink" = list(color= "red_pink"),
   ".grey-light" = list(color= "grey_light"),
   ".purple" = list(color = "purple"),
-  ".small" = list("font-size" = "90%"))
+  ".large" = list("font-size" = "120%"),
+  ".small" = list("font-size" = "90%"),
+  ".tiny" = list("font-size" = "70%"),
+  ".tiny2" = list("font-size" = "50%"))
 
 write_extra_css(css = extra_css, outfile = "my_custom.css")
 
@@ -60,6 +63,23 @@ options(device = function(file, width, height) {
 options(knitr.table.format = "html")
 
 ```
+
+
+.pull-left[
+```{r, echo=FALSE}
+include_graphics("rtr1.jpg")
+include_graphics("rtr3.jpg")
+```
+]
+
+.pull-right[
+```{r, echo=F}
+include_graphics("rtr2.jpg")
+include_graphics("rtr4.jpg")
+```
+]
+
+---
 # Roadmap
 
 ```{r, out.width = "90%", echo=F}
@@ -95,15 +115,19 @@ options(knitr.table.format = "html")
 ---
 # Materials
 
-### 1. Life expectancy data (in file called life_expectancy.csv)
-### 2. Codebook describing the contents of said data
-### 3. R script to conduct the data analytic tasks of the unit (EDUC641_13_code.R)
+.large[
+
+1. Life expectancy data (in file called life_expectancy.csv)
+2. Codebook describing the contents of said data
+3. R script to conduct the data analytic tasks of the unit (EDUC641_13_code.R)
+
+]
 
 ---
 class: middle, inverse
 # Bivariate relationships between continuous variables<sup>1</sup>
 
-.footnote[[1] We can also look at relationships between continuous and categorical variables with increasingly sophisticated--but  functionally equivalent--methods, including two-sample t-tests, ANOVA, ANCOVA, regression, and more. We will examine these topics in EDUC 643.]
+.footnote[[1] We can also look at relationships between continuous and categorical variables with increasingly sophisticated--but  functionally equivalent--methods, including two-sample t-tests, ANOVA, ANCOVA, regression, and more. We will examine all these topics in EDUC 643.]
 
 ---
 # Life expectancy distribution
@@ -473,10 +497,8 @@ class: middle, inverse
 - LSWR Chapter 10: Law of large numbers and CLT
 
 ### Quiz
-- QuiZ #4: Opens 3:45pm on Nov. 14, closes at 5pm Nov. 15
+- Quiz #4: Opens 3:45pm on Nov. 14, closes at 5pm Nov. 15
 
 ### Assignment
-- Assignment #3 Due Nov. 9, 11:59pm
-- Assignment #4 Due Nov. 27, 11:59pm
+- Assignment #4 Due Dec. 2, 11:59pm
 
-.red[**Remember no class on Thursday (Nov. 9)!!**]

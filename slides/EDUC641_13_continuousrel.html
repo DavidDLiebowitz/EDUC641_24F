@@ -29,6 +29,17 @@ class: center, middle, inverse, title-slide
 
 
 
+
+
+.pull-left[
+&lt;img src="rtr1.jpg" width="8000" style="display: block; margin: auto;" /&gt;&lt;img src="rtr3.jpg" width="228" style="display: block; margin: auto;" /&gt;
+]
+
+.pull-right[
+&lt;img src="rtr2.jpg" width="200" style="display: block; margin: auto;" /&gt;&lt;img src="rtr4.jpg" width="163" style="display: block; margin: auto;" /&gt;
+]
+
+---
 # Roadmap
 
 &lt;img src="Roadmap_4.png" width="90%" style="display: block; margin: auto;" /&gt;
@@ -62,15 +73,19 @@ class: center, middle, inverse, title-slide
 ---
 # Materials
 
-### 1. Life expectancy data (in file called life_expectancy.csv)
-### 2. Codebook describing the contents of said data
-### 3. R script to conduct the data analytic tasks of the unit (EDUC641_13_code.R)
+.large[
+
+1. Life expectancy data (in file called life_expectancy.csv)
+2. Codebook describing the contents of said data
+3. R script to conduct the data analytic tasks of the unit (EDUC641_13_code.R)
+
+]
 
 ---
 class: middle, inverse
 # Bivariate relationships between continuous variables&lt;sup&gt;1&lt;/sup&gt;
 
-.footnote[[1] We can also look at relationships between continuous and categorical variables with increasingly sophisticated--but  functionally equivalent--methods, including two-sample t-tests, ANOVA, ANCOVA, regression, and more. We will examine these topics in EDUC 643.]
+.footnote[[1] We can also look at relationships between continuous and categorical variables with increasingly sophisticated--but  functionally equivalent--methods, including two-sample t-tests, ANOVA, ANCOVA, regression, and more. We will examine all these topics in EDUC 643.]
 
 ---
 # Life expectancy distribution
@@ -103,7 +118,7 @@ class: middle, inverse
 
 ---
 # Another way
-&lt;img src="EDUC641_13_continuousrel_files/figure-html/unnamed-chunk-3-1.svg" style="display: block; margin: auto;" /&gt;
+&lt;img src="EDUC641_13_continuousrel_files/figure-html/unnamed-chunk-5-1.svg" style="display: block; margin: auto;" /&gt;
 
 
 ---
@@ -134,7 +149,7 @@ class: middle, inverse
 
 ---
 # And differently again
-&lt;img src="EDUC641_13_continuousrel_files/figure-html/unnamed-chunk-5-1.svg" style="display: block; margin: auto;" /&gt;
+&lt;img src="EDUC641_13_continuousrel_files/figure-html/unnamed-chunk-7-1.svg" style="display: block; margin: auto;" /&gt;
 
 ---
 # Numerical univariate statistics
@@ -165,7 +180,7 @@ summary(who$schooling)
 ---
 # Visualizing the relationship
 
-&lt;img src="EDUC641_13_continuousrel_files/figure-html/unnamed-chunk-7-1.svg" style="display: block; margin: auto;" /&gt;
+&lt;img src="EDUC641_13_continuousrel_files/figure-html/unnamed-chunk-9-1.svg" style="display: block; margin: auto;" /&gt;
 
 --
 
@@ -175,7 +190,7 @@ Probably easier to see if we have some symbolic way of representing our data...
 
 ---
 # Visualizing the relationship
-&lt;img src="EDUC641_13_continuousrel_files/figure-html/unnamed-chunk-8-1.svg" style="display: block; margin: auto;" /&gt;
+&lt;img src="EDUC641_13_continuousrel_files/figure-html/unnamed-chunk-10-1.svg" style="display: block; margin: auto;" /&gt;
 
 --
 
@@ -184,7 +199,7 @@ Probably easier to see if we have some symbolic way of representing our data...
 ---
 # Visualizing the relationship
 
-&lt;img src="EDUC641_13_continuousrel_files/figure-html/unnamed-chunk-9-1.svg" style="display: block; margin: auto;" /&gt;
+&lt;img src="EDUC641_13_continuousrel_files/figure-html/unnamed-chunk-11-1.svg" style="display: block; margin: auto;" /&gt;
 
 --
 
@@ -193,13 +208,13 @@ Probably easier to see if we have some symbolic way of representing our data...
 ---
 # You try...
 
-&lt;img src="EDUC641_13_continuousrel_files/figure-html/unnamed-chunk-10-1.svg" style="display: block; margin: auto;" /&gt;
+&lt;img src="EDUC641_13_continuousrel_files/figure-html/unnamed-chunk-12-1.svg" style="display: block; margin: auto;" /&gt;
 
 .blue[*Can you interpret what this display says about the country of Egypt?*]
 
 ---
 # What about the relationship?
-&lt;img src="EDUC641_13_continuousrel_files/figure-html/unnamed-chunk-11-1.svg" style="display: block; margin: auto;" /&gt;
+&lt;img src="EDUC641_13_continuousrel_files/figure-html/unnamed-chunk-13-1.svg" style="display: block; margin: auto;" /&gt;
 
 .blue[*Is there a relationship between SCHOOLING and LIFE_EXPECTANCY? How do you know?*]
 
@@ -209,25 +224,16 @@ Probably easier to see if we have some symbolic way of representing our data...
 
 ---
 # What about the relationship?
-&lt;img src="EDUC641_13_continuousrel_files/figure-html/unnamed-chunk-12-1.svg" style="display: block; margin: auto;" /&gt;
+&lt;img src="EDUC641_13_continuousrel_files/figure-html/unnamed-chunk-14-1.svg" style="display: block; margin: auto;" /&gt;
 
 .blue[*What kind of line, curve or other construction best summarizes the observed relationship between SCHOOLING and LIFE_EXPECTANCY?*]
 
 ---
 # What about the relationship?
-&lt;img src="EDUC641_13_continuousrel_files/figure-html/unnamed-chunk-13-1.svg" style="display: block; margin: auto;" /&gt;
+&lt;img src="EDUC641_13_continuousrel_files/figure-html/unnamed-chunk-15-1.svg" style="display: block; margin: auto;" /&gt;
 
 .blue[*What kind of line, curve or other construction best summarizes the observed relationship between SCHOOLING and LIFE_EXPECTANCY?*]
 
----
-# Pin the tail on the point cloud
-
-&lt;img src="EDUC641_13_continuousrel_files/figure-html/unnamed-chunk-14-1.svg" style="display: block; margin: auto;" /&gt;
-
----
-# Pin the tail on the point cloud
-
-&lt;img src="EDUC641_13_continuousrel_files/figure-html/unnamed-chunk-15-1.svg" style="display: block; margin: auto;" /&gt;
 ---
 # Pin the tail on the point cloud
 
@@ -264,7 +270,6 @@ Probably easier to see if we have some symbolic way of representing our data...
 # Pin the tail on the point cloud
 
 &lt;img src="EDUC641_13_continuousrel_files/figure-html/unnamed-chunk-23-1.svg" style="display: block; margin: auto;" /&gt;
-
 ---
 # Pin the tail on the point cloud
 
@@ -274,16 +279,26 @@ Probably easier to see if we have some symbolic way of representing our data...
 # Pin the tail on the point cloud
 
 &lt;img src="EDUC641_13_continuousrel_files/figure-html/unnamed-chunk-25-1.svg" style="display: block; margin: auto;" /&gt;
+
+---
+# Pin the tail on the point cloud
+
+&lt;img src="EDUC641_13_continuousrel_files/figure-html/unnamed-chunk-26-1.svg" style="display: block; margin: auto;" /&gt;
+
+---
+# Pin the tail on the point cloud
+
+&lt;img src="EDUC641_13_continuousrel_files/figure-html/unnamed-chunk-27-1.svg" style="display: block; margin: auto;" /&gt;
 ---
 # An aside about the origin
-&lt;img src="EDUC641_13_continuousrel_files/figure-html/unnamed-chunk-26-1.svg" style="display: block; margin: auto;" /&gt;
+&lt;img src="EDUC641_13_continuousrel_files/figure-html/unnamed-chunk-28-1.svg" style="display: block; margin: auto;" /&gt;
 
 *Figures that compare measures of central tendency across groups (e.g., bar charts) should generally start at zero (0) so as not to artificially inflate the differences between groups*
 
 ---
 # An aside about the origin
 
-&lt;img src="EDUC641_13_continuousrel_files/figure-html/unnamed-chunk-27-1.svg" style="display: block; margin: auto;" /&gt;
+&lt;img src="EDUC641_13_continuousrel_files/figure-html/unnamed-chunk-29-1.svg" style="display: block; margin: auto;" /&gt;
 
 .small[*Figures that describe relationships between two variables (e.g., scatter plots) might (or might not) include the origin (0, 0). The key concept these charts illustrate is the relationship. By adjusting the scale and range of each axis, we can make the relationship "look" different. But the strength and magnitude are the same.* More to come in EDUC 643...]
 
@@ -314,13 +329,11 @@ class: middle, inverse
 - LSWR Chapter 10: Law of large numbers and CLT
 
 ### Quiz
-- QuiZ #4: Opens 3:45pm on Nov. 14, closes at 5pm Nov. 15
+- Quiz #4: Opens 3:45pm on Nov. 14, closes at 5pm Nov. 15
 
 ### Assignment
-- Assignment #3 Due Nov. 9, 11:59pm
-- Assignment #4 Due Nov. 27, 11:59pm
+- Assignment #4 Due Dec. 2, 11:59pm
 
-.red[**Remember no class on Thursday (Nov. 9)!!**]
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
