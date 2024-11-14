@@ -30,16 +30,6 @@ class: center, middle, inverse, title-slide
 
 
 
-.pull-left[
-&lt;br&gt; &lt;br&gt;
-&lt;img src="rtr1.jpg" width="8000" style="display: block; margin: auto;" /&gt;&lt;img src="rtr4.jpg" width="8000" style="display: block; margin: auto;" /&gt;
-]
-
-.pull-right[
-&lt;img src="rtr2.jpg" width="55%" style="display: block; margin: auto;" /&gt;&lt;img src="rtr3.jpg" width="55%" style="display: block; margin: auto;" /&gt;
-]
-
----
 # Roadmap
 
 &lt;img src="Roadmap_4.png" width="90%" style="display: block; margin: auto;" /&gt;
@@ -73,9 +63,14 @@ class: center, middle, inverse, title-slide
 ---
 # Materials
 
-### 1. Life expectancy data (in file called life_expectancy.csv)
-### 2. Codebook describing the contents of said data
-### 3. R script to conduct the data analytic tasks of the unit (in file called EDUC641_13_code.R)
+.large[
+
+1. Life expectancy data (in file called life_expectancy.csv)
+2. Codebook describing the contents of said data
+3. R script to conduct the data analytic tasks of the unit (in file called EDUC641_13_code.R)
+
+]
+
 ---
 class: middle, inverse
 
@@ -189,6 +184,7 @@ nrow(who)
 ```
 #&gt; [1] 173
 ```
+
 ---
 # A reminder of our relationship
 
@@ -197,7 +193,7 @@ nrow(who)
 biv &lt;- ggplot(data = who, aes(x = schooling, y = life_expectancy)) + 
         geom_point() 
 ```
-&lt;img src="EDUC641_14_regression_files/figure-html/unnamed-chunk-10-1.svg" style="display: block; margin: auto;" /&gt;
+&lt;img src="EDUC641_14_regression_files/figure-html/unnamed-chunk-8-1.svg" style="display: block; margin: auto;" /&gt;
 
 ---
 class: middle, inverse
@@ -212,13 +208,13 @@ class: middle, inverse
 biv + geom_smooth(method = lm, se = F)
 ```
 
-&lt;img src="EDUC641_14_regression_files/figure-html/unnamed-chunk-11-1.svg" style="display: block; margin: auto;" /&gt;
+&lt;img src="EDUC641_14_regression_files/figure-html/unnamed-chunk-9-1.svg" style="display: block; margin: auto;" /&gt;
 
 .red-pink[*The fitted regression line tells us the best prediction for the values of LIFE_EXPECTANCY.*]
 
 ---
 # Some intuition
-&lt;img src="EDUC641_14_regression_files/figure-html/unnamed-chunk-12-1.svg" style="display: block; margin: auto;" /&gt;
+&lt;img src="EDUC641_14_regression_files/figure-html/unnamed-chunk-10-1.svg" style="display: block; margin: auto;" /&gt;
 
 --
 
@@ -227,6 +223,7 @@ Can think of the OLS-fitted regression line as a stick held in place by thumbtac
 ---
 # A visualization
 &lt;iframe src="https://daviddl.shinyapps.io/line_ss/?showcase=0" width="100%" height="550px" data-external="1"&gt;&lt;/iframe&gt;
+
 ---
 # Pictures to equations
 
@@ -237,13 +234,13 @@ As with any straight line, it can be characterized by a simple algebraic equatio
 --
 
 .blue[**What do each of these terms represent?**]
-&lt;img src="EDUC641_14_regression_files/figure-html/unnamed-chunk-14-1.svg" style="display: block; margin: auto;" /&gt;
+&lt;img src="EDUC641_14_regression_files/figure-html/unnamed-chunk-12-1.svg" style="display: block; margin: auto;" /&gt;
 
 ---
 # Pictures to equations
 
 .small[.red[**HOWEVER**], we don't represent lines of best fit with equations in slope-intercept form! .blue[**Why not?**]]
-&lt;img src="EDUC641_14_regression_files/figure-html/unnamed-chunk-15-1.svg" style="display: block; margin: auto;" /&gt;
+&lt;img src="EDUC641_14_regression_files/figure-html/unnamed-chunk-13-1.svg" style="display: block; margin: auto;" /&gt;
 
 --
 
@@ -311,7 +308,7 @@ summary(fit)
 These .red-pink[**coefficients**] tell you where the fitted trend line should be drawn:
 $$
 \small{
-\left[ \textrm{Predicted value of } LIFE \_ EXPECTANCY \right]  = 
+\left[ \textrm{Predicted value of } LIFE \\_ EXPECTANCY \right]  = 
 \left( 42.85 \right) + 2.23 * \left[ \textrm{Observed value of }SCHOOLING  \right] 
 }
 $$
@@ -319,7 +316,7 @@ $$
 # Fitted values
 
 Can substitute values for the "predictor" `\((SCHOOLING)\)` into the fitted equation to compute the *predicted* values of `\(LIFE\_EXPECTANCY\)`. 
-&lt;img src="EDUC641_14_regression_files/figure-html/unnamed-chunk-18-1.svg" style="display: block; margin: auto;" /&gt;
+&lt;img src="EDUC641_14_regression_files/figure-html/unnamed-chunk-16-1.svg" style="display: block; margin: auto;" /&gt;
 
 --
 
@@ -330,7 +327,7 @@ Can do this for our old friend Chile ... and all others...
 
 So we can re-construct the line of best fit from the fitted values:
 
-&lt;img src="EDUC641_14_regression_files/figure-html/unnamed-chunk-19-1.svg" style="display: block; margin: auto;" /&gt;
+&lt;img src="EDUC641_14_regression_files/figure-html/unnamed-chunk-17-1.svg" style="display: block; margin: auto;" /&gt;
 
 ---
 # Fitted values
@@ -357,7 +354,7 @@ mean(who$life_expectancy)
 # Fitted values
 
 Note that the fitted line always goes through the average of the predictors
-&lt;img src="EDUC641_14_regression_files/figure-html/unnamed-chunk-21-1.svg" style="display: block; margin: auto;" /&gt;
+&lt;img src="EDUC641_14_regression_files/figure-html/unnamed-chunk-19-1.svg" style="display: block; margin: auto;" /&gt;
 
 ---
 class: middle, inverse
@@ -386,11 +383,11 @@ class: middle, inverse
 - LSWR Chapter 15.1 and 15.2: bivariate regression by Nov. 21 class
 
 ### Assignments
-- Assignment #4 due November 27 at 11:59PM
+- Assignment #4 due Dec. 2 at 11:59PM
 
 ### Quizzes
 - Quiz #4 (now!) due 11/15 at 5pm
-- Quiz #5 (last one!!!) 11/22 at 5pm
+- Quiz #5 (last one!!!) due 11/27 at 5pm
 
 ---
 class: middle, inverse

@@ -39,7 +39,10 @@ extra_css <- list(
   ".red-pink" = list(color= "red_pink"),
   ".grey-light" = list(color= "grey_light"),
   ".purple" = list(color = "purple"),
-  ".small" = list("font-size" = "90%"))
+  ".large" = list("font-size" = "120%"),
+  ".small" = list("font-size" = "90%"),
+  ".tiny" = list("font-size" = "70%"),
+  ".tiny2" = list("font-size" = "50%"))
 
 write_extra_css(css = extra_css, outfile = "my_custom.css")
 
@@ -61,7 +64,6 @@ options(knitr.table.format = "html")
 
 ```
 
----
 # Roadmap
 
 ```{r, out.width = "90%", echo=F}
@@ -97,9 +99,14 @@ options(knitr.table.format = "html")
 ---
 # Materials
 
-### 1. Life expectancy data (in file called life_expectancy.csv)
-### 2. Codebook describing the contents of said data
-### 3. R script to conduct the data analytic tasks of the unit (in file called EDUC641_13_code.R)
+.large[
+
+1. Life expectancy data (in file called life_expectancy.csv)
+2. Codebook describing the contents of said data
+3. R script to conduct the data analytic tasks of the unit (in file called EDUC641_13_code.R)
+
+]
+
 ---
 class: middle, inverse
 
@@ -178,6 +185,7 @@ include_graphics("bttf.gif")
 who <- filter(who, !is.na(schooling))
 nrow(who)
 ```
+
 ---
 # A reminder of our relationship
 
@@ -237,6 +245,7 @@ include_app(c("https://daviddl.shinyapps.io/line_ss/"), height="550px")
 ## focus only on residuals not SSEs
 
 ```
+
 ---
 # Pictures to equations
 
@@ -286,7 +295,7 @@ summary(fit)
 These .red-pink[**coefficients**] tell you where the fitted trend line should be drawn:
 $$
 \small{
-\left[ \textrm{Predicted value of } LIFE \_ EXPECTANCY \right]  = 
+\left[ \textrm{Predicted value of } LIFE \\_ EXPECTANCY \right]  = 
 \left( 42.85 \right) + 2.23 * \left[ \textrm{Observed value of }SCHOOLING  \right] 
 }
 $$
@@ -382,11 +391,11 @@ class: middle, inverse
 - LSWR Chapter 15.1 and 15.2: bivariate regression by Nov. 21 class
 
 ### Assignments
-- Assignment #4 due November 27 at 11:59PM
+- Assignment #4 due Dec. 2 at 11:59PM
 
 ### Quizzes
 - Quiz #4 (now!) due 11/15 at 5pm
-- Quiz #5 (last one!!!) 11/22 at 5pm
+- Quiz #5 (last one!!!) due 11/27 at 5pm
 
 ---
 class: middle, inverse
