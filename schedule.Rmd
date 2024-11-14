@@ -177,7 +177,7 @@ Lecture slides:
 - Class 15-16 slides (11/16 & 11/21): [html](./slides/EDUC641_15_regression2.html) | [pdf](./slides/EDUC641_15_regression2.pdf) -->
 - Data:  [life_expectancy.csv](./data/life_expectancy.csv)
 - R code: [R script](./slides/EDUC641_13_code.R)
-- Lab activities: [Week 8 Lab](./labs/Lab8.docx) | <!-- [Week 9 Lab](./labs/Lab9.docx) -->
+- Lab activities: [Week 7 Lab](./labs/Lab7.docx) | <!-- [Week 8 Lab](./labs/Lab8.docx) -->
 
 Assignment 4: 
 
