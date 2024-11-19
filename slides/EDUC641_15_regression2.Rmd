@@ -39,7 +39,10 @@ extra_css <- list(
   ".red-pink" = list(color= "red_pink"),
   ".grey-light" = list(color= "grey_light"),
   ".purple" = list(color = "purple"),
-  ".small" = list("font-size" = "90%"))
+  ".large" = list("font-size" = "120%"),
+  ".small" = list("font-size" = "90%"),
+  ".tiny" = list("font-size" = "70%"),
+  ".tiny2" = list("font-size" = "50%"))
 
 write_extra_css(css = extra_css, outfile = "my_custom.css")
 
@@ -114,9 +117,11 @@ knit_hooks$set(output = function(x, options) {
 ---
 # Materials
 
-### 1. Life expectancy data (in file called life_expectancy.csv)
-### 2. Codebook describing the contents of said data
-### 3. R script to conduct the data analytic tasks of the unit (in file called EDUC641_13_code.R)
+.large[
+1. Life expectancy data (in file called life_expectancy.csv)
+2. Codebook describing the contents of said data
+3. R script to conduct the data analytic tasks of the unit (in file called EDUC641_13_code.R)
+]
 
 ---
 class: middle, inverse
@@ -167,7 +172,7 @@ summary(fit)
 These .red-pink[**coefficients**] tell you where the fitted trend line should be drawn:
 $$
 \small{
-\left[ \textrm{Predicted value of } LIFE\_EXPECTANCY\right]  = 
+\left[ \textrm{Predicted value of } LIFE\\_EXPECTANCY \right]  = 
 \left( 42.85 \right) + 2.23 * \left[ \textrm{Observed value of }SCHOOLING  \right] 
 }
 $$
@@ -236,7 +241,7 @@ fit_val +
 Each term in the regression equation has a specific interpretation
 
 $$
-\hat{LIFEEXPECTANCY} = 42.85 + 2.23 * \left( SCHOOLING \right)
+\hat{LIFE\\_EXPECTANCY} = 42.85 + 2.23 * \left( SCHOOLING \right)
 $$
 
 ---
@@ -245,7 +250,7 @@ $$
 Each term in the regression equation has a specific interpretation:
 
 $$
-\color{red}{\hat{LIFEEXPECTANCY}} = 42.85 + 2.23 * \left( SCHOOLING \right)
+\color{red}{\hat{LIFE\\_EXPECTANCY}} = 42.85 + 2.23 * \left( SCHOOLING \right)
 $$
 
 The predicted value of $\color{red}{\hat{LIFE\_EXPECTANCY}}$ is based on the OLS regression fit. Its "hat" represents that it is a prediction.
@@ -256,7 +261,7 @@ The predicted value of $\color{red}{\hat{LIFE\_EXPECTANCY}}$ is based on the OLS
 Each term in the regression equation has a specific interpretation:
 
 $$
-\hat{LIFEEXPECTANCY} = \color{red}{42.85} + 2.23 * \left( SCHOOLING \right)
+\hat{LIFE\\_EXPECTANCY} = \color{red}{42.85} + 2.23 * \left( SCHOOLING \right)
 $$
 
 42.85 represents the .red[**estimated intercept**]. It tells you the predicted value of $LIFE\_EXPECTANCY$ when $SCHOOLING$ is zero (0)
@@ -269,7 +274,7 @@ $$
 Each term in the regression equation has a specific interpretation:
 
 $$
-\hat{LIFEEXPECTANCY} = 42.85 + \color{red}{2.23} * \left( SCHOOLING \right)
+\hat{LIFE\\_EXPECTANCY} = 42.85 + \color{red}{2.23} * \left( SCHOOLING \right)
 $$
 
 --
@@ -794,13 +799,9 @@ class: middle, inverse
 - LSWR Chapter 15.1 and 15.2: bivariate regression by **Nov. 21**
 
 ### Assignments
-- Quiz #5 on **November 21** (due Nov. 22 at 5pm)
-- Assignment #4 due **November 27** at 11:59PM
-- Final assignment due **December 6** at 11:59PM
+- Quiz #5 due **November 27** at 5pm
+- Assignment #4 due **December 2** at 11:59PM
+- Final assignment due **December 11** at 4:59PM
 
-### No lab on 11/22 or 11/23! No class on 11/23!
+### No lab on 11/27 or 11/28! Lab replaces class on 11/26!
 
----
-class: middle, inverse
-
-# Quiz
