@@ -296,7 +296,7 @@ We do **NOT** say that increasing the average years that children attend school 
 Each term in the regression equation has a specific interpretation:
 
 $$
-\hat{LIFEEXPECTANCY} = 42.85 + 2.23 * \left( \color{red}{SCHOOLING} \right)
+\hat{LIFE\\_EXPECTANCY} = 42.85 + 2.23 * \left( \color{red}{SCHOOLING} \right)
 $$
 
 --
@@ -323,7 +323,7 @@ Could we have gotten a slope value of 2.23 by sampling from a population in whic
 ---
 # Regression inference
 
-What is the probability that we would have gotten a slope value of 2.23 by sampling from a population in which there was **no relationship** between $LIFE\_EXPECTANCY$ and $SCHOOLING$?
+What is the probability that we would have gotten a slope value of 2.23 (or a more extreme value) by sampling from a population in which there was **no relationship** between $LIFE\_EXPECTANCY$ and $SCHOOLING$?
 
 ```{r, echo=F, highlight.output = c(3:6), output.lines = -(1:7)}
 summary(fit)
