@@ -101,6 +101,8 @@ library(modelsummary)
 ### then, at the start of your code include the command options(modelsummary_factory_word = 'flextable')
 ### you only need run the proceeding command once per R session
 
+options(modelsummary_factory_word = 'flextable')
+
 # Generate an un-modified summary statistics table
 datasummary_skim(who)
 
@@ -126,11 +128,13 @@ modelsummary(fit)
 
 # Remove unnecessary elements
 modelsummary(fit,
+             stars = T,
              gof_omit = "Adj.|AIC|BIC|Log|RMSE|F",  # <- removes goodness-of-fit (gof) statistics containing these strings; the | indicates OR
              coef_rename = c("schooling" = "Yrs. Schooling")) # use interpretable coefficient names
 
 # Export this table to word
 modelsummary(fit,
+             stars = T,
              gof_omit = "Adj.|AIC|BIC|Log|RMSE|F",  
              coef_rename = c("schooling" = "Yrs. Schooling"),
              output = "slides/table2.docx")
