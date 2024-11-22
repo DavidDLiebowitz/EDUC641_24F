@@ -95,14 +95,30 @@ summary(fit)
 install.packages("modelsummary")
 library(modelsummary)
 
+### NOTE: A recent update to the modelsummary package changed some of its functionality
+### If you are having issues with how the tables export, you may need to do the following
+### install.packages('flextable')
+### then, at the start of your code include the command options(modelsummary_factory_word = 'flextable')
+### you only need run the proceeding command once per R session
+
 # Generate an un-modified summary statistics table
 datasummary_skim(who)
 
-# Remove the histogram
-datasummary_skim(who, histogram = F)
+# Remove the year as this isn't a relevant variable to summarize
+who_desc <- select(who, c(schooling, life_expectancy))
+
+# Add names to variables
+names(who_desc) <- c("Schooling (Yrs.)", "Life Expectancy (Yrs.)")
+
+# Remove unnecessary stats and the histogram
+datasummary_skim(who_desc, 
+                 fun_numeric = list(Mean = Mean, SD = SD, Min = Min,  # <- may not want all of these stats
+                                    Median = Median, Max = Max))
 
 # Export the table to Word
-datasummary_skim(who, histogram = F,
+datasummary_skim(who_desc, 
+                 fun_numeric = list(Mean = Mean, SD = SD, Min = Min,
+                                    Median = Median, Max = Max),
                  output="slides/table.docx") # <- note that you should direct R to save the table to a defined folder
 
 # Generate an un-modified regression output table
@@ -146,4 +162,7 @@ ggplot(who, aes(x = predict, y = resid)) +
   geom_hline(yintercept = 0, color = "red", linetype="dashed") +
   ylab("Residuals") + xlab("Fitted values") +
   scale_y_continuous(limits=c(-20, 20))
+
+# Save the plot
+ggsave("slides/resid_fitted.png")
 

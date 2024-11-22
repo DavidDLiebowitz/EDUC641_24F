@@ -18,6 +18,9 @@ output:
 library(pacman)
 p_load(here, tidyverse, xaringan, knitr, kableExtra, xaringanthemer, modelsummary)
 
+options(modelsummary_factory_default = 'kableExtra')
+options(modelsummary_factory_word = 'flextable')
+
 i_am("slides/EDUC641_15_regression2.rmd")
 
 
@@ -408,6 +411,7 @@ Things people might need to know:
 ### A descriptive table (Table 1):
 ```{r, echo=F}
 who1 <- select(who, -c(predict, predict_c))
+
 ```
 
 ```{r, echo=T}
@@ -420,9 +424,11 @@ datasummary_skim(who1)
 
 ### A descriptive table (Table 1):
 ```{r, echo=T}
-datasummary((`Yrs of Schooling` = schooling) + 
-             (`Life Expectancy` = life_expectancy) ~ Mean + SD + N,
-                data = who1)
+names(who1) <- c("Region", "Status", "Schooling (Yrs)", 
+                                  "Life Expectancy (Yrs)")
+datasummary_skim(who1,
+                 fun_numeric = list(Mean = Mean, SD = SD, Min = Min,
+                                    Median = Median, Max = Max))
 ```
 
 ---
@@ -431,20 +437,13 @@ datasummary((`Yrs of Schooling` = schooling) +
 
 Saving it to a Word table:
 ```{r, echo=T}
-datasummary_skim(who1, histogram=F,
-                 output="table.docx")
-```
-
----
-# (Re)producing beautiful results
-### A descriptive table (Table 1):
-
-For categorical variables
-
-```{r, echo=T}
 datasummary_skim(who1, 
-                 type = "categorical")
+                 fun_numeric = list(Mean = Mean, SD = SD, Min = Min,
+                                    Median = Median, Max = Max),
+                 output = "table.docx")
 ```
+
+> Need to `install.packages("pandoc")` first
 
 
 ---
@@ -454,8 +453,9 @@ datasummary_skim(who1,
 Numeric variables by a categorical variable
 
 ```{r, echo=T}
-datasummary_balance(~ status, # tells R to cut by this variable
-                    data=who1)
+# Tell R to cut by a given variable
+datasummary_balance(`Schooling (Yrs)`+ `Life Expectancy (Yrs)` ~ Status,
+                    data = who1)
 ```
 
 --
@@ -469,17 +469,22 @@ datasummary_balance(~ status, # tells R to cut by this variable
 Numeric variables by a categorical variable
 
 ```{r, echo=T}
-datasummary_balance(~ status,
+datasummary_balance(`Schooling (Yrs)`+ `Life Expectancy (Yrs)` ~ Status,
                     dinm = F, # drop the diff-in-means
-                    data=who1)
+                    data = who1)
 ```
 
 ---
 # (Re)producing beautiful results
 
 ### A regression output table (Table 2)
-```{r, echo=T}
+```{r, echo=T, eval=F}
 modelsummary(fit)
+```
+
+```{r, echo=F, results='asis'}
+modelsummary(fit,
+             escape=F)
 ```
 
 ---
@@ -505,9 +510,16 @@ Convention in most outlets to provide asterisks denoting conventional alpha thre
 # (Re)producing beautiful results
 
 ### A regression output table (Table 2)
-```{r, echo=T}
+```{r, echo=T, eval=F}
 modelsummary(fit, stars=T,
              gof_omit = "Adj.|AIC|BIC|RMSE|Log",
+             coef_rename = c("schooling" = "Yrs. Schooling"))
+```
+
+```{r, echo=F, results= 'asis'}
+modelsummary(fit, stars=T,
+             gof_omit = "Adj.|AIC|BIC|RMSE|Log",
+             escape = F,
              coef_rename = c("schooling" = "Yrs. Schooling"))
 ```
 
@@ -518,11 +530,13 @@ modelsummary(fit, stars=T,
 
 Saving it to a Word table:
 ```{r, echo=T}
-modelsummary(fit, stars=T,
+modelsummary(fit, 
+             stars=T,
              gof_omit = "Adj.|AIC|BIC|RMSE|Log",
              coef_rename = c("schooling" = "Yrs. Schooling"),
-             output="table2.docx")
+             output = "table2.docx")
 ```
+
 
 ---
 class: middle, inverse
