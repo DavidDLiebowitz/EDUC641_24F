@@ -115,7 +115,9 @@ plot(density(df$schooling))
 
 ## Create descriptive table (continuous)
 ```{r, echo=T}
-datasummary_skim(df)
+datasummary_skim(df,
+                 fun_numeric = list(Mean = Mean, SD = SD, Min = Min,
+                                    Median = Median, Max = Max))
 ```
 
 ## Create descriptive table (categorical)

@@ -248,14 +248,14 @@ Take the "Many Analysts"&lt;sup&gt;1&lt;/sup&gt; project in which 29 teams used 
 ---
 ## Other data/analysis challenges
 
-Never **EVER** use Excel to read in your data
+.small[Never **EVER** use Excel to read in your data]
 &lt;img src="gene_name.png" width="440" style="display: block; margin: auto;" /&gt;
 
 --
-More importantly, without being able to observe researcher decisions in their code, we can't assess the reasonableness of choices and the potential for replication. .red-pink[**We need to learn how to code and not just point-and-click for Open Science.**]
+.small[More importantly, without being able to observe researcher decisions in their code, we can't assess the reasonableness of choices and the potential for replication. .red-pink[**We need to learn how to code and not just point-and-click for Open Science.**]]
 
 --
-Developing a consistent, reproducible [data management workflow](../data_management.html) is key
+.small[Developing a consistent, reproducible [data management workflow](../data_management.html) is key]
 
 ---
 class: middle, inverse
@@ -286,15 +286,17 @@ Assume that we find that average national life expectancy is significantly great
 
 In frequentist statistics, we establish an **objective decision rule**: if our observed data has less than a 5 percent chance of occurring (or less than 1% or less than 0.1% or less than 10%) due to sampling idiosyncrasy, we will conclude that the observed relationship in the sample represents a true relationship in the population. 
 
+.small[
 - Once we set a threshold (an `\(\alpha\)`-theshold), we are making a binary decision about significance and non-significance
 - Relationships are *NOT* "more" or "less" significant&lt;sup&gt;1&lt;/sup&gt; 
  + In fact, the distribution of *p*-values under the null hypothesis is a uniform one; thus, it's not correct to describe observed vs. expected probabilities in relationship to each other (e.g., a *p*-value of 0.01 is **not** three times less likely than a *p*-value of 0.03). 
 - This has become such an issue that in 2016, the American Statistical Association released a [statement](https://amstat.tandfonline.com/doi/pdf/10.1080/00031305.2016.1154108) touching on many of these issues, and a subset of committee members explicitly recommended to not use the term ["statistically significant"](https://www.tandfonline.com/doi/full/10.1080/00031305.2019.1583913)
+]
 
 .footnote[[1] This is the classical/standard way of thinking about inference. More recently, scholars have begun to question this way of thinking and consider this sort of comparison appropriate.]
 
 --
-- Many of these concerns relate to different ways of thinking about probability...
+- .small[Many of these concerns relate to different ways of thinking about probability...]
 
 
 
@@ -439,9 +441,9 @@ bayes &lt;- stan_glm(life_expectancy ~ schooling, data = who,
 #&gt; Chain 1: Iteration: 1800 / 2000 [ 90%]  (Sampling)
 #&gt; Chain 1: Iteration: 2000 / 2000 [100%]  (Sampling)
 #&gt; Chain 1: 
-#&gt; Chain 1:  Elapsed Time: 0.061 seconds (Warm-up)
-#&gt; Chain 1:                0.049 seconds (Sampling)
-#&gt; Chain 1:                0.11 seconds (Total)
+#&gt; Chain 1:  Elapsed Time: 0.051 seconds (Warm-up)
+#&gt; Chain 1:                0.05 seconds (Sampling)
+#&gt; Chain 1:                0.101 seconds (Total)
 #&gt; Chain 1: 
 #&gt; 
 #&gt; SAMPLING FOR MODEL 'continuous' NOW (CHAIN 2).
@@ -464,9 +466,9 @@ bayes &lt;- stan_glm(life_expectancy ~ schooling, data = who,
 #&gt; Chain 2: Iteration: 1800 / 2000 [ 90%]  (Sampling)
 #&gt; Chain 2: Iteration: 2000 / 2000 [100%]  (Sampling)
 #&gt; Chain 2: 
-#&gt; Chain 2:  Elapsed Time: 0.039 seconds (Warm-up)
-#&gt; Chain 2:                0.037 seconds (Sampling)
-#&gt; Chain 2:                0.076 seconds (Total)
+#&gt; Chain 2:  Elapsed Time: 0.041 seconds (Warm-up)
+#&gt; Chain 2:                0.052 seconds (Sampling)
+#&gt; Chain 2:                0.093 seconds (Total)
 #&gt; Chain 2: 
 #&gt; 
 #&gt; SAMPLING FOR MODEL 'continuous' NOW (CHAIN 3).
@@ -489,9 +491,9 @@ bayes &lt;- stan_glm(life_expectancy ~ schooling, data = who,
 #&gt; Chain 3: Iteration: 1800 / 2000 [ 90%]  (Sampling)
 #&gt; Chain 3: Iteration: 2000 / 2000 [100%]  (Sampling)
 #&gt; Chain 3: 
-#&gt; Chain 3:  Elapsed Time: 0.049 seconds (Warm-up)
-#&gt; Chain 3:                0.05 seconds (Sampling)
-#&gt; Chain 3:                0.099 seconds (Total)
+#&gt; Chain 3:  Elapsed Time: 0.053 seconds (Warm-up)
+#&gt; Chain 3:                0.047 seconds (Sampling)
+#&gt; Chain 3:                0.1 seconds (Total)
 #&gt; Chain 3: 
 #&gt; 
 #&gt; SAMPLING FOR MODEL 'continuous' NOW (CHAIN 4).
@@ -514,9 +516,9 @@ bayes &lt;- stan_glm(life_expectancy ~ schooling, data = who,
 #&gt; Chain 4: Iteration: 1800 / 2000 [ 90%]  (Sampling)
 #&gt; Chain 4: Iteration: 2000 / 2000 [100%]  (Sampling)
 #&gt; Chain 4: 
-#&gt; Chain 4:  Elapsed Time: 0.03 seconds (Warm-up)
-#&gt; Chain 4:                0.063 seconds (Sampling)
-#&gt; Chain 4:                0.093 seconds (Total)
+#&gt; Chain 4:  Elapsed Time: 0.045 seconds (Warm-up)
+#&gt; Chain 4:                0.054 seconds (Sampling)
+#&gt; Chain 4:                0.099 seconds (Total)
 #&gt; Chain 4:
 ```
 ---
@@ -598,10 +600,10 @@ class: middle, inverse
 # To Dos
 
 ### Final project 
-Due Dec. 6, 11:59pm
+Due Dec. 11, 4:59pm
 
 ### Re-submission
-Assignments &lt;13, resubmissions due on Canvas 12/1 at 5pm
+Assignments &lt;13, resubmissions due on Canvas 12/6 at 5pm
 
 ### End-of-term SES
 

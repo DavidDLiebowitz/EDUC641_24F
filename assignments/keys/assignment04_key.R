@@ -1,8 +1,8 @@
 ##########################################################################################
 # EDUC 641 Assignment 4 Key 
-## David Liebowitz, Claire Zhang, Havisha Khurana
+## David Liebowitz, Claire Zhang, Havisha Khurana, Brittany Spinner
 ### First created: 8/1/21
-### Last update: 11/28/23
+### Last update: 12/3/24
 ### Inputs: cont.csv
 ### Purpose: load in data, understand structure, conduct descriptive analysis
 ##########################################################################################
@@ -36,10 +36,10 @@ pd$treat <- factor(pd$treat,
 
 # Numeric variables
 datasummary_skim(pd,
-                 histogram = F,
+                 fun_numeric = list(Mean = Mean, SD = SD),
                  output = "Assignments/keys/table1.docx")
 
-# Categorical variables
+# Can do continuous and categorical variables separately
 datasummary_skim(pd,
                  type = "categorical",
                  output = "Assignments/keys/table1a.docx")

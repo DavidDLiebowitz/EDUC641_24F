@@ -195,18 +195,14 @@ Objectives:
 - Articulate modern critiques of null-hypothesis significance testing framework
 - Describe strategies to improve replicability and generalizability of quantitative research
 
-<!--
+Lecture slides:
+
 - Classes 17-18 (11/28 & 11/30): [html](./slides/EDUC641_17_critiques.html) | [pdf](./slides/EDUC641_17_critiques.pdf)
 - Data management cheat sheet: [html](data_management.html) 
-
--->
 
 ## Final Assignment
 
 * Due December 11 at 4:59pm
 
-<!--
 - [html file](./assignments/assignment05.html)
 - [ah01.csv](./data/ah01.csv) | [ah02.csv](./data/ah02.csv)
-
--->

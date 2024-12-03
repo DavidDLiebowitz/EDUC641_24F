@@ -315,16 +315,16 @@ Take the "Many Analysts"<sup>1</sup> project in which 29 teams used the same dat
 ---
 ## Other data/analysis challenges
 
-Never **EVER** use Excel to read in your data
+.small[Never **EVER** use Excel to read in your data]
 ```{r, echo=F}
 include_graphics("gene_name.png")
 ```
 
 --
-More importantly, without being able to observe researcher decisions in their code, we can't assess the reasonableness of choices and the potential for replication. .red-pink[**We need to learn how to code and not just point-and-click for Open Science.**]
+.small[More importantly, without being able to observe researcher decisions in their code, we can't assess the reasonableness of choices and the potential for replication. .red-pink[**We need to learn how to code and not just point-and-click for Open Science.**]]
 
 --
-Developing a consistent, reproducible [data management workflow](../data_management.html) is key
+.small[Developing a consistent, reproducible [data management workflow](../data_management.html) is key]
 
 ---
 class: middle, inverse
@@ -355,15 +355,17 @@ Assume that we find that average national life expectancy is significantly great
 
 In frequentist statistics, we establish an **objective decision rule**: if our observed data has less than a 5 percent chance of occurring (or less than 1% or less than 0.1% or less than 10%) due to sampling idiosyncrasy, we will conclude that the observed relationship in the sample represents a true relationship in the population. 
 
+.small[
 - Once we set a threshold (an $\alpha$-theshold), we are making a binary decision about significance and non-significance
 - Relationships are *NOT* "more" or "less" significant<sup>1</sup> 
  + In fact, the distribution of *p*-values under the null hypothesis is a uniform one; thus, it's not correct to describe observed vs. expected probabilities in relationship to each other (e.g., a *p*-value of 0.01 is **not** three times less likely than a *p*-value of 0.03). 
 - This has become such an issue that in 2016, the American Statistical Association released a [statement](https://amstat.tandfonline.com/doi/pdf/10.1080/00031305.2016.1154108) touching on many of these issues, and a subset of committee members explicitly recommended to not use the term ["statistically significant"](https://www.tandfonline.com/doi/full/10.1080/00031305.2019.1583913)
+]
 
 .footnote[[1] This is the classical/standard way of thinking about inference. More recently, scholars have begun to question this way of thinking and consider this sort of comparison appropriate.]
 
 --
-- Many of these concerns relate to different ways of thinking about probability...
+- .small[Many of these concerns relate to different ways of thinking about probability...]
 
 
 
@@ -598,10 +600,10 @@ class: middle, inverse
 # To Dos
 
 ### Final project 
-Due Dec. 6, 11:59pm
+Due Dec. 11, 4:59pm
 
 ### Re-submission
-Assignments <13, resubmissions due on Canvas 12/1 at 5pm
+Assignments <13, resubmissions due on Canvas 12/6 at 5pm
 
 ### End-of-term SES
 
