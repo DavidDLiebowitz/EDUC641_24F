@@ -113,14 +113,18 @@ hist(df$life_expectancy)
 plot(density(df$schooling))
 ```
 
-## Create descriptive table (continuous)
+## Create descriptive table
 ```{r, echo=T}
+desc_df <- select(df, -c(life2))
+names(desc_df) <- c("Region", "Status", "Schooling (Yrs)", 
+                                  "Life Expectancy (Yrs)")
+
 datasummary_skim(df,
                  fun_numeric = list(Mean = Mean, SD = SD, Min = Min,
                                     Median = Median, Max = Max))
 ```
 
-## Create descriptive table (categorical)
+## Create descriptive table (categorical only)
 ```{r, echo=T}
 datasummary_skim(df, type="categorical")
 ```
