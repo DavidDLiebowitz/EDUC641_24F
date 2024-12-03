@@ -119,12 +119,12 @@ desc_df <- select(df, -c(life2))
 names(desc_df) <- c("Region", "Status", "Schooling (Yrs)", 
                                   "Life Expectancy (Yrs)")
 
-datasummary_skim(df,
+datasummary_skim(desc_df,
                  fun_numeric = list(Mean = Mean, SD = SD, Min = Min,
                                     Median = Median, Max = Max))
 ```
 
 ## Create descriptive table (categorical only)
 ```{r, echo=T}
-datasummary_skim(df, type="categorical")
+datasummary_skim(desc_df, type="categorical")
 ```
