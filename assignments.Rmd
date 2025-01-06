@@ -42,8 +42,8 @@ Deadline: October 14, 11:59pm
 
 Download: [html file](./assignments/assignment01.html) | [cat.csv dataset](./data/cat.csv)
 
-Key: 
- [doc file](./assignments/keys/assignment01_key.docx); [R script](./assignments/keys/assignment01_key.R)
+Key: <!--
+ [doc file](./assignments/keys/assignment01_key.docx); [R script](./assignments/keys/assignment01_key.R) -->
 
 ## 3.2. Assignment 2 
 
@@ -65,7 +65,7 @@ Deadline: October 25, 11:59pm
 
 Download: [html file](./assignments/assignment02.html) | [cat.csv dataset](./data/cat.csv)
 
-Key: [doc file](./assignments/keys/assignment02_key.docx); [R script](./assignments/keys/assignment02_key.R)
+Key: <!-- [doc file](./assignments/keys/assignment02_key.docx); [R script](./assignments/keys/assignment02_key.R) -->
 
 ## 3.3. Assignment 3 
 
@@ -84,8 +84,8 @@ Deadline: November 8, 4:59pm
 Download: [html file](./assignments/assignment03.html) | [cont.csv dataset](./data/cont.csv)
 
 
-Key: 
- [doc file](./assignments/keys/assignment03_key.docx); [R script](./assignments/keys/assignment03_key.R)
+Key: <!--
+ [doc file](./assignments/keys/assignment03_key.docx); [R script](./assignments/keys/assignment03_key.R) -->
 
 ## 3.4. Assignment 4 
 
@@ -103,8 +103,8 @@ Deadline: December 2, 11:59pm
 
 Download: [html file](./assignments/assignment04.html) | [cont.csv dataset](./data/cont.csv)
 
-Key: 
- [doc file](./assignments/keys/assignment04_key.docx); [R script](./assignments/keys/assignment04_key.R)
+Key: <!--
+ [doc file](./assignments/keys/assignment04_key.docx); [R script](./assignments/keys/assignment04_key.R) -->
 
 
 ## 3.5. Final
